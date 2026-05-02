@@ -140,6 +140,28 @@
       "in_use": false,
       "tikz_source": false,
       "notes": "Reviewer-evidence figure: prompt length sweep showing prompt length is NOT the proxy carrying signal."
+    },
+    "constitution_wheel_full.wav": {
+      "asset": "supplementary/demos/audio_demos/constitution_wheel_full.wav",
+      "script": "supplementary/demos/sonification.py",
+      "data": [],
+      "data_known": true,
+      "main_tex_ref": null,
+      "in_use": false,
+      "tikz_source": false,
+      "binary_asset": true,
+      "notes": "Audio demo individually named in main.tex section 2289. Self-contained sonification (numpy/scipy only). Regenerable: python supplementary/demos/sonification.py. Asset existence verified by Path.exists() only — never read."
+    },
+    "diagonal_all_four.wav": {
+      "asset": "supplementary/demos/audio_demos/diagonal_all_four.wav",
+      "script": "supplementary/demos/sonification.py",
+      "data": [],
+      "data_known": true,
+      "main_tex_ref": null,
+      "in_use": false,
+      "tikz_source": false,
+      "binary_asset": true,
+      "notes": "Audio demo individually named in main.tex section 2290. Companion to constitution_wheel_full.wav: 'all four principles simultaneously (the compound prompt sound).' Path.exists() only."
     }
   }
 }

@@ -1,7 +1,7 @@
 # Claim Certificate
 
 **Paper:** The Cost of Cacophony: Geometric Limits on Multi-Constraint Alignment
-**Generated:** 2026-05-02T14:22:37
+**Generated:** 2026-05-02T14:28:27
 **Verdict:** **PASS** — all structural checks clean; coverage above thresholds
 
 ## Provenance
