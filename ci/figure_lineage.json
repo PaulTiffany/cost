@@ -97,6 +97,49 @@
       "main_tex_ref": null,
       "in_use": false,
       "notes": "TikZ source present in figures/ but not currently \\input{} from main.tex. Either dead code or pending integration."
+    },
+    "proxy_ablation.pdf": {
+      "asset": "rebuttal/figures/proxy_ablation.pdf",
+      "script": "supplementary/experiments_rebuttal/proxy_ablation/proxy_ablation.py",
+      "data": [],
+      "data_known": true,
+      "outputs_secondary": [
+        "rebuttal/figures/proxy_ablation_results.json"
+      ],
+      "main_tex_ref": null,
+      "in_use": false,
+      "tikz_source": false,
+      "notes": "Reviewer-evidence figure: proxy ablation (oracle/real/shuffled/random rho-hat) showing real rho-hat strictly outperforms shuffled. Lives in rebuttal/figures/, NOT in main.tex. Self-contained simulation."
+    },
+    "sonification_defense.pdf": {
+      "asset": "rebuttal/figures/sonification_defense.pdf",
+      "script": "supplementary/experiments_rebuttal/sonification_defense/chromatic_vision.py",
+      "data": [],
+      "data_known": true,
+      "main_tex_ref": null,
+      "in_use": false,
+      "tikz_source": false,
+      "notes": "Reviewer-evidence figure: sonification (chromatic_vision) defense; not in main.tex."
+    },
+    "sonification_defense_rho_sweep.pdf": {
+      "asset": "rebuttal/figures/sonification_defense_rho_sweep.pdf",
+      "script": "supplementary/experiments_rebuttal/sonification_defense/chromatic_vision.py",
+      "data": [],
+      "data_known": true,
+      "main_tex_ref": null,
+      "in_use": false,
+      "tikz_source": false,
+      "notes": "Reviewer-evidence figure: rho sweep variant of the sonification defense plot."
+    },
+    "prompt_length_sweep.png": {
+      "asset": "rebuttal/figures/prompt_length_sweep.png",
+      "script": "supplementary/experiments_rebuttal/prompt_length_sweep/prompt_length_sweep.py",
+      "data": [],
+      "data_known": true,
+      "main_tex_ref": null,
+      "in_use": false,
+      "tikz_source": false,
+      "notes": "Reviewer-evidence figure: prompt length sweep showing prompt length is NOT the proxy carrying signal."
     }
   }
 }
