@@ -1,11 +1,11 @@
 {
   "summary": {
-    "total": 139,
-    "caught": 133,
+    "total": 148,
+    "caught": 139,
     "missed": 0,
-    "skipped": 6,
-    "baseline_found": 135,
-    "baseline_total": 135
+    "skipped": 9,
+    "baseline_found": 144,
+    "baseline_total": 144
   },
   "missed_claims": [],
   "skipped_claims": [
@@ -80,6 +80,42 @@
       "skip_reason": "all patterns are non-numeric or wildcard-tolerant",
       "weak_ok": false,
       "match_mode": "joint"
+    },
+    {
+      "claim_id": "T44",
+      "description": "Worked example: rho=0.5 (Two-Constraint Bound)",
+      "category": "SKIPPED",
+      "mutated_value": null,
+      "new_value": null,
+      "n_occurrences": 0,
+      "audit_status_after": null,
+      "skip_reason": "all patterns are non-numeric or wildcard-tolerant",
+      "weak_ok": false,
+      "match_mode": "any"
+    },
+    {
+      "claim_id": "T46",
+      "description": "Sonification: Helpful=C/0 (tonic), Harmless=G/1 (perfect fifth)",
+      "category": "SKIPPED",
+      "mutated_value": null,
+      "new_value": null,
+      "n_occurrences": 0,
+      "audit_status_after": null,
+      "skip_reason": "all patterns are non-numeric or wildcard-tolerant",
+      "weak_ok": false,
+      "match_mode": "joint"
+    },
+    {
+      "claim_id": "T47",
+      "description": "Sonification: Honest=D/2 (two fifths)",
+      "category": "SKIPPED",
+      "mutated_value": null,
+      "new_value": null,
+      "n_occurrences": 0,
+      "audit_status_after": null,
+      "skip_reason": "all patterns are non-numeric or wildcard-tolerant",
+      "weak_ok": false,
+      "match_mode": "any"
     }
   ],
   "all_results": [
@@ -1746,6 +1782,114 @@
       "mutated_value": "mutated 1 matches of '[Mm]odels\\s*&\\s*4...'",
       "new_value": "mutated 1 matches of '[Mm]odels\\s*&\\s*4...'",
       "n_occurrences": 1,
+      "audit_status_after": "MISS",
+      "skip_reason": null,
+      "weak_ok": false,
+      "match_mode": "joint"
+    },
+    {
+      "claim_id": "T40",
+      "description": "Compute overhead: exemplar embedding 50ms/constraint",
+      "category": "CAUGHT",
+      "mutated_value": "mutated 1 matches of '50\\s*ms...'",
+      "new_value": "mutated 1 matches of '50\\s*ms...'",
+      "n_occurrences": 1,
+      "audit_status_after": "MISS",
+      "skip_reason": null,
+      "weak_ok": false,
+      "match_mode": "joint"
+    },
+    {
+      "claim_id": "T41",
+      "description": "Compute overhead: rho-hat computation <5ms",
+      "category": "CAUGHT",
+      "mutated_value": "mutated 1 matches of '<\\s*?\\$?\\s*5\\s*ms|5ms...'",
+      "new_value": "mutated 1 matches of '<\\s*?\\$?\\s*5\\s*ms|5ms...'",
+      "n_occurrences": 1,
+      "audit_status_after": "MISS",
+      "skip_reason": null,
+      "weak_ok": false,
+      "match_mode": "joint"
+    },
+    {
+      "claim_id": "T42",
+      "description": "Compute overhead: routing decision <1ms",
+      "category": "CAUGHT",
+      "mutated_value": "mutated 1 matches of '<\\s*?\\$?\\s*1\\s*ms|1ms...'",
+      "new_value": "mutated 1 matches of '<\\s*?\\$?\\s*1\\s*ms|1ms...'",
+      "n_occurrences": 1,
+      "audit_status_after": "MISS",
+      "skip_reason": null,
+      "weak_ok": false,
+      "match_mode": "joint"
+    },
+    {
+      "claim_id": "T43",
+      "description": "Compute overhead: staging overhead +1.5-2x",
+      "category": "CAUGHT",
+      "mutated_value": "mutated 15 matches of '1\\.5...'",
+      "new_value": "mutated 15 matches of '1\\.5...'",
+      "n_occurrences": 15,
+      "audit_status_after": "MISS",
+      "skip_reason": null,
+      "weak_ok": false,
+      "match_mode": "joint"
+    },
+    {
+      "claim_id": "T44",
+      "description": "Worked example: rho=0.5 (Two-Constraint Bound)",
+      "category": "SKIPPED",
+      "mutated_value": null,
+      "new_value": null,
+      "n_occurrences": 0,
+      "audit_status_after": null,
+      "skip_reason": "all patterns are non-numeric or wildcard-tolerant",
+      "weak_ok": false,
+      "match_mode": "any"
+    },
+    {
+      "claim_id": "T45",
+      "description": "Frontier transfer: 9 models, 4 providers, N=1,200",
+      "category": "CAUGHT",
+      "mutated_value": "mutated 1 matches of '9\\s+models...'",
+      "new_value": "mutated 1 matches of '9\\s+models...'",
+      "n_occurrences": 1,
+      "audit_status_after": "MISS",
+      "skip_reason": null,
+      "weak_ok": false,
+      "match_mode": "joint"
+    },
+    {
+      "claim_id": "T46",
+      "description": "Sonification: Helpful=C/0 (tonic), Harmless=G/1 (perfect fifth)",
+      "category": "SKIPPED",
+      "mutated_value": null,
+      "new_value": null,
+      "n_occurrences": 0,
+      "audit_status_after": null,
+      "skip_reason": "all patterns are non-numeric or wildcard-tolerant",
+      "weak_ok": false,
+      "match_mode": "joint"
+    },
+    {
+      "claim_id": "T47",
+      "description": "Sonification: Honest=D/2 (two fifths)",
+      "category": "SKIPPED",
+      "mutated_value": null,
+      "new_value": null,
+      "n_occurrences": 0,
+      "audit_status_after": null,
+      "skip_reason": "all patterns are non-numeric or wildcard-tolerant",
+      "weak_ok": false,
+      "match_mode": "any"
+    },
+    {
+      "claim_id": "T48",
+      "description": "Sonification: Perfect 5th = 7 semitones (consonant)",
+      "category": "CAUGHT",
+      "mutated_value": "mutated 2 matches of '[Pp]erfect\\s+5th...'",
+      "new_value": "mutated 2 matches of '[Pp]erfect\\s+5th...'",
+      "n_occurrences": 2,
       "audit_status_after": "MISS",
       "skip_reason": null,
       "weak_ok": false,

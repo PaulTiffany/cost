@@ -1,8 +1,8 @@
 {
   "summary": {
     "tier": "Tiers 1+2+3: critical+important+complete (4 supplementary-only claims skipped)",
-    "total": 135,
-    "found_verbatim": 135,
+    "total": 144,
+    "found_verbatim": 144,
     "drift": 0,
     "missing": 0
   },
@@ -12086,6 +12086,340 @@
         }
       ],
       "notes": "All 2 patterns co-occur within 2-line window (anchor line ~1958)."
+    },
+    {
+      "claim_id": "T40",
+      "paper_text_signature": "Compute overhead: exemplar embedding 50ms/constraint",
+      "found": "OK",
+      "locations": [
+        {
+          "pattern": "[Ee]xemplar\\s+embedding",
+          "hits": [
+            {
+              "line": 2139,
+              "snippet": "Exemplar embedding (one-time) & 0 & 50ms/constraint \\\\"
+            }
+          ]
+        },
+        {
+          "pattern": "50\\s*ms",
+          "hits": [
+            {
+              "line": 2139,
+              "snippet": "Exemplar embedding (one-time) & 0 & 50ms/constraint \\\\"
+            }
+          ]
+        }
+      ],
+      "notes": "All 2 patterns co-occur within 2-line window (anchor line ~2138)."
+    },
+    {
+      "claim_id": "T41",
+      "paper_text_signature": "Compute overhead: rho-hat computation <5ms",
+      "found": "OK",
+      "locations": [
+        {
+          "pattern": "computation",
+          "hits": [
+            {
+              "line": 1503,
+              "snippet": "Direct computation. $\\Gamma\\mathbf{1} = (1+\\rho)\\mathbf{1} - k\\rho\\mathbf{1} = (1-\\rho(k-1))\\mathbf{1}$."
+            },
+            {
+              "line": 2140,
+              "snippet": "$\\hat{\\rho}$ computation (per-query) & 0 & $<$5ms \\\\"
+            },
+            {
+              "line": 2332,
+              "snippet": "Sonification provides a \\emph{different kind} of evidence than computational validation:"
+            }
+          ]
+        },
+        {
+          "pattern": "<\\s*?\\$?\\s*5\\s*ms|5ms",
+          "hits": [
+            {
+              "line": 2140,
+              "snippet": "$\\hat{\\rho}$ computation (per-query) & 0 & $<$5ms \\\\"
+            }
+          ]
+        }
+      ],
+      "notes": "All 2 patterns co-occur within 2-line window (anchor line ~2139)."
+    },
+    {
+      "claim_id": "T42",
+      "paper_text_signature": "Compute overhead: routing decision <1ms",
+      "found": "OK",
+      "locations": [
+        {
+          "pattern": "[Rr]outing\\s+decision",
+          "hits": [
+            {
+              "line": 69,
+              "snippet": "We enable routing decisions \\emph{before} LLM generation: given a multi-constraint prompt, decide whether to attempt one-shot, decompose into stages, or reje..."
+            },
+            {
+              "line": 619,
+              "snippet": "The regime boundary is robust, not an artifact of calibration or encoder choice. Table~\\ref{tab:robustness_stress} shows prompt perturbations (paraphrase, re..."
+            },
+            {
+              "line": 787,
+              "snippet": "Let $\\hat{\\rho}: \\mathcal{P} \\to [0,1]$ be an interface observable and let $\\mathsf{fail}: \\mathcal{P} \\to \\{0,1\\}$ be operational outcome (verifier pass/fai..."
+            },
+            {
+              "line": 2141,
+              "snippet": "Routing decision & 0 & $<$1ms \\\\"
+            },
+            {
+              "line": 2169,
+              "snippet": "Violation of these assumptions yields alternative instantiations of the observable. The consistency across embedding models (Table~\\ref{tab:embedding_R}) con..."
+            },
+            {
+              "line": 2172,
+              "snippet": "We do not treat $\\hat\\rho$ as a noisy measurement of an unobserved internal ``true conflict.'' $\\hat\\rho$ is an \\emph{interface observable} computed directly..."
+            }
+          ]
+        },
+        {
+          "pattern": "<\\s*?\\$?\\s*1\\s*ms|1ms",
+          "hits": [
+            {
+              "line": 2141,
+              "snippet": "Routing decision & 0 & $<$1ms \\\\"
+            }
+          ]
+        }
+      ],
+      "notes": "All 2 patterns co-occur within 2-line window (anchor line ~2140)."
+    },
+    {
+      "claim_id": "T43",
+      "paper_text_signature": "Compute overhead: staging overhead +1.5-2x",
+      "found": "OK",
+      "locations": [
+        {
+          "pattern": "[Ss]taging\\s+overhead",
+          "hits": [
+            {
+              "line": 2142,
+              "snippet": "Staging overhead (when triggered) & $+1.5$--$2\\times$ & $+1.5$--$2\\times$ \\\\"
+            }
+          ]
+        },
+        {
+          "pattern": "1\\.5",
+          "hits": [
+            {
+              "line": 441,
+              "snippet": "(0.05,1.5) [0.55]  (0.20,1.5) [0.45]  (0.40,1.5) [0.18]  (0.55,1.5) [0.05]  (0.70,1.5) [0.02]"
+            },
+            {
+              "line": 479,
+              "snippet": "\\addplot[only marks, mark=*, mark size=1.5pt, color=passblue]"
+            },
+            {
+              "line": 482,
+              "snippet": "\\addplot[only marks, mark=square*, mark size=1.5pt, color=failorange]"
+            },
+            {
+              "line": 928,
+              "snippet": "& \\multicolumn{2}{c}{Qwen-Coder-1.5B} & \\multicolumn{2}{c}{Qwen-3B} & \\multicolumn{2}{c}{DeepSeek-1.3B} & \\multicolumn{2}{c}{TinyLlama-1.1B} \\\\"
+            },
+            {
+              "line": 982,
+              "snippet": "Qwen-Coder-1.5B & $-63$ & $-37$ & $-30$ & $-33$ & $-30$ \\\\"
+            },
+            {
+              "line": 993,
+              "snippet": "\\item \\textbf{Qwen-Coder-1.5B}: Near-ceiling one-shot (97--100\\%), so staging adds variance. Negative $\\Delta$ across all budgets."
+            },
+            {
+              "line": 1066,
+              "snippet": "\\caption{JSON-NL transfer results (Qwen-1.5B, $n=40$ per tier). Failure rate scales monotonically with $\\rho$: 77.5\\% $\\to$ 90.0\\% $\\to$ 97.5\\% $\\to$ 100\\%. ..."
+            },
+            {
+              "line": 1086,
+              "snippet": "Gradients are \\emph{micro-state} observables: high-variance, token-path-dependent, specific to the exact generation trajectory. Embeddings are \\emph{macro-st..."
+            },
+            {
+              "line": 2109,
+              "snippet": "Thresholds calibrated from Table~\\ref{tab:calibration}: staging $\\Delta > 0$ when $\\hat{\\rho} \\in [0.2, 0.5]$ and $\\delta/\\delta_{\\min} \\in [1.5, 3.0]$."
+            },
+            {
+              "line": 2142,
+              "snippet": "Staging overhead (when triggered) & $+1.5$--$2\\times$ & $+1.5$--$2\\times$ \\\\"
+            }
+          ]
+        },
+        {
+          "pattern": "2\\\\?times|2x",
+          "hits": [
+            {
+              "line": 288,
+              "snippet": "$\\tau = m = 1$: $\\delta_{\\min} = 2.0$ vs.\\ axis-aligned $\\delta = 1$ ($2\\times$ capacity). Figure~\\ref{fig:worked_geometry} shows exact numerical agreement."
+            },
+            {
+              "line": 1775,
+              "snippet": "Figure~\\ref{fig:amplification} shows amplification diverges as $\\rho \\to 1$: $1.4$--$2\\times$ for $\\rho < 0.5$; diverges for $\\rho \\ge 0.8$. IF-DSL confirms:..."
+            },
+            {
+              "line": 2142,
+              "snippet": "Staging overhead (when triggered) & $+1.5$--$2\\times$ & $+1.5$--$2\\times$ \\\\"
+            }
+          ]
+        }
+      ],
+      "notes": "All 3 patterns co-occur within 2-line window (anchor line ~2141)."
+    },
+    {
+      "claim_id": "T44",
+      "paper_text_signature": "Worked example: rho=0.5 (Two-Constraint Bound)",
+      "found": "OK",
+      "locations": [
+        {
+          "pattern": "[Ww]orked.*\\\\rho.*0\\.5|rho\\{?=\\}?0\\.5",
+          "hits": [
+            {
+              "line": 189,
+              "snippet": "\\\\(b) Worked example, $\\rho{=}0.5$"
+            },
+            {
+              "line": 191,
+              "snippet": "\\caption{\\textbf{Geometric setup.} (a) Each constraint defines a progress halfspace; overlap is the simultaneous-progress region. Budget ball reaches each ha..."
+            },
+            {
+              "line": 287,
+              "snippet": "\\begin{example}[Worked: $\\rho=0.5$]\\label{ex:worked}"
+            },
+            {
+              "line": 1771,
+              "snippet": "\\caption{\\textbf{Cost Amplification.} The diagonal cost factor $\\sqrt{2/(1-\\rho)}$ diverges as conflict $\\rho \\to 1$. At $\\rho=0$ (orthogonal), cost is $\\sqr..."
+            }
+          ]
+        }
+      ],
+      "notes": "All 1 signature patterns matched."
+    },
+    {
+      "claim_id": "T45",
+      "paper_text_signature": "Frontier transfer: 9 models, 4 providers, N=1,200",
+      "found": "OK",
+      "locations": [
+        {
+          "pattern": "9\\s+models",
+          "hits": [
+            {
+              "line": 519,
+              "snippet": "\\\\\\footnotesize (a) Cross-model: 9 models, 4 providers, $N{=}1{,}200$"
+            }
+          ]
+        },
+        {
+          "pattern": "4\\s+providers",
+          "hits": [
+            {
+              "line": 519,
+              "snippet": "\\\\\\footnotesize (a) Cross-model: 9 models, 4 providers, $N{=}1{,}200$"
+            },
+            {
+              "line": 526,
+              "snippet": "\\caption{\\textbf{The cliff is model-agnostic and survives constraint softening.} (a) Pass-rate heatmap across nine models from 1B (TinyLlama) to frontier (4 ..."
+            }
+          ]
+        },
+        {
+          "pattern": "N\\{?=\\}?1\\{?,\\}?200|1\\{,\\}200",
+          "hits": [
+            {
+              "line": 512,
+              "snippet": "Open-weight validation is reproducible; frontier experiments confirm \\emph{transfer}. The Claude family (7~models, haiku--opus) shows identical regime orderi..."
+            },
+            {
+              "line": 519,
+              "snippet": "\\\\\\footnotesize (a) Cross-model: 9 models, 4 providers, $N{=}1{,}200$"
+            }
+          ]
+        }
+      ],
+      "notes": "All 3 patterns co-occur within 2-line window (anchor line ~518)."
+    },
+    {
+      "claim_id": "T46",
+      "paper_text_signature": "Sonification: Helpful=C/0 (tonic), Harmless=G/1 (perfect fifth)",
+      "found": "OK",
+      "locations": [
+        {
+          "pattern": "Helpful.*?C.*?0",
+          "hits": [
+            {
+              "line": 2265,
+              "snippet": "Helpful & C & 0 & Root (tonic) \\\\"
+            }
+          ]
+        },
+        {
+          "pattern": "Harmless.*?G.*?1",
+          "hits": [
+            {
+              "line": 2266,
+              "snippet": "Harmless & G & 1 & Perfect fifth \\\\"
+            }
+          ]
+        }
+      ],
+      "notes": "All 2 patterns co-occur within 3-line window (anchor line ~2265)."
+    },
+    {
+      "claim_id": "T47",
+      "paper_text_signature": "Sonification: Honest=D/2 (two fifths)",
+      "found": "OK",
+      "locations": [
+        {
+          "pattern": "Honest.*?D.*?2|Honest\\s*&\\s*D\\s*&\\s*2",
+          "hits": [
+            {
+              "line": 2267,
+              "snippet": "Honest & D & 2 & Two fifths (major 2nd from root) \\\\"
+            }
+          ]
+        }
+      ],
+      "notes": "All 1 signature patterns matched."
+    },
+    {
+      "claim_id": "T48",
+      "paper_text_signature": "Sonification: Perfect 5th = 7 semitones (consonant)",
+      "found": "OK",
+      "locations": [
+        {
+          "pattern": "[Pp]erfect\\s+5th",
+          "hits": [
+            {
+              "line": 2276,
+              "snippet": "\\item \\textbf{Helpful $\\leftrightarrow$ Harmless}: Perfect 5th (7 semitones) --- \\emph{consonant}"
+            },
+            {
+              "line": 2279,
+              "snippet": "\\item \\textbf{Honest $\\leftrightarrow$ Autonomy}: Perfect 5th (7 semitones) --- \\emph{consonant}"
+            }
+          ]
+        },
+        {
+          "pattern": "7\\s+semitones",
+          "hits": [
+            {
+              "line": 2276,
+              "snippet": "\\item \\textbf{Helpful $\\leftrightarrow$ Harmless}: Perfect 5th (7 semitones) --- \\emph{consonant}"
+            },
+            {
+              "line": 2279,
+              "snippet": "\\item \\textbf{Honest $\\leftrightarrow$ Autonomy}: Perfect 5th (7 semitones) --- \\emph{consonant}"
+            }
+          ]
+        }
+      ],
+      "notes": "All 2 patterns co-occur within 1-line window (anchor line ~2276)."
     }
   ]
 }

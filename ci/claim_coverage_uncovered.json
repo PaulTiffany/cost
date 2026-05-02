@@ -1,19 +1,13 @@
 {
   "paper_path": "C:\\src\\NeurIPS\\paper\\main.tex",
   "summary": {
-    "total_numeric_tokens": 1508,
-    "covered": 1258,
-    "uncovered_raw": 250,
-    "uncovered_deduped": 246,
-    "coverage_percent": 83.4
+    "total_numeric_tokens": 1383,
+    "covered": 1263,
+    "uncovered_raw": 120,
+    "uncovered_deduped": 118,
+    "coverage_percent": 91.3
   },
   "uncovered": [
-    {
-      "line_no": 189,
-      "value": "0.5",
-      "context": "\\\\(b) Worked example, $\\rho{=}0.5$",
-      "section": "section: Geometric Setup: Diagonal Cost from $k$ Constraints"
-    },
     {
       "line_no": 246,
       "value": "1",
@@ -21,33 +15,9 @@
       "section": "subsection: Notation and Model"
     },
     {
-      "line_no": 287,
-      "value": "0.5",
-      "context": "\\begin{example}[Worked: $\\rho=0.5$]\\label{ex:worked}",
-      "section": "subsection: Two-Constraint Bound"
-    },
-    {
-      "line_no": 296,
-      "value": "2",
-      "context": "{\\Delta}_2 \\;\\ge\\; \\frac{\\sqrt{\\alpha_i^2 + \\alpha_j^2 + 2\\rho_{ij}\\alpha_i\\alpha",
-      "section": "subsection: Two-Constraint Bound"
-    },
-    {
-      "line_no": 296,
-      "value": "2",
-      "context": "\\ge\\; \\frac{\\sqrt{\\alpha_i^2 + \\alpha_j^2 + 2\\rho_{ij}\\alpha_i\\alpha_j}}{\\sqrt{1-",
-      "section": "subsection: Two-Constraint Bound"
-    },
-    {
       "line_no": 296,
       "value": "1",
       "context": "^2 + 2\\rho_{ij}\\alpha_i\\alpha_j}}{\\sqrt{1-\\rho_{ij}^2}}.",
-      "section": "subsection: Two-Constraint Bound"
-    },
-    {
-      "line_no": 296,
-      "value": "2",
-      "context": "ij}\\alpha_i\\alpha_j}}{\\sqrt{1-\\rho_{ij}^2}}.",
       "section": "subsection: Two-Constraint Bound"
     },
     {
@@ -57,40 +27,10 @@
       "section": "subsection: Extension to $k$ Constraints"
     },
     {
-      "line_no": 308,
-      "value": "1",
-      "context": "_2 \\;\\ge\\; \\frac{\\tau}{m} \\sqrt{\\mathbf{1}^\\top \\Gamma^{-1} \\mathbf{1}}.",
-      "section": "subsection: Extension to $k$ Constraints"
-    },
-    {
-      "line_no": 308,
-      "value": "1",
-      "context": "\\tau}{m} \\sqrt{\\mathbf{1}^\\top \\Gamma^{-1} \\mathbf{1}}.",
-      "section": "subsection: Extension to $k$ Constraints"
-    },
-    {
-      "line_no": 308,
-      "value": "1",
-      "context": "qrt{\\mathbf{1}^\\top \\Gamma^{-1} \\mathbf{1}}.",
-      "section": "subsection: Extension to $k$ Constraints"
-    },
-    {
       "line_no": 338,
       "value": "1",
       "context": "$O(k\\tau/m)$ vs.\\ diagonal $O(\\sqrt{k/(1{-}\\rho)}\\cdot\\tau/m)$; see proof in App",
       "section": "section: Staged Control as Geometric Solution"
-    },
-    {
-      "line_no": 519,
-      "value": "9",
-      "context": "\\\\\\footnotesize (a) Cross-model: 9 models, 4 providers, $N{=}1{,}200$",
-      "section": "paragraph: Frontier Transfer and Generalization."
-    },
-    {
-      "line_no": 519,
-      "value": "4",
-      "context": "footnotesize (a) Cross-model: 9 models, 4 providers, $N{=}1{,}200$",
-      "section": "paragraph: Frontier Transfer and Generalization."
     },
     {
       "line_no": 695,
@@ -208,20 +148,8 @@
     },
     {
       "line_no": 1323,
-      "value": "2",
-      "context": "tar = \\frac{-\\alpha_1 + \\alpha_2 c}{1-c^2}u + \\frac{-\\alpha_2 + \\alpha_1 c}{1-c^2",
-      "section": "subsection: Convex Feasibility and Projection Geometry"
-    },
-    {
-      "line_no": 1323,
       "value": "1",
       "context": "1-c^2}u + \\frac{-\\alpha_2 + \\alpha_1 c}{1-c^2}v.",
-      "section": "subsection: Convex Feasibility and Projection Geometry"
-    },
-    {
-      "line_no": 1323,
-      "value": "2",
-      "context": "2}u + \\frac{-\\alpha_2 + \\alpha_1 c}{1-c^2}v.",
       "section": "subsection: Convex Feasibility and Projection Geometry"
     },
     {
@@ -240,12 +168,6 @@
       "line_no": 1340,
       "value": "1",
       "context": "The system has determinant $1-c^2 > 0$ for $|c| < 1$. Solving via Cra",
-      "section": "subsection: Convex Feasibility and Projection Geometry"
-    },
-    {
-      "line_no": 1340,
-      "value": "2",
-      "context": "The system has determinant $1-c^2 > 0$ for $|c| < 1$. Solving via Cramer'",
       "section": "subsection: Convex Feasibility and Projection Geometry"
     },
     {
@@ -279,51 +201,15 @@
       "section": "paragraph: Classical structure."
     },
     {
-      "line_no": 1363,
-      "value": "2",
-      "context": "$\\|d\\|^2 = \\tau^2 \\mathbf{1}^\\top \\Gamma^{-1} \\mathbf{1}$",
-      "section": "paragraph: Classical structure."
-    },
-    {
-      "line_no": 1363,
-      "value": "1",
-      "context": "$\\|d\\|^2 = \\tau^2 \\mathbf{1}^\\top \\Gamma^{-1} \\mathbf{1}$ for activ",
-      "section": "paragraph: Classical structure."
-    },
-    {
-      "line_no": 1363,
-      "value": "1",
-      "context": "d\\|^2 = \\tau^2 \\mathbf{1}^\\top \\Gamma^{-1} \\mathbf{1}$ for active constraints",
-      "section": "paragraph: Classical structure."
-    },
-    {
-      "line_no": 1363,
-      "value": "1",
-      "context": "u^2 \\mathbf{1}^\\top \\Gamma^{-1} \\mathbf{1}$ for active constraints",
-      "section": "paragraph: Classical structure."
-    },
-    {
       "line_no": 1374,
       "value": "1",
       "context": "gamma_i = \\frac{-\\alpha_i + \\alpha_j c}{1-c^2}.",
       "section": "paragraph: Classical structure."
     },
     {
-      "line_no": 1374,
-      "value": "2",
-      "context": "a_i = \\frac{-\\alpha_i + \\alpha_j c}{1-c^2}.",
-      "section": "paragraph: Classical structure."
-    },
-    {
       "line_no": 1378,
       "value": "1",
       "context": "$G = \\begin{pmatrix} 1 & c \\\\ c & 1 \\end{pmatrix}$",
-      "section": "paragraph: Classical structure."
-    },
-    {
-      "line_no": 1379,
-      "value": "1",
-      "context": "with $G^{-1} = \\frac{1}{1-c^2}\\begin{pmatrix} 1 & -",
       "section": "paragraph: Classical structure."
     },
     {
@@ -363,12 +249,6 @@
       "section": "paragraph: Classical structure."
     },
     {
-      "line_no": 1383,
-      "value": "2",
-      "context": "+ \\alpha_2^2 - 2c\\alpha_1\\alpha_2}{1-c^2}.",
-      "section": "paragraph: Classical structure."
-    },
-    {
       "line_no": 1388,
       "value": "2",
       "context": "\\|d^\\star\\|^2 = \\frac{2(\\tau/m)^2(1+\\rho)}{1-\\rho^2}",
@@ -387,30 +267,6 @@
       "section": "paragraph: Classical structure."
     },
     {
-      "line_no": 1388,
-      "value": "2",
-      "context": "|^2 = \\frac{2(\\tau/m)^2(1+\\rho)}{1-\\rho^2} = \\frac{2\\tau^2}{m^2(1-\\rho)}.",
-      "section": "paragraph: Classical structure."
-    },
-    {
-      "line_no": 1413,
-      "value": "1",
-      "context": "\\frac{\\tau}{m} \\sqrt{\\mathbf{1}^\\top \\Gamma^{-1} \\mathbf{1}}",
-      "section": "subsection: k-Constraint Lower Bound (Theorem~\\ref{thm:main_k"
-    },
-    {
-      "line_no": 1413,
-      "value": "1",
-      "context": "\\tau}{m} \\sqrt{\\mathbf{1}^\\top \\Gamma^{-1} \\mathbf{1}}",
-      "section": "subsection: k-Constraint Lower Bound (Theorem~\\ref{thm:main_k"
-    },
-    {
-      "line_no": 1413,
-      "value": "1",
-      "context": "qrt{\\mathbf{1}^\\top \\Gamma^{-1} \\mathbf{1}}",
-      "section": "subsection: k-Constraint Lower Bound (Theorem~\\ref{thm:main_k"
-    },
-    {
       "line_no": 1424,
       "value": "2",
       "context": "\\min_{d}\\ \\tfrac{1}{2}\\|d\\|^2 \\quad \\text{s.t.}\\quad \\langle u_i, d \\",
@@ -423,93 +279,9 @@
       "section": "subsection: k-Constraint Lower Bound (Theorem~\\ref{thm:main_k"
     },
     {
-      "line_no": 1430,
-      "value": "1",
-      "context": "Then $Gd^\\star = -t\\Gamma\\mathbf{1} = -\\alpha\\mathbf{1}$,",
-      "section": "subsection: k-Constraint Lower Bound (Theorem~\\ref{thm:main_k"
-    },
-    {
-      "line_no": 1430,
-      "value": "1",
-      "context": "r = -t\\Gamma\\mathbf{1} = -\\alpha\\mathbf{1}$,",
-      "section": "subsection: k-Constraint Lower Bound (Theorem~\\ref{thm:main_k"
-    },
-    {
-      "line_no": 1431,
-      "value": "1",
-      "context": "so $d^\\star = -\\alpha G^\\dagger \\mathbf{1} = -\\alpha G^\\top(GG^\\top)^{-1}\\mathbf{",
-      "section": "subsection: k-Constraint Lower Bound (Theorem~\\ref{thm:main_k"
-    },
-    {
-      "line_no": 1431,
-      "value": "1",
-      "context": "\\mathbf{1} = -\\alpha G^\\top(GG^\\top)^{-1}\\mathbf{1}$",
-      "section": "subsection: k-Constraint Lower Bound (Theorem~\\ref{thm:main_k"
-    },
-    {
-      "line_no": 1431,
-      "value": "1",
-      "context": "} = -\\alpha G^\\top(GG^\\top)^{-1}\\mathbf{1}$",
-      "section": "subsection: k-Constraint Lower Bound (Theorem~\\ref{thm:main_k"
-    },
-    {
       "line_no": 1436,
       "value": "2",
       "context": "\\|d^\\star\\|^2 = \\alpha^2 \\mathbf{1}^\\top \\Gamma^{-1}",
-      "section": "subsection: k-Constraint Lower Bound (Theorem~\\ref{thm:main_k"
-    },
-    {
-      "line_no": 1436,
-      "value": "2",
-      "context": "\\|d^\\star\\|^2 = \\alpha^2 \\mathbf{1}^\\top \\Gamma^{-1} \\Gamma \\Gam",
-      "section": "subsection: k-Constraint Lower Bound (Theorem~\\ref{thm:main_k"
-    },
-    {
-      "line_no": 1436,
-      "value": "1",
-      "context": "\\|d^\\star\\|^2 = \\alpha^2 \\mathbf{1}^\\top \\Gamma^{-1} \\Gamma \\Gamma^{-1} \\m",
-      "section": "subsection: k-Constraint Lower Bound (Theorem~\\ref{thm:main_k"
-    },
-    {
-      "line_no": 1436,
-      "value": "1",
-      "context": "|^2 = \\alpha^2 \\mathbf{1}^\\top \\Gamma^{-1} \\Gamma \\Gamma^{-1} \\mathbf{1} = \\alpha",
-      "section": "subsection: k-Constraint Lower Bound (Theorem~\\ref{thm:main_k"
-    },
-    {
-      "line_no": 1436,
-      "value": "1",
-      "context": "hbf{1}^\\top \\Gamma^{-1} \\Gamma \\Gamma^{-1} \\mathbf{1} = \\alpha^2 \\mathbf{1}^\\top",
-      "section": "subsection: k-Constraint Lower Bound (Theorem~\\ref{thm:main_k"
-    },
-    {
-      "line_no": 1436,
-      "value": "1",
-      "context": "\\Gamma^{-1} \\Gamma \\Gamma^{-1} \\mathbf{1} = \\alpha^2 \\mathbf{1}^\\top \\Gamma^{-1}",
-      "section": "subsection: k-Constraint Lower Bound (Theorem~\\ref{thm:main_k"
-    },
-    {
-      "line_no": 1436,
-      "value": "2",
-      "context": "\\Gamma \\Gamma^{-1} \\mathbf{1} = \\alpha^2 \\mathbf{1}^\\top \\Gamma^{-1}\\mathbf{1}.",
-      "section": "subsection: k-Constraint Lower Bound (Theorem~\\ref{thm:main_k"
-    },
-    {
-      "line_no": 1436,
-      "value": "1",
-      "context": "amma^{-1} \\mathbf{1} = \\alpha^2 \\mathbf{1}^\\top \\Gamma^{-1}\\mathbf{1}.",
-      "section": "subsection: k-Constraint Lower Bound (Theorem~\\ref{thm:main_k"
-    },
-    {
-      "line_no": 1436,
-      "value": "1",
-      "context": "{1} = \\alpha^2 \\mathbf{1}^\\top \\Gamma^{-1}\\mathbf{1}.",
-      "section": "subsection: k-Constraint Lower Bound (Theorem~\\ref{thm:main_k"
-    },
-    {
-      "line_no": 1436,
-      "value": "1",
-      "context": "ha^2 \\mathbf{1}^\\top \\Gamma^{-1}\\mathbf{1}.",
       "section": "subsection: k-Constraint Lower Bound (Theorem~\\ref{thm:main_k"
     },
     {
@@ -519,75 +291,15 @@
       "section": "subsection: k-Constraint Lower Bound (Theorem~\\ref{thm:main_k"
     },
     {
-      "line_no": 1441,
-      "value": "1",
-      "context": "\\Gamma = (1+\\rho)I - \\rho \\mathbf{1}\\mathbf{1}^\\top.",
-      "section": "subsection: k-Constraint Lower Bound (Theorem~\\ref{thm:main_k"
-    },
-    {
-      "line_no": 1441,
-      "value": "1",
-      "context": "ma = (1+\\rho)I - \\rho \\mathbf{1}\\mathbf{1}^\\top.",
-      "section": "subsection: k-Constraint Lower Bound (Theorem~\\ref{thm:main_k"
-    },
-    {
-      "line_no": 1445,
-      "value": "1",
-      "context": "\\Gamma^{-1} = \\frac{1}{1+\\rho}\\left(I + \\frac{\\rho",
-      "section": "subsection: k-Constraint Lower Bound (Theorem~\\ref{thm:main_k"
-    },
-    {
       "line_no": 1445,
       "value": "1",
       "context": "}{1+\\rho}\\left(I + \\frac{\\rho}{1-\\rho(k-1)}\\mathbf{1}\\mathbf{1}^\\top\\right).",
       "section": "subsection: k-Constraint Lower Bound (Theorem~\\ref{thm:main_k"
     },
     {
-      "line_no": 1445,
-      "value": "1",
-      "context": "eft(I + \\frac{\\rho}{1-\\rho(k-1)}\\mathbf{1}\\mathbf{1}^\\top\\right).",
-      "section": "subsection: k-Constraint Lower Bound (Theorem~\\ref{thm:main_k"
-    },
-    {
-      "line_no": 1445,
-      "value": "1",
-      "context": "rac{\\rho}{1-\\rho(k-1)}\\mathbf{1}\\mathbf{1}^\\top\\right).",
-      "section": "subsection: k-Constraint Lower Bound (Theorem~\\ref{thm:main_k"
-    },
-    {
-      "line_no": 1447,
-      "value": "1",
-      "context": "Thus $\\mathbf{1}^\\top \\Gamma^{-1}\\mathbf{1} = \\frac{k}{",
-      "section": "subsection: k-Constraint Lower Bound (Theorem~\\ref{thm:main_k"
-    },
-    {
-      "line_no": 1447,
-      "value": "1",
-      "context": "Thus $\\mathbf{1}^\\top \\Gamma^{-1}\\mathbf{1} = \\frac{k}{1-\\rho(k-1)}$, yi",
-      "section": "subsection: k-Constraint Lower Bound (Theorem~\\ref{thm:main_k"
-    },
-    {
-      "line_no": 1447,
-      "value": "1",
-      "context": "hus $\\mathbf{1}^\\top \\Gamma^{-1}\\mathbf{1} = \\frac{k}{1-\\rho(k-1)}$, yielding the",
-      "section": "subsection: k-Constraint Lower Bound (Theorem~\\ref{thm:main_k"
-    },
-    {
       "line_no": 1494,
       "value": "1",
       "context": "j} = -\\rho$, the Gram matrix $\\Gamma = (1+\\rho)I - \\rho\\mathbf{1}\\mathbf{1}^\\top$",
-      "section": "subsection: High-$\\rho$ Bounds and Degeneracy"
-    },
-    {
-      "line_no": 1494,
-      "value": "1",
-      "context": "atrix $\\Gamma = (1+\\rho)I - \\rho\\mathbf{1}\\mathbf{1}^\\top$ has eigenvalues:",
-      "section": "subsection: High-$\\rho$ Bounds and Degeneracy"
-    },
-    {
-      "line_no": 1494,
-      "value": "1",
-      "context": "mma = (1+\\rho)I - \\rho\\mathbf{1}\\mathbf{1}^\\top$ has eigenvalues:",
       "section": "subsection: High-$\\rho$ Bounds and Degeneracy"
     },
     {
@@ -603,18 +315,6 @@
       "section": "subsection: High-$\\rho$ Bounds and Degeneracy"
     },
     {
-      "line_no": 1496,
-      "value": "1",
-      "context": "- \\rho(k-1)$ with eigenvector $\\mathbf{1}$",
-      "section": "subsection: High-$\\rho$ Bounds and Degeneracy"
-    },
-    {
-      "line_no": 1497,
-      "value": "2",
-      "context": "\\item $\\lambda_{2,\\ldots,k} = 1 + \\rho$ with multiplicity",
-      "section": "subsection: High-$\\rho$ Bounds and Degeneracy"
-    },
-    {
       "line_no": 1497,
       "value": "1",
       "context": "\\item $\\lambda_{2,\\ldots,k} = 1 + \\rho$ with multiplicity $k-1$",
@@ -627,99 +327,15 @@
       "section": "subsection: High-$\\rho$ Bounds and Degeneracy"
     },
     {
-      "line_no": 1503,
-      "value": "1",
-      "context": "Direct computation. $\\Gamma\\mathbf{1} = (1+\\rho)\\mathbf{1} - k\\rho\\mathbf{1}",
-      "section": "subsection: High-$\\rho$ Bounds and Degeneracy"
-    },
-    {
-      "line_no": 1503,
-      "value": "1",
-      "context": "irect computation. $\\Gamma\\mathbf{1} = (1+\\rho)\\mathbf{1} - k\\rho\\mathbf{1} = (1-",
-      "section": "subsection: High-$\\rho$ Bounds and Degeneracy"
-    },
-    {
-      "line_no": 1503,
-      "value": "1",
-      "context": "on. $\\Gamma\\mathbf{1} = (1+\\rho)\\mathbf{1} - k\\rho\\mathbf{1} = (1-\\rho(k-1))\\math",
-      "section": "subsection: High-$\\rho$ Bounds and Degeneracy"
-    },
-    {
-      "line_no": 1503,
-      "value": "1",
-      "context": "{1} = (1+\\rho)\\mathbf{1} - k\\rho\\mathbf{1} = (1-\\rho(k-1))\\mathbf{1}$.",
-      "section": "subsection: High-$\\rho$ Bounds and Degeneracy"
-    },
-    {
-      "line_no": 1503,
-      "value": "1",
-      "context": "(1+\\rho)\\mathbf{1} - k\\rho\\mathbf{1} = (1-\\rho(k-1))\\mathbf{1}$.",
-      "section": "subsection: High-$\\rho$ Bounds and Degeneracy"
-    },
-    {
-      "line_no": 1503,
-      "value": "1",
-      "context": "mathbf{1} - k\\rho\\mathbf{1} = (1-\\rho(k-1))\\mathbf{1}$.",
-      "section": "subsection: High-$\\rho$ Bounds and Degeneracy"
-    },
-    {
-      "line_no": 1503,
-      "value": "1",
-      "context": "k\\rho\\mathbf{1} = (1-\\rho(k-1))\\mathbf{1}$.",
-      "section": "subsection: High-$\\rho$ Bounds and Degeneracy"
-    },
-    {
       "line_no": 1504,
       "value": "1",
       "context": "For $v \\perp \\mathbf{1}$: $\\Gamma v = (1+\\rho)v$.",
       "section": "subsection: High-$\\rho$ Bounds and Degeneracy"
     },
     {
-      "line_no": 1547,
-      "value": "1",
-      "context": "\\|d^\\star\\| = \\tau \\sqrt{\\mathbf{1}^\\top \\Gamma^{-1} \\mathbf{1}},",
-      "section": "subsection: Connection to Pareto Optimality"
-    },
-    {
-      "line_no": 1547,
-      "value": "1",
-      "context": "| = \\tau \\sqrt{\\mathbf{1}^\\top \\Gamma^{-1} \\mathbf{1}},",
-      "section": "subsection: Connection to Pareto Optimality"
-    },
-    {
-      "line_no": 1547,
-      "value": "1",
-      "context": "qrt{\\mathbf{1}^\\top \\Gamma^{-1} \\mathbf{1}},",
-      "section": "subsection: Connection to Pareto Optimality"
-    },
-    {
       "line_no": 1553,
       "value": "2",
       "context": "traint hyperplanes, giving $\\|d^\\star\\|^2 = \\tau^2 \\mathbf{1}^\\top \\Gamma^{-1} \\m",
-      "section": "subsection: Connection to Pareto Optimality"
-    },
-    {
-      "line_no": 1553,
-      "value": "2",
-      "context": "perplanes, giving $\\|d^\\star\\|^2 = \\tau^2 \\mathbf{1}^\\top \\Gamma^{-1} \\mathbf{1}$",
-      "section": "subsection: Connection to Pareto Optimality"
-    },
-    {
-      "line_no": 1553,
-      "value": "1",
-      "context": "giving $\\|d^\\star\\|^2 = \\tau^2 \\mathbf{1}^\\top \\Gamma^{-1} \\mathbf{1}$ by the de",
-      "section": "subsection: Connection to Pareto Optimality"
-    },
-    {
-      "line_no": 1553,
-      "value": "1",
-      "context": "r\\|^2 = \\tau^2 \\mathbf{1}^\\top \\Gamma^{-1} \\mathbf{1}$ by the derivation in Theor",
-      "section": "subsection: Connection to Pareto Optimality"
-    },
-    {
-      "line_no": 1553,
-      "value": "1",
-      "context": "u^2 \\mathbf{1}^\\top \\Gamma^{-1} \\mathbf{1}$ by the derivation in Theorem~\\ref{thm",
       "section": "subsection: Connection to Pareto Optimality"
     },
     {
@@ -771,117 +387,9 @@
       "section": "subsection: Heterogeneous Magnitudes: Complete Treatment"
     },
     {
-      "line_no": 1573,
-      "value": "2",
-      "context": "\\|d^\\star\\|^2 = \\tau^2 \\mathbf{1}^\\top (M \\tilde{\\Gamma} M)^{-",
-      "section": "subsection: Heterogeneous Magnitudes: Complete Treatment"
-    },
-    {
-      "line_no": 1573,
-      "value": "1",
-      "context": "\\|d^\\star\\|^2 = \\tau^2 \\mathbf{1}^\\top (M \\tilde{\\Gamma} M)^{-1} \\mathbf",
-      "section": "subsection: Heterogeneous Magnitudes: Complete Treatment"
-    },
-    {
-      "line_no": 1573,
-      "value": "1",
-      "context": "\\mathbf{1}^\\top (M \\tilde{\\Gamma} M)^{-1} \\mathbf{1} = \\tau^2 \\mathbf{1}^\\top M^",
-      "section": "subsection: Heterogeneous Magnitudes: Complete Treatment"
-    },
-    {
-      "line_no": 1573,
-      "value": "1",
-      "context": "^\\top (M \\tilde{\\Gamma} M)^{-1} \\mathbf{1} = \\tau^2 \\mathbf{1}^\\top M^{-1} \\tilde",
-      "section": "subsection: Heterogeneous Magnitudes: Complete Treatment"
-    },
-    {
-      "line_no": 1573,
-      "value": "2",
-      "context": "tilde{\\Gamma} M)^{-1} \\mathbf{1} = \\tau^2 \\mathbf{1}^\\top M^{-1} \\tilde{\\Gamma}^{",
-      "section": "subsection: Heterogeneous Magnitudes: Complete Treatment"
-    },
-    {
-      "line_no": 1573,
-      "value": "1",
-      "context": "ma} M)^{-1} \\mathbf{1} = \\tau^2 \\mathbf{1}^\\top M^{-1} \\tilde{\\Gamma}^{-1} M^{-1}",
-      "section": "subsection: Heterogeneous Magnitudes: Complete Treatment"
-    },
-    {
-      "line_no": 1573,
-      "value": "1",
-      "context": "\\mathbf{1} = \\tau^2 \\mathbf{1}^\\top M^{-1} \\tilde{\\Gamma}^{-1} M^{-1} \\mathbf{1}.",
-      "section": "subsection: Heterogeneous Magnitudes: Complete Treatment"
-    },
-    {
-      "line_no": 1573,
-      "value": "1",
-      "context": "\\mathbf{1}^\\top M^{-1} \\tilde{\\Gamma}^{-1} M^{-1} \\mathbf{1}.",
-      "section": "subsection: Heterogeneous Magnitudes: Complete Treatment"
-    },
-    {
-      "line_no": 1573,
-      "value": "1",
-      "context": "{1}^\\top M^{-1} \\tilde{\\Gamma}^{-1} M^{-1} \\mathbf{1}.",
-      "section": "subsection: Heterogeneous Magnitudes: Complete Treatment"
-    },
-    {
-      "line_no": 1573,
-      "value": "1",
-      "context": "{-1} \\tilde{\\Gamma}^{-1} M^{-1} \\mathbf{1}.",
-      "section": "subsection: Heterogeneous Magnitudes: Complete Treatment"
-    },
-    {
       "line_no": 1578,
       "value": "2",
       "context": "um-norm solution satisfies $\\|d^\\star\\|^2 = \\tau^2 \\mathbf{1}^\\top \\Gamma^{-1} \\m",
-      "section": "subsection: Heterogeneous Magnitudes: Complete Treatment"
-    },
-    {
-      "line_no": 1578,
-      "value": "2",
-      "context": "olution satisfies $\\|d^\\star\\|^2 = \\tau^2 \\mathbf{1}^\\top \\Gamma^{-1} \\mathbf{1}$",
-      "section": "subsection: Heterogeneous Magnitudes: Complete Treatment"
-    },
-    {
-      "line_no": 1578,
-      "value": "1",
-      "context": "tisfies $\\|d^\\star\\|^2 = \\tau^2 \\mathbf{1}^\\top \\Gamma^{-1} \\mathbf{1}$. Substitu",
-      "section": "subsection: Heterogeneous Magnitudes: Complete Treatment"
-    },
-    {
-      "line_no": 1578,
-      "value": "1",
-      "context": "r\\|^2 = \\tau^2 \\mathbf{1}^\\top \\Gamma^{-1} \\mathbf{1}$. Substituting and using $(",
-      "section": "subsection: Heterogeneous Magnitudes: Complete Treatment"
-    },
-    {
-      "line_no": 1578,
-      "value": "1",
-      "context": "u^2 \\mathbf{1}^\\top \\Gamma^{-1} \\mathbf{1}$. Substituting and using $(ABC)^{-1} =",
-      "section": "subsection: Heterogeneous Magnitudes: Complete Treatment"
-    },
-    {
-      "line_no": 1578,
-      "value": "1",
-      "context": "bf{1}$. Substituting and using $(ABC)^{-1} = C^{-1}B^{-1}A^{-1}$ yields the resul",
-      "section": "subsection: Heterogeneous Magnitudes: Complete Treatment"
-    },
-    {
-      "line_no": 1578,
-      "value": "1",
-      "context": "ubstituting and using $(ABC)^{-1} = C^{-1}B^{-1}A^{-1}$ yields the result.",
-      "section": "subsection: Heterogeneous Magnitudes: Complete Treatment"
-    },
-    {
-      "line_no": 1578,
-      "value": "1",
-      "context": "uting and using $(ABC)^{-1} = C^{-1}B^{-1}A^{-1}$ yields the result.",
-      "section": "subsection: Heterogeneous Magnitudes: Complete Treatment"
-    },
-    {
-      "line_no": 1578,
-      "value": "1",
-      "context": "and using $(ABC)^{-1} = C^{-1}B^{-1}A^{-1}$ yields the result.",
       "section": "subsection: Heterogeneous Magnitudes: Complete Treatment"
     },
     {
@@ -903,18 +411,6 @@
       "section": "subsection: Heterogeneous Magnitudes: Complete Treatment"
     },
     {
-      "line_no": 1584,
-      "value": "2",
-      "context": "1^2 + 1/m_2^2 - 2\\rho/(m_1 m_2)}{1-\\rho^2}}.",
-      "section": "subsection: Heterogeneous Magnitudes: Complete Treatment"
-    },
-    {
-      "line_no": 1590,
-      "value": "1",
-      "context": "For $k=2$, $M^{-1} = \\mathrm{diag}(1/m_1, 1/m_2)$ and $\\t",
-      "section": "subsection: Heterogeneous Magnitudes: Complete Treatment"
-    },
-    {
       "line_no": 1590,
       "value": "1",
       "context": "For $k=2$, $M^{-1} = \\mathrm{diag}(1/m_1, 1/m_2)$ and $\\tilde{\\Gamma}^{-1} =",
@@ -929,12 +425,6 @@
     {
       "line_no": 1590,
       "value": "1",
-      "context": "g}(1/m_1, 1/m_2)$ and $\\tilde{\\Gamma}^{-1} = \\frac{1}{1-\\rho^2}\\begin{pmatrix} 1",
-      "section": "subsection: Heterogeneous Magnitudes: Complete Treatment"
-    },
-    {
-      "line_no": 1590,
-      "value": "1",
       "context": "-1} = \\frac{1}{1-\\rho^2}\\begin{pmatrix} 1 & -\\rho \\\\ -\\rho & 1 \\end{pmatrix}$. Co",
       "section": "subsection: Heterogeneous Magnitudes: Complete Treatment"
     },
@@ -942,36 +432,6 @@
       "line_no": 1590,
       "value": "1",
       "context": "^2}\\begin{pmatrix} 1 & -\\rho \\\\ -\\rho & 1 \\end{pmatrix}$. Computing $\\mathbf{1}^\\",
-      "section": "subsection: Heterogeneous Magnitudes: Complete Treatment"
-    },
-    {
-      "line_no": 1590,
-      "value": "1",
-      "context": "& 1 \\end{pmatrix}$. Computing $\\mathbf{1}^\\top M^{-1} \\tilde{\\Gamma}^{-1} M^{-1}",
-      "section": "subsection: Heterogeneous Magnitudes: Complete Treatment"
-    },
-    {
-      "line_no": 1590,
-      "value": "1",
-      "context": "atrix}$. Computing $\\mathbf{1}^\\top M^{-1} \\tilde{\\Gamma}^{-1} M^{-1} \\mathbf{1}$",
-      "section": "subsection: Heterogeneous Magnitudes: Complete Treatment"
-    },
-    {
-      "line_no": 1590,
-      "value": "1",
-      "context": "\\mathbf{1}^\\top M^{-1} \\tilde{\\Gamma}^{-1} M^{-1} \\mathbf{1}$ and simplifying yie",
-      "section": "subsection: Heterogeneous Magnitudes: Complete Treatment"
-    },
-    {
-      "line_no": 1590,
-      "value": "1",
-      "context": "{1}^\\top M^{-1} \\tilde{\\Gamma}^{-1} M^{-1} \\mathbf{1}$ and simplifying yields the",
-      "section": "subsection: Heterogeneous Magnitudes: Complete Treatment"
-    },
-    {
-      "line_no": 1590,
-      "value": "1",
-      "context": "{-1} \\tilde{\\Gamma}^{-1} M^{-1} \\mathbf{1}$ and simplifying yields the stated for",
       "section": "subsection: Heterogeneous Magnitudes: Complete Treatment"
     },
     {
@@ -1005,60 +465,6 @@
       "section": "subsection: Iterative Satisfaction: Convergence Analysis"
     },
     {
-      "line_no": 1633,
-      "value": "1",
-      "context": "\\left| \\sqrt{\\mathbf{1}^\\top \\Gamma^{-1} \\mathbf{1}} - \\sqrt{\\",
-      "section": "subsection: Perturbation Analysis and Robustness"
-    },
-    {
-      "line_no": 1633,
-      "value": "1",
-      "context": "\\left| \\sqrt{\\mathbf{1}^\\top \\Gamma^{-1} \\mathbf{1}} - \\sqrt{\\mathbf{1}^\\top \\t",
-      "section": "subsection: Perturbation Analysis and Robustness"
-    },
-    {
-      "line_no": 1633,
-      "value": "1",
-      "context": "qrt{\\mathbf{1}^\\top \\Gamma^{-1} \\mathbf{1}} - \\sqrt{\\mathbf{1}^\\top \\tilde{\\Gamma",
-      "section": "subsection: Perturbation Analysis and Robustness"
-    },
-    {
-      "line_no": 1633,
-      "value": "1",
-      "context": "\\Gamma^{-1} \\mathbf{1}} - \\sqrt{\\mathbf{1}^\\top \\tilde{\\Gamma}^{-1} \\mathbf{1}} \\",
-      "section": "subsection: Perturbation Analysis and Robustness"
-    },
-    {
-      "line_no": 1633,
-      "value": "1",
-      "context": "\\sqrt{\\mathbf{1}^\\top \\tilde{\\Gamma}^{-1} \\mathbf{1}} \\right| \\le O\\left(\\frac{k",
-      "section": "subsection: Perturbation Analysis and Robustness"
-    },
-    {
-      "line_no": 1633,
-      "value": "1",
-      "context": "hbf{1}^\\top \\tilde{\\Gamma}^{-1} \\mathbf{1}} \\right| \\le O\\left(\\frac{k\\epsilon}{\\",
-      "section": "subsection: Perturbation Analysis and Robustness"
-    },
-    {
-      "line_no": 1633,
-      "value": "1",
-      "context": "da_{\\min}(\\Gamma)}\\right) \\sqrt{\\mathbf{1}^\\top \\Gamma^{-1} \\mathbf{1}},",
-      "section": "subsection: Perturbation Analysis and Robustness"
-    },
-    {
-      "line_no": 1633,
-      "value": "1",
-      "context": "}\\right) \\sqrt{\\mathbf{1}^\\top \\Gamma^{-1} \\mathbf{1}},",
-      "section": "subsection: Perturbation Analysis and Robustness"
-    },
-    {
-      "line_no": 1633,
-      "value": "1",
-      "context": "qrt{\\mathbf{1}^\\top \\Gamma^{-1} \\mathbf{1}},",
-      "section": "subsection: Perturbation Analysis and Robustness"
-    },
-    {
       "line_no": 1635,
       "value": "1",
       "context": "where $\\lambda_{\\min}(\\Gamma) = 1 - \\rho_{\\max}(k-1)$ for uniform conflic",
@@ -1068,42 +474,6 @@
       "line_no": 1635,
       "value": "1",
       "context": "mbda_{\\min}(\\Gamma) = 1 - \\rho_{\\max}(k-1)$ for uniform conflict.",
-      "section": "subsection: Perturbation Analysis and Robustness"
-    },
-    {
-      "line_no": 1641,
-      "value": "1",
-      "context": "\\|\\Gamma^{-1} - (\\Gamma + \\Delta\\Gamma)^{-1}\\| \\le \\",
-      "section": "subsection: Perturbation Analysis and Robustness"
-    },
-    {
-      "line_no": 1641,
-      "value": "1",
-      "context": "\\Gamma^{-1} - (\\Gamma + \\Delta\\Gamma)^{-1}\\| \\le \\frac{\\delta}{\\lambda_{\\min}(\\Ga",
-      "section": "subsection: Perturbation Analysis and Robustness"
-    },
-    {
-      "line_no": 1643,
-      "value": "2",
-      "context": "\\Delta\\Gamma\\| = O(k\\epsilon \\max_i m_i^2)$ since each entry of $\\Gamma$ changes",
-      "section": "subsection: Perturbation Analysis and Robustness"
-    },
-    {
-      "line_no": 1643,
-      "value": "1",
-      "context": "Applying to the quadratic form $\\mathbf{1}^\\top \\Gamma^{-1} \\mathbf{1}$ and takin",
-      "section": "subsection: Perturbation Analysis and Robustness"
-    },
-    {
-      "line_no": 1643,
-      "value": "1",
-      "context": "uadratic form $\\mathbf{1}^\\top \\Gamma^{-1} \\mathbf{1}$ and taking square roots yi",
-      "section": "subsection: Perturbation Analysis and Robustness"
-    },
-    {
-      "line_no": 1643,
-      "value": "1",
-      "context": "rm $\\mathbf{1}^\\top \\Gamma^{-1} \\mathbf{1}$ and taking square roots yields the bo",
       "section": "subsection: Perturbation Analysis and Robustness"
     },
     {
@@ -1131,12 +501,6 @@
       "section": "subsection: Extension to Inequality Constraints"
     },
     {
-      "line_no": 1683,
-      "value": "1",
-      "context": "}_\\mathcal{A}^\\top \\Gamma_\\mathcal{A}^{-1} \\boldsymbol{\\tau}_\\mathcal{A},",
-      "section": "subsection: Extension to Inequality Constraints"
-    },
-    {
       "line_no": 1705,
       "value": "1",
       "context": "all $k$ constraints, i.e., $r_i(\\gamma(1)) \\le r_i(\\gamma(0)) - \\tau$ for all $i",
@@ -1146,12 +510,6 @@
       "line_no": 1705,
       "value": "0",
       "context": "s, i.e., $r_i(\\gamma(1)) \\le r_i(\\gamma(0)) - \\tau$ for all $i$. Under bounded cu",
-      "section": "subsection: Global Extension"
-    },
-    {
-      "line_no": 1705,
-      "value": "2",
-      "context": "$i$. Under bounded curvature ($\\|\\nabla^2 r_i\\| \\le \\kappa$ everywhere), the arc",
       "section": "subsection: Global Extension"
     },
     {
@@ -1180,38 +538,8 @@
     },
     {
       "line_no": 1715,
-      "value": "2",
-      "context": ")), \\Delta_j \\rangle + O(\\kappa\\epsilon^2)$ where $\\Delta_j = \\gamma(t_{j+1}) - \\",
-      "section": "subsection: Global Extension"
-    },
-    {
-      "line_no": 1715,
       "value": "1",
       "context": "silon^2)$ where $\\Delta_j = \\gamma(t_{j+1}) - \\gamma(t_j)$. For $\\tau_j$-progress",
-      "section": "subsection: Global Extension"
-    },
-    {
-      "line_no": 1717,
-      "value": "2",
-      "context": "c{k}{1-\\rho_j(k-1)}} - O(\\kappa\\epsilon^2/\\tau_j),",
-      "section": "subsection: Global Extension"
-    },
-    {
-      "line_no": 1723,
-      "value": "2",
-      "context": "{k}{1-\\rho_j(k-1)}} - O(N\\kappa\\epsilon^2/\\bar{\\tau}).",
-      "section": "subsection: Global Extension"
-    },
-    {
-      "line_no": 1725,
-      "value": "2",
-      "context": "The correction term is $O(N\\kappa(L/N)^2) = O(\\kappa L^2/N) \\to 0$ as $N \\to \\in",
-      "section": "subsection: Global Extension"
-    },
-    {
-      "line_no": 1725,
-      "value": "2",
-      "context": "term is $O(N\\kappa(L/N)^2) = O(\\kappa L^2/N) \\to 0$ as $N \\to \\infty$.",
       "section": "subsection: Global Extension"
     },
     {
@@ -1269,12 +597,6 @@
       "section": "subsection: Bounded Curvature and Local Linearity"
     },
     {
-      "line_no": 1843,
-      "value": "2",
-      "context": "rom linear prediction is $O(\\varepsilon^2)$.",
-      "section": "subsection: Bounded Curvature and Local Linearity"
-    },
-    {
       "line_no": 1856,
       "value": "0",
       "context": "$z^{(0)}=z$, $z^{(s+1)} = z^{(s)} + \\Delta^{(s",
@@ -1311,54 +633,6 @@
       "section": "paragraph: Compute Requirements."
     },
     {
-      "line_no": 2139,
-      "value": "0",
-      "context": "Exemplar embedding (one-time) & 0 & 50ms/constraint \\\\",
-      "section": "paragraph: Compute overhead."
-    },
-    {
-      "line_no": 2139,
-      "value": "50",
-      "context": "Exemplar embedding (one-time) & 0 & 50ms/constraint \\\\",
-      "section": "paragraph: Compute overhead."
-    },
-    {
-      "line_no": 2140,
-      "value": "0",
-      "context": "$\\hat{\\rho}$ computation (per-query) & 0 & $<$5ms \\\\",
-      "section": "paragraph: Compute overhead."
-    },
-    {
-      "line_no": 2140,
-      "value": "5",
-      "context": "\\rho}$ computation (per-query) & 0 & $<$5ms \\\\",
-      "section": "paragraph: Compute overhead."
-    },
-    {
-      "line_no": 2141,
-      "value": "0",
-      "context": "Routing decision & 0 & $<$1ms \\\\",
-      "section": "paragraph: Compute overhead."
-    },
-    {
-      "line_no": 2141,
-      "value": "1",
-      "context": "Routing decision & 0 & $<$1ms \\\\",
-      "section": "paragraph: Compute overhead."
-    },
-    {
-      "line_no": 2142,
-      "value": "1.5",
-      "context": "Staging overhead (when triggered) & $+1.5$--$2\\times$ & $+1.5$--$2\\times$ \\\\",
-      "section": "paragraph: Compute overhead."
-    },
-    {
-      "line_no": 2142,
-      "value": "1.5",
-      "context": "when triggered) & $+1.5$--$2\\times$ & $+1.5$--$2\\times$ \\\\",
-      "section": "paragraph: Compute overhead."
-    },
-    {
       "line_no": 2197,
       "value": "2",
       "context": "|e^{i\\omega_1 t} + e^{i\\omega_2 t}| = 2|\\cos(\\phi/2)|.",
@@ -1393,48 +667,6 @@
       "value": "1",
       "context": "eta/2)|$ & AM rate: $f_{\\text{AM}} = 40(1-A)$ Hz & Beating/roughness \\\\",
       "section": "subsection: Psychoacoustic Mapping"
-    },
-    {
-      "line_no": 2265,
-      "value": "0",
-      "context": "Helpful & C & 0 & Root (tonic) \\\\",
-      "section": "paragraph: The Mapping."
-    },
-    {
-      "line_no": 2266,
-      "value": "1",
-      "context": "Harmless & G & 1 & Perfect fifth \\\\",
-      "section": "paragraph: The Mapping."
-    },
-    {
-      "line_no": 2267,
-      "value": "2",
-      "context": "Honest & D & 2 & Two fifths (major 2nd from root) \\\\",
-      "section": "paragraph: The Mapping."
-    },
-    {
-      "line_no": 2276,
-      "value": "5",
-      "context": "ul $\\leftrightarrow$ Harmless}: Perfect 5th (7 semitones) --- \\emph{consonant}",
-      "section": "paragraph: The Mapping."
-    },
-    {
-      "line_no": 2276,
-      "value": "7",
-      "context": "leftrightarrow$ Harmless}: Perfect 5th (7 semitones) --- \\emph{consonant}",
-      "section": "paragraph: The Mapping."
-    },
-    {
-      "line_no": 2279,
-      "value": "5",
-      "context": "st $\\leftrightarrow$ Autonomy}: Perfect 5th (7 semitones) --- \\emph{consonant}",
-      "section": "paragraph: The Mapping."
-    },
-    {
-      "line_no": 2279,
-      "value": "7",
-      "context": "leftrightarrow$ Autonomy}: Perfect 5th (7 semitones) --- \\emph{consonant}",
-      "section": "paragraph: The Mapping."
     },
     {
       "line_no": 2312,

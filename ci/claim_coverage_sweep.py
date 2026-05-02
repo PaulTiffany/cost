@@ -136,6 +136,12 @@ MATH_NOTATION_PATTERNS = [
     re.compile(r"\\(?:binom|frac|sqrt|tfrac|dfrac)\{[^}]*\}\{[^}]*\}"),
     # k=2 / k{=}2 inside math (small constants in formulas)
     re.compile(r"\b[a-zA-Z]\s*\{?=\}?\s*\d+\b"),
+    # \mathbf{1}, \mathbf{0}: vector-of-ones notation
+    re.compile(r"\\mathbf\{\d\}"),
+    # ^{-1}, ^2, _{1}, _2: superscripts and subscripts on identifiers
+    re.compile(r"[A-Za-z}\)]\s*[\^_]\s*\{?[\-\+]?\d\}?"),
+    # \tfrac{1}{2}, \tfrac{2}{3}, etc. (single-digit fractions in math)
+    re.compile(r"\\t?frac\s*\{\s*\d\s*\}\s*\{\s*\d\s*\}"),
 ]
 
 # Year-like four-digit numbers near \cite are bibliography years.

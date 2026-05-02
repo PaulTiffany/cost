@@ -479,9 +479,26 @@ COMPLETE: list[dict] = [
     {"id": "T37", "description": "Hyperparam: Temperature = 0.7 (sampling diversity)", "patterns": [r"[Tt]emperature", r"0\.7"], "match_mode": "joint", "match_window": 2},
     {"id": "T38", "description": "Hyperparam: Trials per cell = 5", "patterns": [r"[Tt]rials\s+per\s+cell", r"&\s*5\s*&"], "match_mode": "joint", "match_window": 2},
     {"id": "T39", "description": "Hyperparam: Models = 4 (1-3B params)", "patterns": [r"[Mm]odels\s*&\s*4", r"1[-\s]+3B|1--3B"], "match_mode": "joint", "match_window": 2},
+
+    # Compute overhead table (App P, lines 2139-2142)
+    {"id": "T40", "description": "Compute overhead: exemplar embedding 50ms/constraint", "patterns": [r"[Ee]xemplar\s+embedding", r"50\s*ms"], "match_mode": "joint", "match_window": 2},
+    {"id": "T41", "description": "Compute overhead: rho-hat computation <5ms", "patterns": [r"computation", r"<\s*?\$?\s*5\s*ms|5ms"], "match_mode": "joint", "match_window": 2},
+    {"id": "T42", "description": "Compute overhead: routing decision <1ms", "patterns": [r"[Rr]outing\s+decision", r"<\s*?\$?\s*1\s*ms|1ms"], "match_mode": "joint", "match_window": 2},
+    {"id": "T43", "description": "Compute overhead: staging overhead +1.5-2x", "patterns": [r"[Ss]taging\s+overhead", r"1\.5", r"2\\?times|2x"], "match_mode": "joint", "match_window": 2},
+
+    # Two-Constraint Bound worked example (Section 287)
+    {"id": "T44", "description": "Worked example: rho=0.5 (Two-Constraint Bound)", "patterns": [r"[Ww]orked.*\\rho.*0\.5|rho\{?=\}?0\.5"], "match_mode": "any"},
+
+    # Cross-model frontier paragraph (line 519)
+    {"id": "T45", "description": "Frontier transfer: 9 models, 4 providers, N=1,200", "patterns": [r"9\s+models", r"4\s+providers", r"N\{?=\}?1\{?,\}?200|1\{,\}200"], "match_mode": "joint", "match_window": 2},
+
+    # Sonification mapping (App Q, lines 2265-2279)
+    {"id": "T46", "description": "Sonification: Helpful=C/0 (tonic), Harmless=G/1 (perfect fifth)", "patterns": [r"Helpful.*?C.*?0", r"Harmless.*?G.*?1"], "match_mode": "joint", "match_window": 3},
+    {"id": "T47", "description": "Sonification: Honest=D/2 (two fifths)", "patterns": [r"Honest.*?D.*?2|Honest\s*&\s*D\s*&\s*2"], "match_mode": "any"},
+    {"id": "T48", "description": "Sonification: Perfect 5th = 7 semitones (consonant)", "patterns": [r"[Pp]erfect\s+5th", r"7\s+semitones"], "match_mode": "joint", "match_window": 1},
 ]
 
-assert len(COMPLETE) == 39, f"Expected 39 complete claims (Tier 3 batch), got {len(COMPLETE)}"
+assert len(COMPLETE) == 48, f"Expected 48 complete claims (Tier 3 batch), got {len(COMPLETE)}"
 
 
 # ---------------------------------------------------------------------------
