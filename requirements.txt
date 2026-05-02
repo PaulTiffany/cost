@@ -9,3 +9,9 @@ scipy>=1.10.0
 # Optional: for full experiment reproduction
 # pytest>=7.0.0
 # sentence-transformers>=2.2.0  # embedding-based experiments
+
+# Optional: enables AST-based math/text mode distinction in
+# ci/claim_coverage_sweep.py (L3). Without it L3 falls back to a
+# regex-only walker that works but reports more false positives in
+# proof appendices. With it, L3 coverage jumps ~2-3 percentage points.
+pylatexenc>=2.10
