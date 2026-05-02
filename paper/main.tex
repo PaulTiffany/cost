@@ -324,7 +324,7 @@ Cost scales as $\Omega(\sqrt{k})$ for $\rho(k{-}1) \ll 1$; see Appendix~\ref{app
 Diagonal cost depends on the \emph{maximally conflicting subset}, not all $k$ (Corollary~\ref{cor:active_set}); constraints cluster near-orthogonally in practice ($k_{\text{eff}} \le 4$; AGENTIF~\citep{qi2025agentif} reports $\hat{\rho}_{\max} \in [0.08, 0.15]$ across 11.9 average constraints). Frontier validation: Appendix~\ref{app:claude_genome}; high-$k$ active-set treatment: Appendix~\ref{app:high_R}.
 \end{remark}
 
-\noindent\textbf{Worked example.} Figure~\ref{fig:pipeline} traces ``comprehensive'' vs.\ ``concise'' ($k{=}2$) end-to-end through Algorithm~\ref{alg:routing}; cosine grounding follows the Linear Representation Hypothesis \citep{park2023linear} (concepts as directions, conflict coupling estimated by embedding cosine).
+\noindent\textbf{Worked example.} Figure~\ref{fig:pipeline} traces ``comprehensive'' vs.\ ``concise'' ($k{=}2$) end-to-end through Algorithm~\ref{alg:routing}; cosine grounding follows the Linear Representation Hypothesis \citep{park2023linear} (concepts as directions, embedding cosine as the interface observable).
 
 \section{Boundary Case: Divergence at $\rho \to 1/(k{-}1)$}\label{sec:boundary}
 
@@ -677,7 +677,7 @@ $T$ & tokens & Generation Length (token budget) \\
 \textrm{Feasibility cliff} & --- & Sharp transition: feasible $\to$ infeasible as $\rho$ increases \\
 \textrm{Diagonal cost} & $\|\cdot\|$ & Extra displacement from simultaneous vs.\ sequential satisfaction \\
 \textrm{Displacement contract} & --- & Per-token displacement $\le L$ (holds for 89\% of trajectories) \\
-\textrm{Regime index} & $\cos\theta$ & $\hat{\rho}$: embedding-based conflict proxy; screening statistic \\
+\textrm{Regime index} & $\cos\theta$ & $\hat{\rho}$: zero-order screening statistic over embedding interface \\
 \textrm{Smooth regime} & --- & 89\% of trajectories obeying displacement contract \\
 \textrm{Pivot regime} & --- & 11\% violating Lipschitz; detected mid-generation \\
 \textrm{Staging} & --- & Sequential constraint satisfaction (one at a time) \\
