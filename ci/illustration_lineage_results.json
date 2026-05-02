@@ -6,7 +6,7 @@
   },
   "results": [
     {
-      "name": "A1. Every illustration's source_file exists (1 entries)",
+      "name": "A1. Every illustration's source_file exists (2 entries)",
       "passed": true,
       "detail": "all source files present"
     },

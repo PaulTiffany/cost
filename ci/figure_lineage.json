@@ -104,6 +104,12 @@
       "main_tex_ref": "figures/interface_assumption.tex",
       "notes": "Hand-authored TikZ schematic of the Interface Assumption dataflow. Bound by L14 (illustration_lineage.json) to the source LaTeX block at main.tex:253-257. Activated in App C (Scope of Mechanical Verification) via \\input{}."
     },
+    "algorithm1_routing.tex": {
+      "asset": "paper/figures/algorithm1_routing.tex",
+      "tikz_source": true,
+      "main_tex_ref": "figures/algorithm1_routing.tex",
+      "notes": "Hand-authored TikZ decision-tree schematic of Algorithm 1 routing logic. Bound by L14 to main.tex:96-114. Composition direction explored via gpt-5.4-image-2 draft; final asset is the deterministic redraw."
+    },
     "proxy_ablation.pdf": {
       "asset": "rebuttal/figures/proxy_ablation.pdf",
       "script": "supplementary/experiments_rebuttal/proxy_ablation/proxy_ablation.py",
