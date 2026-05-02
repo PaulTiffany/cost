@@ -1,0 +1,29 @@
+{
+  "summary": {
+    "n_cites_in_paper": 25,
+    "n_bib_entries": 41,
+    "n_unresolved": 0,
+    "n_dead": 16,
+    "unresolved": [],
+    "dead": [
+      "anthropic2026aeiv4",
+      "bai2022training",
+      "carlini2024aligned",
+      "deepseek2025r1",
+      "dhuliawala2023chainofverification",
+      "little1961proof",
+      "miettinen1999nonlinear",
+      "nvidia2025cosmos",
+      "ouyang2022training",
+      "piaget1954construction",
+      "snell2024scaling",
+      "turner2023activation",
+      "wei2022chain",
+      "wei2023jailbroken",
+      "zheng2023judging",
+      "zou2023representation"
+    ]
+  },
+  "main_tex": "C:\\src\\NeurIPS\\paper\\main.tex",
+  "references_bib": "C:\\src\\NeurIPS\\paper\\references.bib"
+}

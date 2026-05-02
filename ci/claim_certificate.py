@@ -57,12 +57,14 @@ LAYER_SCRIPTS = {
     "L3_sweep": SCRIPT_DIR / "claim_coverage_sweep.py",
     "L4_lineage": SCRIPT_DIR / "figure_lineage_check.py",
     "L5_figure_values": SCRIPT_DIR / "figure_value_check.py",
+    "L7_citations": SCRIPT_DIR / "citation_integrity_check.py",
 }
 
 LAYER_RESULT_JSONS = {
     "L1_audit": SCRIPT_DIR / "claim_audit_results.json",
     "L3_sweep": SCRIPT_DIR / "claim_coverage_uncovered.json",
     "L5_figure_values": SCRIPT_DIR / "figure_value_check_results.json",
+    "L7_citations": SCRIPT_DIR / "citation_integrity_results.json",
 }
 
 
@@ -186,13 +188,22 @@ def attach_summary_l5(outcome: LayerOutcome) -> None:
     ]
 
 
+def attach_summary_l7(outcome: LayerOutcome) -> None:
+    p = LAYER_RESULT_JSONS["L7_citations"]
+    if not p.exists():
+        outcome.notes = "no results JSON found"
+        return
+    payload = json.loads(p.read_text(encoding="utf-8"))
+    outcome.summary = payload.get("summary", {})
+
+
 # ---------------------------------------------------------------------------
 # Aggregate verdict
 # ---------------------------------------------------------------------------
 def aggregate_verdict(outcomes: list[LayerOutcome]) -> tuple[str, str]:
     """Return (verdict, rationale) where verdict is PASS or FAIL.
 
-    Only structural layers (L1, L2, L4) gate the verdict. L3 and L5
+    Structural layers (L1, L2, L4, L7) gate the verdict. L3 and L5
     are advisory — their coverage % is reported on the certificate
     but does not move the verdict, because a fixed threshold is
     decorative (a real regression that adds 100 new uncovered numerics
@@ -200,11 +211,12 @@ def aggregate_verdict(outcomes: list[LayerOutcome]) -> tuple[str, str]:
     surface previously-hidden noise can drop below it). The triage
     JSONs are the actionable signal, not the percentage.
     """
-    structurally_failed = [o for o in outcomes if o.return_code != 0 and o.name in {"L1_audit", "L2_validator", "L4_lineage"}]
+    structural = {"L1_audit", "L2_validator", "L4_lineage", "L7_citations"}
+    structurally_failed = [o for o in outcomes if o.return_code != 0 and o.name in structural]
     if structurally_failed:
         names = ", ".join(o.name for o in structurally_failed)
         return ("FAIL", f"Structural layers failed: {names}")
-    return ("PASS", "all structural checks clean (L1+L2+L4); L3+L5 coverage is advisory, see triage JSONs")
+    return ("PASS", "all structural checks clean (L1+L2+L4+L7); L3+L5 coverage is advisory, see triage JSONs")
 
 
 # ---------------------------------------------------------------------------
@@ -248,6 +260,8 @@ def render_markdown(payload: dict) -> str:
             blurb = f"{s.get('checks_passed','?')}/{s.get('checks_total','?')} checks pass, {s.get('figures_in_use','?')} figures fresh"
         elif layer["name"] == "L5_figure_values":
             blurb = f"{s.get('coverage_percent','?')}% overall figure coverage, {s.get('total_uncovered','?')} uncovered"
+        elif layer["name"] == "L7_citations":
+            blurb = f"{s.get('n_cites_in_paper','?')} cites, {s.get('n_bib_entries','?')} bib entries, {s.get('n_unresolved','?')} unresolved, {s.get('n_dead','?')} dead"
         else:
             blurb = "(no summary)"
         lines.append(f"| {layer['name']} | `{layer['script']}` | {status} | {blurb} |")
@@ -329,6 +343,11 @@ def main() -> int:
     if not args.quiet: print("  L5 figure values...")
     o = run_layer("L5_figure_values", LAYER_SCRIPTS["L5_figure_values"])
     attach_summary_l5(o)
+    outcomes.append(o)
+
+    if not args.quiet: print("  L7 citation integrity...")
+    o = run_layer("L7_citations", LAYER_SCRIPTS["L7_citations"])
+    attach_summary_l7(o)
     outcomes.append(o)
 
     verdict, rationale = aggregate_verdict(outcomes)

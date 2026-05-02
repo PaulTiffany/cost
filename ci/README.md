@@ -56,7 +56,8 @@ becomes part of layer N+1's input or context.
 | **L3** | `claim_coverage_sweep.py` | Are there numbers in main.tex that no claim covers? |
 | **L4** | `figure_lineage_check.py` | Is every figure fresh + lineage-traced? |
 | **L5** | `figure_value_check.py` | Do in-figure numerics match the registry? |
-| **L6** | `claim_certificate.py` | Aggregate the five layers into a single signed artifact |
+| **L6** | `claim_certificate.py` | Aggregate the layers into a single signed artifact |
+| **L7** | `citation_integrity_check.py` | Does every \\citep{} resolve to a bib entry? |
 
 ### L1 — Claim audit (`claim_audit.py`)
 
@@ -189,6 +190,33 @@ python ci/figure_value_check.py --verbose --strict
 ```
 
 Output: `ci/figure_value_check_results.json`.
+
+### L7 — Citation integrity (`citation_integrity_check.py`)
+
+Verifies the citation graph between main.tex and references.bib.
+Three checks:
+
+  - **Unresolved citations** — `\\citep{key}` in main.tex with no
+    matching `@xxx{key, ...}` entry in references.bib. Would render
+    as "??" in the rendered PDF. Always FAIL.
+  - **Dead bib entries** — `@xxx{key, ...}` in references.bib but no
+    `\\cite*{key}` anywhere in main.tex. Entry never appears in the
+    bibliography. WARN by default, FAIL with `--strict`.
+  - **Multi-key citations** — `\\citep{a, b, c}` are split and each
+    key checked individually.
+
+Citations inside LaTeX comments (full-line or trailing) are skipped
+so commented-out references don't false-fire.
+
+Out of scope: DOI/arXiv ID validation (would require network), citation
+style consistency, key-to-paper semantic correctness.
+
+```
+python ci/citation_integrity_check.py
+python ci/citation_integrity_check.py --strict --verbose
+```
+
+Output: `ci/citation_integrity_results.json`.
 
 ### L6 — Unified certificate (`claim_certificate.py`)
 

@@ -48,6 +48,14 @@ else
     echo "[OK]   L4 figure lineage"
 fi
 
+if ! python ci/citation_integrity_check.py > /tmp/citation_integrity.out 2>&1; then
+    echo "[FAIL] L7 citation integrity (citation_integrity_check.py)"
+    tail -10 /tmp/citation_integrity.out
+    failed=1
+else
+    echo "[OK]   L7 citation integrity"
+fi
+
 if [ $failed -ne 0 ]; then
     echo ""
     echo "Pre-commit blocked: a structural layer failed."
