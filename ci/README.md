@@ -10,10 +10,33 @@ python ci/claim_certificate.py
 ```
 
 If the verdict is **PASS**, every registered numeric claim has been
-verified to appear in `paper/main.tex`, the registry is internally
-consistent, every figure has a verified data → script → asset chain,
-and the values shown inside figures are cross-checked against the
-registry.
+**matched by its registered regex signatures** in `paper/main.tex`,
+the registry is internally consistent, every figure has a verified
+data → script → asset chain, and the values shown inside figures
+are cross-checked against the registry.
+
+### Calibrated framing
+
+The certificate catches **deletion and gross drift**: if a registered
+value is removed from main.tex, or if a number changes substantially,
+the audit moves to MISSING and the certificate moves to FAIL. The
+mtime layer catches stale figure assets. The reverse-coverage sweep
+flags numbers in the paper that no claim covers.
+
+The certificate does **not** catch within-table substitution where
+the substituted value happens to reappear elsewhere in the paper.
+By default, L1 marks a claim FOUND when each of its pattern
+signatures matches *somewhere* in main.tex, not when they
+co-occur in the same context. Claims marked `"match_mode": "joint"`
+require all their patterns within a small window — those are
+tighter — but most Tier 2 claims use the default per-pattern-anywhere
+mode. So "DeepSeek-Coder 93%" passes if the model name appears
+anywhere AND "93%" appears anywhere; if only the row was deleted but
+"93%" persists in a different table, the claim still reads FOUND.
+
+The mutation test in `ci/tests/test_audit_substitution.py` documents
+this boundary by demonstrating which substitutions the audit catches
+and which it doesn't.
 
 The stack exists to make the paper's empirical claims independently
 auditable, both for our own discipline and (potentially) for inclusion

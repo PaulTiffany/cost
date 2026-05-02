@@ -60,6 +60,40 @@ EXPECTED_TOTAL = EXPECTED_CRITICAL + EXPECTED_IMPORTANT + EXPECTED_COMPLETE  # 4
 TRIVIAL_PATTERNS = {"", ".", ".*", ".+", r"\s*", r"\s+", r".*?"}
 
 
+def _is_weak_pattern(pattern_str: str) -> bool:
+    """Heuristic: this pattern alone matches almost any short numeric.
+
+    A pattern is weak if it would match casually-occurring text in
+    main.tex (e.g. r"5\\s*\\?%" matches every '5%' in the paper).
+    Weak patterns aren't disallowed — they're acceptable as one of
+    several patterns in a claim — but a claim with ONLY weak patterns
+    has no real fingerprint and should be flagged.
+    """
+    p = pattern_str.strip()
+    # Bare 1-3 digit integer: r"5", r"23", r"100"
+    if re.fullmatch(r"\d{1,3}", p):
+        return True
+    # Bare percent with common LaTeX escapes: r"5\s*\\?%" or r"23\s*\\?%"
+    if re.fullmatch(r"\d{1,3}\\s\*\\\\\??%", p):
+        return True
+    # Single short decimal: r"0\.5", r"1\.0"
+    if re.fullmatch(r"\d\\\.\d", p):
+        return True
+    return False
+
+
+def _claim_has_only_weak_patterns(patterns: list[str]) -> bool:
+    """A claim is weak overall if every one of its patterns is weak.
+
+    Per-pattern weakness is fine if the claim has another distinctive
+    pattern alongside (e.g. a model name + a percent). All-weak means
+    no part of the claim disambiguates from background noise.
+    """
+    if not patterns:
+        return False  # handled by required-fields check
+    return all(_is_weak_pattern(p) for p in patterns)
+
+
 @dataclass
 class CheckResult:
     name: str
@@ -161,6 +195,34 @@ def check_no_trivial_patterns(mod) -> CheckResult:
         "A6. No trivially permissive patterns",
         not bad,
         "; ".join(bad) if bad else "no '.' / '.*' / empty patterns",
+    )
+
+
+def check_no_all_weak_claims(mod) -> CheckResult:
+    """Flag claims whose every pattern is a weak fingerprint.
+
+    A weak pattern (bare 1-3 digit int, r"\\d+\\s*\\?%" without anchor,
+    single short decimal) matches background numeric text. One weak
+    pattern alongside another distinctive one is fine; all weak means
+    the claim cannot distinguish itself from background noise.
+
+    Claims may set "weak_ok": True to acknowledge the looseness
+    explicitly. The expectation is that such claims rely on joint-
+    context matching (match_mode='joint') to recover rigor — having
+    the patterns co-occur in a small window is what disambiguates
+    them from background noise.
+    """
+    bad: list[str] = []
+    for c in mod.CLAIMS + mod.IMPORTANT:
+        patterns = c.get("patterns", [])
+        if c.get("weak_ok"):
+            continue
+        if _claim_has_only_weak_patterns(patterns):
+            bad.append(f"{c['id']}")
+    return CheckResult(
+        "A7. No claims with only weak fingerprints (without weak_ok)",
+        not bad,
+        f"weak claims missing 'weak_ok': {bad}" if bad else "every claim either has a distinctive pattern or is explicitly weak_ok",
     )
 
 
@@ -339,6 +401,7 @@ def run_all() -> list[CheckResult]:
         check_required_fields(mod),
         check_patterns_compile(mod),
         check_no_trivial_patterns(mod),
+        check_no_all_weak_claims(mod),
         # B: registry consistency
         check_header_total(text),
         check_tier_table(text),

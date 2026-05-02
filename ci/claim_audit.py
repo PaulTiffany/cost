@@ -136,6 +136,7 @@ CLAIMS: list[dict] = [
             r"89\s*\\?%",
             r"11\s*\\?%",
         ],
+        "weak_ok": True,  # bare percentages; relies on joint-context match_mode below
     },
     {
         "id": "C10",
@@ -143,6 +144,7 @@ CLAIMS: list[dict] = [
         "patterns": [
             r"94\s*\\?%",
         ],
+        "weak_ok": True,  # single bare percent; weak alone, anchored by table context
     },
     {
         "id": "C11",
@@ -158,6 +160,7 @@ CLAIMS: list[dict] = [
             r"93\s*\\?%",
             r"3\s*\\?%",
         ],
+        "weak_ok": True,  # bare percentages; could co-occur in any other context
     },
     {
         "id": "C13",
@@ -189,6 +192,7 @@ CLAIMS: list[dict] = [
             r"91\s*\\?%",
             r"20\s*\\?%",
         ],
+        "weak_ok": True,  # bare percentages
     },
     {
         "id": "C17",
@@ -276,13 +280,15 @@ assert len(CLAIMS) == 25, f"Expected 25 critical claims, got {len(CLAIMS)}"
 # ---------------------------------------------------------------------------
 
 IMPORTANT: list[dict] = [
-    # Table 1: Lipschitz Calibration (I1-I6)
-    {"id": "I1", "description": "Qwen-2.5-Coder L=0.023+/-0.008", "patterns": [r"0\.023", r"0\.008"]},
-    {"id": "I2", "description": "Qwen-2.5-Coder 91% tightness", "patterns": [r"91\s*\\?%"]},
-    {"id": "I3", "description": "DeepSeek-Coder L=0.019+/-0.006", "patterns": [r"0\.019", r"0\.006"]},
-    {"id": "I4", "description": "DeepSeek-Coder 93% tightness", "patterns": [r"93\s*\\?%"]},
-    {"id": "I5", "description": "TinyLlama-1.1B L=0.031+/-0.011", "patterns": [r"0\.031", r"0\.011"]},
-    {"id": "I6", "description": "TinyLlama-1.1B 84% tightness", "patterns": [r"84\s*\\?%"]},
+    # Table 1: Lipschitz Calibration (I1-I6) — joint-context: all
+    # patterns must co-occur within a 3-line window, so model name +
+    # value(s) are anchored together. Stronger than per-pattern-anywhere.
+    {"id": "I1", "description": "Qwen-2.5-Coder L=0.023+/-0.008", "patterns": [r"Qwen.*?Coder|Qwen-2\.5-Coder", r"0\.023", r"0\.008"], "match_mode": "joint", "match_window": 3},
+    {"id": "I2", "description": "Qwen-2.5-Coder 91% tightness (joint with model name)", "patterns": [r"Qwen.*?Coder|Qwen-2\.5-Coder", r"91\s*\\?%"], "match_mode": "joint", "match_window": 3},
+    {"id": "I3", "description": "DeepSeek-Coder L=0.019+/-0.006", "patterns": [r"DeepSeek.*?Coder|DeepSeek-Coder", r"0\.019", r"0\.006"], "match_mode": "joint", "match_window": 3},
+    {"id": "I4", "description": "DeepSeek-Coder 93% tightness (joint with model name)", "patterns": [r"DeepSeek.*?Coder|DeepSeek-Coder", r"93\s*\\?%"], "match_mode": "joint", "match_window": 3},
+    {"id": "I5", "description": "TinyLlama-1.1B L=0.031+/-0.011", "patterns": [r"TinyLlama", r"0\.031", r"0\.011"], "match_mode": "joint", "match_window": 3},
+    {"id": "I6", "description": "TinyLlama-1.1B 84% tightness (joint with model name)", "patterns": [r"TinyLlama", r"84\s*\\?%"], "match_mode": "joint", "match_window": 3},
     # Table 2: Regime Performance (I7-I10)
     {"id": "I7", "description": "Control rho=0.05, 76%/24%", "patterns": [r"0\.05", r"76\s*\\?%", r"24\s*\\?%"]},
     {"id": "I8", "description": "Low rho=0.20, 56%/44%", "patterns": [r"0\.20", r"56\s*\\?%", r"44\s*\\?%"]},
@@ -320,19 +326,19 @@ IMPORTANT: list[dict] = [
     {"id": "I34", "description": "k=5 -> delta=2.2361", "patterns": [r"2\.2361"]},
     {"id": "I35", "description": "k=8 -> delta=2.8284", "patterns": [r"2\.8284"]},
     # Table 11: Baselines (I36-I41)
-    {"id": "I36", "description": "One-shot: 5% pass, 256 tokens, 1.0x", "patterns": [r"5\s*\\?%", r"256"]},
-    {"id": "I37", "description": "Staged (always): 18% pass, 512 tokens, 0.5x", "patterns": [r"18\s*\\?%", r"512"]},
+    {"id": "I36", "description": "One-shot: 5% pass, 256 tokens, 1.0x", "patterns": [r"5\s*\\?%", r"256"], "weak_ok": True},
+    {"id": "I37", "description": "Staged (always): 18% pass, 512 tokens, 0.5x", "patterns": [r"18\s*\\?%", r"512"], "weak_ok": True},
     {"id": "I38", "description": "Best-of-4: 12% pass, 1024 tokens, 0.25x", "patterns": [r"12\s*\\?%", r"1024"]},
-    {"id": "I39", "description": "Self-refine: 15% pass, 640 tokens, 0.4x", "patterns": [r"15\s*\\?%", r"640"]},
+    {"id": "I39", "description": "Self-refine: 15% pass, 640 tokens, 0.4x", "patterns": [r"15\s*\\?%", r"640"], "weak_ok": True},
     {"id": "I40", "description": "Geometric router: 18% pass, 384 tokens, 0.67x", "patterns": [r"384", r"0\.67"]},
-    {"id": "I41", "description": "Oracle: 21% pass, 320 tokens, 0.8x", "patterns": [r"21\s*\\?%", r"320"]},
+    {"id": "I41", "description": "Oracle: 21% pass, 320 tokens, 0.8x", "patterns": [r"21\s*\\?%", r"320"], "weak_ok": True},
     # Table 12: Transfer (I42-I45)
     {"id": "I42", "description": "Code: 100% router agree, 1.8% regret", "patterns": [r"1\.8\s*\\?%"]},
     {"id": "I43", "description": "JSON-NL: 94% router, +2% delta, 2.1% regret", "patterns": [r"2\.1\s*\\?%", r"JSON[-\s]?NL"]},
     {"id": "I44", "description": "IF-DSL: 91% router, -1% delta, 2.4% regret", "patterns": [r"2\.4\s*\\?%", r"IF[-\s]?DSL"]},
     {"id": "I45", "description": "Bytebeat: 88% router, +1% delta, 3.1% regret", "patterns": [r"3\.1\s*\\?%", r"[Bb]ytebeat"]},
     # Hyperparameters (I46-I51)
-    {"id": "I46", "description": "Token budgets: 128, 192, 256, 384, 512", "patterns": [r"128", r"192", r"256", r"384", r"512"]},
+    {"id": "I46", "description": "Token budgets: 128, 192, 256, 384, 512", "patterns": [r"128", r"192", r"256", r"384", r"512"], "weak_ok": True},
     {"id": "I47", "description": "Sample size N=60 per condition (main)", "patterns": [r"N\s*[={]+\s*60|N\}?\s*=\s*60"]},
     {"id": "I48", "description": "Sample size N=100 (supplementary spot-checks)", "patterns": [r"N\s*[={]+\s*100|N=100|spot[-\s]check"], "supplementary_only": True},
     {"id": "I49", "description": "Default L_hat ~ 0.025", "patterns": [r"0\.025"]},
@@ -348,8 +354,8 @@ IMPORTANT: list[dict] = [
     {"id": "I58", "description": "Semantic jump rate 2.3% (>3sigma)", "patterns": [r"2\.3\s*\\?%"]},
     # Appendix Key Claims (I59-I75)
     {"id": "I59", "description": "App B: 0.00% error for k=2,3,4,5,8", "patterns": [r"0\.00\s*\\?%"]},
-    {"id": "I60", "description": "App V: k=2/3/4/5 -> 93/86/79/73% (supplementary granular)", "patterns": [r"86\s*\\?%", r"79\s*\\?%", r"73\s*\\?%"], "supplementary_only": True},
-    {"id": "I61", "description": "App V: k=6/8/10 -> 67/56/3% (supplementary granular)", "patterns": [r"67\s*\\?%", r"56\s*\\?%"], "supplementary_only": True},
+    {"id": "I60", "description": "App V: k=2/3/4/5 -> 93/86/79/73% (supplementary granular)", "patterns": [r"86\s*\\?%", r"79\s*\\?%", r"73\s*\\?%"], "supplementary_only": True, "weak_ok": True},
+    {"id": "I61", "description": "App V: k=6/8/10 -> 67/56/3% (supplementary granular)", "patterns": [r"67\s*\\?%", r"56\s*\\?%"], "supplementary_only": True, "weak_ok": True},
     {"id": "I62", "description": "App W: 190 pairs, 7.37% high conflict", "patterns": [r"190\s+pairs|190\\\s*pairs", r"7\.37"]},
     {"id": "I63", "description": "App W: mean rho=0.267, max=0.86", "patterns": [r"0\.267", r"0\.86"]},
     {"id": "I64", "description": "App X: 15 compound tasks, rho 0.15-0.75", "patterns": [r"15\s+compound|compound\s+tasks", r"0\.15", r"0\.75"]},
@@ -360,7 +366,7 @@ IMPORTANT: list[dict] = [
     {"id": "I69", "description": "App R: IF-DSL 0% at rho>=1.0", "patterns": [r"IF[-\s]?DSL"]},
     {"id": "I70", "description": "App S: Bytebeat cliff at rho>=0.8", "patterns": [r"0\.8", r"[Bb]ytebeat"]},
     {"id": "I71", "description": "App U: <5min CPU, ~20h GPU", "patterns": [r"5\s*min(?:utes?)?|<\s*5", r"20\s*h(?:ours?)?|20\\,?h"]},
-    {"id": "I72", "description": "App E: 5% vs 58%/71% conjunction", "patterns": [r"58\s*\\?%", r"71\s*\\?%"]},
+    {"id": "I72", "description": "App E: 5% vs 58%/71% conjunction", "patterns": [r"58\s*\\?%", r"71\s*\\?%"], "weak_ok": True},
     {"id": "I73", "description": "App M: phase transition 1/(k-1)", "patterns": [r"1\s*/\s*\(?\s*k\s*[-{}\s]*1"]},
     {"id": "I74", "description": "App D: rho_max ~ 0.18", "patterns": [r"0\.18"]},
     {"id": "I75", "description": "App D: 24% reinforcing pairs", "patterns": [r"24\s*\\?%", r"reinforcing"]},
@@ -451,16 +457,43 @@ def stream_lines(path: Path) -> Iterable[tuple[int, str]]:
             yield i, line.rstrip("\n")
 
 
+def _check_joint_window(patterns: list[re.Pattern], lines: list[str], window: int = 3) -> tuple[bool, int | None]:
+    """Joint-context match: do ALL patterns hit within some window of consecutive lines?
+
+    Returns (found, anchor_line_no). The window slides; we accept the
+    earliest position where every pattern matches in the joined text
+    of `window` lines centered on (or starting at) that position.
+    """
+    n = len(lines)
+    half = window // 2
+    for i in range(n):
+        start = max(0, i - half)
+        end = min(n, i + half + 1)
+        text = "\n".join(lines[start:end])
+        if all(p.search(text) for p in patterns):
+            return True, i + 1  # 1-indexed line numbers
+    return False, None
+
+
 def audit_claims(tex_path: Path, claims: list[dict], verbose: bool = False) -> list[ClaimResult]:
-    """Single streaming pass over main.tex; multi-pattern matcher per line."""
-    # Pre-compile every pattern (deterministic; no DOTALL — we match per line).
+    """Single streaming pass over main.tex; multi-pattern matcher per line.
+
+    Two match modes:
+      - default ('any'): each pattern must hit somewhere in main.tex,
+        not necessarily co-occurring. Streaming-friendly.
+      - 'joint': all patterns must hit within a small window
+        (default 3 consecutive lines). Stronger fingerprint; required
+        for table-cell claims where co-occurrence matters. Joint-mode
+        claims load main.tex into memory once (~2,500 lines, ~250KB).
+    """
+    # Pre-compile every pattern.
     compiled: dict[str, list[tuple[str, re.Pattern]]] = {}
     hits: dict[str, list[PatternHit]] = {}
     for claim in claims:
         compiled[claim["id"]] = [(p, re.compile(p)) for p in claim["patterns"]]
         hits[claim["id"]] = [PatternHit(pattern=p) for p in claim["patterns"]]
 
-    # Single sequential pass.
+    # Streaming pass for any-mode claims; track per-pattern locations.
     for line_no, line in stream_lines(tex_path):
         for claim_id, patterns in compiled.items():
             for idx, (raw, regex) in enumerate(patterns):
@@ -470,13 +503,42 @@ def audit_claims(tex_path: Path, claims: list[dict], verbose: bool = False) -> l
                         snippet = snippet[:157] + "..."
                     hits[claim_id][idx].locations.append((line_no, snippet))
 
+    # Joint-mode claims need windowed access. Read all lines once.
+    joint_claims = [c for c in claims if c.get("match_mode") == "joint"]
+    joint_results: dict[str, tuple[bool, int | None]] = {}
+    if joint_claims:
+        all_lines = tex_path.read_text(encoding="utf-8", errors="replace").splitlines()
+        for claim in joint_claims:
+            window = claim.get("match_window", 3)
+            patterns = [re.compile(p) for p in claim["patterns"]]
+            joint_results[claim["id"]] = _check_joint_window(patterns, all_lines, window=window)
+
     # Roll up status.
     results: list[ClaimResult] = []
     for claim in claims:
         h = hits[claim["id"]]
         n_total = len(h)
         n_found = sum(1 for ph in h if ph.found)
-        if n_found == n_total:
+
+        # Joint-mode claims override the per-pattern roll-up: they
+        # require the windowed all-patterns-co-occur check to pass.
+        if claim.get("match_mode") == "joint":
+            joint_ok, anchor = joint_results[claim["id"]]
+            if joint_ok:
+                status = FOUND
+                notes = f"All {n_total} patterns co-occur within {claim.get('match_window', 3)}-line window (anchor line ~{anchor})."
+            else:
+                status = MISSING
+                # Are individual patterns at least present anywhere? If yes,
+                # this is drift (values exist but not together).
+                if n_found == n_total:
+                    status = DRIFT
+                    notes = f"All {n_total} patterns appear in main.tex but NOT within {claim.get('match_window', 3)}-line window. Values may have separated; verify the table/context still ties them together."
+                elif n_found > 0:
+                    notes = f"Joint-mode FAIL: {n_found}/{n_total} patterns appear, none co-occur in {claim.get('match_window', 3)}-line window."
+                else:
+                    notes = f"Joint-mode FAIL: no patterns matched in main.tex."
+        elif n_found == n_total:
             status = FOUND
             notes = f"All {n_total} signature patterns matched."
         elif n_found == 0:

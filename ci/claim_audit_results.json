@@ -2117,6 +2117,43 @@
       "found": "OK",
       "locations": [
         {
+          "pattern": "Qwen.*?Coder|Qwen-2\\.5-Coder",
+          "hits": [
+            {
+              "line": 396,
+              "snippet": "At high $\\hat{\\rho}$, \\emph{all protocols} collapse to $\\leq$5\\% \\emph{on smooth-regime trials}. This is the bound in action, not a failure of staging; front..."
+            },
+            {
+              "line": 928,
+              "snippet": "& \\multicolumn{2}{c}{Qwen-Coder-1.5B} & \\multicolumn{2}{c}{Qwen-3B} & \\multicolumn{2}{c}{DeepSeek-1.3B} & \\multicolumn{2}{c}{TinyLlama-1.1B} \\\\"
+            },
+            {
+              "line": 946,
+              "snippet": "Table~\\ref{tab:llm_bridge} reveals a clear capability gradient: weaker models (TinyLlama, DeepSeek) benefit most from staging ($\\Delta > 0$), while the stron..."
+            },
+            {
+              "line": 973,
+              "snippet": "\\caption{Per-model staging delta by token budget. Qwen-Coder shows negative $\\Delta$: staging is overhead at ceiling capability. DeepSeek shows the predicted..."
+            },
+            {
+              "line": 982,
+              "snippet": "Qwen-Coder-1.5B & $-63$ & $-37$ & $-30$ & $-33$ & $-30$ \\\\"
+            },
+            {
+              "line": 993,
+              "snippet": "\\item \\textbf{Qwen-Coder-1.5B}: Near-ceiling one-shot (97--100\\%), so staging adds variance. Negative $\\Delta$ across all budgets."
+            },
+            {
+              "line": 1145,
+              "snippet": "Qwen-2.5-Coder & $0.023 \\pm 0.008$ & 91\\% & 9\\% \\\\"
+            },
+            {
+              "line": 1160,
+              "snippet": "\\item \\textbf{Model variance:} Qwen-2.5-Coder: $\\hat{L} = 0.023 \\pm 0.008$; DeepSeek-Coder: $\\hat{L} = 0.019 \\pm 0.006$; TinyLlama: $\\hat{L} = 0.031 \\pm 0.01..."
+            }
+          ]
+        },
+        {
           "pattern": "0\\.023",
           "hits": [
             {
@@ -2143,13 +2180,50 @@
           ]
         }
       ],
-      "notes": "All 2 signature patterns matched."
+      "notes": "All 3 patterns co-occur within 3-line window (anchor line ~1144)."
     },
     {
       "claim_id": "I2",
-      "paper_text_signature": "Qwen-2.5-Coder 91% tightness",
+      "paper_text_signature": "Qwen-2.5-Coder 91% tightness (joint with model name)",
       "found": "OK",
       "locations": [
+        {
+          "pattern": "Qwen.*?Coder|Qwen-2\\.5-Coder",
+          "hits": [
+            {
+              "line": 396,
+              "snippet": "At high $\\hat{\\rho}$, \\emph{all protocols} collapse to $\\leq$5\\% \\emph{on smooth-regime trials}. This is the bound in action, not a failure of staging; front..."
+            },
+            {
+              "line": 928,
+              "snippet": "& \\multicolumn{2}{c}{Qwen-Coder-1.5B} & \\multicolumn{2}{c}{Qwen-3B} & \\multicolumn{2}{c}{DeepSeek-1.3B} & \\multicolumn{2}{c}{TinyLlama-1.1B} \\\\"
+            },
+            {
+              "line": 946,
+              "snippet": "Table~\\ref{tab:llm_bridge} reveals a clear capability gradient: weaker models (TinyLlama, DeepSeek) benefit most from staging ($\\Delta > 0$), while the stron..."
+            },
+            {
+              "line": 973,
+              "snippet": "\\caption{Per-model staging delta by token budget. Qwen-Coder shows negative $\\Delta$: staging is overhead at ceiling capability. DeepSeek shows the predicted..."
+            },
+            {
+              "line": 982,
+              "snippet": "Qwen-Coder-1.5B & $-63$ & $-37$ & $-30$ & $-33$ & $-30$ \\\\"
+            },
+            {
+              "line": 993,
+              "snippet": "\\item \\textbf{Qwen-Coder-1.5B}: Near-ceiling one-shot (97--100\\%), so staging adds variance. Negative $\\Delta$ across all budgets."
+            },
+            {
+              "line": 1145,
+              "snippet": "Qwen-2.5-Coder & $0.023 \\pm 0.008$ & 91\\% & 9\\% \\\\"
+            },
+            {
+              "line": 1160,
+              "snippet": "\\item \\textbf{Model variance:} Qwen-2.5-Coder: $\\hat{L} = 0.023 \\pm 0.008$; DeepSeek-Coder: $\\hat{L} = 0.019 \\pm 0.006$; TinyLlama: $\\hat{L} = 0.031 \\pm 0.01..."
+            }
+          ]
+        },
         {
           "pattern": "91\\s*\\\\?%",
           "hits": [
@@ -2184,13 +2258,30 @@
           ]
         }
       ],
-      "notes": "All 1 signature patterns matched."
+      "notes": "All 2 patterns co-occur within 3-line window (anchor line ~1144)."
     },
     {
       "claim_id": "I3",
       "paper_text_signature": "DeepSeek-Coder L=0.019+/-0.006",
       "found": "OK",
       "locations": [
+        {
+          "pattern": "DeepSeek.*?Coder|DeepSeek-Coder",
+          "hits": [
+            {
+              "line": 946,
+              "snippet": "Table~\\ref{tab:llm_bridge} reveals a clear capability gradient: weaker models (TinyLlama, DeepSeek) benefit most from staging ($\\Delta > 0$), while the stron..."
+            },
+            {
+              "line": 1146,
+              "snippet": "DeepSeek-Coder & $0.019 \\pm 0.006$ & 93\\% & 7\\% \\\\"
+            },
+            {
+              "line": 1160,
+              "snippet": "\\item \\textbf{Model variance:} Qwen-2.5-Coder: $\\hat{L} = 0.023 \\pm 0.008$; DeepSeek-Coder: $\\hat{L} = 0.019 \\pm 0.006$; TinyLlama: $\\hat{L} = 0.031 \\pm 0.01..."
+            }
+          ]
+        },
         {
           "pattern": "0\\.019",
           "hits": [
@@ -2226,13 +2317,30 @@
           ]
         }
       ],
-      "notes": "All 2 signature patterns matched."
+      "notes": "All 3 patterns co-occur within 3-line window (anchor line ~1145)."
     },
     {
       "claim_id": "I4",
-      "paper_text_signature": "DeepSeek-Coder 93% tightness",
+      "paper_text_signature": "DeepSeek-Coder 93% tightness (joint with model name)",
       "found": "OK",
       "locations": [
+        {
+          "pattern": "DeepSeek.*?Coder|DeepSeek-Coder",
+          "hits": [
+            {
+              "line": 946,
+              "snippet": "Table~\\ref{tab:llm_bridge} reveals a clear capability gradient: weaker models (TinyLlama, DeepSeek) benefit most from staging ($\\Delta > 0$), while the stron..."
+            },
+            {
+              "line": 1146,
+              "snippet": "DeepSeek-Coder & $0.019 \\pm 0.006$ & 93\\% & 7\\% \\\\"
+            },
+            {
+              "line": 1160,
+              "snippet": "\\item \\textbf{Model variance:} Qwen-2.5-Coder: $\\hat{L} = 0.023 \\pm 0.008$; DeepSeek-Coder: $\\hat{L} = 0.019 \\pm 0.006$; TinyLlama: $\\hat{L} = 0.031 \\pm 0.01..."
+            }
+          ]
+        },
         {
           "pattern": "93\\s*\\\\?%",
           "hits": [
@@ -2259,13 +2367,50 @@
           ]
         }
       ],
-      "notes": "All 1 signature patterns matched."
+      "notes": "All 2 patterns co-occur within 3-line window (anchor line ~1145)."
     },
     {
       "claim_id": "I5",
       "paper_text_signature": "TinyLlama-1.1B L=0.031+/-0.011",
       "found": "OK",
       "locations": [
+        {
+          "pattern": "TinyLlama",
+          "hits": [
+            {
+              "line": 368,
+              "snippet": "Open-weight models (Qwen, DeepSeek, TinyLlama), deterministic verifiers, no API keys, no LLM-as-judge. Binary verification: the harness knows ground truth, g..."
+            },
+            {
+              "line": 526,
+              "snippet": "\\caption{\\textbf{The cliff is model-agnostic and survives constraint softening.} (a) Pass-rate heatmap across nine models from 1B (TinyLlama) to frontier (4 ..."
+            },
+            {
+              "line": 928,
+              "snippet": "& \\multicolumn{2}{c}{Qwen-Coder-1.5B} & \\multicolumn{2}{c}{Qwen-3B} & \\multicolumn{2}{c}{DeepSeek-1.3B} & \\multicolumn{2}{c}{TinyLlama-1.1B} \\\\"
+            },
+            {
+              "line": 946,
+              "snippet": "Table~\\ref{tab:llm_bridge} reveals a clear capability gradient: weaker models (TinyLlama, DeepSeek) benefit most from staging ($\\Delta > 0$), while the stron..."
+            },
+            {
+              "line": 985,
+              "snippet": "TinyLlama-1.1B & $0$ & $+20$ & $0$ & $+3$ & $-3$ \\\\"
+            },
+            {
+              "line": 996,
+              "snippet": "\\item \\textbf{TinyLlama-1.1B}: Too weak to benefit consistently, with mixed results across budgets."
+            },
+            {
+              "line": 1147,
+              "snippet": "TinyLlama-1.1B & $0.031 \\pm 0.011$ & 84\\% & 16\\% \\\\"
+            },
+            {
+              "line": 1160,
+              "snippet": "\\item \\textbf{Model variance:} Qwen-2.5-Coder: $\\hat{L} = 0.023 \\pm 0.008$; DeepSeek-Coder: $\\hat{L} = 0.019 \\pm 0.006$; TinyLlama: $\\hat{L} = 0.031 \\pm 0.01..."
+            }
+          ]
+        },
         {
           "pattern": "0\\.031",
           "hits": [
@@ -2301,13 +2446,50 @@
           ]
         }
       ],
-      "notes": "All 2 signature patterns matched."
+      "notes": "All 3 patterns co-occur within 3-line window (anchor line ~1146)."
     },
     {
       "claim_id": "I6",
-      "paper_text_signature": "TinyLlama-1.1B 84% tightness",
+      "paper_text_signature": "TinyLlama-1.1B 84% tightness (joint with model name)",
       "found": "OK",
       "locations": [
+        {
+          "pattern": "TinyLlama",
+          "hits": [
+            {
+              "line": 368,
+              "snippet": "Open-weight models (Qwen, DeepSeek, TinyLlama), deterministic verifiers, no API keys, no LLM-as-judge. Binary verification: the harness knows ground truth, g..."
+            },
+            {
+              "line": 526,
+              "snippet": "\\caption{\\textbf{The cliff is model-agnostic and survives constraint softening.} (a) Pass-rate heatmap across nine models from 1B (TinyLlama) to frontier (4 ..."
+            },
+            {
+              "line": 928,
+              "snippet": "& \\multicolumn{2}{c}{Qwen-Coder-1.5B} & \\multicolumn{2}{c}{Qwen-3B} & \\multicolumn{2}{c}{DeepSeek-1.3B} & \\multicolumn{2}{c}{TinyLlama-1.1B} \\\\"
+            },
+            {
+              "line": 946,
+              "snippet": "Table~\\ref{tab:llm_bridge} reveals a clear capability gradient: weaker models (TinyLlama, DeepSeek) benefit most from staging ($\\Delta > 0$), while the stron..."
+            },
+            {
+              "line": 985,
+              "snippet": "TinyLlama-1.1B & $0$ & $+20$ & $0$ & $+3$ & $-3$ \\\\"
+            },
+            {
+              "line": 996,
+              "snippet": "\\item \\textbf{TinyLlama-1.1B}: Too weak to benefit consistently, with mixed results across budgets."
+            },
+            {
+              "line": 1147,
+              "snippet": "TinyLlama-1.1B & $0.031 \\pm 0.011$ & 84\\% & 16\\% \\\\"
+            },
+            {
+              "line": 1160,
+              "snippet": "\\item \\textbf{Model variance:} Qwen-2.5-Coder: $\\hat{L} = 0.023 \\pm 0.008$; DeepSeek-Coder: $\\hat{L} = 0.019 \\pm 0.006$; TinyLlama: $\\hat{L} = 0.031 \\pm 0.01..."
+            }
+          ]
+        },
         {
           "pattern": "84\\s*\\\\?%",
           "hits": [
@@ -2318,7 +2500,7 @@
           ]
         }
       ],
-      "notes": "All 1 signature patterns matched."
+      "notes": "All 2 patterns co-occur within 3-line window (anchor line ~1146)."
     },
     {
       "claim_id": "I7",

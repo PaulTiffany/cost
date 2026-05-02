@@ -2,10 +2,10 @@
   "paper_path": "C:\\src\\NeurIPS\\paper\\main.tex",
   "summary": {
     "total_numeric_tokens": 1525,
-    "covered": 1012,
-    "uncovered_raw": 513,
-    "uncovered_deduped": 507,
-    "coverage_percent": 66.4
+    "covered": 1032,
+    "uncovered_raw": 493,
+    "uncovered_deduped": 488,
+    "coverage_percent": 67.7
   },
   "uncovered": [
     {
@@ -207,18 +207,6 @@
       "section": "paragraph: Frontier Transfer and Generalization."
     },
     {
-      "line_no": 526,
-      "value": "1",
-      "context": "ss-rate heatmap across nine models from 1B (TinyLlama) to frontier (4 providers).",
-      "section": "paragraph: Frontier Transfer and Generalization."
-    },
-    {
-      "line_no": 526,
-      "value": "4",
-      "context": "models from 1B (TinyLlama) to frontier (4 providers). The same four-tier $\\hat{\\r",
-      "section": "paragraph: Frontier Transfer and Generalization."
-    },
-    {
       "line_no": 632,
       "value": "7",
       "context": "\\caption{Claude family (7 models) on self-referential constraints",
@@ -309,30 +297,6 @@
       "section": "paragraph: Implicit $k$ and the ``production-grade'' illusion."
     },
     {
-      "line_no": 928,
-      "value": "1.5",
-      "context": "& \\multicolumn{2}{c}{Qwen-Coder-1.5B} & \\multicolumn{2}{c}{Qwen-3B} & \\mult",
-      "section": "paragraph: Per-task validation (relocated from \\S\\ref{sec:staging"
-    },
-    {
-      "line_no": 928,
-      "value": "3",
-      "context": "n-Coder-1.5B} & \\multicolumn{2}{c}{Qwen-3B} & \\multicolumn{2}{c}{DeepSeek-1.3B} &",
-      "section": "paragraph: Per-task validation (relocated from \\S\\ref{sec:staging"
-    },
-    {
-      "line_no": 928,
-      "value": "1.3",
-      "context": "{Qwen-3B} & \\multicolumn{2}{c}{DeepSeek-1.3B} & \\multicolumn{2}{c}{TinyLlama-1.1B}",
-      "section": "paragraph: Per-task validation (relocated from \\S\\ref{sec:staging"
-    },
-    {
-      "line_no": 928,
-      "value": "1.1",
-      "context": "ek-1.3B} & \\multicolumn{2}{c}{TinyLlama-1.1B} \\\\",
-      "section": "paragraph: Per-task validation (relocated from \\S\\ref{sec:staging"
-    },
-    {
       "line_no": 930,
       "value": "1",
       "context": "Tier & 1-shot & $\\Delta$ & 1-shot & $\\Delta$ & 1",
@@ -357,51 +321,9 @@
       "section": "paragraph: Per-task validation (relocated from \\S\\ref{sec:staging"
     },
     {
-      "line_no": 946,
-      "value": "0",
-      "context": "k) benefit most from staging ($\\Delta > 0$), while the strongest model (Qwen-Code",
-      "section": "paragraph: Difficulty-conflict separation."
-    },
-    {
       "line_no": 957,
       "value": "1",
       "context": "Tokens $T$ & 1-shot & Staged & $\\Delta$ \\\\",
-      "section": "section: Token Budget ($\\delta$) Experiment: Per-Model Breakdown"
-    },
-    {
-      "line_no": 982,
-      "value": "1.5",
-      "context": "Qwen-Coder-1.5B & $-63$ & $-37$ & $-30$ & $-33$ & $-30",
-      "section": "section: Token Budget ($\\delta$) Experiment: Per-Model Breakdown"
-    },
-    {
-      "line_no": 982,
-      "value": "63",
-      "context": "Qwen-Coder-1.5B & $-63$ & $-37$ & $-30$ & $-33$ & $-30$ \\\\",
-      "section": "section: Token Budget ($\\delta$) Experiment: Per-Model Breakdown"
-    },
-    {
-      "line_no": 982,
-      "value": "37",
-      "context": "Qwen-Coder-1.5B & $-63$ & $-37$ & $-30$ & $-33$ & $-30$ \\\\",
-      "section": "section: Token Budget ($\\delta$) Experiment: Per-Model Breakdown"
-    },
-    {
-      "line_no": 982,
-      "value": "30",
-      "context": "Qwen-Coder-1.5B & $-63$ & $-37$ & $-30$ & $-33$ & $-30$ \\\\",
-      "section": "section: Token Budget ($\\delta$) Experiment: Per-Model Breakdown"
-    },
-    {
-      "line_no": 982,
-      "value": "33",
-      "context": "-Coder-1.5B & $-63$ & $-37$ & $-30$ & $-33$ & $-30$ \\\\",
-      "section": "section: Token Budget ($\\delta$) Experiment: Per-Model Breakdown"
-    },
-    {
-      "line_no": 982,
-      "value": "30",
-      "context": ".5B & $-63$ & $-37$ & $-30$ & $-33$ & $-30$ \\\\",
       "section": "section: Token Budget ($\\delta$) Experiment: Per-Model Breakdown"
     },
     {
@@ -481,42 +403,6 @@
       "value": "27",
       "context": "k-1.3B & $+7$ & $+17$ & $+13$ & $0$ & $+27$ \\\\",
       "section": "section: Token Budget ($\\delta$) Experiment: Per-Model Breakdown"
-    },
-    {
-      "line_no": 985,
-      "value": "1.1",
-      "context": "TinyLlama-1.1B & $0$ & $+20$ & $0$ & $+3$ & $-3$ \\\\",
-      "section": "section: Token Budget ($\\delta$) Experiment: Per-Model Breakdown"
-    },
-    {
-      "line_no": 985,
-      "value": "0",
-      "context": "TinyLlama-1.1B & $0$ & $+20$ & $0$ & $+3$ & $-3$ \\\\",
-      "section": "section: Token Budget ($\\delta$) Experiment: Per-Model Breakdown"
-    },
-    {
-      "line_no": 985,
-      "value": "20",
-      "context": "TinyLlama-1.1B & $0$ & $+20$ & $0$ & $+3$ & $-3$ \\\\",
-      "section": "section: Token Budget ($\\delta$) Experiment: Per-Model Breakdown"
-    },
-    {
-      "line_no": 985,
-      "value": "3",
-      "context": "TinyLlama-1.1B & $0$ & $+20$ & $0$ & $+3$ & $-3$ \\\\",
-      "section": "section: Token Budget ($\\delta$) Experiment: Per-Model Breakdown"
-    },
-    {
-      "line_no": 985,
-      "value": "3",
-      "context": "ama-1.1B & $0$ & $+20$ & $0$ & $+3$ & $-3$ \\\\",
-      "section": "section: Token Budget ($\\delta$) Experiment: Per-Model Breakdown"
-    },
-    {
-      "line_no": 996,
-      "value": "1.1",
-      "context": "\\item \\textbf{TinyLlama-1.1B}: Too weak to benefit consistently, wi",
-      "section": "paragraph: Interpretation of model-specific staging effects."
     },
     {
       "line_no": 1003,

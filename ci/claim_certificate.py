@@ -190,25 +190,21 @@ def attach_summary_l5(outcome: LayerOutcome) -> None:
 # Aggregate verdict
 # ---------------------------------------------------------------------------
 def aggregate_verdict(outcomes: list[LayerOutcome]) -> tuple[str, str]:
-    """Return (verdict, rationale) where verdict is PASS/WARN/FAIL."""
+    """Return (verdict, rationale) where verdict is PASS or FAIL.
+
+    Only structural layers (L1, L2, L4) gate the verdict. L3 and L5
+    are advisory — their coverage % is reported on the certificate
+    but does not move the verdict, because a fixed threshold is
+    decorative (a real regression that adds 100 new uncovered numerics
+    can stay above any chosen %, while genuine improvements that
+    surface previously-hidden noise can drop below it). The triage
+    JSONs are the actionable signal, not the percentage.
+    """
     structurally_failed = [o for o in outcomes if o.return_code != 0 and o.name in {"L1_audit", "L2_validator", "L4_lineage"}]
     if structurally_failed:
         names = ", ".join(o.name for o in structurally_failed)
         return ("FAIL", f"Structural layers failed: {names}")
-
-    # Coverage layers (L3, L5) are advisory — they always exit 0 unless
-    # invoked with --strict. Surface their coverage as WARN/PASS qualifier.
-    l3 = next((o for o in outcomes if o.name == "L3_sweep"), None)
-    l5 = next((o for o in outcomes if o.name == "L5_figure_values"), None)
-    issues = []
-    if l3 and l3.summary.get("coverage_percent", 0) < 60:
-        issues.append(f"body coverage {l3.summary.get('coverage_percent')}% < 60%")
-    if l5 and l5.summary.get("coverage_percent", 0) < 50:
-        issues.append(f"figure coverage {l5.summary.get('coverage_percent')}% < 50%")
-
-    if issues:
-        return ("WARN", "; ".join(issues))
-    return ("PASS", "all structural checks clean; coverage above thresholds")
+    return ("PASS", "all structural checks clean (L1+L2+L4); L3+L5 coverage is advisory, see triage JSONs")
 
 
 # ---------------------------------------------------------------------------

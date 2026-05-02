@@ -1,8 +1,8 @@
 # Claim Certificate
 
 **Paper:** The Cost of Cacophony: Geometric Limits on Multi-Constraint Alignment
-**Generated:** 2026-05-02T14:28:27
-**Verdict:** **PASS** — all structural checks clean; coverage above thresholds
+**Generated:** 2026-05-02T14:54:59
+**Verdict:** **PASS** — all structural checks clean (L1+L2+L4); L3+L5 coverage is advisory, see triage JSONs
 
 ## Provenance
 
@@ -17,8 +17,8 @@
 | Layer | Script | Status | Summary |
 |---|---|---|---|
 | L1_audit | `ci\claim_audit.py` | PASS | 97/97 verbatim |
-| L2_validator | `ci\claim_audit_validator.py` | PASS | 13/13 checks pass |
-| L3_sweep | `ci\claim_coverage_sweep.py` | PASS | 66.4% coverage, 507 uncovered |
+| L2_validator | `ci\claim_audit_validator.py` | PASS | 14/14 checks pass |
+| L3_sweep | `ci\claim_coverage_sweep.py` | PASS | 67.7% coverage, 488 uncovered |
 | L4_lineage | `ci\figure_lineage_check.py` | PASS | 7/7 checks pass, 7 figures fresh |
 | L5_figure_values | `ci\figure_value_check.py` | PASS | 58.8% overall figure coverage, 36 uncovered |
 
