@@ -302,6 +302,26 @@ L2's check_data_files_exist will verify the path resolves.
 
 ---
 
+## Optional: pre-commit hook
+
+A pre-commit hook is provided at `ci/hooks/pre-commit`. When installed
+it runs the three structural layers (L1, L2, L4) before each commit
+and blocks the commit if any layer FAILs. Total wall time: <5 seconds.
+
+Install:
+```
+cp ci/hooks/pre-commit .git/hooks/pre-commit
+chmod +x .git/hooks/pre-commit
+```
+
+To bypass once (WIP commit): `git commit --no-verify`.
+
+The advisory layers (L3 sweep, L5 figure values) are skipped to keep
+commits fast. Run the full `python ci/claim_certificate.py` when you
+want the complete picture.
+
+---
+
 ## Known limitations
 
 - **L3 long tail is noise**. ~507 uncovered numerics, but most are

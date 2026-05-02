@@ -2,10 +2,10 @@
   "paper_path": "C:\\src\\NeurIPS\\paper\\main.tex",
   "summary": {
     "total_numeric_tokens": 1525,
-    "covered": 1081,
-    "uncovered_raw": 444,
-    "uncovered_deduped": 440,
-    "coverage_percent": 70.9
+    "covered": 1111,
+    "uncovered_raw": 414,
+    "uncovered_deduped": 410,
+    "coverage_percent": 72.9
   },
   "uncovered": [
     {
@@ -13,24 +13,6 @@
       "value": "0.5",
       "context": "\\\\(b) Worked example, $\\rho{=}0.5$",
       "section": "section: Geometric Setup: Diagonal Cost from $k$ Constraints"
-    },
-    {
-      "line_no": 222,
-      "value": "0",
-      "context": "$\\tau>0$: target decrease, requiring $\\tau \\ge",
-      "section": "subsection: Notation and Model"
-    },
-    {
-      "line_no": 222,
-      "value": "2",
-      "context": "ng $\\tau \\ge \\max\\{2\\sigma, \\beta\\delta^2/2\\}$ (noise $\\sigma$, Lipschitz $\\beta$",
-      "section": "subsection: Notation and Model"
-    },
-    {
-      "line_no": 222,
-      "value": "2",
-      "context": "$\\tau \\ge \\max\\{2\\sigma, \\beta\\delta^2/2\\}$ (noise $\\sigma$, Lipschitz $\\beta$).",
-      "section": "subsection: Notation and Model"
     },
     {
       "line_no": 246,
@@ -42,18 +24,6 @@
       "line_no": 287,
       "value": "0.5",
       "context": "\\begin{example}[Worked: $\\rho=0.5$]\\label{ex:worked}",
-      "section": "subsection: Two-Constraint Bound"
-    },
-    {
-      "line_no": 288,
-      "value": "2.0",
-      "context": "$\\tau = m = 1$: $\\delta_{\\min} = 2.0$ vs.\\ axis-aligned $\\delta = 1$ ($2\\tim",
-      "section": "subsection: Two-Constraint Bound"
-    },
-    {
-      "line_no": 288,
-      "value": "1",
-      "context": "min} = 2.0$ vs.\\ axis-aligned $\\delta = 1$ ($2\\times$ capacity). Figure~\\ref{fig:",
       "section": "subsection: Two-Constraint Bound"
     },
     {
@@ -105,12 +75,6 @@
       "section": "subsection: Extension to $k$ Constraints"
     },
     {
-      "line_no": 310,
-      "value": "0",
-      "context": "At $\\lambda_{\\min}(\\Gamma) \\to 0$: bound diverges (feasibility boundary)",
-      "section": "subsection: Extension to $k$ Constraints"
-    },
-    {
       "line_no": 338,
       "value": "1",
       "context": "$O(k\\tau/m)$ vs.\\ diagonal $O(\\sqrt{k/(1{-}\\rho)}\\cdot\\tau/m)$; see proof in App",
@@ -157,12 +121,6 @@
       "value": "1",
       "context": "Satisfaction patterns $s(x) \\in \\{-1,+1\\}^k$ yield at most $2^k$ regimes.",
       "section": "subsection: Chart-rank lemmas (relocated from body \\S\\ref{sec:setup"
-    },
-    {
-      "line_no": 787,
-      "value": "0,1",
-      "context": "d let $\\mathsf{fail}: \\mathcal{P} \\to \\{0,1\\}$ be operational outcome (verifier pas",
-      "section": "paragraph: Why Zeroth-Order Screening Is Enough (Ordinal Sufficiency)."
     },
     {
       "line_no": 866,
@@ -333,24 +291,6 @@
       "section": "section: Gradient--$\\rho$ Sanity Check"
     },
     {
-      "line_no": 1167,
-      "value": "2,500",
-      "context": "tion} of per-token displacements across 2,500 completions (50 per task $\\times$ 50 ta",
-      "section": "paragraph: Step-Size Distribution (The `Aha!' Question)."
-    },
-    {
-      "line_no": 1167,
-      "value": "50",
-      "context": "displacements across 2,500 completions (50 per task $\\times$ 50 tasks).",
-      "section": "paragraph: Step-Size Distribution (The `Aha!' Question)."
-    },
-    {
-      "line_no": 1167,
-      "value": "50",
-      "context": "2,500 completions (50 per task $\\times$ 50 tasks).",
-      "section": "paragraph: Step-Size Distribution (The `Aha!' Question)."
-    },
-    {
       "line_no": 1200,
       "value": "1",
       "context": "gress on constraint $C_j$ at stage $t{+}1$ does not regress constraint $C_i$ sati",
@@ -399,12 +339,6 @@
       "section": "paragraph: Assumptions."
     },
     {
-      "line_no": 1305,
-      "value": "004",
-      "context": "As shown in \\citet[Sec.~2.2]{boyd2004convex}, $\\mathcal{C}$ is nonempty iff f",
-      "section": "subsection: Convex Feasibility and Projection Geometry"
-    },
-    {
       "line_no": 1314,
       "value": "004",
       "context": "\\citep[Thm.~2.1]{boyd2004convex}.",
@@ -450,18 +384,6 @@
       "line_no": 1325,
       "value": "0",
       "context": "substituting $c = -\\rho$ where $\\rho > 0$ is the conflict magnitude yields the m",
-      "section": "subsection: Convex Feasibility and Projection Geometry"
-    },
-    {
-      "line_no": 1329,
-      "value": "4",
-      "context": "ity problem is a convex QP \\citep[Chap.~4]{boyd2004convex}. The Lagrangian is:",
-      "section": "subsection: Convex Feasibility and Projection Geometry"
-    },
-    {
-      "line_no": 1329,
-      "value": "004",
-      "context": "lem is a convex QP \\citep[Chap.~4]{boyd2004convex}. The Lagrangian is:",
       "section": "subsection: Convex Feasibility and Projection Geometry"
     },
     {
@@ -1032,12 +954,6 @@
       "line_no": 1553,
       "value": "1",
       "context": "u^2 \\mathbf{1}^\\top \\Gamma^{-1} \\mathbf{1}$ by the derivation in Theorem~\\ref{thm",
-      "section": "subsection: Connection to Pareto Optimality"
-    },
-    {
-      "line_no": 1559,
-      "value": "1",
-      "context": "ment magnitude $\\Omega(\\epsilon / \\sqrt{1-\\rho_{\\max}})$ when $\\rho_{\\max}$ is cl",
       "section": "subsection: Connection to Pareto Optimality"
     },
     {
@@ -1743,18 +1659,6 @@
       "section": "subsection: Bounded Curvature and Local Linearity"
     },
     {
-      "line_no": 1846,
-      "value": "2",
-      "context": "ngle\\nabla r_i(z),\\Delta\\rangle| \\le (K/2)\\|\\Delta\\|^2$ (standard; see \\citet{nes",
-      "section": "subsection: Bounded Curvature and Local Linearity"
-    },
-    {
-      "line_no": 1846,
-      "value": "2",
-      "context": "i(z),\\Delta\\rangle| \\le (K/2)\\|\\Delta\\|^2$ (standard; see \\citet{nesterov2018lect",
-      "section": "subsection: Bounded Curvature and Local Linearity"
-    },
-    {
       "line_no": 1856,
       "value": "0",
       "context": "$z^{(0)}=z$, $z^{(s+1)} = z^{(s)} + \\Delta^{(s",
@@ -1833,45 +1737,9 @@
       "section": "subsection: Curvature Cannot Remove the Boundary at Small Budgets"
     },
     {
-      "line_no": 1930,
-      "value": "1.0",
-      "context": "Resolution threshold $\\tau$ & 1.0 & Def.~\\ref{def:resolution} \\\\",
-      "section": "subsection: Complete Hyperparameter Specification"
-    },
-    {
       "line_no": 1931,
       "value": "1.0",
       "context": "Gradient norm $m$ & 1.0 & Cor.~\\ref{cor:uniform} \\\\",
-      "section": "subsection: Complete Hyperparameter Specification"
-    },
-    {
-      "line_no": 1932,
-      "value": "0.0",
-      "context": "Conflict range $\\rho$ & $\\{0.0, 0.3, 0.5, 0.7, 0.9\\}$ & Tab.~\\ref{tab:",
-      "section": "subsection: Complete Hyperparameter Specification"
-    },
-    {
-      "line_no": 1932,
-      "value": "0.3",
-      "context": "Conflict range $\\rho$ & $\\{0.0, 0.3, 0.5, 0.7, 0.9\\}$ & Tab.~\\ref{tab:feasi",
-      "section": "subsection: Complete Hyperparameter Specification"
-    },
-    {
-      "line_no": 1932,
-      "value": "0.5",
-      "context": "Conflict range $\\rho$ & $\\{0.0, 0.3, 0.5, 0.7, 0.9\\}$ & Tab.~\\ref{tab:feasibilit",
-      "section": "subsection: Complete Hyperparameter Specification"
-    },
-    {
-      "line_no": 1932,
-      "value": "0.7",
-      "context": "nflict range $\\rho$ & $\\{0.0, 0.3, 0.5, 0.7, 0.9\\}$ & Tab.~\\ref{tab:feasibility} \\\\",
-      "section": "subsection: Complete Hyperparameter Specification"
-    },
-    {
-      "line_no": 1932,
-      "value": "0.9",
-      "context": "t range $\\rho$ & $\\{0.0, 0.3, 0.5, 0.7, 0.9\\}$ & Tab.~\\ref{tab:feasibility} \\\\",
       "section": "subsection: Complete Hyperparameter Specification"
     },
     {
@@ -1944,12 +1812,6 @@
       "line_no": 1943,
       "value": "20",
       "context": "erance & $\\pm$12 BPM & \\texttt{rhythm\\_120bpm} \\\\",
-      "section": "subsection: Complete Hyperparameter Specification"
-    },
-    {
-      "line_no": 1944,
-      "value": "0.25",
-      "context": "Flatness threshold & $>$0.25 & \\texttt{high\\_flatness} \\\\",
       "section": "subsection: Complete Hyperparameter Specification"
     },
     {
@@ -2127,36 +1989,6 @@
       "section": "subsection: Protocol Selection Policy"
     },
     {
-      "line_no": 2109,
-      "value": "0",
-      "context": "ref{tab:calibration}: staging $\\Delta > 0$ when $\\hat{\\rho} \\in [0.2, 0.5]$ and $",
-      "section": "subsection: Protocol Selection Policy"
-    },
-    {
-      "line_no": 2109,
-      "value": "0.2",
-      "context": "ging $\\Delta > 0$ when $\\hat{\\rho} \\in [0.2, 0.5]$ and $\\delta/\\delta_{\\min} \\in [1",
-      "section": "subsection: Protocol Selection Policy"
-    },
-    {
-      "line_no": 2109,
-      "value": "0.5",
-      "context": "$\\Delta > 0$ when $\\hat{\\rho} \\in [0.2, 0.5]$ and $\\delta/\\delta_{\\min} \\in [1.5, 3",
-      "section": "subsection: Protocol Selection Policy"
-    },
-    {
-      "line_no": 2109,
-      "value": "1.5",
-      "context": "2, 0.5]$ and $\\delta/\\delta_{\\min} \\in [1.5, 3.0]$.",
-      "section": "subsection: Protocol Selection Policy"
-    },
-    {
-      "line_no": 2109,
-      "value": "3.0",
-      "context": "5]$ and $\\delta/\\delta_{\\min} \\in [1.5, 3.0]$.",
-      "section": "subsection: Protocol Selection Policy"
-    },
-    {
       "line_no": 2117,
       "value": "10",
       "context": "\\item Generate 10--20 positive/negative examples via prom",
@@ -2277,12 +2109,6 @@
       "section": "subsection: Reproducible Implementation"
     },
     {
-      "line_no": 2249,
-      "value": "0.5",
-      "context": "er the critical threshold $\\rho \\approx 0.5$",
-      "section": "subsection: Reproducible Implementation"
-    },
-    {
       "line_no": 2265,
       "value": "0",
       "context": "Helpful & C & 0 & Root (tonic) \\\\",
@@ -2335,12 +2161,6 @@
       "value": "7",
       "context": "leftrightarrow$ Autonomy}: Perfect 5th (7 semitones) --- \\emph{consonant}",
       "section": "paragraph: The Mapping."
-    },
-    {
-      "line_no": 2309,
-      "value": "50",
-      "context": "\\item \\path{conflict_R_0.50.wav}: Noticeable beating (feasibility c",
-      "section": "paragraph: Listening Guide."
     },
     {
       "line_no": 2310,

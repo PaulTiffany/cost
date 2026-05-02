@@ -2,9 +2,9 @@
   "summary": {
     "figures_checked": 6,
     "total_numerics": 199,
-    "total_covered": 120,
-    "total_uncovered": 34,
-    "coverage_percent": 60.3
+    "total_covered": 150,
+    "total_uncovered": 25,
+    "coverage_percent": 75.4
   },
   "figures": [
     {
@@ -27,15 +27,11 @@
       "asset_path": "paper\\figures\\gram_eigendecomposition.pdf",
       "pdftotext_chars": 7068,
       "raw_numerics": 67,
-      "filtered_numerics": 67,
-      "covered": 14,
-      "uncovered_count": 17,
+      "filtered_numerics": 41,
+      "covered": 39,
+      "uncovered_count": 13,
       "uncovered_values": [
         "0",
-        "1",
-        "2",
-        "3",
-        "4",
         "5",
         "6",
         "8",
@@ -94,16 +90,10 @@
       "asset_path": "paper\\figures\\soft_constraint_cliff.pdf",
       "pdftotext_chars": 379,
       "raw_numerics": 5,
-      "filtered_numerics": 5,
-      "covered": 0,
-      "uncovered_count": 5,
-      "uncovered_values": [
-        "1",
-        "2",
-        "3",
-        "4",
-        "5"
-      ]
+      "filtered_numerics": 0,
+      "covered": 5,
+      "uncovered_count": 0,
+      "uncovered_values": []
     }
   ]
 }

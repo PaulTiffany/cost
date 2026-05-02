@@ -1,7 +1,7 @@
 # Claim Certificate
 
 **Paper:** The Cost of Cacophony: Geometric Limits on Multi-Constraint Alignment
-**Generated:** 2026-05-02T15:01:31
+**Generated:** 2026-05-02T15:05:18
 **Verdict:** **PASS** — all structural checks clean (L1+L2+L4); L3+L5 coverage is advisory, see triage JSONs
 
 ## Provenance
@@ -18,20 +18,20 @@
 |---|---|---|---|
 | L1_audit | `ci\claim_audit.py` | PASS | 97/97 verbatim |
 | L2_validator | `ci\claim_audit_validator.py` | PASS | 14/14 checks pass |
-| L3_sweep | `ci\claim_coverage_sweep.py` | PASS | 70.9% coverage, 440 uncovered |
+| L3_sweep | `ci\claim_coverage_sweep.py` | PASS | 72.9% coverage, 410 uncovered |
 | L4_lineage | `ci\figure_lineage_check.py` | PASS | 8/8 checks pass, 7 figures fresh |
-| L5_figure_values | `ci\figure_value_check.py` | PASS | 60.3% overall figure coverage, 34 uncovered |
+| L5_figure_values | `ci\figure_value_check.py` | PASS | 75.4% overall figure coverage, 25 uncovered |
 
 ### Per-figure coverage (L5)
 
 | Figure | Coverage | Uncovered |
 |---|---|---|
 | algorithm1_storyboard.pdf | 18.2% | 4 |
-| gram_eigendecomposition.pdf | 20.9% | 17 |
+| gram_eigendecomposition.pdf | 58.2% | 13 |
 | per_task_correlation.pdf | 80.6% | 8 |
 | constrained_decoding.pdf | 100.0% | 0 |
 | cross_model_cliff.pdf | 100.0% | 0 |
-| soft_constraint_cliff.pdf | 0.0% | 5 |
+| soft_constraint_cliff.pdf | 100.0% | 0 |
 
 ## Triage Pointers
 

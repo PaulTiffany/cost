@@ -87,6 +87,73 @@ def is_axis_tick_decimal(v: str) -> bool:
     return frac in {"0", "2", "4", "5", "6", "8"}
 
 
+def _to_float(v: str) -> float | None:
+    try:
+        return float(v.replace(",", ""))
+    except (ValueError, TypeError):
+        return None
+
+
+def detect_arithmetic_progression_values(values: list[str], min_length: int = 4) -> set[str]:
+    """Return the set of values that participate in an arithmetic
+    progression of length >= min_length.
+
+    Used to filter axis-tick sequences in figures: if a figure
+    extracts values that include 0, 5, 10, 15, 20, 25, 30, those
+    seven values are almost certainly y-axis tick labels, not
+    empirical claims.
+
+    Algorithm:
+      1. Convert each value to float (skip non-numeric).
+      2. Sort unique floats.
+      3. Find the longest arithmetic-progression subset.
+      4. If it has >= min_length elements with constant step,
+         flag all those values as axis-tick.
+
+    Conservative: requires the step to be uniform across at least
+    min_length consecutive values, so two unrelated numerics that
+    happen to be evenly spaced won't get filtered.
+    """
+    floats: dict[float, str] = {}
+    for v in values:
+        f = _to_float(v)
+        if f is None:
+            continue
+        # Keep first string repr per value
+        floats.setdefault(f, v)
+    if len(floats) < min_length:
+        return set()
+
+    sorted_floats = sorted(floats.keys())
+    n = len(sorted_floats)
+    in_progression: set[float] = set()
+
+    # Find runs of constant-step values
+    i = 0
+    while i < n - 1:
+        step = sorted_floats[i + 1] - sorted_floats[i]
+        if step <= 0:
+            i += 1
+            continue
+        run_start = i
+        run_end = i + 1
+        while run_end + 1 < n:
+            next_step = sorted_floats[run_end + 1] - sorted_floats[run_end]
+            # Use relative tolerance to handle float fuzz
+            if abs(next_step - step) <= max(1e-9, abs(step) * 1e-6):
+                run_end += 1
+            else:
+                break
+        run_length = run_end - run_start + 1
+        if run_length >= min_length:
+            for j in range(run_start, run_end + 1):
+                in_progression.add(sorted_floats[j])
+        i = run_end + 1 if run_length >= 2 else i + 1
+
+    # Map back to string representations
+    return {floats[f] for f in in_progression}
+
+
 @dataclass
 class FigureReport:
     name: str
@@ -190,9 +257,20 @@ def check_figure(name: str, asset: Path, claim_patterns: list[re.Pattern]) -> Fi
     text = run_pdftotext(asset)
     raw_numerics = extract_numerics_from_text(text)
 
+    # Detect arithmetic-progression sequences in this figure's value set.
+    # Values participating in an AP of length >= 4 are almost certainly
+    # axis ticks, not empirical claims.
+    all_values = [v for v, _ in raw_numerics]
+    ap_values = detect_arithmetic_progression_values(all_values, min_length=4)
+
     covered_count = 0
+    ap_filtered_count = 0
     uncovered: dict[str, str] = {}  # value -> example context (one per unique value)
     for value, ctx in raw_numerics:
+        if value in ap_values:
+            ap_filtered_count += 1
+            covered_count += 1  # treat AP values as "covered" (they're axis ticks)
+            continue
         if is_covered_by_claims(value, ctx, claim_patterns):
             covered_count += 1
         else:
@@ -204,7 +282,7 @@ def check_figure(name: str, asset: Path, claim_patterns: list[re.Pattern]) -> Fi
         asset_path=str(asset.relative_to(REPO_ROOT) if asset.is_relative_to(REPO_ROOT) else asset),
         pdftotext_chars=len(text),
         raw_numerics=len(raw_numerics),
-        filtered_numerics=len(raw_numerics),  # is_figure_incidental was applied during extraction
+        filtered_numerics=len(raw_numerics) - ap_filtered_count,
         covered=covered_count,
         uncovered_values=sorted(uncovered.keys(), key=lambda v: (len(v), v)),
     )

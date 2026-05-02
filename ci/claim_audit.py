@@ -131,20 +131,25 @@ CLAIMS: list[dict] = [
     },
     {
         "id": "C9",
-        "description": r"89% smooth, 11% pivot regime (Section 1)",
+        "description": r"89% smooth, 11% pivot regime (joint with 'pivot' or 'Lipschitz' anchor)",
         "patterns": [
             r"89\s*\\?%",
             r"11\s*\\?%",
+            r"pivot|[Ll]ipschitz",
         ],
-        "weak_ok": True,  # bare percentages; relies on joint-context match_mode below
+        "match_mode": "joint",
+        "match_window": 5,
     },
     {
         "id": "C10",
-        "description": r"94% router agreement across encoders (Table 6)",
+        "description": r"94% router agreement across encoders (joint with 'router' + 'agree')",
         "patterns": [
             r"94\s*\\?%",
+            r"router",
+            r"agree",
         ],
-        "weak_ok": True,  # single bare percent; weak alone, anchored by table context
+        "match_mode": "joint",
+        "match_window": 5,
     },
     {
         "id": "C11",
@@ -155,12 +160,14 @@ CLAIMS: list[dict] = [
     },
     {
         "id": "C12",
-        "description": r"93% to 3% feasibility decay (k=2 to k=10) (Appendix V)",
+        "description": r"93% to 3% feasibility decay (joint with 'feasibility' anchor)",
         "patterns": [
             r"93\s*\\?%",
             r"3\s*\\?%",
+            r"[Ff]easibility|[Cc]harit",
         ],
-        "weak_ok": True,  # bare percentages; could co-occur in any other context
+        "match_mode": "joint",
+        "match_window": 5,
     },
     {
         "id": "C13",
@@ -187,12 +194,14 @@ CLAIMS: list[dict] = [
     },
     {
         "id": "C16",
-        "description": r">=91% threshold robustness (+/-20%) (Table 7)",
+        "description": r">=91% threshold robustness (+/-20%) (joint with 'threshold' anchor)",
         "patterns": [
             r"91\s*\\?%",
             r"20\s*\\?%",
+            r"[Tt]hreshold",
         ],
-        "weak_ok": True,  # bare percentages
+        "match_mode": "joint",
+        "match_window": 5,
     },
     {
         "id": "C17",

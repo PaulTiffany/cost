@@ -1,0 +1,60 @@
+#!/bin/sh
+# Pre-commit hook: run the claim certificate's structural layers
+# before allowing a commit to land. Catches regressions in main.tex
+# or the registry that would FAIL the certificate.
+#
+# Install with:
+#   cp ci/hooks/pre-commit .git/hooks/pre-commit
+#   chmod +x .git/hooks/pre-commit
+#
+# To bypass once (e.g. WIP commit): git commit --no-verify
+#
+# What runs: only the structural layers (L1, L2, L4) — these are
+# fast (<5 sec total) and gate the certificate verdict. L3 (body
+# sweep) and L5 (figure values) are advisory and skipped here to
+# keep commits fast; run `python ci/claim_certificate.py` for the
+# full picture.
+
+set -e
+
+REPO_ROOT="$(git rev-parse --show-toplevel)"
+cd "$REPO_ROOT"
+
+echo "=== pre-commit: claim certificate structural layers ==="
+
+failed=0
+
+if ! python ci/claim_audit.py --tier all > /tmp/claim_audit.out 2>&1; then
+    echo "[FAIL] L1 audit (claim_audit.py --tier all)"
+    tail -10 /tmp/claim_audit.out
+    failed=1
+else
+    echo "[OK]   L1 audit"
+fi
+
+if ! python ci/claim_audit_validator.py > /tmp/claim_validator.out 2>&1; then
+    echo "[FAIL] L2 validator (claim_audit_validator.py)"
+    tail -10 /tmp/claim_validator.out
+    failed=1
+else
+    echo "[OK]   L2 validator"
+fi
+
+if ! python ci/figure_lineage_check.py > /tmp/figure_lineage.out 2>&1; then
+    echo "[FAIL] L4 figure lineage (figure_lineage_check.py)"
+    tail -10 /tmp/figure_lineage.out
+    failed=1
+else
+    echo "[OK]   L4 figure lineage"
+fi
+
+if [ $failed -ne 0 ]; then
+    echo ""
+    echo "Pre-commit blocked: a structural layer failed."
+    echo "Fix the issue above, or bypass once with: git commit --no-verify"
+    echo "Run 'python ci/claim_certificate.py' for the full diagnosis."
+    exit 1
+fi
+
+echo "All structural layers PASS. Commit proceeding."
+exit 0

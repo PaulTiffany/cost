@@ -695,7 +695,7 @@
     },
     {
       "claim_id": "C9",
-      "paper_text_signature": "89% smooth, 11% pivot regime (Section 1)",
+      "paper_text_signature": "89% smooth, 11% pivot regime (joint with 'pivot' or 'Lipschitz' anchor)",
       "found": "OK",
       "locations": [
         {
@@ -775,13 +775,154 @@
               "snippet": "\\textbf{Findings:} 95th percentile $\\|x_{t+1} - x_t\\| = 0.041$; 99th percentile $= 0.067$; maximum observed $= 0.12$. Semantic jumps ($>3\\sigma$) occur in 2...."
             }
           ]
+        },
+        {
+          "pattern": "pivot|[Ll]ipschitz",
+          "hits": [
+            {
+              "line": 73,
+              "snippet": "Results: across four domains (code, JSON, optimization, signal), when the bound predicts infeasibility, one-shot fails (0/4,800 trials). The 11\\% pivot regim..."
+            },
+            {
+              "line": 80,
+              "snippet": "\\textbf{Approach.} We prove that the minimum displacement to satisfy $k$ constraints simultaneously scales as $\\delta_{\\min} \\propto \\sqrt{k/(1{-}\\rho(k{-}1)..."
+            },
+            {
+              "line": 120,
+              "snippet": "(2)~\\textbf{Displacement Contract:} Empirically calibrated token-to-displacement interface; Table~\\ref{tab:lipschitz_calibration} shows stable calibration ac..."
+            },
+            {
+              "line": 199,
+              "snippet": "Notation and key terms (step budget $\\delta$, conflict $\\rho$, regime index $\\hat{\\rho}$, displacement contract, feasibility cliff, smooth/pivot regimes) are..."
+            },
+            {
+              "line": 219,
+              "snippet": "\\noindent\\textbf{Model$\\to$LM.} For LLMs, $\\delta$ maps to token budget (query complexity): Lipschitz velocity bounds displacement by token count. Regime ord..."
+            },
+            {
+              "line": 222,
+              "snippet": "$\\tau>0$: target decrease, requiring $\\tau \\ge \\max\\{2\\sigma, \\beta\\delta^2/2\\}$ (noise $\\sigma$, Lipschitz $\\beta$)."
+            },
+            {
+              "line": 243,
+              "snippet": "Bounds are single-step. Generation is multi-step. Assume per-token $L$-Lipschitz:"
+            },
+            {
+              "line": 255,
+              "snippet": "\\textbf{Interface Assumption (text-in, text-out, frozen encoder, deterministic verifier; High-Probability Lipschitz):} With probability $1{-}\\varepsilon$ ($\\..."
+            },
+            {
+              "line": 259,
+              "snippet": "\\noindent \\textbf{Validation.} Table~\\ref{tab:lipschitz_calibration} shows $\\hat{L} \\in [0.019, 0.031]$ across 4 model families, stable across decoding strat..."
+            },
+            {
+              "line": 263,
+              "snippet": "Lemma~\\ref{lem:traj_infeasible} bounds one-shot control; staging exploits trajectory degrees of freedom under the same per-token contract (Section~\\ref{sec:s..."
+            },
+            {
+              "line": 270,
+              "snippet": "Direction stability: 94\\% of trajectories show $\\hat{\\rho}$ drift ${<}0.15$ (Appendix~\\ref{app:direction_stability}). Lipschitz calibration is stable across ..."
+            },
+            {
+              "line": 396,
+              "snippet": "At high $\\hat{\\rho}$, \\emph{all protocols} collapse to $\\leq$5\\% \\emph{on smooth-regime trials}. This is the bound in action, not a failure of staging; front..."
+            },
+            {
+              "line": 399,
+              "snippet": "Table~\\ref{tab:calibration} shows failure scales with $\\hat{\\rho}$ (24\\% $\\to$ 98\\%), $r_s = 1.0$ with $p < 0.001$ (formal screening condition: Lemma~\\ref{le..."
+            },
+            {
+              "line": 509,
+              "snippet": "\\noindent\\textbf{Falsification criterion.} Sustained one-shot success ($>$10\\%) in the predicted-infeasible region ($\\delta_{\\min} > LT$) without pivot signa..."
+            },
+            {
+              "line": 536,
+              "snippet": "Multi-constraint LLM behavior exhibits sharp regime structure: feasibility cliffs, not capability gradients. Three contributions: (1)~Diagonal Cost Bound (Th..."
+            },
+            {
+              "line": 682,
+              "snippet": "\\textrm{Pivot regime} & --- & 11\\% violating Lipschitz; detected mid-generation \\\\"
+            },
+            {
+              "line": 850,
+              "snippet": "Let $\\mathcal{V}_t \\subseteq \\mathcal{V}$ be the token set permitted by a constrained decoder at step~$t$ (e.g., grammar mask, schema filter). Define the con..."
+            },
+            {
+              "line": 1099,
+              "snippet": "\\section{Direction Stability Diagnostic}\\label{app:direction_stability}\\hypertarget{lim:pivot}{}"
+            },
+            {
+              "line": 1110,
+              "snippet": "Direction stability validates the local-to-global transfer assumed in Lemma~\\ref{lem:traj_infeasible}: the MOO bound computed at the anchor applies along rea..."
+            },
+            {
+              "line": 1113,
+              "snippet": "Across 480 high-tier trials (4 models $\\times$ 12 tasks $\\times$ 2 protocols $\\times$ N=5), unconditional success is $1.7\\%$ (8/480). The paper's headline 0/..."
+            },
+            {
+              "line": 1118,
+              "snippet": "\\caption{Per-tier success decomposition (code constraint benchmark, $N{=}480$ per tier, 4 models $\\times$ 2 protocols). Smooth-regime size from $1{-}\\hat{p}_..."
+            },
+            {
+              "line": 1119,
+              "snippet": "\\label{tab:tier_pivot_decomposition}"
+            },
+            {
+              "line": 1132,
+              "snippet": "\\section{Lipschitz Calibration}\\label{app:lipschitz_calibration}\\hypertarget{lim:linear}{}"
+            },
+            {
+              "line": 1139,
+              "snippet": "\\caption{Token$\\to$norm calibration ($\\pm$ standard deviation across $N{=}50$ completions). $\\hat{L}$: per-token displacement. Tightness: \\% within 12\\% of $..."
+            },
+            {
+              "line": 1140,
+              "snippet": "\\label{tab:lipschitz_calibration}"
+            },
+            {
+              "line": 1163,
+              "snippet": "\\item \\textbf{Tightness:} The bound $\\|x_T - x_0\\| \\le LT$ is tight within 12\\% for 89\\% of completions. Outliers (11\\%) correspond to semantic pivots where ..."
+            },
+            {
+              "line": 1167,
+              "snippet": "A single token like ``not'' can invert semantic meaning. Does this invalidate the Lipschitz bound? \\textbf{No: the bound is on embeddings, not tokens.} Token..."
+            },
+            {
+              "line": 1168,
+              "snippet": "\\textbf{Findings:} 95th percentile $\\|x_{t+1} - x_t\\| = 0.041$; 99th percentile $= 0.067$; maximum observed $= 0.12$. Semantic jumps ($>3\\sigma$) occur in 2...."
+            },
+            {
+              "line": 1273,
+              "snippet": "This matches classical Lipschitz gradient assumptions"
+            },
+            {
+              "line": 1836,
+              "snippet": "Each $r_i$ has $K_i$-Lipschitz gradient: $\\|\\nabla r_i(z+\\Delta)-\\nabla r_i(z)\\| \\le K_i\\|\\Delta\\|$. Let $K:=\\max_i K_i$."
+            },
+            {
+              "line": 1846,
+              "snippet": "Taylor expansion with Lipschitz gradient: $|r_i(z+\\Delta) - r_i(z) - \\langle\\nabla r_i(z),\\Delta\\rangle| \\le (K/2)\\|\\Delta\\|^2$ (standard; see \\citet{nestero..."
+            },
+            {
+              "line": 1889,
+              "snippet": "If $\\delta_{\\min} > LT$ and a completion nevertheless satisfies all constraints under deterministic verification, then at least one of the following must hol..."
+            },
+            {
+              "line": 1908,
+              "snippet": "In LM experiments, $\\delta$ maps to \\emph{token budget} via a kinematic argument. The response artifact is an integral: $x = x_0 + \\int_0^T v(t)\\,dt$ where $..."
+            },
+            {
+              "line": 2010,
+              "snippet": "Hard-negative and conflicting have indistinguishable $\\hat{\\rho}$ ($0.50$ vs $0.52$) yet opposite outcomes (100\\% vs 0\\%). This falsifies ``high $\\hat{\\rho}$..."
+            }
+          ]
         }
       ],
-      "notes": "All 2 signature patterns matched."
+      "notes": "All 3 patterns co-occur within 5-line window (anchor line ~71)."
     },
     {
       "claim_id": "C10",
-      "paper_text_signature": "94% router agreement across encoders (Table 6)",
+      "paper_text_signature": "94% router agreement across encoders (joint with 'router' + 'agree')",
       "found": "OK",
       "locations": [
         {
@@ -832,9 +973,99 @@
               "snippet": "$-30\\%$ (conservative) & 94\\% & $+1\\%$ & More staging \\\\"
             }
           ]
+        },
+        {
+          "pattern": "router",
+          "hits": [
+            {
+              "line": 122,
+              "snippet": "(4)~\\textbf{Regime Index:} $\\hat{\\rho}$ orders failure regimes ($r_s{=}1.0$; 94\\% router agreement), enabling fail-safe routing (Figure~\\ref{fig:feasibility_..."
+            },
+            {
+              "line": 273,
+              "snippet": "High $\\hat\\rho$ and $LT < \\widehat{\\delta}_{\\min}$ predict an under-budgeted one-shot attempt; the router stages or decomposes."
+            },
+            {
+              "line": 331,
+              "snippet": "The bound diverges as $\\rho \\to 1$ with critical threshold $\\rho_c = 1 - 2\\tau^2/(m^2\\delta^2)$ marking the regime beyond which no budget suffices (Propositi..."
+            },
+            {
+              "line": 723,
+              "snippet": "Table~\\ref{tab:encoder_sensitivity} shows routing and outcome stability across encoders. While $\\hat{\\rho}$ absolute values vary ($\\pm$0.08), \\emph{regime or..."
+            },
+            {
+              "line": 762,
+              "snippet": "Table~\\ref{tab:threshold_sensitivity} shows router decision stability under $\\pm$20\\% perturbation of the routing thresholds ($\\hat{\\rho}$ cutoffs at 0.15 an..."
+            },
+            {
+              "line": 798,
+              "snippet": "We compare our geometry-informed router against standard multi-constraint strategies on the code constraint benchmark (High tier, $\\hat{\\rho} \\approx 0.65$, ..."
+            },
+            {
+              "line": 813,
+              "snippet": "\\textbf{Geometric router} & \\textbf{18\\%} & \\textbf{384} & $\\mathbf{0.67\\times}$ \\\\"
+            },
+            {
+              "line": 820,
+              "snippet": "\\paragraph{Key findings.} (1)~Best-of-N sampling (parallel) cannot escape the diagonal cost: resampling explores the same infeasible region (wasted query bud..."
+            },
+            {
+              "line": 871,
+              "snippet": "\\noindent Our router is \\emph{complementary}: it decides pre-generation whether one-shot enforcement (constrained or not) is geometrically feasible. Constrai..."
+            },
+            {
+              "line": 890,
+              "snippet": "\\item \\textbf{Constraint extraction aligns agent and judge.} The router requires shared $k$: what the model attempts to satisfy must match what the verifier ..."
+            },
+            {
+              "line": 1193,
+              "snippet": "\\noindent The key finding: $\\hat{L}$ mis-estimation is \\textbf{fail-safe in one direction}. Underestimating $\\hat{L}$ (believing tokens move less than they d..."
+            },
+            {
+              "line": 1797,
+              "snippet": "\\textbf{Geometric router} & \\textbf{18\\%} & \\textbf{384} & $\\mathbf{-3\\%}$ \\\\"
+            }
+          ]
+        },
+        {
+          "pattern": "agree",
+          "hits": [
+            {
+              "line": 122,
+              "snippet": "(4)~\\textbf{Regime Index:} $\\hat{\\rho}$ orders failure regimes ($r_s{=}1.0$; 94\\% router agreement), enabling fail-safe routing (Figure~\\ref{fig:feasibility_..."
+            },
+            {
+              "line": 288,
+              "snippet": "$\\tau = m = 1$: $\\delta_{\\min} = 2.0$ vs.\\ axis-aligned $\\delta = 1$ ($2\\times$ capacity). Figure~\\ref{fig:worked_geometry} shows exact numerical agreement."
+            },
+            {
+              "line": 393,
+              "snippet": "\\noindent\\textbf{Routing Policy (Corollary of Theorem~\\ref{thm:staging}):} \\emph{One-shot} if $\\hat{\\rho} < 0.15$ or $\\delta/\\delta_{\\min} \\gg 1$; \\emph{Stag..."
+            },
+            {
+              "line": 619,
+              "snippet": "The regime boundary is robust, not an artifact of calibration or encoder choice. Table~\\ref{tab:robustness_stress} shows prompt perturbations (paraphrase, re..."
+            },
+            {
+              "line": 723,
+              "snippet": "Table~\\ref{tab:encoder_sensitivity} shows routing and outcome stability across encoders. While $\\hat{\\rho}$ absolute values vary ($\\pm$0.08), \\emph{regime or..."
+            },
+            {
+              "line": 728,
+              "snippet": "\\caption{Encoder sensitivity. Router/Outcome = agreement with MiniLM baseline. Regime ordering preserved (Kendall $\\tau = 1.0$).}"
+            },
+            {
+              "line": 762,
+              "snippet": "Table~\\ref{tab:threshold_sensitivity} shows router decision stability under $\\pm$20\\% perturbation of the routing thresholds ($\\hat{\\rho}$ cutoffs at 0.15 an..."
+            },
+            {
+              "line": 829,
+              "snippet": "\\caption{Transfer test. Thresholds calibrated on code transfer to other domains with $\\le$3.1\\% regret vs.\\ domain-specific tuning. Router agreement = decisi..."
+            }
+          ]
         }
       ],
-      "notes": "All 1 signature patterns matched."
+      "notes": "All 3 patterns co-occur within 5-line window (anchor line ~120)."
     },
     {
       "claim_id": "C11",
@@ -859,7 +1090,7 @@
     },
     {
       "claim_id": "C12",
-      "paper_text_signature": "93% to 3% feasibility decay (k=2 to k=10) (Appendix V)",
+      "paper_text_signature": "93% to 3% feasibility decay (joint with 'feasibility' anchor)",
       "found": "OK",
       "locations": [
         {
@@ -979,9 +1210,282 @@
               "snippet": "\\noindent At $k{=}2$, 93\\% of charitable constraint pairs are jointly feasible. By $k{=}10$, only 3\\% remain feasible: a 30$\\times$ reduction despite \\emph{n..."
             }
           ]
+        },
+        {
+          "pattern": "[Ff]easibility|[Cc]harit",
+          "hits": [
+            {
+              "line": 70,
+              "snippet": "Our approach: multi-constraint behavior exhibits sharp transitions between feasible and infeasible (`feasibility cliffs'), not gradual capability degradation."
+            },
+            {
+              "line": 73,
+              "snippet": "Results: across four domains (code, JSON, optimization, signal), when the bound predicts infeasibility, one-shot fails (0/4,800 trials). The 11\\% pivot regim..."
+            },
+            {
+              "line": 78,
+              "snippet": "Large language models (LLMs) can satisfy individual constraints (safety, helpfulness, format compliance) but performance can collapse when several constraint..."
+            },
+            {
+              "line": 80,
+              "snippet": "\\textbf{Approach.} We prove that the minimum displacement to satisfy $k$ constraints simultaneously scales as $\\delta_{\\min} \\propto \\sqrt{k/(1{-}\\rho(k{-}1)..."
+            },
+            {
+              "line": 87,
+              "snippet": "diverging as $\\rho \\to 1$ (Corollary~\\ref{cor:uniform}). The operational cliff appears when budget $LT$ (Definition~\\ref{def:budget}) falls below $\\delta_{\\m..."
+            },
+            {
+              "line": 116,
+              "snippet": "\\noindent $\\hat{\\rho}$ is a conservative screen: false positives over-stage (token cost), not fail. Thresholds from feasibility geometry \\citep{fliege2000ste..."
+            },
+            {
+              "line": 122,
+              "snippet": "(4)~\\textbf{Regime Index:} $\\hat{\\rho}$ orders failure regimes ($r_s{=}1.0$; 94\\% router agreement), enabling fail-safe routing (Figure~\\ref{fig:feasibility_..."
+            },
+            {
+              "line": 199,
+              "snippet": "Notation and key terms (step budget $\\delta$, conflict $\\rho$, regime index $\\hat{\\rho}$, displacement contract, feasibility cliff, smooth/pivot regimes) are..."
+            },
+            {
+              "line": 226,
+              "snippet": "$c_{ij} := \\ip{u_i}{u_j}$ (unit gradients). Constraints are $\\rho$-coupled if $c_{ij} \\le -\\rho$. Conflict magnitude $\\rho_{ij} := -c_{ij} \\in (0,1]$; theore..."
+            },
+            {
+              "line": 230,
+              "snippet": "\\emph{Conflict} ($\\rho$): Hilbert (inner products; Appendix~\\ref{app:charity}). \\emph{Cost} ($\\delta$): Banach (norms; Table~\\ref{tab:overhead}). Composition..."
+            },
+            {
+              "line": 249,
+              "snippet": "\\begin{lemma}[Trajectory Infeasibility]\\label{lem:traj_infeasible}"
+            },
+            {
+              "line": 266,
+              "snippet": "$\\hat\\rho$, a screening statistic for regime structure (not a conflict verdict), is the appropriate abstraction for control (Appendix~\\ref{app:high_k_opus})...."
+            },
+            {
+              "line": 310,
+              "snippet": "At $\\lambda_{\\min}(\\Gamma) \\to 0$: bound diverges (feasibility boundary); see proof in Appendix~\\ref{app:proofs}."
+            },
+            {
+              "line": 368,
+              "snippet": "Open-weight models (Qwen, DeepSeek, TinyLlama), deterministic verifiers, no API keys, no LLM-as-judge. Binary verification: the harness knows ground truth, g..."
+            },
+            {
+              "line": 374,
+              "snippet": "Construct gradients with $\\ip{u}{v} = -\\rho$; test feasibility at $\\delta = \\delta_{\\min}$. Theory matches numerics to machine precision across $\\rho \\in \\{0..."
+            },
+            {
+              "line": 380,
+              "snippet": "Bytebeat (Fast Fourier Transform verified audio): 59\\% success at $\\rho{=}0.47$, collapse to 0\\% at $\\rho \\ge 0.8$. IF-DSL (control flow): 0\\% at high $\\rho$..."
+            },
+            {
+              "line": 393,
+              "snippet": "\\noindent\\textbf{Routing Policy (Corollary of Theorem~\\ref{thm:staging}):} \\emph{One-shot} if $\\hat{\\rho} < 0.15$ or $\\delta/\\delta_{\\min} \\gg 1$; \\emph{Stag..."
+            },
+            {
+              "line": 399,
+              "snippet": "Table~\\ref{tab:calibration} shows failure scales with $\\hat{\\rho}$ (24\\% $\\to$ 98\\%), $r_s = 1.0$ with $p < 0.001$ (formal screening condition: Lemma~\\ref{le..."
+            },
+            {
+              "line": 437,
+              "snippet": "colormap={feasibility}{rgb255(0cm)=(158,158,158); rgb255(0.5cm)=(255,183,77); rgb255(1cm)=(33,150,243)},"
+            },
+            {
+              "line": 454,
+              "snippet": "\\\\(a) Feasibility surface"
+            },
+            {
+              "line": 489,
+              "snippet": "\\caption{\\textbf{Feasibility surface and theory--observation alignment.} (a) Pass rate over $(\\hat{\\rho}, \\delta/\\delta_{\\min})$ with routing region boundari..."
+            },
+            {
+              "line": 490,
+              "snippet": "\\label{fig:feasibility_surface}\\label{fig:boundary_vs_observed}"
+            },
+            {
+              "line": 502,
+              "snippet": "\\textbf{Results:} One-shot 41\\%; staged (syntax$\\to$fields$\\to$ranges) 67\\%. Feasibility boundary not reached ($\\rho < 0.5$), but $k{=}3$ cost scaling matche..."
+            },
+            {
+              "line": 512,
+              "snippet": "Open-weight validation is reproducible; frontier experiments confirm \\emph{transfer}. The Claude family (7~models, haiku--opus) shows identical regime orderi..."
+            },
+            {
+              "line": 526,
+              "snippet": "\\caption{\\textbf{The cliff is model-agnostic and survives constraint softening.} (a) Pass-rate heatmap across nine models from 1B (TinyLlama) to frontier (4 ..."
+            },
+            {
+              "line": 536,
+              "snippet": "Multi-constraint LLM behavior exhibits sharp regime structure: feasibility cliffs, not capability gradients. Three contributions: (1)~Diagonal Cost Bound (Th..."
+            },
+            {
+              "line": 619,
+              "snippet": "The regime boundary is robust, not an artifact of calibration or encoder choice. Table~\\ref{tab:robustness_stress} shows prompt perturbations (paraphrase, re..."
+            },
+            {
+              "line": 677,
+              "snippet": "\\textrm{Feasibility cliff} & --- & Sharp transition: feasible $\\to$ infeasible as $\\rho$ increases \\\\"
+            },
+            {
+              "line": 723,
+              "snippet": "Table~\\ref{tab:encoder_sensitivity} shows routing and outcome stability across encoders. While $\\hat{\\rho}$ absolute values vary ($\\pm$0.08), \\emph{regime or..."
+            },
+            {
+              "line": 860,
+              "snippet": "The diagonal cost $\\delta_{\\min}$ depends on constraint geometry ($\\rho$, $k$, $\\tau/m$), not on the generation mechanism. Constrained decoding restricts the..."
+            },
+            {
+              "line": 903,
+              "snippet": "\\caption{Feasibility boundary validation. Theory matches numerics to machine precision. Relocated from body \\S\\ref{sec:ground_truth}.}"
+            },
+            {
+              "line": 904,
+              "snippet": "\\label{tab:feasibility}"
+            },
+            {
+              "line": 946,
+              "snippet": "Table~\\ref{tab:llm_bridge} reveals a clear capability gradient: weaker models (TinyLlama, DeepSeek) benefit most from staging ($\\Delta > 0$), while the stron..."
+            },
+            {
+              "line": 1235,
+              "snippet": "$\\rho < 1/(k{-}1)$ ensures $\\Gamma \\succ 0$; our $\\rho_{\\max} \\approx 0.12$--$0.20$ satisfies for $k \\le 4$. Under convex exit-cone assumptions, linear infea..."
+            },
+            {
+              "line": 1243,
+              "snippet": "Our contribution is the \\emph{explicit conflict parameterization}: expressing $\\|d^\\star\\|$ directly as a function of $\\rho_{ij}$ reveals the diagonal cost s..."
+            },
+            {
+              "line": 1293,
+              "snippet": "\\paragraph{Path Integration vs.\\ Displacement Feasibility.}"
+            },
+            {
+              "line": 1294,
+              "snippet": "Autoregressive decoding traverses a token path. Our proofs analyze \\emph{displacement feasibility}: existence of a chord $\\Delta$ from $x_0$ to a satisfying ..."
+            },
+            {
+              "line": 1296,
+              "snippet": "\\subsection{Convex Feasibility and Projection Geometry}\\label{app:convex}"
+            },
+            {
+              "line": 1305,
+              "snippet": "As shown in \\citet[Sec.~2.2]{boyd2004convex}, $\\mathcal{C}$ is nonempty iff feasibility holds."
+            },
+            {
+              "line": 1329,
+              "snippet": "The minimum-norm feasibility problem is a convex QP \\citep[Chap.~4]{boyd2004convex}. The Lagrangian is:"
+            },
+            {
+              "line": 1352,
+              "snippet": "Assume feasibility holds."
+            },
+            {
+              "line": 1422,
+              "snippet": "The projection argument follows Lemma~\\ref{lem:proj_standard}, yielding the minimum-norm feasibility problem:"
+            },
+            {
+              "line": 1527,
+              "snippet": "As Table~\\ref{tab:feasibility} demonstrates, synthetic optimization matches analytical bounds to relative error $< 10^{-8}$ across all tested configurations."
+            },
+            {
+              "line": 1619,
+              "snippet": "For $\\epsilon$-feasibility, iteration count scales as $T = O\\bigl(k \\cdot (1-\\rho_{\\max})^{-1} \\cdot \\log(1/\\epsilon)\\bigr)$, consistent with the $1/(1-\\rho)..."
+            },
+            {
+              "line": 1647,
+              "snippet": "As $\\rho \\to 1/(k-1)$, $\\lambda_{\\min}(\\Gamma) \\to 0$, and the diagonal cost becomes increasingly sensitive to perturbations. This explains empirical observa..."
+            },
+            {
+              "line": 1850,
+              "snippet": "Local linearity is not a global flatness claim. Once budget enforces small steps, first-order geometry controls feasibility up to a quadratic remainder. Budg..."
+            },
+            {
+              "line": 1875,
+              "snippet": "\\begin{theorem}[Budgeted infeasibility persists]"
+            },
+            {
+              "line": 1879,
+              "snippet": "Curvature changes feasibility only through a quadratic correction at the budget scale."
+            },
+            {
+              "line": 1932,
+              "snippet": "Conflict range $\\rho$ & $\\{0.0, 0.3, 0.5, 0.7, 0.9\\}$ & Tab.~\\ref{tab:feasibility} \\\\"
+            },
+            {
+              "line": 1980,
+              "snippet": "Sampling adds variance but does not eliminate feasibility cliffs or shift the staging benefit band."
+            },
+            {
+              "line": 2089,
+              "snippet": "The following protocol estimates feasibility regimes using only black-box queries (no gradient access). We explicitly separate what is \\textbf{proven} (theor..."
+            },
+            {
+              "line": 2096,
+              "snippet": "\\item \\textbf{Predict the operating regime}: $\\delta \\gg \\delta_{\\min}$ suggests one-shot feasibility; $\\delta \\approx \\delta_{\\min}$ suggests staging may he..."
+            },
+            {
+              "line": 2309,
+              "snippet": "\\item \\path{conflict_R_0.50.wav}: Noticeable beating (feasibility cliff)"
+            },
+            {
+              "line": 2354,
+              "snippet": "Table~\\ref{tab:if_dsl} shows pass rates across conflict levels under both contracts. The key finding is \\textbf{feasibility fragmentation}: at high conflict ..."
+            },
+            {
+              "line": 2359,
+              "snippet": "\\caption{IF-DSL pass rates by conflict level and evaluation contract ($N{=}10$ seeds). Contract A: equal total compute. Contract B: amortized (staged uses $k..."
+            },
+            {
+              "line": 2377,
+              "snippet": "IF-DSL is a \\emph{mechanistic analogue} of the diagonal-cost story: objective pass/fail verification, controllable step budget $\\delta$ via edit count, and m..."
+            },
+            {
+              "line": 2381,
+              "snippet": "We provide a bytebeat harness that treats short expressions as budgeted artifacts whose waveforms must satisfy measurable spectral and rhythmic constraints. ..."
+            },
+            {
+              "line": 2384,
+              "snippet": "Table~\\ref{tab:bytebeat} shows pass rates across conflict levels. The predicted feasibility cliff is evident: low-conflict pairs ($\\rho < 0.5$) achieve high ..."
+            },
+            {
+              "line": 2389,
+              "snippet": "\\caption{Bytebeat pass rates by conflict ($N=64$). High-$\\rho$ sets show feasibility collapse, confirming the feasibility-cliff prediction.}"
+            },
+            {
+              "line": 2408,
+              "snippet": "Mature predictive sciences diagnose \\emph{regimes}, not averages. Phase transitions and regime boundaries are central to weather prediction, climate modeling..."
+            },
+            {
+              "line": 2431,
+              "snippet": "\\section{Charitable Constraint Composition}\\label{app:charity}\\hypertarget{lim:soft}{}"
+            },
+            {
+              "line": 2433,
+              "snippet": "We call a constraint set \\emph{charitable} if its elements are designed for mutual compatibility rather than selected to induce failure. This appendix demons..."
+            },
+            {
+              "line": 2438,
+              "snippet": "\\paragraph{Definition.} Charitable constraints are \\textbf{designed for compatibility}: they encode cooperative intent (helpful, honest, harmless) and are in..."
+            },
+            {
+              "line": 2440,
+              "snippet": "\\paragraph{Model.} We use the empirical structure from the Claude Constitution analysis (Appendix~\\ref{app:constitution}): 20 principles yield 190 pairs, of ..."
+            },
+            {
+              "line": 2459,
+              "snippet": "\\noindent At $k{=}2$, 93\\% of charitable constraint pairs are jointly feasible. By $k{=}10$, only 3\\% remain feasible: a 30$\\times$ reduction despite \\emph{n..."
+            },
+            {
+              "line": 2461,
+              "snippet": "\\paragraph{Key finding.} Feasibility decay is \\textbf{geometric}, not adversarial. The $\\binom{k}{2}$ pairwise compatibility checks compound: even 7.37\\% con..."
+            },
+            {
+              "line": 2463,
+              "snippet": "\\paragraph{On \\emph{conflict}.} The term may suggest semantic opposition (constraints ``fighting''). But the geometry is simpler: each constraint defines a h..."
+            }
+          ]
         }
       ],
-      "notes": "All 2 signature patterns matched."
+      "notes": "All 3 patterns co-occur within 5-line window (anchor line ~617)."
     },
     {
       "claim_id": "C13",
@@ -1094,7 +1598,7 @@
     },
     {
       "claim_id": "C16",
-      "paper_text_signature": ">=91% threshold robustness (+/-20%) (Table 7)",
+      "paper_text_signature": ">=91% threshold robustness (+/-20%) (joint with 'threshold' anchor)",
       "found": "OK",
       "locations": [
         {
@@ -1166,9 +1670,162 @@
               "snippet": "\\quad Orthogonal-similar & 1 & 20\\% \\\\"
             }
           ]
+        },
+        {
+          "pattern": "[Tt]hreshold",
+          "hits": [
+            {
+              "line": 71,
+              "snippet": "We prove the minimum displacement to satisfy $k$ constraints scales as $\\sqrt{k/(1{-}\\rho(k{-}1))}$ (the `diagonal cost'), diverging at a geometric threshold..."
+            },
+            {
+              "line": 80,
+              "snippet": "\\textbf{Approach.} We prove that the minimum displacement to satisfy $k$ constraints simultaneously scales as $\\delta_{\\min} \\propto \\sqrt{k/(1{-}\\rho(k{-}1)..."
+            },
+            {
+              "line": 116,
+              "snippet": "\\noindent $\\hat{\\rho}$ is a conservative screen: false positives over-stage (token cost), not fail. Thresholds from feasibility geometry \\citep{fliege2000ste..."
+            },
+            {
+              "line": 331,
+              "snippet": "The bound diverges as $\\rho \\to 1$ with critical threshold $\\rho_c = 1 - 2\\tau^2/(m^2\\delta^2)$ marking the regime beyond which no budget suffices (Propositi..."
+            },
+            {
+              "line": 393,
+              "snippet": "\\noindent\\textbf{Routing Policy (Corollary of Theorem~\\ref{thm:staging}):} \\emph{One-shot} if $\\hat{\\rho} < 0.15$ or $\\delta/\\delta_{\\min} \\gg 1$; \\emph{Stag..."
+            },
+            {
+              "line": 506,
+              "snippet": "The $\\rho < 1/(k{-}1)$ threshold appears restrictive, but pairwise conflict is \\emph{sparse}. Bytebeat ($k{=}4$): 3/6 pairs have $\\rho{=}1.0$. IF-DSL ($k{=}6..."
+            },
+            {
+              "line": 509,
+              "snippet": "\\noindent\\textbf{Falsification criterion.} Sustained one-shot success ($>$10\\%) in the predicted-infeasible region ($\\delta_{\\min} > LT$) without pivot signa..."
+            },
+            {
+              "line": 534,
+              "snippet": "Figure~\\ref{fig:rw_quadrant}(a) positions this work: most multi-constraint methods operate at training time (gradient surgery, MOO; \\citep{yu2020gradient,liu..."
+            },
+            {
+              "line": 619,
+              "snippet": "The regime boundary is robust, not an artifact of calibration or encoder choice. Table~\\ref{tab:robustness_stress} shows prompt perturbations (paraphrase, re..."
+            },
+            {
+              "line": 667,
+              "snippet": "$\\tau$ & residual & Resolution Threshold (target decrease) \\\\"
+            },
+            {
+              "line": 761,
+              "snippet": "\\paragraph{Threshold Sensitivity.}"
+            },
+            {
+              "line": 762,
+              "snippet": "Table~\\ref{tab:threshold_sensitivity} shows router decision stability under $\\pm$20\\% perturbation of the routing thresholds ($\\hat{\\rho}$ cutoffs at 0.15 an..."
+            },
+            {
+              "line": 767,
+              "snippet": "\\caption{Threshold sensitivity ($\\pm$20\\% on $\\hat{\\rho}$ cutoffs). Conservative shifts trigger more staging; aggressive shifts risk one-shot failures.}"
+            },
+            {
+              "line": 768,
+              "snippet": "\\label{tab:threshold_sensitivity}"
+            },
+            {
+              "line": 784,
+              "snippet": "Tables~\\ref{tab:encoder_sensitivity}--\\ref{tab:threshold_sensitivity} demonstrate empirically that $\\hat{\\rho}$ yields correct routing. The following lemma f..."
+            },
+            {
+              "line": 786,
+              "snippet": "\\begin{lemma}[Ordinal Sufficiency for Threshold-Based Routing]\\label{lem:proxy_sufficiency}"
+            },
+            {
+              "line": 787,
+              "snippet": "Let $\\hat{\\rho}: \\mathcal{P} \\to [0,1]$ be an interface observable and let $\\mathsf{fail}: \\mathcal{P} \\to \\{0,1\\}$ be operational outcome (verifier pass/fai..."
+            },
+            {
+              "line": 791,
+              "snippet": "Threshold-based routing partitions the interval $[0,1]$ into regimes: one-shot ($\\hat{\\rho} < \\hat{\\tau}_1$), staged ($\\hat{\\tau}_1 \\leq \\hat{\\rho} < \\hat{\\t..."
+            },
+            {
+              "line": 822,
+              "snippet": "\\subsection{Transfer Test: Pre-Registered Thresholds}\\label{app:transfer}"
+            },
+            {
+              "line": 824,
+              "snippet": "We pre-registered routing thresholds ($\\hat{\\rho}_{\\text{stage}} = 0.15$, $\\hat{\\rho}_{\\text{fail}} = 0.5$) on the code constraint domain, then tested on JSO..."
+            },
+            {
+              "line": 829,
+              "snippet": "\\caption{Transfer test. Thresholds calibrated on code transfer to other domains with $\\le$3.1\\% regret vs.\\ domain-specific tuning. Router agreement = decisi..."
+            },
+            {
+              "line": 843,
+              "snippet": "These results demonstrate that embedding-based $\\hat{\\rho}$ captures conflict structure that transfers across verifier families without re-tuning. Regret inc..."
+            },
+            {
+              "line": 1174,
+              "snippet": "We test routing stability under $\\pm$30\\% perturbation of the calibrated $\\hat{L}$ (analogous to $\\hat{\\rho}$ threshold sensitivity in Table~\\ref{tab:thresho..."
+            },
+            {
+              "line": 1455,
+              "snippet": "governs \\textit{observable failure thresholds}"
+            },
+            {
+              "line": 1559,
+              "snippet": "Moving along the Pareto front by $\\epsilon$ in objective $i$ while maintaining Pareto efficiency requires displacement magnitude $\\Omega(\\epsilon / \\sqrt{1-\\..."
+            },
+            {
+              "line": 1685,
+              "snippet": "where $\\Gamma_\\mathcal{A}$ is the Gram matrix restricted to active constraints and $\\boldsymbol{\\tau}_\\mathcal{A}$ is the corresponding vector of thresholds."
+            },
+            {
+              "line": 1777,
+              "snippet": "\\begin{proposition}[Critical Threshold]\\label{prop:critical}"
+            },
+            {
+              "line": 1886,
+              "snippet": "If failure exhibits sharp transitions as budget crosses predicted thresholds, this is consistent with Theorem~\\ref{thm:curvature_does_not_save}: first-order ..."
+            },
+            {
+              "line": 1930,
+              "snippet": "Resolution threshold $\\tau$ & 1.0 & Def.~\\ref{def:resolution} \\\\"
+            },
+            {
+              "line": 1944,
+              "snippet": "Flatness threshold & $>$0.25 & \\texttt{high\\_flatness} \\\\"
+            },
+            {
+              "line": 1952,
+              "snippet": "Variance threshold & 95\\% & Chart-rank diagnostic \\\\"
+            },
+            {
+              "line": 2010,
+              "snippet": "Hard-negative and conflicting have indistinguishable $\\hat{\\rho}$ ($0.50$ vs $0.52$) yet opposite outcomes (100\\% vs 0\\%). This falsifies ``high $\\hat{\\rho}$..."
+            },
+            {
+              "line": 2109,
+              "snippet": "Thresholds calibrated from Table~\\ref{tab:calibration}: staging $\\Delta > 0$ when $\\hat{\\rho} \\in [0.2, 0.5]$ and $\\delta/\\delta_{\\min} \\in [1.5, 3.0]$."
+            },
+            {
+              "line": 2124,
+              "snippet": "\\item \\textbf{Route:} Apply thresholds from \\S\\ref{app:protocol_policy}. When uncertain, stage (fail-safe)."
+            },
+            {
+              "line": 2249,
+              "snippet": "\\item \\textbf{Phase transition}: Before/after the critical threshold $\\rho \\approx 0.5$"
+            },
+            {
+              "line": 2426,
+              "snippet": "\\item[$\\checkmark$] \\textbf{Hyperparameters:} All thresholds specified in Appendix~\\ref{app:experiments}"
+            },
+            {
+              "line": 2436,
+              "snippet": "For deterministic verifiers, $\\tau{=}1$ (binary). Soft constraints (e.g., ``be polite'') require a measurable proxy: the specification problem, orthogonal to..."
+            }
+          ]
         }
       ],
-      "notes": "All 2 signature patterns matched."
+      "notes": "All 3 patterns co-occur within 5-line window (anchor line ~617)."
     },
     {
       "claim_id": "C17",
