@@ -98,6 +98,12 @@
       "in_use": false,
       "notes": "TikZ source present in figures/ but not currently \\input{} from main.tex. Either dead code or pending integration."
     },
+    "interface_assumption.tex": {
+      "asset": "paper/figures/interface_assumption.tex",
+      "tikz_source": true,
+      "main_tex_ref": "figures/interface_assumption.tex",
+      "notes": "Hand-authored TikZ schematic of the Interface Assumption dataflow. Bound by L14 (illustration_lineage.json) to the source LaTeX block at main.tex:253-257. Activated in App C (Scope of Mechanical Verification) via \\input{}."
+    },
     "proxy_ablation.pdf": {
       "asset": "rebuttal/figures/proxy_ablation.pdf",
       "script": "supplementary/experiments_rebuttal/proxy_ablation/proxy_ablation.py",

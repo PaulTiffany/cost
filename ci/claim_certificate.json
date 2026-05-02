@@ -3,13 +3,13 @@
   "provenance": {
     "paper_title": "The Cost of Cacophony: Geometric Limits on Multi-Constraint Alignment",
     "venue": "NeurIPS 2026",
-    "generated_at": "2026-05-02T18:10:12",
+    "generated_at": "2026-05-02T18:22:16",
     "main_tex_path": "paper\\main.tex",
-    "main_tex_sha256": "cfb12a803e7646899c9f62aece11064b4760a5b2662fa9659db99e631ee10239",
-    "main_tex_mtime": "2026-05-02T18:08:23",
+    "main_tex_sha256": "11f8e505587d0417c0479480e3658bd3d40a8e70e0882f43453cb75a130eedf6",
+    "main_tex_mtime": "2026-05-02T18:20:42",
     "main_pdf_path": "paper\\main.pdf",
-    "main_pdf_size": 1018298,
-    "main_pdf_mtime": "2026-05-02T18:09:11",
+    "main_pdf_size": 1024400,
+    "main_pdf_mtime": "2026-05-02T18:21:19",
     "claim_audit_md_path": "CLAIM_AUDIT.md",
     "claim_audit_md_sha256": "a860cd02ec4eaf6b8d1e794905e97799bf037b6ebd1b81c066b067b9d83f0a57"
   },
@@ -68,7 +68,7 @@
         "checks_total": 8,
         "checks_passed": 8,
         "checks_failed": 0,
-        "figures_in_use": 7,
+        "figures_in_use": 8,
         "first_failure": null
       },
       "notes": ""
@@ -161,7 +161,7 @@
         "n_hyperref": 0,
         "n_hypertarget": 26,
         "n_refs": 121,
-        "n_labels": 159,
+        "n_labels": 161,
         "urls": [
           "https://anonymous.4open.science/r/cacophony",
           "https://neurips.cc/Conferences/2026/CallForPapers"
@@ -171,7 +171,7 @@
         "venue_year_mismatches": [],
         "unresolved_hyperref": [],
         "unresolved_refs": [],
-        "dead_labels_count": 38,
+        "dead_labels_count": 40,
         "dead_labels_sample": [
           "app:additional",
           "app:algorithm",
@@ -183,6 +183,7 @@
           "app:diagnostic_culture",
           "app:estimation_protocol",
           "app:hetero",
+          "app:illustrations",
           "app:inequality",
           "app:k_bound",
           "app:pareto",
@@ -191,8 +192,7 @@
           "app:reproducibility",
           "app:staging",
           "app:staging_robustness",
-          "app:tightness",
-          "app:transfer"
+          "app:tightness"
         ],
         "network_results": []
       },
@@ -282,5 +282,5 @@
       "notes": ""
     }
   ],
-  "certificate_self_hash": "719f423c592e942898190ef79cba83f812f490c22d5106d18a89e2322b403db5"
+  "certificate_self_hash": "f7386003dfabda8973b40c7bbf29046b11b251af9b64b0234831f0e94c254c9b"
 }

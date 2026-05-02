@@ -2434,6 +2434,11 @@ A 14-layer certificate at \texttt{ci/claim\_certificate.md} runs against this pa
 
 What this establishes: the paper says what it says, without drift, substitution, broken references, or stale figure assets. What it does not establish: that the underlying claims are true of the world, that the experimental design is sound, that the inferences follow from the data, or that the framing is the right framing. Mechanical verification operates on form. Critical reading operates on meaning. The certificate is structurally analogous to the paper's screening statistic $\hat{\rho}$: a zeroth-order observable that orders regime membership without resolving the truth question one layer up. As $\hat{\rho}$ triggers checks rather than verdicts, the certificate triggers reading rather than verdicts. It frees the reading from bookkeeping verification. It does not replace judgment.
 
+\paragraph{Explanatory Illustrations.}\label{app:illustrations}
+The framework extends to schematic illustrations: reviewer aids that make formal blocks in the body easier to grok. Each illustration is bound to a specific source LaTeX block via the certificate's L14 layer: the source block's hash, an optional visual-spec hash, and the deterministic asset's hash live together in \texttt{ci/illustration\_lineage.json}. If the source block drifts, the illustration's certificate fails until the asset is re-authored. Image generation models may be used during draft exploration; the final asset is the deterministic redraw the certificate trusts. \textbf{Claim scope: schematic illustration only; not empirical evidence.} The dataflow each schematic depicts is exactly what the bound source block asserts in prose; the schematic shifts the cognitive load from parsing equations to recognizing structure.
+
+\input{figures/interface_assumption.tex}
+
 \section{Charitable Constraint Composition}\label{app:charity}\hypertarget{lim:soft}{}
 
 We call a constraint set \emph{charitable} if its elements are designed for mutual compatibility rather than selected to induce failure. This appendix demonstrates that feasibility decays with $k$ even for charitable constraints. This is evidence that \emph{conflict emerges under composition}, not from adversarial construction.

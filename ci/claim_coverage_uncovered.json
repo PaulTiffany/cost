@@ -369,43 +369,43 @@
       "section": "section: Scope of Mechanical Verification"
     },
     {
-      "line_no": 2452,
+      "line_no": 2457,
       "value": "10",
       "context": "10",
       "section": "paragraph: Results."
     },
     {
-      "line_no": 2452,
+      "line_no": 2457,
       "value": "000",
       "context": "000",
       "section": "paragraph: Results."
     },
     {
-      "line_no": 2546,
+      "line_no": 2551,
       "value": "3",
       "context": "3",
       "section": "paragraph: Compatibility Certificates and Error Taxonomy."
     },
     {
-      "line_no": 2552,
+      "line_no": 2557,
       "value": "10",
       "context": "10",
       "section": "paragraph: Compatibility Certificates and Error Taxonomy."
     },
     {
-      "line_no": 2552,
+      "line_no": 2557,
       "value": "62",
       "context": "62",
       "section": "paragraph: Compatibility Certificates and Error Taxonomy."
     },
     {
-      "line_no": 2565,
+      "line_no": 2570,
       "value": "15",
       "context": "stitution analysis, we curate 15 compound instruction tasks wi",
       "section": "section: In-the-Wild Compound Instructions"
     },
     {
-      "line_no": 2569,
+      "line_no": 2574,
       "value": "2",
       "context": "Each task contains 2",
       "section": "paragraph: Dataset design."
