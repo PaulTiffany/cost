@@ -86,6 +86,16 @@ class LayerOutcome:
 # ---------------------------------------------------------------------------
 # Provenance
 # ---------------------------------------------------------------------------
+def _strip_self_hash(payload: dict) -> dict:
+    """Return a shallow copy of payload with the self-hash field removed.
+
+    Used both at generation time (to compute the hash over everything
+    BUT the hash field) and at verification time (a reader hashes the
+    payload-minus-self-hash and compares).
+    """
+    return {k: v for k, v in payload.items() if k != "certificate_self_hash"}
+
+
 def sha256_of(path: Path) -> str:
     if not path.exists():
         return "<missing>"
@@ -239,6 +249,9 @@ def render_markdown(payload: dict) -> str:
     lines.append(f"- main.pdf size: {p['main_pdf_size']:,} bytes")
     lines.append(f"- main.pdf mtime: {p['main_pdf_mtime']}")
     lines.append(f"- registry sha256: `{p['claim_audit_md_sha256'][:16]}...`")
+    cert_hash = payload.get("certificate_self_hash", "<not-yet-computed>")
+    if cert_hash != "<not-yet-computed>":
+        lines.append(f"- certificate self-hash: `{cert_hash[:16]}...` (sha256 of this payload minus the hash field; recompute to verify integrity)")
     lines.append("")
     lines.append("## Layer-by-layer Results")
     lines.append("")
@@ -383,6 +396,12 @@ def main() -> int:
             for o in outcomes
         ],
     }
+
+    # Self-tamper-evident hash: sha256 of the payload with the
+    # certificate_self_hash field excluded. Compute BEFORE rendering
+    # markdown so the .md output can include the hash too.
+    canonical = json.dumps(payload, sort_keys=True, separators=(",", ":")).encode("utf-8")
+    payload["certificate_self_hash"] = hashlib.sha256(canonical).hexdigest()
 
     CERT_JSON.write_text(json.dumps(payload, indent=2), encoding="utf-8")
     CERT_MD.write_text(render_markdown(payload), encoding="utf-8")
