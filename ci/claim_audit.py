@@ -504,9 +504,16 @@ COMPLETE: list[dict] = [
     {"id": "T52", "description": "Hyperparam: bootstrap iterations = 1000", "patterns": [r"bootstrap", r"1000"], "match_mode": "joint", "match_window": 2},
     {"id": "T53", "description": "IF-DSL token budget B in {50, 100, 200}", "patterns": [r"B\s*=\s*50", r"B\s*=\s*100", r"B\s*=\s*200"], "match_mode": "joint", "match_window": 2},
     {"id": "T54", "description": "Direction stability 94% (Section 4)", "patterns": [r"[Dd]irection\s+stability", r"94"], "match_mode": "joint", "match_window": 2},
+
+    # Self-referential claims about the certificate itself (App: Scope of
+    # Mechanical Verification). These must be registered or the certificate
+    # would be ignoring claims about itself, which is hypocritical given
+    # its premise.
+    {"id": "T55", "description": "Certificate has 13 layers (App cert_scope)", "patterns": [r"13[-\s]?layer", r"certificate"], "match_mode": "joint", "match_window": 3},
+    {"id": "T56", "description": "Mutation harness: 147 of 147 single-digit substitutions caught", "patterns": [r"147\s+of\s+147", r"single[-\s]?digit\s+substitut"], "match_mode": "joint", "match_window": 3},
 ]
 
-assert len(COMPLETE) == 54, f"Expected 54 complete claims (Tier 3 batch), got {len(COMPLETE)}"
+assert len(COMPLETE) == 56, f"Expected 56 complete claims (Tier 3 batch), got {len(COMPLETE)}"
 
 
 # ---------------------------------------------------------------------------

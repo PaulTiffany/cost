@@ -1,30 +1,30 @@
 # Claim Certificate
 
 **Paper:** The Cost of Cacophony: Geometric Limits on Multi-Constraint Alignment
-**Generated:** 2026-05-02T17:12:20
+**Generated:** 2026-05-02T17:19:30
 **Verdict:** **PASS** — all structural checks clean (L1+L2+L4+L7+L8+L9+L10+L11+L12+L13); L3+L5 coverage is advisory, see triage JSONs
 
 ## Provenance
 
-- main.tex sha256: `8fd3cfd540e339e5...` (full hash in JSON)
-- main.tex mtime: 2026-05-02T17:11:32
-- main.pdf size: 1,018,172 bytes
-- main.pdf mtime: 2026-05-02T17:12:15
-- registry sha256: `c1691c712598bcfd...`
-- certificate self-hash: `5a40358385a40dc4...` (sha256 of this payload minus the hash field; recompute to verify integrity)
+- main.tex sha256: `dbf009f013daf026...` (full hash in JSON)
+- main.tex mtime: 2026-05-02T17:17:46
+- main.pdf size: 1,018,192 bytes
+- main.pdf mtime: 2026-05-02T17:18:39
+- registry sha256: `a860cd02ec4eaf6b...`
+- certificate self-hash: `b697d8fe6938b9b9...` (sha256 of this payload minus the hash field; recompute to verify integrity)
 
 ## Layer-by-layer Results
 
 | Layer | Script | Status | Summary |
 |---|---|---|---|
-| L1_audit | `ci\claim_audit.py` | PASS | 150/150 verbatim |
+| L1_audit | `ci\claim_audit.py` | PASS | 152/152 verbatim |
 | L2_validator | `ci\claim_audit_validator.py` | PASS | 14/14 checks pass |
-| L3_sweep | `ci\claim_coverage_sweep.py` | PASS | 93.6% coverage, 70 uncovered |
+| L3_sweep | `ci\claim_coverage_sweep.py` | PASS | 93.9% coverage, 67 uncovered |
 | L4_lineage | `ci\figure_lineage_check.py` | PASS | 8/8 checks pass, 7 figures fresh |
 | L5_figure_values | `ci\figure_value_check.py` | PASS | 78.0% overall figure coverage, 21 uncovered |
 | L7_citations | `ci\citation_integrity_check.py` | PASS | 25 cites, 41 bib entries, 0 unresolved, 16 dead |
 | L8_links | `ci\link_integrity_check.py` | PASS | 2 URLs, 121 refs / 159 labels, 0 unresolved, 38 dead labels |
-| L9_consistency | `ci\cross_claim_consistency_check.py` | PASS | 31/31 consistency relations hold |
+| L9_consistency | `ci\cross_claim_consistency_check.py` | PASS | 33/33 consistency relations hold |
 | L10_bib | `ci\bib_entry_check.py` | PASS | 41/41 bib entries well-formed |
 | L11_scripts | `ci\script_integrity_check.py` | PASS | 10/10 figure scripts pass smoke test |
 | L12_build_equiv | `ci\build_equivalence_check.py` | PASS | --quick mode: ?/12 figures fresh; full mode optional |

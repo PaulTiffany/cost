@@ -1,8 +1,8 @@
 {
   "summary": {
     "tier": "Tiers 1+2+3: critical+important+complete (4 supplementary-only claims skipped)",
-    "total": 150,
-    "found_verbatim": 150,
+    "total": 152,
+    "found_verbatim": 152,
     "drift": 0,
     "missing": 0
   },
@@ -12709,6 +12709,78 @@
         }
       ],
       "notes": "All 2 patterns co-occur within 2-line window (anchor line ~269)."
+    },
+    {
+      "claim_id": "T55",
+      "paper_text_signature": "Certificate has 13 layers (App cert_scope)",
+      "found": "OK",
+      "locations": [
+        {
+          "pattern": "13[-\\s]?layer",
+          "hits": [
+            {
+              "line": 2433,
+              "snippet": "A 13-layer certificate at \\texttt{ci/claim\\_certificate.md} runs against this paper at submission. Layers cover: claim registry self-consistency; presence of..."
+            }
+          ]
+        },
+        {
+          "pattern": "certificate",
+          "hits": [
+            {
+              "line": 263,
+              "snippet": "Lemma~\\ref{lem:traj_infeasible} bounds one-shot control; staging exploits trajectory degrees of freedom under the same per-token contract (Section~\\ref{sec:s..."
+            },
+            {
+              "line": 370,
+              "snippet": "\\noindent\\textbf{Judge-Agnostic Geometry.} Any constraint with scalar residual (human, LLM, rule-based) induces a halfspace \\citep{fliege2000steepest}; the b..."
+            },
+            {
+              "line": 2433,
+              "snippet": "A 13-layer certificate at \\texttt{ci/claim\\_certificate.md} runs against this paper at submission. Layers cover: claim registry self-consistency; presence of..."
+            },
+            {
+              "line": 2435,
+              "snippet": "What this establishes: the paper says what it says, without drift, substitution, broken references, or stale figure assets. What it does not establish: that ..."
+            },
+            {
+              "line": 2480,
+              "snippet": "$\\hat{\\rho}$ screens for potential conflict. A hard-negative pair ($\\hat{\\rho}{=}0.50$, 100\\% pass) and a conflicting pair ($\\hat{\\rho}{=}0.52$, 0\\% pass) sh..."
+            },
+            {
+              "line": 2534,
+              "snippet": "\\paragraph{Compatibility Certificates and Error Taxonomy.}\\label{par:certificates}"
+            }
+          ]
+        }
+      ],
+      "notes": "All 2 patterns co-occur within 3-line window (anchor line ~2432)."
+    },
+    {
+      "claim_id": "T56",
+      "paper_text_signature": "Mutation harness: 147 of 147 single-digit substitutions caught",
+      "found": "OK",
+      "locations": [
+        {
+          "pattern": "147\\s+of\\s+147",
+          "hits": [
+            {
+              "line": 2433,
+              "snippet": "A 13-layer certificate at \\texttt{ci/claim\\_certificate.md} runs against this paper at submission. Layers cover: claim registry self-consistency; presence of..."
+            }
+          ]
+        },
+        {
+          "pattern": "single[-\\s]?digit\\s+substitut",
+          "hits": [
+            {
+              "line": 2433,
+              "snippet": "A 13-layer certificate at \\texttt{ci/claim\\_certificate.md} runs against this paper at submission. Layers cover: claim registry self-consistency; presence of..."
+            }
+          ]
+        }
+      ],
+      "notes": "All 2 patterns co-occur within 3-line window (anchor line ~2432)."
     }
   ]
 }

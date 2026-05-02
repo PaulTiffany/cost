@@ -1,11 +1,11 @@
 {
   "summary": {
-    "total": 154,
-    "caught": 145,
+    "total": 156,
+    "caught": 147,
     "missed": 0,
     "skipped": 9,
-    "baseline_found": 150,
-    "baseline_total": 150
+    "baseline_found": 152,
+    "baseline_total": 152
   },
   "missed_claims": [],
   "skipped_claims": [
@@ -1962,6 +1962,30 @@
       "mutated_value": "mutated 18 matches of '94...'",
       "new_value": "mutated 18 matches of '94...'",
       "n_occurrences": 18,
+      "audit_status_after": "MISS",
+      "skip_reason": null,
+      "weak_ok": false,
+      "match_mode": "joint"
+    },
+    {
+      "claim_id": "T55",
+      "description": "Certificate has 13 layers (App cert_scope)",
+      "category": "CAUGHT",
+      "mutated_value": "mutated 1 matches of '13[-\\s]?layer...'",
+      "new_value": "mutated 1 matches of '13[-\\s]?layer...'",
+      "n_occurrences": 1,
+      "audit_status_after": "MISS",
+      "skip_reason": null,
+      "weak_ok": false,
+      "match_mode": "joint"
+    },
+    {
+      "claim_id": "T56",
+      "description": "Mutation harness: 145 of 145 single-digit substitutions caught",
+      "category": "CAUGHT",
+      "mutated_value": "mutated 1 matches of '145\\s+of\\s+145...'",
+      "new_value": "mutated 1 matches of '145\\s+of\\s+145...'",
+      "n_occurrences": 1,
       "audit_status_after": "MISS",
       "skip_reason": null,
       "weak_ok": false,

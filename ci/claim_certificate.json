@@ -3,15 +3,15 @@
   "provenance": {
     "paper_title": "The Cost of Cacophony: Geometric Limits on Multi-Constraint Alignment",
     "venue": "NeurIPS 2026",
-    "generated_at": "2026-05-02T17:12:20",
+    "generated_at": "2026-05-02T17:19:30",
     "main_tex_path": "paper\\main.tex",
-    "main_tex_sha256": "8fd3cfd540e339e5a4fa712a287d23fb4eca2d00bc61fb1d669e3aa4032942b6",
-    "main_tex_mtime": "2026-05-02T17:11:32",
+    "main_tex_sha256": "dbf009f013daf026f0c7c5e7866601b12ef6c1dfdcfd8945c04e743e0bf1f30d",
+    "main_tex_mtime": "2026-05-02T17:17:46",
     "main_pdf_path": "paper\\main.pdf",
-    "main_pdf_size": 1018172,
-    "main_pdf_mtime": "2026-05-02T17:12:15",
+    "main_pdf_size": 1018192,
+    "main_pdf_mtime": "2026-05-02T17:18:39",
     "claim_audit_md_path": "CLAIM_AUDIT.md",
-    "claim_audit_md_sha256": "c1691c712598bcfd3dc9639da93d55ebd12c3e6768fa499bbdcaedfb388b796a"
+    "claim_audit_md_sha256": "a860cd02ec4eaf6b8d1e794905e97799bf037b6ebd1b81c066b067b9d83f0a57"
   },
   "verdict": {
     "verdict": "PASS",
@@ -25,8 +25,8 @@
       "status": "PASS",
       "summary": {
         "tier": "Tiers 1+2+3: critical+important+complete (4 supplementary-only claims skipped)",
-        "total": 150,
-        "found_verbatim": 150,
+        "total": 152,
+        "found_verbatim": 152,
         "drift": 0,
         "missing": 0
       },
@@ -52,10 +52,10 @@
       "status": "PASS",
       "summary": {
         "total_numeric_tokens": 1145,
-        "covered": 1072,
-        "uncovered_raw": 73,
-        "uncovered_deduped": 70,
-        "coverage_percent": 93.6
+        "covered": 1075,
+        "uncovered_raw": 70,
+        "uncovered_deduped": 67,
+        "coverage_percent": 93.9
       },
       "notes": ""
     },
@@ -204,8 +204,8 @@
       "return_code": 0,
       "status": "PASS",
       "summary": {
-        "total": 31,
-        "passed": 31,
+        "total": 33,
+        "passed": 33,
         "failed": 0
       },
       "notes": ""
@@ -270,5 +270,5 @@
       "notes": ""
     }
   ],
-  "certificate_self_hash": "5a40358385a40dc4cf8e3430ba7f8cd339749d2d1cceec479c4c664119328ffd"
+  "certificate_self_hash": "b697d8fe6938b9b960878b6a707055f269f953c6696ebb4d66e48d44e52bea5f"
 }

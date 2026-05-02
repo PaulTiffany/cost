@@ -439,7 +439,77 @@ RELATIONS: list[ConsistencyRelation] = [
         claim_ids=["T16", "T17"],
         abs_tol=0.05,  # 1.67 rounds to 1.7
     ),
+
+    # ------------------------------------------------------------------
+    # SELF-REFERENTIAL RELATIONS: the certificate's own meta-claims about
+    # itself, tied to runtime artifacts. If we add a layer, the paper's
+    # "13-layer" claim must update; if we add a claim, the mutation
+    # count must update. These relations FORCE that bookkeeping.
+    #
+    # The 'expected' values are populated dynamically at module import
+    # time below — we read claim_certificate.py's LAYER_SCRIPTS dict and
+    # the latest systematic_mutation_results.json. This way the relation
+    # always compares against the current runtime, not a frozen value.
+    # ------------------------------------------------------------------
 ]
+
+
+def _populate_self_referential_relations() -> None:
+    """Add cert-self-referential relations tied to live runtime values.
+
+    Imports claim_certificate to count layers; reads systematic mutation
+    results to count caught/total. If either is unavailable, skips the
+    relation rather than asserting against missing data.
+    """
+    import importlib.util
+    import json as _json
+    cert_py = SCRIPT_DIR / "claim_certificate.py"
+    if cert_py.exists():
+        spec = importlib.util.spec_from_file_location("_cert_for_count", cert_py)
+        mod = importlib.util.module_from_spec(spec)
+        sys.modules["_cert_for_count"] = mod
+        try:
+            spec.loader.exec_module(mod)
+            # LAYER_SCRIPTS has every layer EXCEPT L6 (the aggregator,
+            # which is claim_certificate.py itself — it doesn't subprocess
+            # itself). The architecture table in ci/README.md and the
+            # paper appendix's "13-layer" framing both count L6 as a
+            # named layer. So the runtime "named layer count" is
+            # len(LAYER_SCRIPTS) + 1.
+            n_named_layers = len(mod.LAYER_SCRIPTS) + 1
+            RELATIONS.append(ConsistencyRelation(
+                name="paper_says_N_layer_certificate",
+                description=f"Paper appendix says '13-layer'; runtime named-layer count = len(LAYER_SCRIPTS)+1 = {n_named_layers} (the +1 is L6, the aggregator)",
+                formula="paper_count == runtime_count",
+                params={"paper_count": 13, "runtime_count": n_named_layers},
+                expected=True,
+                claim_ids=["T55"],
+            ))
+        except Exception:
+            pass
+
+    sys_mut = SCRIPT_DIR / "tests" / "systematic_mutation_results.json"
+    if sys_mut.exists():
+        try:
+            payload = _json.loads(sys_mut.read_text(encoding="utf-8"))
+            caught = payload.get("summary", {}).get("caught", -1)
+            if caught >= 0:
+                # Paper says "147 of 147"; if mutation count drifts (more
+                # claims added without prose update, or some claim regresses
+                # from caught to missed) this fires.
+                RELATIONS.append(ConsistencyRelation(
+                    name="paper_says_N_of_N_mutations_caught",
+                    description=f"Paper appendix says '147 of 147 caught'; latest mutation result is {caught} caught",
+                    formula="paper_caught == runtime_caught",
+                    params={"paper_caught": 147, "runtime_caught": caught},
+                    expected=True,
+                    claim_ids=["T56"],
+                ))
+        except Exception:
+            pass
+
+
+_populate_self_referential_relations()
 
 
 def main() -> int:

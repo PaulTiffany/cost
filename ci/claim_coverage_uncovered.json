@@ -2,10 +2,10 @@
   "paper_path": "C:\\src\\NeurIPS\\paper\\main.tex",
   "summary": {
     "total_numeric_tokens": 1145,
-    "covered": 1072,
-    "uncovered_raw": 73,
-    "uncovered_deduped": 70,
-    "coverage_percent": 93.6
+    "covered": 1075,
+    "uncovered_raw": 70,
+    "uncovered_deduped": 67,
+    "coverage_percent": 93.9
   },
   "uncovered": [
     {
@@ -366,24 +366,6 @@
       "line_no": 2431,
       "value": "13",
       "context": "A 13-layer certificate at",
-      "section": "section: Scope of Mechanical Verification"
-    },
-    {
-      "line_no": 2433,
-      "value": "1",
-      "context": "1 theorems and their numerical",
-      "section": "section: Scope of Mechanical Verification"
-    },
-    {
-      "line_no": 2433,
-      "value": "145",
-      "context": "numeric claim and re-audits; 145 of 145 single-digit substitut",
-      "section": "section: Scope of Mechanical Verification"
-    },
-    {
-      "line_no": 2433,
-      "value": "145",
-      "context": "c claim and re-audits; 145 of 145 single-digit substitutions ar",
       "section": "section: Scope of Mechanical Verification"
     },
     {

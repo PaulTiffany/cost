@@ -2,7 +2,7 @@
 
 **Paper:** The Cost of Cacophony: Geometric Limits on Multi-Constraint Alignment
 **Venue:** NeurIPS 2026
-**Total Claims:** 154 pattern-coded (25 critical + 75 important + 54 complete) + 271 documented-only
+**Total Claims:** 156 pattern-coded (25 critical + 75 important + 56 complete) + 269 documented-only
 
 **Note on Tier 3 (complete) sizing:** the original CLAIM_AUDIT design budgeted 325 complete claims (exhaustive table-cell index). In practice the L3 reverse-coverage sweep showed that 48 well-chosen pattern-coded claims drive empirical body-prose coverage to 91.3%, with **every** specific multi-digit decimal in main.tex mapped to some claim pattern. The residual ~118 uncovered numerics are 1-digit ints in math-mode notation (`\\mathbf{1}`, `\\Gamma^{-1}`, `\\frac{1}{1-c^2}`, etc.), not empirical claims. The remaining 277 inventoried Tier 3 entries are documented in the table inventory below for traceability without requiring per-cell pattern coding.
 
@@ -14,7 +14,7 @@
 |------|-------|-------------|------|
 | **Critical** | 25 | Core theorems, headline results | ~30 sec |
 | **Important** | 75 | Main tables, key appendix numbers | ~2 min |
-| **Complete** | 54 pattern-coded (out of 325 inventoried) | Granular table cells from L3 triage | ~3 min |
+| **Complete** | 56 pattern-coded (out of 325 inventoried) | Granular table cells from L3 triage | ~3 min |
 
 ---
 

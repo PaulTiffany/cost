@@ -1,7 +1,7 @@
 {
   "summary": {
-    "total": 31,
-    "passed": 31,
+    "total": 33,
+    "passed": 33,
     "failed": 0
   },
   "relations": [
@@ -512,6 +512,38 @@
       ],
       "ok": true,
       "detail": "computed=1.666667, expected=1.7, abs_diff=3.33e-02, rel_diff=1.96e-02"
+    },
+    {
+      "name": "paper_says_N_layer_certificate",
+      "description": "Paper appendix says '13-layer'; runtime named-layer count = len(LAYER_SCRIPTS)+1 = 13 (the +1 is L6, the aggregator)",
+      "formula": "paper_count == runtime_count",
+      "params": {
+        "paper_count": 13,
+        "runtime_count": 13
+      },
+      "expected": true,
+      "computed": 1.0,
+      "claim_ids": [
+        "T55"
+      ],
+      "ok": true,
+      "detail": "computed=1.000000, expected=True, abs_diff=0.00e+00, rel_diff=0.00e+00"
+    },
+    {
+      "name": "paper_says_N_of_N_mutations_caught",
+      "description": "Paper appendix says '147 of 147 caught'; latest mutation result is 147 caught",
+      "formula": "paper_caught == runtime_caught",
+      "params": {
+        "paper_caught": 147,
+        "runtime_caught": 147
+      },
+      "expected": true,
+      "computed": 1.0,
+      "claim_ids": [
+        "T56"
+      ],
+      "ok": true,
+      "detail": "computed=1.000000, expected=True, abs_diff=0.00e+00, rel_diff=0.00e+00"
     }
   ]
 }
