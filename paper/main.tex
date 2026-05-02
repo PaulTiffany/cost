@@ -523,7 +523,7 @@ Open-weight validation is reproducible; frontier experiments confirm \emph{trans
 \includegraphics[width=\linewidth]{figures/soft_constraint_cliff.pdf}
 \\\footnotesize (b) Soft constraints: graded residuals reproduce the cliff
 \end{minipage}
-\caption{\textbf{The cliff is model-agnostic and survives constraint softening.} (a) Pass-rate heatmap across nine models from 1B (TinyLlama) to frontier (GPT-4o, Gemini-2.5 Pro, DeepSeek-V3, Llama-3.1-70B). The same four-tier $\hat{\rho}$ cliff appears at every scale; geometry, not capability. (b) Replacing hard pass/fail with continuous satisfaction scores (Brier-style residuals, partial-credit grading) reproduces the $\rho$-driven phase transition. Together: the cliff is independent of model scale (a) and verifier hardness (b); the bound (Theorem~\ref{thm:gram}) is a geometric invariant of the constraint set, not an artifact of either side. Cross-model data in Table~\ref{tab:claude_family}; full soft-constraint formulation in Appendix~\ref{app:charity}.}
+\caption{\textbf{The cliff is model-agnostic and survives constraint softening.} (a) Pass-rate heatmap across nine models from 1B (TinyLlama) to frontier (4 providers). The same four-tier $\hat{\rho}$ cliff appears at every scale; geometry, not capability. (b) Replacing hard pass/fail with continuous satisfaction scores (Brier-style residuals, partial-credit grading) reproduces the $\rho$-driven phase transition. (a)+(b): the bound (Theorem~\ref{thm:gram}) is set by the constraints, not the model or verifier. Data: Table~\ref{tab:claude_family}; soft formulation: Appendix~\ref{app:charity}.}
 \label{fig:cross_model}\label{fig:soft_constraint_cliff}
 \end{figure}
 
