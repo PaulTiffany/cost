@@ -1,0 +1,87 @@
+{
+  "_meta": {
+    "version": 1,
+    "description": "Figure lineage manifest: data -> script -> asset chain for every figure used in main.tex. mtimes must be monotonically non-decreasing along the chain (data <= script <= asset); a violation means the rendered asset is stale relative to its source.",
+    "paths_relative_to": "<repo root>/"
+  },
+  "figures": {
+    "algorithm1_storyboard.pdf": {
+      "asset": "paper/figures/algorithm1_storyboard.pdf",
+      "script": "supplementary/experiments_rebuttal/algorithm1_storyboard/build_storyboard.py",
+      "data": [],
+      "data_known": false,
+      "main_tex_ref": "figures/algorithm1_storyboard.pdf",
+      "tikz_source": false,
+      "notes": "Storyboard renderer; data path is a script arg (not statically declared)."
+    },
+    "gram_eigendecomposition.pdf": {
+      "asset": "paper/figures/gram_eigendecomposition.pdf",
+      "script": "supplementary/experiments_rebuttal/dct_analysis/gram_eigendecomposition.py",
+      "data": [],
+      "data_known": false,
+      "main_tex_ref": "figures/gram_eigendecomposition.pdf",
+      "tikz_source": false,
+      "notes": "Reads rho matrix + analysis json from script-arg paths."
+    },
+    "per_task_correlation.pdf": {
+      "asset": "paper/figures/per_task_correlation.pdf",
+      "script": "supplementary/experiments_rebuttal/per_task_correlation.py",
+      "data": [
+        "supplementary/experiments/code_constraint_results.json"
+      ],
+      "data_known": true,
+      "main_tex_ref": "figures/per_task_correlation.pdf",
+      "tikz_source": false
+    },
+    "constrained_decoding.pdf": {
+      "asset": "paper/figures/constrained_decoding.pdf",
+      "script": "supplementary/experiments_rebuttal/constrained_decoding/plot_constrained_decoding.py",
+      "data": [
+        "supplementary/experiments_rebuttal/constrained_decoding/constrained_decoding_results.json"
+      ],
+      "data_known": true,
+      "main_tex_ref": "figures/constrained_decoding.pdf",
+      "tikz_source": false
+    },
+    "cross_model_cliff.pdf": {
+      "asset": "paper/figures/cross_model_cliff.pdf",
+      "script": "supplementary/experiments_rebuttal/cross_model/plot_cross_model.py",
+      "data": [
+        "supplementary/experiments/code_constraint_results.json",
+        "rebuttal/figures/cross_model_results.json"
+      ],
+      "data_known": true,
+      "main_tex_ref": "figures/cross_model_cliff.pdf",
+      "tikz_source": false
+    },
+    "soft_constraint_cliff.pdf": {
+      "asset": "paper/figures/soft_constraint_cliff.pdf",
+      "script": "supplementary/experiments_rebuttal/soft_constraints/soft_constraint_pilot.py",
+      "data": [],
+      "data_known": true,
+      "main_tex_ref": "figures/soft_constraint_cliff.pdf",
+      "tikz_source": false,
+      "notes": "Self-contained simulation — script writes its own data + figure. No external data dependency."
+    },
+    "related_envelope_combined.tex": {
+      "asset": "paper/figures/related_envelope_combined.tex",
+      "tikz_source": true,
+      "main_tex_ref": "figures/related_envelope_combined.tex",
+      "notes": "Hand-authored TikZ; source IS the figure. No script/data layer."
+    },
+    "limitations_envelope.tex": {
+      "asset": "paper/figures/limitations_envelope.tex",
+      "tikz_source": true,
+      "main_tex_ref": null,
+      "in_use": false,
+      "notes": "TikZ source present in figures/ but not currently \\input{} from main.tex. Either dead code or pending integration."
+    },
+    "related_work_quadrant.tex": {
+      "asset": "paper/figures/related_work_quadrant.tex",
+      "tikz_source": true,
+      "main_tex_ref": null,
+      "in_use": false,
+      "notes": "TikZ source present in figures/ but not currently \\input{} from main.tex. Either dead code or pending integration."
+    }
+  }
+}
