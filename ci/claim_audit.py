@@ -6,8 +6,12 @@ Walks the 25 critical (Tier 1) claims registered in ../CLAIM_AUDIT.md and
 verifies each numeric signature still appears in ../paper/main.tex.
 
 Lessons baked in:
-  * main.tex is ~2,560 source lines. NEVER read it whole. We stream the file
-    line-by-line and match per-line so memory and context stay bounded.
+  * main.tex is ~2,560 source lines (~250KB). The default 'any'-mode
+    matcher streams the file line-by-line so per-line memory stays
+    bounded. The 'joint'-mode matcher (added later for table-row
+    claims) reads the whole file once, since windowed access is
+    needed; this is fine for a 250KB paper but would not generalize
+    to MB-scale corpora.
   * No auto-fix. Report only. The human decides what drift means.
   * Lexicon-respecting: the script only audits numeric signatures and never
     proposes prose changes. Protected terms (kinematic, judge-free, regime
@@ -351,7 +355,7 @@ IMPORTANT: list[dict] = [
     {"id": "I44", "description": "IF-DSL: 91% router, -1% delta, 2.4% regret (joint)", "patterns": [r"IF[-\s]?DSL", r"2\.4\s*\\?%"], "match_mode": "joint", "match_window": 3},
     {"id": "I45", "description": "Bytebeat: 88% router, +1% delta, 3.1% regret (joint)", "patterns": [r"[Bb]ytebeat", r"3\.1\s*\\?%"], "match_mode": "joint", "match_window": 3},
     # Hyperparameters (I46-I51)
-    {"id": "I46", "description": "Token budgets: 128, 192, 256, 384, 512", "patterns": [r"128", r"192", r"256", r"384", r"512"], "weak_ok": True},
+    {"id": "I46", "description": "Token budgets: 128, 192, 256, 384, 512 (joint with 'token budget' anchor)", "patterns": [r"[Tt]oken\s+budget", r"128", r"512"], "match_mode": "joint", "match_window": 5},
     {"id": "I47", "description": "Sample size N=60 per condition (main)", "patterns": [r"N\s*[={]+\s*60|N\}?\s*=\s*60"]},
     {"id": "I48", "description": "Sample size N=100 (supplementary spot-checks)", "patterns": [r"N\s*[={]+\s*100|N=100|spot[-\s]check"], "supplementary_only": True},
     {"id": "I49", "description": "Default L_hat ~ 0.025", "patterns": [r"0\.025"]},
@@ -379,7 +383,7 @@ IMPORTANT: list[dict] = [
     {"id": "I69", "description": "App R: IF-DSL 0% at rho>=1.0", "patterns": [r"IF[-\s]?DSL"]},
     {"id": "I70", "description": "App S: Bytebeat cliff at rho>=0.8", "patterns": [r"0\.8", r"[Bb]ytebeat"]},
     {"id": "I71", "description": "App U: <5min CPU, ~20h GPU", "patterns": [r"5\s*min(?:utes?)?|<\s*5", r"20\s*h(?:ours?)?|20\\,?h"]},
-    {"id": "I72", "description": "App E: 5% vs 58%/71% conjunction", "patterns": [r"58\s*\\?%", r"71\s*\\?%"], "weak_ok": True},
+    {"id": "I72", "description": "App E: 5% vs 58%/71% conjunction (joint with 'conjunction' anchor)", "patterns": [r"[Cc]onjunction", r"58\s*\\?%", r"71\s*\\?%"], "match_mode": "joint", "match_window": 5},
     {"id": "I73", "description": "App M: phase transition 1/(k-1)", "patterns": [r"1\s*/\s*\(?\s*k\s*[-{}\s]*1"]},
     {"id": "I74", "description": "App D: rho_max ~ 0.18", "patterns": [r"0\.18"]},
     {"id": "I75", "description": "App D: 24% reinforcing pairs", "patterns": [r"24\s*\\?%", r"reinforcing"]},

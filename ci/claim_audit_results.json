@@ -6477,9 +6477,54 @@
     },
     {
       "claim_id": "I46",
-      "paper_text_signature": "Token budgets: 128, 192, 256, 384, 512",
+      "paper_text_signature": "Token budgets: 128, 192, 256, 384, 512 (joint with 'token budget' anchor)",
       "found": "OK",
       "locations": [
+        {
+          "pattern": "[Tt]oken\\s+budget",
+          "hits": [
+            {
+              "line": 100,
+              "snippet": "\\REQUIRE Prompt $P$, token budget $T$, encoder $\\Phi$"
+            },
+            {
+              "line": 219,
+              "snippet": "\\noindent\\textbf{Model$\\to$LM.} For LLMs, $\\delta$ maps to token budget (query complexity): Lipschitz velocity bounds displacement by token count. Regime ord..."
+            },
+            {
+              "line": 391,
+              "snippet": "Token budget sweep across $T \\in \\{128, 192, 256, 384, 512\\}$ shows non-monotone staging benefit: at $T{=}128$ staging is starved by per-stage overhead and u..."
+            },
+            {
+              "line": 493,
+              "snippet": "\\noindent\\textbf{Why 4 tiers:} $\\hat{\\rho}$ is continuous. Tiers bin for statistical power, isolating regime-ordering from within-tier variance. \\textbf{Not ..."
+            },
+            {
+              "line": 673,
+              "snippet": "$T$ & tokens & Generation Length (token budget) \\\\"
+            },
+            {
+              "line": 953,
+              "snippet": "\\caption{Token budget sweep (aggregate across 4 models, $N$=120 per budget per protocol). Staging benefit is non-monotone in token budget $T$. Relocated from..."
+            },
+            {
+              "line": 973,
+              "snippet": "\\caption{Per-model staging delta by token budget. Qwen-Coder shows negative $\\Delta$: staging is overhead at ceiling capability. DeepSeek shows the predicted..."
+            },
+            {
+              "line": 980,
+              "snippet": "\\multicolumn{6}{l}{\\textit{Staging $\\Delta$ (\\%) by token budget $\\delta$}} \\\\"
+            },
+            {
+              "line": 1818,
+              "snippet": "\\begin{lemma}[Token budget induces norm-budget ball]"
+            },
+            {
+              "line": 1908,
+              "snippet": "In LM experiments, $\\delta$ maps to \\emph{token budget} via a kinematic argument. The response artifact is an integral: $x = x_0 + \\int_0^T v(t)\\,dt$ where $..."
+            }
+          ]
+        },
         {
           "pattern": "128",
           "hits": [
@@ -6498,97 +6543,6 @@
             {
               "line": 1939,
               "snippet": "Expression budget $N$ & $\\{64, 96, 128\\}$ chars & Tab.~\\ref{tab:bytebeat} \\\\"
-            }
-          ]
-        },
-        {
-          "pattern": "192",
-          "hits": [
-            {
-              "line": 391,
-              "snippet": "Token budget sweep across $T \\in \\{128, 192, 256, 384, 512\\}$ shows non-monotone staging benefit: at $T{=}128$ staging is starved by per-stage overhead and u..."
-            },
-            {
-              "line": 960,
-              "snippet": "192 & 45.0\\% & 50.0\\% & $+5.0$\\% \\\\"
-            },
-            {
-              "line": 978,
-              "snippet": "Model & 128 & 192 & 256 & 384 & 512 \\\\"
-            },
-            {
-              "line": 994,
-              "snippet": "\\item \\textbf{DeepSeek-1.3B}: Clearest predicted regime; staging benefit peaks at mid-range budgets ($\\delta$=192--256) where constraint pressure exists but ..."
-            }
-          ]
-        },
-        {
-          "pattern": "256",
-          "hits": [
-            {
-              "line": 391,
-              "snippet": "Token budget sweep across $T \\in \\{128, 192, 256, 384, 512\\}$ shows non-monotone staging benefit: at $T{=}128$ staging is starved by per-stage overhead and u..."
-            },
-            {
-              "line": 809,
-              "snippet": "One-shot (always) & 5\\% & 256 & $1.0\\times$ \\\\"
-            },
-            {
-              "line": 961,
-              "snippet": "256 & 46.7\\% & 49.2\\% & $+2.5$\\% \\\\"
-            },
-            {
-              "line": 978,
-              "snippet": "Model & 128 & 192 & 256 & 384 & 512 \\\\"
-            },
-            {
-              "line": 994,
-              "snippet": "\\item \\textbf{DeepSeek-1.3B}: Clearest predicted regime; staging benefit peaks at mid-range budgets ($\\delta$=192--256) where constraint pressure exists but ..."
-            },
-            {
-              "line": 1794,
-              "snippet": "One-shot & 5\\% & 256 & $-16\\%$ \\\\"
-            }
-          ]
-        },
-        {
-          "pattern": "384",
-          "hits": [
-            {
-              "line": 391,
-              "snippet": "Token budget sweep across $T \\in \\{128, 192, 256, 384, 512\\}$ shows non-monotone staging benefit: at $T{=}128$ staging is starved by per-stage overhead and u..."
-            },
-            {
-              "line": 813,
-              "snippet": "\\textbf{Geometric router} & \\textbf{18\\%} & \\textbf{384} & $\\mathbf{0.67\\times}$ \\\\"
-            },
-            {
-              "line": 962,
-              "snippet": "384 & 49.2\\% & 47.5\\% & $-1.7$\\% \\\\"
-            },
-            {
-              "line": 978,
-              "snippet": "Model & 128 & 192 & 256 & 384 & 512 \\\\"
-            },
-            {
-              "line": 1797,
-              "snippet": "\\textbf{Geometric router} & \\textbf{18\\%} & \\textbf{384} & $\\mathbf{-3\\%}$ \\\\"
-            },
-            {
-              "line": 1915,
-              "snippet": "We report evaluation hyperparameters explicitly: batch size = 32 for embedding encoding (SentenceTransformer default), embedding dim = 384 or 768 depending o..."
-            },
-            {
-              "line": 1951,
-              "snippet": "Embedding dimensions & 384, 768 & Model-dependent \\\\"
-            },
-            {
-              "line": 1955,
-              "snippet": "Max new tokens & 384 & Generation budget \\\\"
-            },
-            {
-              "line": 2118,
-              "snippet": "\\item Encode with sentence-transformers (MiniLM-L6-v2 recommended; 384-dim, fast)"
             }
           ]
         },
@@ -6614,7 +6568,7 @@
           ]
         }
       ],
-      "notes": "All 5 signature patterns matched."
+      "notes": "All 3 patterns co-occur within 5-line window (anchor line ~389)."
     },
     {
       "claim_id": "I47",
@@ -7706,9 +7660,22 @@
     },
     {
       "claim_id": "I72",
-      "paper_text_signature": "App E: 5% vs 58%/71% conjunction",
+      "paper_text_signature": "App E: 5% vs 58%/71% conjunction (joint with 'conjunction' anchor)",
       "found": "OK",
       "locations": [
+        {
+          "pattern": "[Cc]onjunction",
+          "hits": [
+            {
+              "line": 399,
+              "snippet": "Table~\\ref{tab:calibration} shows failure scales with $\\hat{\\rho}$ (24\\% $\\to$ 98\\%), $r_s = 1.0$ with $p < 0.001$ (formal screening condition: Lemma~\\ref{le..."
+            },
+            {
+              "line": 941,
+              "snippet": "Aggregate axis-only pass rates at High tier: \\textbf{tests-only} 58\\%, \\textbf{format-only} 71\\%, \\textbf{both} 5\\%. Single constraints remain tractable. Con..."
+            }
+          ]
+        },
         {
           "pattern": "58\\s*\\\\?%",
           "hits": [
@@ -7744,7 +7711,7 @@
           ]
         }
       ],
-      "notes": "All 2 signature patterns matched."
+      "notes": "All 3 patterns co-occur within 5-line window (anchor line ~397)."
     },
     {
       "claim_id": "I73",
