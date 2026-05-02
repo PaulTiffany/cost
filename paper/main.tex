@@ -94,7 +94,7 @@ diverging as $\rho \to 1$ (Corollary~\ref{cor:uniform}). The operational cliff a
 \end{figure*}
 
 \begin{algorithm}[t]
-\caption{Regime-Based Routing Protocol}
+\caption{Regime-Based Routing: One-Shot, Stage, or Decompose in $O(k)$ Embedding Operations}
 \label{alg:routing}
 \begin{algorithmic}[1]
 \REQUIRE Prompt $P$, token budget $T$, encoder $\Phi$
@@ -125,7 +125,7 @@ diverging as $\rho \to 1$ (Corollary~\ref{cor:uniform}). The operational cliff a
 \paragraph{Scope and Falsifiable Predictions.}
 Boolean validation: regime structure, not magnitude ($r_s{=}1.0$; linear $r{\approx}0.4$ expected; ordinal suffices, Appendix~\ref{app:grad_r}). Four tiers test monotonicity by design (Kendall $\tau{=}1.0$, Appendix~\ref{app:encoder_robustness}). Bounds require $\rho < 1/(k{-}1)$; effective $k$ small (Remark~\ref{rem:high_k}). Geometry applies to explicit embedding-direction constraints (Theorems~\ref{thm:main_hetero}--\ref{thm:gram}); deterministic verification reveals walls that heuristics blur into capability gradients.
 
-\section{Geometric Setup}\label{sec:setup}
+\section{Geometric Setup: Diagonal Cost from $k$ Constraints}\label{sec:setup}
 
 Figure~\ref{fig:diagonal_cost} illustrates the core geometric insight.
 
@@ -326,7 +326,7 @@ Diagonal cost depends on the \emph{maximally conflicting subset}, not all $k$ (C
 
 \noindent\textbf{Worked example.} Figure~\ref{fig:pipeline} traces ``comprehensive'' vs.\ ``concise'' ($k{=}2$) end-to-end through Algorithm~\ref{alg:routing}; cosine grounding follows the Linear Representation Hypothesis \citep{park2023linear} (concepts as directions, conflict coupling estimated by embedding cosine).
 
-\section{Boundary Case}\label{sec:boundary}
+\section{Boundary Case: Divergence at $\rho \to 1/(k{-}1)$}\label{sec:boundary}
 
 The bound diverges as $\rho \to 1$ with critical threshold $\rho_c = 1 - 2\tau^2/(m^2\delta^2)$ marking the regime beyond which no budget suffices (Proposition~\ref{prop:critical}, Appendix~\ref{app:rank_deficiency_boundary}; cost amplification curve, full statement, and protocol comparison there). At high $\hat{\rho}$, the geometric router matches staged pass rate with 25\% fewer tokens (Table~\ref{tab:baselines_main}).
 
@@ -363,7 +363,7 @@ Critique-revision \citep{bai2022constitutional,anthropic2025constitution} is the
 \label{fig:constrained_decoding}
 \end{figure}
 
-\section{Empirical Validation}\label{sec:empirical}
+\section{Empirical Validation: 0/4{,}800 Smooth-Regime Refutations}\label{sec:empirical}
 
 Open-weight models (Qwen, DeepSeek, TinyLlama), deterministic verifiers, no API keys, no LLM-as-judge. Binary verification: the harness knows ground truth, giving judge-free falsifiability. Zeroth-order: feasibility only, no gradients. Table~\ref{tab:harness_suite} shows four harnesses (optimization, abstract syntax tree (AST) code, JSON-NL, signal domain-specific language (DSL)); $N{=}60$, bootstrap CIs. Cross-domain consistency validates the geometric account.
 
@@ -641,7 +641,7 @@ opus-4 & 4 & 5/6 & $22.7\times$ & -- \\
 opus-4.1 & 4 & 5/6 & $\mathbf{26.4\times}$ & highest ratio \\
 haiku-4.5 & 4.5 & 5/6 & $23.3\times$ & -- \\
 sonnet-4.5 & 4.5 & 5/6 & $23.8\times$ & exact $\Delta$=0 \\
-opus-4.5 & 4.5 & 4/6 & $4.8\times$ & best 1-shot \\
+opus-4.5 & 4.5 & 4/6 & $\mathbf{4.8\times}$ & frontier; best 1-shot \\
 \bottomrule
 \end{tabular}
 \end{table}
