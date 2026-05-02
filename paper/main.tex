@@ -232,7 +232,7 @@ $c_{ij} := \ip{u_i}{u_j}$ (unit gradients). Constraints are $\rho$-coupled if $c
 
 \begin{figure}[ht]
 \centering
-\includegraphics[width=0.62\columnwidth]{figures/gram_eigendecomposition.pdf}
+\includegraphics[width=0.85\columnwidth]{figures/gram_eigendecomposition.pdf}
 \caption{\textbf{Embedding-derived $\hat{\rho}$ tracks the Gram eigenstructure driving the bound.} The smallest eigenvalue $\lambda_{\min}(B_\rho) = 1 - \rho(k{-}1)$ controls cost amplification (Theorem~\ref{thm:gram}). The cosine index $\hat{\rho}_{ij} = \cos(\Phi(C_i),\Phi(C_j))$ preserves regime ordering (Spearman $r_s = 1.0$, Appendix~\ref{app:grad_r}); ordinal suffices for routing (Lemma~\ref{lem:proxy_sufficiency}). Grounded in linear representation \citep{park2023linear}: separable concepts orthogonal, conflicting non-orthogonal.}
 \label{fig:gram_eigendecomp}
 \end{figure}
@@ -351,7 +351,7 @@ Critique-revision \citep{bai2022constitutional,anthropic2025constitution} is the
 
 \begin{figure}[t]
 \centering
-\includegraphics[width=0.78\columnwidth]{figures/per_task_correlation.pdf}
+\includegraphics[width=0.85\columnwidth]{figures/per_task_correlation.pdf}
 \caption{\textbf{Per-task pass rate by $\hat{\rho}$ tier} (48 points; $r_s = -0.942$, $p = 2.12 \times 10^{-23}$). Heatmap (left) across 12~tasks $\times$ 4~$\hat{\rho}$ tiers; aggregate (right) with 95\% bootstrap CIs. High-conflict tasks show the steepest cliff; at $\hat{\rho} < 0.15$, staging adds overhead without benefit. The diagonal cost determines \emph{when} staging helps. Data in Table~\ref{tab:llm_bridge}, expanded per task in Appendix~\ref{app:code_full}.}
 \label{fig:per_task}
 \end{figure}
