@@ -1,7 +1,7 @@
 # Claim Certificate
 
 **Paper:** The Cost of Cacophony: Geometric Limits on Multi-Constraint Alignment
-**Generated:** 2026-05-02T15:44:38
+**Generated:** 2026-05-02T15:53:39
 **Verdict:** **PASS** — all structural checks clean (L1+L2+L4+L7); L3+L5 coverage is advisory, see triage JSONs
 
 ## Provenance
@@ -10,16 +10,16 @@
 - main.tex mtime: 2026-05-02T13:12:58
 - main.pdf size: 1,009,654 bytes
 - main.pdf mtime: 2026-05-02T13:35:40
-- registry sha256: `c8e58299a0dd3f5a...`
-- certificate self-hash: `ac0a4268c4041d55...` (sha256 of this payload minus the hash field; recompute to verify integrity)
+- registry sha256: `c1691c712598bcfd...`
+- certificate self-hash: `b9ed72fd064a996a...` (sha256 of this payload minus the hash field; recompute to verify integrity)
 
 ## Layer-by-layer Results
 
 | Layer | Script | Status | Summary |
 |---|---|---|---|
-| L1_audit | `ci\claim_audit.py` | PASS | 144/144 verbatim |
+| L1_audit | `ci\claim_audit.py` | PASS | 150/150 verbatim |
 | L2_validator | `ci\claim_audit_validator.py` | PASS | 14/14 checks pass |
-| L3_sweep | `ci\claim_coverage_sweep.py` | PASS | 91.3% coverage, 118 uncovered |
+| L3_sweep | `ci\claim_coverage_sweep.py` | PASS | 94.0% coverage, 65 uncovered |
 | L4_lineage | `ci\figure_lineage_check.py` | PASS | 8/8 checks pass, 7 figures fresh |
 | L5_figure_values | `ci\figure_value_check.py` | PASS | 77.9% overall figure coverage, 21 uncovered |
 | L7_citations | `ci\citation_integrity_check.py` | PASS | 25 cites, 41 bib entries, 0 unresolved, 16 dead |

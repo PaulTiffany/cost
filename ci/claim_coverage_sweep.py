@@ -246,6 +246,96 @@ def is_incidental_at(line: str, start: int, end: int) -> bool:
     return False
 
 
+def walk_paper_via_parser(path: Path) -> list[Hit] | None:
+    """Optional: walk main.tex via pylatexenc to distinguish math-mode
+    notation from text-mode claims at the AST level.
+
+    Returns None if pylatexenc is not installed; the caller falls back
+    to walk_paper (regex-only).
+
+    Math-mode handling rationale: the previous regex sweep had to
+    guess at math notation via heuristics (\\mathbf{1}, ^N, _N, etc.)
+    and inevitably leaked single-digit ints from formulas as 'uncovered
+    claims'. The parser knows what's math vs text by structure, so we
+    can:
+      - In TEXT mode: emit every numeric (real claims).
+      - In MATH mode: emit ONLY multi-digit decimals (specific values
+        like rho_hat=0.05) and skip bare 1-digit ints (notation).
+
+    Nuance: single-digit decimals in math like "0.5" are sometimes real
+    (rho values) and sometimes not (intervals, fractions). We keep them
+    too — false positives there are absorbed into L3's coverage % which
+    is advisory, not gating.
+    """
+    try:
+        from pylatexenc.latexwalker import (
+            LatexWalker, LatexCharsNode, LatexMathNode,
+            LatexEnvironmentNode, LatexMacroNode, LatexGroupNode,
+        )
+    except ImportError:
+        return None
+
+    text = path.read_text(encoding="utf-8", errors="replace")
+    walker = LatexWalker(text)
+    nodes, _, _ = walker.get_latex_nodes()
+
+    # Section index for the parser path: pre-build via existing regex
+    # walk on raw text (sections are line-anchored, easy to extract).
+    sections = extract_section_index(path)
+
+    hits: list[Hit] = []
+
+    def _walk(nodelist, in_math: bool, env_stack: list[str]):
+        for n in nodelist:
+            if isinstance(n, LatexEnvironmentNode):
+                env_stack.append(n.envname)
+                if n.envname in BLOCK_SKIP_ENVS:
+                    env_stack.pop()
+                    continue
+                if n.nodelist:
+                    _walk(n.nodelist, in_math=in_math, env_stack=env_stack)
+                env_stack.pop()
+                continue
+            if isinstance(n, LatexMathNode):
+                if n.nodelist:
+                    _walk(n.nodelist, in_math=True, env_stack=env_stack)
+                continue
+            if isinstance(n, LatexCharsNode):
+                # Compute line number from byte position
+                line_no = text[:n.pos].count("\n") + 1
+                line_text = text.splitlines()[line_no - 1] if line_no <= text.count("\n") + 1 else n.chars
+
+                for m in NUMERIC.finditer(n.chars):
+                    value = m.group(0)
+                    # Math-mode filter: skip bare 1-digit ints (notation)
+                    if in_math and value.isdigit() and len(value) <= 1:
+                        continue
+                    # Math-mode: skip if part of exponent/subscript
+                    # (preceded by ^ or _ in n.chars)
+                    if in_math and m.start() > 0:
+                        prev = n.chars[m.start() - 1]
+                        if prev in "^_":
+                            continue
+
+                    ctx_start = max(0, m.start() - 30)
+                    ctx_end = min(len(n.chars), m.end() + 30)
+                    ctx = n.chars[ctx_start:ctx_end].strip()
+                    hits.append(Hit(
+                        line_no=line_no,
+                        line=line_text,
+                        value=value,
+                        start=m.start(),
+                        end=m.end(),
+                        context=ctx,
+                    ))
+                continue
+            if hasattr(n, "nodelist") and n.nodelist:
+                _walk(n.nodelist, in_math=in_math, env_stack=env_stack)
+
+    _walk(nodes, in_math=False, env_stack=[])
+    return hits
+
+
 def walk_paper(path: Path) -> list[Hit]:
     """Stream main.tex once, tracking which environments we're inside.
 
@@ -256,6 +346,9 @@ def walk_paper(path: Path) -> list[Hit]:
     \\begin and \\end on the same line are tracked correctly: the line
     enters the env, then leaves it; tokens on that line are skipped while
     the env is active.
+
+    This is the regex-only fallback. Prefer walk_paper_via_parser for
+    accurate math-vs-text distinction.
     """
     hits: list[Hit] = []
     env_stack: list[str] = []  # names of currently-open block-skip envs
@@ -366,7 +459,15 @@ def main() -> int:
     claim_patterns = build_combined_pattern_set(mod)
     sections = extract_section_index(MAIN_TEX)
 
-    all_hits = walk_paper(MAIN_TEX)
+    # Prefer the AST-based walker (pylatexenc) when available for accurate
+    # math-vs-text distinction; fall back to regex-only walker otherwise.
+    parser_hits = walk_paper_via_parser(MAIN_TEX)
+    if parser_hits is not None:
+        all_hits = parser_hits
+        walker_used = "pylatexenc-AST"
+    else:
+        all_hits = walk_paper(MAIN_TEX)
+        walker_used = "regex-only"
     covered = [h for h in all_hits if is_covered(h, claim_patterns)]
     uncovered_hits = [h for h in all_hits if not is_covered(h, claim_patterns)]
 
@@ -390,7 +491,9 @@ def main() -> int:
     print("CLAIM COVERAGE SWEEP  (reverse coverage of main.tex)")
     print("=" * 70)
     print(f"Paper:           {MAIN_TEX}")
-    print(f"Claim patterns:  {len(claim_patterns)} (from {len(mod.CLAIMS) + len(mod.IMPORTANT)} claims)")
+    print(f"Walker:          {walker_used}")
+    n_pattern_claims = len(mod.CLAIMS) + len(mod.IMPORTANT) + len(getattr(mod, 'COMPLETE', []))
+    print(f"Claim patterns:  {len(claim_patterns)} (from {n_pattern_claims} claims)")
     print()
     print(f"  Numeric tokens after incidental filter : {len(all_hits):>5}")
     print(f"  Covered by at least one claim pattern  : {len(covered):>5}")

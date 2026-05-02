@@ -496,9 +496,17 @@ COMPLETE: list[dict] = [
     {"id": "T46", "description": "Sonification: Helpful=C/0 (tonic), Harmless=G/1 (perfect fifth)", "patterns": [r"Helpful.*?C.*?0", r"Harmless.*?G.*?1"], "match_mode": "joint", "match_window": 3},
     {"id": "T47", "description": "Sonification: Honest=D/2 (two fifths)", "patterns": [r"Honest.*?D.*?2|Honest\s*&\s*D\s*&\s*2"], "match_mode": "any"},
     {"id": "T48", "description": "Sonification: Perfect 5th = 7 semitones (consonant)", "patterns": [r"[Pp]erfect\s+5th", r"7\s+semitones"], "match_mode": "joint", "match_window": 1},
+
+    # Final batch from AST-walker triage
+    {"id": "T49", "description": "Per-task validation: 48 task-tier combinations", "patterns": [r"48\s+task"], "match_mode": "any"},
+    {"id": "T50", "description": "Hyperparam: batch_size=32 embedding encoding", "patterns": [r"batch\s+size", r"=\s*32"], "match_mode": "joint", "match_window": 2},
+    {"id": "T51", "description": "Hyperparam: embedding dim 384/768", "patterns": [r"embedding\s+dim", r"384", r"768"], "match_mode": "joint", "match_window": 2},
+    {"id": "T52", "description": "Hyperparam: bootstrap iterations = 1000", "patterns": [r"bootstrap", r"1000"], "match_mode": "joint", "match_window": 2},
+    {"id": "T53", "description": "IF-DSL token budget B in {50, 100, 200}", "patterns": [r"B\s*=\s*50", r"B\s*=\s*100", r"B\s*=\s*200"], "match_mode": "joint", "match_window": 2},
+    {"id": "T54", "description": "Direction stability 94% (Section 4)", "patterns": [r"[Dd]irection\s+stability", r"94"], "match_mode": "joint", "match_window": 2},
 ]
 
-assert len(COMPLETE) == 48, f"Expected 48 complete claims (Tier 3 batch), got {len(COMPLETE)}"
+assert len(COMPLETE) == 54, f"Expected 54 complete claims (Tier 3 batch), got {len(COMPLETE)}"
 
 
 # ---------------------------------------------------------------------------

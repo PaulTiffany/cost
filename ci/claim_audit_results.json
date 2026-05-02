@@ -1,8 +1,8 @@
 {
   "summary": {
     "tier": "Tiers 1+2+3: critical+important+complete (4 supplementary-only claims skipped)",
-    "total": 144,
-    "found_verbatim": 144,
+    "total": 150,
+    "found_verbatim": 150,
     "drift": 0,
     "missing": 0
   },
@@ -12420,6 +12420,295 @@
         }
       ],
       "notes": "All 2 patterns co-occur within 1-line window (anchor line ~2276)."
+    },
+    {
+      "claim_id": "T49",
+      "paper_text_signature": "Per-task validation: 48 task-tier combinations",
+      "found": "OK",
+      "locations": [
+        {
+          "pattern": "48\\s+task",
+          "hits": [
+            {
+              "line": 898,
+              "snippet": "Across 48 task--tier combinations (12~tasks $\\times$ 4~$\\hat{\\rho}$ tiers), pass rate strongly anti-correlates with $\\hat{\\rho}$: Spearman $r_s = -0.942$ ($p..."
+            }
+          ]
+        }
+      ],
+      "notes": "All 1 signature patterns matched."
+    },
+    {
+      "claim_id": "T50",
+      "paper_text_signature": "Hyperparam: batch_size=32 embedding encoding",
+      "found": "OK",
+      "locations": [
+        {
+          "pattern": "batch\\s+size",
+          "hits": [
+            {
+              "line": 1915,
+              "snippet": "We report evaluation hyperparameters explicitly: batch size = 32 for embedding encoding (SentenceTransformer default), embedding dim = 384 or 768 depending o..."
+            }
+          ]
+        },
+        {
+          "pattern": "=\\s*32",
+          "hits": [
+            {
+              "line": 1915,
+              "snippet": "We report evaluation hyperparameters explicitly: batch size = 32 for embedding encoding (SentenceTransformer default), embedding dim = 384 or 768 depending o..."
+            }
+          ]
+        }
+      ],
+      "notes": "All 2 patterns co-occur within 2-line window (anchor line ~1914)."
+    },
+    {
+      "claim_id": "T51",
+      "paper_text_signature": "Hyperparam: embedding dim 384/768",
+      "found": "OK",
+      "locations": [
+        {
+          "pattern": "embedding\\s+dim",
+          "hits": [
+            {
+              "line": 1915,
+              "snippet": "We report evaluation hyperparameters explicitly: batch size = 32 for embedding encoding (SentenceTransformer default), embedding dim = 384 or 768 depending o..."
+            }
+          ]
+        },
+        {
+          "pattern": "384",
+          "hits": [
+            {
+              "line": 391,
+              "snippet": "Token budget sweep across $T \\in \\{128, 192, 256, 384, 512\\}$ shows non-monotone staging benefit: at $T{=}128$ staging is starved by per-stage overhead and u..."
+            },
+            {
+              "line": 813,
+              "snippet": "\\textbf{Geometric router} & \\textbf{18\\%} & \\textbf{384} & $\\mathbf{0.67\\times}$ \\\\"
+            },
+            {
+              "line": 962,
+              "snippet": "384 & 49.2\\% & 47.5\\% & $-1.7$\\% \\\\"
+            },
+            {
+              "line": 978,
+              "snippet": "Model & 128 & 192 & 256 & 384 & 512 \\\\"
+            },
+            {
+              "line": 1797,
+              "snippet": "\\textbf{Geometric router} & \\textbf{18\\%} & \\textbf{384} & $\\mathbf{-3\\%}$ \\\\"
+            },
+            {
+              "line": 1915,
+              "snippet": "We report evaluation hyperparameters explicitly: batch size = 32 for embedding encoding (SentenceTransformer default), embedding dim = 384 or 768 depending o..."
+            },
+            {
+              "line": 1951,
+              "snippet": "Embedding dimensions & 384, 768 & Model-dependent \\\\"
+            },
+            {
+              "line": 1955,
+              "snippet": "Max new tokens & 384 & Generation budget \\\\"
+            },
+            {
+              "line": 2118,
+              "snippet": "\\item Encode with sentence-transformers (MiniLM-L6-v2 recommended; 384-dim, fast)"
+            }
+          ]
+        },
+        {
+          "pattern": "768",
+          "hits": [
+            {
+              "line": 1915,
+              "snippet": "We report evaluation hyperparameters explicitly: batch size = 32 for embedding encoding (SentenceTransformer default), embedding dim = 384 or 768 depending o..."
+            },
+            {
+              "line": 1951,
+              "snippet": "Embedding dimensions & 384, 768 & Model-dependent \\\\"
+            }
+          ]
+        }
+      ],
+      "notes": "All 3 patterns co-occur within 2-line window (anchor line ~1914)."
+    },
+    {
+      "claim_id": "T52",
+      "paper_text_signature": "Hyperparam: bootstrap iterations = 1000",
+      "found": "OK",
+      "locations": [
+        {
+          "pattern": "bootstrap",
+          "hits": [
+            {
+              "line": 355,
+              "snippet": "\\caption{\\textbf{Per-task pass rate by $\\hat{\\rho}$ tier} (48 points; $r_s = -0.942$, $p = 2.12 \\times 10^{-23}$). Heatmap (left) across 12~tasks $\\times$ 4~..."
+            },
+            {
+              "line": 368,
+              "snippet": "Open-weight models (Qwen, DeepSeek, TinyLlama), deterministic verifiers, no API keys, no LLM-as-judge. Binary verification: the harness knows ground truth, g..."
+            },
+            {
+              "line": 404,
+              "snippet": "\\caption{\\textbf{Calibration benchmark} ($r_s = 1.0$): failure rate increases monotonically with regime index $\\hat{\\rho}$. Aggregate across 4 models, $N$=24..."
+            },
+            {
+              "line": 705,
+              "snippet": "\\caption{Embedding analysis (bootstrap CI). $\\rho_{\\max} \\approx 0.18$ is consistent across architectures, and span rank is full (4). Key conflicts: Helpful/..."
+            },
+            {
+              "line": 1915,
+              "snippet": "We report evaluation hyperparameters explicitly: batch size = 32 for embedding encoding (SentenceTransformer default), embedding dim = 384 or 768 depending o..."
+            }
+          ]
+        },
+        {
+          "pattern": "1000",
+          "hits": [
+            {
+              "line": 1915,
+              "snippet": "We report evaluation hyperparameters explicitly: batch size = 32 for embedding encoding (SentenceTransformer default), embedding dim = 384 or 768 depending o..."
+            }
+          ]
+        }
+      ],
+      "notes": "All 2 patterns co-occur within 2-line window (anchor line ~1914)."
+    },
+    {
+      "claim_id": "T53",
+      "paper_text_signature": "IF-DSL token budget B in {50, 100, 200}",
+      "found": "OK",
+      "locations": [
+        {
+          "pattern": "B\\s*=\\s*50",
+          "hits": [
+            {
+              "line": 2364,
+              "snippet": "Conflict & Contract & \\multicolumn{2}{c}{B=50} & \\multicolumn{2}{c}{B=100} & \\multicolumn{2}{c}{B=200} \\\\"
+            }
+          ]
+        },
+        {
+          "pattern": "B\\s*=\\s*100",
+          "hits": [
+            {
+              "line": 2364,
+              "snippet": "Conflict & Contract & \\multicolumn{2}{c}{B=50} & \\multicolumn{2}{c}{B=100} & \\multicolumn{2}{c}{B=200} \\\\"
+            }
+          ]
+        },
+        {
+          "pattern": "B\\s*=\\s*200",
+          "hits": [
+            {
+              "line": 2364,
+              "snippet": "Conflict & Contract & \\multicolumn{2}{c}{B=50} & \\multicolumn{2}{c}{B=100} & \\multicolumn{2}{c}{B=200} \\\\"
+            }
+          ]
+        }
+      ],
+      "notes": "All 3 patterns co-occur within 2-line window (anchor line ~2363)."
+    },
+    {
+      "claim_id": "T54",
+      "paper_text_signature": "Direction stability 94% (Section 4)",
+      "found": "OK",
+      "locations": [
+        {
+          "pattern": "[Dd]irection\\s+stability",
+          "hits": [
+            {
+              "line": 270,
+              "snippet": "Direction stability: 94\\% of trajectories show $\\hat{\\rho}$ drift ${<}0.15$ (Appendix~\\ref{app:direction_stability}). Lipschitz calibration is stable across ..."
+            },
+            {
+              "line": 1110,
+              "snippet": "Direction stability validates the local-to-global transfer assumed in Lemma~\\ref{lem:traj_infeasible}: the MOO bound computed at the anchor applies along rea..."
+            }
+          ]
+        },
+        {
+          "pattern": "94",
+          "hits": [
+            {
+              "line": 122,
+              "snippet": "(4)~\\textbf{Regime Index:} $\\hat{\\rho}$ orders failure regimes ($r_s{=}1.0$; 94\\% router agreement), enabling fail-safe routing (Figure~\\ref{fig:feasibility_..."
+            },
+            {
+              "line": 266,
+              "snippet": "$\\hat\\rho$, a screening statistic for regime structure (not a conflict verdict), is the appropriate abstraction for control (Appendix~\\ref{app:high_k_opus})...."
+            },
+            {
+              "line": 270,
+              "snippet": "Direction stability: 94\\% of trajectories show $\\hat{\\rho}$ drift ${<}0.15$ (Appendix~\\ref{app:direction_stability}). Lipschitz calibration is stable across ..."
+            },
+            {
+              "line": 355,
+              "snippet": "\\caption{\\textbf{Per-task pass rate by $\\hat{\\rho}$ tier} (48 points; $r_s = -0.942$, $p = 2.12 \\times 10^{-23}$). Heatmap (left) across 12~tasks $\\times$ 4~..."
+            },
+            {
+              "line": 384,
+              "snippet": "Output-only: semantic geometry predicts failure without gradients. Table~\\ref{tab:embedding_R}: across 3 encoders (MiniLM, MPNet, E5), $r_s \\geq 0.94$ with o..."
+            },
+            {
+              "line": 393,
+              "snippet": "\\noindent\\textbf{Routing Policy (Corollary of Theorem~\\ref{thm:staging}):} \\emph{One-shot} if $\\hat{\\rho} < 0.15$ or $\\delta/\\delta_{\\min} \\gg 1$; \\emph{Stag..."
+            },
+            {
+              "line": 619,
+              "snippet": "The regime boundary is robust, not an artifact of calibration or encoder choice. Table~\\ref{tab:robustness_stress} shows prompt perturbations (paraphrase, re..."
+            },
+            {
+              "line": 723,
+              "snippet": "Table~\\ref{tab:encoder_sensitivity} shows routing and outcome stability across encoders. While $\\hat{\\rho}$ absolute values vary ($\\pm$0.08), \\emph{regime or..."
+            },
+            {
+              "line": 735,
+              "snippet": "mpnet-base-v2 & [0.08, 0.71] & 94\\% & 91\\% \\\\"
+            },
+            {
+              "line": 753,
+              "snippet": "Paraphrase (5 var.) & 0.98 & 96\\% & 94\\% \\\\"
+            },
+            {
+              "line": 756,
+              "snippet": "Implicit $\\to$ explicit & 0.97 & 94\\% & 91\\% \\\\"
+            },
+            {
+              "line": 836,
+              "snippet": "JSON-NL (transfer) & 94\\% & $+2\\%$ & 2.1\\% \\\\"
+            },
+            {
+              "line": 898,
+              "snippet": "Across 48 task--tier combinations (12~tasks $\\times$ 4~$\\hat{\\rho}$ tiers), pass rate strongly anti-correlates with $\\hat{\\rho}$: Spearman $r_s = -0.942$ ($p..."
+            },
+            {
+              "line": 941,
+              "snippet": "Aggregate axis-only pass rates at High tier: \\textbf{tests-only} 58\\%, \\textbf{format-only} 71\\%, \\textbf{both} 5\\%. Single constraints remain tractable. Con..."
+            },
+            {
+              "line": 1107,
+              "snippet": "Median direction drift: $0.07$ (IQR: $0.03$--$0.12$). 94\\% of trajectories show drift ${<}0.15$. The constraint geometry is remarkably stable: directions est..."
+            },
+            {
+              "line": 1153,
+              "snippet": "$\\hat{L}$ measures step magnitude, not semantic direction. It is encoder-stable by construction: $\\hat{L} \\in [0.021, 0.028]$ across MiniLM/MPNet/E5. Default..."
+            },
+            {
+              "line": 1186,
+              "snippet": "$-30\\%$ (conservative) & 94\\% & $+1\\%$ & More staging \\\\"
+            },
+            {
+              "line": 1759,
+              "snippet": "domain=0:0.94,"
+            }
+          ]
+        }
+      ],
+      "notes": "All 2 patterns co-occur within 2-line window (anchor line ~269)."
     }
   ]
 }

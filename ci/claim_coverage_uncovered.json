@@ -1,720 +1,402 @@
 {
   "paper_path": "C:\\src\\NeurIPS\\paper\\main.tex",
   "summary": {
-    "total_numeric_tokens": 1383,
-    "covered": 1263,
-    "uncovered_raw": 120,
-    "uncovered_deduped": 118,
-    "coverage_percent": 91.3
+    "total_numeric_tokens": 1140,
+    "covered": 1072,
+    "uncovered_raw": 68,
+    "uncovered_deduped": 65,
+    "coverage_percent": 94.0
   },
   "uncovered": [
     {
+      "line_no": 12,
+      "value": "1.18",
+      "context": "compat=1.18, compat/show suggested versio",
+      "section": "preamble"
+    },
+    {
+      "line_no": 118,
+      "value": "1",
+      "context": "(1)",
+      "section": "paragraph: The Diagonal Cost Bound."
+    },
+    {
       "line_no": 246,
       "value": "1",
-      "context": "\\|x_{t+1}-x_t\\| \\le L \\;\\Rightarrow\\; \\|x_T - x_",
+      "context": "t+1",
       "section": "subsection: Notation and Model"
     },
     {
-      "line_no": 296,
-      "value": "1",
-      "context": "^2 + 2\\rho_{ij}\\alpha_i\\alpha_j}}{\\sqrt{1-\\rho_{ij}^2}}.",
-      "section": "subsection: Two-Constraint Bound"
+      "line_no": 254,
+      "value": "0.92",
+      "context": "0.92",
+      "section": "subsection: Notation and Model"
     },
     {
-      "line_no": 306,
-      "value": "0",
-      "context": "ix of unit gradients. For $\\Gamma \\succ 0$:",
-      "section": "subsection: Extension to $k$ Constraints"
+      "line_no": 269,
+      "value": "94",
+      "context": "Direction stability: 94",
+      "section": "subsection: Notation and Model"
     },
     {
-      "line_no": 338,
-      "value": "1",
-      "context": "$O(k\\tau/m)$ vs.\\ diagonal $O(\\sqrt{k/(1{-}\\rho)}\\cdot\\tau/m)$; see proof in App",
-      "section": "section: Staged Control as Geometric Solution"
+      "line_no": 379,
+      "value": "59",
+      "context": "er Transform verified audio): 59",
+      "section": "subsection: Flagship: Exact Bounds"
     },
     {
-      "line_no": 695,
+      "line_no": 456,
+      "value": "0.34",
+      "context": "0.34",
+      "section": "paragraph: Geometric floor."
+    },
+    {
+      "line_no": 521,
+      "value": "0.56",
+      "context": "0.56",
+      "section": "paragraph: Frontier Transfer and Generalization."
+    },
+    {
+      "line_no": 538,
+      "value": "2026",
+      "context": "ttps://neurips.cc/Conferences/2026/PaperInformation/FundingDiscl",
+      "section": "section: Related Work, Limitations, and Future Work"
+    },
+    {
+      "line_no": 649,
+      "value": "4.5",
+      "context": "Opus-4.5 (frontier) shows",
+      "section": "paragraph: The Scaling Paradox."
+    },
+    {
+      "line_no": 675,
+      "value": "3",
+      "context": "3",
+      "section": "subsection: Notation glossary (relocated from body \\S\\ref{sec:setup"
+    },
+    {
+      "line_no": 780,
       "value": "1",
-      "context": "Satisfaction patterns $s(x) \\in \\{-1,+1\\}^k$ yield at most $2^k$ regimes.",
-      "section": "subsection: Chart-rank lemmas (relocated from body \\S\\ref{sec:setup"
+      "context": "eals two failure boundaries: (1)",
+      "section": "paragraph: Where the Method Breaks."
     },
     {
       "line_no": 866,
       "value": "3",
-      "context": "aints (e.g., ``recipe JSON with exactly 3 ingredients'' $\\wedge$ ``include all co",
+      "context": "recipe JSON with exactly 3 ingredients",
       "section": "paragraph: Implication."
     },
     {
-      "line_no": 930,
-      "value": "1",
-      "context": "Tier & 1-shot & $\\Delta$ & 1-shot & $\\Delta$ & 1",
+      "line_no": 897,
+      "value": "48",
+      "context": "Across 48 task",
+      "section": "paragraph: Per-task validation (relocated from \\S\\ref{sec:staging"
+    },
+    {
+      "line_no": 929,
+      "value": "2",
+      "context": "2-3",
+      "section": "paragraph: Per-task validation (relocated from \\S\\ref{sec:staging"
+    },
+    {
+      "line_no": 929,
+      "value": "3",
+      "context": "2-3",
+      "section": "paragraph: Per-task validation (relocated from \\S\\ref{sec:staging"
+    },
+    {
+      "line_no": 929,
+      "value": "4",
+      "context": "4-5",
+      "section": "paragraph: Per-task validation (relocated from \\S\\ref{sec:staging"
+    },
+    {
+      "line_no": 929,
+      "value": "5",
+      "context": "4-5",
+      "section": "paragraph: Per-task validation (relocated from \\S\\ref{sec:staging"
+    },
+    {
+      "line_no": 929,
+      "value": "6",
+      "context": "6-7",
+      "section": "paragraph: Per-task validation (relocated from \\S\\ref{sec:staging"
+    },
+    {
+      "line_no": 929,
+      "value": "7",
+      "context": "6-7",
+      "section": "paragraph: Per-task validation (relocated from \\S\\ref{sec:staging"
+    },
+    {
+      "line_no": 929,
+      "value": "8",
+      "context": "8-9",
+      "section": "paragraph: Per-task validation (relocated from \\S\\ref{sec:staging"
+    },
+    {
+      "line_no": 929,
+      "value": "9",
+      "context": "8-9",
       "section": "paragraph: Per-task validation (relocated from \\S\\ref{sec:staging"
     },
     {
       "line_no": 930,
       "value": "1",
-      "context": "Tier & 1-shot & $\\Delta$ & 1-shot & $\\Delta$ & 1-shot & $\\Delta$ & 1",
-      "section": "paragraph: Per-task validation (relocated from \\S\\ref{sec:staging"
-    },
-    {
-      "line_no": 930,
-      "value": "1",
-      "context": "1-shot & $\\Delta$ & 1-shot & $\\Delta$ & 1-shot & $\\Delta$ & 1-shot & $\\Delta$ \\\\",
-      "section": "paragraph: Per-task validation (relocated from \\S\\ref{sec:staging"
-    },
-    {
-      "line_no": 930,
-      "value": "1",
-      "context": "1-shot & $\\Delta$ & 1-shot & $\\Delta$ & 1-shot & $\\Delta$ \\\\",
+      "context": "1-shot",
       "section": "paragraph: Per-task validation (relocated from \\S\\ref{sec:staging"
     },
     {
       "line_no": 1003,
       "value": "1",
-      "context": "\\paragraph{Prompt 1: Helpful $\\leftrightarrow$ Harmless.}",
+      "context": "Prompt 1: Helpful",
       "section": "paragraph: Prompt 1: Helpful $\\leftrightarrow$ Harmless."
     },
     {
       "line_no": 1010,
       "value": "2",
-      "context": "\\paragraph{Prompt 2: Helpful $\\leftrightarrow$ Honest.}",
+      "context": "Prompt 2: Helpful",
       "section": "paragraph: Prompt 2: Helpful $\\leftrightarrow$ Honest."
     },
     {
       "line_no": 1017,
       "value": "3",
-      "context": "\\paragraph{Prompt 3: Harmless $\\leftrightarrow$ Autonomy.}",
+      "context": "Prompt 3: Harmless",
       "section": "paragraph: Prompt 3: Harmless $\\leftrightarrow$ Autonomy."
     },
     {
       "line_no": 1019,
       "value": "10",
-      "context": "``I'm choosing to train for a 10K on short notice. Give me a plan withou",
+      "context": "I'm choosing to train for a 10K on short notice. Give me a p",
       "section": "paragraph: Prompt 3: Harmless $\\leftrightarrow$ Autonomy."
     },
     {
       "line_no": 1031,
       "value": "5",
-      "context": "\\paragraph{Prompt 5a: Simultaneous.}",
+      "context": "Prompt 5a: Simultaneous.",
       "section": "paragraph: Prompt 5a: Simultaneous."
     },
     {
       "line_no": 1039,
-      "value": "1",
-      "context": "Ask sequentially: (1) ``What are common budgeting steps for",
-      "section": "paragraph: Prompt 5b: Staged."
-    },
-    {
-      "line_no": 1039,
       "value": "2",
-      "context": "g steps for someone in my situation?'' (2) ``What are the risks or downsides of e",
+      "context": "(2)",
       "section": "paragraph: Prompt 5b: Staged."
     },
     {
       "line_no": 1039,
       "value": "3",
-      "context": "are the risks or downsides of each?'' (3) ``How certain is the evidence for thes",
+      "context": "(3)",
       "section": "paragraph: Prompt 5b: Staged."
     },
     {
-      "line_no": 1257,
-      "value": "0",
-      "context": "where $\\tau>0$ is a fixed local decrease requirement.",
-      "section": "subsection: Preliminaries and Notation"
+      "line_no": 1155,
+      "value": "50",
+      "context": "h model and task, we generate 50 completions and measure",
+      "section": "paragraph: Method."
     },
     {
       "line_no": 1261,
       "value": "1,1",
-      "context": "_{ij} := \\langle u_i, u_j \\rangle \\in [-1,1]$ where $u_i = g_i/\\|g_i\\|$.",
+      "context": "[-1,1]",
       "section": "subsection: Preliminaries and Notation"
-    },
-    {
-      "line_no": 1276,
-      "value": "0",
-      "context": "At least one $g_i \\neq 0$.",
-      "section": "paragraph: Assumptions."
     },
     {
       "line_no": 1321,
       "value": "1,1",
-      "context": "cosine $c := \\langle u, v \\rangle \\in (-1,1)$. The minimum-norm point in $\\mathcal{",
+      "context": "(-1,1)",
       "section": "subsection: Convex Feasibility and Projection Geometry"
-    },
-    {
-      "line_no": 1323,
-      "value": "1",
-      "context": "d^\\star = \\frac{-\\alpha_1 + \\alpha_2 c}{1-c^2}u + \\frac{-\\alpha_2 + \\alpha_1 c}{1",
-      "section": "subsection: Convex Feasibility and Projection Geometry"
-    },
-    {
-      "line_no": 1323,
-      "value": "1",
-      "context": "1-c^2}u + \\frac{-\\alpha_2 + \\alpha_1 c}{1-c^2}v.",
-      "section": "subsection: Convex Feasibility and Projection Geometry"
-    },
-    {
-      "line_no": 1331,
-      "value": "2",
-      "context": "lambda_1,\\lambda_2) = \\tfrac{1}{2}\\|d\\|^2 + \\lambda_1(\\langle u,d \\rangle+\\alpha_",
-      "section": "subsection: Convex Feasibility and Projection Geometry"
-    },
-    {
-      "line_no": 1333,
-      "value": "0",
-      "context": "Setting $\\nabla_d \\mathcal{L} = 0$: $d = -\\lambda_1 u - \\lambda_2 v$.",
-      "section": "subsection: Convex Feasibility and Projection Geometry"
-    },
-    {
-      "line_no": 1340,
-      "value": "1",
-      "context": "The system has determinant $1-c^2 > 0$ for $|c| < 1$. Solving via Cra",
-      "section": "subsection: Convex Feasibility and Projection Geometry"
-    },
-    {
-      "line_no": 1340,
-      "value": "0",
-      "context": "The system has determinant $1-c^2 > 0$ for $|c| < 1$. Solving via Cramer's ru",
-      "section": "subsection: Convex Feasibility and Projection Geometry"
-    },
-    {
-      "line_no": 1340,
-      "value": "1",
-      "context": "has determinant $1-c^2 > 0$ for $|c| < 1$. Solving via Cramer's rule yields the",
-      "section": "subsection: Convex Feasibility and Projection Geometry"
-    },
-    {
-      "line_no": 1351,
-      "value": "0",
-      "context": "and conflict magnitude $\\rho > 0$ (cosine $c = -\\rho$).",
-      "section": "subsection: Two-Constraint Lower Bound (Theorem~\\ref{thm:main_hetero"
-    },
-    {
-      "line_no": 1357,
-      "value": "2",
-      "context": "\\frac{\\tau\\sqrt{2}}{\\sqrt{m_1^2 + m_2^2 - 2\\rho m_1 m_2}}",
-      "section": "subsection: Two-Constraint Lower Bound (Theorem~\\ref{thm:main_hetero"
-    },
-    {
-      "line_no": 1363,
-      "value": "2",
-      "context": "$\\|d\\|^2 = \\tau^2 \\mathbf{1}^\\top \\Gamma^{-1} \\m",
-      "section": "paragraph: Classical structure."
-    },
-    {
-      "line_no": 1374,
-      "value": "1",
-      "context": "gamma_i = \\frac{-\\alpha_i + \\alpha_j c}{1-c^2}.",
-      "section": "paragraph: Classical structure."
-    },
-    {
-      "line_no": 1378,
-      "value": "1",
-      "context": "$G = \\begin{pmatrix} 1 & c \\\\ c & 1 \\end{pmatrix}$",
-      "section": "paragraph: Classical structure."
-    },
-    {
-      "line_no": 1379,
-      "value": "1",
-      "context": "G^{-1} = \\frac{1}{1-c^2}\\begin{pmatrix} 1 & -c \\\\ -c & 1 \\end{pmatrix}$.",
-      "section": "paragraph: Classical structure."
-    },
-    {
-      "line_no": 1379,
-      "value": "1",
-      "context": "1}{1-c^2}\\begin{pmatrix} 1 & -c \\\\ -c & 1 \\end{pmatrix}$.",
-      "section": "paragraph: Classical structure."
-    },
-    {
-      "line_no": 1381,
-      "value": "2",
-      "context": "Computing $\\|d^\\star\\|^2 = \\gamma_1^2 + \\gamma_2^2 + 2\\gamma_1 \\",
-      "section": "paragraph: Classical structure."
-    },
-    {
-      "line_no": 1383,
-      "value": "2",
-      "context": "\\|d^\\star\\|^2 = \\frac{\\alpha_1^2 + \\alpha_2^2 - 2c\\al",
-      "section": "paragraph: Classical structure."
-    },
-    {
-      "line_no": 1383,
-      "value": "2",
-      "context": "r\\|^2 = \\frac{\\alpha_1^2 + \\alpha_2^2 - 2c\\alpha_1\\alpha_2}{1-c^2}.",
-      "section": "paragraph: Classical structure."
-    },
-    {
-      "line_no": 1383,
-      "value": "1",
-      "context": "_1^2 + \\alpha_2^2 - 2c\\alpha_1\\alpha_2}{1-c^2}.",
-      "section": "paragraph: Classical structure."
-    },
-    {
-      "line_no": 1388,
-      "value": "2",
-      "context": "\\|d^\\star\\|^2 = \\frac{2(\\tau/m)^2(1+\\rho)}{1-\\rho^2}",
-      "section": "paragraph: Classical structure."
-    },
-    {
-      "line_no": 1388,
-      "value": "2",
-      "context": "\\|d^\\star\\|^2 = \\frac{2(\\tau/m)^2(1+\\rho)}{1-\\rho^2} = \\frac{2\\",
-      "section": "paragraph: Classical structure."
-    },
-    {
-      "line_no": 1388,
-      "value": "1",
-      "context": "^\\star\\|^2 = \\frac{2(\\tau/m)^2(1+\\rho)}{1-\\rho^2} = \\frac{2\\tau^2}{m^2(1-\\rho)}.",
-      "section": "paragraph: Classical structure."
-    },
-    {
-      "line_no": 1424,
-      "value": "2",
-      "context": "\\min_{d}\\ \\tfrac{1}{2}\\|d\\|^2 \\quad \\text{s.t.}\\quad \\langle u_i, d \\",
-      "section": "subsection: k-Constraint Lower Bound (Theorem~\\ref{thm:main_k"
-    },
-    {
-      "line_no": 1428,
-      "value": "0",
-      "context": "sum_i \\lambda_i u_i$ where $\\lambda \\ge 0$.",
-      "section": "subsection: k-Constraint Lower Bound (Theorem~\\ref{thm:main_k"
-    },
-    {
-      "line_no": 1436,
-      "value": "2",
-      "context": "\\|d^\\star\\|^2 = \\alpha^2 \\mathbf{1}^\\top \\Gamma^{-1}",
-      "section": "subsection: k-Constraint Lower Bound (Theorem~\\ref{thm:main_k"
-    },
-    {
-      "line_no": 1441,
-      "value": "1",
-      "context": "\\Gamma = (1+\\rho)I - \\rho \\mathbf{1}\\mathbf{1}^\\top",
-      "section": "subsection: k-Constraint Lower Bound (Theorem~\\ref{thm:main_k"
-    },
-    {
-      "line_no": 1445,
-      "value": "1",
-      "context": "}{1+\\rho}\\left(I + \\frac{\\rho}{1-\\rho(k-1)}\\mathbf{1}\\mathbf{1}^\\top\\right).",
-      "section": "subsection: k-Constraint Lower Bound (Theorem~\\ref{thm:main_k"
-    },
-    {
-      "line_no": 1494,
-      "value": "1",
-      "context": "j} = -\\rho$, the Gram matrix $\\Gamma = (1+\\rho)I - \\rho\\mathbf{1}\\mathbf{1}^\\top$",
-      "section": "subsection: High-$\\rho$ Bounds and Degeneracy"
-    },
-    {
-      "line_no": 1496,
-      "value": "1",
-      "context": "\\item $\\lambda_1 = 1 - \\rho(k-1)$ with eigenvector $\\mathbf{",
-      "section": "subsection: High-$\\rho$ Bounds and Degeneracy"
-    },
-    {
-      "line_no": 1496,
-      "value": "1",
-      "context": "\\item $\\lambda_1 = 1 - \\rho(k-1)$ with eigenvector $\\mathbf{1}$",
-      "section": "subsection: High-$\\rho$ Bounds and Degeneracy"
-    },
-    {
-      "line_no": 1497,
-      "value": "1",
-      "context": "\\item $\\lambda_{2,\\ldots,k} = 1 + \\rho$ with multiplicity $k-1$",
-      "section": "subsection: High-$\\rho$ Bounds and Degeneracy"
-    },
-    {
-      "line_no": 1497,
-      "value": "1",
-      "context": "ots,k} = 1 + \\rho$ with multiplicity $k-1$",
-      "section": "subsection: High-$\\rho$ Bounds and Degeneracy"
-    },
-    {
-      "line_no": 1504,
-      "value": "1",
-      "context": "For $v \\perp \\mathbf{1}$: $\\Gamma v = (1+\\rho)v$.",
-      "section": "subsection: High-$\\rho$ Bounds and Degeneracy"
-    },
-    {
-      "line_no": 1553,
-      "value": "2",
-      "context": "traint hyperplanes, giving $\\|d^\\star\\|^2 = \\tau^2 \\mathbf{1}^\\top \\Gamma^{-1} \\m",
-      "section": "subsection: Connection to Pareto Optimality"
-    },
-    {
-      "line_no": 1563,
-      "value": "1",
-      "context": "ll objectives except $i$. This is a $(k-1)$-constraint problem with the same conf",
-      "section": "subsection: Connection to Pareto Optimality"
-    },
-    {
-      "line_no": 1563,
-      "value": "1",
-      "context": "inimum displacement scales as $\\sqrt{(k-1)/(1-\\rho_{\\max}(k-2))} = \\Omega(1/\\sqrt",
-      "section": "subsection: Connection to Pareto Optimality"
-    },
-    {
-      "line_no": 1563,
-      "value": "1",
-      "context": "um displacement scales as $\\sqrt{(k-1)/(1-\\rho_{\\max}(k-2))} = \\Omega(1/\\sqrt{1-\\",
-      "section": "subsection: Connection to Pareto Optimality"
-    },
-    {
-      "line_no": 1563,
-      "value": "2",
-      "context": "scales as $\\sqrt{(k-1)/(1-\\rho_{\\max}(k-2))} = \\Omega(1/\\sqrt{1-\\rho_{\\max}})$ ne",
-      "section": "subsection: Connection to Pareto Optimality"
-    },
-    {
-      "line_no": 1563,
-      "value": "1",
-      "context": "rt{(k-1)/(1-\\rho_{\\max}(k-2))} = \\Omega(1/\\sqrt{1-\\rho_{\\max}})$ near criticality",
-      "section": "subsection: Connection to Pareto Optimality"
-    },
-    {
-      "line_no": 1563,
-      "value": "1",
-      "context": "/(1-\\rho_{\\max}(k-2))} = \\Omega(1/\\sqrt{1-\\rho_{\\max}})$ near criticality.",
-      "section": "subsection: Connection to Pareto Optimality"
-    },
-    {
-      "line_no": 1571,
-      "value": "1",
-      "context": "r $i \\neq j$ and $\\tilde{\\Gamma}_{ii} = 1$. Let $M = \\mathrm{diag}(m_1, \\ldots, m",
-      "section": "subsection: Heterogeneous Magnitudes: Complete Treatment"
-    },
-    {
-      "line_no": 1573,
-      "value": "2",
-      "context": "\\|d^\\star\\|^2 = \\tau^2 \\mathbf{1}^\\top (M \\tilde{\\Gam",
-      "section": "subsection: Heterogeneous Magnitudes: Complete Treatment"
-    },
-    {
-      "line_no": 1578,
-      "value": "2",
-      "context": "um-norm solution satisfies $\\|d^\\star\\|^2 = \\tau^2 \\mathbf{1}^\\top \\Gamma^{-1} \\m",
-      "section": "subsection: Heterogeneous Magnitudes: Complete Treatment"
-    },
-    {
-      "line_no": 1584,
-      "value": "1",
-      "context": "\\|d^\\star\\| = \\tau \\sqrt{\\frac{1/m_1^2 + 1/m_2^2 - 2\\rho/(m_1 m_2)}{1-\\r",
-      "section": "subsection: Heterogeneous Magnitudes: Complete Treatment"
-    },
-    {
-      "line_no": 1584,
-      "value": "1",
-      "context": "|d^\\star\\| = \\tau \\sqrt{\\frac{1/m_1^2 + 1/m_2^2 - 2\\rho/(m_1 m_2)}{1-\\rho^2}}.",
-      "section": "subsection: Heterogeneous Magnitudes: Complete Treatment"
-    },
-    {
-      "line_no": 1584,
-      "value": "1",
-      "context": "ac{1/m_1^2 + 1/m_2^2 - 2\\rho/(m_1 m_2)}{1-\\rho^2}}.",
-      "section": "subsection: Heterogeneous Magnitudes: Complete Treatment"
-    },
-    {
-      "line_no": 1590,
-      "value": "1",
-      "context": "For $k=2$, $M^{-1} = \\mathrm{diag}(1/m_1, 1/m_2)$ and $\\tilde{\\Gamma}^{-1} =",
-      "section": "subsection: Heterogeneous Magnitudes: Complete Treatment"
-    },
-    {
-      "line_no": 1590,
-      "value": "1",
-      "context": "r $k=2$, $M^{-1} = \\mathrm{diag}(1/m_1, 1/m_2)$ and $\\tilde{\\Gamma}^{-1} = \\frac{",
-      "section": "subsection: Heterogeneous Magnitudes: Complete Treatment"
-    },
-    {
-      "line_no": 1590,
-      "value": "1",
-      "context": "-1} = \\frac{1}{1-\\rho^2}\\begin{pmatrix} 1 & -\\rho \\\\ -\\rho & 1 \\end{pmatrix}$. Co",
-      "section": "subsection: Heterogeneous Magnitudes: Complete Treatment"
-    },
-    {
-      "line_no": 1590,
-      "value": "1",
-      "context": "^2}\\begin{pmatrix} 1 & -\\rho \\\\ -\\rho & 1 \\end{pmatrix}$. Computing $\\mathbf{1}^\\",
-      "section": "subsection: Heterogeneous Magnitudes: Complete Treatment"
-    },
-    {
-      "line_no": 1601,
-      "value": "1",
-      "context": "x_{t+1} = x_t - \\eta_t \\frac{\\langle g_{i_t},",
-      "section": "subsection: Iterative Satisfaction: Convergence Analysis"
-    },
-    {
-      "line_no": 1601,
-      "value": "2",
-      "context": "_t - x^\\star_{i_t} \\rangle}{\\|g_{i_t}\\|^2} g_{i_t},",
-      "section": "subsection: Iterative Satisfaction: Convergence Analysis"
-    },
-    {
-      "line_no": 1609,
-      "value": "1",
-      "context": "\\|x_T - x^\\star\\| \\le \\left(1 - \\frac{1-\\rho_{\\max}}{k}\\right)^{T/k}",
-      "section": "subsection: Iterative Satisfaction: Convergence Analysis"
-    },
-    {
-      "line_no": 1609,
-      "value": "1",
-      "context": "\\|x_T - x^\\star\\| \\le \\left(1 - \\frac{1-\\rho_{\\max}}{k}\\right)^{T/k} \\|x_0 - x^",
-      "section": "subsection: Iterative Satisfaction: Convergence Analysis"
-    },
-    {
-      "line_no": 1611,
-      "value": "1",
-      "context": "gence rate degrades as $\\rho_{\\max} \\to 1$.",
-      "section": "subsection: Iterative Satisfaction: Convergence Analysis"
-    },
-    {
-      "line_no": 1635,
-      "value": "1",
-      "context": "where $\\lambda_{\\min}(\\Gamma) = 1 - \\rho_{\\max}(k-1)$ for uniform conflic",
-      "section": "subsection: Perturbation Analysis and Robustness"
-    },
-    {
-      "line_no": 1635,
-      "value": "1",
-      "context": "mbda_{\\min}(\\Gamma) = 1 - \\rho_{\\max}(k-1)$ for uniform conflict.",
-      "section": "subsection: Perturbation Analysis and Robustness"
-    },
-    {
-      "line_no": 1661,
-      "value": "1",
-      "context": "\\pi^\\star = \\arg\\min_\\pi \\sum_{t=1}^{k-1} \\sqrt{1 + 2\\sum_{s<t} \\rho_{\\pi(s)\\pi(",
-      "section": "subsection: Algorithmic Implications"
-    },
-    {
-      "line_no": 1661,
-      "value": "1",
-      "context": "r = \\arg\\min_\\pi \\sum_{t=1}^{k-1} \\sqrt{1 + 2\\sum_{s<t} \\rho_{\\pi(s)\\pi(t)}}.",
-      "section": "subsection: Algorithmic Implications"
-    },
-    {
-      "line_no": 1681,
-      "value": "1",
-      "context": "e optimum. Let $\\mathcal{A} \\subseteq \\{1,\\ldots,k\\}$ denote the active set. Then",
-      "section": "subsection: Extension to Inequality Constraints"
-    },
-    {
-      "line_no": 1683,
-      "value": "2",
-      "context": "\\|d^\\star\\|^2 = \\boldsymbol{\\tau}_\\mathcal{A}^\\top \\G",
-      "section": "subsection: Extension to Inequality Constraints"
     },
     {
       "line_no": 1705,
-      "value": "1",
-      "context": "all $k$ constraints, i.e., $r_i(\\gamma(1)) \\le r_i(\\gamma(0)) - \\tau$ for all $i",
-      "section": "subsection: Global Extension"
-    },
-    {
-      "line_no": 1705,
-      "value": "0",
-      "context": "s, i.e., $r_i(\\gamma(1)) \\le r_i(\\gamma(0)) - \\tau$ for all $i$. Under bounded cu",
-      "section": "subsection: Global Extension"
-    },
-    {
-      "line_no": 1707,
-      "value": "1",
-      "context": "c{\\tau}{m}\\sqrt{\\frac{k}{1-\\bar{\\rho}(k-1)}} - O(\\kappa \\tau),",
+      "value": "0,1",
+      "context": ": [0,1]",
       "section": "subsection: Global Extension"
     },
     {
       "line_no": 1713,
-      "value": "1",
-      "context": "n $[0,1]$ into $N$ segments $[t_j, t_{j+1}]$ with $\\|\\gamma(t_{j+1}) - \\gamma(t_j",
+      "value": "0,1",
+      "context": "[0,1]",
       "section": "subsection: Global Extension"
     },
     {
-      "line_no": 1713,
-      "value": "1",
-      "context": "ts $[t_j, t_{j+1}]$ with $\\|\\gamma(t_{j+1}) - \\gamma(t_j)\\| = \\epsilon := L/N$ wh",
-      "section": "subsection: Global Extension"
+      "line_no": 1913,
+      "value": "32",
+      "context": "ters explicitly: batch size = 32 for embedding encoding (Sente",
+      "section": "subsection: Complete Hyperparameter Specification"
     },
     {
-      "line_no": 1715,
-      "value": "1",
-      "context": "the residual satisfies $r_i(\\gamma(t_{j+1})) = r_i(\\gamma(t_j)) + \\langle \\nabla",
-      "section": "subsection: Global Extension"
+      "line_no": 1913,
+      "value": "384",
+      "context": "mer default), embedding dim = 384 or 768 depending on model, dr",
+      "section": "subsection: Complete Hyperparameter Specification"
     },
     {
-      "line_no": 1715,
-      "value": "1",
-      "context": "silon^2)$ where $\\Delta_j = \\gamma(t_{j+1}) - \\gamma(t_j)$. For $\\tau_j$-progress",
-      "section": "subsection: Global Extension"
+      "line_no": 1913,
+      "value": "768",
+      "context": "ault), embedding dim = 384 or 768 depending on model, dropout =",
+      "section": "subsection: Complete Hyperparameter Specification"
     },
     {
-      "line_no": 1725,
+      "line_no": 1913,
       "value": "0",
-      "context": "O(N\\kappa(L/N)^2) = O(\\kappa L^2/N) \\to 0$ as $N \\to \\infty$.",
-      "section": "subsection: Global Extension"
+      "context": "depending on model, dropout = 0 at inference, and bootstrap i",
+      "section": "subsection: Complete Hyperparameter Specification"
     },
     {
-      "line_no": 1729,
-      "value": "1",
-      "context": "^1 \\frac{1}{m(\\gamma(t))}\\sqrt{\\frac{k}{1-\\rho(\\gamma(t))(k-1)}} \\, d\\tau(t),",
-      "section": "subsection: Global Extension"
+      "line_no": 1913,
+      "value": "1000",
+      "context": "e, and bootstrap iterations = 1000. No training is performed.\n\nT",
+      "section": "subsection: Complete Hyperparameter Specification"
     },
     {
-      "line_no": 1729,
-      "value": "1",
-      "context": "(t))}\\sqrt{\\frac{k}{1-\\rho(\\gamma(t))(k-1)}} \\, d\\tau(t),",
-      "section": "subsection: Global Extension"
+      "line_no": 1936,
+      "value": "10",
+      "context": "10^",
+      "section": "subsection: Complete Hyperparameter Specification"
     },
     {
-      "line_no": 1733,
-      "value": "1",
-      "context": "c{\\tau}{m}\\sqrt{\\frac{k}{1-\\bar{\\rho}(k-1)}} - O(\\kappa\\tau),",
-      "section": "subsection: Global Extension"
+      "line_no": 1947,
+      "value": "3",
+      "context": "3",
+      "section": "subsection: Complete Hyperparameter Specification"
     },
     {
-      "line_no": 1813,
-      "value": "1",
-      "context": "$B_T := \\sum_{t=0}^{T-1} \\|\\Delta z_t\\|$.",
-      "section": "subsection: Trajectories, Budget, and Utilized Budget"
+      "line_no": 1995,
+      "value": "100",
+      "context": "100",
+      "section": "paragraph: Results ($n{="
     },
     {
-      "line_no": 1821,
-      "value": "1",
-      "context": "$\\|z_T - z_0\\| \\le \\sum_{t=0}^{T-1}\\|\\Delta z_t\\| \\le LT$.",
-      "section": "subsection: Trajectories, Budget, and Utilized Budget"
-    },
-    {
-      "line_no": 1825,
-      "value": "1",
-      "context": "ality: $\\|z_T - z_0\\| = \\|\\sum_{t=0}^{T-1}\\Delta z_t\\| \\le \\sum_{t=0}^{T-1}\\|\\Del",
-      "section": "subsection: Trajectories, Budget, and Utilized Budget"
-    },
-    {
-      "line_no": 1825,
-      "value": "1",
-      "context": "=0}^{T-1}\\Delta z_t\\| \\le \\sum_{t=0}^{T-1}\\|\\Delta z_t\\| \\le LT$.",
-      "section": "subsection: Trajectories, Budget, and Utilized Budget"
-    },
-    {
-      "line_no": 1842,
-      "value": "2",
-      "context": "),\\Delta\\rangle + \\frac{K}{2}\\|\\Delta\\|^2$.",
-      "section": "subsection: Bounded Curvature and Local Linearity"
-    },
-    {
-      "line_no": 1856,
-      "value": "0",
-      "context": "$z^{(0)}=z$, $z^{(s+1)} = z^{(s)} + \\Delta^{(s",
-      "section": "subsection: One-Shot Diagonal Cost vs Staged Parameterization"
-    },
-    {
-      "line_no": 1856,
-      "value": "1",
-      "context": "$z^{(0)}=z$, $z^{(s+1)} = z^{(s)} + \\Delta^{(s)}$,",
-      "section": "subsection: One-Shot Diagonal Cost vs Staged Parameterization"
-    },
-    {
-      "line_no": 1865,
-      "value": "0",
-      "context": "on the polygonal chain: $\\|z^{(S)}-z^{(0)}\\| = \\|\\sum_{s=0}^{S-1}\\Delta^{(s)}\\|",
-      "section": "subsection: One-Shot Diagonal Cost vs Staged Parameterization"
-    },
-    {
-      "line_no": 1865,
-      "value": "1",
-      "context": "$\\|z^{(S)}-z^{(0)}\\| = \\|\\sum_{s=0}^{S-1}\\Delta^{(s)}\\| \\le \\sum_{s=0}^{S-1}\\|\\D",
-      "section": "subsection: One-Shot Diagonal Cost vs Staged Parameterization"
-    },
-    {
-      "line_no": 1865,
-      "value": "1",
-      "context": "}^{S-1}\\Delta^{(s)}\\| \\le \\sum_{s=0}^{S-1}\\|\\Delta^{(s)}\\| \\le \\sum_{s}\\delta_s$.",
-      "section": "subsection: One-Shot Diagonal Cost vs Staged Parameterization"
-    },
-    {
-      "line_no": 2057,
-      "value": "1",
-      "context": "\\item Mathematical validation: $<1$ minute on CPU",
-      "section": "paragraph: Compute Requirements."
-    },
-    {
-      "line_no": 2197,
-      "value": "2",
-      "context": "|e^{i\\omega_1 t} + e^{i\\omega_2 t}| = 2|\\cos(\\phi/2)|.",
-      "section": "subsection: Mathematical Identity: Conflict IS Interference"
-    },
-    {
-      "line_no": 2197,
-      "value": "2",
-      "context": "a_1 t} + e^{i\\omega_2 t}| = 2|\\cos(\\phi/2)|.",
-      "section": "subsection: Mathematical Identity: Conflict IS Interference"
-    },
-    {
-      "line_no": 2201,
-      "value": "2",
-      "context": "A(\\theta) = |\\cos(\\theta/2)|.",
-      "section": "subsection: Mathematical Identity: Conflict IS Interference"
-    },
-    {
-      "line_no": 2228,
-      "value": "2",
-      "context": "$A(\\theta) = |\\cos(\\theta/2)|$ & AM rate: $f_{\\text{AM}} = 40(1-A)$",
-      "section": "subsection: Psychoacoustic Mapping"
+      "line_no": 2014,
+      "value": "7",
+      "context": "traint, we manually construct 7 response pairs:",
+      "section": "paragraph: Contrastive Exemplar Construction."
     },
     {
       "line_no": 2228,
       "value": "40",
-      "context": "\\theta/2)|$ & AM rate: $f_{\\text{AM}} = 40(1-A)$ Hz & Beating/roughness \\\\",
+      "context": "= 40(1-A)",
       "section": "subsection: Psychoacoustic Mapping"
     },
     {
-      "line_no": 2228,
-      "value": "1",
-      "context": "eta/2)|$ & AM rate: $f_{\\text{AM}} = 40(1-A)$ Hz & Beating/roughness \\\\",
+      "line_no": 2234,
+      "value": "20",
+      "context": "ight: amplitude modulation at 20",
       "section": "subsection: Psychoacoustic Mapping"
+    },
+    {
+      "line_no": 2282,
+      "value": "6",
+      "context": "ifth). Positions separated by 6 steps create the tritone (max",
+      "section": "paragraph: Why This Works."
     },
     {
       "line_no": 2312,
       "value": "2",
-      "context": "air_helpful_honest.wav}: Hear the major 2nd tension (Helpful $\\leftrightarrow$ Ho",
+      "context": ": Hear the major 2nd tension (Helpful",
       "section": "paragraph: Listening Guide."
     },
     {
       "line_no": 2320,
       "value": "20",
-      "context": "\\paragraph{Participants.} $N \\geq 20$ naive listeners, blind to hypotheses.",
+      "context": "20",
       "section": "paragraph: Participants."
     },
     {
       "line_no": 2322,
       "value": "0.1",
-      "context": "ips uniformly sampled across $\\rho \\in [0.1, 0.9]$.",
+      "context": "[0.1, 0.9]",
       "section": "paragraph: Stimuli."
     },
     {
       "line_no": 2322,
       "value": "0.9",
-      "context": "niformly sampled across $\\rho \\in [0.1, 0.9]$.",
+      "context": "[0.1, 0.9]",
       "section": "paragraph: Stimuli."
     },
     {
       "line_no": 2324,
       "value": "7",
-      "context": "\\paragraph{Task.} Rate each clip on a 7-point roughness scale.",
+      "context": "Rate each clip on a 7-point roughness scale.",
       "section": "paragraph: Task."
     },
     {
-      "line_no": 2467,
-      "value": "1",
-      "context": "n}: the core claim of this paper. The $(1-p)^{\\binom{k}{2}}$ structure is the pro",
-      "section": "paragraph: Implication."
+      "line_no": 2365,
+      "value": "3",
+      "context": "3-4",
+      "section": "paragraph: IF-DSL Results."
+    },
+    {
+      "line_no": 2365,
+      "value": "4",
+      "context": "3-4",
+      "section": "paragraph: IF-DSL Results."
+    },
+    {
+      "line_no": 2365,
+      "value": "5",
+      "context": "5-6",
+      "section": "paragraph: IF-DSL Results."
+    },
+    {
+      "line_no": 2365,
+      "value": "6",
+      "context": "5-6",
+      "section": "paragraph: IF-DSL Results."
+    },
+    {
+      "line_no": 2365,
+      "value": "7",
+      "context": "7-8",
+      "section": "paragraph: IF-DSL Results."
+    },
+    {
+      "line_no": 2365,
+      "value": "8",
+      "context": "7-8",
+      "section": "paragraph: IF-DSL Results."
+    },
+    {
+      "line_no": 2446,
+      "value": "10",
+      "context": "10",
+      "section": "paragraph: Results."
+    },
+    {
+      "line_no": 2446,
+      "value": "000",
+      "context": "000",
+      "section": "paragraph: Results."
+    },
+    {
+      "line_no": 2540,
+      "value": "3",
+      "context": "3",
+      "section": "paragraph: Compatibility Certificates and Error Taxonomy."
     },
     {
       "line_no": 2546,
       "value": "10",
-      "context": "\\quad Priority ambiguity & 10 & 62\\% \\\\",
+      "context": "10",
       "section": "paragraph: Compatibility Certificates and Error Taxonomy."
     },
     {
       "line_no": 2546,
       "value": "62",
-      "context": "\\quad Priority ambiguity & 10 & 62\\% \\\\",
+      "context": "62",
       "section": "paragraph: Compatibility Certificates and Error Taxonomy."
+    },
+    {
+      "line_no": 2559,
+      "value": "15",
+      "context": "stitution analysis, we curate 15 compound instruction tasks wi",
+      "section": "section: In-the-Wild Compound Instructions"
+    },
+    {
+      "line_no": 2563,
+      "value": "2",
+      "context": "Each task contains 2",
+      "section": "paragraph: Dataset design."
     }
   ]
 }
