@@ -17,7 +17,7 @@
       "draft_model": "none",
       "draft_image": null,
       "final_asset": "paper/figures/interface_assumption.tex",
-      "final_asset_hash": "cc7ea3988c9563648fdc1b7a8cb2d6b12588ae7c844fe42ab97f716da43af041",
+      "final_asset_hash": "e3654b1182fd4fc0ee6e1ee2017c9fe0f220bef74293c4328199de790651b7ec",
       "main_tex_ref": "figures/interface_assumption.tex",
       "in_use": true,
       "claim_scope": "schematic illustration only; not empirical evidence. Reviewer aid; the dataflow it depicts (text -> frozen encoder -> bounded per-token displacement -> deterministic verifier) is exactly what the source LaTeX block at main.tex:253-257 asserts in prose.",

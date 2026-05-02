@@ -1,17 +1,17 @@
 # Claim Certificate
 
 **Paper:** The Cost of Cacophony: Geometric Limits on Multi-Constraint Alignment
-**Generated:** 2026-05-02T18:22:16
+**Generated:** 2026-05-02T18:28:21
 **Verdict:** **PASS** — all structural checks clean (L1+L2+L4+L7+L8+L9+L10+L11+L12+L13+L14); L3+L5 coverage is advisory, see triage JSONs
 
 ## Provenance
 
 - main.tex sha256: `11f8e505587d0417...` (full hash in JSON)
 - main.tex mtime: 2026-05-02T18:20:42
-- main.pdf size: 1,024,400 bytes
-- main.pdf mtime: 2026-05-02T18:21:19
+- main.pdf size: 1,024,534 bytes
+- main.pdf mtime: 2026-05-02T18:27:54
 - registry sha256: `a860cd02ec4eaf6b...`
-- certificate self-hash: `f7386003dfabda89...` (sha256 of this payload minus the hash field; recompute to verify integrity)
+- certificate self-hash: `fc1ed1fa7c5b1562...` (sha256 of this payload minus the hash field; recompute to verify integrity)
 
 ## Layer-by-layer Results
 
