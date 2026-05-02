@@ -123,7 +123,7 @@ diverging as $\rho \to 1$ (Corollary~\ref{cor:uniform}). The operational cliff a
 (5)~\textbf{Judge-Free Validation:} Deterministic verifiers across four domains (Table~\ref{tab:harness_suite}); 0/4,800 smooth-regime refutations; transfers to frontier (Table~\ref{tab:claude_family}).
 
 \paragraph{Scope and Falsifiable Predictions.}
-Boolean validation: regime structure, not magnitude ($r_s{=}1.0$; linear $r{\approx}0.4$ expected; ordinal suffices, Appendix~\ref{app:grad_r}). Four tiers test monotonicity by design (Kendall $\tau{=}1.0$, Appendix~\ref{app:encoder_robustness}). Bounds require $\rho < 1/(k{-}1)$; effective $k$ small (Remark~\ref{rem:high_k}). Geometry applies to explicit embedding-direction constraints (Theorems~\ref{thm:main_hetero}--\ref{thm:gram}); deterministic verification reveals walls that heuristics blur into capability gradients.
+Boolean validation: regime structure, not magnitude ($r_s{=}1.0$; linear $r{\approx}0.4$ expected; ordinal suffices, Appendix~\ref{app:grad_r}). Four tiers test monotonicity by design (Kendall $\tau{=}1.0$, Appendix~\ref{app:encoder_robustness}). Bounds require $\rho < 1/(k{-}1)$; effective $k$ small (Remark~\ref{rem:high_k}). Geometry applies to explicit embedding-direction constraints (Theorems~\ref{thm:main_hetero}--\ref{thm:gram}); deterministic verification reveals walls that heuristics blur into capability gradients. Mechanical verification covers structural consistency of every numeric claim (App~\ref{app:cert_scope}); reading is the verdict layer.
 
 \section{Geometric Setup: Diagonal Cost from $k$ Constraints}\label{sec:setup}
 
@@ -2427,6 +2427,12 @@ Following ICML reproducibility guidelines:
 \item[$\checkmark$] \textbf{Compute:} Core validation runs on CPU in $<5$ minutes. The full 4-model LLM code experiment takes $\sim$20 hours on a single RTX 4050 GPU
 \item[$\checkmark$] \textbf{Random seeds:} Fixed seeds for all stochastic components
 \end{itemize}
+
+\section{Scope of Mechanical Verification}\label{app:cert_scope}
+
+A 13-layer certificate at \texttt{ci/claim\_certificate.md} runs against this paper at submission. Layers cover: claim registry self-consistency; presence of every registered numeric in main.tex; AST-walked reverse coverage of every numeric token in main.tex against the registry; figure asset freshness with content binding to declared scripts and data; in-figure numeric cross-check against the registry; citation graph closure between \texttt{\textbackslash citep} and \texttt{references.bib}; URL well-formedness with venue-year validation; \texttt{\textbackslash ref} and \texttt{\textbackslash hyperref} graph closure with \texttt{\textbackslash input} expansion; formula-vs-value consistency between Tier~1 theorems and their numerical instances; bib entry structural validation; figure-script smoke tests; asset re-render equivalence by token-multiset comparison; cross-tree consistency against the upstream supplementary source. A mutation harness flips one digit per registered numeric claim and re-audits; 145 of 145 single-digit substitutions are caught.
+
+What this establishes: the paper says what it says, without drift, substitution, broken references, or stale figure assets. What it does not establish: that the underlying claims are true of the world, that the experimental design is sound, that the inferences follow from the data, or that the framing is the right framing. Mechanical verification operates on form. Critical reading operates on meaning. The certificate is structurally analogous to the paper's screening statistic $\hat{\rho}$: a zeroth-order observable that orders regime membership without resolving the truth question one layer up. As $\hat{\rho}$ triggers checks rather than verdicts, the certificate triggers reading rather than verdicts. It frees the reading from bookkeeping verification. It does not replace judgment.
 
 \section{Charitable Constraint Composition}\label{app:charity}\hypertarget{lim:soft}{}
 

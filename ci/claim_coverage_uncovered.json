@@ -1,11 +1,11 @@
 {
   "paper_path": "C:\\src\\NeurIPS\\paper\\main.tex",
   "summary": {
-    "total_numeric_tokens": 1141,
+    "total_numeric_tokens": 1145,
     "covered": 1072,
-    "uncovered_raw": 69,
-    "uncovered_deduped": 66,
-    "coverage_percent": 94.0
+    "uncovered_raw": 73,
+    "uncovered_deduped": 70,
+    "coverage_percent": 93.6
   },
   "uncovered": [
     {
@@ -363,43 +363,67 @@
       "section": "paragraph: IF-DSL Results."
     },
     {
-      "line_no": 2446,
+      "line_no": 2431,
+      "value": "13",
+      "context": "A 13-layer certificate at",
+      "section": "section: Scope of Mechanical Verification"
+    },
+    {
+      "line_no": 2433,
+      "value": "1",
+      "context": "1 theorems and their numerical",
+      "section": "section: Scope of Mechanical Verification"
+    },
+    {
+      "line_no": 2433,
+      "value": "145",
+      "context": "numeric claim and re-audits; 145 of 145 single-digit substitut",
+      "section": "section: Scope of Mechanical Verification"
+    },
+    {
+      "line_no": 2433,
+      "value": "145",
+      "context": "c claim and re-audits; 145 of 145 single-digit substitutions ar",
+      "section": "section: Scope of Mechanical Verification"
+    },
+    {
+      "line_no": 2452,
       "value": "10",
       "context": "10",
       "section": "paragraph: Results."
     },
     {
-      "line_no": 2446,
+      "line_no": 2452,
       "value": "000",
       "context": "000",
       "section": "paragraph: Results."
     },
     {
-      "line_no": 2540,
+      "line_no": 2546,
       "value": "3",
       "context": "3",
       "section": "paragraph: Compatibility Certificates and Error Taxonomy."
     },
     {
-      "line_no": 2546,
+      "line_no": 2552,
       "value": "10",
       "context": "10",
       "section": "paragraph: Compatibility Certificates and Error Taxonomy."
     },
     {
-      "line_no": 2546,
+      "line_no": 2552,
       "value": "62",
       "context": "62",
       "section": "paragraph: Compatibility Certificates and Error Taxonomy."
     },
     {
-      "line_no": 2559,
+      "line_no": 2565,
       "value": "15",
       "context": "stitution analysis, we curate 15 compound instruction tasks wi",
       "section": "section: In-the-Wild Compound Instructions"
     },
     {
-      "line_no": 2563,
+      "line_no": 2569,
       "value": "2",
       "context": "Each task contains 2",
       "section": "paragraph: Dataset design."

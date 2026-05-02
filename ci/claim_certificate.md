@@ -1,17 +1,17 @@
 # Claim Certificate
 
 **Paper:** The Cost of Cacophony: Geometric Limits on Multi-Constraint Alignment
-**Generated:** 2026-05-02T16:48:16
+**Generated:** 2026-05-02T17:12:20
 **Verdict:** **PASS** — all structural checks clean (L1+L2+L4+L7+L8+L9+L10+L11+L12+L13); L3+L5 coverage is advisory, see triage JSONs
 
 ## Provenance
 
-- main.tex sha256: `de5532dac336bbcc...` (full hash in JSON)
-- main.tex mtime: 2026-05-02T16:36:38
-- main.pdf size: 0 bytes
-- main.pdf mtime: <missing>
+- main.tex sha256: `8fd3cfd540e339e5...` (full hash in JSON)
+- main.tex mtime: 2026-05-02T17:11:32
+- main.pdf size: 1,018,172 bytes
+- main.pdf mtime: 2026-05-02T17:12:15
 - registry sha256: `c1691c712598bcfd...`
-- certificate self-hash: `bea60fed93d071a6...` (sha256 of this payload minus the hash field; recompute to verify integrity)
+- certificate self-hash: `5a40358385a40dc4...` (sha256 of this payload minus the hash field; recompute to verify integrity)
 
 ## Layer-by-layer Results
 
@@ -19,11 +19,11 @@
 |---|---|---|---|
 | L1_audit | `ci\claim_audit.py` | PASS | 150/150 verbatim |
 | L2_validator | `ci\claim_audit_validator.py` | PASS | 14/14 checks pass |
-| L3_sweep | `ci\claim_coverage_sweep.py` | PASS | 94.0% coverage, 66 uncovered |
+| L3_sweep | `ci\claim_coverage_sweep.py` | PASS | 93.6% coverage, 70 uncovered |
 | L4_lineage | `ci\figure_lineage_check.py` | PASS | 8/8 checks pass, 7 figures fresh |
 | L5_figure_values | `ci\figure_value_check.py` | PASS | 78.0% overall figure coverage, 21 uncovered |
 | L7_citations | `ci\citation_integrity_check.py` | PASS | 25 cites, 41 bib entries, 0 unresolved, 16 dead |
-| L8_links | `ci\link_integrity_check.py` | PASS | 2 URLs, 120 refs / 158 labels, 0 unresolved, 38 dead labels |
+| L8_links | `ci\link_integrity_check.py` | PASS | 2 URLs, 121 refs / 159 labels, 0 unresolved, 38 dead labels |
 | L9_consistency | `ci\cross_claim_consistency_check.py` | PASS | 31/31 consistency relations hold |
 | L10_bib | `ci\bib_entry_check.py` | PASS | 41/41 bib entries well-formed |
 | L11_scripts | `ci\script_integrity_check.py` | PASS | 10/10 figure scripts pass smoke test |
