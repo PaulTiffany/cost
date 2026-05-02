@@ -1,11 +1,11 @@
 {
   "paper_path": "C:\\src\\NeurIPS\\paper\\main.tex",
   "summary": {
-    "total_numeric_tokens": 1525,
-    "covered": 1140,
-    "uncovered_raw": 385,
-    "uncovered_deduped": 381,
-    "coverage_percent": 74.8
+    "total_numeric_tokens": 1508,
+    "covered": 1225,
+    "uncovered_raw": 283,
+    "uncovered_deduped": 279,
+    "coverage_percent": 81.2
   },
   "uncovered": [
     {
@@ -255,24 +255,6 @@
       "section": "paragraph: Prompt 5b: Staged."
     },
     {
-      "line_no": 1200,
-      "value": "1",
-      "context": "gress on constraint $C_j$ at stage $t{+}1$ does not regress constraint $C_i$ sati",
-      "section": "section: Preservation Cost Analysis"
-    },
-    {
-      "line_no": 1210,
-      "value": "1",
-      "context": "At stage $t{+}1$, the model solves: $\\min \\|\\Delta\\|$ s",
-      "section": "paragraph: Formal Setup."
-    },
-    {
-      "line_no": 1210,
-      "value": "0",
-      "context": "$) and $\\langle u_i, \\Delta \\rangle \\ge 0$ (non-regression on $C_i$). The second",
-      "section": "paragraph: Formal Setup."
-    },
-    {
       "line_no": 1257,
       "value": "0",
       "context": "where $\\tau>0$ is a fixed local decrease requirement.",
@@ -285,28 +267,10 @@
       "section": "subsection: Preliminaries and Notation"
     },
     {
-      "line_no": 1262,
-      "value": "0",
-      "context": "for conflicting constraints ($c_{ij} < 0$).",
-      "section": "subsection: Preliminaries and Notation"
-    },
-    {
-      "line_no": 1263,
-      "value": "0",
-      "context": "constraints, $c = -\\rho$ where $\\rho > 0$ is the conflict magnitude used in the",
-      "section": "subsection: Preliminaries and Notation"
-    },
-    {
       "line_no": 1276,
       "value": "0",
       "context": "At least one $g_i \\neq 0$.",
       "section": "paragraph: Assumptions."
-    },
-    {
-      "line_no": 1314,
-      "value": "004",
-      "context": "\\citep[Thm.~2.1]{boyd2004convex}.",
-      "section": "subsection: Convex Feasibility and Projection Geometry"
     },
     {
       "line_no": 1321,
@@ -339,18 +303,6 @@
       "section": "subsection: Convex Feasibility and Projection Geometry"
     },
     {
-      "line_no": 1325,
-      "value": "0",
-      "context": "For conflicting constraints ($c < 0$), substituting $c = -\\rho$ where $\\rho",
-      "section": "subsection: Convex Feasibility and Projection Geometry"
-    },
-    {
-      "line_no": 1325,
-      "value": "0",
-      "context": "substituting $c = -\\rho$ where $\\rho > 0$ is the conflict magnitude yields the m",
-      "section": "subsection: Convex Feasibility and Projection Geometry"
-    },
-    {
       "line_no": 1331,
       "value": "2",
       "context": "lambda_1,\\lambda_2) = \\tfrac{1}{2}\\|d\\|^2 + \\lambda_1(\\langle u,d \\rangle+\\alpha_",
@@ -360,18 +312,6 @@
       "line_no": 1333,
       "value": "0",
       "context": "Setting $\\nabla_d \\mathcal{L} = 0$: $d = -\\lambda_1 u - \\lambda_2 v$.",
-      "section": "subsection: Convex Feasibility and Projection Geometry"
-    },
-    {
-      "line_no": 1335,
-      "value": "2",
-      "context": "complementary slackness \\citep[Sec.~5.5.2]{boyd2004convex}, both constraints are",
-      "section": "subsection: Convex Feasibility and Projection Geometry"
-    },
-    {
-      "line_no": 1335,
-      "value": "004",
-      "context": "ntary slackness \\citep[Sec.~5.5.2]{boyd2004convex}, both constraints are active at",
       "section": "subsection: Convex Feasibility and Projection Geometry"
     },
     {
@@ -397,12 +337,6 @@
       "value": "1",
       "context": "has determinant $1-c^2 > 0$ for $|c| < 1$. Solving via Cramer's rule yields the",
       "section": "subsection: Convex Feasibility and Projection Geometry"
-    },
-    {
-      "line_no": 1346,
-      "value": "0",
-      "context": "constraints, $c = -\\rho$ where $\\rho > 0$ is the conflict magnitude.",
-      "section": "subsection: Two-Constraint Lower Bound (Theorem~\\ref{thm:main_hetero"
     },
     {
       "line_no": 1351,
@@ -444,30 +378,6 @@
       "line_no": 1363,
       "value": "1",
       "context": "u^2 \\mathbf{1}^\\top \\Gamma^{-1} \\mathbf{1}$ for active constraints",
-      "section": "paragraph: Classical structure."
-    },
-    {
-      "line_no": 1364,
-      "value": "231",
-      "context": "\\citep[cf.~pp.~231--233]{boyd2004convex},",
-      "section": "paragraph: Classical structure."
-    },
-    {
-      "line_no": 1364,
-      "value": "233",
-      "context": "\\citep[cf.~pp.~231--233]{boyd2004convex},",
-      "section": "paragraph: Classical structure."
-    },
-    {
-      "line_no": 1364,
-      "value": "004",
-      "context": "\\citep[cf.~pp.~231--233]{boyd2004convex},",
-      "section": "paragraph: Classical structure."
-    },
-    {
-      "line_no": 1370,
-      "value": "004",
-      "context": "convexity; see \\citealt[Sec.~3.2]{boyd2004convex}),",
       "section": "paragraph: Classical structure."
     },
     {
@@ -618,18 +528,6 @@
       "line_no": 1431,
       "value": "1",
       "context": "} = -\\alpha G^\\top(GG^\\top)^{-1}\\mathbf{1}$",
-      "section": "subsection: k-Constraint Lower Bound (Theorem~\\ref{thm:main_k"
-    },
-    {
-      "line_no": 1432,
-      "value": "6",
-      "context": "\\citep[Chap.~6]{hornjohnson2013matrix}.",
-      "section": "subsection: k-Constraint Lower Bound (Theorem~\\ref{thm:main_k"
-    },
-    {
-      "line_no": 1432,
-      "value": "013",
-      "context": "\\citep[Chap.~6]{hornjohnson2013matrix}.",
       "section": "subsection: k-Constraint Lower Bound (Theorem~\\ref{thm:main_k"
     },
     {
@@ -853,24 +751,6 @@
       "value": "1",
       "context": "For $v \\perp \\mathbf{1}$: $\\Gamma v = (1+\\rho)v$.",
       "section": "subsection: High-$\\rho$ Bounds and Degeneracy"
-    },
-    {
-      "line_no": 1525,
-      "value": "1,1",
-      "context": "For $k=2$ with $\\rho \\in (-1,1)$, both conditions hold generically. Fo",
-      "section": "subsection: Tightness of Bounds"
-    },
-    {
-      "line_no": 1525,
-      "value": "1",
-      "context": "em is strictly feasible \\citep[Thm.~5.2.1]{boyd2004convex}.",
-      "section": "subsection: Tightness of Bounds"
-    },
-    {
-      "line_no": 1525,
-      "value": "004",
-      "context": "rictly feasible \\citep[Thm.~5.2.1]{boyd2004convex}.",
-      "section": "subsection: Tightness of Bounds"
     },
     {
       "line_no": 1547,
@@ -1173,18 +1053,6 @@
       "section": "subsection: Heterogeneous Magnitudes: Complete Treatment"
     },
     {
-      "line_no": 1596,
-      "value": "14",
-      "context": "iterative protocol defined in Section~J.14 is a behavioral instantiation of the Ka",
-      "section": "subsection: Iterative Satisfaction: Convergence Analysis"
-    },
-    {
-      "line_no": 1596,
-      "value": "15",
-      "context": "\\citep{gubin1967projections}. Theorem~J.15 inherits the classical linear convergen",
-      "section": "subsection: Iterative Satisfaction: Convergence Analysis"
-    },
-    {
       "line_no": 1601,
       "value": "1",
       "context": "x_{t+1} = x_t - \\eta_t \\frac{\\langle g_{i_t},",
@@ -1194,12 +1062,6 @@
       "line_no": 1601,
       "value": "2",
       "context": "_t - x^\\star_{i_t} \\rangle}{\\|g_{i_t}\\|^2} g_{i_t},",
-      "section": "subsection: Iterative Satisfaction: Convergence Analysis"
-    },
-    {
-      "line_no": 1607,
-      "value": "1",
-      "context": "conflicts $\\rho_{ij} \\le \\rho_{\\max} < 1$, cyclic projected gradient iteration c",
       "section": "subsection: Iterative Satisfaction: Convergence Analysis"
     },
     {
@@ -1218,78 +1080,6 @@
       "line_no": 1611,
       "value": "1",
       "context": "gence rate degrades as $\\rho_{\\max} \\to 1$.",
-      "section": "subsection: Iterative Satisfaction: Convergence Analysis"
-    },
-    {
-      "line_no": 1615,
-      "value": "1",
-      "context": "ance to the feasible region by factor $(1 - c_i)$ where $c_i$ depends on the angl",
-      "section": "subsection: Iterative Satisfaction: Convergence Analysis"
-    },
-    {
-      "line_no": 1615,
-      "value": "1",
-      "context": "rate configurations with $\\rho_{\\max} < 1$, the constraints are linearly independ",
-      "section": "subsection: Iterative Satisfaction: Convergence Analysis"
-    },
-    {
-      "line_no": 1615,
-      "value": "1",
-      "context": "inearly independent, ensuring $c_i \\ge (1-\\rho_{\\max})/k$ on average over a full",
-      "section": "subsection: Iterative Satisfaction: Convergence Analysis"
-    },
-    {
-      "line_no": 1615,
-      "value": "996",
-      "context": "ll cycle \\citep[cf.][Thm.~4.1]{bauschke1996projection}. The product of $k$ such con",
-      "section": "subsection: Iterative Satisfaction: Convergence Analysis"
-    },
-    {
-      "line_no": 1623,
-      "value": "1",
-      "context": "$T$ iterations, $\\|x_T - x^\\star\\| \\le (1 - (1-\\rho_{\\max})/k)^{T/k} \\|x_0 - x^\\s",
-      "section": "subsection: Iterative Satisfaction: Convergence Analysis"
-    },
-    {
-      "line_no": 1623,
-      "value": "1",
-      "context": "terations, $\\|x_T - x^\\star\\| \\le (1 - (1-\\rho_{\\max})/k)^{T/k} \\|x_0 - x^\\star\\|",
-      "section": "subsection: Iterative Satisfaction: Convergence Analysis"
-    },
-    {
-      "line_no": 1623,
-      "value": "1",
-      "context": "$\\epsilon$ and solving: $T/k \\cdot \\log(1 - (1-\\rho_{\\max})/k) \\le \\log(\\epsilon/",
-      "section": "subsection: Iterative Satisfaction: Convergence Analysis"
-    },
-    {
-      "line_no": 1623,
-      "value": "1",
-      "context": "ilon$ and solving: $T/k \\cdot \\log(1 - (1-\\rho_{\\max})/k) \\le \\log(\\epsilon/\\|x_0",
-      "section": "subsection: Iterative Satisfaction: Convergence Analysis"
-    },
-    {
-      "line_no": 1623,
-      "value": "1",
-      "context": "\\epsilon/\\|x_0-x^\\star\\|)$. Using $\\log(1-x) \\approx -x$ for small $x$, we get $T",
-      "section": "subsection: Iterative Satisfaction: Convergence Analysis"
-    },
-    {
-      "line_no": 1623,
-      "value": "1",
-      "context": "t $T \\ge \\frac{k^2}{1-\\rho_{\\max}} \\log(1/\\epsilon)$, which simplifies to the sta",
-      "section": "subsection: Iterative Satisfaction: Convergence Analysis"
-    },
-    {
-      "line_no": 1623,
-      "value": "1",
-      "context": "$, which simplifies to the stated $O(k/(1-\\rho_{\\max}) \\log(1/\\epsilon))$ when ac",
-      "section": "subsection: Iterative Satisfaction: Convergence Analysis"
-    },
-    {
-      "line_no": 1623,
-      "value": "1",
-      "context": "to the stated $O(k/(1-\\rho_{\\max}) \\log(1/\\epsilon))$ when accounting for per-cyc",
       "section": "subsection: Iterative Satisfaction: Convergence Analysis"
     },
     {
@@ -1359,12 +1149,6 @@
       "section": "subsection: Perturbation Analysis and Robustness"
     },
     {
-      "line_no": 1639,
-      "value": "013",
-      "context": "ion theory \\citep[Thm.~2.8]{hornjohnson2013matrix}, for symmetric positive definite",
-      "section": "subsection: Perturbation Analysis and Robustness"
-    },
-    {
       "line_no": 1641,
       "value": "1",
       "context": "\\|\\Gamma^{-1} - (\\Gamma + \\Delta\\Gamma)^{-1}\\| \\le \\",
@@ -1410,24 +1194,6 @@
       "line_no": 1661,
       "value": "1",
       "context": "r = \\arg\\min_\\pi \\sum_{t=1}^{k-1} \\sqrt{1 + 2\\sum_{s<t} \\rho_{\\pi(s)\\pi(t)}}.",
-      "section": "subsection: Algorithmic Implications"
-    },
-    {
-      "line_no": 1667,
-      "value": "1",
-      "context": "traint $\\pi(t)$ while preserving $\\{\\pi(1), \\ldots, \\pi(t-1)\\}$. The preservation",
-      "section": "subsection: Algorithmic Implications"
-    },
-    {
-      "line_no": 1667,
-      "value": "1",
-      "context": "ile preserving $\\{\\pi(1), \\ldots, \\pi(t-1)\\}$. The preservation requirement adds",
-      "section": "subsection: Algorithmic Implications"
-    },
-    {
-      "line_no": 1667,
-      "value": "1",
-      "context": "the effective Gram matrix of $\\{g_{\\pi(1)}, \\ldots, g_{\\pi(t)}\\}$. Summing over",
       "section": "subsection: Algorithmic Implications"
     },
     {
@@ -1551,30 +1317,6 @@
       "section": "subsection: Global Extension"
     },
     {
-      "line_no": 1778,
-      "value": "1",
-      "context": "$\\rho_c = 1 - 2\\tau^2/(m^2\\delta^2)$. For $\\rho > \\",
-      "section": "subsection: Rank-Deficiency Boundary (relocated from body)"
-    },
-    {
-      "line_no": 1778,
-      "value": "2",
-      "context": "$\\rho_c = 1 - 2\\tau^2/(m^2\\delta^2)$. For $\\rho > \\rho_c$: in",
-      "section": "subsection: Rank-Deficiency Boundary (relocated from body)"
-    },
-    {
-      "line_no": 1778,
-      "value": "2",
-      "context": "$\\rho_c = 1 - 2\\tau^2/(m^2\\delta^2)$. For $\\rho > \\rho_c$: infeasible; see",
-      "section": "subsection: Rank-Deficiency Boundary (relocated from body)"
-    },
-    {
-      "line_no": 1812,
-      "value": "1",
-      "context": "induces increments $\\Delta z_t := z_{t+1}-z_t$. The \\emph{utilized budget} over",
-      "section": "subsection: Trajectories, Budget, and Utilized Budget"
-    },
-    {
       "line_no": 1813,
       "value": "1",
       "context": "$B_T := \\sum_{t=0}^{T-1} \\|\\Delta z_t\\|$.",
@@ -1620,12 +1362,6 @@
       "line_no": 1856,
       "value": "1",
       "context": "$z^{(0)}=z$, $z^{(s+1)} = z^{(s)} + \\Delta^{(s)}$,",
-      "section": "subsection: One-Shot Diagonal Cost vs Staged Parameterization"
-    },
-    {
-      "line_no": 1857,
-      "value": "1",
-      "context": "stage $s$ prioritizes constraint $i_{s+1}$ with per-stage budget $\\|\\Delta^{(s)}",
       "section": "subsection: One-Shot Diagonal Cost vs Staged Parameterization"
     },
     {
@@ -1695,45 +1431,15 @@
       "section": "subsection: Complete Hyperparameter Specification"
     },
     {
-      "line_no": 1940,
-      "value": "8000",
-      "context": "Sample rate & 8000 Hz & FFT analysis \\\\",
-      "section": "subsection: Complete Hyperparameter Specification"
-    },
-    {
-      "line_no": 1941,
-      "value": "4",
-      "context": "Audio duration & 4 seconds & Signal window \\\\",
-      "section": "subsection: Complete Hyperparameter Specification"
-    },
-    {
       "line_no": 1942,
       "value": "40",
       "context": "Pitch tolerance & $\\pm$40 Hz & \\texttt{pitch\\_A4} \\\\",
       "section": "subsection: Complete Hyperparameter Specification"
     },
     {
-      "line_no": 1943,
-      "value": "12",
-      "context": "BPM tolerance & $\\pm$12 BPM & \\texttt{rhythm\\_120bpm} \\\\",
-      "section": "subsection: Complete Hyperparameter Specification"
-    },
-    {
-      "line_no": 1943,
-      "value": "20",
-      "context": "erance & $\\pm$12 BPM & \\texttt{rhythm\\_120bpm} \\\\",
-      "section": "subsection: Complete Hyperparameter Specification"
-    },
-    {
       "line_no": 1945,
       "value": "2,839",
       "context": "Baseline samples & 2,839 & Conflict estimation \\\\",
-      "section": "subsection: Complete Hyperparameter Specification"
-    },
-    {
-      "line_no": 1948,
-      "value": "7",
-      "context": "Exemplar pairs per dim. & 7 & Constitution wheel \\\\",
       "section": "subsection: Complete Hyperparameter Specification"
     },
     {
@@ -1755,12 +1461,6 @@
       "section": "subsection: Complete Hyperparameter Specification"
     },
     {
-      "line_no": 1958,
-      "value": "12",
-      "context": "Tasks & 12 & Coding problems \\\\",
-      "section": "subsection: Complete Hyperparameter Specification"
-    },
-    {
       "line_no": 1959,
       "value": "4",
       "context": "Models & 4 & 1--3B parameters \\\\",
@@ -1777,84 +1477,12 @@
       "value": "3",
       "context": "Models & 4 & 1--3B parameters \\\\",
       "section": "subsection: Complete Hyperparameter Specification"
-    },
-    {
-      "line_no": 1991,
-      "value": "0.53",
-      "context": "textbf{Medium} ($k{=}10$, $\\hat{\\rho}{=}0.53$): vowel counting with no-loops. Solvab",
-      "section": "paragraph: Tasks."
-    },
-    {
-      "line_no": 1992,
-      "value": "0.52",
-      "context": "bf{Conflicting} ($k{=}8$, $\\hat{\\rho}{=}0.52$): nested-list flatten with \\emph{both}",
-      "section": "paragraph: Tasks."
-    },
-    {
-      "line_no": 2015,
-      "value": "7",
-      "context": "each constraint, we manually construct 7 response pairs:",
-      "section": "paragraph: Contrastive Exemplar Construction."
     },
     {
       "line_no": 2057,
       "value": "1",
       "context": "\\item Mathematical validation: $<1$ minute on CPU",
       "section": "paragraph: Compute Requirements."
-    },
-    {
-      "line_no": 2083,
-      "value": "0.1",
-      "context": "ted configurations. We test $\\rho \\in \\{0.1, 0.3, 0.5, 0.7, 0.9\\}$ and $k \\in \\{2,",
-      "section": "subsection: Numerical Optimization Validation"
-    },
-    {
-      "line_no": 2083,
-      "value": "0.3",
-      "context": "onfigurations. We test $\\rho \\in \\{0.1, 0.3, 0.5, 0.7, 0.9\\}$ and $k \\in \\{2, 3, 4,",
-      "section": "subsection: Numerical Optimization Validation"
-    },
-    {
-      "line_no": 2083,
-      "value": "0.5",
-      "context": "urations. We test $\\rho \\in \\{0.1, 0.3, 0.5, 0.7, 0.9\\}$ and $k \\in \\{2, 3, 4, 5\\}$",
-      "section": "subsection: Numerical Optimization Validation"
-    },
-    {
-      "line_no": 2083,
-      "value": "0.7",
-      "context": "ons. We test $\\rho \\in \\{0.1, 0.3, 0.5, 0.7, 0.9\\}$ and $k \\in \\{2, 3, 4, 5\\}$.",
-      "section": "subsection: Numerical Optimization Validation"
-    },
-    {
-      "line_no": 2083,
-      "value": "0.9",
-      "context": "We test $\\rho \\in \\{0.1, 0.3, 0.5, 0.7, 0.9\\}$ and $k \\in \\{2, 3, 4, 5\\}$.",
-      "section": "subsection: Numerical Optimization Validation"
-    },
-    {
-      "line_no": 2083,
-      "value": "2",
-      "context": "0.1, 0.3, 0.5, 0.7, 0.9\\}$ and $k \\in \\{2, 3, 4, 5\\}$.",
-      "section": "subsection: Numerical Optimization Validation"
-    },
-    {
-      "line_no": 2083,
-      "value": "3",
-      "context": ", 0.3, 0.5, 0.7, 0.9\\}$ and $k \\in \\{2, 3, 4, 5\\}$.",
-      "section": "subsection: Numerical Optimization Validation"
-    },
-    {
-      "line_no": 2083,
-      "value": "4",
-      "context": ".3, 0.5, 0.7, 0.9\\}$ and $k \\in \\{2, 3, 4, 5\\}$.",
-      "section": "subsection: Numerical Optimization Validation"
-    },
-    {
-      "line_no": 2083,
-      "value": "5",
-      "context": "0.5, 0.7, 0.9\\}$ and $k \\in \\{2, 3, 4, 5\\}$.",
-      "section": "subsection: Numerical Optimization Validation"
     },
     {
       "line_no": 2117,
@@ -1953,24 +1581,6 @@
       "section": "subsection: Psychoacoustic Mapping"
     },
     {
-      "line_no": 2247,
-      "value": "12",
-      "context": "\\item \\textbf{Continuous sweep}: 12-second transition from $\\rho=0$ to $\\rh",
-      "section": "subsection: Reproducible Implementation"
-    },
-    {
-      "line_no": 2247,
-      "value": "0",
-      "context": "sweep}: 12-second transition from $\\rho=0$ to $\\rho=0.9$",
-      "section": "subsection: Reproducible Implementation"
-    },
-    {
-      "line_no": 2247,
-      "value": "0.9",
-      "context": "econd transition from $\\rho=0$ to $\\rho=0.9$",
-      "section": "subsection: Reproducible Implementation"
-    },
-    {
       "line_no": 2265,
       "value": "0",
       "context": "Helpful & C & 0 & Root (tonic) \\\\",
@@ -2025,12 +1635,6 @@
       "section": "paragraph: The Mapping."
     },
     {
-      "line_no": 2310,
-      "value": "90",
-      "context": "\\item \\path{conflict_R_0.90.wav}: Harsh, rough (near-opposed constr",
-      "section": "paragraph: Listening Guide."
-    },
-    {
       "line_no": 2312,
       "value": "2",
       "context": "air_helpful_honest.wav}: Hear the major 2nd tension (Helpful $\\leftrightarrow$ Ho",
@@ -2061,184 +1665,10 @@
       "section": "paragraph: Task."
     },
     {
-      "line_no": 2451,
-      "value": "2",
-      "context": "$k$ & 2 & 3 & 4 & 5 & 6 & 8 & 10 \\\\",
-      "section": "paragraph: Results."
-    },
-    {
-      "line_no": 2451,
-      "value": "3",
-      "context": "$k$ & 2 & 3 & 4 & 5 & 6 & 8 & 10 \\\\",
-      "section": "paragraph: Results."
-    },
-    {
-      "line_no": 2451,
-      "value": "4",
-      "context": "$k$ & 2 & 3 & 4 & 5 & 6 & 8 & 10 \\\\",
-      "section": "paragraph: Results."
-    },
-    {
-      "line_no": 2451,
-      "value": "5",
-      "context": "$k$ & 2 & 3 & 4 & 5 & 6 & 8 & 10 \\\\",
-      "section": "paragraph: Results."
-    },
-    {
-      "line_no": 2451,
-      "value": "6",
-      "context": "$k$ & 2 & 3 & 4 & 5 & 6 & 8 & 10 \\\\",
-      "section": "paragraph: Results."
-    },
-    {
-      "line_no": 2451,
-      "value": "8",
-      "context": "$k$ & 2 & 3 & 4 & 5 & 6 & 8 & 10 \\\\",
-      "section": "paragraph: Results."
-    },
-    {
-      "line_no": 2451,
-      "value": "10",
-      "context": "$k$ & 2 & 3 & 4 & 5 & 6 & 8 & 10 \\\\",
-      "section": "paragraph: Results."
-    },
-    {
-      "line_no": 2453,
-      "value": "1",
-      "context": "pairs & 1 & 3 & 6 & 10 & 15 & 28 & 45 \\\\",
-      "section": "paragraph: Results."
-    },
-    {
-      "line_no": 2453,
-      "value": "3",
-      "context": "pairs & 1 & 3 & 6 & 10 & 15 & 28 & 45 \\\\",
-      "section": "paragraph: Results."
-    },
-    {
-      "line_no": 2453,
-      "value": "6",
-      "context": "pairs & 1 & 3 & 6 & 10 & 15 & 28 & 45 \\\\",
-      "section": "paragraph: Results."
-    },
-    {
-      "line_no": 2453,
-      "value": "10",
-      "context": "pairs & 1 & 3 & 6 & 10 & 15 & 28 & 45 \\\\",
-      "section": "paragraph: Results."
-    },
-    {
-      "line_no": 2453,
-      "value": "15",
-      "context": "pairs & 1 & 3 & 6 & 10 & 15 & 28 & 45 \\\\",
-      "section": "paragraph: Results."
-    },
-    {
-      "line_no": 2453,
-      "value": "28",
-      "context": "pairs & 1 & 3 & 6 & 10 & 15 & 28 & 45 \\\\",
-      "section": "paragraph: Results."
-    },
-    {
-      "line_no": 2453,
-      "value": "45",
-      "context": "pairs & 1 & 3 & 6 & 10 & 15 & 28 & 45 \\\\",
-      "section": "paragraph: Results."
-    },
-    {
-      "line_no": 2454,
-      "value": "93",
-      "context": "feasible (\\%) & 93 & 79 & 63 & 46 & 31 & 12 & 3 \\\\",
-      "section": "paragraph: Results."
-    },
-    {
-      "line_no": 2454,
-      "value": "79",
-      "context": "feasible (\\%) & 93 & 79 & 63 & 46 & 31 & 12 & 3 \\\\",
-      "section": "paragraph: Results."
-    },
-    {
-      "line_no": 2454,
-      "value": "63",
-      "context": "feasible (\\%) & 93 & 79 & 63 & 46 & 31 & 12 & 3 \\\\",
-      "section": "paragraph: Results."
-    },
-    {
-      "line_no": 2454,
-      "value": "46",
-      "context": "feasible (\\%) & 93 & 79 & 63 & 46 & 31 & 12 & 3 \\\\",
-      "section": "paragraph: Results."
-    },
-    {
-      "line_no": 2454,
-      "value": "31",
-      "context": "feasible (\\%) & 93 & 79 & 63 & 46 & 31 & 12 & 3 \\\\",
-      "section": "paragraph: Results."
-    },
-    {
-      "line_no": 2454,
-      "value": "12",
-      "context": "easible (\\%) & 93 & 79 & 63 & 46 & 31 & 12 & 3 \\\\",
-      "section": "paragraph: Results."
-    },
-    {
-      "line_no": 2454,
-      "value": "3",
-      "context": "le (\\%) & 93 & 79 & 63 & 46 & 31 & 12 & 3 \\\\",
-      "section": "paragraph: Results."
-    },
-    {
       "line_no": 2467,
       "value": "1",
       "context": "n}: the core claim of this paper. The $(1-p)^{\\binom{k}{2}}$ structure is the pro",
       "section": "paragraph: Implication."
-    },
-    {
-      "line_no": 2490,
-      "value": "0.253",
-      "context": "Cross-category & --- & 0.253 & --- \\\\",
-      "section": "paragraph: Results."
-    },
-    {
-      "line_no": 2501,
-      "value": "0.328",
-      "context": "rouping:} Within-category $\\hat{\\rho}$ (0.328) $>$ cross-category (0.253), with ratio",
-      "section": "paragraph: Key findings."
-    },
-    {
-      "line_no": 2501,
-      "value": "0.253",
-      "context": "\\hat{\\rho}$ (0.328) $>$ cross-category (0.253), with ratio 1.30$\\times$.",
-      "section": "paragraph: Key findings."
-    },
-    {
-      "line_no": 2501,
-      "value": "1.30",
-      "context": "$>$ cross-category (0.253), with ratio 1.30$\\times$.",
-      "section": "paragraph: Key findings."
-    },
-    {
-      "line_no": 2507,
-      "value": "190",
-      "context": "behaviorally by probing Claude with all 190 principle pairs, asking: ``Can these tw",
-      "section": "paragraph: Behavioral Validation."
-    },
-    {
-      "line_no": 2519,
-      "value": "190",
-      "context": "All & 190 & 146 & 76.8\\% \\\\",
-      "section": "paragraph: Behavioral Validation."
-    },
-    {
-      "line_no": 2519,
-      "value": "146",
-      "context": "All & 190 & 146 & 76.8\\% \\\\",
-      "section": "paragraph: Behavioral Validation."
-    },
-    {
-      "line_no": 2519,
-      "value": "76.8",
-      "context": "All & 190 & 146 & 76.8\\% \\\\",
-      "section": "paragraph: Behavioral Validation."
     },
     {
       "line_no": 2546,
@@ -2251,48 +1681,6 @@
       "value": "62",
       "context": "\\quad Priority ambiguity & 10 & 62\\% \\\\",
       "section": "paragraph: Compatibility Certificates and Error Taxonomy."
-    },
-    {
-      "line_no": 2547,
-      "value": "5",
-      "context": "\\quad Semantic overlap & 5 & 31\\% \\\\",
-      "section": "paragraph: Compatibility Certificates and Error Taxonomy."
-    },
-    {
-      "line_no": 2547,
-      "value": "31",
-      "context": "\\quad Semantic overlap & 5 & 31\\% \\\\",
-      "section": "paragraph: Compatibility Certificates and Error Taxonomy."
-    },
-    {
-      "line_no": 2553,
-      "value": "1",
-      "context": "mpatible pairs} fall into three types: (1)~\\emph{Reinforcing}: both principles ad",
-      "section": "paragraph: Compatibility Certificates and Error Taxonomy."
-    },
-    {
-      "line_no": 2553,
-      "value": "0.90",
-      "context": "y-service principles with $\\hat{\\rho}{=}0.90$); (2)~\\emph{Specialization}: one is a",
-      "section": "paragraph: Compatibility Certificates and Error Taxonomy."
-    },
-    {
-      "line_no": 2553,
-      "value": "2",
-      "context": "principles with $\\hat{\\rho}{=}0.90$); (2)~\\emph{Specialization}: one is a detail",
-      "section": "paragraph: Compatibility Certificates and Error Taxonomy."
-    },
-    {
-      "line_no": 2553,
-      "value": "3",
-      "context": "eralizes ``never claim to be human''); (3)~\\emph{Orthogonal-similar}: similar lan",
-      "section": "paragraph: Compatibility Certificates and Error Taxonomy."
-    },
-    {
-      "line_no": 2570,
-      "value": "0.55",
-      "context": "tbf{python\\_no\\_imports} ($\\hat{\\rho}{=}0.55$): ``Write factorial() without imports.",
-      "section": "paragraph: Example tasks."
     }
   ]
 }

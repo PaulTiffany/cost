@@ -2,9 +2,9 @@
   "summary": {
     "figures_checked": 6,
     "total_numerics": 199,
-    "total_covered": 150,
-    "total_uncovered": 25,
-    "coverage_percent": 75.4
+    "total_covered": 155,
+    "total_uncovered": 21,
+    "coverage_percent": 77.9
   },
   "figures": [
     {
@@ -13,13 +13,12 @@
       "pdftotext_chars": 1415,
       "raw_numerics": 11,
       "filtered_numerics": 11,
-      "covered": 2,
-      "uncovered_count": 4,
+      "covered": 4,
+      "uncovered_count": 3,
       "uncovered_values": [
         "1",
         "2",
-        "4",
-        "12"
+        "4"
       ]
     },
     {
@@ -28,8 +27,8 @@
       "pdftotext_chars": 7068,
       "raw_numerics": 67,
       "filtered_numerics": 41,
-      "covered": 39,
-      "uncovered_count": 13,
+      "covered": 40,
+      "uncovered_count": 12,
       "uncovered_values": [
         "0",
         "5",
@@ -42,8 +41,7 @@
         "30",
         "35",
         "40",
-        "0.00",
-        "4.31"
+        "0.00"
       ]
     },
     {
@@ -52,13 +50,11 @@
       "pdftotext_chars": 1585,
       "raw_numerics": 62,
       "filtered_numerics": 62,
-      "covered": 50,
-      "uncovered_count": 8,
+      "covered": 52,
+      "uncovered_count": 6,
       "uncovered_values": [
         "2",
         "8",
-        "11",
-        "12",
         "32",
         "48",
         "68",

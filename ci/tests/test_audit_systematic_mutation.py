@@ -152,8 +152,16 @@ def mutate_via_patterns(claim: dict, original_text: str) -> tuple[str | None, in
     return None, 0, "no patterns matched in main.tex"
 
 
+def all_claims(mod) -> list[dict]:
+    """Union of CLAIMS + IMPORTANT + (COMPLETE if it exists)."""
+    claims = list(mod.CLAIMS) + list(mod.IMPORTANT)
+    if hasattr(mod, "COMPLETE"):
+        claims += list(mod.COMPLETE)
+    return claims
+
+
 def run_audit_against(tex_path: Path, mod) -> dict[str, str]:
-    claims = [c for c in (mod.CLAIMS + mod.IMPORTANT) if not c.get("supplementary_only")]
+    claims = [c for c in all_claims(mod) if not c.get("supplementary_only")]
     original_path = mod.MAIN_TEX
     mod.MAIN_TEX = tex_path
     try:
@@ -294,7 +302,7 @@ def main() -> int:
         print(f"WARNING: baseline already has {n_baseline_total - n_baseline_ok} non-OK claims; mutation results may be misleading", file=sys.stderr)
 
     results: list[MutationResult] = []
-    for claim in mod.CLAIMS + mod.IMPORTANT:
+    for claim in all_claims(mod):
         if args.verbose:
             print(f"  testing {claim['id']}...", end=" ", flush=True)
         r = mutate_and_audit(claim, original_text, mod)

@@ -3,7 +3,7 @@
   "provenance": {
     "paper_title": "The Cost of Cacophony: Geometric Limits on Multi-Constraint Alignment",
     "venue": "NeurIPS 2026",
-    "generated_at": "2026-05-02T15:23:50",
+    "generated_at": "2026-05-02T15:36:17",
     "main_tex_path": "paper\\main.tex",
     "main_tex_sha256": "ead744fa65b868e4e98a7b55ca980c4fa336f21e14e708b16414fe6b45a30bc2",
     "main_tex_mtime": "2026-05-02T13:12:58",
@@ -24,9 +24,9 @@
       "return_code": 0,
       "status": "PASS",
       "summary": {
-        "tier": "Tiers 1+2: critical+important (3 supplementary-only claims skipped)",
-        "total": 97,
-        "found_verbatim": 97,
+        "tier": "Tiers 1+2+3: critical+important+complete (4 supplementary-only claims skipped)",
+        "total": 124,
+        "found_verbatim": 124,
         "drift": 0,
         "missing": 0
       },
@@ -51,11 +51,11 @@
       "return_code": 0,
       "status": "PASS",
       "summary": {
-        "total_numeric_tokens": 1525,
-        "covered": 1140,
-        "uncovered_raw": 385,
-        "uncovered_deduped": 381,
-        "coverage_percent": 74.8
+        "total_numeric_tokens": 1508,
+        "covered": 1225,
+        "uncovered_raw": 283,
+        "uncovered_deduped": 279,
+        "coverage_percent": 81.2
       },
       "notes": ""
     },
@@ -81,24 +81,24 @@
       "summary": {
         "figures_checked": 6,
         "total_numerics": 199,
-        "total_covered": 150,
-        "total_uncovered": 25,
-        "coverage_percent": 75.4,
+        "total_covered": 155,
+        "total_uncovered": 21,
+        "coverage_percent": 77.9,
         "per_figure": [
           {
             "name": "algorithm1_storyboard.pdf",
-            "coverage_percent": 18.181818181818183,
-            "uncovered_count": 4
+            "coverage_percent": 36.36363636363637,
+            "uncovered_count": 3
           },
           {
             "name": "gram_eigendecomposition.pdf",
-            "coverage_percent": 58.2089552238806,
-            "uncovered_count": 13
+            "coverage_percent": 59.70149253731343,
+            "uncovered_count": 12
           },
           {
             "name": "per_task_correlation.pdf",
-            "coverage_percent": 80.64516129032258,
-            "uncovered_count": 8
+            "coverage_percent": 83.87096774193549,
+            "uncovered_count": 6
           },
           {
             "name": "constrained_decoding.pdf",
@@ -152,5 +152,5 @@
       "notes": ""
     }
   ],
-  "certificate_self_hash": "8d62e3ec9f9fd5b1932ceec93bb66b9b010464bcbac54813a69ec69e4fb26d25"
+  "certificate_self_hash": "24f3541f7ba016af50daac3a2d02384426adc7881651e6a9c14862faef1dc78a"
 }

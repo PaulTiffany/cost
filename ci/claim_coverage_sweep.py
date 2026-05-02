@@ -45,7 +45,9 @@ TRIAGE_JSON = SCRIPT_DIR / "claim_coverage_uncovered.json"
 #   $r_s = 1.0$, N=60, $\hat{L} = 0.025$
 NUMERIC = re.compile(
     r"""
-    (?<![A-Za-z_])              # not preceded by a word char (skip 'fig3' etc.)
+    (?<![A-Za-z_0-9])           # not preceded by word char OR digit
+                                # (the digit exclusion catches e.g. '004' as
+                                # tail of '2004' inside boyd2004convex citekey)
     (?:                         # the numeric token itself:
         \d+\{?,\}?\d+(?:\.\d+)?  #   4,800 / 4{,}800 / 4{,}800.5
       | \d+\.\d+                 #   0.023, 1.4142
@@ -83,7 +85,7 @@ END_ENV = re.compile(r"\\end\{([A-Za-z*]+)\}")
 INCIDENTAL_PATTERNS = [
     # \ref / \eqref / \cite / \label / \pageref / \autoref / \cref
     re.compile(r"\\(?:eq|page|auto|c|name|v)?ref\{[^}]*\}"),
-    re.compile(r"\\cite[a-z]*\{[^}]*\}"),
+    re.compile(r"\\cite[a-z]*(?:\[[^\]]*\])?\{[^}]*\}"),  # \citep[Sec.~1.2]{key} too
     re.compile(r"\\label\{[^}]*\}"),
     # Table layout: \multicolumn{N}{...}, \cmidrule(lr){N-M}, \multirow{N}
     re.compile(r"\\multicolumn\{[^}]*\}"),
@@ -316,18 +318,23 @@ def extract_section_index(path: Path) -> list[tuple[int, str]]:
 
 
 def build_combined_pattern_set(mod) -> list[re.Pattern]:
-    """Compile every claim pattern from CLAIMS + IMPORTANT into one bag.
+    """Compile every claim pattern from CLAIMS + IMPORTANT + COMPLETE
+    into one bag.
 
     A numeric hit counts as 'covered' if any of these patterns matches
     its context line.
     """
     compiled: list[re.Pattern] = []
-    for c in mod.CLAIMS + mod.IMPORTANT:
-        for p in c.get("patterns", []):
-            try:
-                compiled.append(re.compile(p))
-            except re.error:
-                pass
+    sources = [mod.CLAIMS, mod.IMPORTANT]
+    if hasattr(mod, "COMPLETE"):
+        sources.append(mod.COMPLETE)
+    for src in sources:
+        for c in src:
+            for p in c.get("patterns", []):
+                try:
+                    compiled.append(re.compile(p))
+                except re.error:
+                    pass
     return compiled
 
 

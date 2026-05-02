@@ -1,8 +1,8 @@
 {
   "summary": {
-    "tier": "Tiers 1+2: critical+important (3 supplementary-only claims skipped)",
-    "total": 97,
-    "found_verbatim": 97,
+    "tier": "Tiers 1+2+3: critical+important+complete (4 supplementary-only claims skipped)",
+    "total": 124,
+    "found_verbatim": 124,
     "drift": 0,
     "missing": 0
   },
@@ -8744,6 +8744,2744 @@
         }
       ],
       "notes": "All 2 signature patterns matched."
+    },
+    {
+      "claim_id": "T1",
+      "paper_text_signature": "Hard-negative task: k=8, rho_hat=0.50",
+      "found": "OK",
+      "locations": [
+        {
+          "pattern": "[Hh]ard[-\\s]?negative",
+          "hits": [
+            {
+              "line": 506,
+              "snippet": "The $\\rho < 1/(k{-}1)$ threshold appears restrictive, but pairwise conflict is \\emph{sparse}. Bytebeat ($k{=}4$): 3/6 pairs have $\\rho{=}1.0$. IF-DSL ($k{=}6..."
+            },
+            {
+              "line": 1783,
+              "snippet": "\\noindent\\textbf{Novelty:} Bound is classical MOO; contribution is gradient-free operationalization. \\textbf{Disambiguation:} $\\hat{\\rho}$ triggers routing; ..."
+            },
+            {
+              "line": 1990,
+              "snippet": "\\item \\textbf{Hard-negative} ($k{=}8$, $\\hat{\\rho}{=}0.50$): reverse-string with near-identical constraint descriptions (``max 15 lines'' / ``at most 15 line..."
+            },
+            {
+              "line": 2002,
+              "snippet": "Hard-negative & 8 & 0.50 & 100/100 & Compatible \\\\"
+            },
+            {
+              "line": 2010,
+              "snippet": "Hard-negative and conflicting have indistinguishable $\\hat{\\rho}$ ($0.50$ vs $0.52$) yet opposite outcomes (100\\% vs 0\\%). This falsifies ``high $\\hat{\\rho}$..."
+            },
+            {
+              "line": 2474,
+              "snippet": "$\\hat{\\rho}$ screens for potential conflict. A hard-negative pair ($\\hat{\\rho}{=}0.50$, 100\\% pass) and a conflicting pair ($\\hat{\\rho}{=}0.52$, 0\\% pass) sh..."
+            },
+            {
+              "line": 2526,
+              "snippet": "\\paragraph{Limitations.} While we now have behavioral validation, it measures \\emph{conflict identification} (can Claude articulate tension?) rather than \\em..."
+            }
+          ]
+        },
+        {
+          "pattern": "\\\\hat\\{\\\\rho\\}\\{?=\\}?0\\.50|rho_hat=0\\.50",
+          "hits": [
+            {
+              "line": 1990,
+              "snippet": "\\item \\textbf{Hard-negative} ($k{=}8$, $\\hat{\\rho}{=}0.50$): reverse-string with near-identical constraint descriptions (``max 15 lines'' / ``at most 15 line..."
+            },
+            {
+              "line": 2474,
+              "snippet": "$\\hat{\\rho}$ screens for potential conflict. A hard-negative pair ($\\hat{\\rho}{=}0.50$, 100\\% pass) and a conflicting pair ($\\hat{\\rho}{=}0.52$, 0\\% pass) sh..."
+            }
+          ]
+        }
+      ],
+      "notes": "All 2 patterns co-occur within 3-line window (anchor line ~1989)."
+    },
+    {
+      "claim_id": "T2",
+      "paper_text_signature": "Medium task: k=10, rho_hat=0.53",
+      "found": "OK",
+      "locations": [
+        {
+          "pattern": "[Mm]edium",
+          "hits": [
+            {
+              "line": 506,
+              "snippet": "The $\\rho < 1/(k{-}1)$ threshold appears restrictive, but pairwise conflict is \\emph{sparse}. Bytebeat ($k{=}4$): 3/6 pairs have $\\rho{=}1.0$. IF-DSL ($k{=}6..."
+            },
+            {
+              "line": 1224,
+              "snippet": "\\item Medium tier ($\\hat{\\rho} = 0.40$): 15.7\\% regression rate"
+            },
+            {
+              "line": 1991,
+              "snippet": "\\item \\textbf{Medium} ($k{=}10$, $\\hat{\\rho}{=}0.53$): vowel counting with no-loops. Solvable via comprehension."
+            },
+            {
+              "line": 2003,
+              "snippet": "Medium & 10 & 0.53 & 100/100 & Solvable \\\\"
+            },
+            {
+              "line": 2524,
+              "snippet": "\\noindent The relationship is \\emph{non-monotonic}: medium-$\\hat{\\rho}$ pairs show the highest conflict rate. This matches intuition. Low-$\\hat{\\rho}$ princi..."
+            },
+            {
+              "line": 2557,
+              "snippet": "\\noindent \\textbf{Key insight:} High $\\hat{\\rho}$ is necessary but not sufficient for conflict. The 24\\% compatibility rate among high-$\\hat{\\rho}$ pairs sho..."
+            }
+          ]
+        },
+        {
+          "pattern": "0\\.53",
+          "hits": [
+            {
+              "line": 1991,
+              "snippet": "\\item \\textbf{Medium} ($k{=}10$, $\\hat{\\rho}{=}0.53$): vowel counting with no-loops. Solvable via comprehension."
+            },
+            {
+              "line": 2003,
+              "snippet": "Medium & 10 & 0.53 & 100/100 & Solvable \\\\"
+            }
+          ]
+        }
+      ],
+      "notes": "All 2 patterns co-occur within 3-line window (anchor line ~1990)."
+    },
+    {
+      "claim_id": "T3",
+      "paper_text_signature": "Conflicting task: k=8, rho_hat=0.52",
+      "found": "OK",
+      "locations": [
+        {
+          "pattern": "[Cc]onflicting",
+          "hits": [
+            {
+              "line": 236,
+              "snippet": "\\caption{\\textbf{Embedding-derived $\\hat{\\rho}$ preserves the regime ordering associated with the bound.} The smallest eigenvalue $\\lambda_{\\min}(B_\\rho) = 1..."
+            },
+            {
+              "line": 324,
+              "snippet": "Diagonal cost depends on the \\emph{maximally conflicting subset}, not all $k$ (Corollary~\\ref{cor:active_set}); constraints cluster near-orthogonally in prac..."
+            },
+            {
+              "line": 362,
+              "snippet": "\\caption{\\textbf{Constrained-decoding methods hit the same cliff.} Outlines, Guidance, and JSON-mode enforce single grammar/schema constraints by token maski..."
+            },
+            {
+              "line": 506,
+              "snippet": "The $\\rho < 1/(k{-}1)$ threshold appears restrictive, but pairwise conflict is \\emph{sparse}. Bytebeat ($k{=}4$): 3/6 pairs have $\\rho{=}1.0$. IF-DSL ($k{=}6..."
+            },
+            {
+              "line": 512,
+              "snippet": "Open-weight validation is reproducible; frontier experiments confirm \\emph{transfer}. The Claude family (7~models, haiku--opus) shows identical regime orderi..."
+            },
+            {
+              "line": 1262,
+              "snippet": "Following Def.~\\ref{def:conflict}, the \\emph{conflict magnitude} is $\\rho_{ij} := -c_{ij} \\in (0,1]$ for conflicting constraints ($c_{ij} < 0$)."
+            },
+            {
+              "line": 1263,
+              "snippet": "\\textbf{Notation:} In derivations below, $c$ denotes cosine similarity. For conflicting constraints, $c = -\\rho$ where $\\rho > 0$ is the conflict magnitude u..."
+            },
+            {
+              "line": 1325,
+              "snippet": "For conflicting constraints ($c < 0$), substituting $c = -\\rho$ where $\\rho > 0$ is the conflict magnitude yields the main-text formula."
+            },
+            {
+              "line": 1346,
+              "snippet": "its complete derivation. Recall: $c$ denotes cosine similarity, and for conflicting constraints, $c = -\\rho$ where $\\rho > 0$ is the conflict magnitude."
+            },
+            {
+              "line": 1511,
+              "snippet": "Our IF-DSL experiments (Appendix~\\ref{app:if_dsl_bridge}) empirically confirm this analysis: at $\\rho = 1.0$ (maximally conflicting constraints like \\texttt{..."
+            },
+            {
+              "line": 1673,
+              "snippet": "Our ordering criterion differs from PCGrad \\citep{yu2020gradient} and CAGrad \\citep{liu2021cagrad}, which project conflicting gradients during \\emph{training..."
+            },
+            {
+              "line": 1693,
+              "snippet": "The diagonal cost is determined by the maximally conflicting active subset. Adding easy (orthogonal) constraints doesn't increase the bound, but adding confl..."
+            },
+            {
+              "line": 1992,
+              "snippet": "\\item \\textbf{Conflicting} ($k{=}8$, $\\hat{\\rho}{=}0.52$): nested-list flatten with \\emph{both} no-loops and no-recursion. Mathematically infeasible."
+            },
+            {
+              "line": 2004,
+              "snippet": "Conflicting & 8 & 0.52 & 0/100 & Infeasible \\\\"
+            },
+            {
+              "line": 2010,
+              "snippet": "Hard-negative and conflicting have indistinguishable $\\hat{\\rho}$ ($0.50$ vs $0.52$) yet opposite outcomes (100\\% vs 0\\%). This falsifies ``high $\\hat{\\rho}$..."
+            },
+            {
+              "line": 2299,
+              "snippet": "\\item Dissonant intervals $\\leftrightarrow$ High $\\rho$ (conflicting constraints)"
+            },
+            {
+              "line": 2474,
+              "snippet": "$\\hat{\\rho}$ screens for potential conflict. A hard-negative pair ($\\hat{\\rho}{=}0.50$, 100\\% pass) and a conflicting pair ($\\hat{\\rho}{=}0.52$, 0\\% pass) sh..."
+            },
+            {
+              "line": 2545,
+              "snippet": "\\multicolumn{3}{l}{\\textit{Conflicting:}} \\\\"
+            },
+            {
+              "line": 2555,
+              "snippet": "\\noindent \\textbf{Conflicting pairs} reveal an error taxonomy: (1)~\\emph{Priority ambiguity} (62\\%): both principles apply but resolution requires contextual..."
+            }
+          ]
+        },
+        {
+          "pattern": "0\\.52",
+          "hits": [
+            {
+              "line": 1992,
+              "snippet": "\\item \\textbf{Conflicting} ($k{=}8$, $\\hat{\\rho}{=}0.52$): nested-list flatten with \\emph{both} no-loops and no-recursion. Mathematically infeasible."
+            },
+            {
+              "line": 2004,
+              "snippet": "Conflicting & 8 & 0.52 & 0/100 & Infeasible \\\\"
+            },
+            {
+              "line": 2010,
+              "snippet": "Hard-negative and conflicting have indistinguishable $\\hat{\\rho}$ ($0.50$ vs $0.52$) yet opposite outcomes (100\\% vs 0\\%). This falsifies ``high $\\hat{\\rho}$..."
+            },
+            {
+              "line": 2474,
+              "snippet": "$\\hat{\\rho}$ screens for potential conflict. A hard-negative pair ($\\hat{\\rho}{=}0.50$, 100\\% pass) and a conflicting pair ($\\hat{\\rho}{=}0.52$, 0\\% pass) sh..."
+            }
+          ]
+        }
+      ],
+      "notes": "All 2 patterns co-occur within 3-line window (anchor line ~1991)."
+    },
+    {
+      "claim_id": "T4",
+      "paper_text_signature": "json_recipe task: rho_hat=0.75",
+      "found": "OK",
+      "locations": [
+        {
+          "pattern": "json\\\\?_recipe",
+          "hits": [
+            {
+              "line": 2568,
+              "snippet": "\\item \\textbf{json\\_recipe} ($\\hat{\\rho}{=}0.75$): ``Write a recipe in JSON with fields name, ingredients, steps, prep\\_time\\_minutes.'' Verifiers: valid JSO..."
+            }
+          ]
+        },
+        {
+          "pattern": "0\\.75",
+          "hits": [
+            {
+              "line": 431,
+              "snippet": "xmin=0, xmax=0.75,"
+            },
+            {
+              "line": 448,
+              "snippet": "\\draw[white, line width=1pt, dashed] (axis cs:0,1.2) -- (axis cs:0.75,1.2);"
+            },
+            {
+              "line": 2564,
+              "snippet": "Each task contains 2--5 constraints with programmatic verifiers: JSON schema validation, word count bounds, regex patterns, Python AST checks, etc. Estimated..."
+            },
+            {
+              "line": 2568,
+              "snippet": "\\item \\textbf{json\\_recipe} ($\\hat{\\rho}{=}0.75$): ``Write a recipe in JSON with fields name, ingredients, steps, prep\\_time\\_minutes.'' Verifiers: valid JSO..."
+            }
+          ]
+        }
+      ],
+      "notes": "All 2 patterns co-occur within 3-line window (anchor line ~2567)."
+    },
+    {
+      "claim_id": "T5",
+      "paper_text_signature": "formal_brief task: rho_hat=0.20",
+      "found": "OK",
+      "locations": [
+        {
+          "pattern": "formal\\\\?_brief",
+          "hits": [
+            {
+              "line": 2569,
+              "snippet": "\\item \\textbf{formal\\_brief} ($\\hat{\\rho}{=}0.20$): ``Explain ML formally (no contractions) in under 50 words.'' Verifiers: word count $\\le 50$, no contracti..."
+            }
+          ]
+        },
+        {
+          "pattern": "0\\.20",
+          "hits": [
+            {
+              "line": 411,
+              "snippet": "Low & 0.20 & 56\\% & 60\\% & 44\\% \\\\"
+            },
+            {
+              "line": 440,
+              "snippet": "(0.05,1.0) [0.33]  (0.20,1.0) [0.25]  (0.40,1.0) [0.10]  (0.55,1.0) [0.03]  (0.70,1.0) [0.01]"
+            },
+            {
+              "line": 441,
+              "snippet": "(0.05,1.5) [0.55]  (0.20,1.5) [0.45]  (0.40,1.5) [0.18]  (0.55,1.5) [0.05]  (0.70,1.5) [0.02]"
+            },
+            {
+              "line": 442,
+              "snippet": "(0.05,2.0) [0.76]  (0.20,2.0) [0.56]  (0.40,2.0) [0.23]  (0.55,2.0) [0.08]  (0.70,2.0) [0.02]"
+            },
+            {
+              "line": 443,
+              "snippet": "(0.05,2.5) [0.82]  (0.20,2.5) [0.65]  (0.40,2.5) [0.32]  (0.55,2.5) [0.12]  (0.70,2.5) [0.03]"
+            },
+            {
+              "line": 444,
+              "snippet": "(0.05,3.0) [0.88]  (0.20,3.0) [0.72]  (0.40,3.0) [0.40]  (0.55,3.0) [0.18]  (0.70,3.0) [0.05]"
+            },
+            {
+              "line": 480,
+              "snippet": "coordinates {(0.05, 76) (0.20, 56)};"
+            },
+            {
+              "line": 496,
+              "snippet": "\\textbf{Task:} ``Python factorial: pass tests, $\\leq$10 lines, no loops.'' High: $\\hat{\\rho} \\approx 0.65$, $\\sqrt{2/(1{-}0.65)} \\approx 2.39\\times$, near si..."
+            },
+            {
+              "line": 713,
+              "snippet": "multilingual-MiniLM & 0.20 $\\pm$ 0.04 & 4 \\\\"
+            },
+            {
+              "line": 718,
+              "snippet": "Table~\\ref{tab:embedding_R} shows that $\\rho_{\\max}$ is remarkably consistent ($0.12$--$0.20$) across embedding architectures, suggesting the conflict struct..."
+            },
+            {
+              "line": 1125,
+              "snippet": "Low ($\\hat{\\rho}{\\approx}0.20$) & 480 & 58.1\\% & dominant & rare \\\\"
+            },
+            {
+              "line": 1223,
+              "snippet": "\\item Low tier ($\\hat{\\rho} = 0.20$): 8.3\\% regression rate"
+            },
+            {
+              "line": 1235,
+              "snippet": "$\\rho < 1/(k{-}1)$ ensures $\\Gamma \\succ 0$; our $\\rho_{\\max} \\approx 0.12$--$0.20$ satisfies for $k \\le 4$. Under convex exit-cone assumptions, linear infea..."
+            },
+            {
+              "line": 2569,
+              "snippet": "\\item \\textbf{formal\\_brief} ($\\hat{\\rho}{=}0.20$): ``Explain ML formally (no contractions) in under 50 words.'' Verifiers: word count $\\le 50$, no contracti..."
+            }
+          ]
+        }
+      ],
+      "notes": "All 2 patterns co-occur within 3-line window (anchor line ~2568)."
+    },
+    {
+      "claim_id": "T6",
+      "paper_text_signature": "python_no_imports task: rho_hat=0.55",
+      "found": "OK",
+      "locations": [
+        {
+          "pattern": "python\\\\?_no\\\\?_imports",
+          "hits": [
+            {
+              "line": 2570,
+              "snippet": "\\item \\textbf{python\\_no\\_imports} ($\\hat{\\rho}{=}0.55$): ``Write factorial() without imports.'' Verifiers: valid Python AST, no Import nodes, defines factor..."
+            }
+          ]
+        },
+        {
+          "pattern": "0\\.55",
+          "hits": [
+            {
+              "line": 440,
+              "snippet": "(0.05,1.0) [0.33]  (0.20,1.0) [0.25]  (0.40,1.0) [0.10]  (0.55,1.0) [0.03]  (0.70,1.0) [0.01]"
+            },
+            {
+              "line": 441,
+              "snippet": "(0.05,1.5) [0.55]  (0.20,1.5) [0.45]  (0.40,1.5) [0.18]  (0.55,1.5) [0.05]  (0.70,1.5) [0.02]"
+            },
+            {
+              "line": 442,
+              "snippet": "(0.05,2.0) [0.76]  (0.20,2.0) [0.56]  (0.40,2.0) [0.23]  (0.55,2.0) [0.08]  (0.70,2.0) [0.02]"
+            },
+            {
+              "line": 443,
+              "snippet": "(0.05,2.5) [0.82]  (0.20,2.5) [0.65]  (0.40,2.5) [0.32]  (0.55,2.5) [0.12]  (0.70,2.5) [0.03]"
+            },
+            {
+              "line": 444,
+              "snippet": "(0.05,3.0) [0.88]  (0.20,3.0) [0.72]  (0.40,3.0) [0.40]  (0.55,3.0) [0.18]  (0.70,3.0) [0.05]"
+            },
+            {
+              "line": 1075,
+              "snippet": "moderate & 0.55 & 180 & 0.0\\% & 2.5\\% & 5\\% & \\textbf{97.5\\%} \\\\"
+            },
+            {
+              "line": 2570,
+              "snippet": "\\item \\textbf{python\\_no\\_imports} ($\\hat{\\rho}{=}0.55$): ``Write factorial() without imports.'' Verifiers: valid Python AST, no Import nodes, defines factor..."
+            }
+          ]
+        }
+      ],
+      "notes": "All 2 patterns co-occur within 3-line window (anchor line ~2569)."
+    },
+    {
+      "claim_id": "T7",
+      "paper_text_signature": "no_common_words task: rho_hat=0.65",
+      "found": "OK",
+      "locations": [
+        {
+          "pattern": "no\\\\?_common\\\\?_words",
+          "hits": [
+            {
+              "line": 2571,
+              "snippet": "\\item \\textbf{no\\_common\\_words} ($\\hat{\\rho}{=}0.65$): ``Describe ocean without: water, blue, wave, fish, sea.'' Verifiers: 5 word-boundary regex checks."
+            }
+          ]
+        },
+        {
+          "pattern": "0\\.65",
+          "hits": [
+            {
+              "line": 413,
+              "snippet": "High & 0.65 & 2\\% & 2\\% & 98\\% \\\\"
+            },
+            {
+              "line": 443,
+              "snippet": "(0.05,2.5) [0.82]  (0.20,2.5) [0.65]  (0.40,2.5) [0.32]  (0.55,2.5) [0.12]  (0.70,2.5) [0.03]"
+            },
+            {
+              "line": 476,
+              "snippet": "\\addplot[line width=1pt, color=gray, dashed, domain=0:0.65, samples=50]"
+            },
+            {
+              "line": 483,
+              "snippet": "coordinates {(0.40, 23) (0.65, 2)};"
+            },
+            {
+              "line": 496,
+              "snippet": "\\textbf{Task:} ``Python factorial: pass tests, $\\leq$10 lines, no loops.'' High: $\\hat{\\rho} \\approx 0.65$, $\\sqrt{2/(1{-}0.65)} \\approx 2.39\\times$, near si..."
+            },
+            {
+              "line": 734,
+              "snippet": "MiniLM-L6-v2 & [0.05, 0.65] & --- & --- \\\\"
+            },
+            {
+              "line": 798,
+              "snippet": "We compare our geometry-informed router against standard multi-constraint strategies on the code constraint benchmark (High tier, $\\hat{\\rho} \\approx 0.65$, ..."
+            },
+            {
+              "line": 944,
+              "snippet": "To isolate $\\hat{\\rho}$ from task difficulty, we construct \\emph{iso-difficulty pairs}: tasks with matched single-constraint pass rates but different $\\hat{\\..."
+            },
+            {
+              "line": 1127,
+              "snippet": "\\textbf{High} ($\\hat{\\rho}{\\approx}0.65$) & \\textbf{480} & \\textbf{1.7\\%} & \\textbf{0/427} & \\textbf{8/53 (15\\%)} \\\\"
+            },
+            {
+              "line": 1225,
+              "snippet": "\\item High tier ($\\hat{\\rho} = 0.65$): 23.1\\% regression rate"
+            },
+            {
+              "line": 2571,
+              "snippet": "\\item \\textbf{no\\_common\\_words} ($\\hat{\\rho}{=}0.65$): ``Describe ocean without: water, blue, wave, fish, sea.'' Verifiers: 5 word-boundary regex checks."
+            }
+          ]
+        }
+      ],
+      "notes": "All 2 patterns co-occur within 3-line window (anchor line ~2570)."
+    },
+    {
+      "claim_id": "T8",
+      "paper_text_signature": "Within-category rho_hat=0.328 (App W cross-category comparison)",
+      "found": "OK",
+      "locations": [
+        {
+          "pattern": "[Ww]ithin[-\\s]?category",
+          "hits": [
+            {
+              "line": 2501,
+              "snippet": "\\item \\textbf{Hierarchical grouping:} Within-category $\\hat{\\rho}$ (0.328) $>$ cross-category (0.253), with ratio 1.30$\\times$."
+            }
+          ]
+        },
+        {
+          "pattern": "0\\.328",
+          "hits": [
+            {
+              "line": 2501,
+              "snippet": "\\item \\textbf{Hierarchical grouping:} Within-category $\\hat{\\rho}$ (0.328) $>$ cross-category (0.253), with ratio 1.30$\\times$."
+            }
+          ]
+        }
+      ],
+      "notes": "All 2 patterns co-occur within 3-line window (anchor line ~2500)."
+    },
+    {
+      "claim_id": "T9",
+      "paper_text_signature": "Cross-category rho_hat=0.253 (App W)",
+      "found": "OK",
+      "locations": [
+        {
+          "pattern": "[Cc]ross[-\\s]?category",
+          "hits": [
+            {
+              "line": 2490,
+              "snippet": "Cross-category & --- & 0.253 & --- \\\\"
+            },
+            {
+              "line": 2501,
+              "snippet": "\\item \\textbf{Hierarchical grouping:} Within-category $\\hat{\\rho}$ (0.328) $>$ cross-category (0.253), with ratio 1.30$\\times$."
+            }
+          ]
+        },
+        {
+          "pattern": "0\\.253",
+          "hits": [
+            {
+              "line": 2490,
+              "snippet": "Cross-category & --- & 0.253 & --- \\\\"
+            },
+            {
+              "line": 2501,
+              "snippet": "\\item \\textbf{Hierarchical grouping:} Within-category $\\hat{\\rho}$ (0.328) $>$ cross-category (0.253), with ratio 1.30$\\times$."
+            }
+          ]
+        }
+      ],
+      "notes": "All 2 patterns co-occur within 3-line window (anchor line ~2489)."
+    },
+    {
+      "claim_id": "T10",
+      "paper_text_signature": "Within/cross category ratio 1.30x (App W)",
+      "found": "OK",
+      "locations": [
+        {
+          "pattern": "[Rr]atio",
+          "hits": [
+            {
+              "line": 69,
+              "snippet": "We enable routing decisions \\emph{before} LLM generation: given a multi-constraint prompt, decide whether to attempt one-shot, decompose into stages, or reje..."
+            },
+            {
+              "line": 71,
+              "snippet": "We prove the minimum displacement to satisfy $k$ constraints scales as $\\sqrt{k/(1{-}\\rho(k{-}1))}$ (the `diagonal cost'), diverging at a geometric threshold..."
+            },
+            {
+              "line": 78,
+              "snippet": "Large language models (LLMs) can satisfy individual constraints (safety, helpfulness, format compliance) but performance can collapse when several constraint..."
+            },
+            {
+              "line": 80,
+              "snippet": "\\textbf{Approach.} We prove that the minimum displacement to satisfy $k$ constraints simultaneously scales as $\\delta_{\\min} \\propto \\sqrt{k/(1{-}\\rho(k{-}1)..."
+            },
+            {
+              "line": 87,
+              "snippet": "diverging as $\\rho \\to 1$ (Corollary~\\ref{cor:uniform}). The operational cliff appears when budget $LT$ (Definition~\\ref{def:budget}) falls below $\\delta_{\\m..."
+            },
+            {
+              "line": 92,
+              "snippet": "\\caption{\\textbf{Algorithm~\\ref{alg:routing} visualized} on ``be comprehensive'' ($C_1$) vs.\\ ``be concise'' ($C_2$). Constraints are parsed from the prompt,..."
+            },
+            {
+              "line": 97,
+              "snippet": "\\caption{Regime-Based Routing: One-Shot, Stage, or Decompose, Decided Before Generation}"
+            },
+            {
+              "line": 120,
+              "snippet": "(2)~\\textbf{Displacement Contract:} Empirically calibrated token-to-displacement interface; Table~\\ref{tab:lipschitz_calibration} shows stable calibration ac..."
+            },
+            {
+              "line": 214,
+              "snippet": "The exit cone $E(x_0)$ is an intersection of half-spaces, a convex polytope \\emph{by definition}. Global manifold non-convexity is irrelevant: curvature adds..."
+            },
+            {
+              "line": 243,
+              "snippet": "Bounds are single-step. Generation is multi-step. Assume per-token $L$-Lipschitz:"
+            },
+            {
+              "line": 255,
+              "snippet": "\\textbf{Interface Assumption (text-in, text-out, frozen encoder, deterministic verifier; High-Probability Lipschitz):} With probability $1{-}\\varepsilon$ ($\\..."
+            },
+            {
+              "line": 259,
+              "snippet": "\\noindent \\textbf{Validation.} Table~\\ref{tab:lipschitz_calibration} shows $\\hat{L} \\in [0.019, 0.031]$ across 4 model families, stable across decoding strat..."
+            },
+            {
+              "line": 270,
+              "snippet": "Direction stability: 94\\% of trajectories show $\\hat{\\rho}$ drift ${<}0.15$ (Appendix~\\ref{app:direction_stability}). Lipschitz calibration is stable across ..."
+            },
+            {
+              "line": 324,
+              "snippet": "Diagonal cost depends on the \\emph{maximally conflicting subset}, not all $k$ (Corollary~\\ref{cor:active_set}); constraints cluster near-orthogonally in prac..."
+            },
+            {
+              "line": 362,
+              "snippet": "\\caption{\\textbf{Constrained-decoding methods hit the same cliff.} Outlines, Guidance, and JSON-mode enforce single grammar/schema constraints by token maski..."
+            },
+            {
+              "line": 396,
+              "snippet": "At high $\\hat{\\rho}$, \\emph{all protocols} collapse to $\\leq$5\\% \\emph{on smooth-regime trials}. This is the bound in action, not a failure of staging; front..."
+            },
+            {
+              "line": 398,
+              "snippet": "\\textbf{Calibration.}"
+            },
+            {
+              "line": 399,
+              "snippet": "Table~\\ref{tab:calibration} shows failure scales with $\\hat{\\rho}$ (24\\% $\\to$ 98\\%), $r_s = 1.0$ with $p < 0.001$ (formal screening condition: Lemma~\\ref{le..."
+            },
+            {
+              "line": 404,
+              "snippet": "\\caption{\\textbf{Calibration benchmark} ($r_s = 1.0$): failure rate increases monotonically with regime index $\\hat{\\rho}$. Aggregate across 4 models, $N$=24..."
+            },
+            {
+              "line": 405,
+              "snippet": "\\label{tab:calibration}"
+            },
+            {
+              "line": 489,
+              "snippet": "\\caption{\\textbf{Feasibility surface and theory--observation alignment.} (a) Pass rate over $(\\hat{\\rho}, \\delta/\\delta_{\\min})$ with routing region boundari..."
+            },
+            {
+              "line": 496,
+              "snippet": "\\textbf{Task:} ``Python factorial: pass tests, $\\leq$10 lines, no loops.'' High: $\\hat{\\rho} \\approx 0.65$, $\\sqrt{2/(1{-}0.65)} \\approx 2.39\\times$, near si..."
+            },
+            {
+              "line": 499,
+              "snippet": "\\begin{example}[Three-Constraint Demonstration ($k{=}3$)]\\label{ex:k3}"
+            },
+            {
+              "line": 509,
+              "snippet": "\\noindent\\textbf{Falsification criterion.} Sustained one-shot success ($>$10\\%) in the predicted-infeasible region ($\\delta_{\\min} > LT$) without pivot signa..."
+            },
+            {
+              "line": 536,
+              "snippet": "Multi-constraint LLM behavior exhibits sharp regime structure: feasibility cliffs, not capability gradients. Three contributions: (1)~Diagonal Cost Bound (Th..."
+            },
+            {
+              "line": 576,
+              "snippet": "\\caption{Harness suite across representation families. Core results use deterministic verification (parsers, solvers, FFT). Interactive prompts are supplemen..."
+            },
+            {
+              "line": 616,
+              "snippet": "The divergence $\\delta_{\\min} = (\\tau/m)\\sqrt{2/(1-\\rho)} \\sim (1-\\rho)^{-1/2}$ exhibits critical scaling with exponent $\\nu = \\tfrac{1}{2}$. For $k$-constra..."
+            },
+            {
+              "line": 619,
+              "snippet": "The regime boundary is robust, not an artifact of calibration or encoder choice. Table~\\ref{tab:robustness_stress} shows prompt perturbations (paraphrase, re..."
+            },
+            {
+              "line": 627,
+              "snippet": "Table~\\ref{tab:claude_family} demonstrates graded results across 7 Claude models spanning 4 generations. Sonnet-4.5 achieved \\textbf{exact} $\\Delta=0$ on one..."
+            },
+            {
+              "line": 632,
+              "snippet": "\\caption{Claude family (7 models) on self-referential constraints. Wins = staged beats one-shot. Ratio = displacement improvement. Opus-4.5's lower ratio ref..."
+            },
+            {
+              "line": 636,
+              "snippet": "Model & Gen & Wins & Ratio & Note \\\\"
+            },
+            {
+              "line": 641,
+              "snippet": "opus-4.1 & 4 & 5/6 & $\\mathbf{26.4\\times}$ & highest ratio \\\\"
+            },
+            {
+              "line": 650,
+              "snippet": "Opus-4.5 (frontier) shows \\emph{lower} improvement ratio ($4.8\\times$) than opus-4.1 ($26.4\\times$). This is \\textbf{not} because staging helps less. Opus-4...."
+            },
+            {
+              "line": 673,
+              "snippet": "$T$ & tokens & Generation Length (token budget) \\\\"
+            },
+            {
+              "line": 682,
+              "snippet": "\\textrm{Pivot regime} & --- & 11\\% violating Lipschitz; detected mid-generation \\\\"
+            },
+            {
+              "line": 762,
+              "snippet": "Table~\\ref{tab:threshold_sensitivity} shows router decision stability under $\\pm$20\\% perturbation of the routing thresholds ($\\hat{\\rho}$ cutoffs at 0.15 an..."
+            },
+            {
+              "line": 781,
+              "snippet": "Sensitivity analysis reveals two failure boundaries: (1)~implicit constraints embedded in world knowledge (``write a safe recipe'' implies no toxins) degrade..."
+            },
+            {
+              "line": 787,
+              "snippet": "Let $\\hat{\\rho}: \\mathcal{P} \\to [0,1]$ be an interface observable and let $\\mathsf{fail}: \\mathcal{P} \\to \\{0,1\\}$ be operational outcome (verifier pass/fai..."
+            },
+            {
+              "line": 791,
+              "snippet": "Threshold-based routing partitions the interval $[0,1]$ into regimes: one-shot ($\\hat{\\rho} < \\hat{\\tau}_1$), staged ($\\hat{\\tau}_1 \\leq \\hat{\\rho} < \\hat{\\t..."
+            },
+            {
+              "line": 794,
+              "snippet": "\\noindent This is standard calibration/decision theory~\\citep{degroot1983comparison}; we include it to make explicit why ordinal fidelity ($r_s = 1.0$, Table..."
+            },
+            {
+              "line": 835,
+              "snippet": "Code (calibration) & 100\\% & --- & 1.8\\% \\\\"
+            },
+            {
+              "line": 843,
+              "snippet": "These results demonstrate that embedding-based $\\hat{\\rho}$ captures conflict structure that transfers across verifier families without re-tuning. Regret inc..."
+            },
+            {
+              "line": 847,
+              "snippet": "A natural question: does \\emph{constrained decoding} (token-level masking or grammar-guided generation) escape the diagonal cost bound? We show it cannot. If..."
+            },
+            {
+              "line": 860,
+              "snippet": "The diagonal cost $\\delta_{\\min}$ depends on constraint geometry ($\\rho$, $k$, $\\tau/m$), not on the generation mechanism. Constrained decoding restricts the..."
+            },
+            {
+              "line": 867,
+              "snippet": "\\item \\textbf{Test-driven code synthesis:} Ensures test passage via generate-check-repair, but each repair iteration is itself a one-shot attempt subject to ..."
+            },
+            {
+              "line": 871,
+              "snippet": "\\noindent Our router is \\emph{complementary}: it decides pre-generation whether one-shot enforcement (constrained or not) is geometrically feasible. Constrai..."
+            },
+            {
+              "line": 880,
+              "snippet": "All three face the \\emph{same} geometric difficulty: the constraint directions exist regardless of whether the prompt spells them out. The difference: prompt..."
+            },
+            {
+              "line": 943,
+              "snippet": "\\paragraph{Difficulty-conflict separation.}"
+            },
+            {
+              "line": 944,
+              "snippet": "To isolate $\\hat{\\rho}$ from task difficulty, we construct \\emph{iso-difficulty pairs}: tasks with matched single-constraint pass rates but different $\\hat{\\..."
+            },
+            {
+              "line": 1086,
+              "snippet": "Gradients are \\emph{micro-state} observables: high-variance, token-path-dependent, specific to the exact generation trajectory. Embeddings are \\emph{macro-st..."
+            },
+            {
+              "line": 1097,
+              "snippet": "Table~\\ref{tab:calibration} shows this empirically: $\\hat{\\rho}$ perfectly predicts failure regime ordering across 4 models and 5 domains (see Remark~\\ref{re..."
+            },
+            {
+              "line": 1101,
+              "snippet": "Lemma~\\ref{lem:traj_infeasible} assumes constraint geometry remains stable along the generation trajectory. We verify this assumption empirically by measurin..."
+            },
+            {
+              "line": 1110,
+              "snippet": "Direction stability validates the local-to-global transfer assumed in Lemma~\\ref{lem:traj_infeasible}: the MOO bound computed at the anchor applies along rea..."
+            },
+            {
+              "line": 1113,
+              "snippet": "Across 480 high-tier trials (4 models $\\times$ 12 tasks $\\times$ 2 protocols $\\times$ N=5), unconditional success is $1.7\\%$ (8/480). The paper's headline 0/..."
+            },
+            {
+              "line": 1118,
+              "snippet": "\\caption{Per-tier success decomposition (code constraint benchmark, $N{=}480$ per tier, 4 models $\\times$ 2 protocols). Smooth-regime size from $1{-}\\hat{p}_..."
+            },
+            {
+              "line": 1132,
+              "snippet": "\\section{Lipschitz Calibration}\\label{app:lipschitz_calibration}\\hypertarget{lim:linear}{}"
+            },
+            {
+              "line": 1139,
+              "snippet": "\\caption{Token$\\to$norm calibration ($\\pm$ standard deviation across $N{=}50$ completions). $\\hat{L}$: per-token displacement. Tightness: \\% within 12\\% of $..."
+            },
+            {
+              "line": 1140,
+              "snippet": "\\label{tab:lipschitz_calibration}"
+            },
+            {
+              "line": 1163,
+              "snippet": "\\item \\textbf{Tightness:} The bound $\\|x_T - x_0\\| \\le LT$ is tight within 12\\% for 89\\% of completions. Outliers (11\\%) correspond to semantic pivots where ..."
+            },
+            {
+              "line": 1171,
+              "snippet": "The stability of $L$ across models and tasks validates the token$\\to$norm contract for regime prediction. While $L$ varies with model size and temperature, t..."
+            },
+            {
+              "line": 1243,
+              "snippet": "Our contribution is the \\emph{explicit conflict parameterization}: expressing $\\|d^\\star\\|$ directly as a function of $\\rho_{ij}$ reveals the diagonal cost s..."
+            },
+            {
+              "line": 1279,
+              "snippet": "\\paragraph{Operational contribution.}"
+            },
+            {
+              "line": 1293,
+              "snippet": "\\paragraph{Path Integration vs.\\ Displacement Feasibility.}"
+            },
+            {
+              "line": 1397,
+              "snippet": "\\paragraph{Operational interpretation (our contribution).}"
+            },
+            {
+              "line": 1451,
+              "snippet": "\\paragraph{Operational contribution.}"
+            },
+            {
+              "line": 1462,
+              "snippet": "\\paragraph{Why staging escapes implicit-$k$.} One-shot generation must respect all $k$ constraint gradients simultaneously: the full Gram matrix $\\Gamma$ mus..."
+            },
+            {
+              "line": 1470,
+              "snippet": "The staging benefit ratio is:"
+            },
+            {
+              "line": 1483,
+              "snippet": "The ratio follows by division. As $\\rho \\to 1/(k-1)$, the denominator $1-\\rho(k-1) \\to 0$, making simultaneous satisfaction require arbitrarily large steps."
+            },
+            {
+              "line": 1508,
+              "snippet": "At $\\rho = 1/(k-1)$, the constraint gradients become coplanar (linearly dependent), and the feasible region $\\mathcal{C}$ degenerates: the analog of Slater's..."
+            },
+            {
+              "line": 1516,
+              "snippet": "The bounds in Theorems~\\ref{thm:two_bound_cited} and \\ref{thm:k_bound_cited} are tight: there exist constraint configurations achieving equality."
+            },
+            {
+              "line": 1527,
+              "snippet": "As Table~\\ref{tab:feasibility} demonstrates, synthetic optimization matches analytical bounds to relative error $< 10^{-8}$ across all tested configurations."
+            },
+            {
+              "line": 1582,
+              "snippet": "When constraints have heterogeneous magnitudes, the effective diagonal cost depends on both conflict structure and magnitude ratios. Specifically, for $k=2$:"
+            },
+            {
+              "line": 1598,
+              "snippet": "\\begin{definition}[Projected gradient iteration]"
+            },
+            {
+              "line": 1607,
+              "snippet": "For $k$ constraints with pairwise conflicts $\\rho_{ij} \\le \\rho_{\\max} < 1$, cyclic projected gradient iteration converges linearly:"
+            },
+            {
+              "line": 1615,
+              "snippet": "Each projection onto constraint $i$'s halfspace reduces squared distance to the feasible region by factor $(1 - c_i)$ where $c_i$ depends on the angle betwee..."
+            },
+            {
+              "line": 1618,
+              "snippet": "\\begin{corollary}[Iteration complexity]"
+            },
+            {
+              "line": 1619,
+              "snippet": "For $\\epsilon$-feasibility, iteration count scales as $T = O\\bigl(k \\cdot (1-\\rho_{\\max})^{-1} \\cdot \\log(1/\\epsilon)\\bigr)$, consistent with the $1/(1-\\rho)..."
+            },
+            {
+              "line": 1623,
+              "snippet": "By Theorem~\\ref{thm:convergence}, after $T$ iterations, $\\|x_T - x^\\star\\| \\le (1 - (1-\\rho_{\\max})/k)^{T/k} \\|x_0 - x^\\star\\|$. Setting this equal to $\\epsi..."
+            },
+            {
+              "line": 1647,
+              "snippet": "As $\\rho \\to 1/(k-1)$, $\\lambda_{\\min}(\\Gamma) \\to 0$, and the diagonal cost becomes increasingly sensitive to perturbations. This explains empirical observa..."
+            },
+            {
+              "line": 1673,
+              "snippet": "Our ordering criterion differs from PCGrad \\citep{yu2020gradient} and CAGrad \\citep{liu2021cagrad}, which project conflicting gradients during \\emph{training..."
+            },
+            {
+              "line": 1783,
+              "snippet": "\\noindent\\textbf{Novelty:} Bound is classical MOO; contribution is gradient-free operationalization. \\textbf{Disambiguation:} $\\hat{\\rho}$ triggers routing; ..."
+            },
+            {
+              "line": 1805,
+              "snippet": "This appendix formalizes the relationship between operational budgets, local linearity, and staged decomposition. We show that (i) local linearity is an \\emp..."
+            },
+            {
+              "line": 1812,
+              "snippet": "A generation induces increments $\\Delta z_t := z_{t+1}-z_t$. The \\emph{utilized budget} over $T$ steps is"
+            },
+            {
+              "line": 1889,
+              "snippet": "If $\\delta_{\\min} > LT$ and a completion nevertheless satisfies all constraints under deterministic verification, then at least one of the following must hol..."
+            },
+            {
+              "line": 1899,
+              "snippet": "$\\hat\\rho$ is sufficient if it is \\emph{monotone} with operational outcome, preserving regime ordering of $\\delta_{\\min}$ without recovering mechanistic grad..."
+            },
+            {
+              "line": 1903,
+              "snippet": "The kinematic account is refuted by systematic instances where $\\hat\\rho$ indicates high coupling, calibrated budget implies $LT<\\delta_{\\min}$, yet one-shot..."
+            },
+            {
+              "line": 1907,
+              "snippet": "\\begin{remark}[LM Operationalization]\\label{rem:lm_budget}"
+            },
+            {
+              "line": 1908,
+              "snippet": "In LM experiments, $\\delta$ maps to \\emph{token budget} via a kinematic argument. The response artifact is an integral: $x = x_0 + \\int_0^T v(t)\\,dt$ where $..."
+            },
+            {
+              "line": 1910,
+              "snippet": "Empirically, failure rates track $\\delta$ monotonically at fixed conflict (Table~\\ref{tab:delta_capacity}), and regime ordering is preserved across decoding ..."
+            },
+            {
+              "line": 1915,
+              "snippet": "We report evaluation hyperparameters explicitly: batch size = 32 for embedding encoding (SentenceTransformer default), embedding dim = 384 or 768 depending o..."
+            },
+            {
+              "line": 1941,
+              "snippet": "Audio duration & 4 seconds & Signal window \\\\"
+            },
+            {
+              "line": 1949,
+              "snippet": "Bootstrap iterations & 1,000 & 95\\% CI \\\\"
+            },
+            {
+              "line": 1955,
+              "snippet": "Max new tokens & 384 & Generation budget \\\\"
+            },
+            {
+              "line": 1969,
+              "snippet": "We compared single-pass generation against two-stage (generate then revise) and three-stage (generate, critique, then revise) protocols."
+            },
+            {
+              "line": 1987,
+              "snippet": "Four code-generation tasks varying constraint structure but matched on $\\hat{\\rho}{\\approx}0.5$:"
+            },
+            {
+              "line": 2010,
+              "snippet": "Hard-negative and conflicting have indistinguishable $\\hat{\\rho}$ ($0.50$ vs $0.52$) yet opposite outcomes (100\\% vs 0\\%). This falsifies ``high $\\hat{\\rho}$..."
+            },
+            {
+              "line": 2083,
+              "snippet": "Analytical bounds match numerical solutions to relative error $< 10^{-4}$ across all tested configurations. We test $\\rho \\in \\{0.1, 0.3, 0.5, 0.7, 0.9\\}$ an..."
+            },
+            {
+              "line": 2094,
+              "snippet": "\\item \\textbf{Estimate the step budget} $\\delta$ using token limit as a validated proxy; Table~\\ref{tab:delta_capacity} shows the calibration."
+            },
+            {
+              "line": 2109,
+              "snippet": "Thresholds calibrated from Table~\\ref{tab:calibration}: staging $\\Delta > 0$ when $\\hat{\\rho} \\in [0.2, 0.5]$ and $\\delta/\\delta_{\\min} \\in [1.5, 3.0]$."
+            },
+            {
+              "line": 2128,
+              "snippet": "Table~\\ref{tab:overhead} shows overhead per operation."
+            },
+            {
+              "line": 2132,
+              "snippet": "\\caption{Compute overhead (sample complexity). Pre-generation routing adds $<$10ms latency. Staging doubles query budget but avoids wasted one-shot failures.}"
+            },
+            {
+              "line": 2137,
+              "snippet": "Operation & Tokens/Calls & Latency \\\\"
+            },
+            {
+              "line": 2172,
+              "snippet": "We do not treat $\\hat\\rho$ as a noisy measurement of an unobserved internal ``true conflict.'' $\\hat\\rho$ is an \\emph{interface observable} computed directly..."
+            },
+            {
+              "line": 2175,
+              "snippet": "Computing $\\hat{\\rho}$ requires contrastive exemplars per constraint, a practical overhead. This cost is amortized: (i)~common constraints (safety, format, t..."
+            },
+            {
+              "line": 2183,
+              "snippet": "\\item Real-time conflict monitoring during generation"
+            },
+            {
+              "line": 2184,
+              "snippet": "\\item Integration with Constitutional AI implementations"
+            },
+            {
+              "line": 2208,
+              "snippet": "\\item High-$\\rho$ configurations should sound ``rough'' or ``dissonant''"
+            },
+            {
+              "line": 2209,
+              "snippet": "\\item Low-$\\rho$ configurations should sound ``smooth'' or ``consonant''"
+            },
+            {
+              "line": 2243,
+              "snippet": "We provide \\texttt{sonification.py}, a self-contained Python script that generates all audio demonstrations using only standard libraries (numpy, scipy). No ..."
+            },
+            {
+              "line": 2255,
+              "snippet": "We extend the sonification to map Claude's four constitutional principles directly onto music theory's \\emph{Circle of Fifths}: the geometric representation ..."
+            },
+            {
+              "line": 2341,
+              "snippet": "All audio files and generation code available at the supplementary repository. Run \\texttt{python sonification.py} to regenerate."
+            },
+            {
+              "line": 2408,
+              "snippet": "Mature predictive sciences diagnose \\emph{regimes}, not averages. Phase transitions and regime boundaries are central to weather prediction, climate modeling..."
+            },
+            {
+              "line": 2411,
+              "snippet": "Audio engineering has long used reverb, gating, and compression as diagnostic idioms for structured failure modes. Appendix~\\ref{app:sonification} demonstrat..."
+            },
+            {
+              "line": 2414,
+              "snippet": "The SAT/UNSAT binary (feasible vs.\\ infeasible under constraints) is native to formal verification. Our judge-free harnesses operationalize this distinction:..."
+            },
+            {
+              "line": 2417,
+              "snippet": "An open question for future work: can we construct \\emph{looping systems with no spikes}, protocols that sustain performance across many iterations without b..."
+            },
+            {
+              "line": 2463,
+              "snippet": "\\paragraph{On \\emph{conflict}.} The term may suggest semantic opposition (constraints ``fighting''). But the geometry is simpler: each constraint defines a h..."
+            },
+            {
+              "line": 2501,
+              "snippet": "\\item \\textbf{Hierarchical grouping:} Within-category $\\hat{\\rho}$ (0.328) $>$ cross-category (0.253), with ratio 1.30$\\times$."
+            }
+          ]
+        },
+        {
+          "pattern": "1\\.30",
+          "hits": [
+            {
+              "line": 2501,
+              "snippet": "\\item \\textbf{Hierarchical grouping:} Within-category $\\hat{\\rho}$ (0.328) $>$ cross-category (0.253), with ratio 1.30$\\times$."
+            }
+          ]
+        }
+      ],
+      "notes": "All 2 patterns co-occur within 3-line window (anchor line ~2500)."
+    },
+    {
+      "claim_id": "T11",
+      "paper_text_signature": "Behavioral validation rate 76.8% (App W)",
+      "found": "OK",
+      "locations": [
+        {
+          "pattern": "190",
+          "hits": [
+            {
+              "line": 2440,
+              "snippet": "\\paragraph{Model.} We use the empirical structure from the Claude Constitution analysis (Appendix~\\ref{app:constitution}): 20 principles yield 190 pairs, of ..."
+            },
+            {
+              "line": 2491,
+              "snippet": "\\textbf{All 190 pairs} & \\textbf{20} & \\textbf{0.267} & \\textbf{0.897} \\\\"
+            },
+            {
+              "line": 2507,
+              "snippet": "\\paragraph{Behavioral Validation.} We validate the structural analysis behaviorally by probing Claude with all 190 principle pairs, asking: ``Can these two p..."
+            },
+            {
+              "line": 2519,
+              "snippet": "All & 190 & 146 & 76.8\\% \\\\"
+            }
+          ]
+        },
+        {
+          "pattern": "146",
+          "hits": [
+            {
+              "line": 2519,
+              "snippet": "All & 190 & 146 & 76.8\\% \\\\"
+            }
+          ]
+        },
+        {
+          "pattern": "76\\.8",
+          "hits": [
+            {
+              "line": 2519,
+              "snippet": "All & 190 & 146 & 76.8\\% \\\\"
+            }
+          ]
+        }
+      ],
+      "notes": "All 3 patterns co-occur within 3-line window (anchor line ~2518)."
+    },
+    {
+      "claim_id": "T12",
+      "paper_text_signature": "Emergency-service compatible pair: rho_hat=0.90 (App W)",
+      "found": "OK",
+      "locations": [
+        {
+          "pattern": "emergency[-\\s]?service",
+          "hits": [
+            {
+              "line": 2502,
+              "snippet": "\\item \\textbf{Intentional redundancy:} Top pairs (0.90, 0.86) are \\emph{designed} duplicates (emergency services, illegal actions): reinforcement, not conflict."
+            },
+            {
+              "line": 2553,
+              "snippet": "\\noindent \\textbf{Compatible pairs} fall into three types: (1)~\\emph{Reinforcing}: both principles address the same goal from complementary angles (e.g., two..."
+            }
+          ]
+        },
+        {
+          "pattern": "0\\.90",
+          "hits": [
+            {
+              "line": 2310,
+              "snippet": "\\item \\path{conflict_R_0.90.wav}: Harsh, rough (near-opposed constraints)"
+            },
+            {
+              "line": 2502,
+              "snippet": "\\item \\textbf{Intentional redundancy:} Top pairs (0.90, 0.86) are \\emph{designed} duplicates (emergency services, illegal actions): reinforcement, not conflict."
+            },
+            {
+              "line": 2553,
+              "snippet": "\\noindent \\textbf{Compatible pairs} fall into three types: (1)~\\emph{Reinforcing}: both principles address the same goal from complementary angles (e.g., two..."
+            }
+          ]
+        }
+      ],
+      "notes": "All 2 patterns co-occur within 3-line window (anchor line ~2501)."
+    },
+    {
+      "claim_id": "T13",
+      "paper_text_signature": "Per-task Spearman r_s=-0.942 (Section 5.1)",
+      "found": "OK",
+      "locations": [
+        {
+          "pattern": "r_s\\s*=?\\s*-?0\\.942|-0\\.942",
+          "hits": [
+            {
+              "line": 355,
+              "snippet": "\\caption{\\textbf{Per-task pass rate by $\\hat{\\rho}$ tier} (48 points; $r_s = -0.942$, $p = 2.12 \\times 10^{-23}$). Heatmap (left) across 12~tasks $\\times$ 4~..."
+            },
+            {
+              "line": 898,
+              "snippet": "Across 48 task--tier combinations (12~tasks $\\times$ 4~$\\hat{\\rho}$ tiers), pass rate strongly anti-correlates with $\\hat{\\rho}$: Spearman $r_s = -0.942$ ($p..."
+            }
+          ]
+        },
+        {
+          "pattern": "per[-\\s]?task|48\\s+points|12.{0,15}4",
+          "hits": [
+            {
+              "line": 355,
+              "snippet": "\\caption{\\textbf{Per-task pass rate by $\\hat{\\rho}$ tier} (48 points; $r_s = -0.942$, $p = 2.12 \\times 10^{-23}$). Heatmap (left) across 12~tasks $\\times$ 4~..."
+            },
+            {
+              "line": 391,
+              "snippet": "Token budget sweep across $T \\in \\{128, 192, 256, 384, 512\\}$ shows non-monotone staging benefit: at $T{=}128$ staging is starved by per-stage overhead and u..."
+            },
+            {
+              "line": 711,
+              "snippet": "MiniLM-L6-v2 & 0.12 $\\pm$ 0.02 & 4 \\\\"
+            },
+            {
+              "line": 811,
+              "snippet": "Best-of-4 sampling & 12\\% & 1024 & $0.25\\times$ \\\\"
+            },
+            {
+              "line": 963,
+              "snippet": "512 & 42.5\\% & 47.5\\% & $+5.0$\\% \\\\"
+            },
+            {
+              "line": 1107,
+              "snippet": "Median direction drift: $0.07$ (IQR: $0.03$--$0.12$). 94\\% of trajectories show drift ${<}0.15$. The constraint geometry is remarkably stable: directions est..."
+            },
+            {
+              "line": 1167,
+              "snippet": "A single token like ``not'' can invert semantic meaning. Does this invalidate the Lipschitz bound? \\textbf{No: the bound is on embeddings, not tokens.} Token..."
+            },
+            {
+              "line": 1795,
+              "snippet": "Best-of-4 & 12\\% & 1024 & $-9\\%$ \\\\"
+            },
+            {
+              "line": 2524,
+              "snippet": "\\noindent The relationship is \\emph{non-monotonic}: medium-$\\hat{\\rho}$ pairs show the highest conflict rate. This matches intuition. Low-$\\hat{\\rho}$ princi..."
+            }
+          ]
+        }
+      ],
+      "notes": "All 2 patterns co-occur within 5-line window (anchor line ~353)."
+    },
+    {
+      "claim_id": "T14",
+      "paper_text_signature": "Per-task p-value 2.12e-23 (Section 5.1)",
+      "found": "OK",
+      "locations": [
+        {
+          "pattern": "2\\.12\\s*\\\\times|p\\s*=\\s*2\\.12",
+          "hits": [
+            {
+              "line": 355,
+              "snippet": "\\caption{\\textbf{Per-task pass rate by $\\hat{\\rho}$ tier} (48 points; $r_s = -0.942$, $p = 2.12 \\times 10^{-23}$). Heatmap (left) across 12~tasks $\\times$ 4~..."
+            },
+            {
+              "line": 898,
+              "snippet": "Across 48 task--tier combinations (12~tasks $\\times$ 4~$\\hat{\\rho}$ tiers), pass rate strongly anti-correlates with $\\hat{\\rho}$: Spearman $r_s = -0.942$ ($p..."
+            }
+          ]
+        }
+      ],
+      "notes": "All 1 signature patterns matched."
+    },
+    {
+      "claim_id": "T16",
+      "paper_text_signature": "Unconditional pivot success rate 1.7%",
+      "found": "OK",
+      "locations": [
+        {
+          "pattern": "1\\.7\\s*\\\\?%",
+          "hits": [
+            {
+              "line": 1113,
+              "snippet": "Across 480 high-tier trials (4 models $\\times$ 12 tasks $\\times$ 2 protocols $\\times$ N=5), unconditional success is $1.7\\%$ (8/480). The paper's headline 0/..."
+            },
+            {
+              "line": 1127,
+              "snippet": "\\textbf{High} ($\\hat{\\rho}{\\approx}0.65$) & \\textbf{480} & \\textbf{1.7\\%} & \\textbf{0/427} & \\textbf{8/53 (15\\%)} \\\\"
+            }
+          ]
+        }
+      ],
+      "notes": "All 1 signature patterns matched."
+    },
+    {
+      "claim_id": "T17",
+      "paper_text_signature": "High-tier 8/480 unconditional success",
+      "found": "OK",
+      "locations": [
+        {
+          "pattern": "8/480|8\\s*/\\s*480",
+          "hits": [
+            {
+              "line": 1113,
+              "snippet": "Across 480 high-tier trials (4 models $\\times$ 12 tasks $\\times$ 2 protocols $\\times$ N=5), unconditional success is $1.7\\%$ (8/480). The paper's headline 0/..."
+            }
+          ]
+        }
+      ],
+      "notes": "All 1 signature patterns matched."
+    },
+    {
+      "claim_id": "T18",
+      "paper_text_signature": "Bytebeat 59% success at rho=0.47",
+      "found": "OK",
+      "locations": [
+        {
+          "pattern": "[Bb]ytebeat",
+          "hits": [
+            {
+              "line": 380,
+              "snippet": "Bytebeat (Fast Fourier Transform verified audio): 59\\% success at $\\rho{=}0.47$, collapse to 0\\% at $\\rho \\ge 0.8$. IF-DSL (control flow): 0\\% at high $\\rho$..."
+            },
+            {
+              "line": 506,
+              "snippet": "The $\\rho < 1/(k{-}1)$ threshold appears restrictive, but pairwise conflict is \\emph{sparse}. Bytebeat ($k{=}4$): 3/6 pairs have $\\rho{=}1.0$. IF-DSL ($k{=}6..."
+            },
+            {
+              "line": 586,
+              "snippet": "Bytebeat & Spectral, rhythmic & FFT analysis & App.~\\ref{app:bytebeat_bridge} \\\\"
+            },
+            {
+              "line": 616,
+              "snippet": "The divergence $\\delta_{\\min} = (\\tau/m)\\sqrt{2/(1-\\rho)} \\sim (1-\\rho)^{-1/2}$ exhibits critical scaling with exponent $\\nu = \\tfrac{1}{2}$. For $k$-constra..."
+            },
+            {
+              "line": 838,
+              "snippet": "Bytebeat (transfer) & 88\\% & $+1\\%$ & 3.1\\% \\\\"
+            },
+            {
+              "line": 843,
+              "snippet": "These results demonstrate that embedding-based $\\hat{\\rho}$ captures conflict structure that transfers across verifier families without re-tuning. Regret inc..."
+            },
+            {
+              "line": 1938,
+              "snippet": "\\multicolumn{3}{l}{\\textit{Bytebeat Validation (Appendix~\\ref{app:bytebeat_bridge})}} \\\\"
+            },
+            {
+              "line": 1939,
+              "snippet": "Expression budget $N$ & $\\{64, 96, 128\\}$ chars & Tab.~\\ref{tab:bytebeat} \\\\"
+            },
+            {
+              "line": 2379,
+              "snippet": "\\section{Supplementary: Bytebeat Bridge}\\label{app:bytebeat_bridge}"
+            },
+            {
+              "line": 2381,
+              "snippet": "We provide a bytebeat harness that treats short expressions as budgeted artifacts whose waveforms must satisfy measurable spectral and rhythmic constraints. ..."
+            },
+            {
+              "line": 2383,
+              "snippet": "\\paragraph{Bytebeat Results.}"
+            },
+            {
+              "line": 2384,
+              "snippet": "Table~\\ref{tab:bytebeat} shows pass rates across conflict levels. The predicted feasibility cliff is evident: low-conflict pairs ($\\rho < 0.5$) achieve high ..."
+            },
+            {
+              "line": 2389,
+              "snippet": "\\caption{Bytebeat pass rates by conflict ($N=64$). High-$\\rho$ sets show feasibility collapse, confirming the feasibility-cliff prediction.}"
+            },
+            {
+              "line": 2390,
+              "snippet": "\\label{tab:bytebeat}"
+            }
+          ]
+        },
+        {
+          "pattern": "59\\s*\\\\?%",
+          "hits": [
+            {
+              "line": 380,
+              "snippet": "Bytebeat (Fast Fourier Transform verified audio): 59\\% success at $\\rho{=}0.47$, collapse to 0\\% at $\\rho \\ge 0.8$. IF-DSL (control flow): 0\\% at high $\\rho$..."
+            },
+            {
+              "line": 2396,
+              "snippet": "2 & 0.47 & 59\\% & Marginal \\\\"
+            }
+          ]
+        },
+        {
+          "pattern": "0\\.47",
+          "hits": [
+            {
+              "line": 380,
+              "snippet": "Bytebeat (Fast Fourier Transform verified audio): 59\\% success at $\\rho{=}0.47$, collapse to 0\\% at $\\rho \\ge 0.8$. IF-DSL (control flow): 0\\% at high $\\rho$..."
+            },
+            {
+              "line": 2396,
+              "snippet": "2 & 0.47 & 59\\% & Marginal \\\\"
+            }
+          ]
+        }
+      ],
+      "notes": "All 3 patterns co-occur within 5-line window (anchor line ~378)."
+    },
+    {
+      "claim_id": "T19",
+      "paper_text_signature": "AGENTIF: rho_hat_max in [0.08, 0.15] across 11.9 avg constraints",
+      "found": "OK",
+      "locations": [
+        {
+          "pattern": "AGENTIF|qi2025agentif",
+          "hits": [
+            {
+              "line": 324,
+              "snippet": "Diagonal cost depends on the \\emph{maximally conflicting subset}, not all $k$ (Corollary~\\ref{cor:active_set}); constraints cluster near-orthogonally in prac..."
+            },
+            {
+              "line": 534,
+              "snippet": "Figure~\\ref{fig:rw_quadrant}(a) positions this work: most multi-constraint methods operate at training time (gradient surgery, MOO; \\citep{yu2020gradient,liu..."
+            }
+          ]
+        },
+        {
+          "pattern": "0\\.08",
+          "hits": [
+            {
+              "line": 324,
+              "snippet": "Diagonal cost depends on the \\emph{maximally conflicting subset}, not all $k$ (Corollary~\\ref{cor:active_set}); constraints cluster near-orthogonally in prac..."
+            },
+            {
+              "line": 442,
+              "snippet": "(0.05,2.0) [0.76]  (0.20,2.0) [0.56]  (0.40,2.0) [0.23]  (0.55,2.0) [0.08]  (0.70,2.0) [0.02]"
+            },
+            {
+              "line": 723,
+              "snippet": "Table~\\ref{tab:encoder_sensitivity} shows routing and outcome stability across encoders. While $\\hat{\\rho}$ absolute values vary ($\\pm$0.08), \\emph{regime or..."
+            },
+            {
+              "line": 735,
+              "snippet": "mpnet-base-v2 & [0.08, 0.71] & 94\\% & 91\\% \\\\"
+            },
+            {
+              "line": 944,
+              "snippet": "To isolate $\\hat{\\rho}$ from task difficulty, we construct \\emph{iso-difficulty pairs}: tasks with matched single-constraint pass rates but different $\\hat{\\..."
+            },
+            {
+              "line": 2524,
+              "snippet": "\\noindent The relationship is \\emph{non-monotonic}: medium-$\\hat{\\rho}$ pairs show the highest conflict rate. This matches intuition. Low-$\\hat{\\rho}$ princi..."
+            }
+          ]
+        },
+        {
+          "pattern": "0\\.15",
+          "hits": [
+            {
+              "line": 106,
+              "snippet": "\\IF{$\\delta/\\widehat{\\delta}_{\\min} > 2$ \\textbf{or} $\\hat{\\rho} < 0.15$}"
+            },
+            {
+              "line": 270,
+              "snippet": "Direction stability: 94\\% of trajectories show $\\hat{\\rho}$ drift ${<}0.15$ (Appendix~\\ref{app:direction_stability}). Lipschitz calibration is stable across ..."
+            },
+            {
+              "line": 324,
+              "snippet": "Diagonal cost depends on the \\emph{maximally conflicting subset}, not all $k$ (Corollary~\\ref{cor:active_set}); constraints cluster near-orthogonally in prac..."
+            },
+            {
+              "line": 355,
+              "snippet": "\\caption{\\textbf{Per-task pass rate by $\\hat{\\rho}$ tier} (48 points; $r_s = -0.942$, $p = 2.12 \\times 10^{-23}$). Heatmap (left) across 12~tasks $\\times$ 4~..."
+            },
+            {
+              "line": 393,
+              "snippet": "\\noindent\\textbf{Routing Policy (Corollary of Theorem~\\ref{thm:staging}):} \\emph{One-shot} if $\\hat{\\rho} < 0.15$ or $\\delta/\\delta_{\\min} \\gg 1$; \\emph{Stag..."
+            },
+            {
+              "line": 433,
+              "snippet": "xtick={0,0.15,0.3,0.5,0.7},"
+            },
+            {
+              "line": 446,
+              "snippet": "\\draw[white, line width=1pt, dashed] (axis cs:0.15,0.8) -- (axis cs:0.15,3.2);"
+            },
+            {
+              "line": 500,
+              "snippet": "\\textbf{Task:} ``Generate JSON with: (1) valid syntax, (2) all required fields, (3) values in specified ranges.'' Pairwise conflicts: $\\rho_{12}{=}0.15$, $\\r..."
+            },
+            {
+              "line": 762,
+              "snippet": "Table~\\ref{tab:threshold_sensitivity} shows router decision stability under $\\pm$20\\% perturbation of the routing thresholds ($\\hat{\\rho}$ cutoffs at 0.15 an..."
+            },
+            {
+              "line": 824,
+              "snippet": "We pre-registered routing thresholds ($\\hat{\\rho}_{\\text{stage}} = 0.15$, $\\hat{\\rho}_{\\text{fail}} = 0.5$) on the code constraint domain, then tested on JSO..."
+            },
+            {
+              "line": 898,
+              "snippet": "Across 48 task--tier combinations (12~tasks $\\times$ 4~$\\hat{\\rho}$ tiers), pass rate strongly anti-correlates with $\\hat{\\rho}$: Spearman $r_s = -0.942$ ($p..."
+            },
+            {
+              "line": 1107,
+              "snippet": "Median direction drift: $0.07$ (IQR: $0.03$--$0.12$). 94\\% of trajectories show drift ${<}0.15$. The constraint geometry is remarkably stable: directions est..."
+            },
+            {
+              "line": 2106,
+              "snippet": "\\item \\textbf{One-shot} if: $\\hat{\\rho} < 0.15$ \\emph{or} $c > 0.85$ (low conflict or near-ceiling capability)"
+            },
+            {
+              "line": 2246,
+              "snippet": "\\item \\textbf{Individual $R$ levels}: Audio files for $\\rho \\in \\{0.0, 0.15, 0.3\\}$ and $\\rho \\in \\{0.5, 0.7, 0.9\\}$"
+            },
+            {
+              "line": 2250,
+              "snippet": "\\item \\textbf{Safety-helpfulness}: Our measured $\\rho \\approx 0.15$"
+            },
+            {
+              "line": 2488,
+              "snippet": "Hardcoded On & 2 & 0.156 & 0.156 \\\\"
+            },
+            {
+              "line": 2564,
+              "snippet": "Each task contains 2--5 constraints with programmatic verifiers: JSON schema validation, word count bounds, regex patterns, Python AST checks, etc. Estimated..."
+            }
+          ]
+        }
+      ],
+      "notes": "All 3 patterns co-occur within 3-line window (anchor line ~323)."
+    },
+    {
+      "claim_id": "T20",
+      "paper_text_signature": "AGENTIF average constraints 11.9 (joint)",
+      "found": "OK",
+      "locations": [
+        {
+          "pattern": "AGENTIF",
+          "hits": [
+            {
+              "line": 324,
+              "snippet": "Diagonal cost depends on the \\emph{maximally conflicting subset}, not all $k$ (Corollary~\\ref{cor:active_set}); constraints cluster near-orthogonally in prac..."
+            }
+          ]
+        },
+        {
+          "pattern": "11\\.9",
+          "hits": [
+            {
+              "line": 324,
+              "snippet": "Diagonal cost depends on the \\emph{maximally conflicting subset}, not all $k$ (Corollary~\\ref{cor:active_set}); constraints cluster near-orthogonally in prac..."
+            }
+          ]
+        }
+      ],
+      "notes": "All 2 patterns co-occur within 3-line window (anchor line ~323)."
+    },
+    {
+      "claim_id": "T21",
+      "paper_text_signature": "Algorithm 1 rho-stage threshold = 0.15",
+      "found": "OK",
+      "locations": [
+        {
+          "pattern": "\\\\hat\\{\\\\rho\\}.*?0\\.15|rho.*stage.*0\\.15",
+          "hits": [
+            {
+              "line": 106,
+              "snippet": "\\IF{$\\delta/\\widehat{\\delta}_{\\min} > 2$ \\textbf{or} $\\hat{\\rho} < 0.15$}"
+            },
+            {
+              "line": 270,
+              "snippet": "Direction stability: 94\\% of trajectories show $\\hat{\\rho}$ drift ${<}0.15$ (Appendix~\\ref{app:direction_stability}). Lipschitz calibration is stable across ..."
+            },
+            {
+              "line": 324,
+              "snippet": "Diagonal cost depends on the \\emph{maximally conflicting subset}, not all $k$ (Corollary~\\ref{cor:active_set}); constraints cluster near-orthogonally in prac..."
+            },
+            {
+              "line": 355,
+              "snippet": "\\caption{\\textbf{Per-task pass rate by $\\hat{\\rho}$ tier} (48 points; $r_s = -0.942$, $p = 2.12 \\times 10^{-23}$). Heatmap (left) across 12~tasks $\\times$ 4~..."
+            },
+            {
+              "line": 393,
+              "snippet": "\\noindent\\textbf{Routing Policy (Corollary of Theorem~\\ref{thm:staging}):} \\emph{One-shot} if $\\hat{\\rho} < 0.15$ or $\\delta/\\delta_{\\min} \\gg 1$; \\emph{Stag..."
+            },
+            {
+              "line": 762,
+              "snippet": "Table~\\ref{tab:threshold_sensitivity} shows router decision stability under $\\pm$20\\% perturbation of the routing thresholds ($\\hat{\\rho}$ cutoffs at 0.15 an..."
+            },
+            {
+              "line": 824,
+              "snippet": "We pre-registered routing thresholds ($\\hat{\\rho}_{\\text{stage}} = 0.15$, $\\hat{\\rho}_{\\text{fail}} = 0.5$) on the code constraint domain, then tested on JSO..."
+            },
+            {
+              "line": 898,
+              "snippet": "Across 48 task--tier combinations (12~tasks $\\times$ 4~$\\hat{\\rho}$ tiers), pass rate strongly anti-correlates with $\\hat{\\rho}$: Spearman $r_s = -0.942$ ($p..."
+            },
+            {
+              "line": 2106,
+              "snippet": "\\item \\textbf{One-shot} if: $\\hat{\\rho} < 0.15$ \\emph{or} $c > 0.85$ (low conflict or near-ceiling capability)"
+            },
+            {
+              "line": 2564,
+              "snippet": "Each task contains 2--5 constraints with programmatic verifiers: JSON schema validation, word count bounds, regex patterns, Python AST checks, etc. Estimated..."
+            }
+          ]
+        },
+        {
+          "pattern": "[Ss]tage|[Oo]ne[-\\s]?shot",
+          "hits": [
+            {
+              "line": 69,
+              "snippet": "We enable routing decisions \\emph{before} LLM generation: given a multi-constraint prompt, decide whether to attempt one-shot, decompose into stages, or reje..."
+            },
+            {
+              "line": 73,
+              "snippet": "Results: across four domains (code, JSON, optimization, signal), when the bound predicts infeasibility, one-shot fails (0/4,800 trials). The 11\\% pivot regim..."
+            },
+            {
+              "line": 80,
+              "snippet": "\\textbf{Approach.} We prove that the minimum displacement to satisfy $k$ constraints simultaneously scales as $\\delta_{\\min} \\propto \\sqrt{k/(1{-}\\rho(k{-}1)..."
+            },
+            {
+              "line": 92,
+              "snippet": "\\caption{\\textbf{Algorithm~\\ref{alg:routing} visualized} on ``be comprehensive'' ($C_1$) vs.\\ ``be concise'' ($C_2$). Constraints are parsed from the prompt,..."
+            },
+            {
+              "line": 97,
+              "snippet": "\\caption{Regime-Based Routing: One-Shot, Stage, or Decompose, Decided Before Generation}"
+            },
+            {
+              "line": 109,
+              "snippet": "\\STATE \\textbf{return} \\textsc{Staged} (order by $m_i$ descending)"
+            },
+            {
+              "line": 116,
+              "snippet": "\\noindent $\\hat{\\rho}$ is a conservative screen: false positives over-stage (token cost), not fail. Thresholds from feasibility geometry \\citep{fliege2000ste..."
+            },
+            {
+              "line": 259,
+              "snippet": "\\noindent \\textbf{Validation.} Table~\\ref{tab:lipschitz_calibration} shows $\\hat{L} \\in [0.019, 0.031]$ across 4 model families, stable across decoding strat..."
+            },
+            {
+              "line": 263,
+              "snippet": "Lemma~\\ref{lem:traj_infeasible} bounds one-shot control; staging exploits trajectory degrees of freedom under the same per-token contract (Section~\\ref{sec:s..."
+            },
+            {
+              "line": 273,
+              "snippet": "High $\\hat\\rho$ and $LT < \\widehat{\\delta}_{\\min}$ predict an under-budgeted one-shot attempt; the router stages or decomposes."
+            },
+            {
+              "line": 331,
+              "snippet": "The bound diverges as $\\rho \\to 1$ with critical threshold $\\rho_c = 1 - 2\\tau^2/(m^2\\delta^2)$ marking the regime beyond which no budget suffices (Propositi..."
+            },
+            {
+              "line": 333,
+              "snippet": "\\section{Staged Control as Geometric Solution}\\label{sec:staging}"
+            },
+            {
+              "line": 335,
+              "snippet": "\\noindent\\textbf{Staging Principle:} One-shot requires $O(\\sqrt{k/(1{-}\\rho(k{-}1))})$ displacement. Staging decomposes into $k$ single-constraint steps at $..."
+            },
+            {
+              "line": 347,
+              "snippet": "Staged control terminates (Prop.~\\ref{prop:convergence}) when per-step cost ${<}1$."
+            },
+            {
+              "line": 370,
+              "snippet": "\\noindent\\textbf{Judge-Agnostic Geometry.} Any constraint with scalar residual (human, LLM, rule-based) induces a halfspace \\citep{fliege2000steepest}; the b..."
+            },
+            {
+              "line": 384,
+              "snippet": "Output-only: semantic geometry predicts failure without gradients. Table~\\ref{tab:embedding_R}: across 3 encoders (MiniLM, MPNet, E5), $r_s \\geq 0.94$ with o..."
+            },
+            {
+              "line": 391,
+              "snippet": "Token budget sweep across $T \\in \\{128, 192, 256, 384, 512\\}$ shows non-monotone staging benefit: at $T{=}128$ staging is starved by per-stage overhead and u..."
+            },
+            {
+              "line": 393,
+              "snippet": "\\noindent\\textbf{Routing Policy (Corollary of Theorem~\\ref{thm:staging}):} \\emph{One-shot} if $\\hat{\\rho} < 0.15$ or $\\delta/\\delta_{\\min} \\gg 1$; \\emph{Stag..."
+            },
+            {
+              "line": 396,
+              "snippet": "At high $\\hat{\\rho}$, \\emph{all protocols} collapse to $\\leq$5\\% \\emph{on smooth-regime trials}. This is the bound in action, not a failure of staging; front..."
+            },
+            {
+              "line": 408,
+              "snippet": "Tier & $\\hat{\\rho}$ & 1-shot & Staged & Failure \\\\"
+            },
+            {
+              "line": 450,
+              "snippet": "\\node[white, font=\\tiny\\bfseries, fill=black, fill opacity=0.5, text opacity=1, inner sep=1pt] at (axis cs:0.32,2.0) {Stage};"
+            },
+            {
+              "line": 502,
+              "snippet": "\\textbf{Results:} One-shot 41\\%; staged (syntax$\\to$fields$\\to$ranges) 67\\%. Feasibility boundary not reached ($\\rho < 0.5$), but $k{=}3$ cost scaling matche..."
+            },
+            {
+              "line": 509,
+              "snippet": "\\noindent\\textbf{Falsification criterion.} Sustained one-shot success ($>$10\\%) in the predicted-infeasible region ($\\delta_{\\min} > LT$) without pivot signa..."
+            },
+            {
+              "line": 512,
+              "snippet": "Open-weight validation is reproducible; frontier experiments confirm \\emph{transfer}. The Claude family (7~models, haiku--opus) shows identical regime orderi..."
+            },
+            {
+              "line": 534,
+              "snippet": "Figure~\\ref{fig:rw_quadrant}(a) positions this work: most multi-constraint methods operate at training time (gradient surgery, MOO; \\citep{yu2020gradient,liu..."
+            },
+            {
+              "line": 627,
+              "snippet": "Table~\\ref{tab:claude_family} demonstrates graded results across 7 Claude models spanning 4 generations. Sonnet-4.5 achieved \\textbf{exact} $\\Delta=0$ on one..."
+            },
+            {
+              "line": 632,
+              "snippet": "\\caption{Claude family (7 models) on self-referential constraints. Wins = staged beats one-shot. Ratio = displacement improvement. Opus-4.5's lower ratio ref..."
+            },
+            {
+              "line": 650,
+              "snippet": "Opus-4.5 (frontier) shows \\emph{lower} improvement ratio ($4.8\\times$) than opus-4.1 ($26.4\\times$). This is \\textbf{not} because staging helps less. Opus-4...."
+            },
+            {
+              "line": 767,
+              "snippet": "\\caption{Threshold sensitivity ($\\pm$20\\% on $\\hat{\\rho}$ cutoffs). Conservative shifts trigger more staging; aggressive shifts risk one-shot failures.}"
+            },
+            {
+              "line": 791,
+              "snippet": "Threshold-based routing partitions the interval $[0,1]$ into regimes: one-shot ($\\hat{\\rho} < \\hat{\\tau}_1$), staged ($\\hat{\\tau}_1 \\leq \\hat{\\rho} < \\hat{\\t..."
+            },
+            {
+              "line": 803,
+              "snippet": "\\caption{Baselines (High-$\\hat{\\rho}$). Routing matches staged pass rate, 25\\% fewer tokens. Best-of-N/self-refine address capability variance, not geometry...."
+            },
+            {
+              "line": 809,
+              "snippet": "One-shot (always) & 5\\% & 256 & $1.0\\times$ \\\\"
+            },
+            {
+              "line": 810,
+              "snippet": "Staged (always) & 18\\% & 512 & $0.5\\times$ \\\\"
+            },
+            {
+              "line": 820,
+              "snippet": "\\paragraph{Key findings.} (1)~Best-of-N sampling (parallel) cannot escape the diagonal cost: resampling explores the same infeasible region (wasted query bud..."
+            },
+            {
+              "line": 824,
+              "snippet": "We pre-registered routing thresholds ($\\hat{\\rho}_{\\text{stage}} = 0.15$, $\\hat{\\rho}_{\\text{fail}} = 0.5$) on the code constraint domain, then tested on JSO..."
+            },
+            {
+              "line": 867,
+              "snippet": "\\item \\textbf{Test-driven code synthesis:} Ensures test passage via generate-check-repair, but each repair iteration is itself a one-shot attempt subject to ..."
+            },
+            {
+              "line": 871,
+              "snippet": "\\noindent Our router is \\emph{complementary}: it decides pre-generation whether one-shot enforcement (constrained or not) is geometrically feasible. Constrai..."
+            },
+            {
+              "line": 891,
+              "snippet": "\\item \\textbf{Requirements engineering is staging.} Decomposing a compressed specification into explicit, routable constraints is the first stage of geometri..."
+            },
+            {
+              "line": 923,
+              "snippet": "\\caption{Code constraint experiment. Pass = (tests pass) $\\land$ (format valid). $\\Delta$ = staged $-$ one-shot.}"
+            },
+            {
+              "line": 946,
+              "snippet": "Table~\\ref{tab:llm_bridge} reveals a clear capability gradient: weaker models (TinyLlama, DeepSeek) benefit most from staging ($\\Delta > 0$), while the stron..."
+            },
+            {
+              "line": 957,
+              "snippet": "Tokens $T$ & 1-shot & Staged & $\\Delta$ \\\\"
+            },
+            {
+              "line": 993,
+              "snippet": "\\item \\textbf{Qwen-Coder-1.5B}: Near-ceiling one-shot (97--100\\%), so staging adds variance. Negative $\\Delta$ across all budgets."
+            },
+            {
+              "line": 995,
+              "snippet": "\\item \\textbf{Qwen-3B}: Uses 4-bit quantization per code specification. One-shot is non-functional (0--3\\%), and staging rescues to 20--30\\%. We isolate this..."
+            },
+            {
+              "line": 1038,
+              "snippet": "\\paragraph{Prompt 5b: Staged.}"
+            },
+            {
+              "line": 1071,
+              "snippet": "Tier & $\\rho$ & Chars & 1-shot & Staged & Format\\% & \\textbf{Failure} \\\\"
+            },
+            {
+              "line": 1113,
+              "snippet": "Across 480 high-tier trials (4 models $\\times$ 12 tasks $\\times$ 2 protocols $\\times$ N=5), unconditional success is $1.7\\%$ (8/480). The paper's headline 0/..."
+            },
+            {
+              "line": 1188,
+              "snippet": "$+30\\%$ (aggressive) & 89\\% & $-3\\%$ & More one-shot \\\\"
+            },
+            {
+              "line": 1193,
+              "snippet": "\\noindent The key finding: $\\hat{L}$ mis-estimation is \\textbf{fail-safe in one direction}. Underestimating $\\hat{L}$ (believing tokens move less than they d..."
+            },
+            {
+              "line": 1200,
+              "snippet": "Staging requires that progress on constraint $C_j$ at stage $t{+}1$ does not regress constraint $C_i$ satisfied at stage $t$. We analyze the additional cost ..."
+            },
+            {
+              "line": 1203,
+              "snippet": "Stage $t{+}1$ must not regress $C_i$: adds $O(\\rho\\tau/m)$ overhead. Empirically observed regression: 8.3\\% at low $\\rho$ rising to 23.1\\% at high $\\rho$. St..."
+            },
+            {
+              "line": 1206,
+              "snippet": "Diagonal cost applies to \\emph{endpoint-only} control: a single $\\Delta$ achieving $\\tau$-progress on all $k$ constraints. Staging uses $z^{(0)} \\to \\cdots \\..."
+            },
+            {
+              "line": 1210,
+              "snippet": "At stage $t{+}1$, the model solves: $\\min \\|\\Delta\\|$ s.t.\\ $\\langle u_j, \\Delta \\rangle \\le -\\tau$ (progress on $C_j$) and $\\langle u_i, \\Delta \\rangle \\ge ..."
+            },
+            {
+              "line": 1220,
+              "snippet": "We measure how often staged outputs fail previously-passed constraints:"
+            },
+            {
+              "line": 1460,
+              "snippet": "We now prove that staged satisfaction reduces required step magnitude when constraints are resolved sequentially."
+            },
+            {
+              "line": 1462,
+              "snippet": "\\paragraph{Why staging escapes implicit-$k$.} One-shot generation must respect all $k$ constraint gradients simultaneously: the full Gram matrix $\\Gamma$ mus..."
+            },
+            {
+              "line": 1467,
+              "snippet": "$\\delta_{\\text{staged}} = \\tau/m$, while simultaneous satisfaction requires"
+            },
+            {
+              "line": 1472,
+              "snippet": "\\frac{\\delta_{\\text{sim}}}{\\delta_{\\text{staged}}} = \\sqrt{\\frac{k}{1-\\rho(k-1)}} \\xrightarrow{\\rho \\to 1/(k-1)} \\infty."
+            },
+            {
+              "line": 1479,
+              "snippet": "If staged satisfaction perfectly preserves prior constraints (i.e., moves orthogonally to previously satisfied gradient directions), each stage faces only on..."
+            },
+            {
+              "line": 1595,
+              "snippet": "We analyze convergence rates for iterative methods that approximate staged satisfaction."
+            },
+            {
+              "line": 1659,
+              "snippet": "For staged satisfaction of $k$ constraints, the optimal ordering minimizes total path length. Given conflict matrix $P$ with $P_{ij} = \\rho_{ij}$, the optima..."
+            },
+            {
+              "line": 1667,
+              "snippet": "At each stage $t$, we satisfy constraint $\\pi(t)$ while preserving $\\{\\pi(1), \\ldots, \\pi(t-1)\\}$. The preservation requirement adds effective conflict from ..."
+            },
+            {
+              "line": 1673,
+              "snippet": "Our ordering criterion differs from PCGrad \\citep{yu2020gradient} and CAGrad \\citep{liu2021cagrad}, which project conflicting gradients during \\emph{training..."
+            },
+            {
+              "line": 1788,
+              "snippet": "\\caption{Protocol comparison (High-$\\hat{\\rho}$). Router matches staged pass rate, 25\\% fewer tokens.}"
+            },
+            {
+              "line": 1794,
+              "snippet": "One-shot & 5\\% & 256 & $-16\\%$ \\\\"
+            },
+            {
+              "line": 1805,
+              "snippet": "This appendix formalizes the relationship between operational budgets, local linearity, and staged decomposition. We show that (i) local linearity is an \\emp..."
+            },
+            {
+              "line": 1852,
+              "snippet": "\\subsection{One-Shot Diagonal Cost vs Staged Parameterization}"
+            },
+            {
+              "line": 1855,
+              "snippet": "A \\emph{staged} policy is a sequence $\\pi=(i_1,\\ldots,i_S)$ with anchors:"
+            },
+            {
+              "line": 1857,
+              "snippet": "where stage $s$ prioritizes constraint $i_{s+1}$ with per-stage budget $\\|\\Delta^{(s)}\\|\\le \\delta_s$."
+            },
+            {
+              "line": 1861,
+              "snippet": "Any staged policy satisfies $\\|z^{(S)}-z^{(0)}\\| \\le \\sum_{s=0}^{S-1}\\delta_s$."
+            },
+            {
+              "line": 1869,
+              "snippet": "The one-shot bound concerns the single-segment chord. Proposition~\\ref{prop:polygonal} shows staging replaces it by a polygonal chain tracking changing tange..."
+            },
+            {
+              "line": 1871,
+              "snippet": "Residual coupling across stages is captured by preservation/regression costs (Appendix~\\ref{app:preservation}), which is why staging helps only in an interme..."
+            },
+            {
+              "line": 1903,
+              "snippet": "The kinematic account is refuted by systematic instances where $\\hat\\rho$ indicates high coupling, calibrated budget implies $LT<\\delta_{\\min}$, yet one-shot..."
+            },
+            {
+              "line": 1968,
+              "snippet": "\\paragraph{Stage Count Variation.}"
+            },
+            {
+              "line": 1969,
+              "snippet": "We compared single-pass generation against two-stage (generate then revise) and three-stage (generate, critique, then revise) protocols."
+            },
+            {
+              "line": 1971,
+              "snippet": "Two stages capture most benefit. Three stages show diminishing returns except at high $\\rho$."
+            },
+            {
+              "line": 2096,
+              "snippet": "\\item \\textbf{Predict the operating regime}: $\\delta \\gg \\delta_{\\min}$ suggests one-shot feasibility; $\\delta \\approx \\delta_{\\min}$ suggests staging may he..."
+            },
+            {
+              "line": 2103,
+              "snippet": "Given estimated $\\hat{\\rho}$, budget $\\delta$, and model capability $c$ (one-shot baseline), the full decision rules are:"
+            },
+            {
+              "line": 2105,
+              "snippet": "\\item \\textbf{Stage} if: $\\hat{\\rho} > 0.3$ \\emph{and} $\\delta < 2\\delta_{\\min}$ \\emph{and} $c < 0.7$ (intermediate band)"
+            },
+            {
+              "line": 2106,
+              "snippet": "\\item \\textbf{One-shot} if: $\\hat{\\rho} < 0.15$ \\emph{or} $c > 0.85$ (low conflict or near-ceiling capability)"
+            },
+            {
+              "line": 2124,
+              "snippet": "\\item \\textbf{Route:} Apply thresholds from \\S\\ref{app:protocol_policy}. When uncertain, stage (fail-safe)."
+            },
+            {
+              "line": 2132,
+              "snippet": "\\caption{Compute overhead (sample complexity). Pre-generation routing adds $<$10ms latency. Staging doubles query budget but avoids wasted one-shot failures.}"
+            },
+            {
+              "line": 2147,
+              "snippet": "\\noindent \\textbf{Query efficiency:} As Table~\\ref{tab:baselines} shows, geometric routing uses 15--25\\% fewer tokens (evaluation budget) than always-stage w..."
+            },
+            {
+              "line": 2210,
+              "snippet": "\\item Staged sonifications should sound like ``successful resolution'' compared to simultaneous attempts"
+            },
+            {
+              "line": 2248,
+              "snippet": "\\item \\textbf{Simultaneous vs.\\ staged}: Direct comparison at $\\rho \\in \\{0.5, 0.8\\}$"
+            },
+            {
+              "line": 2291,
+              "snippet": "\\item \\path{staged_all_four_resolution.wav}: Sequential resolution (Constitutional AI's approach)"
+            },
+            {
+              "line": 2292,
+              "snippet": "\\item \\path{comparison_simultaneous_vs_staged_all_four.wav}: \\textbf{The key demo} (hear why staging helps)"
+            },
+            {
+              "line": 2301,
+              "snippet": "\\item Resolution to tonic $\\leftrightarrow$ Staged satisfaction"
+            },
+            {
+              "line": 2311,
+              "snippet": "\\item \\path{simultaneous_R_0.8.wav} vs.\\ \\path{staged_R_0.8.wav}: Same $\\rho$, different approaches; staging sounds like ``successful problem-solving''"
+            },
+            {
+              "line": 2313,
+              "snippet": "\\item \\path{comparison_simultaneous_vs_staged_all_four.wav}: The paper's central insight made audible"
+            },
+            {
+              "line": 2328,
+              "snippet": "\\paragraph{Staging Preference.} In forced-choice tests between simultaneous and staged sonifications at matched $\\rho$, participants should prefer staged ver..."
+            },
+            {
+              "line": 2349,
+              "snippet": "(A)~\\textbf{Equal total compute:} One-shot receives $B$ total edits; staged receives $B$ total edits split across $k$ stages ($\\sim B/k$ per stage), with pre..."
+            },
+            {
+              "line": 2350,
+              "snippet": "(B)~\\textbf{Amortized:} One-shot receives $B$ edits; staged receives $B$ edits \\emph{per stage} ($k \\times B$ total), with preservation enforced."
+            },
+            {
+              "line": 2359,
+              "snippet": "\\caption{IF-DSL pass rates by conflict level and evaluation contract ($N{=}10$ seeds). Contract A: equal total compute. Contract B: amortized (staged uses $k..."
+            },
+            {
+              "line": 2366,
+              "snippet": "& & 1-shot & Staged & 1-shot & Staged & 1-shot & Staged \\\\"
+            },
+            {
+              "line": 2417,
+              "snippet": "An open question for future work: can we construct \\emph{looping systems with no spikes}, protocols that sustain performance across many iterations without b..."
+            },
+            {
+              "line": 2574,
+              "snippet": "\\paragraph{Purpose.} This dataset enables future work to measure \\emph{constraint interference} directly: does staged prompting improve pass rates on determi..."
+            }
+          ]
+        }
+      ],
+      "notes": "All 2 patterns co-occur within 5-line window (anchor line ~107)."
+    },
+    {
+      "claim_id": "T22",
+      "paper_text_signature": "Hardcoded Off: n=3, rho_hat=0.136 vs 0.193",
+      "found": "OK",
+      "locations": [
+        {
+          "pattern": "[Hh]ardcoded[-\\s]?[Oo]ff",
+          "hits": [
+            {
+              "line": 2476,
+              "snippet": "\\paragraph{Method.} Extract 20 principles across 5 hierarchical categories (Soul, Hardcoded Defaults, Honesty, Hardcoded Off/On); full list in anonymous repo..."
+            },
+            {
+              "line": 2487,
+              "snippet": "Hardcoded Off & 3 & 0.136 & 0.193 \\\\"
+            }
+          ]
+        },
+        {
+          "pattern": "0\\.136",
+          "hits": [
+            {
+              "line": 2487,
+              "snippet": "Hardcoded Off & 3 & 0.136 & 0.193 \\\\"
+            }
+          ]
+        },
+        {
+          "pattern": "0\\.193",
+          "hits": [
+            {
+              "line": 2487,
+              "snippet": "Hardcoded Off & 3 & 0.136 & 0.193 \\\\"
+            }
+          ]
+        }
+      ],
+      "notes": "All 3 patterns co-occur within 3-line window (anchor line ~2486)."
+    },
+    {
+      "claim_id": "T23",
+      "paper_text_signature": "Reproducibility wall-time: <5 min CPU, ~20h GPU (App U + checklist)",
+      "found": "OK",
+      "locations": [
+        {
+          "pattern": "<\\s*5",
+          "hits": [
+            {
+              "line": 2056,
+              "snippet": "\\item Embedding experiments: $<5$ minutes on CPU"
+            },
+            {
+              "line": 2427,
+              "snippet": "\\item[$\\checkmark$] \\textbf{Compute:} Core validation runs on CPU in $<5$ minutes. The full 4-model LLM code experiment takes $\\sim$20 hours on a single RTX ..."
+            }
+          ]
+        },
+        {
+          "pattern": "20\\s*hours?",
+          "hits": [
+            {
+              "line": 2427,
+              "snippet": "\\item[$\\checkmark$] \\textbf{Compute:} Core validation runs on CPU in $<5$ minutes. The full 4-model LLM code experiment takes $\\sim$20 hours on a single RTX ..."
+            }
+          ]
+        },
+        {
+          "pattern": "GPU",
+          "hits": [
+            {
+              "line": 2243,
+              "snippet": "We provide \\texttt{sonification.py}, a self-contained Python script that generates all audio demonstrations using only standard libraries (numpy, scipy). No ..."
+            },
+            {
+              "line": 2427,
+              "snippet": "\\item[$\\checkmark$] \\textbf{Compute:} Core validation runs on CPU in $<5$ minutes. The full 4-model LLM code experiment takes $\\sim$20 hours on a single RTX ..."
+            }
+          ]
+        }
+      ],
+      "notes": "All 3 patterns co-occur within 3-line window (anchor line ~2426)."
+    },
+    {
+      "claim_id": "T24",
+      "paper_text_signature": "Sonification sample rate 8000 Hz (App Q)",
+      "found": "OK",
+      "locations": [
+        {
+          "pattern": "8000\\s*Hz|8000\\\\,?Hz",
+          "hits": [
+            {
+              "line": 1940,
+              "snippet": "Sample rate & 8000 Hz & FFT analysis \\\\"
+            }
+          ]
+        }
+      ],
+      "notes": "All 1 signature patterns matched."
+    },
+    {
+      "claim_id": "T25",
+      "paper_text_signature": "App V table k=2,3,4,5,6,8,10 row label",
+      "found": "OK",
+      "locations": [
+        {
+          "pattern": "\\$k\\$\\s*&\\s*2\\s*&\\s*3\\s*&\\s*4\\s*&\\s*5\\s*&\\s*6\\s*&\\s*8\\s*&\\s*10",
+          "hits": [
+            {
+              "line": 2451,
+              "snippet": "$k$ & 2 & 3 & 4 & 5 & 6 & 8 & 10 \\\\"
+            }
+          ]
+        }
+      ],
+      "notes": "All 1 signature patterns matched."
+    },
+    {
+      "claim_id": "T26",
+      "paper_text_signature": "App V pairs row: 1,3,6,10,15,28,45",
+      "found": "OK",
+      "locations": [
+        {
+          "pattern": "pairs",
+          "hits": [
+            {
+              "line": 230,
+              "snippet": "\\emph{Conflict} ($\\rho$): Hilbert (inner products; Appendix~\\ref{app:charity}). \\emph{Cost} ($\\delta$): Banach (norms; Table~\\ref{tab:overhead}). Composition..."
+            },
+            {
+              "line": 506,
+              "snippet": "The $\\rho < 1/(k{-}1)$ threshold appears restrictive, but pairwise conflict is \\emph{sparse}. Bytebeat ($k{=}4$): 3/6 pairs have $\\rho{=}1.0$. IF-DSL ($k{=}6..."
+            },
+            {
+              "line": 944,
+              "snippet": "To isolate $\\hat{\\rho}$ from task difficulty, we construct \\emph{iso-difficulty pairs}: tasks with matched single-constraint pass rates but different $\\hat{\\..."
+            },
+            {
+              "line": 1948,
+              "snippet": "Exemplar pairs per dim. & 7 & Constitution wheel \\\\"
+            },
+            {
+              "line": 2015,
+              "snippet": "For each constraint, we manually construct 7 response pairs:"
+            },
+            {
+              "line": 2017,
+              "snippet": "\\textbf{Safety pairs:} Given prompts like ``How do I handle a difficult coworker?'' we write:"
+            },
+            {
+              "line": 2023,
+              "snippet": "\\textbf{Helpfulness pairs:} Given prompts like ``Explain quantum entanglement'':"
+            },
+            {
+              "line": 2165,
+              "snippet": "\\item Contrastive pairs span the relevant variation"
+            },
+            {
+              "line": 2274,
+              "snippet": "This mapping creates specific musical intervals between principle pairs:"
+            },
+            {
+              "line": 2384,
+              "snippet": "Table~\\ref{tab:bytebeat} shows pass rates across conflict levels. The predicted feasibility cliff is evident: low-conflict pairs ($\\rho < 0.5$) achieve high ..."
+            },
+            {
+              "line": 2411,
+              "snippet": "Audio engineering has long used reverb, gating, and compression as diagnostic idioms for structured failure modes. Appendix~\\ref{app:sonification} demonstrat..."
+            },
+            {
+              "line": 2440,
+              "snippet": "\\paragraph{Model.} We use the empirical structure from the Claude Constitution analysis (Appendix~\\ref{app:constitution}): 20 principles yield 190 pairs, of ..."
+            },
+            {
+              "line": 2453,
+              "snippet": "pairs & 1 & 3 & 6 & 10 & 15 & 28 & 45 \\\\"
+            },
+            {
+              "line": 2459,
+              "snippet": "\\noindent At $k{=}2$, 93\\% of charitable constraint pairs are jointly feasible. By $k{=}10$, only 3\\% remain feasible: a 30$\\times$ reduction despite \\emph{n..."
+            },
+            {
+              "line": 2474,
+              "snippet": "$\\hat{\\rho}$ screens for potential conflict. A hard-negative pair ($\\hat{\\rho}{=}0.50$, 100\\% pass) and a conflicting pair ($\\hat{\\rho}{=}0.52$, 0\\% pass) sh..."
+            },
+            {
+              "line": 2491,
+              "snippet": "\\textbf{All 190 pairs} & \\textbf{20} & \\textbf{0.267} & \\textbf{0.897} \\\\"
+            },
+            {
+              "line": 2500,
+              "snippet": "\\item \\textbf{Sparse high-similarity:} Only 7.4\\% of pairs exceed $\\hat{\\rho}{=}0.5$, and 92\\% are below 0.5."
+            },
+            {
+              "line": 2502,
+              "snippet": "\\item \\textbf{Intentional redundancy:} Top pairs (0.90, 0.86) are \\emph{designed} duplicates (emergency services, illegal actions): reinforcement, not conflict."
+            },
+            {
+              "line": 2507,
+              "snippet": "\\paragraph{Behavioral Validation.} We validate the structural analysis behaviorally by probing Claude with all 190 principle pairs, asking: ``Can these two p..."
+            },
+            {
+              "line": 2524,
+              "snippet": "\\noindent The relationship is \\emph{non-monotonic}: medium-$\\hat{\\rho}$ pairs show the highest conflict rate. This matches intuition. Low-$\\hat{\\rho}$ princi..."
+            },
+            {
+              "line": 2529,
+              "snippet": "We deepen the analysis by examining \\emph{why} high-$\\hat{\\rho}$ pairs may or may not conflict. Of 21 pairs with $\\hat{\\rho} \\ge 0.45$: 5 show no conflict (`..."
+            },
+            {
+              "line": 2553,
+              "snippet": "\\noindent \\textbf{Compatible pairs} fall into three types: (1)~\\emph{Reinforcing}: both principles address the same goal from complementary angles (e.g., two..."
+            },
+            {
+              "line": 2555,
+              "snippet": "\\noindent \\textbf{Conflicting pairs} reveal an error taxonomy: (1)~\\emph{Priority ambiguity} (62\\%): both principles apply but resolution requires contextual..."
+            },
+            {
+              "line": 2557,
+              "snippet": "\\noindent \\textbf{Key insight:} High $\\hat{\\rho}$ is necessary but not sufficient for conflict. The 24\\% compatibility rate among high-$\\hat{\\rho}$ pairs sho..."
+            }
+          ]
+        },
+        {
+          "pattern": "&\\s*45",
+          "hits": [
+            {
+              "line": 960,
+              "snippet": "192 & 45.0\\% & 50.0\\% & $+5.0$\\% \\\\"
+            },
+            {
+              "line": 2453,
+              "snippet": "pairs & 1 & 3 & 6 & 10 & 15 & 28 & 45 \\\\"
+            }
+          ]
+        }
+      ],
+      "notes": "All 2 patterns co-occur within 3-line window (anchor line ~2452)."
+    },
+    {
+      "claim_id": "T27",
+      "paper_text_signature": "App V feasible(%) row: 93,79,63,46,31,12,3",
+      "found": "OK",
+      "locations": [
+        {
+          "pattern": "feasible",
+          "hits": [
+            {
+              "line": 70,
+              "snippet": "Our approach: multi-constraint behavior exhibits sharp transitions between feasible and infeasible (`feasibility cliffs'), not gradual capability degradation."
+            },
+            {
+              "line": 191,
+              "snippet": "\\caption{\\textbf{Geometric setup.} (a) Each constraint defines a progress halfspace; overlap is the simultaneous-progress region. Budget ball reaches each ha..."
+            },
+            {
+              "line": 195,
+              "snippet": "Each constraint defines an improvement direction. $k$ constraints require a diagonal step longer than any axis. Figure~\\ref{fig:diagonal_cost} shows that whe..."
+            },
+            {
+              "line": 249,
+              "snippet": "\\begin{lemma}[Trajectory Infeasibility]\\label{lem:traj_infeasible}"
+            },
+            {
+              "line": 259,
+              "snippet": "\\noindent \\textbf{Validation.} Table~\\ref{tab:lipschitz_calibration} shows $\\hat{L} \\in [0.019, 0.031]$ across 4 model families, stable across decoding strat..."
+            },
+            {
+              "line": 263,
+              "snippet": "Lemma~\\ref{lem:traj_infeasible} bounds one-shot control; staging exploits trajectory degrees of freedom under the same per-token contract (Section~\\ref{sec:s..."
+            },
+            {
+              "line": 324,
+              "snippet": "Diagonal cost depends on the \\emph{maximally conflicting subset}, not all $k$ (Corollary~\\ref{cor:active_set}); constraints cluster near-orthogonally in prac..."
+            },
+            {
+              "line": 384,
+              "snippet": "Output-only: semantic geometry predicts failure without gradients. Table~\\ref{tab:embedding_R}: across 3 encoders (MiniLM, MPNet, E5), $r_s \\geq 0.94$ with o..."
+            },
+            {
+              "line": 391,
+              "snippet": "Token budget sweep across $T \\in \\{128, 192, 256, 384, 512\\}$ shows non-monotone staging benefit: at $T{=}128$ staging is starved by per-stage overhead and u..."
+            },
+            {
+              "line": 509,
+              "snippet": "\\noindent\\textbf{Falsification criterion.} Sustained one-shot success ($>$10\\%) in the predicted-infeasible region ($\\delta_{\\min} > LT$) without pivot signa..."
+            },
+            {
+              "line": 677,
+              "snippet": "\\textrm{Feasibility cliff} & --- & Sharp transition: feasible $\\to$ infeasible as $\\rho$ increases \\\\"
+            },
+            {
+              "line": 791,
+              "snippet": "Threshold-based routing partitions the interval $[0,1]$ into regimes: one-shot ($\\hat{\\rho} < \\hat{\\tau}_1$), staged ($\\hat{\\tau}_1 \\leq \\hat{\\rho} < \\hat{\\t..."
+            },
+            {
+              "line": 820,
+              "snippet": "\\paragraph{Key findings.} (1)~Best-of-N sampling (parallel) cannot escape the diagonal cost: resampling explores the same infeasible region (wasted query bud..."
+            },
+            {
+              "line": 843,
+              "snippet": "These results demonstrate that embedding-based $\\hat{\\rho}$ captures conflict structure that transfers across verifier families without re-tuning. Regret inc..."
+            },
+            {
+              "line": 871,
+              "snippet": "\\noindent Our router is \\emph{complementary}: it decides pre-generation whether one-shot enforcement (constrained or not) is geometrically feasible. Constrai..."
+            },
+            {
+              "line": 1083,
+              "snippet": "Table~\\ref{tab:json_nl} shows failure rate scales \\textbf{monotonically} with $\\rho$: 77.5\\% $\\to$ 90.0\\% $\\to$ 97.5\\% $\\to$ 100\\%. At $\\rho=0.70$, satisfyin..."
+            },
+            {
+              "line": 1101,
+              "snippet": "Lemma~\\ref{lem:traj_infeasible} assumes constraint geometry remains stable along the generation trajectory. We verify this assumption empirically by measurin..."
+            },
+            {
+              "line": 1110,
+              "snippet": "Direction stability validates the local-to-global transfer assumed in Lemma~\\ref{lem:traj_infeasible}: the MOO bound computed at the anchor applies along rea..."
+            },
+            {
+              "line": 1112,
+              "snippet": "\\paragraph{Pivot Regime in the Predicted-Infeasible Region.}"
+            },
+            {
+              "line": 1193,
+              "snippet": "\\noindent The key finding: $\\hat{L}$ mis-estimation is \\textbf{fail-safe in one direction}. Underestimating $\\hat{L}$ (believing tokens move less than they d..."
+            },
+            {
+              "line": 1231,
+              "snippet": "This appendix provides complete proofs of the lower bounds on feasible progress under"
+            },
+            {
+              "line": 1251,
+              "snippet": "We define first-order feasible displacement $d \\in \\mathcal{M}$ as satisfying"
+            },
+            {
+              "line": 1299,
+              "snippet": "The feasible set $\\mathcal{C}$ of first-order satisfying displacements is"
+            },
+            {
+              "line": 1309,
+              "snippet": "If $\\mathcal{C}$ is nonempty, the minimum-norm feasible displacement"
+            },
+            {
+              "line": 1400,
+              "snippet": "makes the \\textit{amplification of feasible progress cost under conflict} explicit,"
+            },
+            {
+              "line": 1508,
+              "snippet": "At $\\rho = 1/(k-1)$, the constraint gradients become coplanar (linearly dependent), and the feasible region $\\mathcal{C}$ degenerates: the analog of Slater's..."
+            },
+            {
+              "line": 1525,
+              "snippet": "For $k=2$ with $\\rho \\in (-1,1)$, both conditions hold generically. For general $k$, tightness holds when the Gram matrix is positive definite and the proble..."
+            },
+            {
+              "line": 1615,
+              "snippet": "Each projection onto constraint $i$'s halfspace reduces squared distance to the feasible region by factor $(1 - c_i)$ where $c_i$ depends on the angle betwee..."
+            },
+            {
+              "line": 1778,
+              "snippet": "$\\rho_c = 1 - 2\\tau^2/(m^2\\delta^2)$. For $\\rho > \\rho_c$: infeasible; see Appendix~\\ref{app:proofs}."
+            },
+            {
+              "line": 1992,
+              "snippet": "\\item \\textbf{Conflicting} ($k{=}8$, $\\hat{\\rho}{=}0.52$): nested-list flatten with \\emph{both} no-loops and no-recursion. Mathematically infeasible."
+            },
+            {
+              "line": 2004,
+              "snippet": "Conflicting & 8 & 0.52 & 0/100 & Infeasible \\\\"
+            },
+            {
+              "line": 2354,
+              "snippet": "Table~\\ref{tab:if_dsl} shows pass rates across conflict levels under both contracts. The key finding is \\textbf{feasibility fragmentation}: at high conflict ..."
+            },
+            {
+              "line": 2377,
+              "snippet": "IF-DSL is a \\emph{mechanistic analogue} of the diagonal-cost story: objective pass/fail verification, controllable step budget $\\delta$ via edit count, and m..."
+            },
+            {
+              "line": 2397,
+              "snippet": "2 & 1.00 & 0\\% & Infeasible \\\\"
+            },
+            {
+              "line": 2398,
+              "snippet": "4 & 0.80 & 0\\% & Infeasible \\\\"
+            },
+            {
+              "line": 2414,
+              "snippet": "The SAT/UNSAT binary (feasible vs.\\ infeasible under constraints) is native to formal verification. Our judge-free harnesses operationalize this distinction:..."
+            },
+            {
+              "line": 2417,
+              "snippet": "An open question for future work: can we construct \\emph{looping systems with no spikes}, protocols that sustain performance across many iterations without b..."
+            },
+            {
+              "line": 2442,
+              "snippet": "P(\\text{feasible}) = (1 - p_{\\text{conflict}})^{\\binom{k}{2}} = (1 - 0.0737)^{k(k-1)/2}"
+            },
+            {
+              "line": 2454,
+              "snippet": "feasible (\\%) & 93 & 79 & 63 & 46 & 31 & 12 & 3 \\\\"
+            },
+            {
+              "line": 2459,
+              "snippet": "\\noindent At $k{=}2$, 93\\% of charitable constraint pairs are jointly feasible. By $k{=}10$, only 3\\% remain feasible: a 30$\\times$ reduction despite \\emph{n..."
+            },
+            {
+              "line": 2463,
+              "snippet": "\\paragraph{On \\emph{conflict}.} The term may suggest semantic opposition (constraints ``fighting''). But the geometry is simpler: each constraint defines a h..."
+            }
+          ]
+        },
+        {
+          "pattern": "93",
+          "hits": [
+            {
+              "line": 137,
+              "snippet": "\\definecolor{constraintA}{RGB}{52,93,157}"
+            },
+            {
+              "line": 164,
+              "snippet": "\\definecolor{constraintA}{RGB}{52,93,157}"
+            },
+            {
+              "line": 619,
+              "snippet": "The regime boundary is robust, not an artifact of calibration or encoder choice. Table~\\ref{tab:robustness_stress} shows prompt perturbations (paraphrase, re..."
+            },
+            {
+              "line": 736,
+              "snippet": "multi.-MiniLM & [0.06, 0.68] & 96\\% & 93\\% \\\\"
+            },
+            {
+              "line": 773,
+              "snippet": "$-$20\\% (conservative) & 93\\% & $+$1.2\\% \\\\"
+            },
+            {
+              "line": 1146,
+              "snippet": "DeepSeek-Coder & $0.019 \\pm 0.006$ & 93\\% & 7\\% \\\\"
+            },
+            {
+              "line": 1596,
+              "snippet": "The iterative protocol defined in Section~J.14 is a behavioral instantiation of the Kaczmarz method \\citep{kaczmarz1937angenaherte}, also known in the optimi..."
+            },
+            {
+              "line": 2454,
+              "snippet": "feasible (\\%) & 93 & 79 & 63 & 46 & 31 & 12 & 3 \\\\"
+            },
+            {
+              "line": 2459,
+              "snippet": "\\noindent At $k{=}2$, 93\\% of charitable constraint pairs are jointly feasible. By $k{=}10$, only 3\\% remain feasible: a 30$\\times$ reduction despite \\emph{n..."
+            },
+            {
+              "line": 2487,
+              "snippet": "Hardcoded Off & 3 & 0.136 & 0.193 \\\\"
+            }
+          ]
+        },
+        {
+          "pattern": "79",
+          "hits": [
+            {
+              "line": 2454,
+              "snippet": "feasible (\\%) & 93 & 79 & 63 & 46 & 31 & 12 & 3 \\\\"
+            }
+          ]
+        },
+        {
+          "pattern": "63",
+          "hits": [
+            {
+              "line": 982,
+              "snippet": "Qwen-Coder-1.5B & $-63$ & $-37$ & $-30$ & $-33$ & $-30$ \\\\"
+            },
+            {
+              "line": 2454,
+              "snippet": "feasible (\\%) & 93 & 79 & 63 & 46 & 31 & 12 & 3 \\\\"
+            }
+          ]
+        }
+      ],
+      "notes": "All 4 patterns co-occur within 3-line window (anchor line ~2453)."
+    },
+    {
+      "claim_id": "T28",
+      "paper_text_signature": "App V feasible(%) tail: 46,31,12,3",
+      "found": "OK",
+      "locations": [
+        {
+          "pattern": "feasible",
+          "hits": [
+            {
+              "line": 70,
+              "snippet": "Our approach: multi-constraint behavior exhibits sharp transitions between feasible and infeasible (`feasibility cliffs'), not gradual capability degradation."
+            },
+            {
+              "line": 191,
+              "snippet": "\\caption{\\textbf{Geometric setup.} (a) Each constraint defines a progress halfspace; overlap is the simultaneous-progress region. Budget ball reaches each ha..."
+            },
+            {
+              "line": 195,
+              "snippet": "Each constraint defines an improvement direction. $k$ constraints require a diagonal step longer than any axis. Figure~\\ref{fig:diagonal_cost} shows that whe..."
+            },
+            {
+              "line": 249,
+              "snippet": "\\begin{lemma}[Trajectory Infeasibility]\\label{lem:traj_infeasible}"
+            },
+            {
+              "line": 259,
+              "snippet": "\\noindent \\textbf{Validation.} Table~\\ref{tab:lipschitz_calibration} shows $\\hat{L} \\in [0.019, 0.031]$ across 4 model families, stable across decoding strat..."
+            },
+            {
+              "line": 263,
+              "snippet": "Lemma~\\ref{lem:traj_infeasible} bounds one-shot control; staging exploits trajectory degrees of freedom under the same per-token contract (Section~\\ref{sec:s..."
+            },
+            {
+              "line": 324,
+              "snippet": "Diagonal cost depends on the \\emph{maximally conflicting subset}, not all $k$ (Corollary~\\ref{cor:active_set}); constraints cluster near-orthogonally in prac..."
+            },
+            {
+              "line": 384,
+              "snippet": "Output-only: semantic geometry predicts failure without gradients. Table~\\ref{tab:embedding_R}: across 3 encoders (MiniLM, MPNet, E5), $r_s \\geq 0.94$ with o..."
+            },
+            {
+              "line": 391,
+              "snippet": "Token budget sweep across $T \\in \\{128, 192, 256, 384, 512\\}$ shows non-monotone staging benefit: at $T{=}128$ staging is starved by per-stage overhead and u..."
+            },
+            {
+              "line": 509,
+              "snippet": "\\noindent\\textbf{Falsification criterion.} Sustained one-shot success ($>$10\\%) in the predicted-infeasible region ($\\delta_{\\min} > LT$) without pivot signa..."
+            },
+            {
+              "line": 677,
+              "snippet": "\\textrm{Feasibility cliff} & --- & Sharp transition: feasible $\\to$ infeasible as $\\rho$ increases \\\\"
+            },
+            {
+              "line": 791,
+              "snippet": "Threshold-based routing partitions the interval $[0,1]$ into regimes: one-shot ($\\hat{\\rho} < \\hat{\\tau}_1$), staged ($\\hat{\\tau}_1 \\leq \\hat{\\rho} < \\hat{\\t..."
+            },
+            {
+              "line": 820,
+              "snippet": "\\paragraph{Key findings.} (1)~Best-of-N sampling (parallel) cannot escape the diagonal cost: resampling explores the same infeasible region (wasted query bud..."
+            },
+            {
+              "line": 843,
+              "snippet": "These results demonstrate that embedding-based $\\hat{\\rho}$ captures conflict structure that transfers across verifier families without re-tuning. Regret inc..."
+            },
+            {
+              "line": 871,
+              "snippet": "\\noindent Our router is \\emph{complementary}: it decides pre-generation whether one-shot enforcement (constrained or not) is geometrically feasible. Constrai..."
+            },
+            {
+              "line": 1083,
+              "snippet": "Table~\\ref{tab:json_nl} shows failure rate scales \\textbf{monotonically} with $\\rho$: 77.5\\% $\\to$ 90.0\\% $\\to$ 97.5\\% $\\to$ 100\\%. At $\\rho=0.70$, satisfyin..."
+            },
+            {
+              "line": 1101,
+              "snippet": "Lemma~\\ref{lem:traj_infeasible} assumes constraint geometry remains stable along the generation trajectory. We verify this assumption empirically by measurin..."
+            },
+            {
+              "line": 1110,
+              "snippet": "Direction stability validates the local-to-global transfer assumed in Lemma~\\ref{lem:traj_infeasible}: the MOO bound computed at the anchor applies along rea..."
+            },
+            {
+              "line": 1112,
+              "snippet": "\\paragraph{Pivot Regime in the Predicted-Infeasible Region.}"
+            },
+            {
+              "line": 1193,
+              "snippet": "\\noindent The key finding: $\\hat{L}$ mis-estimation is \\textbf{fail-safe in one direction}. Underestimating $\\hat{L}$ (believing tokens move less than they d..."
+            },
+            {
+              "line": 1231,
+              "snippet": "This appendix provides complete proofs of the lower bounds on feasible progress under"
+            },
+            {
+              "line": 1251,
+              "snippet": "We define first-order feasible displacement $d \\in \\mathcal{M}$ as satisfying"
+            },
+            {
+              "line": 1299,
+              "snippet": "The feasible set $\\mathcal{C}$ of first-order satisfying displacements is"
+            },
+            {
+              "line": 1309,
+              "snippet": "If $\\mathcal{C}$ is nonempty, the minimum-norm feasible displacement"
+            },
+            {
+              "line": 1400,
+              "snippet": "makes the \\textit{amplification of feasible progress cost under conflict} explicit,"
+            },
+            {
+              "line": 1508,
+              "snippet": "At $\\rho = 1/(k-1)$, the constraint gradients become coplanar (linearly dependent), and the feasible region $\\mathcal{C}$ degenerates: the analog of Slater's..."
+            },
+            {
+              "line": 1525,
+              "snippet": "For $k=2$ with $\\rho \\in (-1,1)$, both conditions hold generically. For general $k$, tightness holds when the Gram matrix is positive definite and the proble..."
+            },
+            {
+              "line": 1615,
+              "snippet": "Each projection onto constraint $i$'s halfspace reduces squared distance to the feasible region by factor $(1 - c_i)$ where $c_i$ depends on the angle betwee..."
+            },
+            {
+              "line": 1778,
+              "snippet": "$\\rho_c = 1 - 2\\tau^2/(m^2\\delta^2)$. For $\\rho > \\rho_c$: infeasible; see Appendix~\\ref{app:proofs}."
+            },
+            {
+              "line": 1992,
+              "snippet": "\\item \\textbf{Conflicting} ($k{=}8$, $\\hat{\\rho}{=}0.52$): nested-list flatten with \\emph{both} no-loops and no-recursion. Mathematically infeasible."
+            },
+            {
+              "line": 2004,
+              "snippet": "Conflicting & 8 & 0.52 & 0/100 & Infeasible \\\\"
+            },
+            {
+              "line": 2354,
+              "snippet": "Table~\\ref{tab:if_dsl} shows pass rates across conflict levels under both contracts. The key finding is \\textbf{feasibility fragmentation}: at high conflict ..."
+            },
+            {
+              "line": 2377,
+              "snippet": "IF-DSL is a \\emph{mechanistic analogue} of the diagonal-cost story: objective pass/fail verification, controllable step budget $\\delta$ via edit count, and m..."
+            },
+            {
+              "line": 2397,
+              "snippet": "2 & 1.00 & 0\\% & Infeasible \\\\"
+            },
+            {
+              "line": 2398,
+              "snippet": "4 & 0.80 & 0\\% & Infeasible \\\\"
+            },
+            {
+              "line": 2414,
+              "snippet": "The SAT/UNSAT binary (feasible vs.\\ infeasible under constraints) is native to formal verification. Our judge-free harnesses operationalize this distinction:..."
+            },
+            {
+              "line": 2417,
+              "snippet": "An open question for future work: can we construct \\emph{looping systems with no spikes}, protocols that sustain performance across many iterations without b..."
+            },
+            {
+              "line": 2442,
+              "snippet": "P(\\text{feasible}) = (1 - p_{\\text{conflict}})^{\\binom{k}{2}} = (1 - 0.0737)^{k(k-1)/2}"
+            },
+            {
+              "line": 2454,
+              "snippet": "feasible (\\%) & 93 & 79 & 63 & 46 & 31 & 12 & 3 \\\\"
+            },
+            {
+              "line": 2459,
+              "snippet": "\\noindent At $k{=}2$, 93\\% of charitable constraint pairs are jointly feasible. By $k{=}10$, only 3\\% remain feasible: a 30$\\times$ reduction despite \\emph{n..."
+            },
+            {
+              "line": 2463,
+              "snippet": "\\paragraph{On \\emph{conflict}.} The term may suggest semantic opposition (constraints ``fighting''). But the geometry is simpler: each constraint defines a h..."
+            }
+          ]
+        },
+        {
+          "pattern": "46",
+          "hits": [
+            {
+              "line": 961,
+              "snippet": "256 & 46.7\\% & 49.2\\% & $+2.5$\\% \\\\"
+            },
+            {
+              "line": 2454,
+              "snippet": "feasible (\\%) & 93 & 79 & 63 & 46 & 31 & 12 & 3 \\\\"
+            },
+            {
+              "line": 2519,
+              "snippet": "All & 190 & 146 & 76.8\\% \\\\"
+            }
+          ]
+        },
+        {
+          "pattern": "31",
+          "hits": [
+            {
+              "line": 259,
+              "snippet": "\\noindent \\textbf{Validation.} Table~\\ref{tab:lipschitz_calibration} shows $\\hat{L} \\in [0.019, 0.031]$ across 4 model families, stable across decoding strat..."
+            },
+            {
+              "line": 270,
+              "snippet": "Direction stability: 94\\% of trajectories show $\\hat{\\rho}$ drift ${<}0.15$ (Appendix~\\ref{app:direction_stability}). Lipschitz calibration is stable across ..."
+            },
+            {
+              "line": 1147,
+              "snippet": "TinyLlama-1.1B & $0.031 \\pm 0.011$ & 84\\% & 16\\% \\\\"
+            },
+            {
+              "line": 1160,
+              "snippet": "\\item \\textbf{Model variance:} Qwen-2.5-Coder: $\\hat{L} = 0.023 \\pm 0.008$; DeepSeek-Coder: $\\hat{L} = 0.019 \\pm 0.006$; TinyLlama: $\\hat{L} = 0.031 \\pm 0.01..."
+            },
+            {
+              "line": 1364,
+              "snippet": "\\citep[cf.~pp.~231--233]{boyd2004convex},"
+            },
+            {
+              "line": 2454,
+              "snippet": "feasible (\\%) & 93 & 79 & 63 & 46 & 31 & 12 & 3 \\\\"
+            },
+            {
+              "line": 2547,
+              "snippet": "\\quad Semantic overlap & 5 & 31\\% \\\\"
+            },
+            {
+              "line": 2555,
+              "snippet": "\\noindent \\textbf{Conflicting pairs} reveal an error taxonomy: (1)~\\emph{Priority ambiguity} (62\\%): both principles apply but resolution requires contextual..."
+            }
+          ]
+        },
+        {
+          "pattern": "12",
+          "hits": [
+            {
+              "line": 139,
+              "snippet": "\\definecolor{overlap}{RGB}{120,90,80}"
+            },
+            {
+              "line": 270,
+              "snippet": "Direction stability: 94\\% of trajectories show $\\hat{\\rho}$ drift ${<}0.15$ (Appendix~\\ref{app:direction_stability}). Lipschitz calibration is stable across ..."
+            },
+            {
+              "line": 355,
+              "snippet": "\\caption{\\textbf{Per-task pass rate by $\\hat{\\rho}$ tier} (48 points; $r_s = -0.942$, $p = 2.12 \\times 10^{-23}$). Heatmap (left) across 12~tasks $\\times$ 4~..."
+            },
+            {
+              "line": 388,
+              "snippet": "Judge-free benchmark: (A)~unit tests + (B)~AST format. 12 tasks $\\times$ 4 tiers $\\times$ 4 models $\\times$ $N{=}60$. Staging benefit depends on capability; ..."
+            },
+            {
+              "line": 391,
+              "snippet": "Token budget sweep across $T \\in \\{128, 192, 256, 384, 512\\}$ shows non-monotone staging benefit: at $T{=}128$ staging is starved by per-stage overhead and u..."
+            },
+            {
+              "line": 443,
+              "snippet": "(0.05,2.5) [0.82]  (0.20,2.5) [0.65]  (0.40,2.5) [0.32]  (0.55,2.5) [0.12]  (0.70,2.5) [0.03]"
+            },
+            {
+              "line": 500,
+              "snippet": "\\textbf{Task:} ``Generate JSON with: (1) valid syntax, (2) all required fields, (3) values in specified ranges.'' Pairwise conflicts: $\\rho_{12}{=}0.15$, $\\r..."
+            },
+            {
+              "line": 711,
+              "snippet": "MiniLM-L6-v2 & 0.12 $\\pm$ 0.02 & 4 \\\\"
+            },
+            {
+              "line": 718,
+              "snippet": "Table~\\ref{tab:embedding_R} shows that $\\rho_{\\max}$ is remarkably consistent ($0.12$--$0.20$) across embedding architectures, suggesting the conflict struct..."
+            },
+            {
+              "line": 810,
+              "snippet": "Staged (always) & 18\\% & 512 & $0.5\\times$ \\\\"
+            },
+            {
+              "line": 811,
+              "snippet": "Best-of-4 sampling & 12\\% & 1024 & $0.25\\times$ \\\\"
+            },
+            {
+              "line": 898,
+              "snippet": "Across 48 task--tier combinations (12~tasks $\\times$ 4~$\\hat{\\rho}$ tiers), pass rate strongly anti-correlates with $\\hat{\\rho}$: Spearman $r_s = -0.942$ ($p..."
+            },
+            {
+              "line": 933,
+              "snippet": "Low & 95\\% & $-$32\\% & 42\\% & +20\\% & 53\\% & +19\\% & 12\\% & +15\\% \\\\"
+            },
+            {
+              "line": 935,
+              "snippet": "High & 12\\% & $-$9\\% & 2\\% & +1\\% & 3\\% & +2\\% & 2\\% & +0\\% \\\\"
+            },
+            {
+              "line": 953,
+              "snippet": "\\caption{Token budget sweep (aggregate across 4 models, $N$=120 per budget per protocol). Staging benefit is non-monotone in token budget $T$. Relocated from..."
+            },
+            {
+              "line": 959,
+              "snippet": "128 & 33.3\\% & 25.0\\% & $-8.3$\\% \\\\"
+            },
+            {
+              "line": 963,
+              "snippet": "512 & 42.5\\% & 47.5\\% & $+5.0$\\% \\\\"
+            },
+            {
+              "line": 978,
+              "snippet": "Model & 128 & 192 & 256 & 384 & 512 \\\\"
+            },
+            {
+              "line": 1076,
+              "snippet": "high & 0.70 & 120 & 0.0\\% & 0.0\\% & 0\\% & \\textbf{100.0\\%} \\\\"
+            },
+            {
+              "line": 1107,
+              "snippet": "Median direction drift: $0.07$ (IQR: $0.03$--$0.12$). 94\\% of trajectories show drift ${<}0.15$. The constraint geometry is remarkably stable: directions est..."
+            },
+            {
+              "line": 1113,
+              "snippet": "Across 480 high-tier trials (4 models $\\times$ 12 tasks $\\times$ 2 protocols $\\times$ N=5), unconditional success is $1.7\\%$ (8/480). The paper's headline 0/..."
+            },
+            {
+              "line": 1139,
+              "snippet": "\\caption{Token$\\to$norm calibration ($\\pm$ standard deviation across $N{=}50$ completions). $\\hat{L}$: per-token displacement. Tightness: \\% within 12\\% of $..."
+            },
+            {
+              "line": 1163,
+              "snippet": "\\item \\textbf{Tightness:} The bound $\\|x_T - x_0\\| \\le LT$ is tight within 12\\% for 89\\% of completions. Outliers (11\\%) correspond to semantic pivots where ..."
+            },
+            {
+              "line": 1168,
+              "snippet": "\\textbf{Findings:} 95th percentile $\\|x_{t+1} - x_t\\| = 0.041$; 99th percentile $= 0.067$; maximum observed $= 0.12$. Semantic jumps ($>3\\sigma$) occur in 2...."
+            },
+            {
+              "line": 1196,
+              "snippet": "Embedding spaces are anisotropic: principal directions have unequal variance. Does this affect the scalar $L$? No. $L$ is the operator norm (maximum singular..."
+            },
+            {
+              "line": 1235,
+              "snippet": "$\\rho < 1/(k{-}1)$ ensures $\\Gamma \\succ 0$; our $\\rho_{\\max} \\approx 0.12$--$0.20$ satisfies for $k \\le 4$. Under convex exit-cone assumptions, linear infea..."
+            },
+            {
+              "line": 1795,
+              "snippet": "Best-of-4 & 12\\% & 1024 & $-9\\%$ \\\\"
+            },
+            {
+              "line": 1939,
+              "snippet": "Expression budget $N$ & $\\{64, 96, 128\\}$ chars & Tab.~\\ref{tab:bytebeat} \\\\"
+            },
+            {
+              "line": 1943,
+              "snippet": "BPM tolerance & $\\pm$12 BPM & \\texttt{rhythm\\_120bpm} \\\\"
+            },
+            {
+              "line": 1958,
+              "snippet": "Tasks & 12 & Coding problems \\\\"
+            },
+            {
+              "line": 2247,
+              "snippet": "\\item \\textbf{Continuous sweep}: 12-second transition from $\\rho=0$ to $\\rho=0.9$"
+            },
+            {
+              "line": 2454,
+              "snippet": "feasible (\\%) & 93 & 79 & 63 & 46 & 31 & 12 & 3 \\\\"
+            },
+            {
+              "line": 2524,
+              "snippet": "\\noindent The relationship is \\emph{non-monotonic}: medium-$\\hat{\\rho}$ pairs show the highest conflict rate. This matches intuition. Low-$\\hat{\\rho}$ princi..."
+            }
+          ]
+        }
+      ],
+      "notes": "All 4 patterns co-occur within 3-line window (anchor line ~2453)."
     }
   ]
 }

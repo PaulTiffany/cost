@@ -399,6 +399,77 @@ assert len(IMPORTANT) == 75, f"Expected 75 important claims, got {len(IMPORTANT)
 
 
 # ---------------------------------------------------------------------------
+# Tier 3: Complete Claims
+#
+# Granular cell-level claims, one per published numeric value not already
+# covered by Tiers 1+2. Driven by the L3 reverse-coverage sweep's triage
+# list — these are values that appear in main.tex but were not registered.
+#
+# Each claim uses joint-mode where co-occurrence with an anchor (task
+# name, model, table label) matters; any-mode where the value itself is
+# distinctive enough.
+# ---------------------------------------------------------------------------
+
+COMPLETE: list[dict] = [
+    # Compound task per-rho granular values (App X / Section "Tasks") —
+    # only the ones not in I64's umbrella patterns (0.15, 0.75)
+    {"id": "T1", "description": "Hard-negative task: k=8, rho_hat=0.50", "patterns": [r"[Hh]ard[-\s]?negative", r"\\hat\{\\rho\}\{?=\}?0\.50|rho_hat=0\.50"], "match_mode": "joint", "match_window": 3},
+    {"id": "T2", "description": "Medium task: k=10, rho_hat=0.53", "patterns": [r"[Mm]edium", r"0\.53"], "match_mode": "joint", "match_window": 3},
+    {"id": "T3", "description": "Conflicting task: k=8, rho_hat=0.52", "patterns": [r"[Cc]onflicting", r"0\.52"], "match_mode": "joint", "match_window": 3},
+    # Task names have LaTeX-escaped underscores (\_), so we match either raw _ or escaped \_
+    {"id": "T4", "description": "json_recipe task: rho_hat=0.75", "patterns": [r"json\\?_recipe", r"0\.75"], "match_mode": "joint", "match_window": 3},
+    {"id": "T5", "description": "formal_brief task: rho_hat=0.20", "patterns": [r"formal\\?_brief", r"0\.20"], "match_mode": "joint", "match_window": 3},
+    {"id": "T6", "description": "python_no_imports task: rho_hat=0.55", "patterns": [r"python\\?_no\\?_imports", r"0\.55"], "match_mode": "joint", "match_window": 3},
+    {"id": "T7", "description": "no_common_words task: rho_hat=0.65", "patterns": [r"no\\?_common\\?_words", r"0\.65"], "match_mode": "joint", "match_window": 3},
+
+    # App W constitution / compatibility analysis granular cells
+    {"id": "T8", "description": "Within-category rho_hat=0.328 (App W cross-category comparison)", "patterns": [r"[Ww]ithin[-\s]?category", r"0\.328"], "match_mode": "joint", "match_window": 3},
+    {"id": "T9", "description": "Cross-category rho_hat=0.253 (App W)", "patterns": [r"[Cc]ross[-\s]?category", r"0\.253"], "match_mode": "joint", "match_window": 3},
+    {"id": "T10", "description": "Within/cross category ratio 1.30x (App W)", "patterns": [r"[Rr]atio", r"1\.30"], "match_mode": "joint", "match_window": 3},
+    {"id": "T11", "description": "Behavioral validation rate 76.8% (App W)", "patterns": [r"190", r"146", r"76\.8"], "match_mode": "joint", "match_window": 3},
+
+    # Compatibility certificate examples (Section 2528)
+    {"id": "T12", "description": "Emergency-service compatible pair: rho_hat=0.90 (App W)", "patterns": [r"emergency[-\s]?service", r"0\.90"], "match_mode": "joint", "match_window": 3},
+
+    # Per-task pass-rate correlation (Section 5.1)
+    {"id": "T13", "description": "Per-task Spearman r_s=-0.942 (Section 5.1)", "patterns": [r"r_s\s*=?\s*-?0\.942|-0\.942", r"per[-\s]?task|48\s+points|12.{0,15}4"], "match_mode": "joint", "match_window": 5},
+    {"id": "T14", "description": "Per-task p-value 2.12e-23 (Section 5.1)", "patterns": [r"2\.12\s*\\times|p\s*=\s*2\.12"], "match_mode": "any"},
+    {"id": "T15", "description": "Per-task n_trials = 1920 (per_task_correlation_results.json)", "patterns": [r"1920\b|1\\,?920\b|1\{,\}920"], "match_mode": "any", "supplementary_only": True},
+    {"id": "T16", "description": "Unconditional pivot success rate 1.7%", "patterns": [r"1\.7\s*\\?%"], "match_mode": "any"},
+    {"id": "T17", "description": "High-tier 8/480 unconditional success", "patterns": [r"8/480|8\s*/\s*480"], "match_mode": "any"},
+
+    # Bytebeat / IF-DSL specific failure values
+    {"id": "T18", "description": "Bytebeat 59% success at rho=0.47", "patterns": [r"[Bb]ytebeat", r"59\s*\\?%", r"0\.47"], "match_mode": "joint", "match_window": 5},
+
+    # AGENTIF citation values (Section 4)
+    {"id": "T19", "description": "AGENTIF: rho_hat_max in [0.08, 0.15] across 11.9 avg constraints", "patterns": [r"AGENTIF|qi2025agentif", r"0\.08", r"0\.15"], "match_mode": "joint", "match_window": 3},
+    {"id": "T20", "description": "AGENTIF average constraints 11.9 (joint)", "patterns": [r"AGENTIF", r"11\.9"], "match_mode": "joint", "match_window": 3},
+
+    # Algorithm thresholds (already partially in Tier 1; these are the
+    # explicit Algorithm 1 line text)
+    {"id": "T21", "description": "Algorithm 1 rho-stage threshold = 0.15", "patterns": [r"\\hat\{\\rho\}.*?0\.15|rho.*stage.*0\.15", r"[Ss]tage|[Oo]ne[-\s]?shot"], "match_mode": "joint", "match_window": 5},
+
+    # Hardcoded Off / Hardcoded On taxonomy (App W)
+    {"id": "T22", "description": "Hardcoded Off: n=3, rho_hat=0.136 vs 0.193", "patterns": [r"[Hh]ardcoded[-\s]?[Oo]ff", r"0\.136", r"0\.193"], "match_mode": "joint", "match_window": 3},
+
+    # Compute / repro
+    {"id": "T23", "description": "Reproducibility wall-time: <5 min CPU, ~20h GPU (App U + checklist)", "patterns": [r"<\s*5", r"20\s*hours?", r"GPU"], "match_mode": "joint", "match_window": 3},
+    {"id": "T24", "description": "Sonification sample rate 8000 Hz (App Q)", "patterns": [r"8000\s*Hz|8000\\,?Hz"], "match_mode": "any"},
+
+    # App V Charitable Feasibility table (lines 2451-2454): the actual
+    # k -> feasibility percentages. Note these REPLACE the older I60/I61
+    # claims which referenced now-stale values (86/73/67/56 from earlier
+    # experiment runs); the current paper has 93/79/63/46/31/12/3.
+    {"id": "T25", "description": "App V table k=2,3,4,5,6,8,10 row label", "patterns": [r"\$k\$\s*&\s*2\s*&\s*3\s*&\s*4\s*&\s*5\s*&\s*6\s*&\s*8\s*&\s*10"], "match_mode": "any"},
+    {"id": "T26", "description": "App V pairs row: 1,3,6,10,15,28,45", "patterns": [r"pairs", r"&\s*45"], "match_mode": "joint", "match_window": 3},
+    {"id": "T27", "description": "App V feasible(%) row: 93,79,63,46,31,12,3", "patterns": [r"feasible", r"93", r"79", r"63"], "match_mode": "joint", "match_window": 3},
+    {"id": "T28", "description": "App V feasible(%) tail: 46,31,12,3", "patterns": [r"feasible", r"46", r"31", r"12"], "match_mode": "joint", "match_window": 3},
+]
+
+assert len(COMPLETE) == 28, f"Expected 28 complete claims (Tier 3 batch), got {len(COMPLETE)}"
+
+
+# ---------------------------------------------------------------------------
 # Lexicon load (visibility only; we never edit prose)
 # ---------------------------------------------------------------------------
 def load_protected_terms(path: Path) -> list[str]:
@@ -659,9 +730,9 @@ def main(argv: list[str] | None = None) -> int:
     parser.add_argument("--verbose", "-v", action="store_true", help="print per-claim status as it runs")
     parser.add_argument(
         "--tier",
-        choices=["critical", "important", "all"],
+        choices=["critical", "important", "complete", "all"],
         default="critical",
-        help="which tier to audit: critical (25), important (75), or all (100). Default: critical.",
+        help="which tier to audit: critical (25), important (75), complete (Tier 3 granular), or all (combined). Default: critical.",
     )
     args = parser.parse_args(argv)
 
@@ -678,9 +749,12 @@ def main(argv: list[str] | None = None) -> int:
     elif args.tier == "important":
         raw = IMPORTANT
         tier_label = "Tier 2: important"
+    elif args.tier == "complete":
+        raw = COMPLETE
+        tier_label = "Tier 3: complete"
     else:
-        raw = CLAIMS + IMPORTANT
-        tier_label = "Tiers 1+2: critical+important"
+        raw = CLAIMS + IMPORTANT + COMPLETE
+        tier_label = "Tiers 1+2+3: critical+important+complete"
 
     # Drop claims that are documented as supplementary-only — they live in
     # the supplementary package, not main.tex, so a "missing" verdict here

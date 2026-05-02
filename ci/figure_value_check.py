@@ -189,12 +189,16 @@ def import_claim_audit():
 
 def build_combined_pattern_set(mod) -> list[re.Pattern]:
     out: list[re.Pattern] = []
-    for c in mod.CLAIMS + mod.IMPORTANT:
-        for p in c.get("patterns", []):
-            try:
-                out.append(re.compile(p))
-            except re.error:
-                pass
+    sources = [mod.CLAIMS, mod.IMPORTANT]
+    if hasattr(mod, "COMPLETE"):
+        sources.append(mod.COMPLETE)
+    for src in sources:
+        for c in src:
+            for p in c.get("patterns", []):
+                try:
+                    out.append(re.compile(p))
+                except re.error:
+                    pass
     return out
 
 
