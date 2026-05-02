@@ -88,6 +88,22 @@ else
     echo "[OK]   L11 script integrity"
 fi
 
+if ! python ci/build_equivalence_check.py --quick > /tmp/build_equiv.out 2>&1; then
+    echo "[FAIL] L12 build equivalence quick (build_equivalence_check.py --quick)"
+    tail -10 /tmp/build_equiv.out
+    failed=1
+else
+    echo "[OK]   L12 build equivalence (quick mode)"
+fi
+
+if ! python ci/cross_tree_consistency_check.py > /tmp/cross_tree.out 2>&1; then
+    echo "[FAIL] L13 cross-tree consistency (cross_tree_consistency_check.py)"
+    tail -10 /tmp/cross_tree.out
+    failed=1
+else
+    echo "[OK]   L13 cross-tree consistency"
+fi
+
 if [ $failed -ne 0 ]; then
     echo ""
     echo "Pre-commit blocked: a structural layer failed."

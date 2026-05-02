@@ -38,7 +38,13 @@ from __future__ import annotations
 import argparse
 import json
 import re
+import socket
+import ssl
 import sys
+import time
+import urllib.error
+import urllib.parse
+import urllib.request
 from dataclasses import dataclass, field, asdict
 from pathlib import Path
 
@@ -49,6 +55,15 @@ RESULTS_JSON = SCRIPT_DIR / "link_integrity_results.json"
 
 # Default venue year — for URL year-vs-venue check.
 VENUE_YEAR = 2026
+
+# Default timeout (seconds) for network HEAD/GET probes when --network is set.
+NETWORK_TIMEOUT_DEFAULT = 5
+
+# Sensible UA so cleared sites (CDN/WAFs) don't 403 our default Python UA.
+USER_AGENT = "Mozilla/5.0 (link-integrity-check; cert-stack)"
+
+# Max redirects to follow when probing a URL.
+NETWORK_MAX_REDIRECTS = 5
 
 # Whitelisted URL prefixes (well-known academic / venue domains).
 TRUSTED_PREFIXES = (
@@ -66,7 +81,7 @@ TRUSTED_PREFIXES = (
 # Patterns
 RE_HREF = re.compile(r"\\href\{([^}]+)\}\{[^}]*\}")
 RE_URL = re.compile(r"\\url\{([^}]+)\}")
-RE_BARE_URL = re.compile(r"(?<![\w@/])(https?://[^\s\\}{$\"'>,;]+)")
+RE_BARE_URL = re.compile(r"(?<![\w@/])(https?://[^\s\\}{$\"'>,;\]\[]+)")
 RE_HYPERREF = re.compile(r"\\hyperref\[([^\]]+)\]\{[^}]*\}")
 RE_HYPERTARGET = re.compile(r"\\hypertarget\{([^}]+)\}")
 RE_REF = re.compile(r"\\(?:eq|page|auto|c|name|v)?ref\{([^}]+)\}")
@@ -76,18 +91,41 @@ RE_URL_YEAR = re.compile(r"/(\d{4})/|=(\d{4})\b|Conferences/(\d{4})|/(\d{4})$")
 
 
 @dataclass
+class NetworkResult:
+    """Outcome of a single HTTP probe against a URL."""
+    url: str
+    status: int | None = None        # HTTP status code, or None on transport error
+    error: str | None = None         # Short error string (DNS, refused, SSL, timeout, ...)
+    elapsed_seconds: float = 0.0
+    method: str = "HEAD"             # Final method used (HEAD or GET-fallback)
+    classification: str = "unknown"  # one of: pass, fail, warn
+
+    def to_dict(self) -> dict:
+        return {
+            "url": self.url,
+            "status": self.status,
+            "error": self.error,
+            "elapsed_seconds": round(self.elapsed_seconds, 3),
+            "method": self.method,
+            "classification": self.classification,
+        }
+
+
+@dataclass
 class LinkReport:
     n_urls: int = 0
     n_hyperref: int = 0
     n_hypertarget: int = 0
     n_refs: int = 0
     n_labels: int = 0
+    urls: list[str] = field(default_factory=list)
     malformed_urls: list[str] = field(default_factory=list)
     untrusted_urls: list[str] = field(default_factory=list)
     venue_year_mismatches: list[tuple[str, int]] = field(default_factory=list)
     unresolved_hyperref: list[str] = field(default_factory=list)
     unresolved_refs: list[str] = field(default_factory=list)
     dead_labels: list[str] = field(default_factory=list)
+    network_results: list[NetworkResult] = field(default_factory=list)
 
     def to_dict(self) -> dict:
         return {
@@ -96,6 +134,7 @@ class LinkReport:
             "n_hypertarget": self.n_hypertarget,
             "n_refs": self.n_refs,
             "n_labels": self.n_labels,
+            "urls": self.urls,
             "malformed_urls": self.malformed_urls,
             "untrusted_urls": self.untrusted_urls,
             "venue_year_mismatches": [list(t) for t in self.venue_year_mismatches],
@@ -103,6 +142,7 @@ class LinkReport:
             "unresolved_refs": self.unresolved_refs,
             "dead_labels_count": len(self.dead_labels),
             "dead_labels_sample": self.dead_labels[:20],
+            "network_results": [n.to_dict() for n in self.network_results],
         }
 
 
@@ -208,11 +248,16 @@ def analyze(venue_year: int = VENUE_YEAR, check_dead_labels: bool = True) -> Lin
     urls.extend(RE_URL.findall(text))
     # Bare URLs: capture but exclude those already inside \href{...} (we
     # already pulled those). Crude dedup on the URL string.
+    # Post-strip trailing sentence punctuation that survives the
+    # character class — common in LaTeX where a URL ends a sentence
+    # ("...FundingDisclosure.]" or "see https://example.org/foo.").
     bare_urls = RE_BARE_URL.findall(text)
     for u in bare_urls:
-        if u not in urls:
+        u = u.rstrip(".,;:)]}>")
+        if u and u not in urls:
             urls.append(u)
     r.n_urls = len(urls)
+    r.urls = list(urls)
 
     for u in urls:
         if not is_well_formed_url(u):
@@ -253,11 +298,117 @@ def analyze(venue_year: int = VENUE_YEAR, check_dead_labels: bool = True) -> Lin
     return r
 
 
+def _probe_one(url: str, timeout: float, method: str = "HEAD") -> NetworkResult:
+    """Single HTTP probe with bounded redirects, sensible UA, no third-party deps.
+
+    Returns a NetworkResult capturing status/error/elapsed/method/classification.
+    Classification rules:
+      - 2xx/3xx                 -> "pass"
+      - timeout                 -> "warn"  (transient; not a hard fail)
+      - SSL cert errors         -> "warn"  (don't crash; surface as warning)
+      - 4xx/5xx or transport    -> "fail"
+    HEAD that returns 405 falls back to GET once.
+    """
+    res = NetworkResult(url=url, method=method)
+    t0 = time.monotonic()
+    current_url = url
+    try:
+        for hop in range(NETWORK_MAX_REDIRECTS + 1):
+            req = urllib.request.Request(
+                current_url,
+                method=method,
+                headers={"User-Agent": USER_AGENT, "Accept": "*/*"},
+            )
+            # Build an opener that does NOT auto-follow redirects so we can
+            # honor our own hop limit AND keep using HEAD across redirects.
+            opener = urllib.request.build_opener(_NoRedirect())
+            try:
+                resp = opener.open(req, timeout=timeout)
+                status = getattr(resp, "status", None) or resp.getcode()
+                resp.close()
+                res.status = status
+                res.classification = "pass" if 200 <= status < 400 else "fail"
+                break
+            except urllib.error.HTTPError as e:
+                status = e.code
+                # Manual redirect handling
+                if status in (301, 302, 303, 307, 308) and hop < NETWORK_MAX_REDIRECTS:
+                    loc = e.headers.get("Location")
+                    if loc:
+                        current_url = urllib.parse.urljoin(current_url, loc)
+                        # 303 always switches to GET; otherwise keep method.
+                        if status == 303:
+                            method = "GET"
+                            res.method = "GET"
+                        continue
+                # 405 Method Not Allowed: retry with GET once if we were on HEAD.
+                if status == 405 and method == "HEAD":
+                    method = "GET"
+                    res.method = "GET"
+                    continue
+                res.status = status
+                res.classification = "fail" if status >= 400 else "pass"
+                break
+        else:
+            # Exhausted redirect budget without resolving.
+            res.error = f"too many redirects (>{NETWORK_MAX_REDIRECTS})"
+            res.classification = "fail"
+    except socket.timeout:
+        res.error = "timeout"
+        res.classification = "warn"
+    except ssl.SSLError as e:
+        res.error = f"ssl: {e.__class__.__name__}: {e}"
+        res.classification = "warn"
+    except urllib.error.URLError as e:
+        reason = getattr(e, "reason", e)
+        # urllib wraps timeouts and DNS/conn failures in URLError.
+        rname = reason.__class__.__name__ if hasattr(reason, "__class__") else "URLError"
+        if isinstance(reason, socket.timeout) or "timed out" in str(reason).lower():
+            res.error = "timeout"
+            res.classification = "warn"
+        elif isinstance(reason, ssl.SSLError):
+            res.error = f"ssl: {reason}"
+            res.classification = "warn"
+        else:
+            res.error = f"{rname}: {reason}"
+            res.classification = "fail"
+    except Exception as e:  # last-resort guard; never let probe crash the layer
+        res.error = f"{e.__class__.__name__}: {e}"
+        res.classification = "fail"
+    finally:
+        res.elapsed_seconds = time.monotonic() - t0
+    return res
+
+
+class _NoRedirect(urllib.request.HTTPRedirectHandler):
+    """Disable urllib's built-in redirect chasing so we can do it ourselves
+    (preserving HEAD across hops and bounding to NETWORK_MAX_REDIRECTS).
+    """
+    def redirect_request(self, req, fp, code, msg, headers, newurl):  # type: ignore[override]
+        return None
+
+
+def probe_urls(urls: list[str], timeout: float) -> list[NetworkResult]:
+    """Probe each URL. De-dup while preserving order."""
+    seen: set[str] = set()
+    results: list[NetworkResult] = []
+    for u in urls:
+        if u in seen:
+            continue
+        seen.add(u)
+        results.append(_probe_one(u, timeout=timeout))
+    return results
+
+
 def main() -> int:
     parser = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
     parser.add_argument("--venue-year", type=int, default=VENUE_YEAR, help=f"expected URL year (default {VENUE_YEAR})")
     parser.add_argument("--strict", action="store_true", help="treat dead labels and untrusted URLs as FAIL")
     parser.add_argument("--verbose", "-v", action="store_true", help="print all dead labels and untrusted URLs")
+    parser.add_argument("--network", action="store_true",
+                        help="HTTP HEAD-probe every extracted URL (off by default; requires internet)")
+    parser.add_argument("--network-timeout", type=float, default=NETWORK_TIMEOUT_DEFAULT,
+                        help=f"timeout in seconds for each network probe (default {NETWORK_TIMEOUT_DEFAULT})")
     args = parser.parse_args()
 
     try:
@@ -265,6 +416,15 @@ def main() -> int:
     except FileNotFoundError as exc:
         print(f"ERROR: {exc}", file=sys.stderr)
         return 2
+
+    # --- Optional network probes (off by default) ---
+    if args.network:
+        if not r.urls:
+            print("[--network] no URLs to check.")
+        else:
+            # Use per-socket timeout as a belt-and-braces guard alongside per-call timeout.
+            socket.setdefaulttimeout(args.network_timeout)
+            r.network_results = probe_urls(r.urls, timeout=args.network_timeout)
 
     print("=" * 70)
     print("LINK INTEGRITY CHECK  (URLs + hyperref + ref/label graph)")
@@ -333,13 +493,47 @@ def main() -> int:
         print(f"DEAD LABELS: {len(r.dead_labels)} entries (--verbose to list)")
         print()
 
-    payload = {"summary": r.to_dict(), "venue_year": args.venue_year, "main_tex": str(MAIN_TEX)}
+    # --- Network summary (only when --network was used) ---
+    net_failed_count = 0
+    net_warn_count = 0
+    if args.network:
+        n_total = len(r.network_results)
+        n_pass = sum(1 for nr in r.network_results if nr.classification == "pass")
+        n_fail = sum(1 for nr in r.network_results if nr.classification == "fail")
+        n_warn = sum(1 for nr in r.network_results if nr.classification == "warn")
+        net_failed_count = n_fail
+        net_warn_count = n_warn
+        print("NETWORK PROBE RESULTS  (--network)")
+        print(f"  Probed:                  {n_total:>4}")
+        print(f"  PASS (2xx/3xx):          {n_pass:>4}")
+        print(f"  WARN (timeout/SSL):      {n_warn:>4}")
+        print(f"  FAIL (>=400 / transport):{n_fail:>4}  ({'FAIL' if args.strict else 'WARN'})")
+        print()
+        bad = [nr for nr in r.network_results if nr.classification != "pass"]
+        if bad:
+            print("NETWORK ISSUES:")
+            for nr in bad:
+                detail = nr.error if nr.error else f"HTTP {nr.status}"
+                print(f"  - [{nr.classification.upper()}] {nr.url}  ({detail}, {nr.elapsed_seconds:.2f}s, {nr.method})")
+            print()
+
+    payload = {
+        "summary": r.to_dict(),
+        "venue_year": args.venue_year,
+        "main_tex": str(MAIN_TEX),
+        "network_checked": bool(args.network),
+        "network_timeout": args.network_timeout if args.network else None,
+    }
     RESULTS_JSON.write_text(json.dumps(payload, indent=2), encoding="utf-8")
     print(f"Full report: {RESULTS_JSON}")
 
     if failed:
         return 1
     if args.strict and (r.untrusted_urls or r.dead_labels):
+        return 1
+    # Network failures only drive non-zero exit under --strict (matches existing
+    # convention for other "soft" classes of issue).
+    if args.strict and args.network and net_failed_count:
         return 1
     return 0
 

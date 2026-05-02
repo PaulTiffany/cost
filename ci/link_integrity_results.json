@@ -5,6 +5,10 @@
     "n_hypertarget": 26,
     "n_refs": 120,
     "n_labels": 158,
+    "urls": [
+      "https://anonymous.4open.science/r/cacophony",
+      "https://neurips.cc/Conferences/2026/PaperInformation/FundingDisclosure"
+    ],
     "malformed_urls": [],
     "untrusted_urls": [],
     "venue_year_mismatches": [],
@@ -32,8 +36,11 @@
       "app:staging_robustness",
       "app:tightness",
       "app:transfer"
-    ]
+    ],
+    "network_results": []
   },
   "venue_year": 2026,
-  "main_tex": "C:\\src\\NeurIPS\\paper\\main.tex"
+  "main_tex": "C:\\src\\NeurIPS\\paper\\main.tex",
+  "network_checked": false,
+  "network_timeout": null
 }

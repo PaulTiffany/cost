@@ -3,7 +3,7 @@
   "provenance": {
     "paper_title": "The Cost of Cacophony: Geometric Limits on Multi-Constraint Alignment",
     "venue": "NeurIPS 2026",
-    "generated_at": "2026-05-02T16:15:44",
+    "generated_at": "2026-05-02T16:28:57",
     "main_tex_path": "paper\\main.tex",
     "main_tex_sha256": "ead744fa65b868e4e98a7b55ca980c4fa336f21e14e708b16414fe6b45a30bc2",
     "main_tex_mtime": "2026-05-02T13:12:58",
@@ -15,7 +15,7 @@
   },
   "verdict": {
     "verdict": "PASS",
-    "rationale": "all structural checks clean (L1+L2+L4+L7+L8+L9+L10+L11); L3+L5 coverage is advisory, see triage JSONs"
+    "rationale": "all structural checks clean (L1+L2+L4+L7+L8+L9+L10+L11+L12+L13); L3+L5 coverage is advisory, see triage JSONs"
   },
   "layers": [
     {
@@ -162,6 +162,10 @@
         "n_hypertarget": 26,
         "n_refs": 120,
         "n_labels": 158,
+        "urls": [
+          "https://anonymous.4open.science/r/cacophony",
+          "https://neurips.cc/Conferences/2026/PaperInformation/FundingDisclosure"
+        ],
         "malformed_urls": [],
         "untrusted_urls": [],
         "venue_year_mismatches": [],
@@ -189,7 +193,8 @@
           "app:staging_robustness",
           "app:tightness",
           "app:transfer"
-        ]
+        ],
+        "network_results": []
       },
       "notes": ""
     },
@@ -228,7 +233,42 @@
         "failed": 0
       },
       "notes": ""
+    },
+    {
+      "name": "L12_build_equiv",
+      "script": "ci\\build_equivalence_check.py",
+      "return_code": 0,
+      "status": "PASS",
+      "summary": {
+        "mode": "quick",
+        "strict": false,
+        "timeout_sec": 60,
+        "verdict": "PASS",
+        "total": 12,
+        "pass": 6,
+        "warn": 0,
+        "fail": 0,
+        "skip": 6
+      },
+      "notes": ""
+    },
+    {
+      "name": "L13_cross_tree",
+      "script": "ci\\cross_tree_consistency_check.py",
+      "return_code": 0,
+      "status": "PASS",
+      "summary": {
+        "total_pairs": 12,
+        "match": 11,
+        "diverged_expected": 1,
+        "diverged_unexpected": 0,
+        "missing_neurips": 0,
+        "missing_icml": 0,
+        "ok": 12,
+        "fail": 0
+      },
+      "notes": ""
     }
   ],
-  "certificate_self_hash": "05d87472e7afda18cb5530732526ff931d038c7b8c97db78636f448904dbe6f4"
+  "certificate_self_hash": "47d395e4364645bdda267c44594c4e1e169cb2e3da5226fcac898ed45d49d3c5"
 }

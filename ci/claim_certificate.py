@@ -62,6 +62,14 @@ LAYER_SCRIPTS = {
     "L9_consistency": SCRIPT_DIR / "cross_claim_consistency_check.py",
     "L10_bib": SCRIPT_DIR / "bib_entry_check.py",
     "L11_scripts": SCRIPT_DIR / "script_integrity_check.py",
+    "L12_build_equiv": SCRIPT_DIR / "build_equivalence_check.py",
+    "L13_cross_tree": SCRIPT_DIR / "cross_tree_consistency_check.py",
+}
+
+# L12 in unified-cert mode runs --quick (mtime + asset-hash only) so
+# the certificate stays fast. Full re-render mode is invoked manually.
+LAYER_EXTRA_ARGS = {
+    "L12_build_equiv": ["--quick"],
 }
 
 LAYER_RESULT_JSONS = {
@@ -73,6 +81,8 @@ LAYER_RESULT_JSONS = {
     "L9_consistency": SCRIPT_DIR / "cross_claim_consistency_results.json",
     "L10_bib": SCRIPT_DIR / "bib_entry_check_results.json",
     "L11_scripts": SCRIPT_DIR / "script_integrity_results.json",
+    "L12_build_equiv": SCRIPT_DIR / "build_equivalence_results.json",
+    "L13_cross_tree": SCRIPT_DIR / "cross_tree_consistency_results.json",
 }
 
 
@@ -128,7 +138,8 @@ def file_mtime_iso(path: Path) -> str:
 # Layer runners
 # ---------------------------------------------------------------------------
 def run_layer(name: str, script: Path, args: list[str] | None = None) -> LayerOutcome:
-    cmd = [sys.executable, str(script)] + (args or [])
+    extra = LAYER_EXTRA_ARGS.get(name, []) if 'LAYER_EXTRA_ARGS' in globals() else []
+    cmd = [sys.executable, str(script)] + (args or []) + extra
     proc = subprocess.run(cmd, capture_output=True, text=True, check=False)
     return LayerOutcome(name=name, script=str(script.relative_to(REPO_ROOT)), return_code=proc.returncode)
 
@@ -251,6 +262,24 @@ def attach_summary_l11(outcome: LayerOutcome) -> None:
     outcome.summary = payload.get("summary", {})
 
 
+def attach_summary_l12(outcome: LayerOutcome) -> None:
+    p = LAYER_RESULT_JSONS["L12_build_equiv"]
+    if not p.exists():
+        outcome.notes = "no results JSON found"
+        return
+    payload = json.loads(p.read_text(encoding="utf-8"))
+    outcome.summary = payload.get("summary", {})
+
+
+def attach_summary_l13(outcome: LayerOutcome) -> None:
+    p = LAYER_RESULT_JSONS["L13_cross_tree"]
+    if not p.exists():
+        outcome.notes = "no results JSON found"
+        return
+    payload = json.loads(p.read_text(encoding="utf-8"))
+    outcome.summary = payload.get("summary", {})
+
+
 # ---------------------------------------------------------------------------
 # Aggregate verdict
 # ---------------------------------------------------------------------------
@@ -265,12 +294,12 @@ def aggregate_verdict(outcomes: list[LayerOutcome]) -> tuple[str, str]:
     surface previously-hidden noise can drop below it). The triage
     JSONs are the actionable signal, not the percentage.
     """
-    structural = {"L1_audit", "L2_validator", "L4_lineage", "L7_citations", "L8_links", "L9_consistency", "L10_bib", "L11_scripts"}
+    structural = {"L1_audit", "L2_validator", "L4_lineage", "L7_citations", "L8_links", "L9_consistency", "L10_bib", "L11_scripts", "L12_build_equiv", "L13_cross_tree"}
     structurally_failed = [o for o in outcomes if o.return_code != 0 and o.name in structural]
     if structurally_failed:
         names = ", ".join(o.name for o in structurally_failed)
         return ("FAIL", f"Structural layers failed: {names}")
-    return ("PASS", "all structural checks clean (L1+L2+L4+L7+L8+L9+L10+L11); L3+L5 coverage is advisory, see triage JSONs")
+    return ("PASS", "all structural checks clean (L1+L2+L4+L7+L8+L9+L10+L11+L12+L13); L3+L5 coverage is advisory, see triage JSONs")
 
 
 # ---------------------------------------------------------------------------
@@ -327,6 +356,10 @@ def render_markdown(payload: dict) -> str:
             blurb = f"{s.get('ok','?')}/{s.get('total','?')} bib entries well-formed"
         elif layer["name"] == "L11_scripts":
             blurb = f"{s.get('passed','?')}/{s.get('total_scripts','?')} figure scripts pass smoke test"
+        elif layer["name"] == "L12_build_equiv":
+            blurb = f"--quick mode: {s.get('passed','?')}/{s.get('total','?')} figures fresh; full mode optional"
+        elif layer["name"] == "L13_cross_tree":
+            blurb = f"{s.get('match','?')}/{s.get('total','?')} cross-tree files match (incl. expected divergences)"
         else:
             blurb = "(no summary)"
         lines.append(f"| {layer['name']} | `{layer['script']}` | {status} | {blurb} |")
@@ -433,6 +466,16 @@ def main() -> int:
     if not args.quiet: print("  L11 script integrity...")
     o = run_layer("L11_scripts", LAYER_SCRIPTS["L11_scripts"])
     attach_summary_l11(o)
+    outcomes.append(o)
+
+    if not args.quiet: print("  L12 build equivalence (--quick)...")
+    o = run_layer("L12_build_equiv", LAYER_SCRIPTS["L12_build_equiv"])
+    attach_summary_l12(o)
+    outcomes.append(o)
+
+    if not args.quiet: print("  L13 cross-tree consistency...")
+    o = run_layer("L13_cross_tree", LAYER_SCRIPTS["L13_cross_tree"])
+    attach_summary_l13(o)
     outcomes.append(o)
 
     verdict, rationale = aggregate_verdict(outcomes)
