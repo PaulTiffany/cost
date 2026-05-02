@@ -780,11 +780,11 @@ $+$20\% (aggressive) & 91\% & $-$2.1\% \\
 \paragraph{Where the Method Breaks.}
 Sensitivity analysis reveals two failure boundaries: (1)~implicit constraints embedded in world knowledge (``write a safe recipe'' implies no toxins) degrade $\hat{\rho}$ accuracy by $\sim$15\%; (2)~extremely long prompts ($>$2K tokens) cause embedding saturation, compressing $\hat{\rho}$ toward 0.3--0.4 regardless of constraint structure. Both are detectable: implicit constraints yield high embedding variance, and long prompts trigger the saturation flag.
 
-\paragraph{Ordinal Sufficiency (Formal Justification).}
+\paragraph{Why Zeroth-Order Screening Is Enough (Ordinal Sufficiency).}
 Tables~\ref{tab:encoder_sensitivity}--\ref{tab:threshold_sensitivity} demonstrate empirically that $\hat{\rho}$ yields correct routing. The following lemma formalizes why ordinal structure suffices:
 
 \begin{lemma}[Ordinal Sufficiency for Threshold-Based Routing]\label{lem:proxy_sufficiency}
-Let $\hat{\rho}: \mathcal{P} \to [0,1]$ be an interface observable and let $\mathsf{fail}: \mathcal{P} \to \{0,1\}$ be operational outcome (verifier pass/fail). If: (i)~$\hat{\rho}$ is monotonically related to $\mathsf{fail}$ (higher $\hat{\rho}$ $\Rightarrow$ higher failure rate), and (ii)~routing thresholds $\hat{\tau}$ are calibrated on $\hat{\rho}$, then routing decisions are optimal given the observable, and regret depends only on calibration error.
+Let $\hat{\rho}: \mathcal{P} \to [0,1]$ be an interface observable and let $\mathsf{fail}: \mathcal{P} \to \{0,1\}$ be operational outcome (verifier pass/fail). If: (i)~$\hat{\rho}$ is monotonically related to $\mathsf{fail}$ (higher $\hat{\rho}$ $\Rightarrow$ higher failure rate), and (ii)~routing thresholds $\hat{\tau}$ are calibrated on $\hat{\rho}$, then routing decisions are optimal given the observable, with regret bounded by calibration error plus threshold discretization. This does not require $\hat{\rho}$ to identify any latent gradient conflict.
 \end{lemma}
 
 \begin{proof}
