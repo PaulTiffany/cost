@@ -104,6 +104,14 @@ else
     echo "[OK]   L13 cross-tree consistency"
 fi
 
+if ! python ci/illustration_lineage_check.py > /tmp/illustration_lineage.out 2>&1; then
+    echo "[FAIL] L14 illustration lineage (illustration_lineage_check.py)"
+    tail -10 /tmp/illustration_lineage.out
+    failed=1
+else
+    echo "[OK]   L14 illustration lineage"
+fi
+
 if [ $failed -ne 0 ]; then
     echo ""
     echo "Pre-commit blocked: a structural layer failed."

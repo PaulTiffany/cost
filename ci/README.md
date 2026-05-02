@@ -64,6 +64,7 @@ becomes part of layer N+1's input or context.
 | **L11** | `script_integrity_check.py` | Would every figure script actually run? |
 | **L12** | `build_equivalence_check.py` | Does re-rendering the script produce the same asset? |
 | **L13** | `cross_tree_consistency_check.py` | Do recovered ICML→NeurIPS files still match upstream? |
+| **L14** | `illustration_lineage_check.py` | Are explanatory illustrations bound to their source LaTeX blocks? |
 
 ### L1 — Claim audit (`claim_audit.py`)
 

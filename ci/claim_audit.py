@@ -509,7 +509,7 @@ COMPLETE: list[dict] = [
     # Mechanical Verification). These must be registered or the certificate
     # would be ignoring claims about itself, which is hypocritical given
     # its premise.
-    {"id": "T55", "description": "Certificate has 13 layers (App cert_scope)", "patterns": [r"13[-\s]?layer", r"certificate"], "match_mode": "joint", "match_window": 3},
+    {"id": "T55", "description": "Certificate has 14 layers (App cert_scope)", "patterns": [r"14[-\s]?layer", r"certificate"], "match_mode": "joint", "match_window": 3},
     {"id": "T56", "description": "Mutation harness: 147 of 147 single-digit substitutions caught", "patterns": [r"147\s+of\s+147", r"single[-\s]?digit\s+substitut"], "match_mode": "joint", "match_window": 3},
 ]
 

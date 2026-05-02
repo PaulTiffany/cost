@@ -1,0 +1,27 @@
+{
+  "_meta": {
+    "version": 1,
+    "description": "Illustration provenance manifest. Each entry binds a deterministic asset (TikZ / SVG / matplotlib redraw) to a source LaTeX block via cryptographic hashes. Image generation models MAY be used during draft exploration; the final asset is the deterministic redraw that the certificate trusts. Edits to the source block invalidate the asset's certificate until the asset is re-authored and re-certified.",
+    "claim_scope_default": "schematic illustration only; not empirical evidence",
+    "design": "Source LaTeX block --hash--> manifest_source_hash. Final asset --hash--> manifest_asset_hash. Optional visual_spec markdown --hash--> manifest_spec_hash. Layer 14 (illustration_lineage_check.py) verifies all three."
+  },
+  "illustrations": {
+    "interface_assumption.tex": {
+      "source_file": "paper/main.tex",
+      "source_line_start": 253,
+      "source_line_end": 257,
+      "source_excerpt": "\\fbox{\\begin{minipage}...Interface Assumption (text-in, text-out, frozen encoder, deterministic verifier; High-Probability Lipschitz)...$\\|x_T - x_0\\|_2 \\le LT$...The $\\varepsilon$-mass (11%) is the pivot regime...",
+      "source_hash": "9e2a19e903f1f762037b370002eb302c278beaf6fcfb490f3641a6cbe76c9415",
+      "visual_spec": null,
+      "visual_spec_hash": null,
+      "draft_model": "none",
+      "draft_image": null,
+      "final_asset": "paper/figures/interface_assumption.tex",
+      "final_asset_hash": "9780896aabb1a93a353edb4f3514a84344613e886e43df6a80e1de3eb15be153",
+      "main_tex_ref": null,
+      "in_use": false,
+      "claim_scope": "schematic illustration only; not empirical evidence. Reviewer aid; the dataflow it depicts (text -> frozen encoder -> bounded per-token displacement -> deterministic verifier) is exactly what the source LaTeX block at main.tex:253-257 asserts in prose.",
+      "notes": "Hand-authored TikZ; no image-model draft used. The framework supports gpt-image-2 / similar for draft exploration but the final asset must be deterministic. main_tex_ref=null and in_use=false because this is the inaugural demo of the framework and is not yet \\input{} into main.tex; activating it requires adding \\input{figures/interface_assumption.tex} and updating in_use+main_tex_ref."
+    }
+  }
+}

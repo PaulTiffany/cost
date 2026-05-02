@@ -1,0 +1,44 @@
+{
+  "summary": {
+    "total": 7,
+    "passed": 7,
+    "failed": 0
+  },
+  "results": [
+    {
+      "name": "A1. Every illustration's source_file exists (1 entries)",
+      "passed": true,
+      "detail": "all source files present"
+    },
+    {
+      "name": "A2. Source LaTeX block hashes match (no drift)",
+      "passed": true,
+      "detail": "all source blocks unchanged since illustration was authored"
+    },
+    {
+      "name": "A3. Visual spec files exist (where declared)",
+      "passed": true,
+      "detail": "all declared spec files present"
+    },
+    {
+      "name": "A4. Visual spec hashes match (no drift)",
+      "passed": true,
+      "detail": "all spec hashes unchanged"
+    },
+    {
+      "name": "A5. Final assets exist and hash-match",
+      "passed": true,
+      "detail": "all final assets present and hash-stable"
+    },
+    {
+      "name": "A6. main_tex_refs resolve",
+      "passed": true,
+      "detail": "all referenced illustrations appear in main.tex"
+    },
+    {
+      "name": "A7. claim_scope present (no certifying as evidence)",
+      "passed": true,
+      "detail": "every entry declares illustrative scope"
+    }
+  ]
+}

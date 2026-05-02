@@ -9720,6 +9720,10 @@
               "snippet": "An open question for future work: can we construct \\emph{looping systems with no spikes}, protocols that sustain performance across many iterations without b..."
             },
             {
+              "line": 2433,
+              "snippet": "A 14-layer certificate at \\texttt{ci/claim\\_certificate.md} runs against this paper at submission. Layers cover: claim registry self-consistency; presence of..."
+            },
+            {
               "line": 2469,
               "snippet": "\\paragraph{On \\emph{conflict}.} The term may suggest semantic opposition (constraints ``fighting''). But the geometry is simpler: each constraint defines a h..."
             },
@@ -12712,15 +12716,15 @@
     },
     {
       "claim_id": "T55",
-      "paper_text_signature": "Certificate has 13 layers (App cert_scope)",
+      "paper_text_signature": "Certificate has 14 layers (App cert_scope)",
       "found": "OK",
       "locations": [
         {
-          "pattern": "13[-\\s]?layer",
+          "pattern": "14[-\\s]?layer",
           "hits": [
             {
               "line": 2433,
-              "snippet": "A 13-layer certificate at \\texttt{ci/claim\\_certificate.md} runs against this paper at submission. Layers cover: claim registry self-consistency; presence of..."
+              "snippet": "A 14-layer certificate at \\texttt{ci/claim\\_certificate.md} runs against this paper at submission. Layers cover: claim registry self-consistency; presence of..."
             }
           ]
         },
@@ -12737,7 +12741,7 @@
             },
             {
               "line": 2433,
-              "snippet": "A 13-layer certificate at \\texttt{ci/claim\\_certificate.md} runs against this paper at submission. Layers cover: claim registry self-consistency; presence of..."
+              "snippet": "A 14-layer certificate at \\texttt{ci/claim\\_certificate.md} runs against this paper at submission. Layers cover: claim registry self-consistency; presence of..."
             },
             {
               "line": 2435,
@@ -12766,7 +12770,7 @@
           "hits": [
             {
               "line": 2433,
-              "snippet": "A 13-layer certificate at \\texttt{ci/claim\\_certificate.md} runs against this paper at submission. Layers cover: claim registry self-consistency; presence of..."
+              "snippet": "A 14-layer certificate at \\texttt{ci/claim\\_certificate.md} runs against this paper at submission. Layers cover: claim registry self-consistency; presence of..."
             }
           ]
         },
@@ -12775,7 +12779,7 @@
           "hits": [
             {
               "line": 2433,
-              "snippet": "A 13-layer certificate at \\texttt{ci/claim\\_certificate.md} runs against this paper at submission. Layers cover: claim registry self-consistency; presence of..."
+              "snippet": "A 14-layer certificate at \\texttt{ci/claim\\_certificate.md} runs against this paper at submission. Layers cover: claim registry self-consistency; presence of..."
             }
           ]
         }

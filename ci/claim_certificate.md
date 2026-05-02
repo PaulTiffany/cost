@@ -1,17 +1,17 @@
 # Claim Certificate
 
 **Paper:** The Cost of Cacophony: Geometric Limits on Multi-Constraint Alignment
-**Generated:** 2026-05-02T17:19:30
-**Verdict:** **PASS** — all structural checks clean (L1+L2+L4+L7+L8+L9+L10+L11+L12+L13); L3+L5 coverage is advisory, see triage JSONs
+**Generated:** 2026-05-02T18:10:12
+**Verdict:** **PASS** — all structural checks clean (L1+L2+L4+L7+L8+L9+L10+L11+L12+L13+L14); L3+L5 coverage is advisory, see triage JSONs
 
 ## Provenance
 
-- main.tex sha256: `dbf009f013daf026...` (full hash in JSON)
-- main.tex mtime: 2026-05-02T17:17:46
-- main.pdf size: 1,018,192 bytes
-- main.pdf mtime: 2026-05-02T17:18:39
+- main.tex sha256: `cfb12a803e764689...` (full hash in JSON)
+- main.tex mtime: 2026-05-02T18:08:23
+- main.pdf size: 1,018,298 bytes
+- main.pdf mtime: 2026-05-02T18:09:11
 - registry sha256: `a860cd02ec4eaf6b...`
-- certificate self-hash: `b697d8fe6938b9b9...` (sha256 of this payload minus the hash field; recompute to verify integrity)
+- certificate self-hash: `719f423c592e9428...` (sha256 of this payload minus the hash field; recompute to verify integrity)
 
 ## Layer-by-layer Results
 
@@ -29,6 +29,7 @@
 | L11_scripts | `ci\script_integrity_check.py` | PASS | 10/10 figure scripts pass smoke test |
 | L12_build_equiv | `ci\build_equivalence_check.py` | PASS | --quick mode: ?/12 figures fresh; full mode optional |
 | L13_cross_tree | `ci\cross_tree_consistency_check.py` | PASS | 11/? cross-tree files match (incl. expected divergences) |
+| L14_illustrations | `ci\illustration_lineage_check.py` | PASS | 7/7 illustration provenance checks pass |
 
 ### Per-figure coverage (L5)
 
@@ -68,4 +69,5 @@ python ci\bib_entry_check.py    # L10_bib
 python ci\script_integrity_check.py    # L11_scripts
 python ci\build_equivalence_check.py    # L12_build_equiv
 python ci\cross_tree_consistency_check.py    # L13_cross_tree
+python ci\illustration_lineage_check.py    # L14_illustrations
 ```
