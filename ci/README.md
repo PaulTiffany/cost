@@ -61,6 +61,7 @@ becomes part of layer N+1's input or context.
 | **L8** | `link_integrity_check.py` | URLs well-formed + venue-year right? \\ref/\\hyperref resolve? |
 | **L9** | `cross_claim_consistency_check.py` | Do formula-claims and value-claims agree numerically? |
 | **L10** | `bib_entry_check.py` | Are references.bib entries structurally well-formed? |
+| **L11** | `script_integrity_check.py` | Would every figure script actually run? |
 
 ### L1 — Claim audit (`claim_audit.py`)
 

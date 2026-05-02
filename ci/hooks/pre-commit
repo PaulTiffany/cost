@@ -80,6 +80,14 @@ else
     echo "[OK]   L10 bib entry check"
 fi
 
+if ! python ci/script_integrity_check.py > /tmp/script_integrity.out 2>&1; then
+    echo "[FAIL] L11 script integrity (script_integrity_check.py)"
+    tail -10 /tmp/script_integrity.out
+    failed=1
+else
+    echo "[OK]   L11 script integrity"
+fi
+
 if [ $failed -ne 0 ]; then
     echo ""
     echo "Pre-commit blocked: a structural layer failed."

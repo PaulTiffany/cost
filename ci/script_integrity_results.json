@@ -1,0 +1,89 @@
+{
+  "summary": {
+    "total_scripts": 10,
+    "passed": 10,
+    "failed": 0
+  },
+  "scripts": [
+    {
+      "name": "constitution_wheel_full.wav (+1 more)",
+      "script_path": "supplementary\\demos\\sonification.py",
+      "syntax_ok": true,
+      "syntax_error": null,
+      "missing_imports": [],
+      "n_imports_checked": 2
+    },
+    {
+      "name": "algorithm1_storyboard.pdf",
+      "script_path": "supplementary\\experiments_rebuttal\\algorithm1_storyboard\\build_storyboard.py",
+      "syntax_ok": true,
+      "syntax_error": null,
+      "missing_imports": [],
+      "n_imports_checked": 3
+    },
+    {
+      "name": "constrained_decoding.pdf",
+      "script_path": "supplementary\\experiments_rebuttal\\constrained_decoding\\plot_constrained_decoding.py",
+      "syntax_ok": true,
+      "syntax_error": null,
+      "missing_imports": [],
+      "n_imports_checked": 2
+    },
+    {
+      "name": "cross_model_cliff.pdf",
+      "script_path": "supplementary\\experiments_rebuttal\\cross_model\\plot_cross_model.py",
+      "syntax_ok": true,
+      "syntax_error": null,
+      "missing_imports": [],
+      "n_imports_checked": 2
+    },
+    {
+      "name": "gram_eigendecomposition.pdf",
+      "script_path": "supplementary\\experiments_rebuttal\\dct_analysis\\gram_eigendecomposition.py",
+      "syntax_ok": true,
+      "syntax_error": null,
+      "missing_imports": [],
+      "n_imports_checked": 2
+    },
+    {
+      "name": "per_task_correlation.pdf",
+      "script_path": "supplementary\\experiments_rebuttal\\per_task_correlation.py",
+      "syntax_ok": true,
+      "syntax_error": null,
+      "missing_imports": [],
+      "n_imports_checked": 3
+    },
+    {
+      "name": "prompt_length_sweep.png",
+      "script_path": "supplementary\\experiments_rebuttal\\prompt_length_sweep\\prompt_length_sweep.py",
+      "syntax_ok": true,
+      "syntax_error": null,
+      "missing_imports": [],
+      "n_imports_checked": 4
+    },
+    {
+      "name": "proxy_ablation.pdf",
+      "script_path": "supplementary\\experiments_rebuttal\\proxy_ablation\\proxy_ablation.py",
+      "syntax_ok": true,
+      "syntax_error": null,
+      "missing_imports": [],
+      "n_imports_checked": 3
+    },
+    {
+      "name": "soft_constraint_cliff.pdf",
+      "script_path": "supplementary\\experiments_rebuttal\\soft_constraints\\soft_constraint_pilot.py",
+      "syntax_ok": true,
+      "syntax_error": null,
+      "missing_imports": [],
+      "n_imports_checked": 2
+    },
+    {
+      "name": "sonification_defense.pdf (+1 more)",
+      "script_path": "supplementary\\experiments_rebuttal\\sonification_defense\\chromatic_vision.py",
+      "syntax_ok": true,
+      "syntax_error": null,
+      "missing_imports": [],
+      "n_imports_checked": 4
+    }
+  ]
+}
