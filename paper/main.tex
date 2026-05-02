@@ -321,7 +321,7 @@ Cost scales as $\Omega(\sqrt{k})$ for $\rho(k{-}1) \ll 1$; see Appendix~\ref{app
 % Remark[Applicability] relocated to App~\ref{app:proofs} (precedes the proof of Theorem~\ref{thm:gram}).
 
 \begin{remark}[Higher-$k$]\label{rem:higher_k}
-Diagonal cost depends on the \emph{maximally conflicting subset}, not all $k$ (Corollary~\ref{cor:active_set}); constraints cluster near-orthogonally in practice ($k_{\text{eff}} \le 4$; AGENTIF~\citep{qi2025agentif} reports $\hat{\rho}_{\max} \in [0.08, 0.15]$ across 11.9 average constraints). Frontier validation: Appendix~\ref{app:claude_genome}; high-$k$ active-set treatment: Appendix~\ref{app:high_R}.
+Diagonal cost depends on the \emph{maximally conflicting subset}, not all $k$ (Corollary~\ref{cor:active_set}); constraints cluster near-orthogonally in practice ($k_{\text{eff}} \le 4$; AGENTIF~\citep{qi2025agentif} reports $\hat{\rho}_{\max} \in [0.08, 0.15]$ across 11.9 average constraints): practical constraint sets sit inside the feasible band, whose narrowness measures rather than precludes multi-constraint operation. Frontier validation: Appendix~\ref{app:claude_genome}; high-$k$ active-set treatment: Appendix~\ref{app:high_R}.
 \end{remark}
 
 \noindent\textbf{Worked example.} Figure~\ref{fig:pipeline} traces ``comprehensive'' vs.\ ``concise'' ($k{=}2$) end-to-end through Algorithm~\ref{alg:routing}; cosine grounding follows the Linear Representation Hypothesis \citep{park2023linear} (concepts as directions, embedding cosine as the interface observable).
