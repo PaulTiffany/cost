@@ -1,0 +1,71 @@
+{
+  "total_routing_decisions": 2110,
+  "constitution": [
+    {
+      "condition": "Oracle",
+      "accuracy": 1.0,
+      "regret": 0.0,
+      "spearman": 1.0,
+      "n_items": 190,
+      "description": "Behavioral conflict detection"
+    },
+    {
+      "condition": "Real rho-hat",
+      "accuracy": 0.45789473684210524,
+      "regret": 0.4971052631578946,
+      "spearman": 0.23225550322440167,
+      "n_items": 190,
+      "description": "Embedding cosine similarity"
+    },
+    {
+      "condition": "Shuffled rho-hat",
+      "accuracy": 0.39473684210526316,
+      "regret": 0.5302631578947367,
+      "spearman": -0.005004526024423935,
+      "n_items": 190,
+      "description": "Permuted embedding values"
+    },
+    {
+      "condition": "Random rho-hat",
+      "accuracy": 0.6057368421052631,
+      "regret": 0.23923815789473668,
+      "spearman": -0.006209024447120512,
+      "n_items": 190,
+      "description": "Uniform random proxy"
+    }
+  ],
+  "code_constraints": [
+    {
+      "condition": "Oracle",
+      "accuracy": 1.0,
+      "regret": 0.0,
+      "spearman": 1.0,
+      "n_items": 1920,
+      "description": "Ground-truth per-trial outcome"
+    },
+    {
+      "condition": "Real rho-hat",
+      "accuracy": 0.7755208333333333,
+      "regret": 0.1655989583333336,
+      "spearman": 0.5949219214099463,
+      "n_items": 1920,
+      "description": "Tier-level embedding proxy"
+    },
+    {
+      "condition": "Shuffled rho-hat",
+      "accuracy": 0.5130208333333334,
+      "regret": 0.30341145833333416,
+      "spearman": 0.01759561238382735,
+      "n_items": 1920,
+      "description": "Permuted tier rho values"
+    },
+    {
+      "condition": "Random rho-hat",
+      "accuracy": 0.539453125,
+      "regret": 0.19457161458333438,
+      "spearman": -0.0011305927311982156,
+      "n_items": 1920,
+      "description": "Uniform random proxy"
+    }
+  ]
+}

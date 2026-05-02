@@ -8,20 +8,28 @@
     "algorithm1_storyboard.pdf": {
       "asset": "paper/figures/algorithm1_storyboard.pdf",
       "script": "supplementary/experiments_rebuttal/algorithm1_storyboard/build_storyboard.py",
-      "data": [],
-      "data_known": false,
+      "data": [
+        "supplementary/experiments_rebuttal/algorithm1_storyboard/storyboard_spec.json"
+      ],
+      "data_known": true,
       "main_tex_ref": "figures/algorithm1_storyboard.pdf",
-      "tikz_source": false,
-      "notes": "Storyboard renderer; data path is a script arg (not statically declared)."
+      "tikz_source": false
     },
     "gram_eigendecomposition.pdf": {
       "asset": "paper/figures/gram_eigendecomposition.pdf",
       "script": "supplementary/experiments_rebuttal/dct_analysis/gram_eigendecomposition.py",
-      "data": [],
-      "data_known": false,
+      "data": [
+        "supplementary/experiments/outputs/constitution/constitution_rho_matrix.npy",
+        "supplementary/experiments/outputs/constitution/constitution_analysis.json",
+        "supplementary/experiments/code_constraint_results.json"
+      ],
+      "data_known": true,
+      "outputs_secondary": [
+        "rebuttal/figures/gram_eigendecomposition_results.json"
+      ],
       "main_tex_ref": "figures/gram_eigendecomposition.pdf",
       "tikz_source": false,
-      "notes": "Reads rho matrix + analysis json from script-arg paths."
+      "notes": "Results JSON documents 20 eigenvalues, mean_rho=0.267 (backs I63), high_rho_fraction=0.0737 (backs C11), lambda_min=-4.31."
     },
     "per_task_correlation.pdf": {
       "asset": "paper/figures/per_task_correlation.pdf",
@@ -30,8 +38,12 @@
         "supplementary/experiments/code_constraint_results.json"
       ],
       "data_known": true,
+      "outputs_secondary": [
+        "rebuttal/figures/per_task_correlation_results.json"
+      ],
       "main_tex_ref": "figures/per_task_correlation.pdf",
-      "tikz_source": false
+      "tikz_source": false,
+      "notes": "Results JSON documents r_s=-0.9417, p=2.12e-23 (backs Section 5.1 claim), per-tier means matching I7-I10."
     },
     "constrained_decoding.pdf": {
       "asset": "paper/figures/constrained_decoding.pdf",
@@ -59,9 +71,12 @@
       "script": "supplementary/experiments_rebuttal/soft_constraints/soft_constraint_pilot.py",
       "data": [],
       "data_known": true,
+      "outputs_secondary": [
+        "rebuttal/figures/soft_constraint_results.json"
+      ],
       "main_tex_ref": "figures/soft_constraint_cliff.pdf",
       "tikz_source": false,
-      "notes": "Self-contained simulation — script writes its own data + figure. No external data dependency."
+      "notes": "Self-contained simulation — script writes its own data + figure. Results JSON documents the simulation outputs."
     },
     "related_envelope_combined.tex": {
       "asset": "paper/figures/related_envelope_combined.tex",

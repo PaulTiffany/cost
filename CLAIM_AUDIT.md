@@ -318,6 +318,11 @@
 | high_k_opus_results.json | `supplementary/experiments/outputs/high_k_opus/` | C21 |
 | json_nl_v4_results.json | `supplementary/experiments/` | C24, I43, I65 |
 | delta_capacity_results.json | `supplementary/experiments/` | I52 |
+| gram_eigendecomposition_results.json | `rebuttal/figures/` | C11, I63, eigenvalue annotation (4.31) |
+| per_task_correlation_results.json | `rebuttal/figures/` | r_s=-0.9417 (Section 5.1), per-tier means (I7-I10) |
+| proxy_ablation_results.json | `rebuttal/figures/` | proxy comparison: real/shuffled/random rho-hat |
+| soft_constraint_results.json | `rebuttal/figures/` | soft-constraint cliff per-trial outcomes |
+| unconditional_pivot_results.json | `rebuttal/figures/` | C3 backing: 8/480 high-tier success, 0/427 smooth |
 
 ---
 

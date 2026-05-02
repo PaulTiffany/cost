@@ -130,6 +130,29 @@ def check_data_files_exist(manifest: dict) -> CheckResult:
     )
 
 
+def check_outputs_secondary_exist(manifest: dict) -> CheckResult:
+    """Verify that any declared 'outputs_secondary' files exist on disk.
+
+    These are non-figure artifacts that the script writes (typically
+    JSON results files documenting computed values). They back textual
+    claims and should be present in the supplementary package even
+    though they're not loaded by the figure rendering itself.
+    """
+    missing: list[str] = []
+    n_checked = 0
+    for name, fig in manifest["figures"].items():
+        for opath in fig.get("outputs_secondary", []):
+            n_checked += 1
+            path = resolve(opath)
+            if not path.exists():
+                missing.append(f"{name} -> {opath}")
+    return CheckResult(
+        f"A4. All {n_checked} declared output JSON artifacts exist on disk",
+        not missing,
+        "\n         ".join(missing) if missing else "all output artifacts resolved",
+    )
+
+
 # ---------------------------------------------------------------------------
 # B. Manifest <-> main.tex
 # ---------------------------------------------------------------------------
@@ -250,6 +273,7 @@ def run_all(verbose: bool = False) -> list[CheckResult]:
         check_assets_exist(manifest),
         check_scripts_exist(manifest),
         check_data_files_exist(manifest),
+        check_outputs_secondary_exist(manifest),
         check_no_orphan_paper_refs(manifest, paper_refs),
         check_no_orphan_manifest(manifest, paper_refs),
         check_mtime_freshness(manifest, verbose=verbose),

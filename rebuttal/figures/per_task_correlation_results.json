@@ -1,0 +1,114 @@
+{
+  "n_tasks": 12,
+  "n_models": 4,
+  "n_trials": 1920,
+  "monotone_tasks": 11,
+  "spearman_48pt": {
+    "r_s": -0.9417310837522251,
+    "p": 2.12092639999426e-23
+  },
+  "spearman_4tier": {
+    "r_s": -1.0,
+    "p": 0.0
+  },
+  "per_tier": {
+    "control": {
+      "mean": 0.76875,
+      "ci_lo": 0.73125,
+      "ci_hi": 0.80625,
+      "n": 480
+    },
+    "low": {
+      "mean": 0.58125,
+      "ci_lo": 0.5375,
+      "ci_hi": 0.625,
+      "n": 480
+    },
+    "moderate": {
+      "mean": 0.23125,
+      "ci_lo": 0.19375,
+      "ci_hi": 0.26875,
+      "n": 480
+    },
+    "high": {
+      "mean": 0.016666666666666666,
+      "ci_lo": 0.00625,
+      "ci_hi": 0.029166666666666667,
+      "n": 480
+    }
+  },
+  "per_task": {
+    "count_occurrences": {
+      "control": 0.675,
+      "low": 0.675,
+      "moderate": 0.325,
+      "high": 0.025
+    },
+    "count_vowels": {
+      "control": 0.675,
+      "low": 0.525,
+      "moderate": 0.3,
+      "high": 0.05
+    },
+    "factorial": {
+      "control": 0.875,
+      "low": 0.475,
+      "moderate": 0.05,
+      "high": 0.0
+    },
+    "fibonacci": {
+      "control": 0.775,
+      "low": 0.525,
+      "moderate": 0.05,
+      "high": 0.0
+    },
+    "find_max": {
+      "control": 0.8,
+      "low": 0.7,
+      "moderate": 0.2,
+      "high": 0.025
+    },
+    "fizzbuzz": {
+      "control": 0.85,
+      "low": 0.575,
+      "moderate": 0.375,
+      "high": 0.025
+    },
+    "gcd": {
+      "control": 0.675,
+      "low": 0.675,
+      "moderate": 0.425,
+      "high": 0.025
+    },
+    "is_palindrome": {
+      "control": 0.775,
+      "low": 0.8,
+      "moderate": 0.5,
+      "high": 0.0
+    },
+    "power": {
+      "control": 0.825,
+      "low": 0.4,
+      "moderate": 0.1,
+      "high": 0.0
+    },
+    "remove_duplicates": {
+      "control": 0.775,
+      "low": 0.475,
+      "moderate": 0.075,
+      "high": 0.025
+    },
+    "reverse_words": {
+      "control": 0.75,
+      "low": 0.675,
+      "moderate": 0.075,
+      "high": 0.0
+    },
+    "sum_digits": {
+      "control": 0.775,
+      "low": 0.475,
+      "moderate": 0.3,
+      "high": 0.025
+    }
+  }
+}

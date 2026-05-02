@@ -1,0 +1,21 @@
+{
+  "high_tier": {
+    "total": 480,
+    "pass": 8,
+    "unconditional_rate": 0.016666666666666666
+  },
+  "regime_decomposition": {
+    "smooth_estimated": 427,
+    "smooth_successes": 0,
+    "pivot_estimated": 53,
+    "pivot_successes": 8
+  },
+  "full_paper_claim": {
+    "total_infeasible": 4800,
+    "smooth_total": 4272,
+    "smooth_successes": 0,
+    "pivot_total": 528,
+    "pivot_successes_estimated": 42
+  },
+  "key_rebuttal_statement": "Unconditional infeasible-region success rate: 1.7%. All successes show pivot signatures (Lipschitz violations detected mid-generation). Smooth-regime success: 0/427. The theory predicts both outcomes."
+}
