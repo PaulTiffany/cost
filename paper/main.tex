@@ -89,7 +89,7 @@ diverging as $\rho \to 1$ (Corollary~\ref{cor:uniform}). The operational cliff a
 \begin{figure*}[t]
 \centering
 \includegraphics[width=\textwidth]{figures/algorithm1_storyboard.pdf}
-\caption{\textbf{Algorithm~\ref{alg:routing} visualized} on ``be comprehensive'' ($C_1$) vs.\ ``be concise'' ($C_2$). Constraints are parsed from the prompt, embedded as vectors, and their angle yields the regime index $\hat{\rho} \approx 0.42$. The budget ratio $\delta/\delta_{\min} \approx 1.4$ falls in the staging band, so the system selects \textsc{Staged} generation before decoding.}
+\caption{\textbf{Algorithm~\ref{alg:routing} visualized} on ``be comprehensive'' ($C_1$) vs.\ ``be concise'' ($C_2$). Constraints are parsed from the prompt, embedded as vectors, and their angle yields the regime index $\hat{\rho} \approx 0.42$. The budget ratio $\delta/\widehat{\delta}_{\min} \approx 1.4$ falls in the staging band, so the system selects \textsc{Staged} generation before decoding.}
 \label{fig:pipeline}
 \end{figure*}
 
@@ -101,11 +101,11 @@ diverging as $\rho \to 1$ (Corollary~\ref{cor:uniform}). The operational cliff a
 \STATE \textbf{Parse:} Extract constraints $C_1, \ldots, C_k$ from $P$\footnotemark
 \STATE \textbf{Compute regime index:} $\hat{\rho} \gets \max_{i<j} \hat{\rho}_{ij}$, where $\hat{\rho}_{ij} = \cos(\Phi(C_i), \Phi(C_j))$
 \STATE \textbf{Estimate budget:} $\delta \gets \hat{L} \cdot T$
-\STATE \textbf{Compute bound:} $\delta_{\min} \gets (\tau/m)\sqrt{k/(1{-}\hat{\rho}(k{-}1))}$
+\STATE \textbf{Compute screened cost:} $\widehat{\delta}_{\min} \gets (\tau/m)\sqrt{k/(1{-}\hat{\rho}(k{-}1))}$
 \STATE \textbf{Route:}
-\IF{$\delta/\delta_{\min} > 2$ \textbf{or} $\hat{\rho} < 0.15$}
+\IF{$\delta/\widehat{\delta}_{\min} > 2$ \textbf{or} $\hat{\rho} < 0.15$}
     \STATE \textbf{return} \textsc{One-Shot}
-\ELSIF{$\hat{\rho} < 0.5$ \textbf{and} $\delta/\delta_{\min} > 1.2$}
+\ELSIF{$\hat{\rho} < 0.5$ \textbf{and} $\delta/\widehat{\delta}_{\min} > 1.2$}
     \STATE \textbf{return} \textsc{Staged} (order by $m_i$ descending)
 \ELSE
     \STATE \textbf{return} \textsc{Decompose-First} (sequential subproblems)
@@ -233,7 +233,7 @@ $c_{ij} := \ip{u_i}{u_j}$ (unit gradients). Constraints are $\rho$-coupled if $c
 \begin{figure}[ht]
 \centering
 \includegraphics[width=0.85\columnwidth]{figures/gram_eigendecomposition.pdf}
-\caption{\textbf{Embedding-derived $\hat{\rho}$ tracks the Gram eigenstructure driving the bound.} The smallest eigenvalue $\lambda_{\min}(B_\rho) = 1 - \rho(k{-}1)$ controls cost amplification (Theorem~\ref{thm:gram}). The cosine index $\hat{\rho}_{ij} = \cos(\Phi(C_i),\Phi(C_j))$ preserves regime ordering (Spearman $r_s = 1.0$, Appendix~\ref{app:grad_r}); ordinal suffices for routing (Lemma~\ref{lem:proxy_sufficiency}). Grounded in linear representation \citep{park2023linear}: separable concepts orthogonal, conflicting non-orthogonal.}
+\caption{\textbf{Embedding-derived $\hat{\rho}$ preserves the regime ordering associated with the bound.} The smallest eigenvalue $\lambda_{\min}(B_\rho) = 1 - \rho(k{-}1)$ controls cost amplification (Theorem~\ref{thm:gram}). The cosine index $\hat{\rho}_{ij} = \cos(\Phi(C_i),\Phi(C_j))$ preserves regime ordering (Spearman $r_s = 1.0$, Appendix~\ref{app:grad_r}); ordinal suffices for routing (Lemma~\ref{lem:proxy_sufficiency}). Grounded in linear representation \citep{park2023linear}: separable concepts orthogonal, conflicting non-orthogonal.}
 \label{fig:gram_eigendecomp}
 \end{figure}
 
@@ -270,7 +270,7 @@ $\hat\rho$, a screening statistic for regime structure (not a conflict verdict),
 Direction stability: 94\% of trajectories show $\hat{\rho}$ drift ${<}0.15$ (Appendix~\ref{app:direction_stability}). Lipschitz calibration is stable across model families and encoders: $\hat{L} \in [0.019, 0.031]$, tight within 12\% for 89\% of trajectories; the 11\% excess defines pivots (Corollary~\ref{cor:regime_break}; per-model and per-encoder breakdown in Table~\ref{tab:lipschitz_calibration}, Appendix~\ref{app:lipschitz_calibration}). The linear representation hypothesis \citep{park2023linear} grounds the encoder invariance: linear maps preserve inner products; geometry is intrinsic.
 
 \textbf{Implication.}
-High $\hat\rho$ and $LT < \delta_{\min}$ $\Rightarrow$ one-shot infeasible; staging required.
+High $\hat\rho$ and $LT < \widehat{\delta}_{\min}$ predict an under-budgeted one-shot attempt; the router stages or decomposes.
 
 \section{Main Results: The Diagonal Cost Bound}\label{sec:bounds}
 
