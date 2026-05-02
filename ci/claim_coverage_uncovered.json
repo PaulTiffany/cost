@@ -1,10 +1,10 @@
 {
   "paper_path": "C:\\src\\NeurIPS\\paper\\main.tex",
   "summary": {
-    "total_numeric_tokens": 1140,
+    "total_numeric_tokens": 1141,
     "covered": 1072,
-    "uncovered_raw": 68,
-    "uncovered_deduped": 65,
+    "uncovered_raw": 69,
+    "uncovered_deduped": 66,
     "coverage_percent": 94.0
   },
   "uncovered": [
@@ -59,7 +59,13 @@
     {
       "line_no": 538,
       "value": "2026",
-      "context": "ttps://neurips.cc/Conferences/2026/PaperInformation/FundingDiscl",
+      "context": "ng interests. See the NeurIPS 2026 Call for Papers at https://ne",
+      "section": "section: Related Work, Limitations, and Future Work"
+    },
+    {
+      "line_no": 538,
+      "value": "2026",
+      "context": "ttps://neurips.cc/Conferences/2026/CallForPapers for current fun",
       "section": "section: Related Work, Limitations, and Future Work"
     },
     {

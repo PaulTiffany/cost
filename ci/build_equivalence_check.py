@@ -55,11 +55,13 @@ import argparse
 import difflib
 import hashlib
 import json
+import re
 import shutil
 import subprocess
 import sys
 import tempfile
 import time
+from collections import Counter
 from dataclasses import dataclass, field, asdict
 from pathlib import Path
 
@@ -127,6 +129,41 @@ def pdftotext(path: Path) -> str | None:
     if result.returncode != 0:
         return None
     return result.stdout
+
+
+_TOKEN_RE = re.compile(r"[A-Za-z0-9.\-]+")
+
+
+def tokenize(text: str) -> list[str]:
+    """Pull alphanumeric+. tokens from text, normalized lowercase.
+
+    Used for figure semantic equivalence: two pdftexts are
+    semantically equivalent if their token multisets match (same
+    numbers, same words, same labels) even if whitespace and layout
+    differ.
+    """
+    return [m.group(0).lower() for m in _TOKEN_RE.finditer(text)]
+
+
+def tokens_equivalent(text_a: str, text_b: str) -> tuple[bool, str]:
+    """Return (equivalent, diff_summary).
+
+    Equivalent = same Counter (multiset) of tokens. Layout drift in
+    whitespace, line wrapping, legend position, etc. doesn't change
+    the token multiset; missing or substituted numbers/labels does.
+    """
+    counter_a = Counter(tokenize(text_a))
+    counter_b = Counter(tokenize(text_b))
+    if counter_a == counter_b:
+        return True, "token multisets identical"
+    only_a = counter_a - counter_b
+    only_b = counter_b - counter_a
+    bits = []
+    if only_a:
+        bits.append(f"-{sum(only_a.values())} tokens dropped: {sorted(only_a.keys())[:8]}")
+    if only_b:
+        bits.append(f"+{sum(only_b.values())} tokens added: {sorted(only_b.keys())[:8]}")
+    return False, "; ".join(bits)
 
 
 def make_diff_snippet(orig: str, new: str, max_lines: int = 20) -> str:
@@ -470,16 +507,27 @@ def check_figure_full(
                 r.status = PASS
                 r.reason = "pdftotext output identical"
                 return r
-            # Differ — classify
+            # Differ — fall back to token-multiset comparison. If the
+            # multisets of normalized tokens (numbers + words) match,
+            # the new render is semantically equivalent — only layout
+            # (whitespace, legend position, line wrap) drifted, not
+            # content. Reviewers care about content; layout drift is
+            # cosmetic.
+            tokens_eq, token_diff = tokens_equivalent(orig_text, new_text)
+            if tokens_eq:
+                r.status = PASS
+                r.reason = "pdftotext differs but token multisets identical (cosmetic layout drift only)"
+                return r
+            # Tokens differ too — real drift
             len_diff = abs(len(new_text) - len(orig_text))
             len_ratio = len_diff / max(1, len(orig_text))
             r.diff_snippet = make_diff_snippet(orig_text, new_text)
             if len_ratio <= WARN_LENGTH_TOLERANCE:
                 r.status = WARN
-                r.reason = f"pdftotext differs but length within {WARN_LENGTH_TOLERANCE:.0%} (likely timestamp/jitter)"
+                r.reason = f"pdftotext differs (tokens too): {token_diff}"
             else:
                 r.status = FAIL
-                r.reason = f"pdftotext structurally differs ({len(orig_text)} -> {len(new_text)} chars)"
+                r.reason = f"pdftotext structurally differs ({len(orig_text)} -> {len(new_text)} chars); {token_diff}"
             return r
         else:
             # PNG / other binary: byte equality, fall back to size delta

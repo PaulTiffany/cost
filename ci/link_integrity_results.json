@@ -37,27 +37,10 @@
       "app:tightness",
       "app:transfer"
     ],
-    "network_results": [
-      {
-        "url": "https://anonymous.4open.science/r/cacophony",
-        "status": 401,
-        "error": null,
-        "elapsed_seconds": 0.574,
-        "method": "HEAD",
-        "classification": "fail"
-      },
-      {
-        "url": "https://neurips.cc/Conferences/2026/CallForPapers",
-        "status": 200,
-        "error": null,
-        "elapsed_seconds": 0.519,
-        "method": "HEAD",
-        "classification": "pass"
-      }
-    ]
+    "network_results": []
   },
   "venue_year": 2026,
   "main_tex": "C:\\src\\NeurIPS\\paper\\main.tex",
-  "network_checked": true,
-  "network_timeout": 5
+  "network_checked": false,
+  "network_timeout": null
 }

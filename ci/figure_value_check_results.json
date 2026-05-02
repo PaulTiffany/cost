@@ -1,10 +1,10 @@
 {
   "summary": {
     "figures_checked": 6,
-    "total_numerics": 199,
-    "total_covered": 155,
+    "total_numerics": 200,
+    "total_covered": 156,
     "total_uncovered": 21,
-    "coverage_percent": 77.9
+    "coverage_percent": 78.0
   },
   "figures": [
     {
@@ -64,10 +64,10 @@
     {
       "name": "constrained_decoding.pdf",
       "asset_path": "paper\\figures\\constrained_decoding.pdf",
-      "pdftotext_chars": 801,
-      "raw_numerics": 14,
-      "filtered_numerics": 14,
-      "covered": 14,
+      "pdftotext_chars": 632,
+      "raw_numerics": 15,
+      "filtered_numerics": 15,
+      "covered": 15,
       "uncovered_count": 0,
       "uncovered_values": []
     },

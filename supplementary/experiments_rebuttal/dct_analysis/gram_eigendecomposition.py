@@ -174,8 +174,21 @@ def plot_all(real_result: dict, real_eigenvalues: np.ndarray,
         print("matplotlib not available, skipping plots")
         return
 
+    # Boost font sizes globally so labels remain legible after PDF includegraphics scaling.
+    # pdf.fonttype=42 / ps.fonttype=42 force TrueType embedding (avoid Type-3 NeurIPS auto-flag).
+    plt.rcParams.update({
+        "font.size": 14,
+        "axes.titlesize": 15,
+        "axes.labelsize": 14,
+        "xtick.labelsize": 12,
+        "ytick.labelsize": 12,
+        "legend.fontsize": 12,
+        "pdf.fonttype": 42,
+        "ps.fonttype": 42,
+    })
+
     fig = plt.figure(figsize=(15, 11))
-    gs = GridSpec(2, 3, figure=fig, hspace=0.35, wspace=0.35)
+    gs = GridSpec(2, 3, figure=fig, hspace=0.40, wspace=0.55)
 
     # Panel 1: Real constitution eigenvalue spectrum
     ax1 = fig.add_subplot(gs[0, 0])
@@ -186,12 +199,12 @@ def plot_all(real_result: dict, real_eigenvalues: np.ndarray,
     ax1.set_xlabel("Eigenvalue index")
     ax1.set_ylabel("Eigenvalue")
     ax1.set_title(f"Constitution Gram Spectrum (n={n})")
-    ax1.annotate(f"lambda_min={real_eigenvalues[0]:.2f}\n"
-                 f"{real_result['n_negative_eigenvalues']} negative",
+    ax1.annotate(f"$\\lambda_{{\\min}}={real_eigenvalues[0]:.2f}$\n"
+                 f"({real_result['n_negative_eigenvalues']} negative)",
                  xy=(0, real_eigenvalues[0]),
-                 xytext=(3, real_eigenvalues[0] - 0.5),
-                 arrowprops=dict(arrowstyle="->", color="red"),
-                 fontsize=8, color="red")
+                 xytext=(7, real_eigenvalues[0] * 0.6),
+                 arrowprops=dict(arrowstyle="->", color="red", lw=1.2),
+                 fontsize=11, color="red", ha="left")
 
     # Panel 2: k-subset phase transition (real data)
     ax2 = fig.add_subplot(gs[0, 1])
@@ -201,12 +214,12 @@ def plot_all(real_result: dict, real_eigenvalues: np.ndarray,
 
     ax2_twin = ax2.twinx()
     ax2.bar(ks, frac_pd, color="#2ecc71", alpha=0.6, label="P(positive definite)")
-    ax2_twin.plot(ks, mean_lmin, "ro-", linewidth=2, markersize=6, label="Mean lambda_min")
+    ax2_twin.plot(ks, mean_lmin, "ro-", linewidth=2, markersize=6, label=r"Mean $\lambda_{\min}$")
     ax2_twin.axhline(y=0, color="gray", linestyle="--", alpha=0.5)
 
     ax2.set_xlabel("Subset size k")
     ax2.set_ylabel("P(positive definite)", color="#2ecc71")
-    ax2_twin.set_ylabel("Mean lambda_min", color="red")
+    ax2_twin.set_ylabel(r"Mean $\lambda_{\min}$", color="red")
     ax2.set_title("k-Subset Phase Transition\n(real constitution rho)")
     ax2.set_ylim(0, 1.05)
 
@@ -219,14 +232,14 @@ def plot_all(real_result: dict, real_eigenvalues: np.ndarray,
     ax3.plot(tier_k, tier_rates, "D-", color="#9b59b6", linewidth=2, markersize=10)
     for i, (k, r) in enumerate(zip(tier_k, tier_rates)):
         ax3.annotate(f"{r:.0%}", (k, r), textcoords="offset points",
-                     xytext=(0, 12), ha="center", fontsize=10, fontweight="bold")
+                     xytext=(0, 12), ha="center", fontsize=13, fontweight="bold")
 
     ax3.set_xlabel("Format constraints (k)")
     ax3.set_ylabel("Pass rate (A AND B)")
     ax3.set_title("Empirical Cliff\n(4 models, 1920 trials)")
     ax3.set_ylim(0, 1.05)
     ax3.set_xticks(tier_k)
-    ax3.set_xticklabels([f"k={k}\n({t})" for k, t in zip(tier_k, tier_order)], fontsize=8)
+    ax3.set_xticklabels([f"k={k}\n({t})" for k, t in zip(tier_k, tier_order)], fontsize=11)
 
     # Panel 4: Theoretical phase transition curves
     ax4 = fig.add_subplot(gs[1, 0])
@@ -245,7 +258,7 @@ def plot_all(real_result: dict, real_eigenvalues: np.ndarray,
     ax4.set_ylabel("Diagonal cost (delta^2_min)")
     ax4.set_title("Phase Transition + Real rho")
     ax4.set_ylim(0, 40)
-    ax4.legend(fontsize=7)
+    ax4.legend(fontsize=11)
 
     # Panel 5: DCT alignment for uniform Gram
     ax5 = fig.add_subplot(gs[1, 1])
@@ -283,7 +296,7 @@ def plot_all(real_result: dict, real_eigenvalues: np.ndarray,
     ax6.set_title(f"DCT Alignment vs k\n(rho={mean_rho:.3f} from constitution)")
     ax6.set_ylim(0, 1.05)
     ax6.axhline(y=1.0, color="gray", linestyle="--", alpha=0.3, label="Perfect")
-    ax6.legend(fontsize=8)
+    ax6.legend(fontsize=11)
 
     plt.tight_layout()
 

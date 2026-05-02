@@ -199,7 +199,7 @@ def draw_embed(ax, x, y, w, h, spec):
     )
     ax.text(
         ox, oy - 0.12,
-        "conflict proxy",
+        "screening statistic",
         transform=ax.transAxes, fontsize=8.5, color=C_MUTED,
         ha="center", va="top", fontstyle="italic",
     )
