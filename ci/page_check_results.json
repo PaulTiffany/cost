@@ -1,0 +1,51 @@
+{
+  "assertions": [
+    {
+      "assertion_id": "A1",
+      "description": "Body content ends on page <= 9",
+      "status": "PASS",
+      "details": {
+        "body_end_page": 9,
+        "limit": 9
+      }
+    },
+    {
+      "assertion_id": "A2",
+      "description": "References starts on page <= 10",
+      "status": "PASS",
+      "details": {
+        "references_page": 10,
+        "limit": 10
+      }
+    },
+    {
+      "assertion_id": "A3",
+      "description": "NeurIPS Paper Checklist appears AFTER References AND AFTER any appendix sections",
+      "status": "PASS",
+      "details": {
+        "checklist_page": 49,
+        "references_page": 10,
+        "first_appendix_page": 11,
+        "reason": "checklist=49, references=10, first_appendix=11"
+      }
+    },
+    {
+      "assertion_id": "A4",
+      "description": "No \\enlargethispage, negative \\vspace*/\\vskip, or \\textheight/\\topmargin tweaks in main.tex",
+      "status": "PASS",
+      "details": {
+        "matches": [],
+        "count": 0
+      }
+    }
+  ],
+  "summary": {
+    "total_pages": 52,
+    "body_pages": 9,
+    "references_page": 10,
+    "checklist_page": 49,
+    "first_appendix_page": 11,
+    "layout_hack_count": 0,
+    "all_pass": true
+  }
+}
