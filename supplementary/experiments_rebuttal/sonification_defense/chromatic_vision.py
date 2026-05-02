@@ -32,13 +32,14 @@ from pathlib import Path
 sys.stdout.reconfigure(encoding='utf-8')
 
 # =============================================================================
-# Path setup: reach into submission repo for paper data
+# Path setup: locate sonification module + audio demos in the repo
 # =============================================================================
 
-ICML_ROOT = Path(__file__).resolve().parent.parent.parent.parent  # ICML_2026_Template/
-DEMOS_DIR = ICML_ROOT / "submission_repo" / "supplementary" / "demos"
+# 4 levels up from this file is the repo root (NeurIPS tree).
+REPO_ROOT = Path(__file__).resolve().parent.parent.parent.parent
+DEMOS_DIR = REPO_ROOT / "supplementary" / "demos"
 AUDIO_DIR = DEMOS_DIR / "audio_demos"
-FIGURES_DIR = ICML_ROOT / "rebuttal" / "figures"
+FIGURES_DIR = REPO_ROOT / "rebuttal" / "figures"
 
 sys.path.insert(0, str(DEMOS_DIR))
 
