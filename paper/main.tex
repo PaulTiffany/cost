@@ -252,7 +252,7 @@ If $\delta_{\min}(\rho,\tau,m) > LT$, no $T$-token trajectory achieves \mbox{sim
 
 \begin{center}
 \fbox{\begin{minipage}{0.92\linewidth}
-\textbf{Interface Assumption (text-in, text-out, frozen encoder, deterministic verifier; High-Probability Lipschitz):} With probability $1{-}\varepsilon$, generation induces per-token displacement $\|x_{t+1}-x_t\|_2 \le L$ (Euclidean norm in frozen encoder space; anisotropy: Appendix~\ref{app:lipschitz_calibration}), yielding $\|x_T - x_0\|_2 \le LT$. The $\varepsilon$-mass (11\%) defines the pivot regime, analyzed separately (Corollary~\ref{cor:regime_break}).
+\textbf{Interface Assumption (text-in, text-out, frozen encoder, deterministic verifier; High-Probability Lipschitz):} With probability $1{-}\varepsilon$ ($\hat{\varepsilon}{\le}0.11$ across tested models/decoders/tasks), generation induces per-token displacement $\|x_{t+1}-x_t\|_2 \le L$ (frozen encoder space; anisotropy: Appendix~\ref{app:lipschitz_calibration}), yielding $\|x_T - x_0\|_2 \le LT$. The $\varepsilon$-mass (11\%) is the pivot regime: detected mid-generation and rerouted (Appendix~\ref{app:direction_stability}; Corollary~\ref{cor:regime_break}).
 \end{minipage}}
 \end{center}
 
