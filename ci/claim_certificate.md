@@ -1,7 +1,7 @@
 # Claim Certificate
 
 **Paper:** The Cost of Cacophony: Geometric Limits on Multi-Constraint Alignment
-**Generated:** 2026-05-02T14:15:26
+**Generated:** 2026-05-02T14:22:37
 **Verdict:** **PASS** — all structural checks clean; coverage above thresholds
 
 ## Provenance
@@ -10,7 +10,7 @@
 - main.tex mtime: 2026-05-02T13:12:58
 - main.pdf size: 1,009,654 bytes
 - main.pdf mtime: 2026-05-02T13:35:40
-- registry sha256: `122fc111e7bbb01f...`
+- registry sha256: `12d507372ac5c472...`
 
 ## Layer-by-layer Results
 
