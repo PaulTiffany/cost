@@ -14,6 +14,7 @@
       "source_hash": "4d88d127a44f8b88de6459284d089eda84b9fc0ce48bc10ca899dc438fc118d4",
       "visual_spec": "supplementary/illustrations/algorithm1_routing_spec.md",
       "visual_spec_hash": "a26a60fd503337fc60b51122f5fd25dbc0111375acd2087e25da69ed85003f2b",
+      "spec_model": "openai/gpt-4o",
       "draft_model": "openai/gpt-5.4-image-2",
       "draft_image": "supplementary/illustrations/algorithm1_routing_draft.png",
       "draft_image_hash": "bc58ec3ee3fb2007ede7e05aff27347f5318bd92ba6bd96c6ba10ea030607644",

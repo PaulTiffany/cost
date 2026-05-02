@@ -20,8 +20,8 @@ Usage:
     --source-file paper/main.tex \\
     --start 96 --end 114 \\
     --target algorithm1_routing \\
-    --text-model anthropic/claude-3.5-sonnet \\
-    --image-model google/gemini-2.5-flash-image
+    --text-model openai/gpt-4o \\
+    --image-model openai/gpt-5.4-image-2
 """
 
 from __future__ import annotations
@@ -136,8 +136,10 @@ def main() -> int:
     parser.add_argument("--start", type=int, required=True, help="source block line start (1-indexed)")
     parser.add_argument("--end", type=int, required=True, help="source block line end (inclusive)")
     parser.add_argument("--target", required=True, help="short slug for output filenames (e.g. algorithm1_routing)")
-    parser.add_argument("--text-model", default="anthropic/claude-3.5-sonnet")
-    parser.add_argument("--image-model", default="google/gemini-2.5-flash-image")
+    parser.add_argument("--text-model", default="openai/gpt-4o",
+                        help="OpenRouter text model id for spec generation (default verified working)")
+    parser.add_argument("--image-model", default="openai/gpt-5.4-image-2",
+                        help="OpenRouter image model id for draft (default verified working)")
     parser.add_argument("--skip-image", action="store_true", help="generate spec only, skip image gen")
     args = parser.parse_args()
 
@@ -200,6 +202,7 @@ def main() -> int:
             "source_hash": block_hash,
             "visual_spec": str(spec_path.relative_to(REPO_ROOT)).replace("\\", "/"),
             "visual_spec_hash": spec_hash,
+            "spec_model": args.text_model,
             "draft_model": args.image_model,
             "draft_image": str(draft_path.relative_to(REPO_ROOT)).replace("\\", "/"),
             "draft_image_hash": draft_hash,
