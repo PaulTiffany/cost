@@ -1,8 +1,8 @@
 # Claim Certificate
 
 **Paper:** The Cost of Cacophony: Geometric Limits on Multi-Constraint Alignment
-**Generated:** 2026-05-02T16:04:50
-**Verdict:** **PASS** — all structural checks clean (L1+L2+L4+L7+L8+L9); L3+L5 coverage is advisory, see triage JSONs
+**Generated:** 2026-05-02T16:11:15
+**Verdict:** **PASS** — all structural checks clean (L1+L2+L4+L7+L8+L9+L10); L3+L5 coverage is advisory, see triage JSONs
 
 ## Provenance
 
@@ -11,7 +11,7 @@
 - main.pdf size: 1,009,654 bytes
 - main.pdf mtime: 2026-05-02T13:35:40
 - registry sha256: `c1691c712598bcfd...`
-- certificate self-hash: `c79cad329eb96d4f...` (sha256 of this payload minus the hash field; recompute to verify integrity)
+- certificate self-hash: `b56eb59d9c409efd...` (sha256 of this payload minus the hash field; recompute to verify integrity)
 
 ## Layer-by-layer Results
 
@@ -24,7 +24,8 @@
 | L5_figure_values | `ci\figure_value_check.py` | PASS | 77.9% overall figure coverage, 21 uncovered |
 | L7_citations | `ci\citation_integrity_check.py` | PASS | 25 cites, 41 bib entries, 0 unresolved, 16 dead |
 | L8_links | `ci\link_integrity_check.py` | PASS | 2 URLs, 120 refs / 158 labels, 0 unresolved, 38 dead labels |
-| L9_consistency | `ci\cross_claim_consistency_check.py` | PASS | 16/16 consistency relations hold |
+| L9_consistency | `ci\cross_claim_consistency_check.py` | PASS | 31/31 consistency relations hold |
+| L10_bib | `ci\bib_entry_check.py` | PASS | 41/41 bib entries well-formed |
 
 ### Per-figure coverage (L5)
 
@@ -60,4 +61,5 @@ python ci\figure_value_check.py    # L5_figure_values
 python ci\citation_integrity_check.py    # L7_citations
 python ci\link_integrity_check.py    # L8_links
 python ci\cross_claim_consistency_check.py    # L9_consistency
+python ci\bib_entry_check.py    # L10_bib
 ```

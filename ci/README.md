@@ -60,6 +60,7 @@ becomes part of layer N+1's input or context.
 | **L7** | `citation_integrity_check.py` | Does every \\citep{} resolve to a bib entry? |
 | **L8** | `link_integrity_check.py` | URLs well-formed + venue-year right? \\ref/\\hyperref resolve? |
 | **L9** | `cross_claim_consistency_check.py` | Do formula-claims and value-claims agree numerically? |
+| **L10** | `bib_entry_check.py` | Are references.bib entries structurally well-formed? |
 
 ### L1 — Claim audit (`claim_audit.py`)
 

@@ -72,6 +72,14 @@ else
     echo "[OK]   L9 cross-claim consistency"
 fi
 
+if ! python ci/bib_entry_check.py > /tmp/bib_entry.out 2>&1; then
+    echo "[FAIL] L10 bib entry check (bib_entry_check.py)"
+    tail -10 /tmp/bib_entry.out
+    failed=1
+else
+    echo "[OK]   L10 bib entry check"
+fi
+
 if [ $failed -ne 0 ]; then
     echo ""
     echo "Pre-commit blocked: a structural layer failed."

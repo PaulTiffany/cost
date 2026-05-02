@@ -255,12 +255,190 @@ RELATIONS: list[ConsistencyRelation] = [
     # 4800/192 = 25 — but I47 says N=60. So either 12*4*4*N, where N
     # is per (task, tier, model) cell, or the structure is different.
     # Document the constraint without asserting it; this row is for
-    # tracability when the values are next reconciled.
+    # traceability when the values are next reconciled.
     # ------------------------------------------------------------------
     # Skip this for now — the relationship 12*4*4*N=4800 implies N=25,
     # not the stated N=60. Either I47, I52, or I53 is misdescribing
     # the protocol. Worth flagging to the human, NOT auto-failing
     # because the meaning of "per condition" is ambiguous.
+
+    # ------------------------------------------------------------------
+    # Algorithm 1 routing thresholds: rho_stage < rho_fail (ordering)
+    # If C13 says rho_stage = 0.15 and C14 says rho_fail = 0.5, the
+    # routing decision rule "stage if rho >= rho_stage, fail if
+    # rho >= rho_fail" requires rho_stage < rho_fail. If either
+    # threshold drifts so the order inverts, the routing degenerates.
+    # ------------------------------------------------------------------
+    ConsistencyRelation(
+        name="C13_lt_C14_threshold_order",
+        description="Algorithm 1: rho_stage (0.15) < rho_fail (0.5) — routing order",
+        formula="rho_stage < rho_fail",
+        params={"rho_stage": 0.15, "rho_fail": 0.5},
+        expected=True,
+        claim_ids=["C13", "C14"],
+    ),
+
+    # ------------------------------------------------------------------
+    # Tier rho values are strictly monotonically increasing:
+    # I7  Control:  rho=0.05
+    # I8  Low:      rho=0.20
+    # I9  Moderate: rho=0.40
+    # I10 High:     rho=0.65
+    # ------------------------------------------------------------------
+    ConsistencyRelation(
+        name="tier_rho_monotone_increasing",
+        description="Tier rho values strictly increasing: Control(0.05) < Low(0.20) < Moderate(0.40) < High(0.65)",
+        formula="ctl < low < mod < high",
+        params={"ctl": 0.05, "low": 0.20, "mod": 0.40, "high": 0.65},
+        expected=True,
+        claim_ids=["I7", "I8", "I9", "I10"],
+    ),
+
+    # ------------------------------------------------------------------
+    # Tier pass rates are strictly monotonically decreasing:
+    # Control 76% > Low 56% > Moderate 23% > High 2%
+    # If any of these inverts, the cliff narrative breaks.
+    # ------------------------------------------------------------------
+    ConsistencyRelation(
+        name="tier_pass_monotone_decreasing",
+        description="Tier pass rates strictly decreasing: 76 > 56 > 23 > 2",
+        formula="ctl > low > mod > high",
+        params={"ctl": 76, "low": 56, "mod": 23, "high": 2},
+        expected=True,
+        claim_ids=["I7", "I8", "I9", "I10"],
+    ),
+
+    # ------------------------------------------------------------------
+    # Charitable feasibility table (App V, T27/T28): values strictly
+    # decreasing as k increases. Currently: 93/79/63/46/31/12/3 for
+    # k = 2/3/4/5/6/8/10. Any inversion = bug.
+    # ------------------------------------------------------------------
+    ConsistencyRelation(
+        name="app_v_feasibility_monotone",
+        description="App V feasibility(%) strictly decreasing in k: 93 > 79 > 63 > 46 > 31 > 12 > 3",
+        formula="k2 > k3 > k4 > k5 > k6 > k8 > k10",
+        params={"k2": 93, "k3": 79, "k4": 63, "k5": 46, "k6": 31, "k8": 12, "k10": 3},
+        expected=True,
+        claim_ids=["T27", "T28"],
+    ),
+
+    # ------------------------------------------------------------------
+    # Pairs row in App V: pairs(k) = k*(k-1)/2 (number of unordered pairs)
+    # T26 says: pairs = 1, 3, 6, 10, 15, 28, 45 for k=2,3,4,5,6,8,10.
+    # Verify each.
+    # ------------------------------------------------------------------
+    ConsistencyRelation(
+        name="app_v_pairs_k_2",
+        description="pairs(k=2) = k(k-1)/2 = 1",
+        formula="k * (k - 1) // 2",
+        params={"k": 2},
+        expected=1,
+        claim_ids=["T26"],
+    ),
+    ConsistencyRelation(
+        name="app_v_pairs_k_3",
+        description="pairs(k=3) = 3",
+        formula="k * (k - 1) // 2",
+        params={"k": 3},
+        expected=3,
+        claim_ids=["T26"],
+    ),
+    ConsistencyRelation(
+        name="app_v_pairs_k_4",
+        description="pairs(k=4) = 6",
+        formula="k * (k - 1) // 2",
+        params={"k": 4},
+        expected=6,
+        claim_ids=["T26"],
+    ),
+    ConsistencyRelation(
+        name="app_v_pairs_k_5",
+        description="pairs(k=5) = 10",
+        formula="k * (k - 1) // 2",
+        params={"k": 5},
+        expected=10,
+        claim_ids=["T26"],
+    ),
+    ConsistencyRelation(
+        name="app_v_pairs_k_6",
+        description="pairs(k=6) = 15",
+        formula="k * (k - 1) // 2",
+        params={"k": 6},
+        expected=15,
+        claim_ids=["T26"],
+    ),
+    ConsistencyRelation(
+        name="app_v_pairs_k_8",
+        description="pairs(k=8) = 28",
+        formula="k * (k - 1) // 2",
+        params={"k": 8},
+        expected=28,
+        claim_ids=["T26"],
+    ),
+    ConsistencyRelation(
+        name="app_v_pairs_k_10",
+        description="pairs(k=10) = 45",
+        formula="k * (k - 1) // 2",
+        params={"k": 10},
+        expected=45,
+        claim_ids=["T26"],
+    ),
+
+    # ------------------------------------------------------------------
+    # Compatibility certificate ratio (App W, T8/T9/T10):
+    # within-category rho = 0.328, cross-category rho = 0.253
+    # Ratio = 0.328 / 0.253 = 1.30 (T10's 1.30x claim)
+    # ------------------------------------------------------------------
+    ConsistencyRelation(
+        name="app_w_within_cross_ratio",
+        description="App W: within-cat (0.328) / cross-cat (0.253) = 1.30",
+        formula="within / cross",
+        params={"within": 0.328, "cross": 0.253},
+        expected=1.30,
+        claim_ids=["T8", "T9", "T10"],
+        abs_tol=5e-3,  # rounding 1.296... to 1.30
+    ),
+
+    # ------------------------------------------------------------------
+    # Constitution analysis: 20 principles -> 190 pairs (C25)
+    # 190 = 20 * 19 / 2 (combinatorial)
+    # ------------------------------------------------------------------
+    ConsistencyRelation(
+        name="constitution_pairs_combinatorial",
+        description="C25: 20 principles produce 20*19/2 = 190 pairs",
+        formula="n * (n - 1) // 2",
+        params={"n": 20},
+        expected=190,
+        claim_ids=["C25"],
+    ),
+
+    # ------------------------------------------------------------------
+    # Hard-negative section (C21): 100/100 vs 0/100 means perfect
+    # separation. Sum should be 200 trials total. Document the
+    # arithmetic explicitly.
+    # ------------------------------------------------------------------
+    ConsistencyRelation(
+        name="hard_negative_total",
+        description="C21: 100/100 + 0/100 = 200 total hard-negative trials",
+        formula="hits + misses",
+        params={"hits": 100, "misses": 100},
+        expected=200,
+        claim_ids=["C21"],
+    ),
+
+    # ------------------------------------------------------------------
+    # Unconditional pivot (T16, T17):
+    # T17: 8/480 high-tier = 1.67% (T16 reports 1.7%)
+    # ------------------------------------------------------------------
+    ConsistencyRelation(
+        name="unconditional_pivot_rate",
+        description="T16/T17: 8/480 unconditional success = 1.67% (rounded to 1.7%)",
+        formula="100 * successes / total",
+        params={"successes": 8, "total": 480},
+        expected=1.7,
+        claim_ids=["T16", "T17"],
+        abs_tol=0.05,  # 1.67 rounds to 1.7
+    ),
 ]
 
 

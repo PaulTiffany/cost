@@ -1,7 +1,7 @@
 {
   "summary": {
-    "total": 16,
-    "passed": 16,
+    "total": 31,
+    "passed": 31,
     "failed": 0
   },
   "relations": [
@@ -260,6 +260,258 @@
       ],
       "ok": true,
       "detail": "computed=-0.941731, expected=-0.942, abs_diff=2.69e-04, rel_diff=2.85e-04"
+    },
+    {
+      "name": "C13_lt_C14_threshold_order",
+      "description": "Algorithm 1: rho_stage (0.15) < rho_fail (0.5) \u2014 routing order",
+      "formula": "rho_stage < rho_fail",
+      "params": {
+        "rho_stage": 0.15,
+        "rho_fail": 0.5
+      },
+      "expected": true,
+      "computed": 1.0,
+      "claim_ids": [
+        "C13",
+        "C14"
+      ],
+      "ok": true,
+      "detail": "computed=1.000000, expected=True, abs_diff=0.00e+00, rel_diff=0.00e+00"
+    },
+    {
+      "name": "tier_rho_monotone_increasing",
+      "description": "Tier rho values strictly increasing: Control(0.05) < Low(0.20) < Moderate(0.40) < High(0.65)",
+      "formula": "ctl < low < mod < high",
+      "params": {
+        "ctl": 0.05,
+        "low": 0.2,
+        "mod": 0.4,
+        "high": 0.65
+      },
+      "expected": true,
+      "computed": 1.0,
+      "claim_ids": [
+        "I7",
+        "I8",
+        "I9",
+        "I10"
+      ],
+      "ok": true,
+      "detail": "computed=1.000000, expected=True, abs_diff=0.00e+00, rel_diff=0.00e+00"
+    },
+    {
+      "name": "tier_pass_monotone_decreasing",
+      "description": "Tier pass rates strictly decreasing: 76 > 56 > 23 > 2",
+      "formula": "ctl > low > mod > high",
+      "params": {
+        "ctl": 76,
+        "low": 56,
+        "mod": 23,
+        "high": 2
+      },
+      "expected": true,
+      "computed": 1.0,
+      "claim_ids": [
+        "I7",
+        "I8",
+        "I9",
+        "I10"
+      ],
+      "ok": true,
+      "detail": "computed=1.000000, expected=True, abs_diff=0.00e+00, rel_diff=0.00e+00"
+    },
+    {
+      "name": "app_v_feasibility_monotone",
+      "description": "App V feasibility(%) strictly decreasing in k: 93 > 79 > 63 > 46 > 31 > 12 > 3",
+      "formula": "k2 > k3 > k4 > k5 > k6 > k8 > k10",
+      "params": {
+        "k2": 93,
+        "k3": 79,
+        "k4": 63,
+        "k5": 46,
+        "k6": 31,
+        "k8": 12,
+        "k10": 3
+      },
+      "expected": true,
+      "computed": 1.0,
+      "claim_ids": [
+        "T27",
+        "T28"
+      ],
+      "ok": true,
+      "detail": "computed=1.000000, expected=True, abs_diff=0.00e+00, rel_diff=0.00e+00"
+    },
+    {
+      "name": "app_v_pairs_k_2",
+      "description": "pairs(k=2) = k(k-1)/2 = 1",
+      "formula": "k * (k - 1) // 2",
+      "params": {
+        "k": 2
+      },
+      "expected": 1,
+      "computed": 1.0,
+      "claim_ids": [
+        "T26"
+      ],
+      "ok": true,
+      "detail": "computed=1.000000, expected=1, abs_diff=0.00e+00, rel_diff=0.00e+00"
+    },
+    {
+      "name": "app_v_pairs_k_3",
+      "description": "pairs(k=3) = 3",
+      "formula": "k * (k - 1) // 2",
+      "params": {
+        "k": 3
+      },
+      "expected": 3,
+      "computed": 3.0,
+      "claim_ids": [
+        "T26"
+      ],
+      "ok": true,
+      "detail": "computed=3.000000, expected=3, abs_diff=0.00e+00, rel_diff=0.00e+00"
+    },
+    {
+      "name": "app_v_pairs_k_4",
+      "description": "pairs(k=4) = 6",
+      "formula": "k * (k - 1) // 2",
+      "params": {
+        "k": 4
+      },
+      "expected": 6,
+      "computed": 6.0,
+      "claim_ids": [
+        "T26"
+      ],
+      "ok": true,
+      "detail": "computed=6.000000, expected=6, abs_diff=0.00e+00, rel_diff=0.00e+00"
+    },
+    {
+      "name": "app_v_pairs_k_5",
+      "description": "pairs(k=5) = 10",
+      "formula": "k * (k - 1) // 2",
+      "params": {
+        "k": 5
+      },
+      "expected": 10,
+      "computed": 10.0,
+      "claim_ids": [
+        "T26"
+      ],
+      "ok": true,
+      "detail": "computed=10.000000, expected=10, abs_diff=0.00e+00, rel_diff=0.00e+00"
+    },
+    {
+      "name": "app_v_pairs_k_6",
+      "description": "pairs(k=6) = 15",
+      "formula": "k * (k - 1) // 2",
+      "params": {
+        "k": 6
+      },
+      "expected": 15,
+      "computed": 15.0,
+      "claim_ids": [
+        "T26"
+      ],
+      "ok": true,
+      "detail": "computed=15.000000, expected=15, abs_diff=0.00e+00, rel_diff=0.00e+00"
+    },
+    {
+      "name": "app_v_pairs_k_8",
+      "description": "pairs(k=8) = 28",
+      "formula": "k * (k - 1) // 2",
+      "params": {
+        "k": 8
+      },
+      "expected": 28,
+      "computed": 28.0,
+      "claim_ids": [
+        "T26"
+      ],
+      "ok": true,
+      "detail": "computed=28.000000, expected=28, abs_diff=0.00e+00, rel_diff=0.00e+00"
+    },
+    {
+      "name": "app_v_pairs_k_10",
+      "description": "pairs(k=10) = 45",
+      "formula": "k * (k - 1) // 2",
+      "params": {
+        "k": 10
+      },
+      "expected": 45,
+      "computed": 45.0,
+      "claim_ids": [
+        "T26"
+      ],
+      "ok": true,
+      "detail": "computed=45.000000, expected=45, abs_diff=0.00e+00, rel_diff=0.00e+00"
+    },
+    {
+      "name": "app_w_within_cross_ratio",
+      "description": "App W: within-cat (0.328) / cross-cat (0.253) = 1.30",
+      "formula": "within / cross",
+      "params": {
+        "within": 0.328,
+        "cross": 0.253
+      },
+      "expected": 1.3,
+      "computed": 1.2964426877470356,
+      "claim_ids": [
+        "T8",
+        "T9",
+        "T10"
+      ],
+      "ok": true,
+      "detail": "computed=1.296443, expected=1.3, abs_diff=3.56e-03, rel_diff=2.74e-03"
+    },
+    {
+      "name": "constitution_pairs_combinatorial",
+      "description": "C25: 20 principles produce 20*19/2 = 190 pairs",
+      "formula": "n * (n - 1) // 2",
+      "params": {
+        "n": 20
+      },
+      "expected": 190,
+      "computed": 190.0,
+      "claim_ids": [
+        "C25"
+      ],
+      "ok": true,
+      "detail": "computed=190.000000, expected=190, abs_diff=0.00e+00, rel_diff=0.00e+00"
+    },
+    {
+      "name": "hard_negative_total",
+      "description": "C21: 100/100 + 0/100 = 200 total hard-negative trials",
+      "formula": "hits + misses",
+      "params": {
+        "hits": 100,
+        "misses": 100
+      },
+      "expected": 200,
+      "computed": 200.0,
+      "claim_ids": [
+        "C21"
+      ],
+      "ok": true,
+      "detail": "computed=200.000000, expected=200, abs_diff=0.00e+00, rel_diff=0.00e+00"
+    },
+    {
+      "name": "unconditional_pivot_rate",
+      "description": "T16/T17: 8/480 unconditional success = 1.67% (rounded to 1.7%)",
+      "formula": "100 * successes / total",
+      "params": {
+        "successes": 8,
+        "total": 480
+      },
+      "expected": 1.7,
+      "computed": 1.6666666666666667,
+      "claim_ids": [
+        "T16",
+        "T17"
+      ],
+      "ok": true,
+      "detail": "computed=1.666667, expected=1.7, abs_diff=3.33e-02, rel_diff=1.96e-02"
     }
   ]
 }
