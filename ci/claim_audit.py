@@ -289,25 +289,27 @@ IMPORTANT: list[dict] = [
     {"id": "I4", "description": "DeepSeek-Coder 93% tightness (joint with model name)", "patterns": [r"DeepSeek.*?Coder|DeepSeek-Coder", r"93\s*\\?%"], "match_mode": "joint", "match_window": 3},
     {"id": "I5", "description": "TinyLlama-1.1B L=0.031+/-0.011", "patterns": [r"TinyLlama", r"0\.031", r"0\.011"], "match_mode": "joint", "match_window": 3},
     {"id": "I6", "description": "TinyLlama-1.1B 84% tightness (joint with model name)", "patterns": [r"TinyLlama", r"84\s*\\?%"], "match_mode": "joint", "match_window": 3},
-    # Table 2: Regime Performance (I7-I10)
-    {"id": "I7", "description": "Control rho=0.05, 76%/24%", "patterns": [r"0\.05", r"76\s*\\?%", r"24\s*\\?%"]},
-    {"id": "I8", "description": "Low rho=0.20, 56%/44%", "patterns": [r"0\.20", r"56\s*\\?%", r"44\s*\\?%"]},
-    {"id": "I9", "description": "Moderate rho=0.40, 23%/77%", "patterns": [r"0\.40", r"23\s*\\?%", r"77\s*\\?%"]},
-    {"id": "I10", "description": "High rho=0.65, 2%/98%", "patterns": [r"0\.65", r"98\s*\\?%"]},
+    # Table 2: Regime Performance (I7-I10) — joint-context with tier label as anchor
+    {"id": "I7", "description": "Control rho=0.05, 76%/24% (joint)", "patterns": [r"[Cc]ontrol", r"0\.05", r"76\s*\\?%"], "match_mode": "joint", "match_window": 5},
+    {"id": "I8", "description": "Low rho=0.20, 56%/44% (joint)", "patterns": [r"\bLow\b", r"0\.20", r"56\s*\\?%"], "match_mode": "joint", "match_window": 5},
+    {"id": "I9", "description": "Moderate rho=0.40, 23%/77% (joint)", "patterns": [r"[Mm]oderate", r"0\.40", r"23\s*\\?%"], "match_mode": "joint", "match_window": 5},
+    {"id": "I10", "description": "High rho=0.65, 2%/98% (joint)", "patterns": [r"\bHigh\b", r"0\.65", r"98\s*\\?%"], "match_mode": "joint", "match_window": 5},
     # Table 3: Feasibility Boundary (I11-I15)
     {"id": "I11", "description": "rho=0.0 -> delta=1.4142", "patterns": [r"1\.4142"]},
     {"id": "I12", "description": "rho=0.3 -> delta=1.6903", "patterns": [r"1\.6903"]},
     {"id": "I13", "description": "rho=0.5 -> delta=2.0000", "patterns": [r"2\.0000"]},
     {"id": "I14", "description": "rho=0.7 -> delta=2.5820", "patterns": [r"2\.5820"]},
     {"id": "I15", "description": "rho=0.9 -> delta=4.4721", "patterns": [r"4\.4721"]},
-    # Table 4: Claude Family (I16-I22)
-    {"id": "I16", "description": "haiku-3 ratio 2.5x", "patterns": [r"2\.5\s*(?:\\times|x|\$\\times\$)", r"haiku[-\s]?3"]},
-    {"id": "I17", "description": "sonnet-4 ratio 4.4x", "patterns": [r"4\.4\s*(?:\\times|x|\$\\times\$)", r"sonnet[-\s]?4"]},
-    {"id": "I18", "description": "opus-4 ratio 22.7x", "patterns": [r"22\.7\s*(?:\\times|x|\$\\times\$)"]},
-    {"id": "I19", "description": "opus-4.1 ratio 26.4x", "patterns": [r"26\.4\s*(?:\\times|x|\$\\times\$)"]},
-    {"id": "I20", "description": "haiku-4.5 ratio 23.3x", "patterns": [r"23\.3\s*(?:\\times|x|\$\\times\$)"]},
-    {"id": "I21", "description": "sonnet-4.5 ratio 23.8x", "patterns": [r"23\.8\s*(?:\\times|x|\$\\times\$)"]},
-    {"id": "I22", "description": "opus-4.5 ratio 4.8x", "patterns": [r"4\.8\s*(?:\\times|x|\$\\times\$)"]},
+    # Table 4: Claude Family (I16-I22) — joint-context with model name anchor.
+    # The ratio decimals (22.7, 26.4, 23.3, 23.8, 4.8) are already specific
+    # but joint mode ensures they live in the right model's row.
+    {"id": "I16", "description": "haiku-3 ratio 2.5x (joint)", "patterns": [r"haiku[-\s]?3\b", r"2\.5\s*(?:\\times|x|\$\\times\$)"], "match_mode": "joint", "match_window": 3},
+    {"id": "I17", "description": "sonnet-4 ratio 4.4x (joint)", "patterns": [r"sonnet[-\s]?4\b", r"4\.4\s*(?:\\times|x|\$\\times\$)"], "match_mode": "joint", "match_window": 3},
+    {"id": "I18", "description": "opus-4 ratio 22.7x (joint)", "patterns": [r"opus[-\s]?4\b", r"22\.7\s*(?:\\times|x|\$\\times\$)"], "match_mode": "joint", "match_window": 3},
+    {"id": "I19", "description": "opus-4.1 ratio 26.4x (joint)", "patterns": [r"opus[-\s]?4\.1", r"26\.4\s*(?:\\times|x|\$\\times\$)"], "match_mode": "joint", "match_window": 3},
+    {"id": "I20", "description": "haiku-4.5 ratio 23.3x (joint)", "patterns": [r"haiku[-\s]?4\.5", r"23\.3\s*(?:\\times|x|\$\\times\$)"], "match_mode": "joint", "match_window": 3},
+    {"id": "I21", "description": "sonnet-4.5 ratio 23.8x (joint)", "patterns": [r"sonnet[-\s]?4\.5", r"23\.8\s*(?:\\times|x|\$\\times\$)"], "match_mode": "joint", "match_window": 3},
+    {"id": "I22", "description": "opus-4.5 ratio 4.8x (joint)", "patterns": [r"opus[-\s]?4\.5", r"4\.8\s*(?:\\times|x|\$\\times\$)"], "match_mode": "joint", "match_window": 3},
     # Table 5: Embedding Analysis (I23-I25)
     {"id": "I23", "description": "MiniLM-L6-v2 rho_max=0.12+/-0.02", "patterns": [r"0\.12", r"0\.02", r"MiniLM"]},
     {"id": "I24", "description": "mpnet-base-v2 rho_max=0.18+/-0.03", "patterns": [r"0\.18", r"0\.03", r"mpnet"]},
@@ -325,18 +327,20 @@ IMPORTANT: list[dict] = [
     {"id": "I33", "description": "k=4 -> delta=2.0000", "patterns": [r"2\.0000"]},
     {"id": "I34", "description": "k=5 -> delta=2.2361", "patterns": [r"2\.2361"]},
     {"id": "I35", "description": "k=8 -> delta=2.8284", "patterns": [r"2\.8284"]},
-    # Table 11: Baselines (I36-I41)
-    {"id": "I36", "description": "One-shot: 5% pass, 256 tokens, 1.0x", "patterns": [r"5\s*\\?%", r"256"], "weak_ok": True},
-    {"id": "I37", "description": "Staged (always): 18% pass, 512 tokens, 0.5x", "patterns": [r"18\s*\\?%", r"512"], "weak_ok": True},
-    {"id": "I38", "description": "Best-of-4: 12% pass, 1024 tokens, 0.25x", "patterns": [r"12\s*\\?%", r"1024"]},
-    {"id": "I39", "description": "Self-refine: 15% pass, 640 tokens, 0.4x", "patterns": [r"15\s*\\?%", r"640"], "weak_ok": True},
-    {"id": "I40", "description": "Geometric router: 18% pass, 384 tokens, 0.67x", "patterns": [r"384", r"0\.67"]},
-    {"id": "I41", "description": "Oracle: 21% pass, 320 tokens, 0.8x", "patterns": [r"21\s*\\?%", r"320"], "weak_ok": True},
-    # Table 12: Transfer (I42-I45)
-    {"id": "I42", "description": "Code: 100% router agree, 1.8% regret", "patterns": [r"1\.8\s*\\?%"]},
-    {"id": "I43", "description": "JSON-NL: 94% router, +2% delta, 2.1% regret", "patterns": [r"2\.1\s*\\?%", r"JSON[-\s]?NL"]},
-    {"id": "I44", "description": "IF-DSL: 91% router, -1% delta, 2.4% regret", "patterns": [r"2\.4\s*\\?%", r"IF[-\s]?DSL"]},
-    {"id": "I45", "description": "Bytebeat: 88% router, +1% delta, 3.1% regret", "patterns": [r"3\.1\s*\\?%", r"[Bb]ytebeat"]},
+    # Table 11: Baselines (I36-I41) — joint-context with protocol name anchor.
+    # Token counts (256/512/1024/640/384/320) and pass percentages
+    # individually look weak but co-occur with the protocol label in the row.
+    {"id": "I36", "description": "One-shot: 5% pass, 256 tokens (joint)", "patterns": [r"[Oo]ne[-\s]?shot", r"5\s*\\?%", r"256"], "match_mode": "joint", "match_window": 3},
+    {"id": "I37", "description": "Staged (always): 18% pass, 512 tokens (joint)", "patterns": [r"[Ss]taged", r"18\s*\\?%", r"512"], "match_mode": "joint", "match_window": 3},
+    {"id": "I38", "description": "Best-of-4: 12% pass, 1024 tokens (joint)", "patterns": [r"[Bb]est[-\s]?of[-\s]?4", r"12\s*\\?%", r"1024"], "match_mode": "joint", "match_window": 3},
+    {"id": "I39", "description": "Self-refine: 15% pass, 640 tokens (joint)", "patterns": [r"[Ss]elf[-\s]?refine", r"15\s*\\?%", r"640"], "match_mode": "joint", "match_window": 3},
+    {"id": "I40", "description": "Geometric router: 18% pass, 384 tokens, 0.67x (joint)", "patterns": [r"[Gg]eometric", r"384", r"0\.67"], "match_mode": "joint", "match_window": 3},
+    {"id": "I41", "description": "Oracle: 21% pass, 320 tokens (joint)", "patterns": [r"[Oo]racle", r"21\s*\\?%", r"320"], "match_mode": "joint", "match_window": 3},
+    # Table 12: Transfer (I42-I45) — joint-context with domain anchor
+    {"id": "I42", "description": "Code: 100% router agree, 1.8% regret (joint)", "patterns": [r"[Cc]ode", r"1\.8\s*\\?%"], "match_mode": "joint", "match_window": 3},
+    {"id": "I43", "description": "JSON-NL: 94% router, +2% delta, 2.1% regret (joint)", "patterns": [r"JSON[-\s]?NL", r"2\.1\s*\\?%"], "match_mode": "joint", "match_window": 3},
+    {"id": "I44", "description": "IF-DSL: 91% router, -1% delta, 2.4% regret (joint)", "patterns": [r"IF[-\s]?DSL", r"2\.4\s*\\?%"], "match_mode": "joint", "match_window": 3},
+    {"id": "I45", "description": "Bytebeat: 88% router, +1% delta, 3.1% regret (joint)", "patterns": [r"[Bb]ytebeat", r"3\.1\s*\\?%"], "match_mode": "joint", "match_window": 3},
     # Hyperparameters (I46-I51)
     {"id": "I46", "description": "Token budgets: 128, 192, 256, 384, 512", "patterns": [r"128", r"192", r"256", r"384", r"512"], "weak_ok": True},
     {"id": "I47", "description": "Sample size N=60 per condition (main)", "patterns": [r"N\s*[={]+\s*60|N\}?\s*=\s*60"]},

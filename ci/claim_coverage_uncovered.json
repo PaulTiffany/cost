@@ -2,24 +2,12 @@
   "paper_path": "C:\\src\\NeurIPS\\paper\\main.tex",
   "summary": {
     "total_numeric_tokens": 1525,
-    "covered": 1032,
-    "uncovered_raw": 493,
-    "uncovered_deduped": 488,
-    "coverage_percent": 67.7
+    "covered": 1081,
+    "uncovered_raw": 444,
+    "uncovered_deduped": 440,
+    "coverage_percent": 70.9
   },
   "uncovered": [
-    {
-      "line_no": 69,
-      "value": "2",
-      "context": "nto stages, or reject. Regret is under $2\\%$, errors are fail-safe (over-staging,",
-      "section": "preamble"
-    },
-    {
-      "line_no": 116,
-      "value": "2",
-      "context": "eometry \\citep{fliege2000steepest}; ${<}2\\%$ regret vs oracle (Appendix~\\ref{app:",
-      "section": "paragraph: The Diagonal Cost Bound."
-    },
     {
       "line_no": 189,
       "value": "0.5",
@@ -129,48 +117,6 @@
       "section": "section: Staged Control as Geometric Solution"
     },
     {
-      "line_no": 347,
-      "value": "1",
-      "context": "op:convergence}) when per-step cost ${<}1$.",
-      "section": "section: Staged Control as Geometric Solution"
-    },
-    {
-      "line_no": 374,
-      "value": "0",
-      "context": "to machine precision across $\\rho \\in \\{0, 0.3, 0.5, 0.7, 0.9\\}$ (Table~\\ref{tab:",
-      "section": "subsection: Flagship: Exact Bounds"
-    },
-    {
-      "line_no": 374,
-      "value": "0.3",
-      "context": "machine precision across $\\rho \\in \\{0, 0.3, 0.5, 0.7, 0.9\\}$ (Table~\\ref{tab:feasi",
-      "section": "subsection: Flagship: Exact Bounds"
-    },
-    {
-      "line_no": 374,
-      "value": "0.5",
-      "context": "ne precision across $\\rho \\in \\{0, 0.3, 0.5, 0.7, 0.9\\}$ (Table~\\ref{tab:feasibilit",
-      "section": "subsection: Flagship: Exact Bounds"
-    },
-    {
-      "line_no": 374,
-      "value": "0.7",
-      "context": "ecision across $\\rho \\in \\{0, 0.3, 0.5, 0.7, 0.9\\}$ (Table~\\ref{tab:feasibility}, A",
-      "section": "subsection: Flagship: Exact Bounds"
-    },
-    {
-      "line_no": 374,
-      "value": "0.9",
-      "context": "on across $\\rho \\in \\{0, 0.3, 0.5, 0.7, 0.9\\}$ (Table~\\ref{tab:feasibility}, App~\\r",
-      "section": "subsection: Flagship: Exact Bounds"
-    },
-    {
-      "line_no": 408,
-      "value": "1",
-      "context": "Tier & $\\hat{\\rho}$ & 1-shot & Staged & Failure \\\\",
-      "section": "paragraph: Geometric floor."
-    },
-    {
       "line_no": 501,
       "value": "3",
       "context": "} predicts $\\delta_{\\min} \\propto \\sqrt{3/(1{-}0.36)} \\approx 2.17\\times$ vs.\\ $\\",
@@ -207,46 +153,10 @@
       "section": "paragraph: Frontier Transfer and Generalization."
     },
     {
-      "line_no": 632,
-      "value": "7",
-      "context": "\\caption{Claude family (7 models) on self-referential constraints",
-      "section": "paragraph: Self-Referential Constraints."
-    },
-    {
-      "line_no": 632,
-      "value": "4.5",
-      "context": "Ratio = displacement improvement. Opus-4.5's lower ratio reflects strong one-shot",
-      "section": "paragraph: Self-Referential Constraints."
-    },
-    {
-      "line_no": 632,
-      "value": "191",
-      "context": "io reflects strong one-shot ($|\\Delta|$=191 vs 764 for opus-4.1), and staging still",
-      "section": "paragraph: Self-Referential Constraints."
-    },
-    {
-      "line_no": 632,
-      "value": "764",
-      "context": "ects strong one-shot ($|\\Delta|$=191 vs 764 for opus-4.1), and staging still helps.",
-      "section": "paragraph: Self-Referential Constraints."
-    },
-    {
-      "line_no": 632,
-      "value": "4.1",
-      "context": "ne-shot ($|\\Delta|$=191 vs 764 for opus-4.1), and staging still helps.}",
-      "section": "paragraph: Self-Referential Constraints."
-    },
-    {
       "line_no": 695,
       "value": "1",
       "context": "Satisfaction patterns $s(x) \\in \\{-1,+1\\}^k$ yield at most $2^k$ regimes.",
       "section": "subsection: Chart-rank lemmas (relocated from body \\S\\ref{sec:setup"
-    },
-    {
-      "line_no": 742,
-      "value": "0.96",
-      "context": "``should''). Rank correlation $r_s \\geq 0.96$ confirms the geometric signal is robus",
-      "section": "paragraph: Constraint Extraction Robustness."
     },
     {
       "line_no": 787,
@@ -259,42 +169,6 @@
       "value": "3",
       "context": "aints (e.g., ``recipe JSON with exactly 3 ingredients'' $\\wedge$ ``include all co",
       "section": "paragraph: Implication."
-    },
-    {
-      "line_no": 876,
-      "value": "1",
-      "context": "e code.'' \\quad ($k_{\\text{explicit}}{=}1$; implicit constraints: syntax, coheren",
-      "section": "paragraph: Implicit $k$ and the ``production-grade'' illusion."
-    },
-    {
-      "line_no": 877,
-      "value": "1",
-      "context": "e code.'' \\quad ($k_{\\text{explicit}}{=}1$, but ``production-grade'' compresses $",
-      "section": "paragraph: Implicit $k$ and the ``production-grade'' illusion."
-    },
-    {
-      "line_no": 877,
-      "value": "6",
-      "context": "``production-grade'' compresses ${\\sim}6$ implicit constraints: test coverage, t",
-      "section": "paragraph: Implicit $k$ and the ``production-grade'' illusion."
-    },
-    {
-      "line_no": 880,
-      "value": "3",
-      "context": "pells them out. The difference: prompt~(3) makes $k$ visible to $\\hat{\\rho}$, ena",
-      "section": "paragraph: Implicit $k$ and the ``production-grade'' illusion."
-    },
-    {
-      "line_no": 880,
-      "value": "2",
-      "context": "nabling pre-generation routing. Prompt~(2) hides $k$ behind a single phrase, so t",
-      "section": "paragraph: Implicit $k$ and the ``production-grade'' illusion."
-    },
-    {
-      "line_no": 880,
-      "value": "1",
-      "context": "iff is invisible until failure. Prompt~(1) hides it further.",
-      "section": "paragraph: Implicit $k$ and the ``production-grade'' illusion."
     },
     {
       "line_no": 930,
@@ -319,12 +193,6 @@
       "value": "1",
       "context": "1-shot & $\\Delta$ & 1-shot & $\\Delta$ & 1-shot & $\\Delta$ \\\\",
       "section": "paragraph: Per-task validation (relocated from \\S\\ref{sec:staging"
-    },
-    {
-      "line_no": 957,
-      "value": "1",
-      "context": "Tokens $T$ & 1-shot & Staged & $\\Delta$ \\\\",
-      "section": "section: Token Budget ($\\delta$) Experiment: Per-Model Breakdown"
     },
     {
       "line_no": 983,
@@ -429,22 +297,10 @@
       "section": "paragraph: Prompt 3: Harmless $\\leftrightarrow$ Autonomy."
     },
     {
-      "line_no": 1024,
-      "value": "4",
-      "context": "\\paragraph{Prompt 4: Control (Helpful only).}",
-      "section": "paragraph: Prompt 4: Control (Helpful only)."
-    },
-    {
       "line_no": 1031,
       "value": "5",
       "context": "\\paragraph{Prompt 5a: Simultaneous.}",
       "section": "paragraph: Prompt 5a: Simultaneous."
-    },
-    {
-      "line_no": 1038,
-      "value": "5",
-      "context": "\\paragraph{Prompt 5b: Staged.}",
-      "section": "paragraph: Prompt 5b: Staged."
     },
     {
       "line_no": 1039,
@@ -463,12 +319,6 @@
       "value": "3",
       "context": "are the risks or downsides of each?'' (3) ``How certain is the evidence for thes",
       "section": "paragraph: Prompt 5b: Staged."
-    },
-    {
-      "line_no": 1071,
-      "value": "1",
-      "context": "Tier & $\\rho$ & Chars & 1-shot & Staged & Format\\% & \\textbf{Fail",
-      "section": "paragraph: Tier Structure."
     },
     {
       "line_no": 1086,
@@ -1701,12 +1551,6 @@
       "section": "subsection: Algorithmic Implications"
     },
     {
-      "line_no": 1673,
-      "value": "0",
-      "context": "he same conflict geometry ($\\rho_{ij} < 0$), but at different stages: they reduce",
-      "section": "subsection: Algorithmic Implications"
-    },
-    {
       "line_no": 1681,
       "value": "1",
       "context": "e optimum. Let $\\mathcal{A} \\subseteq \\{1,\\ldots,k\\}$ denote the active set. Then",
@@ -1887,12 +1731,6 @@
       "section": "subsection: Trajectories, Budget, and Utilized Budget"
     },
     {
-      "line_no": 1832,
-      "value": "0",
-      "context": "{R}^d \\to \\mathbb{R}$, where $r_i(z)\\le 0$ means constraint $i$ is satisfied.",
-      "section": "subsection: Bounded Curvature and Local Linearity"
-    },
-    {
       "line_no": 1842,
       "value": "2",
       "context": "),\\Delta\\rangle + \\frac{K}{2}\\|\\Delta\\|^2$.",
@@ -1932,18 +1770,6 @@
       "line_no": 1857,
       "value": "1",
       "context": "stage $s$ prioritizes constraint $i_{s+1}$ with per-stage budget $\\|\\Delta^{(s)}",
-      "section": "subsection: One-Shot Diagonal Cost vs Staged Parameterization"
-    },
-    {
-      "line_no": 1861,
-      "value": "0",
-      "context": "staged policy satisfies $\\|z^{(S)}-z^{(0)}\\| \\le \\sum_{s=0}^{S-1}\\delta_s$.",
-      "section": "subsection: One-Shot Diagonal Cost vs Staged Parameterization"
-    },
-    {
-      "line_no": 1861,
-      "value": "1",
-      "context": "$\\|z^{(S)}-z^{(0)}\\| \\le \\sum_{s=0}^{S-1}\\delta_s$.",
       "section": "subsection: One-Shot Diagonal Cost vs Staged Parameterization"
     },
     {
@@ -2181,18 +2007,6 @@
       "section": "subsection: Complete Hyperparameter Specification"
     },
     {
-      "line_no": 1976,
-      "value": "5",
-      "context": "Absolute pass rates vary by $\\pm 5$\\%, but the ordering (control $>$ low $",
-      "section": "paragraph: Template Variation."
-    },
-    {
-      "line_no": 1982,
-      "value": "4.5",
-      "context": "tion{High-$k$ Frontier Validation (Opus 4.5)}\\label{app:high_k_opus}",
-      "section": "subsection: High-$k$ Frontier Validation (Opus 4.5)"
-    },
-    {
       "line_no": 1984,
       "value": "4.5",
       "context": "Remark~\\ref{rem:high_k} on Claude Opus 4.5 with $k{=}8$--$10$ constraints using de",
@@ -2203,30 +2017,6 @@
       "value": "10",
       "context": "gh_k} on Claude Opus 4.5 with $k{=}8$--$10$ constraints using deterministic AST-ba",
       "section": "subsection: High-$k$ Frontier Validation (Opus 4.5)"
-    },
-    {
-      "line_no": 1987,
-      "value": "0.5",
-      "context": "ture but matched on $\\hat{\\rho}{\\approx}0.5$:",
-      "section": "paragraph: Tasks."
-    },
-    {
-      "line_no": 1990,
-      "value": "0.50",
-      "context": "{Hard-negative} ($k{=}8$, $\\hat{\\rho}{=}0.50$): reverse-string with near-identical c",
-      "section": "paragraph: Tasks."
-    },
-    {
-      "line_no": 1990,
-      "value": "15",
-      "context": "dentical constraint descriptions (``max 15 lines'' / ``at most 15 lines''). High e",
-      "section": "paragraph: Tasks."
-    },
-    {
-      "line_no": 1990,
-      "value": "15",
-      "context": "criptions (``max 15 lines'' / ``at most 15 lines''). High embedding similarity but",
-      "section": "paragraph: Tasks."
     },
     {
       "line_no": 1991,
@@ -2385,12 +2175,6 @@
       "section": "paragraph: Step-by-step for new constraint classes (no gradient access required)."
     },
     {
-      "line_no": 2123,
-      "value": "2",
-      "context": "\\bar{e}_j)$. Use max pairwise for $k > 2$. \\emph{Note:} negation aligns sign wit",
-      "section": "paragraph: Step-by-step for new constraint classes (no gradient access required)."
-    },
-    {
       "line_no": 2139,
       "value": "0",
       "context": "Exemplar embedding (one-time) & 0 & 50ms/constraint \\\\",
@@ -2499,18 +2283,6 @@
       "section": "subsection: Reproducible Implementation"
     },
     {
-      "line_no": 2255,
-      "value": "3",
-      "context": "ted by a perfect fifth (frequency ratio 3:2, the most consonant interval after th",
-      "section": "subsection: Constitution Wheel as Circle of Fifths"
-    },
-    {
-      "line_no": 2255,
-      "value": "2",
-      "context": "d by a perfect fifth (frequency ratio 3:2, the most consonant interval after the",
-      "section": "subsection: Constitution Wheel as Circle of Fifths"
-    },
-    {
       "line_no": 2265,
       "value": "0",
       "context": "Helpful & C & 0 & Root (tonic) \\\\",
@@ -2553,30 +2325,6 @@
       "section": "paragraph: The Mapping."
     },
     {
-      "line_no": 2277,
-      "value": "2",
-      "context": "elpful $\\leftrightarrow$ Honest}: Major 2nd (2 semitones) --- \\emph{moderate tens",
-      "section": "paragraph: The Mapping."
-    },
-    {
-      "line_no": 2277,
-      "value": "2",
-      "context": "l $\\leftrightarrow$ Honest}: Major 2nd (2 semitones) --- \\emph{moderate tension}",
-      "section": "paragraph: The Mapping."
-    },
-    {
-      "line_no": 2278,
-      "value": "2",
-      "context": "less $\\leftrightarrow$ Autonomy}: Major 2nd (2 semitones) --- \\emph{moderate tens",
-      "section": "paragraph: The Mapping."
-    },
-    {
-      "line_no": 2278,
-      "value": "2",
-      "context": "$\\leftrightarrow$ Autonomy}: Major 2nd (2 semitones) --- \\emph{moderate tension}",
-      "section": "paragraph: The Mapping."
-    },
-    {
       "line_no": 2279,
       "value": "5",
       "context": "st $\\leftrightarrow$ Autonomy}: Perfect 5th (7 semitones) --- \\emph{consonant}",
@@ -2587,12 +2335,6 @@
       "value": "7",
       "context": "leftrightarrow$ Autonomy}: Perfect 5th (7 semitones) --- \\emph{consonant}",
       "section": "paragraph: The Mapping."
-    },
-    {
-      "line_no": 2283,
-      "value": "6",
-      "context": "(perfect fifth). Positions separated by 6 steps create the tritone (maximally dis",
-      "section": "paragraph: Why This Works."
     },
     {
       "line_no": 2309,
@@ -2635,18 +2377,6 @@
       "value": "7",
       "context": "\\paragraph{Task.} Rate each clip on a 7-point roughness scale.",
       "section": "paragraph: Task."
-    },
-    {
-      "line_no": 2366,
-      "value": "1",
-      "context": "& & 1-shot & Staged & 1-shot & Staged & 1-sho",
-      "section": "paragraph: IF-DSL Results."
-    },
-    {
-      "line_no": 2366,
-      "value": "1",
-      "context": "& & 1-shot & Staged & 1-shot & Staged & 1-shot & Staged \\\\",
-      "section": "paragraph: IF-DSL Results."
     },
     {
       "line_no": 2411,
@@ -2791,24 +2521,6 @@
       "value": "1",
       "context": "n}: the core claim of this paper. The $(1-p)^{\\binom{k}{2}}$ structure is the pro",
       "section": "paragraph: Implication."
-    },
-    {
-      "line_no": 2487,
-      "value": "3",
-      "context": "Hardcoded Off & 3 & 0.136 & 0.193 \\\\",
-      "section": "paragraph: Results."
-    },
-    {
-      "line_no": 2487,
-      "value": "0.136",
-      "context": "Hardcoded Off & 3 & 0.136 & 0.193 \\\\",
-      "section": "paragraph: Results."
-    },
-    {
-      "line_no": 2487,
-      "value": "0.193",
-      "context": "Hardcoded Off & 3 & 0.136 & 0.193 \\\\",
-      "section": "paragraph: Results."
     },
     {
       "line_no": 2490,

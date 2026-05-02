@@ -3,7 +3,7 @@
   "provenance": {
     "paper_title": "The Cost of Cacophony: Geometric Limits on Multi-Constraint Alignment",
     "venue": "NeurIPS 2026",
-    "generated_at": "2026-05-02T14:54:59",
+    "generated_at": "2026-05-02T15:01:31",
     "main_tex_path": "paper\\main.tex",
     "main_tex_sha256": "ead744fa65b868e4e98a7b55ca980c4fa336f21e14e708b16414fe6b45a30bc2",
     "main_tex_mtime": "2026-05-02T13:12:58",
@@ -11,7 +11,7 @@
     "main_pdf_size": 1009654,
     "main_pdf_mtime": "2026-05-02T13:35:40",
     "claim_audit_md_path": "CLAIM_AUDIT.md",
-    "claim_audit_md_sha256": "12d507372ac5c472925f1c55465eab73c5534a0969e429ed054ebcadaff41c72"
+    "claim_audit_md_sha256": "49be99f1800a76c7e19fe44670739a9dc91ec6a939bd08960e91c912d284526a"
   },
   "verdict": {
     "verdict": "PASS",
@@ -52,10 +52,10 @@
       "status": "PASS",
       "summary": {
         "total_numeric_tokens": 1525,
-        "covered": 1032,
-        "uncovered_raw": 493,
-        "uncovered_deduped": 488,
-        "coverage_percent": 67.7
+        "covered": 1081,
+        "uncovered_raw": 444,
+        "uncovered_deduped": 440,
+        "coverage_percent": 70.9
       },
       "notes": ""
     },
@@ -65,8 +65,8 @@
       "return_code": 0,
       "status": "PASS",
       "summary": {
-        "checks_total": 7,
-        "checks_passed": 7,
+        "checks_total": 8,
+        "checks_passed": 8,
         "checks_failed": 0,
         "figures_in_use": 7,
         "first_failure": null
@@ -81,9 +81,9 @@
       "summary": {
         "figures_checked": 6,
         "total_numerics": 199,
-        "total_covered": 117,
-        "total_uncovered": 36,
-        "coverage_percent": 58.8,
+        "total_covered": 120,
+        "total_uncovered": 34,
+        "coverage_percent": 60.3,
         "per_figure": [
           {
             "name": "algorithm1_storyboard.pdf",
@@ -102,13 +102,13 @@
           },
           {
             "name": "constrained_decoding.pdf",
-            "coverage_percent": 85.71428571428571,
-            "uncovered_count": 1
+            "coverage_percent": 100.0,
+            "uncovered_count": 0
           },
           {
             "name": "cross_model_cliff.pdf",
-            "coverage_percent": 97.5,
-            "uncovered_count": 1
+            "coverage_percent": 100.0,
+            "uncovered_count": 0
           },
           {
             "name": "soft_constraint_cliff.pdf",

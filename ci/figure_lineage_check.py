@@ -153,6 +153,54 @@ def check_outputs_secondary_exist(manifest: dict) -> CheckResult:
     )
 
 
+def check_data_paths_in_script(manifest: dict) -> CheckResult:
+    """Static-grep: every declared `data` path's filename should appear
+    somewhere in its declaring script's source.
+
+    Catches the failure mode where a script gets rewritten to read a
+    different file but the manifest still claims the old dependency.
+    Without this check, L4 only verifies file existence — the binding
+    between script and data is unverified.
+
+    Match strategy: the basename of each data path (e.g.
+    'code_constraint_results.json') must appear textually in the
+    script source. We use basename rather than full path because
+    scripts often build paths via REPO_ROOT / 'subdir' / 'name.json',
+    so the literal full path string isn't there.
+
+    Skipped for figures with `data_known: false` (data is a script
+    arg, not statically declarable).
+    """
+    bad: list[str] = []
+    n_checked = 0
+    for name, fig in manifest["figures"].items():
+        if fig.get("tikz_source"):
+            continue
+        if not fig.get("data_known"):
+            continue
+        data_paths = fig.get("data", [])
+        if not data_paths:
+            continue
+        script_path = resolve(fig["script"])
+        if not script_path.exists():
+            continue  # already reported by A2
+        try:
+            script_src = script_path.read_text(encoding="utf-8", errors="replace")
+        except Exception as exc:
+            bad.append(f"{name}: could not read script source: {exc}")
+            continue
+        for dpath in data_paths:
+            n_checked += 1
+            basename = Path(dpath).name
+            if basename not in script_src:
+                bad.append(f"{name}: declared data '{dpath}' (basename '{basename}') not referenced in {fig['script']}")
+    return CheckResult(
+        f"A5. All {n_checked} declared data dependencies are referenced in their script's source",
+        not bad,
+        "\n         ".join(bad) if bad else "every declared data file is grep-bound to its script",
+    )
+
+
 # ---------------------------------------------------------------------------
 # B. Manifest <-> main.tex
 # ---------------------------------------------------------------------------
@@ -274,6 +322,7 @@ def run_all(verbose: bool = False) -> list[CheckResult]:
         check_scripts_exist(manifest),
         check_data_files_exist(manifest),
         check_outputs_secondary_exist(manifest),
+        check_data_paths_in_script(manifest),
         check_no_orphan_paper_refs(manifest, paper_refs),
         check_no_orphan_manifest(manifest, paper_refs),
         check_mtime_freshness(manifest, verbose=verbose),
