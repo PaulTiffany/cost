@@ -365,7 +365,7 @@ Critique-revision \citep{bai2022constitutional,anthropic2025constitution} is the
 
 \section{Empirical Validation: 0/4{,}800 Smooth-Regime Refutations}\label{sec:empirical}
 
-Open-weight models (Qwen, DeepSeek, TinyLlama), deterministic verifiers, no API keys, no LLM-as-judge. Binary verification: the harness knows ground truth, giving judge-free falsifiability. Zeroth-order: feasibility only, no gradients. Table~\ref{tab:harness_suite} shows four harnesses (optimization, abstract syntax tree (AST) code, JSON-NL, signal domain-specific language (DSL)); $N{=}60$, bootstrap CIs. Cross-domain consistency validates the geometric account.
+Open-weight models (Qwen, DeepSeek, TinyLlama), deterministic verifiers, no API keys, no LLM-as-judge. Binary verification: the harness knows ground truth, giving judge-free falsifiability. Zeroth-order: feasibility only, no gradients. Table~\ref{tab:harness_suite} shows four harnesses (optimization, abstract syntax tree (AST) code, JSON-NL, signal domain-specific language (DSL)); $N{=}60$, bootstrap CIs. Cross-domain consistency validates the geometric account; forcing is on simultaneous satisfaction.
 
 \noindent\textbf{Judge-Agnostic Geometry.} Any constraint with scalar residual (human, LLM, rule-based) induces a halfspace \citep{fliege2000steepest}; the bound applies. We \emph{evaluate} with deterministic verifiers for decidable falsification. We \emph{route} fail-safe: without compatibility certificate, stage-not-fail-fast \citep{anthropic2025constitution} (over-staging costly but safe; wrong abstention is not).
 
