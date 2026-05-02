@@ -301,7 +301,7 @@
 | Bytebeat | `python supplementary/bridges/bytebeat_harness.py` | C22, I45, I70 |
 | IF-DSL | `python supplementary/bridges/if_dsl_harness.py` | C23, I44, I69 |
 | JSON-NL | `python supplementary/bridges/json_nl_experiment_v4.py` | C24, I43, I65 |
-| Charitable | `python supplementary/experiments/charitable_feasibility_simulation.py` | C12, I60, I61 |
+| Charitable | `python supplementary/bridges/charitable_feasibility_simulation.py` | C12, I60, I61 |
 
 ---
 

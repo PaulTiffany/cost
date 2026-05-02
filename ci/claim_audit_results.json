@@ -416,8 +416,24 @@
       "found": "OK",
       "locations": [
         {
-          "pattern": "r_s\\s*[={]+\\s*1\\.0",
+          "pattern": "r_s\\s*\\{?=\\}?\\s*1\\.0|r_s\\s*[={]+\\s*1\\.0",
           "hits": [
+            {
+              "line": 72,
+              "snippet": "The bound dictates control: a zeroth-order screening statistic (`$\\hat{\\rho}$') orders \\emph{which side of the cliff} a prompt lies on ($r_s{=}1.0$). Sequent..."
+            },
+            {
+              "line": 78,
+              "snippet": "Large language models (LLMs) can satisfy individual constraints (safety, helpfulness, format compliance) but performance can collapse when several constraint..."
+            },
+            {
+              "line": 122,
+              "snippet": "(4)~\\textbf{Regime Index:} $\\hat{\\rho}$ orders failure regimes ($r_s{=}1.0$; 94\\% router agreement), enabling fail-safe routing (Figure~\\ref{fig:feasibility_..."
+            },
+            {
+              "line": 126,
+              "snippet": "Boolean validation: regime structure, not magnitude ($r_s{=}1.0$; linear $r{\\approx}0.4$ expected; ordinal suffices, Appendix~\\ref{app:grad_r}). Four tiers t..."
+            },
             {
               "line": 236,
               "snippet": "\\caption{\\textbf{Embedding-derived $\\hat{\\rho}$ preserves the regime ordering associated with the bound.} The smallest eigenvalue $\\lambda_{\\min}(B_\\rho) = 1..."
@@ -429,6 +445,14 @@
             {
               "line": 404,
               "snippet": "\\caption{\\textbf{Calibration benchmark} ($r_s = 1.0$): failure rate increases monotonically with regime index $\\hat{\\rho}$. Aggregate across 4 models, $N$=24..."
+            },
+            {
+              "line": 493,
+              "snippet": "\\noindent\\textbf{Why 4 tiers:} $\\hat{\\rho}$ is continuous. Tiers bin for statistical power, isolating regime-ordering from within-tier variance. \\textbf{Not ..."
+            },
+            {
+              "line": 536,
+              "snippet": "Multi-constraint LLM behavior exhibits sharp regime structure: feasibility cliffs, not capability gradients. Three contributions: (1)~Diagonal Cost Bound (Th..."
             },
             {
               "line": 794,
@@ -1152,7 +1176,7 @@
       "found": "OK",
       "locations": [
         {
-          "pattern": "r_s\\s*(?:\\\\geq|>=|\\\\ge)\\s*0\\.94",
+          "pattern": "r_s\\s*\\{?(?:\\\\geq|>=|\\\\ge|=)\\}?\\s*0\\.94|r_s\\s*[={]+\\s*0\\.94",
           "hits": [
             {
               "line": 266,

@@ -95,7 +95,8 @@ CLAIMS: list[dict] = [
         "id": "C4",
         "description": r"$r_s = 1.0$ rank correlation (Table 2)",
         "patterns": [
-            r"r_s\s*[={]+\s*1\.0",
+            # Allow LaTeX collapsed form r_s{=}1.0 in addition to r_s = 1.0
+            r"r_s\s*\{?=\}?\s*1\.0|r_s\s*[={]+\s*1\.0",
         ],
     },
     {
@@ -193,7 +194,7 @@ CLAIMS: list[dict] = [
         "id": "C17",
         "description": r"$r_s \geq 0.94$ across encoders (Table 6)",
         "patterns": [
-            r"r_s\s*(?:\\geq|>=|\\ge)\s*0\.94",
+            r"r_s\s*\{?(?:\\geq|>=|\\ge|=)\}?\s*0\.94|r_s\s*[={]+\s*0\.94",
             r"0\.94",
         ],
     },
