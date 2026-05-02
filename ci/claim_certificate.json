@@ -1,0 +1,123 @@
+{
+  "schema_version": 1,
+  "provenance": {
+    "paper_title": "The Cost of Cacophony: Geometric Limits on Multi-Constraint Alignment",
+    "venue": "NeurIPS 2026",
+    "generated_at": "2026-05-02T14:04:38",
+    "main_tex_path": "paper\\main.tex",
+    "main_tex_sha256": "ead744fa65b868e4e98a7b55ca980c4fa336f21e14e708b16414fe6b45a30bc2",
+    "main_tex_mtime": "2026-05-02T13:12:58",
+    "main_pdf_path": "paper\\main.pdf",
+    "main_pdf_size": 1009654,
+    "main_pdf_mtime": "2026-05-02T13:35:40",
+    "claim_audit_md_path": "CLAIM_AUDIT.md",
+    "claim_audit_md_sha256": "6612f0791ba6df43211f62b4f8b13b04397eea15f86fb551c9904f1d50be477a"
+  },
+  "verdict": {
+    "verdict": "PASS",
+    "rationale": "all structural checks clean; coverage above thresholds"
+  },
+  "layers": [
+    {
+      "name": "L1_audit",
+      "script": "ci\\claim_audit.py",
+      "return_code": 0,
+      "status": "PASS",
+      "summary": {
+        "tier": "Tiers 1+2: critical+important (3 supplementary-only claims skipped)",
+        "total": 97,
+        "found_verbatim": 97,
+        "drift": 0,
+        "missing": 0
+      },
+      "notes": ""
+    },
+    {
+      "name": "L2_validator",
+      "script": "ci\\claim_audit_validator.py",
+      "return_code": 0,
+      "status": "PASS",
+      "summary": {
+        "checks_total": 13,
+        "checks_passed": 13,
+        "checks_failed": 0,
+        "first_failure": null
+      },
+      "notes": ""
+    },
+    {
+      "name": "L3_sweep",
+      "script": "ci\\claim_coverage_sweep.py",
+      "return_code": 0,
+      "status": "PASS",
+      "summary": {
+        "total_numeric_tokens": 1525,
+        "covered": 1012,
+        "uncovered_raw": 513,
+        "uncovered_deduped": 507,
+        "coverage_percent": 66.4
+      },
+      "notes": ""
+    },
+    {
+      "name": "L4_lineage",
+      "script": "ci\\figure_lineage_check.py",
+      "return_code": 0,
+      "status": "PASS",
+      "summary": {
+        "checks_total": 6,
+        "checks_passed": 6,
+        "checks_failed": 0,
+        "figures_in_use": 7,
+        "first_failure": null
+      },
+      "notes": ""
+    },
+    {
+      "name": "L5_figure_values",
+      "script": "ci\\figure_value_check.py",
+      "return_code": 0,
+      "status": "PASS",
+      "summary": {
+        "figures_checked": 6,
+        "total_numerics": 199,
+        "total_covered": 117,
+        "total_uncovered": 36,
+        "coverage_percent": 58.8,
+        "per_figure": [
+          {
+            "name": "algorithm1_storyboard.pdf",
+            "coverage_percent": 18.181818181818183,
+            "uncovered_count": 4
+          },
+          {
+            "name": "gram_eigendecomposition.pdf",
+            "coverage_percent": 20.8955223880597,
+            "uncovered_count": 17
+          },
+          {
+            "name": "per_task_correlation.pdf",
+            "coverage_percent": 80.64516129032258,
+            "uncovered_count": 8
+          },
+          {
+            "name": "constrained_decoding.pdf",
+            "coverage_percent": 85.71428571428571,
+            "uncovered_count": 1
+          },
+          {
+            "name": "cross_model_cliff.pdf",
+            "coverage_percent": 97.5,
+            "uncovered_count": 1
+          },
+          {
+            "name": "soft_constraint_cliff.pdf",
+            "coverage_percent": 0.0,
+            "uncovered_count": 5
+          }
+        ]
+      },
+      "notes": ""
+    }
+  ]
+}
