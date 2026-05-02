@@ -82,11 +82,14 @@ CLAIMS: list[dict] = [
     },
     {
         "id": "C2",
-        "description": r"$\delta_{\min} = \sqrt{k}$ orthogonal k-scaling (Theorem 3.4)",
+        "description": r"$\delta_{\min} = \sqrt{k}$ orthogonal k-scaling (joint, Theorem 3.4)",
         "patterns": [
             r"\\sqrt\s*\{\s*k\s*\}",
             r"orthogonal",
+            r"\\delta_\{\\min\}|delta_min",
         ],
+        "match_mode": "joint",
+        "match_window": 5,
     },
     {
         "id": "C3",
@@ -256,11 +259,14 @@ CLAIMS: list[dict] = [
     },
     {
         "id": "C23",
-        "description": r"0% IF-DSL at rho>=1.0 (Section 5.2)",
+        "description": r"0% IF-DSL at high rho (joint with 'IF-DSL' + '0%' + 'high' anchor, Section 5.2)",
         "patterns": [
             r"IF[-\s]?DSL",
-            r"\\rho\s*(?:\\geq|>=|\\ge)\s*1\.0|0\s*\\?%",
+            r"0\s*\\?%",
+            r"high",
         ],
+        "match_mode": "joint",
+        "match_window": 3,
     },
     {
         "id": "C24",
@@ -380,7 +386,7 @@ IMPORTANT: list[dict] = [
     {"id": "I66", "description": "App I: gradient-rho r~0.4, r_s=1.0", "patterns": [r"r\s*[={]+\s*0\.4|0\.4", r"r_s\s*[={]+\s*1\.0"]},
     {"id": "I67", "description": "App P: <10ms router latency", "patterns": [r"10\s*ms|<\s*10\\,?ms"]},
     {"id": "I68", "description": "App Q: AM 20-70Hz mapping", "patterns": [r"20.{0,5}70\s*Hz|20\\?-70"]},
-    {"id": "I69", "description": "App R: IF-DSL 0% at rho>=1.0", "patterns": [r"IF[-\s]?DSL"]},
+    {"id": "I69", "description": "App R: IF-DSL 0% at high rho (joint with '0%' + 'high' anchors)", "patterns": [r"IF[-\s]?DSL", r"0\s*\\?%", r"high"], "match_mode": "joint", "match_window": 3},
     {"id": "I70", "description": "App S: Bytebeat cliff at rho>=0.8", "patterns": [r"0\.8", r"[Bb]ytebeat"]},
     {"id": "I71", "description": "App U: <5min CPU, ~20h GPU", "patterns": [r"5\s*min(?:utes?)?|<\s*5", r"20\s*h(?:ours?)?|20\\,?h"]},
     {"id": "I72", "description": "App E: 5% vs 58%/71% conjunction (joint with 'conjunction' anchor)", "patterns": [r"[Cc]onjunction", r"58\s*\\?%", r"71\s*\\?%"], "match_mode": "joint", "match_window": 5},

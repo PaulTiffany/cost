@@ -2,10 +2,10 @@
   "paper_path": "C:\\src\\NeurIPS\\paper\\main.tex",
   "summary": {
     "total_numeric_tokens": 1525,
-    "covered": 1111,
-    "uncovered_raw": 414,
-    "uncovered_deduped": 410,
-    "coverage_percent": 72.9
+    "covered": 1140,
+    "uncovered_raw": 385,
+    "uncovered_deduped": 381,
+    "coverage_percent": 74.8
   },
   "uncovered": [
     {
@@ -79,30 +79,6 @@
       "value": "1",
       "context": "$O(k\\tau/m)$ vs.\\ diagonal $O(\\sqrt{k/(1{-}\\rho)}\\cdot\\tau/m)$; see proof in App",
       "section": "section: Staged Control as Geometric Solution"
-    },
-    {
-      "line_no": 501,
-      "value": "3",
-      "context": "} predicts $\\delta_{\\min} \\propto \\sqrt{3/(1{-}0.36)} \\approx 2.17\\times$ vs.\\ $\\",
-      "section": "paragraph: Geometric floor."
-    },
-    {
-      "line_no": 501,
-      "value": "1",
-      "context": "redicts $\\delta_{\\min} \\propto \\sqrt{3/(1{-}0.36)} \\approx 2.17\\times$ vs.\\ $\\sqr",
-      "section": "paragraph: Geometric floor."
-    },
-    {
-      "line_no": 501,
-      "value": "0.36",
-      "context": "cts $\\delta_{\\min} \\propto \\sqrt{3/(1{-}0.36)} \\approx 2.17\\times$ vs.\\ $\\sqrt{2}$ f",
-      "section": "paragraph: Geometric floor."
-    },
-    {
-      "line_no": 501,
-      "value": "2",
-      "context": "}0.36)} \\approx 2.17\\times$ vs.\\ $\\sqrt{2}$ for $k{=}2$.",
-      "section": "paragraph: Geometric floor."
     },
     {
       "line_no": 519,
@@ -277,18 +253,6 @@
       "value": "3",
       "context": "are the risks or downsides of each?'' (3) ``How certain is the evidence for thes",
       "section": "paragraph: Prompt 5b: Staged."
-    },
-    {
-      "line_no": 1086,
-      "value": "1.5",
-      "context": "$ against gradient-based $\\rho$ in Qwen-1.5B using completion-only gradients (backp",
-      "section": "section: Gradient--$\\rho$ Sanity Check"
-    },
-    {
-      "line_no": 1086,
-      "value": "3",
-      "context": "s). We ensemble gradients from the last 3 transformer layers.",
-      "section": "section: Gradient--$\\rho$ Sanity Check"
     },
     {
       "line_no": 1200,
@@ -1605,18 +1569,6 @@
       "section": "subsection: Rank-Deficiency Boundary (relocated from body)"
     },
     {
-      "line_no": 1781,
-      "value": "1.1",
-      "context": "elds: for $\\delta/\\delta_{\\min} \\approx 1.1$, $\\rho_c \\approx 0.30$. Systems near P",
-      "section": "subsection: Rank-Deficiency Boundary (relocated from body)"
-    },
-    {
-      "line_no": 1781,
-      "value": "0.30",
-      "context": "ta_{\\min} \\approx 1.1$, $\\rho_c \\approx 0.30$. Systems near Pareto boundary experien",
-      "section": "subsection: Rank-Deficiency Boundary (relocated from body)"
-    },
-    {
       "line_no": 1812,
       "value": "1",
       "context": "induces increments $\\Delta z_t := z_{t+1}-z_t$. The \\emph{utilized budget} over",
@@ -1693,48 +1645,6 @@
       "value": "1",
       "context": "}^{S-1}\\Delta^{(s)}\\| \\le \\sum_{s=0}^{S-1}\\|\\Delta^{(s)}\\| \\le \\sum_{s}\\delta_s$.",
       "section": "subsection: One-Shot Diagonal Cost vs Staged Parameterization"
-    },
-    {
-      "line_no": 1878,
-      "value": "2",
-      "context": "f $\\delta \\ge \\delta_{\\min} - O(K\\delta^2/\\tau)$.",
-      "section": "subsection: Curvature Cannot Remove the Boundary at Small Budgets"
-    },
-    {
-      "line_no": 1882,
-      "value": "2",
-      "context": "\\langle\\nabla r_i(z),\\Delta\\rangle + (K/2)\\|\\Delta\\|^2$. Requiring $r_i(z+\\Delta)",
-      "section": "subsection: Curvature Cannot Remove the Boundary at Small Budgets"
-    },
-    {
-      "line_no": 1882,
-      "value": "2",
-      "context": "r_i(z),\\Delta\\rangle + (K/2)\\|\\Delta\\|^2$. Requiring $r_i(z+\\Delta) \\le r_i(z) -",
-      "section": "subsection: Curvature Cannot Remove the Boundary at Small Budgets"
-    },
-    {
-      "line_no": 1882,
-      "value": "2",
-      "context": "bla r_i(z),\\Delta\\rangle \\le -\\tau + (K/2)\\|\\Delta\\|^2$. The linear bound $\\delta",
-      "section": "subsection: Curvature Cannot Remove the Boundary at Small Budgets"
-    },
-    {
-      "line_no": 1882,
-      "value": "2",
-      "context": "elta\\rangle \\le -\\tau + (K/2)\\|\\Delta\\|^2$. The linear bound $\\delta_{\\min}$ is r",
-      "section": "subsection: Curvature Cannot Remove the Boundary at Small Budgets"
-    },
-    {
-      "line_no": 1882,
-      "value": "2",
-      "context": "delta_{\\min}$ is relaxed by at most $(K/2)\\delta^2/\\tau$ when $\\|\\Delta\\| \\le \\de",
-      "section": "subsection: Curvature Cannot Remove the Boundary at Small Budgets"
-    },
-    {
-      "line_no": 1882,
-      "value": "2",
-      "context": "in}$ is relaxed by at most $(K/2)\\delta^2/\\tau$ when $\\|\\Delta\\| \\le \\delta$.",
-      "section": "subsection: Curvature Cannot Remove the Boundary at Small Budgets"
     },
     {
       "line_no": 1931,
@@ -1869,18 +1779,6 @@
       "section": "subsection: Complete Hyperparameter Specification"
     },
     {
-      "line_no": 1984,
-      "value": "4.5",
-      "context": "Remark~\\ref{rem:high_k} on Claude Opus 4.5 with $k{=}8$--$10$ constraints using de",
-      "section": "subsection: High-$k$ Frontier Validation (Opus 4.5)"
-    },
-    {
-      "line_no": 1984,
-      "value": "10",
-      "context": "gh_k} on Claude Opus 4.5 with $k{=}8$--$10$ constraints using deterministic AST-ba",
-      "section": "subsection: High-$k$ Frontier Validation (Opus 4.5)"
-    },
-    {
       "line_no": 1991,
       "value": "0.53",
       "context": "textbf{Medium} ($k{=}10$, $\\hat{\\rho}{=}0.53$): vowel counting with no-loops. Solvab",
@@ -1959,36 +1857,6 @@
       "section": "subsection: Numerical Optimization Validation"
     },
     {
-      "line_no": 2095,
-      "value": "2",
-      "context": "bound}: $\\delta_{\\min} = (\\tau/m)\\sqrt{2/(1-\\hat{\\rho})}$. Use max pairwise $\\ha",
-      "section": "subsection: Practical Estimation Protocol (Zeroth-Order)"
-    },
-    {
-      "line_no": 2095,
-      "value": "1",
-      "context": "und}: $\\delta_{\\min} = (\\tau/m)\\sqrt{2/(1-\\hat{\\rho})}$. Use max pairwise $\\hat{\\",
-      "section": "subsection: Practical Estimation Protocol (Zeroth-Order)"
-    },
-    {
-      "line_no": 2105,
-      "value": "0.3",
-      "context": "\\item \\textbf{Stage} if: $\\hat{\\rho} > 0.3$ \\emph{and} $\\delta < 2\\delta_{\\min}$ \\",
-      "section": "subsection: Protocol Selection Policy"
-    },
-    {
-      "line_no": 2105,
-      "value": "0.7",
-      "context": "delta < 2\\delta_{\\min}$ \\emph{and} $c < 0.7$ (intermediate band)",
-      "section": "subsection: Protocol Selection Policy"
-    },
-    {
-      "line_no": 2107,
-      "value": "0.5",
-      "context": "em \\textbf{Fail-fast} if: $\\hat{\\rho} > 0.5$ \\emph{and} $\\delta < 1.2\\delta_{\\min}$",
-      "section": "subsection: Protocol Selection Policy"
-    },
-    {
       "line_no": 2117,
       "value": "10",
       "context": "\\item Generate 10--20 positive/negative examples via prom",
@@ -1998,12 +1866,6 @@
       "line_no": 2117,
       "value": "20",
       "context": "\\item Generate 10--20 positive/negative examples via promptin",
-      "section": "paragraph: Step-by-step for new constraint classes (no gradient access required)."
-    },
-    {
-      "line_no": 2121,
-      "value": "0.1",
-      "context": "constraint magnitude):} Default $\\tau = 0.1$ (normalized units). Adjust based on ve",
       "section": "paragraph: Step-by-step for new constraint classes (no gradient access required)."
     },
     {
@@ -2199,18 +2061,6 @@
       "section": "paragraph: Task."
     },
     {
-      "line_no": 2411,
-      "value": "20",
-      "context": "$\\rho$ pairs produce audible roughness (20--70\\,Hz amplitude modulation), making f",
-      "section": "paragraph: Signal Processing / DSP-Style Diagnostics."
-    },
-    {
-      "line_no": 2411,
-      "value": "70",
-      "context": "o$ pairs produce audible roughness (20--70\\,Hz amplitude modulation), making failu",
-      "section": "paragraph: Signal Processing / DSP-Style Diagnostics."
-    },
-    {
       "line_no": 2451,
       "value": "2",
       "context": "$k$ & 2 & 3 & 4 & 5 & 6 & 8 & 10 \\\\",
@@ -2347,30 +2197,6 @@
       "value": "0.253",
       "context": "Cross-category & --- & 0.253 & --- \\\\",
       "section": "paragraph: Results."
-    },
-    {
-      "line_no": 2500,
-      "value": "7.4",
-      "context": "m \\textbf{Sparse high-similarity:} Only 7.4\\% of pairs exceed $\\hat{\\rho}{=}0.5$, a",
-      "section": "paragraph: Key findings."
-    },
-    {
-      "line_no": 2500,
-      "value": "0.5",
-      "context": "nly 7.4\\% of pairs exceed $\\hat{\\rho}{=}0.5$, and 92\\% are below 0.5.",
-      "section": "paragraph: Key findings."
-    },
-    {
-      "line_no": 2500,
-      "value": "92",
-      "context": "of pairs exceed $\\hat{\\rho}{=}0.5$, and 92\\% are below 0.5.",
-      "section": "paragraph: Key findings."
-    },
-    {
-      "line_no": 2500,
-      "value": "0.5",
-      "context": "$\\hat{\\rho}{=}0.5$, and 92\\% are below 0.5.",
-      "section": "paragraph: Key findings."
     },
     {
       "line_no": 2501,
