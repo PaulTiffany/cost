@@ -1,7 +1,8 @@
 # Exhaustive Claims Checklist v2.0
 
 **Paper:** The Cost of Cacophony: Geometric Limits on Multi-Constraint Alignment
-**Total Claims:** 323 (26 critical + 29 important + 268 complete)
+**Venue:** NeurIPS 2026
+**Total Claims:** 425 (25 critical + 75 important + 325 complete)
 
 ---
 
@@ -9,13 +10,13 @@
 
 | Tier | Count | Description | Time |
 |------|-------|-------------|------|
-| **Critical** | 26 | Core theorems, headline results | ~30 sec |
-| **Important** | 29 | Main tables, key appendix numbers | ~2 min |
-| **Complete** | 268 | All table cells, appendix statistics | ~10 min |
+| **Critical** | 25 | Core theorems, headline results | ~30 sec |
+| **Important** | 75 | Main tables, key appendix numbers | ~2 min |
+| **Complete** | 325 | All table cells, appendix statistics | ~10 min |
 
 ---
 
-# Tier 1: Critical Claims (26)
+# Tier 1: Critical Claims (25)
 
 **Must-verify for reviewer confidence. If any fail, the paper's core contribution is at risk.**
 
@@ -174,9 +175,9 @@
 
 | ID | Parameter | Value | Source |
 |----|-----------|-------|--------|
-| I46 | Token budgets | 256, 512, 1024, 2048 | Section 5 |
+| I46 | Token budgets | 128, 192, 256, 384, 512 | Section 5, App F |
 | I47 | Sample size (main) | N=60 per condition | Section 5 |
-| I48 | Sample size (spot-checks) | N=100 | Appendix D.5 |
+| I48 | Sample size (spot-checks) | N=100 | Supplementary D.5 |
 | I49 | Default $\hat{L}$ | ~0.025 | Table 1 |
 | I50 | Pivot step threshold | 2.5 × $\hat{L}$ | Section 1 |
 | I51 | Direction drift threshold | 15° | Section 1 |
@@ -198,8 +199,8 @@
 | ID | Appendix | Claim | Source |
 |----|----------|-------|--------|
 | I59 | B | 0.00% error for k=2,3,4,5,8 | Numerical |
-| I60 | V | k=2: 93%, k=3: 86%, k=4: 79%, k=5: 73% | `charitable_feasibility.json` |
-| I61 | V | k=6: 67%, k=8: 56%, k=10: 3% | `charitable_feasibility.json` |
+| I60 | V | k=2: 93%, k=3: 86%, k=4: 79%, k=5: 73% (supplementary granular) | `charitable_feasibility.json` |
+| I61 | V | k=6: 67%, k=8: 56%, k=10: 3% (supplementary granular) | `charitable_feasibility.json` |
 | I62 | W | 190 pairs, 7.37% high conflict | `constitution_analysis.json` |
 | I63 | W | Mean ρ = 0.267, max = 0.86 | `constitution_analysis.json` |
 | I64 | X | 15 compound tasks, ρ 0.15-0.75 | Section |
@@ -363,4 +364,4 @@ python verify.py --harnesses
 
 ---
 
-*Exhaustive claims index for ICML 2026 submission*
+*Exhaustive claims index for NeurIPS 2026 submission*

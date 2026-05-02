@@ -108,6 +108,15 @@ def plot_heatmap(data, output_dir):
     matrix = np.array(matrix)
     
     # Plotting
+    # Font sizes bumped to compensate for ~2.84x downscale at includegraphics width.
+    # Cell labels and tick labels capped to avoid touching adjacent cells.
+    plt.rcParams.update({
+        "font.size": 16,
+        "axes.titlesize": 18,
+        "axes.labelsize": 16,
+        "xtick.labelsize": 14,
+        "ytick.labelsize": 16,
+    })
     fig, ax = plt.subplots(figsize=(12, 6))
     im = ax.imshow(matrix, cmap="YlOrBr_r", vmin=0, vmax=1, aspect=0.6)
     
@@ -124,13 +133,13 @@ def plot_heatmap(data, output_dir):
             val = matrix[i, j]
             text = ax.text(j, i, f"{val:.0%}",
                            ha="center", va="center", color="black" if val >= 0.4 else "white",
-                           fontweight="bold", fontsize=9)
+                           fontweight="bold", fontsize=14)
             # Dual encoding: intuitive border (green/orange/red) over accessible fill
             border = "#81C784" if val >= 0.6 else "#FFB74D" if val >= 0.3 else "#E57373"
             ax.add_patch(plt.Rectangle((j - 0.5, i - 0.5), 1, 1,
                          fill=False, edgecolor=border, linewidth=1.5))
     
-    ax.set_title("Geometric Cliff: From 1B to Frontier (Pass Rate)", fontsize=14, pad=20)
+    ax.set_title("Geometric Cliff: From 1B to Frontier (Pass Rate)", fontsize=18, pad=14)
     fig.tight_layout()
     
     output_dir.mkdir(parents=True, exist_ok=True)

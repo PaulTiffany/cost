@@ -266,6 +266,109 @@ assert len(CLAIMS) == 25, f"Expected 25 critical claims, got {len(CLAIMS)}"
 
 
 # ---------------------------------------------------------------------------
+# Tier 2: Important Claims (75)
+#
+# Table cells from the main paper plus headline appendix numbers. Patterns
+# here are tighter than Tier 1 — usually the bare numeric signature, since
+# table cells are unambiguous fingerprints. When a value would be ambiguous
+# (e.g. "94"), we anchor it with a model name or a named statistic.
+# ---------------------------------------------------------------------------
+
+IMPORTANT: list[dict] = [
+    # Table 1: Lipschitz Calibration (I1-I6)
+    {"id": "I1", "description": "Qwen-2.5-Coder L=0.023+/-0.008", "patterns": [r"0\.023", r"0\.008"]},
+    {"id": "I2", "description": "Qwen-2.5-Coder 91% tightness", "patterns": [r"91\s*\\?%"]},
+    {"id": "I3", "description": "DeepSeek-Coder L=0.019+/-0.006", "patterns": [r"0\.019", r"0\.006"]},
+    {"id": "I4", "description": "DeepSeek-Coder 93% tightness", "patterns": [r"93\s*\\?%"]},
+    {"id": "I5", "description": "TinyLlama-1.1B L=0.031+/-0.011", "patterns": [r"0\.031", r"0\.011"]},
+    {"id": "I6", "description": "TinyLlama-1.1B 84% tightness", "patterns": [r"84\s*\\?%"]},
+    # Table 2: Regime Performance (I7-I10)
+    {"id": "I7", "description": "Control rho=0.05, 76%/24%", "patterns": [r"0\.05", r"76\s*\\?%", r"24\s*\\?%"]},
+    {"id": "I8", "description": "Low rho=0.20, 56%/44%", "patterns": [r"0\.20", r"56\s*\\?%", r"44\s*\\?%"]},
+    {"id": "I9", "description": "Moderate rho=0.40, 23%/77%", "patterns": [r"0\.40", r"23\s*\\?%", r"77\s*\\?%"]},
+    {"id": "I10", "description": "High rho=0.65, 2%/98%", "patterns": [r"0\.65", r"98\s*\\?%"]},
+    # Table 3: Feasibility Boundary (I11-I15)
+    {"id": "I11", "description": "rho=0.0 -> delta=1.4142", "patterns": [r"1\.4142"]},
+    {"id": "I12", "description": "rho=0.3 -> delta=1.6903", "patterns": [r"1\.6903"]},
+    {"id": "I13", "description": "rho=0.5 -> delta=2.0000", "patterns": [r"2\.0000"]},
+    {"id": "I14", "description": "rho=0.7 -> delta=2.5820", "patterns": [r"2\.5820"]},
+    {"id": "I15", "description": "rho=0.9 -> delta=4.4721", "patterns": [r"4\.4721"]},
+    # Table 4: Claude Family (I16-I22)
+    {"id": "I16", "description": "haiku-3 ratio 2.5x", "patterns": [r"2\.5\s*(?:\\times|x|\$\\times\$)", r"haiku[-\s]?3"]},
+    {"id": "I17", "description": "sonnet-4 ratio 4.4x", "patterns": [r"4\.4\s*(?:\\times|x|\$\\times\$)", r"sonnet[-\s]?4"]},
+    {"id": "I18", "description": "opus-4 ratio 22.7x", "patterns": [r"22\.7\s*(?:\\times|x|\$\\times\$)"]},
+    {"id": "I19", "description": "opus-4.1 ratio 26.4x", "patterns": [r"26\.4\s*(?:\\times|x|\$\\times\$)"]},
+    {"id": "I20", "description": "haiku-4.5 ratio 23.3x", "patterns": [r"23\.3\s*(?:\\times|x|\$\\times\$)"]},
+    {"id": "I21", "description": "sonnet-4.5 ratio 23.8x", "patterns": [r"23\.8\s*(?:\\times|x|\$\\times\$)"]},
+    {"id": "I22", "description": "opus-4.5 ratio 4.8x", "patterns": [r"4\.8\s*(?:\\times|x|\$\\times\$)"]},
+    # Table 5: Embedding Analysis (I23-I25)
+    {"id": "I23", "description": "MiniLM-L6-v2 rho_max=0.12+/-0.02", "patterns": [r"0\.12", r"0\.02", r"MiniLM"]},
+    {"id": "I24", "description": "mpnet-base-v2 rho_max=0.18+/-0.03", "patterns": [r"0\.18", r"0\.03", r"mpnet"]},
+    {"id": "I25", "description": "multilingual-MiniLM rho_max=0.20+/-0.04", "patterns": [r"0\.20", r"0\.04", r"multilingual"]},
+    # Table 6: Encoder Sensitivity (I26-I28)
+    {"id": "I26", "description": "MiniLM-L6-v2 rho range [0.05, 0.65]", "patterns": [r"0\.05", r"0\.65"]},
+    {"id": "I27", "description": "mpnet-base-v2 rho range [0.08, 0.71], 94%/91%", "patterns": [r"0\.08", r"0\.71"]},
+    {"id": "I28", "description": "multilingual rho range [0.06, 0.68], 96%/93%", "patterns": [r"0\.06", r"0\.68"]},
+    # Table 7: Threshold Sensitivity (I29-I30)
+    {"id": "I29", "description": "-20% perturbation: 93% agreement, +1.2% pass", "patterns": [r"1\.2\s*\\?%", r"20\s*\\?%"]},
+    {"id": "I30", "description": "+20% perturbation: 91% agreement, -2.1% pass", "patterns": [r"2\.1\s*\\?%"]},
+    # Table 8: k-Scaling (I31-I35)
+    {"id": "I31", "description": "k=2 -> delta=1.4142 (numerical)", "patterns": [r"1\.4142"]},
+    {"id": "I32", "description": "k=3 -> delta=1.7321", "patterns": [r"1\.7321"]},
+    {"id": "I33", "description": "k=4 -> delta=2.0000", "patterns": [r"2\.0000"]},
+    {"id": "I34", "description": "k=5 -> delta=2.2361", "patterns": [r"2\.2361"]},
+    {"id": "I35", "description": "k=8 -> delta=2.8284", "patterns": [r"2\.8284"]},
+    # Table 11: Baselines (I36-I41)
+    {"id": "I36", "description": "One-shot: 5% pass, 256 tokens, 1.0x", "patterns": [r"5\s*\\?%", r"256"]},
+    {"id": "I37", "description": "Staged (always): 18% pass, 512 tokens, 0.5x", "patterns": [r"18\s*\\?%", r"512"]},
+    {"id": "I38", "description": "Best-of-4: 12% pass, 1024 tokens, 0.25x", "patterns": [r"12\s*\\?%", r"1024"]},
+    {"id": "I39", "description": "Self-refine: 15% pass, 640 tokens, 0.4x", "patterns": [r"15\s*\\?%", r"640"]},
+    {"id": "I40", "description": "Geometric router: 18% pass, 384 tokens, 0.67x", "patterns": [r"384", r"0\.67"]},
+    {"id": "I41", "description": "Oracle: 21% pass, 320 tokens, 0.8x", "patterns": [r"21\s*\\?%", r"320"]},
+    # Table 12: Transfer (I42-I45)
+    {"id": "I42", "description": "Code: 100% router agree, 1.8% regret", "patterns": [r"1\.8\s*\\?%"]},
+    {"id": "I43", "description": "JSON-NL: 94% router, +2% delta, 2.1% regret", "patterns": [r"2\.1\s*\\?%", r"JSON[-\s]?NL"]},
+    {"id": "I44", "description": "IF-DSL: 91% router, -1% delta, 2.4% regret", "patterns": [r"2\.4\s*\\?%", r"IF[-\s]?DSL"]},
+    {"id": "I45", "description": "Bytebeat: 88% router, +1% delta, 3.1% regret", "patterns": [r"3\.1\s*\\?%", r"[Bb]ytebeat"]},
+    # Hyperparameters (I46-I51)
+    {"id": "I46", "description": "Token budgets: 128, 192, 256, 384, 512", "patterns": [r"128", r"192", r"256", r"384", r"512"]},
+    {"id": "I47", "description": "Sample size N=60 per condition (main)", "patterns": [r"N\s*[={]+\s*60|N\}?\s*=\s*60"]},
+    {"id": "I48", "description": "Sample size N=100 (supplementary spot-checks)", "patterns": [r"N\s*[={]+\s*100|N=100|spot[-\s]check"], "supplementary_only": True},
+    {"id": "I49", "description": "Default L_hat ~ 0.025", "patterns": [r"0\.025"]},
+    {"id": "I50", "description": "Pivot step threshold = 2.5 x L_hat", "patterns": [r"2\.5\\?hat\{?L|2\.5\s*\\hat\{L\}|2\.5L"]},
+    {"id": "I51", "description": "Direction drift threshold 15 deg", "patterns": [r"15\s*\\?(?:deg|circ|\\degree|\^)"]},
+    # Derived Statistics (I52-I58)
+    {"id": "I52", "description": "Benchmark structure 12 tasks x 4 tiers x 4 models", "patterns": [r"12\s*(?:tasks?|\\times)", r"4\s*(?:tiers?|\\times|\\,)", r"4\s*models?"]},
+    {"id": "I53", "description": "Total trials 4,800", "patterns": [r"4[,\\{}\\!\s]*800"]},
+    {"id": "I54", "description": "Median direction drift 0.07 (IQR 0.03-0.12)", "patterns": [r"0\.07", r"IQR"]},
+    {"id": "I55", "description": "95th percentile step 0.041", "patterns": [r"0\.041"]},
+    {"id": "I56", "description": "99th percentile step 0.067", "patterns": [r"0\.067"]},
+    {"id": "I57", "description": "Maximum step 0.12", "patterns": [r"0\.12"]},
+    {"id": "I58", "description": "Semantic jump rate 2.3% (>3sigma)", "patterns": [r"2\.3\s*\\?%"]},
+    # Appendix Key Claims (I59-I75)
+    {"id": "I59", "description": "App B: 0.00% error for k=2,3,4,5,8", "patterns": [r"0\.00\s*\\?%"]},
+    {"id": "I60", "description": "App V: k=2/3/4/5 -> 93/86/79/73% (supplementary granular)", "patterns": [r"86\s*\\?%", r"79\s*\\?%", r"73\s*\\?%"], "supplementary_only": True},
+    {"id": "I61", "description": "App V: k=6/8/10 -> 67/56/3% (supplementary granular)", "patterns": [r"67\s*\\?%", r"56\s*\\?%"], "supplementary_only": True},
+    {"id": "I62", "description": "App W: 190 pairs, 7.37% high conflict", "patterns": [r"190\s+pairs|190\\\s*pairs", r"7\.37"]},
+    {"id": "I63", "description": "App W: mean rho=0.267, max=0.86", "patterns": [r"0\.267", r"0\.86"]},
+    {"id": "I64", "description": "App X: 15 compound tasks, rho 0.15-0.75", "patterns": [r"15\s+compound|compound\s+tasks", r"0\.15", r"0\.75"]},
+    {"id": "I65", "description": "App H: JSON-NL 22.5%, 10%, 0%, 0%", "patterns": [r"22\.5\s*\\?%"]},
+    {"id": "I66", "description": "App I: gradient-rho r~0.4, r_s=1.0", "patterns": [r"r\s*[={]+\s*0\.4|0\.4", r"r_s\s*[={]+\s*1\.0"]},
+    {"id": "I67", "description": "App P: <10ms router latency", "patterns": [r"10\s*ms|<\s*10\\,?ms"]},
+    {"id": "I68", "description": "App Q: AM 20-70Hz mapping", "patterns": [r"20.{0,5}70\s*Hz|20\\?-70"]},
+    {"id": "I69", "description": "App R: IF-DSL 0% at rho>=1.0", "patterns": [r"IF[-\s]?DSL"]},
+    {"id": "I70", "description": "App S: Bytebeat cliff at rho>=0.8", "patterns": [r"0\.8", r"[Bb]ytebeat"]},
+    {"id": "I71", "description": "App U: <5min CPU, ~20h GPU", "patterns": [r"5\s*min(?:utes?)?|<\s*5", r"20\s*h(?:ours?)?|20\\,?h"]},
+    {"id": "I72", "description": "App E: 5% vs 58%/71% conjunction", "patterns": [r"58\s*\\?%", r"71\s*\\?%"]},
+    {"id": "I73", "description": "App M: phase transition 1/(k-1)", "patterns": [r"1\s*/\s*\(?\s*k\s*[-{}\s]*1"]},
+    {"id": "I74", "description": "App D: rho_max ~ 0.18", "patterns": [r"0\.18"]},
+    {"id": "I75", "description": "App D: 24% reinforcing pairs", "patterns": [r"24\s*\\?%", r"reinforcing"]},
+]
+
+assert len(IMPORTANT) == 75, f"Expected 75 important claims, got {len(IMPORTANT)}"
+
+
+# ---------------------------------------------------------------------------
 # Lexicon load (visibility only; we never edit prose)
 # ---------------------------------------------------------------------------
 def load_protected_terms(path: Path) -> list[str]:
@@ -407,21 +510,22 @@ def audit_claims(tex_path: Path, claims: list[dict], verbose: bool = False) -> l
 # ---------------------------------------------------------------------------
 # Reporting
 # ---------------------------------------------------------------------------
-def print_report(results: list[ClaimResult], lexicon_terms: list[str]) -> None:
+def print_report(results: list[ClaimResult], lexicon_terms: list[str], tier_label: str) -> None:
     n_found = sum(1 for r in results if r.status == FOUND)
     n_drift = sum(1 for r in results if r.status == DRIFT)
     n_missing = sum(1 for r in results if r.status == MISSING)
+    total = len(results)
 
     print("=" * 70)
-    print("CLAIM AUDIT REPORT  (Tier 1: 25 critical claims)")
+    print(f"CLAIM AUDIT REPORT  ({tier_label}: {total} claims)")
     print("=" * 70)
     print(f"Paper:    {MAIN_TEX}")
     print(f"Registry: {CLAIMS_MD}")
     print(f"Lexicon:  {LEXICON_MD}  ({len(lexicon_terms)} protected terms loaded)")
     print()
-    print(f"  Verbatim found : {n_found:>2} / 25")
-    print(f"  Drift warning  : {n_drift:>2} / 25")
-    print(f"  Missing        : {n_missing:>2} / 25")
+    print(f"  Verbatim found : {n_found:>3} / {total}")
+    print(f"  Drift warning  : {n_drift:>3} / {total}")
+    print(f"  Missing        : {n_missing:>3} / {total}")
     print()
 
     if n_drift or n_missing:
@@ -441,12 +545,13 @@ def print_report(results: list[ClaimResult], lexicon_terms: list[str]) -> None:
     print()
 
 
-def write_json(results: list[ClaimResult], lexicon_terms: list[str]) -> None:
+def write_json(results: list[ClaimResult], lexicon_terms: list[str], tier_label: str) -> None:
     n_found = sum(1 for r in results if r.status == FOUND)
     n_drift = sum(1 for r in results if r.status == DRIFT)
     n_missing = sum(1 for r in results if r.status == MISSING)
     payload = {
         "summary": {
+            "tier": tier_label,
             "total": len(results),
             "found_verbatim": n_found,
             "drift": n_drift,
@@ -466,6 +571,12 @@ def write_json(results: list[ClaimResult], lexicon_terms: list[str]) -> None:
 def main(argv: list[str] | None = None) -> int:
     parser = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
     parser.add_argument("--verbose", "-v", action="store_true", help="print per-claim status as it runs")
+    parser.add_argument(
+        "--tier",
+        choices=["critical", "important", "all"],
+        default="critical",
+        help="which tier to audit: critical (25), important (75), or all (100). Default: critical.",
+    )
     args = parser.parse_args(argv)
 
     if not MAIN_TEX.exists():
@@ -475,6 +586,24 @@ def main(argv: list[str] | None = None) -> int:
         print(f"ERROR: claim registry not found at {CLAIMS_MD}", file=sys.stderr)
         return 2
 
+    if args.tier == "critical":
+        raw = CLAIMS
+        tier_label = "Tier 1: critical"
+    elif args.tier == "important":
+        raw = IMPORTANT
+        tier_label = "Tier 2: important"
+    else:
+        raw = CLAIMS + IMPORTANT
+        tier_label = "Tiers 1+2: critical+important"
+
+    # Drop claims that are documented as supplementary-only — they live in
+    # the supplementary package, not main.tex, so a "missing" verdict here
+    # would be a false alarm.
+    active = [c for c in raw if not c.get("supplementary_only")]
+    n_skipped = len(raw) - len(active)
+    if n_skipped:
+        tier_label += f" ({n_skipped} supplementary-only claims skipped)"
+
     lexicon_terms = load_protected_terms(LEXICON_MD)
 
     if args.verbose:
@@ -482,10 +611,10 @@ def main(argv: list[str] | None = None) -> int:
         print(f"Streaming {MAIN_TEX} (line-by-line; no full-file buffer)...")
         print()
 
-    results = audit_claims(MAIN_TEX, CLAIMS, verbose=args.verbose)
+    results = audit_claims(MAIN_TEX, active, verbose=args.verbose)
 
-    print_report(results, lexicon_terms)
-    write_json(results, lexicon_terms)
+    print_report(results, lexicon_terms, tier_label)
+    write_json(results, lexicon_terms, tier_label)
 
     n_missing = sum(1 for r in results if r.status == MISSING)
     return 1 if n_missing else 0
