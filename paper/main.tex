@@ -233,7 +233,7 @@ $c_{ij} := \ip{u_i}{u_j}$ (unit gradients). Constraints are $\rho$-coupled if $c
 \begin{figure}[ht]
 \centering
 \includegraphics[width=0.62\columnwidth]{figures/gram_eigendecomposition.pdf}
-\caption{\textbf{Embedding-derived $\hat{\rho}$ tracks the Gram eigenstructure driving the bound.} The smallest eigenvalue $\lambda_{\min}(B_\rho) = 1 - \rho(k{-}1)$ controls cost amplification (Theorem~\ref{thm:gram}). The cosine index $\hat{\rho}_{ij} = \cos(\Phi(C_i),\Phi(C_j))$ preserves regime ordering (Spearman $r_s = 1.0$, Appendix~\ref{app:grad_r}); ordinal suffices for routing (Lemma~D.1). Grounded in linear representation \citep{park2023linear}: separable concepts orthogonal, conflicting non-orthogonal.}
+\caption{\textbf{Embedding-derived $\hat{\rho}$ tracks the Gram eigenstructure driving the bound.} The smallest eigenvalue $\lambda_{\min}(B_\rho) = 1 - \rho(k{-}1)$ controls cost amplification (Theorem~\ref{thm:gram}). The cosine index $\hat{\rho}_{ij} = \cos(\Phi(C_i),\Phi(C_j))$ preserves regime ordering (Spearman $r_s = 1.0$, Appendix~\ref{app:grad_r}); ordinal suffices for routing (Lemma~\ref{lem:proxy_sufficiency}). Grounded in linear representation \citep{park2023linear}: separable concepts orthogonal, conflicting non-orthogonal.}
 \label{fig:gram_eigendecomp}
 \end{figure}
 
@@ -352,7 +352,7 @@ Critique-revision \citep{bai2022constitutional,anthropic2025constitution} is the
 \begin{figure}[t]
 \centering
 \includegraphics[width=0.78\columnwidth]{figures/per_task_correlation.pdf}
-\caption{\textbf{Per-task pass rate by $\hat{\rho}$ tier} (48 points; $r_s = -0.942$, $p = 2.12 \times 10^{-23}$). Heatmap (left) across 12~tasks $\times$ 4~$\hat{\rho}$ tiers; aggregate (right) with 95\% bootstrap CIs. High-conflict tasks show the steepest cliff; at $\hat{\rho} < 0.15$, staging adds overhead without benefit. The diagonal cost determines \emph{when} staging helps. Per-task analysis: Appendix~\ref{app:code_full}.}
+\caption{\textbf{Per-task pass rate by $\hat{\rho}$ tier} (48 points; $r_s = -0.942$, $p = 2.12 \times 10^{-23}$). Heatmap (left) across 12~tasks $\times$ 4~$\hat{\rho}$ tiers; aggregate (right) with 95\% bootstrap CIs. High-conflict tasks show the steepest cliff; at $\hat{\rho} < 0.15$, staging adds overhead without benefit. The diagonal cost determines \emph{when} staging helps. Data: Table~\ref{tab:llm_bridge}. Per-task analysis: Appendix~\ref{app:code_full}.}
 \label{fig:per_task}
 \end{figure}
 
@@ -486,7 +486,7 @@ High & 0.65 & 2\% & 2\% & 98\% \\
 \end{tikzpicture}
 \\(b) Theory vs.\ observation
 \end{minipage}
-\caption{\textbf{Feasibility surface and theory--observation alignment.} (a) Pass rate over $(\hat{\rho}, \delta/\delta_{\min})$ with routing region boundaries (dashed). Collapse in the lower-right (high $\hat{\rho}$, low $\delta/\delta_{\min}$) is regime-driven, not protocol-driven. (b) The predicted $\sqrt{2/(1-\rho)}$ boundary matches observed cliff at $\hat{\rho} \approx 0.4$ across the four tier centroids.}
+\caption{\textbf{Feasibility surface and theory--observation alignment.} (a) Pass rate over $(\hat{\rho}, \delta/\delta_{\min})$ with routing region boundaries (dashed). Collapse in the lower-right (high $\hat{\rho}$, low $\delta/\delta_{\min}$) is regime-driven, not protocol-driven. (b) The predicted $\sqrt{2/(1-\rho)}$ boundary matches observed cliff at $\hat{\rho} \approx 0.4$ across the four tier centroids (Table~\ref{tab:calibration}).}
 \label{fig:feasibility_surface}\label{fig:boundary_vs_observed}
 \end{figure}
 
@@ -523,7 +523,7 @@ Open-weight validation is reproducible; frontier experiments confirm \emph{trans
 \includegraphics[width=\linewidth]{figures/soft_constraint_cliff.pdf}
 \\\footnotesize (b) Soft constraints: graded residuals reproduce the cliff
 \end{minipage}
-\caption{\textbf{The cliff is model-agnostic and survives constraint softening.} (a) Pass-rate heatmap across nine models from 1B (TinyLlama) to frontier (GPT-4o, Gemini-2.5 Pro, DeepSeek-V3, Llama-3.1-70B). The same four-tier $\hat{\rho}$ cliff appears at every scale; geometry, not capability. (b) Replacing hard pass/fail with continuous satisfaction scores (Brier-style residuals, partial-credit grading) reproduces the $\rho$-driven phase transition. Together: the cliff is independent of model scale (a) and verifier hardness (b); the bound (Theorem~\ref{thm:gram}) is a geometric invariant of the constraint set, not an artifact of either side. Full soft-constraint formulation: Appendix~\ref{app:charity}.}
+\caption{\textbf{The cliff is model-agnostic and survives constraint softening.} (a) Pass-rate heatmap across nine models from 1B (TinyLlama) to frontier (GPT-4o, Gemini-2.5 Pro, DeepSeek-V3, Llama-3.1-70B). The same four-tier $\hat{\rho}$ cliff appears at every scale; geometry, not capability. (b) Replacing hard pass/fail with continuous satisfaction scores (Brier-style residuals, partial-credit grading) reproduces the $\rho$-driven phase transition. Together: the cliff is independent of model scale (a) and verifier hardness (b); the bound (Theorem~\ref{thm:gram}) is a geometric invariant of the constraint set, not an artifact of either side. Cross-model data: Table~\ref{tab:claude_family}. Full soft-constraint formulation: Appendix~\ref{app:charity}.}
 \label{fig:cross_model}\label{fig:soft_constraint_cliff}
 \end{figure}
 
