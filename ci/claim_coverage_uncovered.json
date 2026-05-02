@@ -2,10 +2,10 @@
   "paper_path": "C:\\src\\NeurIPS\\paper\\main.tex",
   "summary": {
     "total_numeric_tokens": 1508,
-    "covered": 1225,
-    "uncovered_raw": 283,
-    "uncovered_deduped": 279,
-    "coverage_percent": 81.2
+    "covered": 1258,
+    "uncovered_raw": 250,
+    "uncovered_deduped": 246,
+    "coverage_percent": 83.4
   },
   "uncovered": [
     {
@@ -127,84 +127,6 @@
       "value": "1",
       "context": "1-shot & $\\Delta$ & 1-shot & $\\Delta$ & 1-shot & $\\Delta$ \\\\",
       "section": "paragraph: Per-task validation (relocated from \\S\\ref{sec:staging"
-    },
-    {
-      "line_no": 983,
-      "value": "3",
-      "context": "Qwen-3B (4-bit) & $+23$ & $+20$ & $+27$ & $+23",
-      "section": "section: Token Budget ($\\delta$) Experiment: Per-Model Breakdown"
-    },
-    {
-      "line_no": 983,
-      "value": "4",
-      "context": "Qwen-3B (4-bit) & $+23$ & $+20$ & $+27$ & $+23$ &",
-      "section": "section: Token Budget ($\\delta$) Experiment: Per-Model Breakdown"
-    },
-    {
-      "line_no": 983,
-      "value": "23",
-      "context": "Qwen-3B (4-bit) & $+23$ & $+20$ & $+27$ & $+23$ & $+27$ \\\\",
-      "section": "section: Token Budget ($\\delta$) Experiment: Per-Model Breakdown"
-    },
-    {
-      "line_no": 983,
-      "value": "20",
-      "context": "Qwen-3B (4-bit) & $+23$ & $+20$ & $+27$ & $+23$ & $+27$ \\\\",
-      "section": "section: Token Budget ($\\delta$) Experiment: Per-Model Breakdown"
-    },
-    {
-      "line_no": 983,
-      "value": "27",
-      "context": "Qwen-3B (4-bit) & $+23$ & $+20$ & $+27$ & $+23$ & $+27$ \\\\",
-      "section": "section: Token Budget ($\\delta$) Experiment: Per-Model Breakdown"
-    },
-    {
-      "line_no": 983,
-      "value": "23",
-      "context": "-3B (4-bit) & $+23$ & $+20$ & $+27$ & $+23$ & $+27$ \\\\",
-      "section": "section: Token Budget ($\\delta$) Experiment: Per-Model Breakdown"
-    },
-    {
-      "line_no": 983,
-      "value": "27",
-      "context": "it) & $+23$ & $+20$ & $+27$ & $+23$ & $+27$ \\\\",
-      "section": "section: Token Budget ($\\delta$) Experiment: Per-Model Breakdown"
-    },
-    {
-      "line_no": 984,
-      "value": "1.3",
-      "context": "DeepSeek-1.3B & $+7$ & $+17$ & $+13$ & $0$ & $+27$ \\",
-      "section": "section: Token Budget ($\\delta$) Experiment: Per-Model Breakdown"
-    },
-    {
-      "line_no": 984,
-      "value": "7",
-      "context": "DeepSeek-1.3B & $+7$ & $+17$ & $+13$ & $0$ & $+27$ \\\\",
-      "section": "section: Token Budget ($\\delta$) Experiment: Per-Model Breakdown"
-    },
-    {
-      "line_no": 984,
-      "value": "17",
-      "context": "DeepSeek-1.3B & $+7$ & $+17$ & $+13$ & $0$ & $+27$ \\\\",
-      "section": "section: Token Budget ($\\delta$) Experiment: Per-Model Breakdown"
-    },
-    {
-      "line_no": 984,
-      "value": "13",
-      "context": "DeepSeek-1.3B & $+7$ & $+17$ & $+13$ & $0$ & $+27$ \\\\",
-      "section": "section: Token Budget ($\\delta$) Experiment: Per-Model Breakdown"
-    },
-    {
-      "line_no": 984,
-      "value": "0",
-      "context": "DeepSeek-1.3B & $+7$ & $+17$ & $+13$ & $0$ & $+27$ \\\\",
-      "section": "section: Token Budget ($\\delta$) Experiment: Per-Model Breakdown"
-    },
-    {
-      "line_no": 984,
-      "value": "27",
-      "context": "k-1.3B & $+7$ & $+17$ & $+13$ & $0$ & $+27$ \\\\",
-      "section": "section: Token Budget ($\\delta$) Experiment: Per-Model Breakdown"
     },
     {
       "line_no": 1003,
@@ -1383,118 +1305,10 @@
       "section": "subsection: One-Shot Diagonal Cost vs Staged Parameterization"
     },
     {
-      "line_no": 1931,
-      "value": "1.0",
-      "context": "Gradient norm $m$ & 1.0 & Cor.~\\ref{cor:uniform} \\\\",
-      "section": "subsection: Complete Hyperparameter Specification"
-    },
-    {
-      "line_no": 1933,
-      "value": "2",
-      "context": "Constraint count $k$ & $\\{2, 3, 4, 5, 8\\}$ & Tab.~\\ref{tab:ablation",
-      "section": "subsection: Complete Hyperparameter Specification"
-    },
-    {
-      "line_no": 1933,
-      "value": "3",
-      "context": "Constraint count $k$ & $\\{2, 3, 4, 5, 8\\}$ & Tab.~\\ref{tab:ablation} \\",
-      "section": "subsection: Complete Hyperparameter Specification"
-    },
-    {
-      "line_no": 1933,
-      "value": "4",
-      "context": "Constraint count $k$ & $\\{2, 3, 4, 5, 8\\}$ & Tab.~\\ref{tab:ablation} \\\\",
-      "section": "subsection: Complete Hyperparameter Specification"
-    },
-    {
-      "line_no": 1933,
-      "value": "5",
-      "context": "Constraint count $k$ & $\\{2, 3, 4, 5, 8\\}$ & Tab.~\\ref{tab:ablation} \\\\",
-      "section": "subsection: Complete Hyperparameter Specification"
-    },
-    {
-      "line_no": 1933,
-      "value": "8",
-      "context": "Constraint count $k$ & $\\{2, 3, 4, 5, 8\\}$ & Tab.~\\ref{tab:ablation} \\\\",
-      "section": "subsection: Complete Hyperparameter Specification"
-    },
-    {
-      "line_no": 1934,
-      "value": "10",
-      "context": "Ambient dimension $d$ & 10--20 & Thm.~\\ref{thm:main_k} \\\\",
-      "section": "subsection: Complete Hyperparameter Specification"
-    },
-    {
-      "line_no": 1934,
-      "value": "20",
-      "context": "Ambient dimension $d$ & 10--20 & Thm.~\\ref{thm:main_k} \\\\",
-      "section": "subsection: Complete Hyperparameter Specification"
-    },
-    {
-      "line_no": 1942,
-      "value": "40",
-      "context": "Pitch tolerance & $\\pm$40 Hz & \\texttt{pitch\\_A4} \\\\",
-      "section": "subsection: Complete Hyperparameter Specification"
-    },
-    {
-      "line_no": 1945,
-      "value": "2,839",
-      "context": "Baseline samples & 2,839 & Conflict estimation \\\\",
-      "section": "subsection: Complete Hyperparameter Specification"
-    },
-    {
-      "line_no": 1950,
-      "value": "3",
-      "context": "Embedding models & 3 & Tab.~\\ref{tab:embedding_R} \\\\",
-      "section": "subsection: Complete Hyperparameter Specification"
-    },
-    {
-      "line_no": 1956,
-      "value": "0.7",
-      "context": "Temperature & 0.7 & Sampling diversity \\\\",
-      "section": "subsection: Complete Hyperparameter Specification"
-    },
-    {
-      "line_no": 1957,
-      "value": "5",
-      "context": "Trials per cell & 5 & Per task per tier \\\\",
-      "section": "subsection: Complete Hyperparameter Specification"
-    },
-    {
-      "line_no": 1959,
-      "value": "4",
-      "context": "Models & 4 & 1--3B parameters \\\\",
-      "section": "subsection: Complete Hyperparameter Specification"
-    },
-    {
-      "line_no": 1959,
-      "value": "1",
-      "context": "Models & 4 & 1--3B parameters \\\\",
-      "section": "subsection: Complete Hyperparameter Specification"
-    },
-    {
-      "line_no": 1959,
-      "value": "3",
-      "context": "Models & 4 & 1--3B parameters \\\\",
-      "section": "subsection: Complete Hyperparameter Specification"
-    },
-    {
       "line_no": 2057,
       "value": "1",
       "context": "\\item Mathematical validation: $<1$ minute on CPU",
       "section": "paragraph: Compute Requirements."
-    },
-    {
-      "line_no": 2117,
-      "value": "10",
-      "context": "\\item Generate 10--20 positive/negative examples via prom",
-      "section": "paragraph: Step-by-step for new constraint classes (no gradient access required)."
-    },
-    {
-      "line_no": 2117,
-      "value": "20",
-      "context": "\\item Generate 10--20 positive/negative examples via promptin",
-      "section": "paragraph: Step-by-step for new constraint classes (no gradient access required)."
     },
     {
       "line_no": 2139,
@@ -1596,18 +1410,6 @@
       "line_no": 2267,
       "value": "2",
       "context": "Honest & D & 2 & Two fifths (major 2nd from root) \\\\",
-      "section": "paragraph: The Mapping."
-    },
-    {
-      "line_no": 2268,
-      "value": "3",
-      "context": "Autonomy & A & 3 & Three fifths (major 6th from root) \\\\",
-      "section": "paragraph: The Mapping."
-    },
-    {
-      "line_no": 2268,
-      "value": "6",
-      "context": "Autonomy & A & 3 & Three fifths (major 6th from root) \\\\",
       "section": "paragraph: The Mapping."
     },
     {

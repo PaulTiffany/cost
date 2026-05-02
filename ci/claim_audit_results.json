@@ -1,8 +1,8 @@
 {
   "summary": {
     "tier": "Tiers 1+2+3: critical+important+complete (4 supplementary-only claims skipped)",
-    "total": 124,
-    "found_verbatim": 124,
+    "total": 135,
+    "found_verbatim": 135,
     "drift": 0,
     "missing": 0
   },
@@ -11482,6 +11482,610 @@
         }
       ],
       "notes": "All 4 patterns co-occur within 3-line window (anchor line ~2453)."
+    },
+    {
+      "claim_id": "T29",
+      "paper_text_signature": "Token budget delta Qwen-3B 4-bit: +23,+20,+27,+23,+27",
+      "found": "OK",
+      "locations": [
+        {
+          "pattern": "Qwen[-\\s]?3B.*?4[-\\s]?bit",
+          "hits": [
+            {
+              "line": 983,
+              "snippet": "Qwen-3B (4-bit) & $+23$ & $+20$ & $+27$ & $+23$ & $+27$ \\\\"
+            },
+            {
+              "line": 995,
+              "snippet": "\\item \\textbf{Qwen-3B}: Uses 4-bit quantization per code specification. One-shot is non-functional (0--3\\%), and staging rescues to 20--30\\%. We isolate this..."
+            }
+          ]
+        },
+        {
+          "pattern": "\\+23",
+          "hits": [
+            {
+              "line": 983,
+              "snippet": "Qwen-3B (4-bit) & $+23$ & $+20$ & $+27$ & $+23$ & $+27$ \\\\"
+            }
+          ]
+        },
+        {
+          "pattern": "\\+27",
+          "hits": [
+            {
+              "line": 983,
+              "snippet": "Qwen-3B (4-bit) & $+23$ & $+20$ & $+27$ & $+23$ & $+27$ \\\\"
+            },
+            {
+              "line": 984,
+              "snippet": "DeepSeek-1.3B & $+7$ & $+17$ & $+13$ & $0$ & $+27$ \\\\"
+            }
+          ]
+        }
+      ],
+      "notes": "All 3 patterns co-occur within 3-line window (anchor line ~982)."
+    },
+    {
+      "claim_id": "T30",
+      "paper_text_signature": "Token budget delta DeepSeek-1.3B: +7,+17,+13,0,+27",
+      "found": "OK",
+      "locations": [
+        {
+          "pattern": "DeepSeek[-\\s]?1\\.3B",
+          "hits": [
+            {
+              "line": 928,
+              "snippet": "& \\multicolumn{2}{c}{Qwen-Coder-1.5B} & \\multicolumn{2}{c}{Qwen-3B} & \\multicolumn{2}{c}{DeepSeek-1.3B} & \\multicolumn{2}{c}{TinyLlama-1.1B} \\\\"
+            },
+            {
+              "line": 984,
+              "snippet": "DeepSeek-1.3B & $+7$ & $+17$ & $+13$ & $0$ & $+27$ \\\\"
+            },
+            {
+              "line": 994,
+              "snippet": "\\item \\textbf{DeepSeek-1.3B}: Clearest predicted regime; staging benefit peaks at mid-range budgets ($\\delta$=192--256) where constraint pressure exists but ..."
+            }
+          ]
+        },
+        {
+          "pattern": "\\+17",
+          "hits": [
+            {
+              "line": 984,
+              "snippet": "DeepSeek-1.3B & $+7$ & $+17$ & $+13$ & $0$ & $+27$ \\\\"
+            }
+          ]
+        },
+        {
+          "pattern": "\\+13",
+          "hits": [
+            {
+              "line": 984,
+              "snippet": "DeepSeek-1.3B & $+7$ & $+17$ & $+13$ & $0$ & $+27$ \\\\"
+            }
+          ]
+        }
+      ],
+      "notes": "All 3 patterns co-occur within 3-line window (anchor line ~983)."
+    },
+    {
+      "claim_id": "T31",
+      "paper_text_signature": "Hyperparam: Gradient norm m=1.0",
+      "found": "OK",
+      "locations": [
+        {
+          "pattern": "[Gg]radient\\s+norm",
+          "hits": [
+            {
+              "line": 1931,
+              "snippet": "Gradient norm $m$ & 1.0 & Cor.~\\ref{cor:uniform} \\\\"
+            }
+          ]
+        },
+        {
+          "pattern": "1\\.0",
+          "hits": [
+            {
+              "line": 72,
+              "snippet": "The bound dictates control: a zeroth-order screening statistic (`$\\hat{\\rho}$') orders \\emph{which side of the cliff} a prompt lies on ($r_s{=}1.0$). Sequent..."
+            },
+            {
+              "line": 78,
+              "snippet": "Large language models (LLMs) can satisfy individual constraints (safety, helpfulness, format compliance) but performance can collapse when several constraint..."
+            },
+            {
+              "line": 122,
+              "snippet": "(4)~\\textbf{Regime Index:} $\\hat{\\rho}$ orders failure regimes ($r_s{=}1.0$; 94\\% router agreement), enabling fail-safe routing (Figure~\\ref{fig:feasibility_..."
+            },
+            {
+              "line": 126,
+              "snippet": "Boolean validation: regime structure, not magnitude ($r_s{=}1.0$; linear $r{\\approx}0.4$ expected; ordinal suffices, Appendix~\\ref{app:grad_r}). Four tiers t..."
+            },
+            {
+              "line": 170,
+              "snippet": "\\def\\budget{1.0}"
+            },
+            {
+              "line": 177,
+              "snippet": "\\fill[constraintA, opacity=0.16] (\\xmin,\\ymin) rectangle (-1.0,\\ymax);"
+            },
+            {
+              "line": 180,
+              "snippet": "\\draw[constraintA, thick, dashed] (-1.0,\\ymin) -- (-1.0,\\ymax);"
+            },
+            {
+              "line": 236,
+              "snippet": "\\caption{\\textbf{Embedding-derived $\\hat{\\rho}$ preserves the regime ordering associated with the bound.} The smallest eigenvalue $\\lambda_{\\min}(B_\\rho) = 1..."
+            },
+            {
+              "line": 399,
+              "snippet": "Table~\\ref{tab:calibration} shows failure scales with $\\hat{\\rho}$ (24\\% $\\to$ 98\\%), $r_s = 1.0$ with $p < 0.001$ (formal screening condition: Lemma~\\ref{le..."
+            },
+            {
+              "line": 404,
+              "snippet": "\\caption{\\textbf{Calibration benchmark} ($r_s = 1.0$): failure rate increases monotonically with regime index $\\hat{\\rho}$. Aggregate across 4 models, $N$=24..."
+            },
+            {
+              "line": 440,
+              "snippet": "(0.05,1.0) [0.33]  (0.20,1.0) [0.25]  (0.40,1.0) [0.10]  (0.55,1.0) [0.03]  (0.70,1.0) [0.01]"
+            },
+            {
+              "line": 493,
+              "snippet": "\\noindent\\textbf{Why 4 tiers:} $\\hat{\\rho}$ is continuous. Tiers bin for statistical power, isolating regime-ordering from within-tier variance. \\textbf{Not ..."
+            },
+            {
+              "line": 506,
+              "snippet": "The $\\rho < 1/(k{-}1)$ threshold appears restrictive, but pairwise conflict is \\emph{sparse}. Bytebeat ($k{=}4$): 3/6 pairs have $\\rho{=}1.0$. IF-DSL ($k{=}6..."
+            },
+            {
+              "line": 536,
+              "snippet": "Multi-constraint LLM behavior exhibits sharp regime structure: feasibility cliffs, not capability gradients. Three contributions: (1)~Diagonal Cost Bound (Th..."
+            },
+            {
+              "line": 723,
+              "snippet": "Table~\\ref{tab:encoder_sensitivity} shows routing and outcome stability across encoders. While $\\hat{\\rho}$ absolute values vary ($\\pm$0.08), \\emph{regime or..."
+            },
+            {
+              "line": 728,
+              "snippet": "\\caption{Encoder sensitivity. Router/Outcome = agreement with MiniLM baseline. Regime ordering preserved (Kendall $\\tau = 1.0$).}"
+            },
+            {
+              "line": 754,
+              "snippet": "Reorder constraints & 1.00 & 100\\% & 98\\% \\\\"
+            },
+            {
+              "line": 794,
+              "snippet": "\\noindent This is standard calibration/decision theory~\\citep{degroot1983comparison}; we include it to make explicit why ordinal fidelity ($r_s = 1.0$, Table..."
+            },
+            {
+              "line": 809,
+              "snippet": "One-shot (always) & 5\\% & 256 & $1.0\\times$ \\\\"
+            },
+            {
+              "line": 1089,
+              "snippet": "Direct linear correlation between embedding $\\rho$ and gradient $\\rho$ is \\textbf{moderate} (Pearson $r \\approx 0.4$, $p > 0.4$). This is expected, since mic..."
+            },
+            {
+              "line": 1095,
+              "snippet": "The key is that constraint conflict is at root a \\emph{semantic} relationship, and embeddings are trained precisely to capture semantic structure. Satisfying..."
+            },
+            {
+              "line": 1153,
+              "snippet": "$\\hat{L}$ measures step magnitude, not semantic direction. It is encoder-stable by construction: $\\hat{L} \\in [0.021, 0.028]$ across MiniLM/MPNet/E5. Default..."
+            },
+            {
+              "line": 1162,
+              "snippet": "\\item \\textbf{Temperature sensitivity:} Greedy ($T{=}0$) reduces $\\hat{L}$ by $\\sim$15\\%; $T{=}0.7$ yields the reported values; $T{=}1.0$ increases $\\hat{L}$..."
+            },
+            {
+              "line": 1511,
+              "snippet": "Our IF-DSL experiments (Appendix~\\ref{app:if_dsl_bridge}) empirically confirm this analysis: at $\\rho = 1.0$ (maximally conflicting constraints like \\texttt{..."
+            },
+            {
+              "line": 1775,
+              "snippet": "Figure~\\ref{fig:amplification} shows amplification diverges as $\\rho \\to 1$: $1.4$--$2\\times$ for $\\rho < 0.5$; diverges for $\\rho \\ge 0.8$. IF-DSL confirms:..."
+            },
+            {
+              "line": 1930,
+              "snippet": "Resolution threshold $\\tau$ & 1.0 & Def.~\\ref{def:resolution} \\\\"
+            },
+            {
+              "line": 1931,
+              "snippet": "Gradient norm $m$ & 1.0 & Cor.~\\ref{cor:uniform} \\\\"
+            },
+            {
+              "line": 2172,
+              "snippet": "We do not treat $\\hat\\rho$ as a noisy measurement of an unobserved internal ``true conflict.'' $\\hat\\rho$ is an \\emph{interface observable} computed directly..."
+            },
+            {
+              "line": 2354,
+              "snippet": "Table~\\ref{tab:if_dsl} shows pass rates across conflict levels under both contracts. The key finding is \\textbf{feasibility fragmentation}: at high conflict ..."
+            },
+            {
+              "line": 2371,
+              "snippet": "High ($\\rho{=}1.0$) & (A) & 0\\% & 0\\% & 0\\% & 0\\% & 0\\% & 0\\% \\\\"
+            },
+            {
+              "line": 2397,
+              "snippet": "2 & 1.00 & 0\\% & Infeasible \\\\"
+            }
+          ]
+        }
+      ],
+      "notes": "All 2 patterns co-occur within 2-line window (anchor line ~1930)."
+    },
+    {
+      "claim_id": "T32",
+      "paper_text_signature": "Hyperparam: Constraint count k in {2,3,4,5,8}",
+      "found": "OK",
+      "locations": [
+        {
+          "pattern": "[Cc]onstraint\\s+count",
+          "hits": [
+            {
+              "line": 885,
+              "snippet": "The effective constraint count $k$ is a property of the \\emph{verification contract}, not the prompt. A user prompt is always $k{=}1$ from the sender's persp..."
+            },
+            {
+              "line": 1933,
+              "snippet": "Constraint count $k$ & $\\{2, 3, 4, 5, 8\\}$ & Tab.~\\ref{tab:ablation} \\\\"
+            }
+          ]
+        },
+        {
+          "pattern": "\\\\?\\{2,\\s*3,\\s*4,\\s*5,\\s*8\\\\?\\}",
+          "hits": [
+            {
+              "line": 1933,
+              "snippet": "Constraint count $k$ & $\\{2, 3, 4, 5, 8\\}$ & Tab.~\\ref{tab:ablation} \\\\"
+            }
+          ]
+        }
+      ],
+      "notes": "All 2 patterns co-occur within 2-line window (anchor line ~1932)."
+    },
+    {
+      "claim_id": "T33",
+      "paper_text_signature": "Hyperparam: Ambient dimension d in 10-20",
+      "found": "OK",
+      "locations": [
+        {
+          "pattern": "[Aa]mbient\\s+dimension",
+          "hits": [
+            {
+              "line": 1934,
+              "snippet": "Ambient dimension $d$ & 10--20 & Thm.~\\ref{thm:main_k} \\\\"
+            }
+          ]
+        },
+        {
+          "pattern": "10[-\\s]+20|10--20",
+          "hits": [
+            {
+              "line": 1934,
+              "snippet": "Ambient dimension $d$ & 10--20 & Thm.~\\ref{thm:main_k} \\\\"
+            },
+            {
+              "line": 2117,
+              "snippet": "\\item Generate 10--20 positive/negative examples via prompting: ``Write text that [satisfies/violates] constraint X''"
+            }
+          ]
+        }
+      ],
+      "notes": "All 2 patterns co-occur within 2-line window (anchor line ~1933)."
+    },
+    {
+      "claim_id": "T34",
+      "paper_text_signature": "Hyperparam: Pitch tolerance +/-40 Hz",
+      "found": "OK",
+      "locations": [
+        {
+          "pattern": "[Pp]itch\\s+tolerance",
+          "hits": [
+            {
+              "line": 1942,
+              "snippet": "Pitch tolerance & $\\pm$40 Hz & \\texttt{pitch\\_A4} \\\\"
+            }
+          ]
+        },
+        {
+          "pattern": "40\\s*Hz",
+          "hits": [
+            {
+              "line": 1942,
+              "snippet": "Pitch tolerance & $\\pm$40 Hz & \\texttt{pitch\\_A4} \\\\"
+            }
+          ]
+        }
+      ],
+      "notes": "All 2 patterns co-occur within 2-line window (anchor line ~1941)."
+    },
+    {
+      "claim_id": "T35",
+      "paper_text_signature": "Hyperparam: Baseline samples 2,839",
+      "found": "OK",
+      "locations": [
+        {
+          "pattern": "[Bb]aseline\\s+samples",
+          "hits": [
+            {
+              "line": 1945,
+              "snippet": "Baseline samples & 2,839 & Conflict estimation \\\\"
+            }
+          ]
+        },
+        {
+          "pattern": "2[,\\\\{}\\\\!\\s]*839",
+          "hits": [
+            {
+              "line": 1945,
+              "snippet": "Baseline samples & 2,839 & Conflict estimation \\\\"
+            }
+          ]
+        }
+      ],
+      "notes": "All 2 patterns co-occur within 2-line window (anchor line ~1944)."
+    },
+    {
+      "claim_id": "T36",
+      "paper_text_signature": "Hyperparam: Embedding models = 3",
+      "found": "OK",
+      "locations": [
+        {
+          "pattern": "[Ee]mbedding\\s+models",
+          "hits": [
+            {
+              "line": 1950,
+              "snippet": "Embedding models & 3 & Tab.~\\ref{tab:embedding_R} \\\\"
+            },
+            {
+              "line": 2169,
+              "snippet": "Violation of these assumptions yields alternative instantiations of the observable. The consistency across embedding models (Table~\\ref{tab:embedding_R}) con..."
+            }
+          ]
+        },
+        {
+          "pattern": "&\\s*3\\s*&",
+          "hits": [
+            {
+              "line": 638,
+              "snippet": "haiku-3 & 3 & 3/6 & $2.5\\times$ & legacy baseline \\\\"
+            },
+            {
+              "line": 1950,
+              "snippet": "Embedding models & 3 & Tab.~\\ref{tab:embedding_R} \\\\"
+            },
+            {
+              "line": 2268,
+              "snippet": "Autonomy & A & 3 & Three fifths (major 6th from root) \\\\"
+            },
+            {
+              "line": 2451,
+              "snippet": "$k$ & 2 & 3 & 4 & 5 & 6 & 8 & 10 \\\\"
+            },
+            {
+              "line": 2453,
+              "snippet": "pairs & 1 & 3 & 6 & 10 & 15 & 28 & 45 \\\\"
+            },
+            {
+              "line": 2487,
+              "snippet": "Hardcoded Off & 3 & 0.136 & 0.193 \\\\"
+            }
+          ]
+        }
+      ],
+      "notes": "All 2 patterns co-occur within 2-line window (anchor line ~1949)."
+    },
+    {
+      "claim_id": "T37",
+      "paper_text_signature": "Hyperparam: Temperature = 0.7 (sampling diversity)",
+      "found": "OK",
+      "locations": [
+        {
+          "pattern": "[Tt]emperature",
+          "hits": [
+            {
+              "line": 1153,
+              "snippet": "$\\hat{L}$ measures step magnitude, not semantic direction. It is encoder-stable by construction: $\\hat{L} \\in [0.021, 0.028]$ across MiniLM/MPNet/E5. Default..."
+            },
+            {
+              "line": 1162,
+              "snippet": "\\item \\textbf{Temperature sensitivity:} Greedy ($T{=}0$) reduces $\\hat{L}$ by $\\sim$15\\%; $T{=}0.7$ yields the reported values; $T{=}1.0$ increases $\\hat{L}$..."
+            },
+            {
+              "line": 1171,
+              "snippet": "The stability of $L$ across models and tasks validates the token$\\to$norm contract for regime prediction. While $L$ varies with model size and temperature, t..."
+            },
+            {
+              "line": 1910,
+              "snippet": "Empirically, failure rates track $\\delta$ monotonically at fixed conflict (Table~\\ref{tab:delta_capacity}), and regime ordering is preserved across decoding ..."
+            },
+            {
+              "line": 1956,
+              "snippet": "Temperature & 0.7 & Sampling diversity \\\\"
+            }
+          ]
+        },
+        {
+          "pattern": "0\\.7",
+          "hits": [
+            {
+              "line": 156,
+              "snippet": "\\node[black, above right] at (0.72*\\budget,0.72*\\budget) {\\tiny $\\sqrt{2}\\delta$};"
+            },
+            {
+              "line": 163,
+              "snippet": "\\begin{tikzpicture}[x=0.7cm,y=0.7cm]"
+            },
+            {
+              "line": 374,
+              "snippet": "Construct gradients with $\\ip{u}{v} = -\\rho$; test feasibility at $\\delta = \\delta_{\\min}$. Theory matches numerics to machine precision across $\\rho \\in \\{0..."
+            },
+            {
+              "line": 431,
+              "snippet": "xmin=0, xmax=0.75,"
+            },
+            {
+              "line": 433,
+              "snippet": "xtick={0,0.15,0.3,0.5,0.7},"
+            },
+            {
+              "line": 440,
+              "snippet": "(0.05,1.0) [0.33]  (0.20,1.0) [0.25]  (0.40,1.0) [0.10]  (0.55,1.0) [0.03]  (0.70,1.0) [0.01]"
+            },
+            {
+              "line": 441,
+              "snippet": "(0.05,1.5) [0.55]  (0.20,1.5) [0.45]  (0.40,1.5) [0.18]  (0.55,1.5) [0.05]  (0.70,1.5) [0.02]"
+            },
+            {
+              "line": 442,
+              "snippet": "(0.05,2.0) [0.76]  (0.20,2.0) [0.56]  (0.40,2.0) [0.23]  (0.55,2.0) [0.08]  (0.70,2.0) [0.02]"
+            },
+            {
+              "line": 443,
+              "snippet": "(0.05,2.5) [0.82]  (0.20,2.5) [0.65]  (0.40,2.5) [0.32]  (0.55,2.5) [0.12]  (0.70,2.5) [0.03]"
+            },
+            {
+              "line": 444,
+              "snippet": "(0.05,3.0) [0.88]  (0.20,3.0) [0.72]  (0.40,3.0) [0.40]  (0.55,3.0) [0.18]  (0.70,3.0) [0.05]"
+            },
+            {
+              "line": 448,
+              "snippet": "\\draw[white, line width=1pt, dashed] (axis cs:0,1.2) -- (axis cs:0.75,1.2);"
+            },
+            {
+              "line": 466,
+              "snippet": "xmin=0, xmax=0.7,"
+            },
+            {
+              "line": 735,
+              "snippet": "mpnet-base-v2 & [0.08, 0.71] & 94\\% & 91\\% \\\\"
+            },
+            {
+              "line": 912,
+              "snippet": "0.7 & 2.5820 & 2.5820 \\\\"
+            },
+            {
+              "line": 1076,
+              "snippet": "high & 0.70 & 120 & 0.0\\% & 0.0\\% & 0\\% & \\textbf{100.0\\%} \\\\"
+            },
+            {
+              "line": 1083,
+              "snippet": "Table~\\ref{tab:json_nl} shows failure rate scales \\textbf{monotonically} with $\\rho$: 77.5\\% $\\to$ 90.0\\% $\\to$ 97.5\\% $\\to$ 100\\%. At $\\rho=0.70$, satisfyin..."
+            },
+            {
+              "line": 1162,
+              "snippet": "\\item \\textbf{Temperature sensitivity:} Greedy ($T{=}0$) reduces $\\hat{L}$ by $\\sim$15\\%; $T{=}0.7$ yields the reported values; $T{=}1.0$ increases $\\hat{L}$..."
+            },
+            {
+              "line": 1910,
+              "snippet": "Empirically, failure rates track $\\delta$ monotonically at fixed conflict (Table~\\ref{tab:delta_capacity}), and regime ordering is preserved across decoding ..."
+            },
+            {
+              "line": 1932,
+              "snippet": "Conflict range $\\rho$ & $\\{0.0, 0.3, 0.5, 0.7, 0.9\\}$ & Tab.~\\ref{tab:feasibility} \\\\"
+            },
+            {
+              "line": 1956,
+              "snippet": "Temperature & 0.7 & Sampling diversity \\\\"
+            },
+            {
+              "line": 1979,
+              "snippet": "We verified regime persistence across greedy ($T{=}0$) and sampling ($T{=}0.7$) decoding."
+            },
+            {
+              "line": 2083,
+              "snippet": "Analytical bounds match numerical solutions to relative error $< 10^{-4}$ across all tested configurations. We test $\\rho \\in \\{0.1, 0.3, 0.5, 0.7, 0.9\\}$ an..."
+            },
+            {
+              "line": 2105,
+              "snippet": "\\item \\textbf{Stage} if: $\\hat{\\rho} > 0.3$ \\emph{and} $\\delta < 2\\delta_{\\min}$ \\emph{and} $c < 0.7$ (intermediate band)"
+            },
+            {
+              "line": 2246,
+              "snippet": "\\item \\textbf{Individual $R$ levels}: Audio files for $\\rho \\in \\{0.0, 0.15, 0.3\\}$ and $\\rho \\in \\{0.5, 0.7, 0.9\\}$"
+            },
+            {
+              "line": 2496,
+              "snippet": "\\noindent\\textbf{Distribution:} $\\hat{\\rho} \\in [0, 0.3)$: 68\\%; $[0.3, 0.5)$: 25\\%; $[0.5, 0.7)$: 6\\%; $\\ge 0.7$: 1\\%. Random $k{=}4$ subsets: $\\max_{ij}\\ha..."
+            },
+            {
+              "line": 2564,
+              "snippet": "Each task contains 2--5 constraints with programmatic verifiers: JSON schema validation, word count bounds, regex patterns, Python AST checks, etc. Estimated..."
+            },
+            {
+              "line": 2568,
+              "snippet": "\\item \\textbf{json\\_recipe} ($\\hat{\\rho}{=}0.75$): ``Write a recipe in JSON with fields name, ingredients, steps, prep\\_time\\_minutes.'' Verifiers: valid JSO..."
+            }
+          ]
+        }
+      ],
+      "notes": "All 2 patterns co-occur within 2-line window (anchor line ~1161)."
+    },
+    {
+      "claim_id": "T38",
+      "paper_text_signature": "Hyperparam: Trials per cell = 5",
+      "found": "OK",
+      "locations": [
+        {
+          "pattern": "[Tt]rials\\s+per\\s+cell",
+          "hits": [
+            {
+              "line": 1957,
+              "snippet": "Trials per cell & 5 & Per task per tier \\\\"
+            }
+          ]
+        },
+        {
+          "pattern": "&\\s*5\\s*&",
+          "hits": [
+            {
+              "line": 1957,
+              "snippet": "Trials per cell & 5 & Per task per tier \\\\"
+            },
+            {
+              "line": 2451,
+              "snippet": "$k$ & 2 & 3 & 4 & 5 & 6 & 8 & 10 \\\\"
+            },
+            {
+              "line": 2486,
+              "snippet": "Honesty & 5 & 0.387 & 0.495 \\\\"
+            },
+            {
+              "line": 2547,
+              "snippet": "\\quad Semantic overlap & 5 & 31\\% \\\\"
+            }
+          ]
+        }
+      ],
+      "notes": "All 2 patterns co-occur within 2-line window (anchor line ~1956)."
+    },
+    {
+      "claim_id": "T39",
+      "paper_text_signature": "Hyperparam: Models = 4 (1-3B params)",
+      "found": "OK",
+      "locations": [
+        {
+          "pattern": "[Mm]odels\\s*&\\s*4",
+          "hits": [
+            {
+              "line": 1959,
+              "snippet": "Models & 4 & 1--3B parameters \\\\"
+            }
+          ]
+        },
+        {
+          "pattern": "1[-\\s]+3B|1--3B",
+          "hits": [
+            {
+              "line": 1959,
+              "snippet": "Models & 4 & 1--3B parameters \\\\"
+            }
+          ]
+        }
+      ],
+      "notes": "All 2 patterns co-occur within 2-line window (anchor line ~1958)."
     }
   ]
 }

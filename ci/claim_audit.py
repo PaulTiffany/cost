@@ -464,9 +464,24 @@ COMPLETE: list[dict] = [
     {"id": "T26", "description": "App V pairs row: 1,3,6,10,15,28,45", "patterns": [r"pairs", r"&\s*45"], "match_mode": "joint", "match_window": 3},
     {"id": "T27", "description": "App V feasible(%) row: 93,79,63,46,31,12,3", "patterns": [r"feasible", r"93", r"79", r"63"], "match_mode": "joint", "match_window": 3},
     {"id": "T28", "description": "App V feasible(%) tail: 46,31,12,3", "patterns": [r"feasible", r"46", r"31", r"12"], "match_mode": "joint", "match_window": 3},
+
+    # Token Budget per-model staging delta table (App F lines 980-984)
+    {"id": "T29", "description": "Token budget delta Qwen-3B 4-bit: +23,+20,+27,+23,+27", "patterns": [r"Qwen[-\s]?3B.*?4[-\s]?bit", r"\+23", r"\+27"], "match_mode": "joint", "match_window": 3},
+    {"id": "T30", "description": "Token budget delta DeepSeek-1.3B: +7,+17,+13,0,+27", "patterns": [r"DeepSeek[-\s]?1\.3B", r"\+17", r"\+13"], "match_mode": "joint", "match_window": 3},
+
+    # Hyperparameter Specification table (App K lines 1931-1959)
+    {"id": "T31", "description": "Hyperparam: Gradient norm m=1.0", "patterns": [r"[Gg]radient\s+norm", r"1\.0"], "match_mode": "joint", "match_window": 2},
+    {"id": "T32", "description": "Hyperparam: Constraint count k in {2,3,4,5,8}", "patterns": [r"[Cc]onstraint\s+count", r"\\?\{2,\s*3,\s*4,\s*5,\s*8\\?\}"], "match_mode": "joint", "match_window": 2},
+    {"id": "T33", "description": "Hyperparam: Ambient dimension d in 10-20", "patterns": [r"[Aa]mbient\s+dimension", r"10[-\s]+20|10--20"], "match_mode": "joint", "match_window": 2},
+    {"id": "T34", "description": "Hyperparam: Pitch tolerance +/-40 Hz", "patterns": [r"[Pp]itch\s+tolerance", r"40\s*Hz"], "match_mode": "joint", "match_window": 2},
+    {"id": "T35", "description": "Hyperparam: Baseline samples 2,839", "patterns": [r"[Bb]aseline\s+samples", r"2[,\\{}\\!\s]*839"], "match_mode": "joint", "match_window": 2},
+    {"id": "T36", "description": "Hyperparam: Embedding models = 3", "patterns": [r"[Ee]mbedding\s+models", r"&\s*3\s*&"], "match_mode": "joint", "match_window": 2},
+    {"id": "T37", "description": "Hyperparam: Temperature = 0.7 (sampling diversity)", "patterns": [r"[Tt]emperature", r"0\.7"], "match_mode": "joint", "match_window": 2},
+    {"id": "T38", "description": "Hyperparam: Trials per cell = 5", "patterns": [r"[Tt]rials\s+per\s+cell", r"&\s*5\s*&"], "match_mode": "joint", "match_window": 2},
+    {"id": "T39", "description": "Hyperparam: Models = 4 (1-3B params)", "patterns": [r"[Mm]odels\s*&\s*4", r"1[-\s]+3B|1--3B"], "match_mode": "joint", "match_window": 2},
 ]
 
-assert len(COMPLETE) == 28, f"Expected 28 complete claims (Tier 3 batch), got {len(COMPLETE)}"
+assert len(COMPLETE) == 39, f"Expected 39 complete claims (Tier 3 batch), got {len(COMPLETE)}"
 
 
 # ---------------------------------------------------------------------------
