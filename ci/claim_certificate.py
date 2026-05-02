@@ -59,6 +59,7 @@ LAYER_SCRIPTS = {
     "L5_figure_values": SCRIPT_DIR / "figure_value_check.py",
     "L7_citations": SCRIPT_DIR / "citation_integrity_check.py",
     "L8_links": SCRIPT_DIR / "link_integrity_check.py",
+    "L9_consistency": SCRIPT_DIR / "cross_claim_consistency_check.py",
 }
 
 LAYER_RESULT_JSONS = {
@@ -67,6 +68,7 @@ LAYER_RESULT_JSONS = {
     "L5_figure_values": SCRIPT_DIR / "figure_value_check_results.json",
     "L7_citations": SCRIPT_DIR / "citation_integrity_results.json",
     "L8_links": SCRIPT_DIR / "link_integrity_results.json",
+    "L9_consistency": SCRIPT_DIR / "cross_claim_consistency_results.json",
 }
 
 
@@ -218,6 +220,15 @@ def attach_summary_l8(outcome: LayerOutcome) -> None:
     outcome.summary = payload.get("summary", {})
 
 
+def attach_summary_l9(outcome: LayerOutcome) -> None:
+    p = LAYER_RESULT_JSONS["L9_consistency"]
+    if not p.exists():
+        outcome.notes = "no results JSON found"
+        return
+    payload = json.loads(p.read_text(encoding="utf-8"))
+    outcome.summary = payload.get("summary", {})
+
+
 # ---------------------------------------------------------------------------
 # Aggregate verdict
 # ---------------------------------------------------------------------------
@@ -232,12 +243,12 @@ def aggregate_verdict(outcomes: list[LayerOutcome]) -> tuple[str, str]:
     surface previously-hidden noise can drop below it). The triage
     JSONs are the actionable signal, not the percentage.
     """
-    structural = {"L1_audit", "L2_validator", "L4_lineage", "L7_citations", "L8_links"}
+    structural = {"L1_audit", "L2_validator", "L4_lineage", "L7_citations", "L8_links", "L9_consistency"}
     structurally_failed = [o for o in outcomes if o.return_code != 0 and o.name in structural]
     if structurally_failed:
         names = ", ".join(o.name for o in structurally_failed)
         return ("FAIL", f"Structural layers failed: {names}")
-    return ("PASS", "all structural checks clean (L1+L2+L4+L7+L8); L3+L5 coverage is advisory, see triage JSONs")
+    return ("PASS", "all structural checks clean (L1+L2+L4+L7+L8+L9); L3+L5 coverage is advisory, see triage JSONs")
 
 
 # ---------------------------------------------------------------------------
@@ -288,6 +299,8 @@ def render_markdown(payload: dict) -> str:
             blurb = f"{s.get('n_cites_in_paper','?')} cites, {s.get('n_bib_entries','?')} bib entries, {s.get('n_unresolved','?')} unresolved, {s.get('n_dead','?')} dead"
         elif layer["name"] == "L8_links":
             blurb = f"{s.get('n_urls','?')} URLs, {s.get('n_refs','?')} refs / {s.get('n_labels','?')} labels, {len(s.get('unresolved_refs',[]))} unresolved, {s.get('dead_labels_count','?')} dead labels"
+        elif layer["name"] == "L9_consistency":
+            blurb = f"{s.get('passed','?')}/{s.get('total','?')} consistency relations hold"
         else:
             blurb = "(no summary)"
         lines.append(f"| {layer['name']} | `{layer['script']}` | {status} | {blurb} |")
@@ -379,6 +392,11 @@ def main() -> int:
     if not args.quiet: print("  L8 link integrity...")
     o = run_layer("L8_links", LAYER_SCRIPTS["L8_links"])
     attach_summary_l8(o)
+    outcomes.append(o)
+
+    if not args.quiet: print("  L9 cross-claim consistency...")
+    o = run_layer("L9_consistency", LAYER_SCRIPTS["L9_consistency"])
+    attach_summary_l9(o)
     outcomes.append(o)
 
     verdict, rationale = aggregate_verdict(outcomes)

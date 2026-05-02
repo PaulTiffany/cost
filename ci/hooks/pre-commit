@@ -64,6 +64,14 @@ else
     echo "[OK]   L8 link integrity"
 fi
 
+if ! python ci/cross_claim_consistency_check.py > /tmp/cross_claim.out 2>&1; then
+    echo "[FAIL] L9 cross-claim consistency (cross_claim_consistency_check.py)"
+    tail -10 /tmp/cross_claim.out
+    failed=1
+else
+    echo "[OK]   L9 cross-claim consistency"
+fi
+
 if [ $failed -ne 0 ]; then
     echo ""
     echo "Pre-commit blocked: a structural layer failed."

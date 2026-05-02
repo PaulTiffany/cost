@@ -59,6 +59,7 @@ becomes part of layer N+1's input or context.
 | **L6** | `claim_certificate.py` | Aggregate the layers into a single signed artifact |
 | **L7** | `citation_integrity_check.py` | Does every \\citep{} resolve to a bib entry? |
 | **L8** | `link_integrity_check.py` | URLs well-formed + venue-year right? \\ref/\\hyperref resolve? |
+| **L9** | `cross_claim_consistency_check.py` | Do formula-claims and value-claims agree numerically? |
 
 ### L1 — Claim audit (`claim_audit.py`)
 
@@ -252,6 +253,48 @@ python ci/link_integrity_check.py --strict --verbose --venue-year 2026
 ```
 
 Output: `ci/link_integrity_results.json`.
+
+### L9 — Cross-claim consistency (`cross_claim_consistency_check.py`)
+
+Verifies that formula-claims and value-claims agree numerically.
+The previous layers verify each claim individually appears in the
+paper; L9 verifies they don't contradict each other.
+
+Example: C1 says δ_min = sqrt(2/(1-ρ)), and I11-I15 list discrete
+values for ρ ∈ {0, 0.3, 0.5, 0.7, 0.9}. L9 evaluates the formula at
+each ρ and checks the result matches the documented value within
+tolerance. If C1's formula drifts to sqrt(3/(1-ρ)) but I11-I15
+don't update — or vice versa — the paper now contains contradictory
+statements. L9 catches that.
+
+Hand-curated declarative table maps formula-claims to their numerical
+instances. Each `ConsistencyRelation` carries:
+  - the formula (Python-evaluable expression)
+  - parameter values (e.g. `{rho: 0.5}`)
+  - expected numerical value
+  - tolerance (default 1e-3 abs/rel)
+  - claim IDs the relation ties together
+
+Current relations (16):
+  - C1 (sqrt(2/(1-ρ))) ↔ I11-I15 boundary table (5)
+  - C2 (sqrt(k)) ↔ I31-I35 k-scaling table (5)
+  - C7 generalized formula ↔ C1 boundary case at k=2 (1)
+  - I7-I10 tier rows: pass% + fail% sum to 100% (4)
+  - T13 reported r_s vs results JSON value (1)
+
+Out of scope: extracting formulas automatically from main.tex prose.
+That requires a LaTeX math parser, and most paper formulas need
+human judgment to encode (which symbol is the variable, which is
+the parameter). The cost of one row per relation is small; the
+benefit is catching the entire class of "theory and numbers got out
+of sync" bugs that none of L1-L8 see.
+
+```
+python ci/cross_claim_consistency_check.py
+python ci/cross_claim_consistency_check.py --verbose
+```
+
+Output: `ci/cross_claim_consistency_results.json`.
 
 ### L6 — Unified certificate (`claim_certificate.py`)
 

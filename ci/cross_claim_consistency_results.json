@@ -1,0 +1,265 @@
+{
+  "summary": {
+    "total": 16,
+    "passed": 16,
+    "failed": 0
+  },
+  "relations": [
+    {
+      "name": "C1_at_rho_0.0",
+      "description": "C1 formula sqrt(2/(1-rho)) at rho=0.0 should match I11=1.4142",
+      "formula": "sqrt(2 / (1 - rho))",
+      "params": {
+        "rho": 0.0
+      },
+      "expected": 1.4142,
+      "computed": 1.4142135623730951,
+      "claim_ids": [
+        "C1",
+        "I11"
+      ],
+      "ok": true,
+      "detail": "computed=1.414214, expected=1.4142, abs_diff=1.36e-05, rel_diff=9.59e-06"
+    },
+    {
+      "name": "C1_at_rho_0.3",
+      "description": "C1 at rho=0.3 should match I12=1.6903",
+      "formula": "sqrt(2 / (1 - rho))",
+      "params": {
+        "rho": 0.3
+      },
+      "expected": 1.6903,
+      "computed": 1.6903085094570331,
+      "claim_ids": [
+        "C1",
+        "I12"
+      ],
+      "ok": true,
+      "detail": "computed=1.690309, expected=1.6903, abs_diff=8.51e-06, rel_diff=5.03e-06"
+    },
+    {
+      "name": "C1_at_rho_0.5",
+      "description": "C1 at rho=0.5 should match I13=2.0000",
+      "formula": "sqrt(2 / (1 - rho))",
+      "params": {
+        "rho": 0.5
+      },
+      "expected": 2.0,
+      "computed": 2.0,
+      "claim_ids": [
+        "C1",
+        "I13"
+      ],
+      "ok": true,
+      "detail": "computed=2.000000, expected=2.0, abs_diff=0.00e+00, rel_diff=0.00e+00"
+    },
+    {
+      "name": "C1_at_rho_0.7",
+      "description": "C1 at rho=0.7 should match I14=2.5820",
+      "formula": "sqrt(2 / (1 - rho))",
+      "params": {
+        "rho": 0.7
+      },
+      "expected": 2.582,
+      "computed": 2.581988897471611,
+      "claim_ids": [
+        "C1",
+        "I14"
+      ],
+      "ok": true,
+      "detail": "computed=2.581989, expected=2.582, abs_diff=1.11e-05, rel_diff=4.30e-06"
+    },
+    {
+      "name": "C1_at_rho_0.9",
+      "description": "C1 at rho=0.9 should match I15=4.4721",
+      "formula": "sqrt(2 / (1 - rho))",
+      "params": {
+        "rho": 0.9
+      },
+      "expected": 4.4721,
+      "computed": 4.47213595499958,
+      "claim_ids": [
+        "C1",
+        "I15"
+      ],
+      "ok": true,
+      "detail": "computed=4.472136, expected=4.4721, abs_diff=3.60e-05, rel_diff=8.04e-06"
+    },
+    {
+      "name": "C2_at_k_2",
+      "description": "C2 formula sqrt(k) at k=2 should match I31=1.4142",
+      "formula": "sqrt(k)",
+      "params": {
+        "k": 2
+      },
+      "expected": 1.4142,
+      "computed": 1.4142135623730951,
+      "claim_ids": [
+        "C2",
+        "I31"
+      ],
+      "ok": true,
+      "detail": "computed=1.414214, expected=1.4142, abs_diff=1.36e-05, rel_diff=9.59e-06"
+    },
+    {
+      "name": "C2_at_k_3",
+      "description": "C2 at k=3 should match I32=1.7321",
+      "formula": "sqrt(k)",
+      "params": {
+        "k": 3
+      },
+      "expected": 1.7321,
+      "computed": 1.7320508075688772,
+      "claim_ids": [
+        "C2",
+        "I32"
+      ],
+      "ok": true,
+      "detail": "computed=1.732051, expected=1.7321, abs_diff=4.92e-05, rel_diff=2.84e-05"
+    },
+    {
+      "name": "C2_at_k_4",
+      "description": "C2 at k=4 should match I33=2.0000",
+      "formula": "sqrt(k)",
+      "params": {
+        "k": 4
+      },
+      "expected": 2.0,
+      "computed": 2.0,
+      "claim_ids": [
+        "C2",
+        "I33"
+      ],
+      "ok": true,
+      "detail": "computed=2.000000, expected=2.0, abs_diff=0.00e+00, rel_diff=0.00e+00"
+    },
+    {
+      "name": "C2_at_k_5",
+      "description": "C2 at k=5 should match I34=2.2361",
+      "formula": "sqrt(k)",
+      "params": {
+        "k": 5
+      },
+      "expected": 2.2361,
+      "computed": 2.23606797749979,
+      "claim_ids": [
+        "C2",
+        "I34"
+      ],
+      "ok": true,
+      "detail": "computed=2.236068, expected=2.2361, abs_diff=3.20e-05, rel_diff=1.43e-05"
+    },
+    {
+      "name": "C2_at_k_8",
+      "description": "C2 at k=8 should match I35=2.8284",
+      "formula": "sqrt(k)",
+      "params": {
+        "k": 8
+      },
+      "expected": 2.8284,
+      "computed": 2.8284271247461903,
+      "claim_ids": [
+        "C2",
+        "I35"
+      ],
+      "ok": true,
+      "detail": "computed=2.828427, expected=2.8284, abs_diff=2.71e-05, rel_diff=9.59e-06"
+    },
+    {
+      "name": "C7_at_rho_0.5_k_2",
+      "description": "C7 generalized at (rho=0.5, k=2) should reduce to sqrt(2/0.5)=2.0000",
+      "formula": "sqrt(k / (1 - rho * (k - 1)))",
+      "params": {
+        "rho": 0.5,
+        "k": 2
+      },
+      "expected": 2.0,
+      "computed": 2.0,
+      "claim_ids": [
+        "C7",
+        "I13"
+      ],
+      "ok": true,
+      "detail": "computed=2.000000, expected=2.0, abs_diff=0.00e+00, rel_diff=0.00e+00"
+    },
+    {
+      "name": "I7_pass_plus_fail",
+      "description": "Control tier: pass (76%) + fail (24%) should sum to 100%",
+      "formula": "pass_pct + fail_pct",
+      "params": {
+        "pass_pct": 76,
+        "fail_pct": 24
+      },
+      "expected": 100,
+      "computed": 100.0,
+      "claim_ids": [
+        "I7"
+      ],
+      "ok": true,
+      "detail": "computed=100.000000, expected=100, abs_diff=0.00e+00, rel_diff=0.00e+00"
+    },
+    {
+      "name": "I8_pass_plus_fail",
+      "description": "Low tier: pass (56%) + fail (44%) should sum to 100%",
+      "formula": "pass_pct + fail_pct",
+      "params": {
+        "pass_pct": 56,
+        "fail_pct": 44
+      },
+      "expected": 100,
+      "computed": 100.0,
+      "claim_ids": [
+        "I8"
+      ],
+      "ok": true,
+      "detail": "computed=100.000000, expected=100, abs_diff=0.00e+00, rel_diff=0.00e+00"
+    },
+    {
+      "name": "I9_pass_plus_fail",
+      "description": "Moderate tier: pass (23%) + fail (77%) should sum to 100%",
+      "formula": "pass_pct + fail_pct",
+      "params": {
+        "pass_pct": 23,
+        "fail_pct": 77
+      },
+      "expected": 100,
+      "computed": 100.0,
+      "claim_ids": [
+        "I9"
+      ],
+      "ok": true,
+      "detail": "computed=100.000000, expected=100, abs_diff=0.00e+00, rel_diff=0.00e+00"
+    },
+    {
+      "name": "I10_pass_plus_fail",
+      "description": "High tier: pass (2%) + fail (98%) should sum to 100%",
+      "formula": "pass_pct + fail_pct",
+      "params": {
+        "pass_pct": 2,
+        "fail_pct": 98
+      },
+      "expected": 100,
+      "computed": 100.0,
+      "claim_ids": [
+        "I10"
+      ],
+      "ok": true,
+      "detail": "computed=100.000000, expected=100, abs_diff=0.00e+00, rel_diff=0.00e+00"
+    },
+    {
+      "name": "T13_spearman_paper_vs_data",
+      "description": "T13 reported r_s=-0.942 vs per_task_correlation_results.json -0.9417",
+      "formula": "r_s_data",
+      "params": {
+        "r_s_data": -0.9417310837522251
+      },
+      "expected": -0.942,
+      "computed": -0.9417310837522251,
+      "claim_ids": [
+        "T13"
+      ],
+      "ok": true,
+      "detail": "computed=-0.941731, expected=-0.942, abs_diff=2.69e-04, rel_diff=2.85e-04"
+    }
+  ]
+}
