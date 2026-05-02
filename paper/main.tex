@@ -992,7 +992,7 @@ We observe that the aggregate non-monotone pattern in Table~\ref{tab:delta_capac
 \begin{itemize}
 \item \textbf{Qwen-Coder-1.5B}: Near-ceiling one-shot (97--100\%), so staging adds variance. Negative $\Delta$ across all budgets.
 \item \textbf{DeepSeek-1.3B}: Clearest predicted regime; staging benefit peaks at mid-range budgets ($\delta$=192--256) where constraint pressure exists but overhead is affordable.
-\item \textbf{Qwen-3B}: Uses 4-bit quantization per code specification. One-shot essentially non-functional (0--3\%), and staging rescues to 20--30\%. We isolate this as a confound rather than over-interpret.
+\item \textbf{Qwen-3B}: Uses 4-bit quantization per code specification. One-shot is non-functional (0--3\%), and staging rescues to 20--30\%. We isolate this as a confound rather than over-interpret.
 \item \textbf{TinyLlama-1.1B}: Too weak to benefit consistently, with mixed results across budgets.
 \end{itemize}
 
@@ -1092,7 +1092,7 @@ Direct linear correlation between embedding $\rho$ and gradient $\rho$ is \textb
 This distinction is intentional: embeddings serve as a \emph{diagnostic observable}, a low-pass filter isolating the geometric conflict signal from token-level noise. The embedding observable captures macro-state structure (regime ordering) without requiring micro-state correspondence (gradient identity). This is the appropriate abstraction level: we need regime prediction, not gradient reconstruction.
 
 \paragraph{Why rank preservation despite low linear correlation.}
-The key is that constraint conflict is fundamentally a \emph{semantic} relationship, and embeddings are trained precisely to capture semantic structure. Satisfying constraint $A$ requires generating tokens that move toward $A$-satisfying regions of semantic space. If constraints $A$ and $B$ are semantically similar (e.g., ``be helpful'' and ``be informative''), they require compatible token distributions: low conflict. If $A$ and $B$ are semantically opposed (e.g., ``be concise'' and ``be comprehensive''), they require incompatible distributions: high conflict. This relationship is \emph{monotone} (more semantic opposition $\Rightarrow$ more gradient conflict) but not \emph{linear} (the exact magnitudes depend on model internals, tokenization, and trajectory). Spearman $r_s$ captures monotonicity; Pearson $r$ requires linearity. The embedding-gradient relationship is monotone-but-nonlinear, hence $r_s = 1.0$ despite $r \approx 0.4$. For routing, monotonicity suffices.
+The key is that constraint conflict is at root a \emph{semantic} relationship, and embeddings are trained precisely to capture semantic structure. Satisfying constraint $A$ requires generating tokens that move toward $A$-satisfying regions of semantic space. If constraints $A$ and $B$ are semantically similar (e.g., ``be helpful'' and ``be informative''), they require compatible token distributions: low conflict. If $A$ and $B$ are semantically opposed (e.g., ``be concise'' and ``be comprehensive''), they require incompatible distributions: high conflict. This relationship is \emph{monotone} (more semantic opposition $\Rightarrow$ more gradient conflict) but not \emph{linear} (the exact magnitudes depend on model internals, tokenization, and trajectory). Spearman $r_s$ captures monotonicity; Pearson $r$ requires linearity. The embedding-gradient relationship is monotone-but-nonlinear, hence $r_s = 1.0$ despite $r \approx 0.4$. For routing, monotonicity suffices.
 
 Table~\ref{tab:calibration} shows this empirically: $\hat{\rho}$ perfectly predicts failure regime ordering across 4 models and 5 domains (see Remark~\ref{rem:proxy_scope}). Code: \path{supplementary/bridges/gradient_r_sanity_v2.py}.
 
@@ -1259,8 +1259,8 @@ We explicitly state the minimal assumptions needed for our lower bounds:
 \paragraph{Operational contribution.}
 While the fundamental objects above are classical,
 our main paper's \textit{diagonal cost interpretation} arises by expressing lower bounds
-on $\|d\|$ \textit{directly as a function of conflict $\rho_{ij}$ and magnitudes $m_i$},
-thereby quantifying how constraint coupling amplifies required progress.
+on $\|d\|$ \textit{directly as a function of conflict $\rho_{ij}$ and magnitudes $m_i$}.
+This quantifies how constraint coupling amplifies required progress.
 
 \begin{lemma}[First-Order Lower Bound]\label{lem:first_order}
 For any differentiable function $L:\mathcal{M}\to\mathbb{R}$ and displacement $d$ satisfying $\langle \nabla L(x), d \rangle \le -\tau$, we have $\|d\| \ge \tau/\|\nabla L(x)\|$.
@@ -1430,7 +1430,7 @@ Thus $\mathbf{1}^\top \Gamma^{-1}\mathbf{1} = \frac{k}{1-\rho(k-1)}$, yielding t
 
 \paragraph{Operational contribution.}
 While~\eqref{eq:kbound_cited} is structurally classical,
-our main paper leverages this expression to quantify
+our main paper uses this expression to quantify
 \textit{how conflict structure (via the Gram spectrum)}
 governs \textit{observable failure thresholds}
 in multi-constraint satisfaction.
@@ -1573,7 +1573,7 @@ For $k=2$, $M^{-1} = \mathrm{diag}(1/m_1, 1/m_2)$ and $\tilde{\Gamma}^{-1} = \fr
 \subsection{Iterative Satisfaction: Convergence Analysis}\label{app:convergence}
 
 We analyze convergence rates for iterative methods that approximate staged satisfaction.
-The iterative protocol defined in Section~J.14 is a behavioral instantiation of the Kaczmarz method \citep{kaczmarz1937angenaherte}, also known in the optimization literature as the Method of Cyclic Projections \citep{gubin1967projections}. Theorem~J.15 leverages the classical linear convergence rates of these methods, adapted to the local linearized geometry of the embedding manifold.
+The iterative protocol defined in Section~J.14 is a behavioral instantiation of the Kaczmarz method \citep{kaczmarz1937angenaherte}, also known in the optimization literature as the Method of Cyclic Projections \citep{gubin1967projections}. Theorem~J.15 inherits the classical linear convergence rates of these methods, adapted to the local linearized geometry of the embedding manifold.
 
 \begin{definition}[Projected gradient iteration]
 Given current point $x_t$ and constraint $i_t$ (selected cyclically or by rule), the projected gradient step is:
