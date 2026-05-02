@@ -3,7 +3,7 @@
   "provenance": {
     "paper_title": "The Cost of Cacophony: Geometric Limits on Multi-Constraint Alignment",
     "venue": "NeurIPS 2026",
-    "generated_at": "2026-05-02T15:53:39",
+    "generated_at": "2026-05-02T15:59:25",
     "main_tex_path": "paper\\main.tex",
     "main_tex_sha256": "ead744fa65b868e4e98a7b55ca980c4fa336f21e14e708b16414fe6b45a30bc2",
     "main_tex_mtime": "2026-05-02T13:12:58",
@@ -15,7 +15,7 @@
   },
   "verdict": {
     "verdict": "PASS",
-    "rationale": "all structural checks clean (L1+L2+L4+L7); L3+L5 coverage is advisory, see triage JSONs"
+    "rationale": "all structural checks clean (L1+L2+L4+L7+L8); L3+L5 coverage is advisory, see triage JSONs"
   },
   "layers": [
     {
@@ -150,7 +150,49 @@
         ]
       },
       "notes": ""
+    },
+    {
+      "name": "L8_links",
+      "script": "ci\\link_integrity_check.py",
+      "return_code": 0,
+      "status": "PASS",
+      "summary": {
+        "n_urls": 2,
+        "n_hyperref": 0,
+        "n_hypertarget": 26,
+        "n_refs": 120,
+        "n_labels": 158,
+        "malformed_urls": [],
+        "untrusted_urls": [],
+        "venue_year_mismatches": [],
+        "unresolved_hyperref": [],
+        "unresolved_refs": [],
+        "dead_labels_count": 38,
+        "dead_labels_sample": [
+          "app:additional",
+          "app:algorithm",
+          "app:compound",
+          "app:constrained_decoding",
+          "app:contrastive_limitations",
+          "app:convex",
+          "app:deployment",
+          "app:diagnostic_culture",
+          "app:estimation_protocol",
+          "app:hetero",
+          "app:inequality",
+          "app:k_bound",
+          "app:pareto",
+          "app:perturbation",
+          "app:prelim",
+          "app:reproducibility",
+          "app:staging",
+          "app:staging_robustness",
+          "app:tightness",
+          "app:transfer"
+        ]
+      },
+      "notes": ""
     }
   ],
-  "certificate_self_hash": "b9ed72fd064a996a24dd8e846a62c12ce1c24f98d41326e9b419fc96a167933a"
+  "certificate_self_hash": "bbc6e414701441714f395f3197970460a28edc8bef54638f36fb856d5a3ae647"
 }

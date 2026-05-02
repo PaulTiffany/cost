@@ -1,0 +1,39 @@
+{
+  "summary": {
+    "n_urls": 2,
+    "n_hyperref": 0,
+    "n_hypertarget": 26,
+    "n_refs": 120,
+    "n_labels": 158,
+    "malformed_urls": [],
+    "untrusted_urls": [],
+    "venue_year_mismatches": [],
+    "unresolved_hyperref": [],
+    "unresolved_refs": [],
+    "dead_labels_count": 38,
+    "dead_labels_sample": [
+      "app:additional",
+      "app:algorithm",
+      "app:compound",
+      "app:constrained_decoding",
+      "app:contrastive_limitations",
+      "app:convex",
+      "app:deployment",
+      "app:diagnostic_culture",
+      "app:estimation_protocol",
+      "app:hetero",
+      "app:inequality",
+      "app:k_bound",
+      "app:pareto",
+      "app:perturbation",
+      "app:prelim",
+      "app:reproducibility",
+      "app:staging",
+      "app:staging_robustness",
+      "app:tightness",
+      "app:transfer"
+    ]
+  },
+  "venue_year": 2026,
+  "main_tex": "C:\\src\\NeurIPS\\paper\\main.tex"
+}

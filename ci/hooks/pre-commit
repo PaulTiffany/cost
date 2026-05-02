@@ -56,6 +56,14 @@ else
     echo "[OK]   L7 citation integrity"
 fi
 
+if ! python ci/link_integrity_check.py > /tmp/link_integrity.out 2>&1; then
+    echo "[FAIL] L8 link integrity (link_integrity_check.py)"
+    tail -10 /tmp/link_integrity.out
+    failed=1
+else
+    echo "[OK]   L8 link integrity"
+fi
+
 if [ $failed -ne 0 ]; then
     echo ""
     echo "Pre-commit blocked: a structural layer failed."

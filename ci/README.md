@@ -58,6 +58,7 @@ becomes part of layer N+1's input or context.
 | **L5** | `figure_value_check.py` | Do in-figure numerics match the registry? |
 | **L6** | `claim_certificate.py` | Aggregate the layers into a single signed artifact |
 | **L7** | `citation_integrity_check.py` | Does every \\citep{} resolve to a bib entry? |
+| **L8** | `link_integrity_check.py` | URLs well-formed + venue-year right? \\ref/\\hyperref resolve? |
 
 ### L1 — Claim audit (`claim_audit.py`)
 
@@ -217,6 +218,40 @@ python ci/citation_integrity_check.py --strict --verbose
 ```
 
 Output: `ci/citation_integrity_results.json`.
+
+### L8 — Link integrity (`link_integrity_check.py`)
+
+Verifies URLs, internal `\hyperref` targets, and the `\ref`/`\label`
+graph in main.tex (with `\input{}` includes recursively expanded so
+labels in figure-source files like `figures/related_envelope_combined.tex`
+are visible).
+
+Three classes of check:
+
+- **URL integrity** — every `\href{}`, `\url{}`, or bare `https?://`
+  link is well-formed; venue-year-bearing URLs (e.g.
+  `neurips.cc/Conferences/2026/`) match the declared venue year
+  (default 2026); URLs are checked against a whitelist of trusted
+  academic prefixes (neurips.cc, openreview.net, arxiv.org,
+  4open.science, anonymous.4open.science, etc.). DOES NOT make
+  network calls by default.
+- **Internal hyperref targets** — every `\hyperref[label]{text}` has
+  a matching `\label{label}` or `\hypertarget{label}{...}`. Caught
+  one real bug on first run: `fig:rw_quadrant` was defined inside
+  `figures/related_envelope_combined.tex` (an `\input{}` include),
+  not main.tex directly — analyzer was extended to expand includes.
+- **`\ref`/`\label` graph closure** — every `\ref{}`, `\eqref{}`,
+  `\autoref{}`, `\cref{}`, `\nameref{}`, `\pageref{}` resolves to a
+  defined `\label{}`. Multi-key refs (`\ref{a, b, c}`) are split.
+  Dead labels (defined but never referenced) are WARN-only since
+  they're often intentional anchors for future work.
+
+```
+python ci/link_integrity_check.py
+python ci/link_integrity_check.py --strict --verbose --venue-year 2026
+```
+
+Output: `ci/link_integrity_results.json`.
 
 ### L6 — Unified certificate (`claim_certificate.py`)
 
