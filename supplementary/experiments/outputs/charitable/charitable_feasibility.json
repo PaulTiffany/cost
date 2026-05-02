@@ -1,0 +1,105 @@
+{
+  "experiment": "charitable_k_feasibility",
+  "model": "constitution_based",
+  "parameters": {
+    "p_high_conflict": 0.0737,
+    "conflict_threshold": 0.5,
+    "source": "Claude Constitution (20 principles, 190 pairs)",
+    "n_trials": 10000,
+    "seed": 42
+  },
+  "interpretation": "Feasibility decays with k even for compatibility-designed constraints. This is NOT adversarial construction - it's the empirical structure of production-deployed constraints. Conflict emerges under composition.",
+  "results": {
+    "2": {
+      "k": 2,
+      "n_pairs": 1,
+      "feasibility_rate": 0.9271,
+      "theoretical_rate": 0.9263,
+      "std_error": 0.0026,
+      "ci_95": [
+        0.922,
+        0.9322
+      ],
+      "n_feasible": 9271,
+      "n_trials": 10000
+    },
+    "3": {
+      "k": 3,
+      "n_pairs": 3,
+      "feasibility_rate": 0.7938,
+      "theoretical_rate": 0.7948,
+      "std_error": 0.00405,
+      "ci_95": [
+        0.7859,
+        0.8017
+      ],
+      "n_feasible": 7938,
+      "n_trials": 10000
+    },
+    "4": {
+      "k": 4,
+      "n_pairs": 6,
+      "feasibility_rate": 0.625,
+      "theoretical_rate": 0.6317,
+      "std_error": 0.00484,
+      "ci_95": [
+        0.6155,
+        0.6345
+      ],
+      "n_feasible": 6250,
+      "n_trials": 10000
+    },
+    "5": {
+      "k": 5,
+      "n_pairs": 10,
+      "feasibility_rate": 0.459,
+      "theoretical_rate": 0.4651,
+      "std_error": 0.00498,
+      "ci_95": [
+        0.4492,
+        0.4688
+      ],
+      "n_feasible": 4590,
+      "n_trials": 10000
+    },
+    "6": {
+      "k": 6,
+      "n_pairs": 15,
+      "feasibility_rate": 0.3143,
+      "theoretical_rate": 0.3172,
+      "std_error": 0.00464,
+      "ci_95": [
+        0.3052,
+        0.3234
+      ],
+      "n_feasible": 3143,
+      "n_trials": 10000
+    },
+    "8": {
+      "k": 8,
+      "n_pairs": 28,
+      "feasibility_rate": 0.1159,
+      "theoretical_rate": 0.1172,
+      "std_error": 0.0032,
+      "ci_95": [
+        0.1096,
+        0.1222
+      ],
+      "n_feasible": 1159,
+      "n_trials": 10000
+    },
+    "10": {
+      "k": 10,
+      "n_pairs": 45,
+      "feasibility_rate": 0.0303,
+      "theoretical_rate": 0.0319,
+      "std_error": 0.00171,
+      "ci_95": [
+        0.0269,
+        0.0337
+      ],
+      "n_feasible": 303,
+      "n_trials": 10000
+    }
+  }
+}

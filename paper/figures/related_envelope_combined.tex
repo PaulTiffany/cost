@@ -1,0 +1,126 @@
+% Combined Related Work Quadrant + Limitations Envelope
+% Two panels side-by-side. Panel (a) preserves hyperlinks to extended_related_work.tex;
+% panel (b) preserves hyperlinks to lim:* targets in main.tex appendices.
+\begin{figure}[!htb]
+\centering
+%
+% ===== Panel (a): Related Work Quadrant =====
+\begin{minipage}[t]{0.58\linewidth}
+\centering
+\begin{tikzpicture}[
+  x=0.70cm, y=0.65cm,
+  font=\scriptsize,
+  axislbl/.style={font=\scriptsize\bfseries},
+  cornerlbl/.style={font=\tiny\itshape, gray!60!black},
+  cite/.style={font=\tiny, align=center},
+  ours/.style={font=\tiny\bfseries, align=center, text=blue!60!black, draw=blue!40, fill=blue!8, rounded corners, inner sep=3pt},
+  band/.style={font=\tiny, align=center},
+]
+  \draw[thick] (0,0) rectangle (10,5.5);
+  \draw[gray!50, thin] (5,0) -- (5,5.5);
+  \draw[gray!50, thin] (0,2.75) -- (10,2.75);
+  \node[axislbl] at (5,6.3) {Training-time \quad$\longleftarrow$\quad / \quad$\longrightarrow$\quad Inference-time};
+  \node[axislbl, rotate=90] at (-0.5,2.75) {Single $\;\longleftarrow$\;/\;$\longrightarrow$\; Multi};
+  \node[cornerlbl, anchor=south west] at (0.1,5.55) {Train $\times$ Multi};
+  \node[cornerlbl, anchor=south east] at (9.9,5.55) {Infer $\times$ Multi (this paper)};
+  \node[cornerlbl, anchor=north west] at (0.1,-0.05) {Train $\times$ Single};
+  \node[cornerlbl, anchor=north east] at (9.9,-0.05) {Infer $\times$ Single};
+  \node[cite] at (2.5, 4.0) {%
+    \hyperlink{rw:pcgrad}{PCGrad} \citep{yu2020gradient}\\
+    \hyperlink{rw:cagrad}{CAGrad} \citep{liu2021cagrad}\\
+    \hyperlink{rw:pama}{PAMA} \citep{he2025pama}\\
+    \hyperlink{rw:nashmtl}{Nash-MTL} \citep{navon2022nashmtl}\\
+    \hyperlink{rw:moo_mtl}{MOO-MTL} \citep{sener2018multi}%
+  };
+  \node[cite] at (7.5, 4.4) {%
+    \hyperlink{rw:selfrefine}{Self-refine} \citep{madaan2023selfrefine}\\
+    \hyperlink{rw:maker}{MAKER} \citep{meyerson2025maker}\\
+    \hyperlink{rw:wildifeval}{WildIFEval} \citep{lior2025wildifeval}\\
+    \hyperlink{rw:agentif}{AGENTIF} \citep{qi2025agentif}\\
+    \hyperlink{rw:cai}{Constitutional AI} \citep{bai2022constitutional}%
+  };
+  \node[ours] at (7.5, 2.75) {$\bigstar$ \textbf{This paper}\\geometric bound + pre-gen routing};
+  \node[cite] at (2.5, 1.4) {%
+    \hyperlink{rw:rlhf}{RLHF} \citep{ouyang2022training}%
+  };
+  \node[cite] at (7.5, 1.4) {%
+    \hyperlink{rw:cot}{CoT} \citep{wei2022chain}\\
+    \hyperlink{rw:ttscale}{TT-scaling} \citep{snell2024scaling}\\
+    \hyperlink{rw:r1}{R1} \citep{deepseek2025r1}%
+  };
+  \node[band, anchor=north, text width=6.5cm] at (5,-0.65) {%
+    \textit{Foundational lineage:}
+    \hyperlink{rw:fliege}{[Fliege \& Svaiter 2000]};
+    \hyperlink{rw:miettinen}{[Miettinen 1999]};
+    \hyperlink{rw:ehrgott}{[Ehrgott 2005]};
+    \hyperlink{rw:park}{[Park 2024]}%
+  };
+\end{tikzpicture}
+\\\footnotesize (a) Related work quadrant
+\end{minipage}\hspace{0.02\linewidth}%
+%
+% ===== Panel (b): Limitations Envelope (2x4 layout) =====
+\begin{minipage}[t]{0.40\linewidth}
+\centering
+\begin{tikzpicture}[
+  font=\footnotesize,
+  envelope/.style={
+    draw=blue!50, fill=blue!8, rounded corners,
+    inner sep=2pt, minimum width=0.95\linewidth,
+    minimum height=0.7cm, align=center,
+    text width=0.92\linewidth, font=\scriptsize
+  },
+  card/.style={
+    draw=gray!60, fill=gray!4, rounded corners,
+    inner sep=2pt, minimum width=0.48\linewidth,
+    minimum height=1.05cm, align=left,
+    text width=0.44\linewidth, anchor=north west,
+    font=\tiny
+  },
+]
+  \node[envelope] (env) at (0,0) {%
+    \textbf{Operating envelope}\\[1pt]
+    {\scriptsize Diag.\ cost predicts cliff; $\hat{\rho}$ orders ($r_s{=}1.0$); 0/4{,}800 refutations}%
+  };
+  % Row 1
+  \node[card, anchor=north west] (c1) at ($(env.south west) + (0,-0.1)$) {%
+    \textbf{\hyperlink{lim:scope}{Scope}}\\
+    $\rho < 1/(k{-}1)$. \textit{Action:} Hierarchy \emph{is} staging. $\to$ App~\ref{app:constitution}%
+  };
+  \node[card, anchor=north west] at ($(c1.north east) + (0.02,0)$) (c2) {%
+    \textbf{\hyperlink{lim:soft}{Soft}}\\
+    $\hat{\rho}$ screens. \textit{Action:} Brier preserves cliff. $\to$ App~\ref{app:charity}%
+  };
+  % Row 2
+  \node[card, anchor=north west] at ($(c1.south west) + (0,-0.04)$) (c3) {%
+    \textbf{\hyperlink{lim:pivot}{Pivot ($11\%$)}}\\
+    Lipschitz fails. \textit{Action:} Mid-gen detect. $\to$ App~\ref{app:direction_stability}%
+  };
+  \node[card, anchor=north west] at ($(c3.north east) + (0.02,0)$) (c4) {%
+    \textbf{\hyperlink{lim:linear}{Linear rep.}}\\
+    Concepts as directions. \textit{Action:} Cross-encoder. $\to$ App~\ref{app:lipschitz_calibration}%
+  };
+  % Row 3
+  \node[card, anchor=north west] at ($(c3.south west) + (0,-0.04)$) (c5) {%
+    \textbf{\hyperlink{lim:scale}{Scale}}\\
+    Bound gradient-free. \textit{Action:} 7~models 1B$\to$frontier. $\to$ App~\ref{app:claude_genome}%
+  };
+  \node[card, anchor=north west] at ($(c5.north east) + (0.02,0)$) (c6) {%
+    \textbf{\hyperlink{lim:internal}{Internal (o1/R1)}}\\
+    $t{=}0$ black-box. \textit{Action:} Internal staging. $\to$ App~\ref{app:budgeted_local_linearity}%
+  };
+  % Row 4
+  \node[card, anchor=north west] at ($(c5.south west) + (0,-0.04)$) (c7) {%
+    \textbf{\hyperlink{lim:assumptions}{Assumptions}}\\
+    Looser $\hat{L}$, drift. \textit{Action:} Graceful (${<}3\%$). $\to$ App~\ref{app:encoder_robustness}%
+  };
+  \node[card, anchor=north west] at ($(c7.north east) + (0.02,0)$) (c8) {%
+    \textbf{\hyperlink{lim:enforced}{Enforced}}\\
+    Hilbertian. \textit{Action:} Pareto exchange. $\to$ App~\ref{app:proofs}%
+  };
+\end{tikzpicture}
+\\\footnotesize (b) Operating envelope (limitations)
+\end{minipage}
+\caption{\textbf{Where this work sits and where it stops.} (a)~Related work quadrant: existing methods cluster in single-constraint inference and multi-constraint training; multi-constraint inference (upper right) lacked a geometric foundation. (b)~Operating envelope: each card names a boundary and the system's action there (deferral, mid-generation detection, hierarchy/staging, graceful degradation). \emph{Meta-theorem:} bounded honesty about observability is what makes pre-generation routing fail-safe. All citations in (a) hyperlink to App~\ref{app:extended_rw}; all cards in (b) hyperlink to their appendix discussions.}
+\label{fig:rw_quadrant}\label{fig:limitations_envelope}
+\end{figure}

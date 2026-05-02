@@ -1,0 +1,47 @@
+{
+  "constraints": [
+    "pitch_A4",
+    "rhythm_120bpm",
+    "high_flatness",
+    "high_roughness"
+  ],
+  "definition": "rho_ij = 1 - P(i&j)/min(P(i),P(j)) over baseline grammar distribution",
+  "eval_config": {
+    "max_chars": 128,
+    "seconds": 4.0,
+    "sr": 8000
+  },
+  "marginals": {
+    "high_flatness": 0.03225806451612903,
+    "high_roughness": 0.5161290322580645,
+    "pitch_A4": 0.0,
+    "rhythm_120bpm": 0.11290322580645161
+  },
+  "rho": {
+    "high_flatness": {
+      "high_flatness": 0.0,
+      "high_roughness": 0.5,
+      "pitch_A4": 1.0,
+      "rhythm_120bpm": 0.5
+    },
+    "high_roughness": {
+      "high_flatness": 0.5,
+      "high_roughness": 0.0,
+      "pitch_A4": 1.0,
+      "rhythm_120bpm": 0.1428571428571429
+    },
+    "pitch_A4": {
+      "high_flatness": 1.0,
+      "high_roughness": 1.0,
+      "pitch_A4": 1.0,
+      "rhythm_120bpm": 1.0
+    },
+    "rhythm_120bpm": {
+      "high_flatness": 0.5,
+      "high_roughness": 0.1428571428571429,
+      "pitch_A4": 1.0,
+      "rhythm_120bpm": 0.0
+    }
+  },
+  "valid_samples": 62
+}

@@ -1,0 +1,97 @@
+4/30/26, 11:16 PM
+
+Call for Papers 2026
+
+Call For Papers 2026
+
+The Fortieth Annual Conference on Neural Information Processing Systems
+(NeurlPS 2026) is an interdisciplinary conference that brings together
+researchers in deep learning, generative Al, core machine learning, neuroscience,
+statistics, optimization, computer vision, natural language processing, life
+sciences, natural sciences, social sciences, and other adjacent fields. We invite
+submissions presenting new and original research on topics including but not
+limited to the following:
+
+e Computer vision
+
+e Language and multimodal language models
+
+e Robotics, embodied systems, and engineering
+
+e Al/ML for physical sciences
+
+e Al/ML for health and biotechnology
+
+e Al/ML for sustainability
+
+e AI/ML for social sciences
+
+e AI/ML for creatives
+
+e Neuroscience and cognitive science
+
+e Socio-technical aspects of Al
+
+e Human interaction in Al systems
+
+e Decision-making, reinforcement learning, and control
+
+e Generalization and multi-task learning
+
+e Optimization
+
+e Probabilistic methods
+
+e Al and network science
+
+e Data-centric aspects of Al
+
+e SysML Infrastructure
+
+e Theory
+
+¢ Deep learning
+
+e General machine learning: core contributions in supervised and unsupervised
+methods
+
+Machine learning is a rapidly evolving field, and so we welcome interdisciplinary
+submissions that do not fit neatly into existing categories. We also encourage in-
+depth analysis of existing methods that provide new insights in terms of their
+limitations or behavior beyond the scope of the original work.
+
+Key dates:
+
+e Abstract submission deadline: May 4, 2026 (AOE). All authors must have an
+OpenReview profile when submitting
+
+e Full paper submission deadline, including all supplementary materials: May
+6, 2026 AOE
+
+e Author notification: September 24, 2026 AoE
+
+Key links:
+
+e Paper template
+
+e Submission link
+
+e Note that the different tracks (main, evaluations and datasets, position
+papers) have different calls for papers, different submission portals, and
+
+https://neurips.cc/Conferences/2026/CallForPapers
+
+1/2
+4/30/26, 11:16 PM Call for Papers 2026
+
+possibly different timelines. Please note that there will be no possibility to
+switch tracks or types and that papers cannot be submitted to multiple
+tracks or types simultaneously. Irrelevant or duplicate papers risk desk
+rejection from all tracks. It is the authors’ responsibility to carefully read the
+relevant CfPs and identify the track under which they would like their paper
+evaluated.
+
+e MainTrackHandbook, including our policies regarding reciprocal reviewing,
+dual submissions and LLMs.
+
+https://neurips.cc/Conferences/2026/CallForPapers 2/2

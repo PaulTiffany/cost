@@ -1,0 +1,148 @@
+% Extended Related Work appendix stub
+% Each entry has a \hypertarget matching the corresponding hyperlink in
+% figures/related_work_quadrant.tex
+
+\section{Extended Related Work}\label{app:extended_rw}
+
+This appendix expands the related work survey shown in
+Figure~\ref{fig:rw_quadrant}. Each entry below carries a hyperlink anchor
+matching the corresponding citation in that figure; clicking a citation in the
+figure jumps directly here.
+
+\subsection{Multi-objective optimization (training-time)}
+
+\hypertarget{rw:pcgrad}{}\textbf{PCGrad} \citep{yu2020gradient}.
+Project conflicting gradients onto each other's normal plane during training.
+
+Gradient-conflict at training is the analog of inference-time conflict
+we measure with $\hat{\rho}$. Yu et al.\ Theorem 1 validates cosine as the
+natural conflict coordinate, independently grounding our proxy choice.
+
+\hypertarget{rw:cagrad}{}\textbf{CAGrad} \citep{liu2021cagrad}.
+Conflict-averse gradient descent for multi-task learning.
+
+Relation to our work---both treat conflict geometry as primary, but
+CAGrad operates at training-time on gradients, not at inference-time on
+constraint embeddings.
+
+\hypertarget{rw:pama}{}\textbf{PAMA} \citep{he2025pama}.
+Pareto multi-objective alignment via convex transformation of multi-objective
+RLHF, reducing $O(n^2 d)$ gradient-MOO complexity to $O(n)$.
+
+Closest-in-spirit training-time work---He \& Maghsudi establish the
+Pareto frontier for multi-objective alignment, while we establish the geometric
+floor at inference time. Complementary perspectives.
+
+\hypertarget{rw:nashmtl}{}\textbf{Nash-MTL} \citep{navon2022nashmtl}.
+Bargaining-based multi-task learning.
+
+Nash bargaining provides an alternative aggregation rule for
+conflicting gradients; orthogonal to inference-time geometry but informs the
+landscape.
+
+\hypertarget{rw:moo_mtl}{}\textbf{MOO-MTL} \citep{sener2018multi}.
+Multi-task learning as multi-objective optimization.
+
+Sener \& Koltun establish MOO formulation; we extend MOO geometry
+from training to inference.
+
+\subsection{Inference-time multi-constraint methods}
+
+\hypertarget{rw:selfrefine}{}\textbf{Self-refine} \citep{madaan2023selfrefine}.
+Iterative refinement at inference time without training.
+
+Self-refine is structurally a fixed-point search over single-constraint
+satisfaction; it does not predict pre-generation when the constraint set is
+infeasible. Our router complements: route to staging or rejection before
+self-refine wastes tokens.
+
+\hypertarget{rw:maker}{}\textbf{MAKER} \citep{meyerson2025maker}.
+Society of thought: multiple specialized agents resolve constraints
+sequentially.
+
+Structurally staged constraint satisfaction at the agent level; our
+framework provides the geometric account of why staging works (diagonal cost
+reduction).
+
+\hypertarget{rw:wildifeval}{}\textbf{WildIFEval} \citep{lior2025wildifeval}.
+In-the-wild instruction-following evaluation, documenting widespread
+multi-constraint failure.
+
+WildIFEval establishes the empirical phenomenon; we provide the
+geometric explanation and pre-generation routing rule.
+
+\hypertarget{rw:agentif}{}\textbf{AGENTIF} \citep{qi2025agentif}.
+Constraint-set evaluation across agentic tasks.
+
+Ranges of $\rho$ in AGENTIF prompts inform our threshold calibration
+(Section~\ref{sec:empirical}).
+
+\hypertarget{rw:cai}{}\textbf{Constitutional AI} \citep{bai2022constitutional}.
+Critique-revision loop for alignment training.
+
+Structurally staged constraint satisfaction at training time; the
+diagonal cost framework formalizes a pattern alignment training already uses
+implicitly. Our work extends to inference time with a closed-form bound and
+routing rule.
+
+\subsection{Inference-time single-constraint methods}
+
+\hypertarget{rw:cot}{}\textbf{Chain-of-Thought} \citep{wei2022chain}.
+Step-by-step reasoning prompting.
+
+CoT enhances single-task reasoning; orthogonal to multi-constraint
+geometry.
+
+\hypertarget{rw:ttscale}{}\textbf{Test-time scaling} \citep{snell2024scaling}.
+Allocating compute at inference time.
+
+Validates our staging direction---more inference-time compute helps,
+but the diagonal cost determines when staging vs.\ one-shot is optimal.
+
+\hypertarget{rw:r1}{}\textbf{R1-style reasoning} \citep{deepseek2025r1}.
+Long-chain inference-time reasoning.
+
+R1's extended reasoning is single-thread; our routing applies
+orthogonally to decide whether multi-constraint problems require staging.
+
+\subsection{Training-time single-constraint methods}
+
+\hypertarget{rw:rlhf}{}\textbf{RLHF} \citep{ouyang2022training}.
+Reinforcement learning from human feedback, single reward function.
+
+Standard alignment baseline; our work explains why single-reward
+training fails to satisfy compound preferences (preference geometry collapses
+to scalar).
+
+\subsection{Foundational lineage}
+
+\hypertarget{rw:fliege}{}\textbf{Fliege \& Svaiter 2000} \citep{fliege2000steepest}.
+Steepest descent for multi-objective optimization.
+
+Provides the Gram-eigenstructure foundation we extend to inference
+time. Our diagonal cost bound is the inference-time analog of Fliege \&
+Svaiter's training-time analysis.
+
+\hypertarget{rw:miettinen}{}\textbf{Miettinen 1999} \citep{miettinen1999nonlinear}.
+Nonlinear multiobjective optimization.
+
+Comprehensive treatment of Pareto scaling under MOO; classical
+$\Omega(\epsilon\sqrt{k})$ bound.
+
+\hypertarget{rw:ehrgott}{}\textbf{Ehrgott 2005} \citep{ehrgott2005multicriteria}.
+Multi-criteria optimization.
+
+Foundational text covering descent cones and Pareto geometry that
+underlies our diagonal cost.
+
+\hypertarget{rw:park}{}\textbf{Park et al.\ 2024} \citep{park2023linear}.
+Linear representation hypothesis: concepts are directions; separable concepts
+are orthogonal.
+
+Theoretical foundation for using cosine similarity between constraint
+embeddings as a conflict measure (Definition~\ref{def:conflict}).
+
+% End of Extended Related Work appendix stub.
+% TODO before submission: replace 
+... placeholders with full
+% paragraphs (1-3 sentences each).

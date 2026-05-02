@@ -1,0 +1,186 @@
+{
+  "tier_rho_estimates": {
+    "control": 0.05,
+    "low": 0.2,
+    "moderate": 0.4,
+    "high": 0.65
+  },
+  "models": {
+    "Qwen/Qwen2.5-Coder-1.5B-Instruct": {
+      "control": {
+        "rho_estimate": 0.05,
+        "n_trials": 120,
+        "pass_rate_oneshot": 1.0,
+        "pass_rate_staged": 0.9166666666666666,
+        "failure_rate_oneshot": 0.0,
+        "staging_delta": -0.08333333333333337
+      },
+      "low": {
+        "rho_estimate": 0.2,
+        "n_trials": 120,
+        "pass_rate_oneshot": 0.95,
+        "pass_rate_staged": 0.7166666666666667,
+        "failure_rate_oneshot": 0.050000000000000044,
+        "staging_delta": -0.23333333333333328
+      },
+      "moderate": {
+        "rho_estimate": 0.4,
+        "n_trials": 120,
+        "pass_rate_oneshot": 0.4,
+        "pass_rate_staged": 0.18333333333333332,
+        "failure_rate_oneshot": 0.6,
+        "staging_delta": -0.2166666666666667
+      },
+      "high": {
+        "rho_estimate": 0.65,
+        "n_trials": 120,
+        "pass_rate_oneshot": 0.03333333333333333,
+        "pass_rate_staged": 0.016666666666666666,
+        "failure_rate_oneshot": 0.9666666666666667,
+        "staging_delta": -0.016666666666666666
+      }
+    },
+    "deepseek-ai/deepseek-coder-1.3b-instruct": {
+      "control": {
+        "rho_estimate": 0.05,
+        "n_trials": 120,
+        "pass_rate_oneshot": 0.8166666666666667,
+        "pass_rate_staged": 0.8333333333333334,
+        "failure_rate_oneshot": 0.18333333333333335,
+        "staging_delta": 0.01666666666666672
+      },
+      "low": {
+        "rho_estimate": 0.2,
+        "n_trials": 120,
+        "pass_rate_oneshot": 0.7333333333333333,
+        "pass_rate_staged": 0.7666666666666667,
+        "failure_rate_oneshot": 0.2666666666666667,
+        "staging_delta": 0.03333333333333344
+      },
+      "moderate": {
+        "rho_estimate": 0.4,
+        "n_trials": 120,
+        "pass_rate_oneshot": 0.21666666666666667,
+        "pass_rate_staged": 0.3333333333333333,
+        "failure_rate_oneshot": 0.7833333333333333,
+        "staging_delta": 0.11666666666666664
+      },
+      "high": {
+        "rho_estimate": 0.65,
+        "n_trials": 120,
+        "pass_rate_oneshot": 0.0,
+        "pass_rate_staged": 0.016666666666666666,
+        "failure_rate_oneshot": 1.0,
+        "staging_delta": 0.016666666666666666
+      }
+    },
+    "TinyLlama/TinyLlama-1.1B-Chat-v1.0": {
+      "control": {
+        "rho_estimate": 0.05,
+        "n_trials": 120,
+        "pass_rate_oneshot": 0.26666666666666666,
+        "pass_rate_staged": 0.4,
+        "failure_rate_oneshot": 0.7333333333333334,
+        "staging_delta": 0.13333333333333336
+      },
+      "low": {
+        "rho_estimate": 0.2,
+        "n_trials": 120,
+        "pass_rate_oneshot": 0.13333333333333333,
+        "pass_rate_staged": 0.31666666666666665,
+        "failure_rate_oneshot": 0.8666666666666667,
+        "staging_delta": 0.18333333333333332
+      },
+      "moderate": {
+        "rho_estimate": 0.4,
+        "n_trials": 120,
+        "pass_rate_oneshot": 0.05,
+        "pass_rate_staged": 0.08333333333333333,
+        "failure_rate_oneshot": 0.95,
+        "staging_delta": 0.033333333333333326
+      },
+      "high": {
+        "rho_estimate": 0.65,
+        "n_trials": 120,
+        "pass_rate_oneshot": 0.016666666666666666,
+        "pass_rate_staged": 0.0,
+        "failure_rate_oneshot": 0.9833333333333333,
+        "staging_delta": -0.016666666666666666
+      }
+    },
+    "Qwen/Qwen2.5-3B-Instruct": {
+      "control": {
+        "rho_estimate": 0.05,
+        "n_trials": 120,
+        "pass_rate_oneshot": 0.95,
+        "pass_rate_staged": 0.9666666666666667,
+        "failure_rate_oneshot": 0.050000000000000044,
+        "staging_delta": 0.01666666666666672
+      },
+      "low": {
+        "rho_estimate": 0.2,
+        "n_trials": 120,
+        "pass_rate_oneshot": 0.4166666666666667,
+        "pass_rate_staged": 0.6166666666666667,
+        "failure_rate_oneshot": 0.5833333333333333,
+        "staging_delta": 0.2
+      },
+      "moderate": {
+        "rho_estimate": 0.4,
+        "n_trials": 120,
+        "pass_rate_oneshot": 0.25,
+        "pass_rate_staged": 0.3333333333333333,
+        "failure_rate_oneshot": 0.75,
+        "staging_delta": 0.08333333333333331
+      },
+      "high": {
+        "rho_estimate": 0.65,
+        "n_trials": 120,
+        "pass_rate_oneshot": 0.016666666666666666,
+        "pass_rate_staged": 0.03333333333333333,
+        "failure_rate_oneshot": 0.9833333333333333,
+        "staging_delta": 0.016666666666666666
+      }
+    }
+  },
+  "aggregate": {
+    "stats": {
+      "control": {
+        "rho_estimate": 0.05,
+        "n_trials": 480,
+        "pass_rate_oneshot": 0.7583333333333333,
+        "pass_rate_staged": 0.7791666666666667,
+        "failure_rate_oneshot": 0.2416666666666667,
+        "staging_delta": 0.02083333333333337
+      },
+      "low": {
+        "rho_estimate": 0.2,
+        "n_trials": 480,
+        "pass_rate_oneshot": 0.5583333333333333,
+        "pass_rate_staged": 0.6041666666666666,
+        "failure_rate_oneshot": 0.44166666666666665,
+        "staging_delta": 0.04583333333333328
+      },
+      "moderate": {
+        "rho_estimate": 0.4,
+        "n_trials": 480,
+        "pass_rate_oneshot": 0.22916666666666666,
+        "pass_rate_staged": 0.23333333333333334,
+        "failure_rate_oneshot": 0.7708333333333334,
+        "staging_delta": 0.00416666666666668
+      },
+      "high": {
+        "rho_estimate": 0.65,
+        "n_trials": 480,
+        "pass_rate_oneshot": 0.016666666666666666,
+        "pass_rate_staged": 0.016666666666666666,
+        "failure_rate_oneshot": 0.9833333333333333,
+        "staging_delta": 0.0
+      }
+    }
+  },
+  "correlation": {
+    "pearson_r": 0.9903881385009142,
+    "spearman_r": 1.0
+  }
+}

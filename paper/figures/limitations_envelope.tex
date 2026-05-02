@@ -1,0 +1,73 @@
+% Limitations as Operating Envelope figure
+% Replaces the prose §8 Limitations with a structural visual.
+% Each cell hyperlinks to its appendix discussion.
+\begin{figure}[!htb]
+\centering
+\begin{tikzpicture}[
+  font=\footnotesize,
+  envelope/.style={
+    draw=blue!50, fill=blue!8, rounded corners,
+    inner sep=2pt, minimum width=0.95\columnwidth,
+    minimum height=0.7cm, align=center,
+    text width=0.92\columnwidth, font=\scriptsize
+  },
+  card/.style={
+    draw=gray!60, fill=gray!4, rounded corners,
+    inner sep=1.5pt, minimum width=0.235\columnwidth,
+    minimum height=1.0cm, align=left,
+    text width=0.215\columnwidth, anchor=north west,
+    font=\tiny
+  },
+  axislbl/.style={font=\scriptsize\itshape, gray!60!black}
+]
+  % Top: the operating envelope (where Algorithm 1 predicts)
+  \node[envelope] (env) at (0,0) {%
+    \textbf{Operating envelope --- Algorithm~\ref{alg:routing} routes here}\\[1pt]
+    {\small Diagonal cost predicts feasibility cliff; $\hat{\rho}$ orders regimes ($r_s{=}1.0$); $0/4{,}800$ smooth-regime refutations}%
+  };
+
+  % Boundary conditions arranged in 4x2 grid (4 cards per row, 2 rows)
+  \node[card, anchor=north west] (c1) at ($(env.south west) + (0,-0.1)$) {%
+    \textbf{\hyperlink{lim:scope}{Scope}}\\
+    $\rho < 1/(k{-}1)$.\\
+    \textit{Action:} Hierarchy \emph{is} staging (Claude's 20 principles, $\hat{\rho}{=}0.27$). $\to$ App~\ref{app:constitution}%
+  };
+  \node[card, anchor=north west] at ($(c1.north east) + (0.02,0)$) (c2) {%
+    \textbf{\hyperlink{lim:soft}{Soft constraints}}\\
+    $\hat{\rho}$ screens, not verdicts.\\
+    \textit{Action:} Brier proxies preserve cliff (Fig.~\ref{fig:soft_constraint_cliff}); domain checks. $\to$ App~\ref{app:charity}%
+  };
+  \node[card, anchor=north west] at ($(c2.north east) + (0.02,0)$) (c3) {%
+    \textbf{\hyperlink{lim:pivot}{Pivot regime ($11\%$)}}\\
+    Lipschitz fails on `aha!'\\
+    \textit{Action:} Mid-generation detection (drift / step-size); re-routed. $\to$ App~\ref{app:direction_stability}%
+  };
+  \node[card, anchor=north west] at ($(c3.north east) + (0.02,0)$) (c4) {%
+    \textbf{\hyperlink{lim:linear}{Linear representation}}\\
+    Concepts as directions \citep{park2023linear}.\\
+    \textit{Action:} Cross-encoder val.\ ($r_s \ge 0.94$). $\to$ App~\ref{app:lipschitz_calibration}%
+  };
+  \node[card, anchor=north west] at ($(c1.south west) + (0,-0.02)$) (c5) {%
+    \textbf{\hyperlink{lim:scale}{Scale transfer}}\\
+    Bound gradient-free.\\
+    \textit{Action:} Identical ordering across 7 models 1B$\to$frontier (Fig.~\ref{fig:cross_model}). $\to$ App~\ref{app:claude_genome}%
+  };
+  \node[card, anchor=north west] at ($(c2.south west) + (0,-0.02)$) (c6) {%
+    \textbf{\hyperlink{lim:internal}{Internal (o1/R1)}}\\
+    $t{=}0$ black-box; $\rho$ not.\\
+    \textit{Action:} Internal staging satisfies the same contract. $\to$ App~\ref{app:budgeted_local_linearity}%
+  };
+  \node[card, anchor=north west] at ($(c3.south west) + (0,-0.02)$) (c7) {%
+    \textbf{\hyperlink{lim:assumptions}{Assumptions break}}\\
+    Looser $\hat{L}$, embed.\ mismatch, drift.\\
+    \textit{Action:} Graceful degradation (${<}3\%$ regret). $\to$ App~\ref{app:encoder_robustness}%
+  };
+  \node[card, anchor=north west] at ($(c4.south west) + (0,-0.02)$) (c8) {%
+    \textbf{\hyperlink{lim:enforced}{Constraint-enforced}}\\
+    Constraints Hilbertian.\\
+    \textit{Action:} Pareto exchange rate; explains ``scaling walls.'' $\to$ App~\ref{app:proofs}%
+  };
+\end{tikzpicture}
+\caption{\textbf{Limitations as operating envelope, not a scattered list.} Each labeled boundary defines where the framework's predictions hold (top: green envelope) and what the system does at the boundary (cards: explicit deferral via domain check, mid-generation detection, hierarchy/staging, or graceful degradation). The meta-theorem: \emph{bounded honesty about observability is what makes pre-generation routing fail-safe}. A predictor that conceals its blind spots cannot be trusted; a router that defers explicitly can. Each card hyperlinks to its appendix discussion.}
+\label{fig:limitations_envelope}
+\end{figure}

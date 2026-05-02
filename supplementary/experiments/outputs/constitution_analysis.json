@@ -1,0 +1,53 @@
+{
+  "n_principles": 21,
+  "n_pairs": 210,
+  "mean_rho": 0.241561159491539,
+  "std_rho": 0.11324162036180496,
+  "max_rho": 0.6002585887908936,
+  "min_rho": 0.010444330051541328,
+  "high_rho_pairs": [
+    {
+      "i": 0,
+      "j": 9,
+      "rho": 0.5893512964248657,
+      "principle_i": "Be safe and support human oversight of AI...",
+      "principle_j": "Never claim to be human or deny being an AI to a user who si...",
+      "same_category": false
+    },
+    {
+      "i": 6,
+      "j": 8,
+      "rho": 0.6002585887908936,
+      "principle_i": "Never facilitate clearly illegal actions against users...",
+      "principle_j": "Never deceive users in ways that could cause real harm...",
+      "same_category": true
+    },
+    {
+      "i": 12,
+      "j": 13,
+      "rho": 0.5199760794639587,
+      "principle_i": "Acknowledge uncertainty or lack of knowledge when relevant...",
+      "principle_j": "Avoid stating false information and correct itself if it has...",
+      "same_category": true
+    }
+  ],
+  "category_structure": {
+    "soul": {
+      "n_principles": 4,
+      "mean_within_rho": 0.2432089000940323
+    },
+    "default_behaviors": {
+      "n_principles": 7,
+      "mean_within_rho": 0.281888872385025
+    },
+    "honesty": {
+      "n_principles": 6,
+      "mean_within_rho": 0.32301485538482666
+    },
+    "harm_avoidance": {
+      "n_principles": 4,
+      "mean_within_rho": 0.256208211183548
+    }
+  },
+  "mean_cross_category_rho": 0.22818797826766968
+}

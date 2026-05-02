@@ -1,0 +1,1419 @@
+{
+  "meta": {
+    "experiment": "fixed_point_claude_family",
+    "models": [
+      "haiku-3",
+      "sonnet-4",
+      "sonnet-4.5",
+      "opus-4",
+      "opus-4.1",
+      "opus-4.5",
+      "haiku-4.5"
+    ],
+    "seed": 43,
+    "budget": 512,
+    "timestamp": "2026-01-13T03:46:36.291231+00:00",
+    "api_calls": 210,
+    "input_tokens": 31107,
+    "output_tokens": 32812,
+    "per_model_tokens": {
+      "claude-3-haiku-20240307": {
+        "input": 3708,
+        "output": 2172,
+        "calls": 30
+      },
+      "claude-sonnet-4-20250514": {
+        "input": 4661,
+        "output": 5465,
+        "calls": 30
+      },
+      "claude-sonnet-4-5-20250929": {
+        "input": 4553,
+        "output": 5081,
+        "calls": 30
+      },
+      "claude-opus-4-20250514": {
+        "input": 4417,
+        "output": 5316,
+        "calls": 30
+      },
+      "claude-opus-4-1-20250805": {
+        "input": 4665,
+        "output": 5667,
+        "calls": 30
+      },
+      "claude-opus-4-5-20251101": {
+        "input": 4432,
+        "output": 3375,
+        "calls": 30
+      },
+      "claude-haiku-4-5-20251001": {
+        "input": 4671,
+        "output": 5736,
+        "calls": 30
+      }
+    }
+  },
+  "model_analyses": [
+    {
+      "model_name": "haiku-3",
+      "tasks_analyzed": 6,
+      "staged_wins": 3,
+      "avg_improvement_ratio": 2.5194296676909143,
+      "task_details": [
+        {
+          "task_id": "digit_sum_42",
+          "oneshot_delta": 50,
+          "staged_delta": 8,
+          "abs_oneshot": 50,
+          "abs_staged": 8,
+          "improvement_ratio": 6.25,
+          "winner": "staged"
+        },
+        {
+          "task_id": "digit_sum_66",
+          "oneshot_delta": 6,
+          "staged_delta": 1,
+          "abs_oneshot": 6,
+          "abs_staged": 1,
+          "improvement_ratio": 6.0,
+          "winner": "staged"
+        },
+        {
+          "task_id": "vowel_count_31",
+          "oneshot_delta": 25,
+          "staged_delta": 89,
+          "abs_oneshot": 25,
+          "abs_staged": 89,
+          "improvement_ratio": 0.2808988764044944,
+          "winner": "oneshot"
+        },
+        {
+          "task_id": "vowel_count_43",
+          "oneshot_delta": 96,
+          "staged_delta": 88,
+          "abs_oneshot": 96,
+          "abs_staged": 88,
+          "improvement_ratio": 1.0909090909090908,
+          "winner": "staged"
+        },
+        {
+          "task_id": "word_digit_43",
+          "oneshot_delta": -167,
+          "staged_delta": -299,
+          "abs_oneshot": 167,
+          "abs_staged": 299,
+          "improvement_ratio": 0.5585284280936454,
+          "winner": "oneshot"
+        },
+        {
+          "task_id": "self_count_43",
+          "oneshot_delta": 279,
+          "staged_delta": 298,
+          "abs_oneshot": 279,
+          "abs_staged": 298,
+          "improvement_ratio": 0.9362416107382551,
+          "winner": "oneshot"
+        }
+      ]
+    },
+    {
+      "model_name": "sonnet-4",
+      "tasks_analyzed": 6,
+      "staged_wins": 5,
+      "avg_improvement_ratio": 4.419597491127238,
+      "task_details": [
+        {
+          "task_id": "digit_sum_42",
+          "oneshot_delta": 703,
+          "staged_delta": 158,
+          "abs_oneshot": 703,
+          "abs_staged": 158,
+          "improvement_ratio": 4.449367088607595,
+          "winner": "staged"
+        },
+        {
+          "task_id": "digit_sum_66",
+          "oneshot_delta": 981,
+          "staged_delta": 131,
+          "abs_oneshot": 981,
+          "abs_staged": 131,
+          "improvement_ratio": 7.488549618320611,
+          "winner": "staged"
+        },
+        {
+          "task_id": "vowel_count_31",
+          "oneshot_delta": 587,
+          "staged_delta": 125,
+          "abs_oneshot": 587,
+          "abs_staged": 125,
+          "improvement_ratio": 4.696,
+          "winner": "staged"
+        },
+        {
+          "task_id": "vowel_count_43",
+          "oneshot_delta": 569,
+          "staged_delta": 85,
+          "abs_oneshot": 569,
+          "abs_staged": 85,
+          "improvement_ratio": 6.694117647058824,
+          "winner": "staged"
+        },
+        {
+          "task_id": "word_digit_43",
+          "oneshot_delta": -935,
+          "staged_delta": -306,
+          "abs_oneshot": 935,
+          "abs_staged": 306,
+          "improvement_ratio": 3.0555555555555554,
+          "winner": "staged"
+        },
+        {
+          "task_id": "self_count_43",
+          "oneshot_delta": 54,
+          "staged_delta": 403,
+          "abs_oneshot": 54,
+          "abs_staged": 403,
+          "improvement_ratio": 0.13399503722084366,
+          "winner": "oneshot"
+        }
+      ]
+    },
+    {
+      "model_name": "sonnet-4.5",
+      "tasks_analyzed": 6,
+      "staged_wins": 5,
+      "avg_improvement_ratio": 23.820237281808108,
+      "task_details": [
+        {
+          "task_id": "digit_sum_42",
+          "oneshot_delta": 439,
+          "staged_delta": 0,
+          "abs_oneshot": 439,
+          "abs_staged": 0,
+          "improvement_ratio": Infinity,
+          "winner": "staged"
+        },
+        {
+          "task_id": "digit_sum_66",
+          "oneshot_delta": 640,
+          "staged_delta": 32,
+          "abs_oneshot": 640,
+          "abs_staged": 32,
+          "improvement_ratio": 20.0,
+          "winner": "staged"
+        },
+        {
+          "task_id": "vowel_count_31",
+          "oneshot_delta": 662,
+          "staged_delta": 13,
+          "abs_oneshot": 662,
+          "abs_staged": 13,
+          "improvement_ratio": 50.92307692307692,
+          "winner": "staged"
+        },
+        {
+          "task_id": "vowel_count_43",
+          "oneshot_delta": 340,
+          "staged_delta": 8,
+          "abs_oneshot": 340,
+          "abs_staged": 8,
+          "improvement_ratio": 42.5,
+          "winner": "staged"
+        },
+        {
+          "task_id": "word_digit_43",
+          "oneshot_delta": -1553,
+          "staged_delta": -279,
+          "abs_oneshot": 1553,
+          "abs_staged": 279,
+          "improvement_ratio": 5.566308243727598,
+          "winner": "staged"
+        },
+        {
+          "task_id": "self_count_43",
+          "oneshot_delta": 36,
+          "staged_delta": 322,
+          "abs_oneshot": 36,
+          "abs_staged": 322,
+          "improvement_ratio": 0.11180124223602485,
+          "winner": "oneshot"
+        }
+      ]
+    },
+    {
+      "model_name": "opus-4",
+      "tasks_analyzed": 6,
+      "staged_wins": 5,
+      "avg_improvement_ratio": 22.686549940200475,
+      "task_details": [
+        {
+          "task_id": "digit_sum_42",
+          "oneshot_delta": 611,
+          "staged_delta": 7,
+          "abs_oneshot": 611,
+          "abs_staged": 7,
+          "improvement_ratio": 87.28571428571429,
+          "winner": "staged"
+        },
+        {
+          "task_id": "digit_sum_66",
+          "oneshot_delta": 888,
+          "staged_delta": 90,
+          "abs_oneshot": 888,
+          "abs_staged": 90,
+          "improvement_ratio": 9.866666666666667,
+          "winner": "staged"
+        },
+        {
+          "task_id": "vowel_count_31",
+          "oneshot_delta": 547,
+          "staged_delta": 21,
+          "abs_oneshot": 547,
+          "abs_staged": 21,
+          "improvement_ratio": 26.047619047619047,
+          "winner": "staged"
+        },
+        {
+          "task_id": "vowel_count_43",
+          "oneshot_delta": 596,
+          "staged_delta": 99,
+          "abs_oneshot": 596,
+          "abs_staged": 99,
+          "improvement_ratio": 6.02020202020202,
+          "winner": "staged"
+        },
+        {
+          "task_id": "word_digit_43",
+          "oneshot_delta": -1690,
+          "staged_delta": -265,
+          "abs_oneshot": 1690,
+          "abs_staged": 265,
+          "improvement_ratio": 6.377358490566038,
+          "winner": "staged"
+        },
+        {
+          "task_id": "self_count_43",
+          "oneshot_delta": 84,
+          "staged_delta": 161,
+          "abs_oneshot": 84,
+          "abs_staged": 161,
+          "improvement_ratio": 0.5217391304347826,
+          "winner": "oneshot"
+        }
+      ]
+    },
+    {
+      "model_name": "opus-4.1",
+      "tasks_analyzed": 6,
+      "staged_wins": 5,
+      "avg_improvement_ratio": 26.401666682289406,
+      "task_details": [
+        {
+          "task_id": "digit_sum_42",
+          "oneshot_delta": 696,
+          "staged_delta": 10,
+          "abs_oneshot": 696,
+          "abs_staged": 10,
+          "improvement_ratio": 69.6,
+          "winner": "staged"
+        },
+        {
+          "task_id": "digit_sum_66",
+          "oneshot_delta": 825,
+          "staged_delta": 12,
+          "abs_oneshot": 825,
+          "abs_staged": 12,
+          "improvement_ratio": 68.75,
+          "winner": "staged"
+        },
+        {
+          "task_id": "vowel_count_31",
+          "oneshot_delta": 593,
+          "staged_delta": 89,
+          "abs_oneshot": 593,
+          "abs_staged": 89,
+          "improvement_ratio": 6.662921348314606,
+          "winner": "staged"
+        },
+        {
+          "task_id": "vowel_count_43",
+          "oneshot_delta": 585,
+          "staged_delta": 86,
+          "abs_oneshot": 585,
+          "abs_staged": 86,
+          "improvement_ratio": 6.8023255813953485,
+          "winner": "staged"
+        },
+        {
+          "task_id": "word_digit_43",
+          "oneshot_delta": -1841,
+          "staged_delta": -291,
+          "abs_oneshot": 1841,
+          "abs_staged": 291,
+          "improvement_ratio": 6.326460481099656,
+          "winner": "staged"
+        },
+        {
+          "task_id": "self_count_43",
+          "oneshot_delta": 44,
+          "staged_delta": 164,
+          "abs_oneshot": 44,
+          "abs_staged": 164,
+          "improvement_ratio": 0.2682926829268293,
+          "winner": "oneshot"
+        }
+      ]
+    },
+    {
+      "model_name": "opus-4.5",
+      "tasks_analyzed": 6,
+      "staged_wins": 4,
+      "avg_improvement_ratio": 4.80379154230837,
+      "task_details": [
+        {
+          "task_id": "digit_sum_42",
+          "oneshot_delta": -10,
+          "staged_delta": 75,
+          "abs_oneshot": 10,
+          "abs_staged": 75,
+          "improvement_ratio": 0.13333333333333333,
+          "winner": "oneshot"
+        },
+        {
+          "task_id": "digit_sum_66",
+          "oneshot_delta": -19,
+          "staged_delta": -1,
+          "abs_oneshot": 19,
+          "abs_staged": 1,
+          "improvement_ratio": 19.0,
+          "winner": "staged"
+        },
+        {
+          "task_id": "vowel_count_31",
+          "oneshot_delta": 66,
+          "staged_delta": 15,
+          "abs_oneshot": 66,
+          "abs_staged": 15,
+          "improvement_ratio": 4.4,
+          "winner": "staged"
+        },
+        {
+          "task_id": "vowel_count_43",
+          "oneshot_delta": 54,
+          "staged_delta": 35,
+          "abs_oneshot": 54,
+          "abs_staged": 35,
+          "improvement_ratio": 1.542857142857143,
+          "winner": "staged"
+        },
+        {
+          "task_id": "word_digit_43",
+          "oneshot_delta": -894,
+          "staged_delta": -293,
+          "abs_oneshot": 894,
+          "abs_staged": 293,
+          "improvement_ratio": 3.051194539249147,
+          "winner": "staged"
+        },
+        {
+          "task_id": "self_count_43",
+          "oneshot_delta": 105,
+          "staged_delta": 151,
+          "abs_oneshot": 105,
+          "abs_staged": 151,
+          "improvement_ratio": 0.695364238410596,
+          "winner": "oneshot"
+        }
+      ]
+    },
+    {
+      "model_name": "haiku-4.5",
+      "tasks_analyzed": 6,
+      "staged_wins": 5,
+      "avg_improvement_ratio": 23.34670715988986,
+      "task_details": [
+        {
+          "task_id": "digit_sum_42",
+          "oneshot_delta": 743,
+          "staged_delta": 17,
+          "abs_oneshot": 743,
+          "abs_staged": 17,
+          "improvement_ratio": 43.705882352941174,
+          "winner": "staged"
+        },
+        {
+          "task_id": "digit_sum_66",
+          "oneshot_delta": 883,
+          "staged_delta": -12,
+          "abs_oneshot": 883,
+          "abs_staged": 12,
+          "improvement_ratio": 73.58333333333333,
+          "winner": "staged"
+        },
+        {
+          "task_id": "vowel_count_31",
+          "oneshot_delta": 580,
+          "staged_delta": 85,
+          "abs_oneshot": 580,
+          "abs_staged": 85,
+          "improvement_ratio": 6.823529411764706,
+          "winner": "staged"
+        },
+        {
+          "task_id": "vowel_count_43",
+          "oneshot_delta": 627,
+          "staged_delta": 62,
+          "abs_oneshot": 627,
+          "abs_staged": 62,
+          "improvement_ratio": 10.112903225806452,
+          "winner": "staged"
+        },
+        {
+          "task_id": "word_digit_43",
+          "oneshot_delta": -1607,
+          "staged_delta": -297,
+          "abs_oneshot": 1607,
+          "abs_staged": 297,
+          "improvement_ratio": 5.410774410774411,
+          "winner": "staged"
+        },
+        {
+          "task_id": "self_count_43",
+          "oneshot_delta": 158,
+          "staged_delta": 356,
+          "abs_oneshot": 158,
+          "abs_staged": 356,
+          "improvement_ratio": 0.4438202247191011,
+          "winner": "oneshot"
+        }
+      ]
+    }
+  ],
+  "results": [
+    {
+      "task_id": "digit_sum_42",
+      "model_id": "claude-3-haiku-20240307",
+      "model_name": "haiku-3",
+      "protocol": "oneshot",
+      "is_fixed_point": false,
+      "target": 51,
+      "actual": 101,
+      "delta": 50,
+      "iterations": 1
+    },
+    {
+      "task_id": "digit_sum_42",
+      "model_id": "claude-3-haiku-20240307",
+      "model_name": "haiku-3",
+      "protocol": "staged",
+      "is_fixed_point": false,
+      "target": 50,
+      "actual": 58,
+      "delta": 8,
+      "iterations": 4
+    },
+    {
+      "task_id": "digit_sum_66",
+      "model_id": "claude-3-haiku-20240307",
+      "model_name": "haiku-3",
+      "protocol": "oneshot",
+      "is_fixed_point": false,
+      "target": 75,
+      "actual": 81,
+      "delta": 6,
+      "iterations": 1
+    },
+    {
+      "task_id": "digit_sum_66",
+      "model_id": "claude-3-haiku-20240307",
+      "model_name": "haiku-3",
+      "protocol": "staged",
+      "is_fixed_point": false,
+      "target": 75,
+      "actual": 76,
+      "delta": 1,
+      "iterations": 4
+    },
+    {
+      "task_id": "vowel_count_31",
+      "model_id": "claude-3-haiku-20240307",
+      "model_name": "haiku-3",
+      "protocol": "oneshot",
+      "is_fixed_point": false,
+      "target": 125,
+      "actual": 150,
+      "delta": 25,
+      "iterations": 1
+    },
+    {
+      "task_id": "vowel_count_31",
+      "model_id": "claude-3-haiku-20240307",
+      "model_name": "haiku-3",
+      "protocol": "staged",
+      "is_fixed_point": false,
+      "target": 145,
+      "actual": 234,
+      "delta": 89,
+      "iterations": 4
+    },
+    {
+      "task_id": "vowel_count_43",
+      "model_id": "claude-3-haiku-20240307",
+      "model_name": "haiku-3",
+      "protocol": "oneshot",
+      "is_fixed_point": false,
+      "target": 225,
+      "actual": 321,
+      "delta": 96,
+      "iterations": 1
+    },
+    {
+      "task_id": "vowel_count_43",
+      "model_id": "claude-3-haiku-20240307",
+      "model_name": "haiku-3",
+      "protocol": "staged",
+      "is_fixed_point": false,
+      "target": 185,
+      "actual": 273,
+      "delta": 88,
+      "iterations": 4
+    },
+    {
+      "task_id": "word_digit_43",
+      "model_id": "claude-3-haiku-20240307",
+      "model_name": "haiku-3",
+      "protocol": "oneshot",
+      "is_fixed_point": false,
+      "target": 360,
+      "actual": 193,
+      "delta": -167,
+      "iterations": 1
+    },
+    {
+      "task_id": "word_digit_43",
+      "model_id": "claude-3-haiku-20240307",
+      "model_name": "haiku-3",
+      "protocol": "staged",
+      "is_fixed_point": false,
+      "target": 625,
+      "actual": 326,
+      "delta": -299,
+      "iterations": 4
+    },
+    {
+      "task_id": "self_count_43",
+      "model_id": "claude-3-haiku-20240307",
+      "model_name": "haiku-3",
+      "protocol": "oneshot",
+      "is_fixed_point": false,
+      "target": 201,
+      "actual": 480,
+      "delta": 279,
+      "iterations": 1
+    },
+    {
+      "task_id": "self_count_43",
+      "model_id": "claude-3-haiku-20240307",
+      "model_name": "haiku-3",
+      "protocol": "staged",
+      "is_fixed_point": false,
+      "target": -1,
+      "actual": 297,
+      "delta": 298,
+      "iterations": 4
+    },
+    {
+      "task_id": "digit_sum_42",
+      "model_id": "claude-sonnet-4-20250514",
+      "model_name": "sonnet-4",
+      "protocol": "oneshot",
+      "is_fixed_point": false,
+      "target": 353,
+      "actual": 1056,
+      "delta": 703,
+      "iterations": 1
+    },
+    {
+      "task_id": "digit_sum_42",
+      "model_id": "claude-sonnet-4-20250514",
+      "model_name": "sonnet-4",
+      "protocol": "staged",
+      "is_fixed_point": false,
+      "target": 123,
+      "actual": 281,
+      "delta": 158,
+      "iterations": 4
+    },
+    {
+      "task_id": "digit_sum_66",
+      "model_id": "claude-sonnet-4-20250514",
+      "model_name": "sonnet-4",
+      "protocol": "oneshot",
+      "is_fixed_point": false,
+      "target": 521,
+      "actual": 1502,
+      "delta": 981,
+      "iterations": 1
+    },
+    {
+      "task_id": "digit_sum_66",
+      "model_id": "claude-sonnet-4-20250514",
+      "model_name": "sonnet-4",
+      "protocol": "staged",
+      "is_fixed_point": false,
+      "target": 135,
+      "actual": 266,
+      "delta": 131,
+      "iterations": 4
+    },
+    {
+      "task_id": "vowel_count_31",
+      "model_id": "claude-sonnet-4-20250514",
+      "model_name": "sonnet-4",
+      "protocol": "oneshot",
+      "is_fixed_point": false,
+      "target": 439,
+      "actual": 1026,
+      "delta": 587,
+      "iterations": 1
+    },
+    {
+      "task_id": "vowel_count_31",
+      "model_id": "claude-sonnet-4-20250514",
+      "model_name": "sonnet-4",
+      "protocol": "staged",
+      "is_fixed_point": false,
+      "target": 201,
+      "actual": 326,
+      "delta": 125,
+      "iterations": 4
+    },
+    {
+      "task_id": "vowel_count_43",
+      "model_id": "claude-sonnet-4-20250514",
+      "model_name": "sonnet-4",
+      "protocol": "oneshot",
+      "is_fixed_point": false,
+      "target": 477,
+      "actual": 1046,
+      "delta": 569,
+      "iterations": 1
+    },
+    {
+      "task_id": "vowel_count_43",
+      "model_id": "claude-sonnet-4-20250514",
+      "model_name": "sonnet-4",
+      "protocol": "staged",
+      "is_fixed_point": false,
+      "target": 169,
+      "actual": 254,
+      "delta": 85,
+      "iterations": 4
+    },
+    {
+      "task_id": "word_digit_43",
+      "model_id": "claude-sonnet-4-20250514",
+      "model_name": "sonnet-4",
+      "protocol": "oneshot",
+      "is_fixed_point": false,
+      "target": 2070,
+      "actual": 1135,
+      "delta": -935,
+      "iterations": 1
+    },
+    {
+      "task_id": "word_digit_43",
+      "model_id": "claude-sonnet-4-20250514",
+      "model_name": "sonnet-4",
+      "protocol": "staged",
+      "is_fixed_point": false,
+      "target": 645,
+      "actual": 339,
+      "delta": -306,
+      "iterations": 4
+    },
+    {
+      "task_id": "self_count_43",
+      "model_id": "claude-sonnet-4-20250514",
+      "model_name": "sonnet-4",
+      "protocol": "oneshot",
+      "is_fixed_point": false,
+      "target": 1048,
+      "actual": 1102,
+      "delta": 54,
+      "iterations": 1
+    },
+    {
+      "task_id": "self_count_43",
+      "model_id": "claude-sonnet-4-20250514",
+      "model_name": "sonnet-4",
+      "protocol": "staged",
+      "is_fixed_point": false,
+      "target": -1,
+      "actual": 402,
+      "delta": 403,
+      "iterations": 4
+    },
+    {
+      "task_id": "digit_sum_42",
+      "model_id": "claude-sonnet-4-5-20250929",
+      "model_name": "sonnet-4.5",
+      "protocol": "oneshot",
+      "is_fixed_point": false,
+      "target": 324,
+      "actual": 763,
+      "delta": 439,
+      "iterations": 1
+    },
+    {
+      "task_id": "digit_sum_42",
+      "model_id": "claude-sonnet-4-5-20250929",
+      "model_name": "sonnet-4.5",
+      "protocol": "staged",
+      "is_fixed_point": true,
+      "target": 59,
+      "actual": 59,
+      "delta": 0,
+      "iterations": 4
+    },
+    {
+      "task_id": "digit_sum_66",
+      "model_id": "claude-sonnet-4-5-20250929",
+      "model_name": "sonnet-4.5",
+      "protocol": "oneshot",
+      "is_fixed_point": false,
+      "target": 542,
+      "actual": 1182,
+      "delta": 640,
+      "iterations": 1
+    },
+    {
+      "task_id": "digit_sum_66",
+      "model_id": "claude-sonnet-4-5-20250929",
+      "model_name": "sonnet-4.5",
+      "protocol": "staged",
+      "is_fixed_point": false,
+      "target": 96,
+      "actual": 128,
+      "delta": 32,
+      "iterations": 4
+    },
+    {
+      "task_id": "vowel_count_31",
+      "model_id": "claude-sonnet-4-5-20250929",
+      "model_name": "sonnet-4.5",
+      "protocol": "oneshot",
+      "is_fixed_point": false,
+      "target": 505,
+      "actual": 1167,
+      "delta": 662,
+      "iterations": 1
+    },
+    {
+      "task_id": "vowel_count_31",
+      "model_id": "claude-sonnet-4-5-20250929",
+      "model_name": "sonnet-4.5",
+      "protocol": "staged",
+      "is_fixed_point": false,
+      "target": 65,
+      "actual": 78,
+      "delta": 13,
+      "iterations": 4
+    },
+    {
+      "task_id": "vowel_count_43",
+      "model_id": "claude-sonnet-4-5-20250929",
+      "model_name": "sonnet-4.5",
+      "protocol": "oneshot",
+      "is_fixed_point": false,
+      "target": 327,
+      "actual": 667,
+      "delta": 340,
+      "iterations": 1
+    },
+    {
+      "task_id": "vowel_count_43",
+      "model_id": "claude-sonnet-4-5-20250929",
+      "model_name": "sonnet-4.5",
+      "protocol": "staged",
+      "is_fixed_point": false,
+      "target": 67,
+      "actual": 75,
+      "delta": 8,
+      "iterations": 4
+    },
+    {
+      "task_id": "word_digit_43",
+      "model_id": "claude-sonnet-4-5-20250929",
+      "model_name": "sonnet-4.5",
+      "protocol": "oneshot",
+      "is_fixed_point": false,
+      "target": 2995,
+      "actual": 1442,
+      "delta": -1553,
+      "iterations": 1
+    },
+    {
+      "task_id": "word_digit_43",
+      "model_id": "claude-sonnet-4-5-20250929",
+      "model_name": "sonnet-4.5",
+      "protocol": "staged",
+      "is_fixed_point": false,
+      "target": 680,
+      "actual": 401,
+      "delta": -279,
+      "iterations": 4
+    },
+    {
+      "task_id": "self_count_43",
+      "model_id": "claude-sonnet-4-5-20250929",
+      "model_name": "sonnet-4.5",
+      "protocol": "oneshot",
+      "is_fixed_point": false,
+      "target": 1007,
+      "actual": 1043,
+      "delta": 36,
+      "iterations": 1
+    },
+    {
+      "task_id": "self_count_43",
+      "model_id": "claude-sonnet-4-5-20250929",
+      "model_name": "sonnet-4.5",
+      "protocol": "staged",
+      "is_fixed_point": false,
+      "target": -1,
+      "actual": 321,
+      "delta": 322,
+      "iterations": 4
+    },
+    {
+      "task_id": "digit_sum_42",
+      "model_id": "claude-opus-4-20250514",
+      "model_name": "opus-4",
+      "protocol": "oneshot",
+      "is_fixed_point": false,
+      "target": 163,
+      "actual": 774,
+      "delta": 611,
+      "iterations": 1
+    },
+    {
+      "task_id": "digit_sum_42",
+      "model_id": "claude-opus-4-20250514",
+      "model_name": "opus-4",
+      "protocol": "staged",
+      "is_fixed_point": false,
+      "target": 164,
+      "actual": 171,
+      "delta": 7,
+      "iterations": 4
+    },
+    {
+      "task_id": "digit_sum_66",
+      "model_id": "claude-opus-4-20250514",
+      "model_name": "opus-4",
+      "protocol": "oneshot",
+      "is_fixed_point": false,
+      "target": 412,
+      "actual": 1300,
+      "delta": 888,
+      "iterations": 1
+    },
+    {
+      "task_id": "digit_sum_66",
+      "model_id": "claude-opus-4-20250514",
+      "model_name": "opus-4",
+      "protocol": "staged",
+      "is_fixed_point": false,
+      "target": 125,
+      "actual": 215,
+      "delta": 90,
+      "iterations": 4
+    },
+    {
+      "task_id": "vowel_count_31",
+      "model_id": "claude-opus-4-20250514",
+      "model_name": "opus-4",
+      "protocol": "oneshot",
+      "is_fixed_point": false,
+      "target": 565,
+      "actual": 1112,
+      "delta": 547,
+      "iterations": 1
+    },
+    {
+      "task_id": "vowel_count_31",
+      "model_id": "claude-opus-4-20250514",
+      "model_name": "opus-4",
+      "protocol": "staged",
+      "is_fixed_point": false,
+      "target": 77,
+      "actual": 98,
+      "delta": 21,
+      "iterations": 4
+    },
+    {
+      "task_id": "vowel_count_43",
+      "model_id": "claude-opus-4-20250514",
+      "model_name": "opus-4",
+      "protocol": "oneshot",
+      "is_fixed_point": false,
+      "target": 513,
+      "actual": 1109,
+      "delta": 596,
+      "iterations": 1
+    },
+    {
+      "task_id": "vowel_count_43",
+      "model_id": "claude-opus-4-20250514",
+      "model_name": "opus-4",
+      "protocol": "staged",
+      "is_fixed_point": false,
+      "target": 143,
+      "actual": 242,
+      "delta": 99,
+      "iterations": 4
+    },
+    {
+      "task_id": "word_digit_43",
+      "model_id": "claude-opus-4-20250514",
+      "model_name": "opus-4",
+      "protocol": "oneshot",
+      "is_fixed_point": false,
+      "target": 3785,
+      "actual": 2095,
+      "delta": -1690,
+      "iterations": 1
+    },
+    {
+      "task_id": "word_digit_43",
+      "model_id": "claude-opus-4-20250514",
+      "model_name": "opus-4",
+      "protocol": "staged",
+      "is_fixed_point": false,
+      "target": 635,
+      "actual": 370,
+      "delta": -265,
+      "iterations": 4
+    },
+    {
+      "task_id": "self_count_43",
+      "model_id": "claude-opus-4-20250514",
+      "model_name": "opus-4",
+      "protocol": "oneshot",
+      "is_fixed_point": false,
+      "target": 1327,
+      "actual": 1411,
+      "delta": 84,
+      "iterations": 1
+    },
+    {
+      "task_id": "self_count_43",
+      "model_id": "claude-opus-4-20250514",
+      "model_name": "opus-4",
+      "protocol": "staged",
+      "is_fixed_point": false,
+      "target": -1,
+      "actual": 160,
+      "delta": 161,
+      "iterations": 4
+    },
+    {
+      "task_id": "digit_sum_42",
+      "model_id": "claude-opus-4-1-20250805",
+      "model_name": "opus-4.1",
+      "protocol": "oneshot",
+      "is_fixed_point": false,
+      "target": 491,
+      "actual": 1187,
+      "delta": 696,
+      "iterations": 1
+    },
+    {
+      "task_id": "digit_sum_42",
+      "model_id": "claude-opus-4-1-20250805",
+      "model_name": "opus-4.1",
+      "protocol": "staged",
+      "is_fixed_point": false,
+      "target": 167,
+      "actual": 177,
+      "delta": 10,
+      "iterations": 4
+    },
+    {
+      "task_id": "digit_sum_66",
+      "model_id": "claude-opus-4-1-20250805",
+      "model_name": "opus-4.1",
+      "protocol": "oneshot",
+      "is_fixed_point": false,
+      "target": 561,
+      "actual": 1386,
+      "delta": 825,
+      "iterations": 1
+    },
+    {
+      "task_id": "digit_sum_66",
+      "model_id": "claude-opus-4-1-20250805",
+      "model_name": "opus-4.1",
+      "protocol": "staged",
+      "is_fixed_point": false,
+      "target": 151,
+      "actual": 163,
+      "delta": 12,
+      "iterations": 4
+    },
+    {
+      "task_id": "vowel_count_31",
+      "model_id": "claude-opus-4-1-20250805",
+      "model_name": "opus-4.1",
+      "protocol": "oneshot",
+      "is_fixed_point": false,
+      "target": 593,
+      "actual": 1186,
+      "delta": 593,
+      "iterations": 1
+    },
+    {
+      "task_id": "vowel_count_31",
+      "model_id": "claude-opus-4-1-20250805",
+      "model_name": "opus-4.1",
+      "protocol": "staged",
+      "is_fixed_point": false,
+      "target": 115,
+      "actual": 204,
+      "delta": 89,
+      "iterations": 4
+    },
+    {
+      "task_id": "vowel_count_43",
+      "model_id": "claude-opus-4-1-20250805",
+      "model_name": "opus-4.1",
+      "protocol": "oneshot",
+      "is_fixed_point": false,
+      "target": 545,
+      "actual": 1130,
+      "delta": 585,
+      "iterations": 1
+    },
+    {
+      "task_id": "vowel_count_43",
+      "model_id": "claude-opus-4-1-20250805",
+      "model_name": "opus-4.1",
+      "protocol": "staged",
+      "is_fixed_point": false,
+      "target": 145,
+      "actual": 231,
+      "delta": 86,
+      "iterations": 4
+    },
+    {
+      "task_id": "word_digit_43",
+      "model_id": "claude-opus-4-1-20250805",
+      "model_name": "opus-4.1",
+      "protocol": "oneshot",
+      "is_fixed_point": false,
+      "target": 3665,
+      "actual": 1824,
+      "delta": -1841,
+      "iterations": 1
+    },
+    {
+      "task_id": "word_digit_43",
+      "model_id": "claude-opus-4-1-20250805",
+      "model_name": "opus-4.1",
+      "protocol": "staged",
+      "is_fixed_point": false,
+      "target": 635,
+      "actual": 344,
+      "delta": -291,
+      "iterations": 4
+    },
+    {
+      "task_id": "self_count_43",
+      "model_id": "claude-opus-4-1-20250805",
+      "model_name": "opus-4.1",
+      "protocol": "oneshot",
+      "is_fixed_point": false,
+      "target": 1354,
+      "actual": 1398,
+      "delta": 44,
+      "iterations": 1
+    },
+    {
+      "task_id": "self_count_43",
+      "model_id": "claude-opus-4-1-20250805",
+      "model_name": "opus-4.1",
+      "protocol": "staged",
+      "is_fixed_point": false,
+      "target": -1,
+      "actual": 163,
+      "delta": 164,
+      "iterations": 4
+    },
+    {
+      "task_id": "digit_sum_42",
+      "model_id": "claude-opus-4-5-20251101",
+      "model_name": "opus-4.5",
+      "protocol": "oneshot",
+      "is_fixed_point": false,
+      "target": 50,
+      "actual": 40,
+      "delta": -10,
+      "iterations": 1
+    },
+    {
+      "task_id": "digit_sum_42",
+      "model_id": "claude-opus-4-5-20251101",
+      "model_name": "opus-4.5",
+      "protocol": "staged",
+      "is_fixed_point": false,
+      "target": 137,
+      "actual": 212,
+      "delta": 75,
+      "iterations": 4
+    },
+    {
+      "task_id": "digit_sum_66",
+      "model_id": "claude-opus-4-5-20251101",
+      "model_name": "opus-4.5",
+      "protocol": "oneshot",
+      "is_fixed_point": false,
+      "target": 80,
+      "actual": 61,
+      "delta": -19,
+      "iterations": 1
+    },
+    {
+      "task_id": "digit_sum_66",
+      "model_id": "claude-opus-4-5-20251101",
+      "model_name": "opus-4.5",
+      "protocol": "staged",
+      "is_fixed_point": false,
+      "target": 92,
+      "actual": 91,
+      "delta": -1,
+      "iterations": 4
+    },
+    {
+      "task_id": "vowel_count_31",
+      "model_id": "claude-opus-4-5-20251101",
+      "model_name": "opus-4.5",
+      "protocol": "oneshot",
+      "is_fixed_point": false,
+      "target": 91,
+      "actual": 157,
+      "delta": 66,
+      "iterations": 1
+    },
+    {
+      "task_id": "vowel_count_31",
+      "model_id": "claude-opus-4-5-20251101",
+      "model_name": "opus-4.5",
+      "protocol": "staged",
+      "is_fixed_point": false,
+      "target": 57,
+      "actual": 72,
+      "delta": 15,
+      "iterations": 4
+    },
+    {
+      "task_id": "vowel_count_43",
+      "model_id": "claude-opus-4-5-20251101",
+      "model_name": "opus-4.5",
+      "protocol": "oneshot",
+      "is_fixed_point": false,
+      "target": 103,
+      "actual": 157,
+      "delta": 54,
+      "iterations": 1
+    },
+    {
+      "task_id": "vowel_count_43",
+      "model_id": "claude-opus-4-5-20251101",
+      "model_name": "opus-4.5",
+      "protocol": "staged",
+      "is_fixed_point": false,
+      "target": 81,
+      "actual": 116,
+      "delta": 35,
+      "iterations": 4
+    },
+    {
+      "task_id": "word_digit_43",
+      "model_id": "claude-opus-4-5-20251101",
+      "model_name": "opus-4.5",
+      "protocol": "oneshot",
+      "is_fixed_point": false,
+      "target": 2000,
+      "actual": 1106,
+      "delta": -894,
+      "iterations": 1
+    },
+    {
+      "task_id": "word_digit_43",
+      "model_id": "claude-opus-4-5-20251101",
+      "model_name": "opus-4.5",
+      "protocol": "staged",
+      "is_fixed_point": false,
+      "target": 605,
+      "actual": 312,
+      "delta": -293,
+      "iterations": 4
+    },
+    {
+      "task_id": "self_count_43",
+      "model_id": "claude-opus-4-5-20251101",
+      "model_name": "opus-4.5",
+      "protocol": "oneshot",
+      "is_fixed_point": false,
+      "target": 1290,
+      "actual": 1395,
+      "delta": 105,
+      "iterations": 1
+    },
+    {
+      "task_id": "self_count_43",
+      "model_id": "claude-opus-4-5-20251101",
+      "model_name": "opus-4.5",
+      "protocol": "staged",
+      "is_fixed_point": false,
+      "target": -1,
+      "actual": 150,
+      "delta": 151,
+      "iterations": 4
+    },
+    {
+      "task_id": "digit_sum_42",
+      "model_id": "claude-haiku-4-5-20251001",
+      "model_name": "haiku-4.5",
+      "protocol": "oneshot",
+      "is_fixed_point": false,
+      "target": 375,
+      "actual": 1118,
+      "delta": 743,
+      "iterations": 1
+    },
+    {
+      "task_id": "digit_sum_42",
+      "model_id": "claude-haiku-4-5-20251001",
+      "model_name": "haiku-4.5",
+      "protocol": "staged",
+      "is_fixed_point": false,
+      "target": 66,
+      "actual": 83,
+      "delta": 17,
+      "iterations": 4
+    },
+    {
+      "task_id": "digit_sum_66",
+      "model_id": "claude-haiku-4-5-20251001",
+      "model_name": "haiku-4.5",
+      "protocol": "oneshot",
+      "is_fixed_point": false,
+      "target": 483,
+      "actual": 1366,
+      "delta": 883,
+      "iterations": 1
+    },
+    {
+      "task_id": "digit_sum_66",
+      "model_id": "claude-haiku-4-5-20251001",
+      "model_name": "haiku-4.5",
+      "protocol": "staged",
+      "is_fixed_point": false,
+      "target": 95,
+      "actual": 83,
+      "delta": -12,
+      "iterations": 4
+    },
+    {
+      "task_id": "vowel_count_31",
+      "model_id": "claude-haiku-4-5-20251001",
+      "model_name": "haiku-4.5",
+      "protocol": "oneshot",
+      "is_fixed_point": false,
+      "target": 373,
+      "actual": 953,
+      "delta": 580,
+      "iterations": 1
+    },
+    {
+      "task_id": "vowel_count_31",
+      "model_id": "claude-haiku-4-5-20251001",
+      "model_name": "haiku-4.5",
+      "protocol": "staged",
+      "is_fixed_point": false,
+      "target": 101,
+      "actual": 186,
+      "delta": 85,
+      "iterations": 4
+    },
+    {
+      "task_id": "vowel_count_43",
+      "model_id": "claude-haiku-4-5-20251001",
+      "model_name": "haiku-4.5",
+      "protocol": "oneshot",
+      "is_fixed_point": false,
+      "target": 381,
+      "actual": 1008,
+      "delta": 627,
+      "iterations": 1
+    },
+    {
+      "task_id": "vowel_count_43",
+      "model_id": "claude-haiku-4-5-20251001",
+      "model_name": "haiku-4.5",
+      "protocol": "staged",
+      "is_fixed_point": false,
+      "target": 103,
+      "actual": 165,
+      "delta": 62,
+      "iterations": 4
+    },
+    {
+      "task_id": "word_digit_43",
+      "model_id": "claude-haiku-4-5-20251001",
+      "model_name": "haiku-4.5",
+      "protocol": "oneshot",
+      "is_fixed_point": false,
+      "target": 2965,
+      "actual": 1358,
+      "delta": -1607,
+      "iterations": 1
+    },
+    {
+      "task_id": "word_digit_43",
+      "model_id": "claude-haiku-4-5-20251001",
+      "model_name": "haiku-4.5",
+      "protocol": "staged",
+      "is_fixed_point": false,
+      "target": 645,
+      "actual": 348,
+      "delta": -297,
+      "iterations": 4
+    },
+    {
+      "task_id": "self_count_43",
+      "model_id": "claude-haiku-4-5-20251001",
+      "model_name": "haiku-4.5",
+      "protocol": "oneshot",
+      "is_fixed_point": false,
+      "target": 1337,
+      "actual": 1495,
+      "delta": 158,
+      "iterations": 1
+    },
+    {
+      "task_id": "self_count_43",
+      "model_id": "claude-haiku-4-5-20251001",
+      "model_name": "haiku-4.5",
+      "protocol": "staged",
+      "is_fixed_point": false,
+      "target": -1,
+      "actual": 355,
+      "delta": 356,
+      "iterations": 4
+    }
+  ]
+}

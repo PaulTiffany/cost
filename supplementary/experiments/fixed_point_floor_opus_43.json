@@ -1,0 +1,150 @@
+{
+  "meta": {
+    "experiment": "fixed_point_floor",
+    "model": "claude-opus-4-5-20251101",
+    "seed": 43,
+    "budget": 512,
+    "timestamp": "2026-01-12T23:12:30.655110+00:00",
+    "api_calls": 30,
+    "input_tokens": 4376,
+    "output_tokens": 3360
+  },
+  "summary": {
+    "floors_found": 0,
+    "total_tasks": 6
+  },
+  "results": [
+    {
+      "task_id": "digit_sum_42",
+      "model_id": "claude-opus-4-5-20251101",
+      "protocol": "oneshot",
+      "is_fixed_point": false,
+      "target": 50,
+      "actual": 40,
+      "delta": -10,
+      "iterations": 1,
+      "response_preview": "17 is prime as it has only two divisors."
+    },
+    {
+      "task_id": "digit_sum_42",
+      "model_id": "claude-opus-4-5-20251101",
+      "protocol": "staged",
+      "is_fixed_point": false,
+      "target": 59,
+      "actual": 58,
+      "delta": -1,
+      "iterations": 4,
+      "response_preview": "17 is prime because only 1 and 17 divide it. No others do."
+    },
+    {
+      "task_id": "digit_sum_66",
+      "model_id": "claude-opus-4-5-20251101",
+      "protocol": "oneshot",
+      "is_fixed_point": false,
+      "target": 75,
+      "actual": 63,
+      "delta": -12,
+      "iterations": 1,
+      "response_preview": "17 is prime because it has no divisors other than 1 and itse..."
+    },
+    {
+      "task_id": "digit_sum_66",
+      "model_id": "claude-opus-4-5-20251101",
+      "protocol": "staged",
+      "is_fixed_point": false,
+      "target": 157,
+      "actual": 239,
+      "delta": 82,
+      "iterations": 4,
+      "response_preview": "I need to add exactly 11 characters to the current 128-chara..."
+    },
+    {
+      "task_id": "vowel_count_31",
+      "model_id": "claude-opus-4-5-20251101",
+      "protocol": "oneshot",
+      "is_fixed_point": false,
+      "target": 91,
+      "actual": 157,
+      "delta": 66,
+      "iterations": 1,
+      "response_preview": "The sum 1+2+...+n equals n(n+1)/2. To see why, pair first an..."
+    },
+    {
+      "task_id": "vowel_count_31",
+      "model_id": "claude-opus-4-5-20251101",
+      "protocol": "staged",
+      "is_fixed_point": false,
+      "target": 57,
+      "actual": 73,
+      "delta": 16,
+      "iterations": 4,
+      "response_preview": "The formula 1+2+...+n = n(n+1)/2 sums naturals. Pair terms t..."
+    },
+    {
+      "task_id": "vowel_count_43",
+      "model_id": "claude-opus-4-5-20251101",
+      "protocol": "oneshot",
+      "is_fixed_point": false,
+      "target": 103,
+      "actual": 157,
+      "delta": 54,
+      "iterations": 1,
+      "response_preview": "The sum 1+2+...+n equals n(n+1)/2. To see why, pair first an..."
+    },
+    {
+      "task_id": "vowel_count_43",
+      "model_id": "claude-opus-4-5-20251101",
+      "protocol": "staged",
+      "is_fixed_point": false,
+      "target": 99,
+      "actual": 135,
+      "delta": 36,
+      "iterations": 4,
+      "response_preview": "The formula 1+2+...+n = n(n+1)/2 sums first n integers.\n\n**P..."
+    },
+    {
+      "task_id": "word_digit_43",
+      "model_id": "claude-opus-4-5-20251101",
+      "protocol": "oneshot",
+      "is_fixed_point": false,
+      "target": 2160,
+      "actual": 1203,
+      "delta": -957,
+      "iterations": 1,
+      "response_preview": "The Pythagorean theorem states that in a right triangle, the..."
+    },
+    {
+      "task_id": "word_digit_43",
+      "model_id": "claude-opus-4-5-20251101",
+      "protocol": "staged",
+      "is_fixed_point": false,
+      "target": 570,
+      "actual": 293,
+      "delta": -277,
+      "iterations": 4,
+      "response_preview": "# Draft Response: Why a\u00b2 + b\u00b2 = c\u00b2 for Right Triangles\n\nThe ..."
+    },
+    {
+      "task_id": "self_count_43",
+      "model_id": "claude-opus-4-5-20251101",
+      "protocol": "oneshot",
+      "is_fixed_point": false,
+      "target": 1290,
+      "actual": 1395,
+      "delta": 105,
+      "iterations": 1,
+      "response_preview": "Prime numbers are among the most fascinating objects in math..."
+    },
+    {
+      "task_id": "self_count_43",
+      "model_id": "claude-opus-4-5-20251101",
+      "protocol": "staged",
+      "is_fixed_point": false,
+      "target": -1,
+      "actual": 318,
+      "delta": 319,
+      "iterations": 4,
+      "response_preview": "I understand you're asking me to create a text with exactly ..."
+    }
+  ]
+}

@@ -1,0 +1,16 @@
+\begin{table}[t]
+\centering
+\small
+\begin{tabular}{lccccc}
+\toprule
+Tier & $\hat{\rho}$ & 1-shot & Staged & $\Delta$ & Failure \\
+\midrule
+Control & 0.05 & 64% & 70% & +6% & 36% \\
+Low & 0.20 & 53% & 54% & +1% & 47% \\
+Moderate & 0.40 & 24% & 21% & -4% & 76% \\
+High & 0.65 & 6% & 3% & -2% & 94% \\
+\bottomrule
+\end{tabular}
+\caption{Calibration: failure rate increases with estimated conflict $\hat{\rho}$.}
+\label{tab:calibration}
+\end{table}

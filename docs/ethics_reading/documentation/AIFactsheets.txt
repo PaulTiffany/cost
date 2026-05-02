@@ -1,0 +1,79 @@
+4/30/26, 11:20 PM
+
+Using Al Factsheets for Al Governance - Docs | IBM Cloud Pak for Data as a Service
+
+Sign Up
+
+Docs / AI governance / AI Factsheets
+
+Q
+
+Documentation home
+
+Overview of IBM Cloud
+Pak for Dataasa Vv
+
+Service
+
+Services and
+
+Vv
+integrations
+Getting started and
+
+Vv
+tutorials
+Projects v
+
+Deployment spaces v
+Preparing data v
+
+Data science solutions Vv
+
+Deploying AI v
+Data governance v
+AI governance “
+Watson OpenScale Vv
+AI Factsheets Vv
+Troubleshooting v
+Administration v
+Glossary
+
+&
+
+v
+
+Using AI Factsheets for
+AI Governance
+
+Last updated: Apr 30, 2026
+
+Track a machine learning model from request to production
+by gathering metadata and facts about the model lifecycle
+using AI Factsheets. Use the detailed information in the
+factsheets to keep stakeholders informed and to meet your
+governance and compliance goals. Factsheets can be shared,
+archived, or printed as report.
+
+Managing governance with AI
+Factsheets
+
+Before you develop and AI solution you must first define the
+business use case and then manage the development,
+testing, and deployment of the solution. You can manage and
+govern the flow of information by create a model use case,
+that defines the goals of the model. When the model Is
+approved and development starts, track the assets In the use
+case, capturing all relevant data with AI Factsheets. View ata
+glance which models are in production and which need
+development or validation. Use the governance features to
+establish processes to manage the communication flow from
+data scientists to ModelOps administrators.
+
+Note: Only the models that you add to use cases are tracked
+
+https://dataplatform.cloud.ibm.com/docs/content/wsj/analyze-data/factsheets-model-inventory.html?context=cpdaas
+
+>
+
+1/1

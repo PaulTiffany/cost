@@ -1,0 +1,51 @@
+{
+  "version": "v2",
+  "model": "Qwen/Qwen2.5-1.5B-Instruct",
+  "embed_model": "all-MiniLM-L6-v2",
+  "pairs": [
+    {
+      "name": "control_helpful_tutorial",
+      "category": "control",
+      "embed_rho": -0.573608934879303,
+      "grad_rho": -0.2134460210800171
+    },
+    {
+      "name": "control_json_formats",
+      "category": "control",
+      "embed_rho": -0.6696993112564087,
+      "grad_rho": -0.5839155912399292
+    },
+    {
+      "name": "conflict_concision_vs_completeness",
+      "category": "conflict",
+      "embed_rho": -0.8603180050849915,
+      "grad_rho": -0.2391202449798584
+    },
+    {
+      "name": "conflict_confidence_vs_uncertainty",
+      "category": "conflict",
+      "embed_rho": -0.680696427822113,
+      "grad_rho": -0.14488102495670319
+    },
+    {
+      "name": "conflict_json_vs_prose",
+      "category": "conflict",
+      "embed_rho": -0.4729353189468384,
+      "grad_rho": -0.23066768050193787
+    },
+    {
+      "name": "conflict_loops_vs_recursion",
+      "category": "conflict",
+      "embed_rho": -0.9514497518539429,
+      "grad_rho": -0.6935521364212036
+    }
+  ],
+  "metrics": {
+    "pearson_r": 0.5423305448551424,
+    "pearson_p": 0.26625996883188274,
+    "spearman_r": 0.48571428571428577,
+    "spearman_p": 0.32872303206997094,
+    "sign_agreement": 1.0,
+    "n_pairs": 6
+  }
+}

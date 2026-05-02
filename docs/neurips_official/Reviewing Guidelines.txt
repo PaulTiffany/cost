@@ -1,0 +1,292 @@
+4/30/26, 11:28 PM
+
+2026 Reviewer Guidelines
+
+NeurlPS 2026 Reviewing Guidelines
+
+Reviewing Guidelines for Different
+Contribution Types
+
+Authors should select the Contribution Type that best fits their submission.
+
+e General: Most submissions will fall into this category.
+
+e Theory: The main contribution is via theoretical analyses and proofs.
+
+e Use-Inspired: The main contribution is in framing or designing approaches to
+meet the needs of a specific real-world application. (This often involves, e.g.,
+engaging with domain experts.)
+
+e Concept & Feasibility: The main contribution is a highly novel, high potential
+reward idea with scope beyond what can be validated in a single paper. (The
+significance and originality bar for these contributions is high.)
+
+¢ Negative Results: The main contribution is in understanding a negative
+result. (The significance and originality bar for these contributions is high.)
+
+The review form is the same for all Contribution Types, but the way that
+reviewing criteria should be interpreted differ across Types. Reviewers should
+assess a submission according to the Contribution Type selected by the authors.
+It is not possible for Contribution Type to be changed after submission, either by
+the authors or by the reviewers.
+
+Below, we provide important guidance for Reviewers and ACs on how to interpret
+the overall reviewing criteria for each Contribution Type.
+
+General Reviewing Guidelines
+Quality
+
+Is the submission technically sound? Are claims well supported (e.g., by
+theoretical analysis or experimental results)? Are the methods used
+appropriate? Is this a complete piece of work or work in progress? Are the
+authors careful and honest about evaluating both the strengths and weaknesses
+of their work?
+
+Clarity
+
+Is the submission clearly written? Is it well organized? Does it adequately inform
+
+Qen wenn ly A HH... nL... etek Be ee he Ae Oe ee PE tI ER nw RR ek
+
+Our
+Privacy Policy »
+
+https://neurips.cc/Conferences/2026/ReviewerGuidelines
+
+Accept
+
+1/5
+4/30/26, 11:28 PM
+
+2026 Reviewer Guidelines
+
+Significance
+
+Are the results impactful for the community? Are others (researchers or
+practitioners) likely to use the ideas or build on them? Does the submission
+address a difficult task in a better way than previous work? Does it advance our
+understanding/knowledge on the topic in a demonstrable way? Does it provide
+unique data, unique conclusions about existing data, or a unique theoretical or
+experimental approach?
+
+Originality
+
+Does the work provide new insights, deepen understanding, or highlight
+important properties of existing methods? Is it clear how this work differs from
+previous contributions, with relevant citations provided? Does the work introduce
+novel tasks, problem framings, metrics, or methods that advance the field? Does
+this work offer a novel combination of existing techniques, and is the reasoning
+behind this combination well-articulated? As the questions above indicates,
+originality does not necessarily require introducing an entirely new method.
+Rather, a work that provides novel insights by evaluating existing methods, or
+demonstrates improved efficiency, fairness, etc. is also equally valuable.
+
+Theory Reviewing Guidelines
+Quality
+
+Mathematical rigor and correctness. The primary criterion is the correctness of
+the claims. Proofs, lemmas, and the overall logical flow must be mathematically
+sound. While reviewers are not expected to verify every line, they should examine
+the core arguments sufficiently to establish a high level of confidence in the
+results.
+
+Appropriateness of assumptions. Theoretical results may require assumptions,
+but the standard for "good" assumptions varies by the type of contribution.
+Appropriateness of assumptions should be weighed against the novelty of the
+result and standard norms of the existing literature.
+
+Empirical validation is not necessary. Theoretical contributions may stand on
+their own and the purpose of designing new algorithms in this context need not
+be to outperform state-of-the-art applied models or methods. Empirical
+evaluation is not a necessary component, and a theory paper shouldn't be
+penalized for lacking experiments. If empirical results are included, their function
+can be to further study formalized insights, not necessarily to compete with
+state-of-the-art applied models or the largest datasets.
+
+Clarity
+
+Intuition alongside rigor. Clarity requires both readability of the artifact and
+whether authors should outline the high-level proof strategy or the intuition
+behind a new mathematical definition before diving into technical details.
+
+Clear scoping of the contribution. The paper must clearly signpost its type of
+theoretical contribution early on and the distinction between novel contributions
+and Bein‘ vainel, wit AA H-lane
+Our
+Privacy Policy »>
+
+https://neurips.cc/Conferences/2026/ReviewerGuidelines
+
+2/5
+4/30/26, 11:28 PM
+
+2026 Reviewer Guidelines
+
+Significance should be evaluated based on the specific type of theoretical
+contribution the paper aims to make. Reviewers may look for impact in one or
+more of the following areas:
+
+Novel Abstractions and Formulations. Does the paper propose a new,
+theoretically rigorous mathematical framework or definition for studying
+interesting phenomena? Good abstractions provide the community with a new
+vocabulary to study emerging technologies and problems at a level appropriate
+for the phenomenon being studied.
+
+Progress on Established Problems. Does the work make significant progress on
+a community-studied problem, surface a new angle of study on a well-
+established problem that has faced bottlenecks, or solve an open problem?
+
+Originality
+
+Technical novelty. Originality can take several forms depending on the paper's
+goal. It might be a fundamentally new proof technique, a novel synthesis of tools
+from other disciplines (e.g., statistical physics, pure mathematics), or a
+completely new way to parameterize or define a problem.
+
+Use-Inspired Reviewing Guidelines
+Quality
+
+Is the use case real and meaningful? A use case should not be artificially
+constructed to present an interesting methodological problem. Rather, it should
+arise from the pre-existing needs of users outside the NeurlPS community, and
+this motivation should be made clear.
+
+Is the design matched to the use case? Use-inspired submissions should closely
+tie their task framing, methods, metrics, etc. to the needs of a use case. For
+example, methods may need to accommodate the structure of the data,
+incorporate physical constraints, or be evaluated using metrics such as
+interpretability or robustness, depending on the use case.
+
+Expect "non-standard" datasets. Submissions in this Contribution Type will
+frequently be evaluated on real-world datasets that fall outside common ML
+benchmarks. Such datasets should be encouraged if they are justified in relation
+to the use case.
+
+Clarity
+
+Clarity should be measured in relation to an ML audience. While the use case in
+question may provide motivation for the submission, the authors should not
+require the reader to have expertise in the domain of application and should
+explain any relevant jargon.
+
+Significance
+
+Significance can encompass both the potential for impact on an important use
+case and impact for the broader NeurlPS community. For this reason, novel ideas
+
+Our
+Privacy Policy »>
+
+https://neurips.cc/Conferences/2026/ReviewerGuidelines 3/5
+4/30/26, 11:28 PM
+
+2026 Reviewer Guidelines
+
+Prior work outside the ML literature should be considered in addition to ML work.
+If the paper presents novel methods, for example, these should be compared
+against any commonly used non-ML approaches as well as baseline ML methods.
+
+Originality
+
+Originality need not mean wholly novel methods. It could mean a novel
+combination of existing methods to match the characteristics of the data, or a
+novel way of framing a stereotypical ML problem due to the particular needs of
+the use case.
+
+Papers should provide insights to guide methods development. Thus, a paper
+may apply existing methods in a new context, but in such cases the discussion
+should analyze why certain methodological choices are effective or ineffective.
+
+Concept and Feasibility Reviewing Guidelines
+Quality
+
+Strongly supported claims. As with papers in the general category, the
+submission must be technically sound and claims must be rigorously grounded
+through some combination of empirical, analytical, and conceptual arguments.
+For Concept and Feasibility papers, the scope of the ideas presented may be
+bigger than can be validated within a single paper, but must be strongly
+supported nonetheless. (This is in contrast to workshop submissions, where
+ideas may be only partially supported or in progress.)
+
+Clarity
+
+Is the submission clearly written? Is it well organized? Does it adequately inform
+the reader? A superbly written paper provides enough information for an expert
+reader to reproduce its results.
+
+Significance
+
+High potential for changing our approaches and/or understanding. The
+significance bar for Concept and Feasibility papers is high. The promise of a
+Concept and Feasibility Paper goes significantly beyond the specific evaluations
+included in the submission. Whether it changes how an important class of
+problems may be solved or significantly changes our understanding of machine
+learning, it is a paper that has the potential to change paradigms and/or practice
+in a substantive and significant way. The evaluations should be chosen to indicate
+to the reader this broader significance of the work.
+
+Originality
+
+Highly novel ideas. The originality bar for Concept and Feasibility papers is high.
+Submissions must contain highly novel ideas that change how problems or
+methods may be approached.
+
+Negative Results Reviewing Guidelines
+
+O
+Cc
+=
+
+Privacy Policy »>
+
+https://neurips.cc/Conferences/2026/ReviewerGuidelines
+
+4/5
+4/30/26, 11:28 PM
+
+2026 Reviewer Guidelines
+
+Grounded analysis and experimentation. In addition to the quality standards for
+a general paper, it is important that the negative result not be simply an
+empirical observation that some experiment did not turn out as expected or
+hoped. It is important that a negative result be grounded in deeper analysis,
+whether through a combination of conceptually-informed conjectures and
+careful experimentation, through rigorous proofs, or some combination.
+
+Clarity
+
+Is the submission clearly written? Is it well organized? Does it adequately inform
+the reader? A superbly written paper provides enough information for an expert
+reader to reproduce its results.
+
+Significance
+
+Changes our understanding of an important question. The significance bar for
+Negative Results papers is high. The negative result should be informative in
+changing how the community addresses a question or exposing that the
+community should be addressing an important question in a different way. A
+negative result relating to something few people would need or want is not
+significant.
+
+A Negative Results paper need not identify a path to mitigate the negative
+finding: that can be left to future work.
+
+Originality
+
+Unexpected or surprising in some way. The originality bar for Negative Results
+papers is high. The negative result must be surprising or unexpected in some
+way - that is, it should run counter to a popularly held understanding. “A linear
+classifier cannot separate a nonlinear decision boundary’ is a negative result that
+can be rigorously shown (quality) with clean language (clarity) and matters a lot
+(significance). However, it is not original because readers may be expected to
+either know this fact or be unsurprised to hear it.
+
+O
+Cc
+=
+
+Privacy Policy »>
+
+https://neurips.cc/Conferences/2026/ReviewerGuidelines
+
+5/5

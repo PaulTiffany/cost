@@ -1,0 +1,191 @@
+4/30/26, 11:25 PM Dual use of artificial-intelligence-powered drug discovery | Nature Machine Intelligence
+
+nature machine intelligence View all journals Search_—_Log in
+
+Content Vv About Vv Publish v Subscribe Sign up for alerts {\ RSS feed
+
+nature > nature machine intelligence > comment > article
+
+Comment Published: 07 March 2022
+Dual use of artificial-intelligence-powered drug discovery
+
+Fabio Urbina, Filippa Lentzos, Cédric Invernizzi & Sean Ekins MJ
+
+Nature Machine Intelligence 4, 189-191 (2022)
+
+127k Accesses | 326 Citations | 3608 Altmetric | Metrics
+
+An international security conference explored how artificial intelligence (AI)
+technologies for drug discovery could be misused for de novo design of
+
+biochemical weapons. A thought experiment evolved into a computational proof.
+
+This is a preview of subscription content, access via your institution
+
+Access options
+
+Access Nature and 54 other Nature Portfolio
+journals
+
+Get Nature+, our best-value online-access subscription
+
+https://www.nature.com/articles/s42256-022-00465-9 1/6
+4/30/26, 11:25 PM Dual use of artificial-intelligence-powered drug discovery | Nature Machine Intelligence
+
+$32.99 / 30 days
+
+cancel any time
+
+Buy this article Subscribe to this journal
+
+e Purchase on SpringerLink a
+Receive 12 digital issues and online access to articles
+e Instant access to the full article
+
+PDF.
+
+$119.00 per year
+USD 39.95 only $9.92 per issue
+
+Buy Now
+
+Prices may be subject to local taxes which are calculated during checkout
+
+Additional access options:
+
+e Login
+
+e Learn about institutional subscriptions
+e Read our FAQs
+
+e Contact customer support
+
+References
+
+1. Spiez Convergence Conference
+https://www.spiezlab.admin.ch/en/home/meta/refconvergence.html (2021).
+
+https:/Awww.nature.com/articles/s42256-022-00465-9
+
+2/6
+4/30/26, 11:25 PM Dual use of artificial-intelligence-powered drug discovery | Nature Machine Intelligence
+
+2.
+
+5.
+
+Urbina, F., Lowden, C. T., Culberson, J. C. & Ekins, S.
+https://doi.org/10.33774/chemrxiv-2021-nlwvs (2021).
+
+Mansouri, K. et al. Environ. Health Perspect. 129, 047013 (2021).
+
+Blaschke, T. et al. J. Chem. Inf: Model. 60, 5918-5922 (2020).
+
+National Research Council Committee on Toxicology.
+
+https://www.ncbi.nIm.nih.gov/books/NBK233724/ (National Academies Press, 1997).
+
+, Aroniadou-Anderjaska, V., Apland, J. P., Figueiredo, T. H., De Araujo Furtado, M. &
+
+Braga, M. F. Neuropharmacology 181, 108298 (2020).
+
+Genheden, S. et al. J. Cheminform. 12, 70 (2020).
+
+Coley, C. W. et al. Science 365, eaax1566 (2019).
+
+Dix, D.J. et al. Toxicol. Sci. 95, 5-12 (2007).
+
+10. Hutson, M. The New Yorker https://www.newyorker.com/tech/annals-of-
+
+technology/who-should-stop-unethical-ai (2021).
+
+11. Brown, T. B. et al. Preprint at arXiv https://arxiv.org/abs/2005.14165 (2020).
+
+https:/Awww.nature.com/articles/s42256-022-00465-9
+
+3/6
+4/30/26, 11:25 PM Dual use of artificial-intelligence-powered drug discovery | Nature Machine Intelligence
+
+12. Prunkl, C. E. A. et al. Nat. Mach. Intell. 3, 104-110 (2021).
+
+13. Organisation for the Prohibition of Chemical Weapons. The Hague Ethical
+Guidelines https://(www.opcw.org/hague-ethical-guidelines (2021).
+
+Acknowledgements
+
+We are grateful to the organizers and participants of the Spiez Convergence conference
+2021 for their feedback and questions. C.]. contributed to this article in his personal
+capacity. The views expressed in this article are those of the authors only and do not
+necessarily represent the position or opinion of Spiez Laboratory or the Swiss
+Government. We kindly acknowledge US National Institutes of Health funding under
+grant R44GM122196-02A1 from the National Institute of General Medical Sciences and
+1R43ES031038-01 and 1R43ES033855-01 from the National Institute of Environmental
+Health Sciences for our machine learning software development and applications.
+Research reported in this publication was supported by the National Institute of
+Environmental Health Sciences of the National Institutes of Health under grants
+R43ES031038 and 1R43ES033855-01. The content is solely the responsibility of the
+authors and does not necessarily represent the official views of the National Institutes of
+Health.
+
+Author information
+
+Authors and Affiliations
+
+Collaborations Pharmaceuticals, Inc., Raleigh, NC, USA
+Fabio Urbina & Sean Ekins
+
+Department of War Studies and Department of Global Health & Social Medicine, King’s College London, London, UK
+Filippa Lentzos
+
+Spiez Laboratory, Federal Department of Defence, Civil Protection and Sports, Spiez, Switzerland
+
+Cédric Invernizzi
+
+https:/Awww.nature.com/articles/s42256-022-00465-9 4/6
+4/30/26, 11:25 PM Dual use of artificial-intelligence-powered drug discovery | Nature Machine Intelligence
+
+Corresponding author
+
+Correspondence to Sean Ekins.
+
+Ethics declarations
+
+Competing interests
+
+F.U. and S.E. work for Collaborations Pharmaceuticals, Inc. F.L. and C.I. have no conflicts
+
+of interest.
+
+Peer review
+
+Peer review information
+
+Nature Machine Intelligence thanks Gisbert Schneider and Carina Prunkl for their
+
+contribution to the peer review of this work.
+
+Rights and permissions
+
+Reprints and permissions
+
+About this article
+
+Cite this article
+
+Urbina, F., Lentzos, F., Invernizzi, C. et al. Dual use of artificial-intelligence-powered drug discovery.
+Nat Mach Intell 4, 189-191 (2022). https://doi.org/10.1038/s42256-022-00465-9
+
+Published Version of record Issue date
+07 March 2022 07 March 2022 March 2022
+DOI
+
+https:/Awww.nature.com/articles/s42256-022-00465-9 5/6
+4/30/26, 11:25 PM Dual use of artificial-intelligence-powered drug discovery | Nature Machine Intelligence
+
+https://doi.org/10.1038/s42256-022-00465-9
+
+Subjects Cheminformatics ¢ Drug safety e Ethics ¢ Software ¢ Toxicology
+
+Nature Machine Intelligence (Nat Mach Intell) \ISSN 2522-5839 (online)
+
+https:/Awww.nature.com/articles/s42256-022-00465-9 6/6

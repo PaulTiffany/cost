@@ -1,0 +1,22 @@
+{
+  "n_pairs": 91,
+  "n_pairs_possible": 105,
+  "pearson_r": 0.18458695676476544,
+  "spearman_r": 0.09906035992992515,
+  "spearman_p": 0.3501941264587072,
+  "pearson_p": 0.0798442127020874,
+  "pearson_ci_95": [
+    -0.03572161908693234,
+    0.3707730609325919
+  ],
+  "behavioral_mean": 0.44573187520902235,
+  "behavioral_std": 0.14541099144416972,
+  "structural_mean": 0.29306354316381306,
+  "structural_std": 0.1312032021631506,
+  "within_category_behavioral_mean": 0.4544624173189603,
+  "cross_category_behavioral_mean": 0.4422396583650472,
+  "hierarchy_ratio_behavioral": 1.0276382916962208,
+  "within_category_structural_mean": 0.34866195344007933,
+  "cross_category_structural_mean": 0.2708241790533066,
+  "hierarchy_ratio_structural": 1.287410680186517
+}

@@ -1,0 +1,72 @@
+% Related Work Quadrant Figure
+% Each citation is hyperlinked to a \hypertarget in extended_related_work.tex
+\begin{figure}[!htb]
+\centering
+\begin{tikzpicture}[
+  font=\small,
+  axislbl/.style={font=\small\bfseries},
+  cornerlbl/.style={font=\scriptsize\itshape, gray!60!black},
+  cite/.style={font=\footnotesize, align=center},
+  ours/.style={font=\footnotesize\bfseries, align=center, text=blue!60!black, draw=blue!40, fill=blue!8, rounded corners, inner sep=4pt},
+  band/.style={font=\scriptsize, align=center},
+]
+  % Frame and axis dividers
+  \draw[thick] (0,0) rectangle (10,5.5);
+  \draw[gray!50, thin] (5,0) -- (5,5.5);
+  \draw[gray!50, thin] (0,2.75) -- (10,2.75);
+
+  % Axis labels (outside frame)
+  \node[axislbl] at (5,6) {Training-time \quad$\longleftarrow$\quad / \quad$\longrightarrow$\quad Inference-time};
+  \node[axislbl, rotate=90] at (-0.5,2.75) {Single-constraint \quad$\longleftarrow$\quad / \quad$\longrightarrow$\quad Multi-constraint};
+
+  % Corner labels
+  \node[cornerlbl, anchor=north west] at (0.1,5.4) {Training $\times$ Multi};
+  \node[cornerlbl, anchor=north east] at (9.9,5.4) {Inference $\times$ Multi \quad (this paper)};
+  \node[cornerlbl, anchor=south west] at (0.1,0.1) {Training $\times$ Single};
+  \node[cornerlbl, anchor=south east] at (9.9,0.1) {Inference $\times$ Single};
+
+  % Upper-left: Training, Multi-constraint
+  \node[cite] at (2.5, 4.0) {%
+    \hyperlink{rw:pcgrad}{PCGrad} \citep{yu2020gradient}\\
+    \hyperlink{rw:cagrad}{CAGrad} \citep{liu2021cagrad}\\
+    \hyperlink{rw:pama}{PAMA} \citep{he2025pama}\\
+    \hyperlink{rw:nashmtl}{Nash-MTL} \citep{navon2022nashmtl}\\
+    \hyperlink{rw:moo_mtl}{MOO-MTL} \citep{sener2018multi}%
+  };
+
+  % Upper-right: Inference, Multi-constraint (our quadrant)
+  \node[cite] at (7.5, 4.4) {%
+    \hyperlink{rw:selfrefine}{Self-refine} \citep{madaan2023selfrefine}\\
+    \hyperlink{rw:maker}{MAKER} \citep{meyerson2025maker}\\
+    \hyperlink{rw:wildifeval}{WildIFEval} \citep{lior2025wildifeval}\\
+    \hyperlink{rw:agentif}{AGENTIF} \citep{qi2025agentif}\\
+    \hyperlink{rw:cai}{Constitutional AI} \citep{bai2022constitutional}%
+  };
+
+  % This paper as highlighted node
+  \node[ours] at (7.5, 2.75) {$\bigstar$ \textbf{This paper}\\geometric bound + pre-gen routing};
+
+  % Lower-left: Training, Single-constraint
+  \node[cite] at (2.5, 1.4) {%
+    \hyperlink{rw:rlhf}{RLHF} \citep{ouyang2022training}%
+  };
+
+  % Lower-right: Inference, Single-constraint
+  \node[cite] at (7.5, 1.4) {%
+    \hyperlink{rw:cot}{Chain-of-Thought} \citep{wei2022chain}\\
+    \hyperlink{rw:ttscale}{Test-time scaling} \citep{snell2024scaling}\\
+    \hyperlink{rw:r1}{R1 reasoning} \citep{deepseek2025r1}%
+  };
+
+  % Foundational lineage band
+  \node[band, anchor=north] at (5,-0.3) {%
+    \textit{Foundational lineage:}
+    MOO bounds \hyperlink{rw:fliege}{[Fliege \& Svaiter 2000]};
+    multi-criteria \hyperlink{rw:miettinen}{[Miettinen 1999]},
+    \hyperlink{rw:ehrgott}{[Ehrgott 2005]};
+    linear representation \hyperlink{rw:park}{[Park et al.\ 2024]}%
+  };
+\end{tikzpicture}
+\caption{\textbf{The multi-constraint inference quadrant.} Existing approaches address single-constraint inference (decoding constraints, CoT) or multi-constraint training (gradient surgery, MOO). Multi-constraint inference (upper right) currently relies on empirical heuristics without a geometric foundation. The diagonal cost bound (Theorem~\ref{thm:gram}) and embedding-derived router (Algorithm~\ref{alg:routing}) close that gap. \emph{Each citation in this figure is hyperlinked to its discussion in Appendix~\ref{app:extended_rw}.}}
+\label{fig:rw_quadrant}
+\end{figure}

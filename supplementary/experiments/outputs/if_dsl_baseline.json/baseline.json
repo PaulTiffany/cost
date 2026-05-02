@@ -1,0 +1,75 @@
+{
+  "baseline_params": {
+    "n_rooms": 6,
+    "samples": 100,
+    "seed": 7
+  },
+  "constraints": [
+    "connected",
+    "solvable",
+    "two_routes",
+    "one_bottleneck",
+    "rooms_eq_6",
+    "pathlen_eq_5"
+  ],
+  "definition": "rho_ij = 1 - P(i&j)/min(P(i),P(j)) over baseline IF generator",
+  "marginals": {
+    "connected": 1.0,
+    "one_bottleneck": 0.05,
+    "pathlen_eq_5": 0.34,
+    "rooms_eq_6": 1.0,
+    "solvable": 1.0,
+    "two_routes": 0.59
+  },
+  "rho": {
+    "connected": {
+      "connected": 0.0,
+      "one_bottleneck": 0.0,
+      "pathlen_eq_5": 0.0,
+      "rooms_eq_6": 0.0,
+      "solvable": 0.0,
+      "two_routes": 0.0
+    },
+    "one_bottleneck": {
+      "connected": 0.0,
+      "one_bottleneck": 0.0,
+      "pathlen_eq_5": 1.0,
+      "rooms_eq_6": 0.0,
+      "solvable": 0.0,
+      "two_routes": 0.0
+    },
+    "pathlen_eq_5": {
+      "connected": 0.0,
+      "one_bottleneck": 1.0,
+      "pathlen_eq_5": 0.0,
+      "rooms_eq_6": 0.0,
+      "solvable": 0.0,
+      "two_routes": 0.6176470588235294
+    },
+    "rooms_eq_6": {
+      "connected": 0.0,
+      "one_bottleneck": 0.0,
+      "pathlen_eq_5": 0.0,
+      "rooms_eq_6": 0.0,
+      "solvable": 0.0,
+      "two_routes": 0.0
+    },
+    "solvable": {
+      "connected": 0.0,
+      "one_bottleneck": 0.0,
+      "pathlen_eq_5": 0.0,
+      "rooms_eq_6": 0.0,
+      "solvable": 0.0,
+      "two_routes": 0.0
+    },
+    "two_routes": {
+      "connected": 0.0,
+      "one_bottleneck": 0.0,
+      "pathlen_eq_5": 0.6176470588235294,
+      "rooms_eq_6": 0.0,
+      "solvable": 0.0,
+      "two_routes": 0.0
+    }
+  },
+  "valid_samples": 100
+}

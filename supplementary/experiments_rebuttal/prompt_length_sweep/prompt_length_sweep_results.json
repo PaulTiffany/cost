@@ -1,0 +1,128 @@
+{
+  "minimal": {
+    "rho_values": [
+      0.16477224230766296,
+      0.18243840336799622,
+      0.14632506668567657,
+      0.1742665022611618
+    ],
+    "char_lengths": {
+      "control": {
+        "functional": 14,
+        "format": 12
+      },
+      "low": {
+        "functional": 14,
+        "format": 24
+      },
+      "moderate": {
+        "functional": 14,
+        "format": 12
+      },
+      "high": {
+        "functional": 14,
+        "format": 22
+      }
+    }
+  },
+  "standard": {
+    "rho_values": [
+      0.38782811164855957,
+      0.4723610579967499,
+      0.4017829895019531,
+      0.47848790884017944
+    ],
+    "char_lengths": {
+      "control": {
+        "functional": 53,
+        "format": 30
+      },
+      "low": {
+        "functional": 53,
+        "format": 56
+      },
+      "moderate": {
+        "functional": 53,
+        "format": 30
+      },
+      "high": {
+        "functional": 53,
+        "format": 54
+      }
+    }
+  },
+  "verbose": {
+    "rho_values": [
+      0.36173927783966064,
+      0.5746334791183472,
+      0.32978957891464233,
+      0.4448765814304352
+    ],
+    "char_lengths": {
+      "control": {
+        "functional": 218,
+        "format": 135
+      },
+      "low": {
+        "functional": 218,
+        "format": 177
+      },
+      "moderate": {
+        "functional": 218,
+        "format": 193
+      },
+      "high": {
+        "functional": 218,
+        "format": 190
+      }
+    }
+  },
+  "very_verbose": {
+    "rho_values": [
+      0.49542236328125,
+      0.541901707649231,
+      0.533634603023529,
+      0.5797226428985596
+    ],
+    "char_lengths": {
+      "control": {
+        "functional": 525,
+        "format": 411
+      },
+      "low": {
+        "functional": 525,
+        "format": 482
+      },
+      "moderate": {
+        "functional": 525,
+        "format": 514
+      },
+      "high": {
+        "functional": 525,
+        "format": 654
+      }
+    }
+  },
+  "stability": {
+    "minimal": {
+      "order_preserved": false,
+      "spearman_r": 0.6000000000000001,
+      "p_value": 0.3999999999999999
+    },
+    "standard": {
+      "order_preserved": true,
+      "spearman_r": 1.0,
+      "p_value": 0.0
+    },
+    "verbose": {
+      "order_preserved": false,
+      "spearman_r": 0.6000000000000001,
+      "p_value": 0.3999999999999999
+    },
+    "very_verbose": {
+      "order_preserved": true,
+      "spearman_r": 1.0,
+      "p_value": 0.0
+    }
+  }
+}

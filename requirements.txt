@@ -1,0 +1,11 @@
+# Core dependencies for claim verification (verify.py)
+# Install: pip install -r requirements.txt
+numpy>=1.24.0
+scipy>=1.10.0
+
+# Optional: for interactive demo and figures
+# matplotlib>=3.7.0
+
+# Optional: for full experiment reproduction
+# pytest>=7.0.0
+# sentence-transformers>=2.2.0  # embedding-based experiments

@@ -1,0 +1,5523 @@
+{
+  "experiment": "json_nl_v4",
+  "model": "Qwen/Qwen2.5-1.5B-Instruct",
+  "timestamp": "2025-12-29T10:29:16.407779",
+  "tier_rhos": {
+    "control": 0.01,
+    "low": 0.25,
+    "moderate": 0.55,
+    "high": 0.7
+  },
+  "summary": {
+    "control": {
+      "rho": 0.01,
+      "one_shot_pass": 22.5,
+      "staged_pass": 7.5,
+      "one_shot_format": 50.0,
+      "one_shot_content": 35.0,
+      "failure_rate": 77.5
+    },
+    "low": {
+      "rho": 0.25,
+      "one_shot_pass": 10.0,
+      "staged_pass": 0.0,
+      "one_shot_format": 22.5,
+      "one_shot_content": 50.0,
+      "failure_rate": 90.0
+    },
+    "moderate": {
+      "rho": 0.55,
+      "one_shot_pass": 0.0,
+      "staged_pass": 2.5,
+      "one_shot_format": 5.0,
+      "one_shot_content": 47.5,
+      "failure_rate": 97.5
+    },
+    "high": {
+      "rho": 0.7,
+      "one_shot_pass": 0.0,
+      "staged_pass": 0.0,
+      "one_shot_format": 0.0,
+      "one_shot_content": 45.0,
+      "failure_rate": 100.0
+    }
+  },
+  "data": [
+    {
+      "task_id": "explain_concept",
+      "tier": "control",
+      "tier_rho": 0.01,
+      "protocol": "one_shot",
+      "trial": 0,
+      "pass_format": true,
+      "pass_content": true,
+      "pass_both": true,
+      "format_errors": [],
+      "content_errors": [],
+      "response_length": 385
+    },
+    {
+      "task_id": "explain_concept",
+      "tier": "control",
+      "tier_rho": 0.01,
+      "protocol": "staged",
+      "trial": 0,
+      "pass_format": false,
+      "pass_content": true,
+      "pass_both": false,
+      "format_errors": [
+        "length:749>500"
+      ],
+      "content_errors": [],
+      "response_length": 749
+    },
+    {
+      "task_id": "explain_concept",
+      "tier": "control",
+      "tier_rho": 0.01,
+      "protocol": "one_shot",
+      "trial": 1,
+      "pass_format": true,
+      "pass_content": true,
+      "pass_both": true,
+      "format_errors": [],
+      "content_errors": [],
+      "response_length": 459
+    },
+    {
+      "task_id": "explain_concept",
+      "tier": "control",
+      "tier_rho": 0.01,
+      "protocol": "staged",
+      "trial": 1,
+      "pass_format": false,
+      "pass_content": true,
+      "pass_both": false,
+      "format_errors": [
+        "length:797>500"
+      ],
+      "content_errors": [],
+      "response_length": 797
+    },
+    {
+      "task_id": "explain_concept",
+      "tier": "control",
+      "tier_rho": 0.01,
+      "protocol": "one_shot",
+      "trial": 2,
+      "pass_format": false,
+      "pass_content": true,
+      "pass_both": false,
+      "format_errors": [
+        "length:594>500"
+      ],
+      "content_errors": [],
+      "response_length": 594
+    },
+    {
+      "task_id": "explain_concept",
+      "tier": "control",
+      "tier_rho": 0.01,
+      "protocol": "staged",
+      "trial": 2,
+      "pass_format": false,
+      "pass_content": true,
+      "pass_both": false,
+      "format_errors": [
+        "length:510>500"
+      ],
+      "content_errors": [],
+      "response_length": 510
+    },
+    {
+      "task_id": "explain_concept",
+      "tier": "control",
+      "tier_rho": 0.01,
+      "protocol": "one_shot",
+      "trial": 3,
+      "pass_format": false,
+      "pass_content": true,
+      "pass_both": false,
+      "format_errors": [
+        "length:656>500"
+      ],
+      "content_errors": [],
+      "response_length": 656
+    },
+    {
+      "task_id": "explain_concept",
+      "tier": "control",
+      "tier_rho": 0.01,
+      "protocol": "staged",
+      "trial": 3,
+      "pass_format": false,
+      "pass_content": true,
+      "pass_both": false,
+      "format_errors": [
+        "length:562>500"
+      ],
+      "content_errors": [],
+      "response_length": 562
+    },
+    {
+      "task_id": "explain_concept",
+      "tier": "control",
+      "tier_rho": 0.01,
+      "protocol": "one_shot",
+      "trial": 4,
+      "pass_format": true,
+      "pass_content": true,
+      "pass_both": true,
+      "format_errors": [],
+      "content_errors": [],
+      "response_length": 478
+    },
+    {
+      "task_id": "explain_concept",
+      "tier": "control",
+      "tier_rho": 0.01,
+      "protocol": "staged",
+      "trial": 4,
+      "pass_format": false,
+      "pass_content": true,
+      "pass_both": false,
+      "format_errors": [
+        "length:559>500"
+      ],
+      "content_errors": [],
+      "response_length": 559
+    },
+    {
+      "task_id": "explain_concept",
+      "tier": "low",
+      "tier_rho": 0.25,
+      "protocol": "one_shot",
+      "trial": 0,
+      "pass_format": false,
+      "pass_content": true,
+      "pass_both": false,
+      "format_errors": [
+        "length:345>300"
+      ],
+      "content_errors": [],
+      "response_length": 345
+    },
+    {
+      "task_id": "explain_concept",
+      "tier": "low",
+      "tier_rho": 0.25,
+      "protocol": "staged",
+      "trial": 0,
+      "pass_format": false,
+      "pass_content": true,
+      "pass_both": false,
+      "format_errors": [
+        "length:666>300"
+      ],
+      "content_errors": [],
+      "response_length": 666
+    },
+    {
+      "task_id": "explain_concept",
+      "tier": "low",
+      "tier_rho": 0.25,
+      "protocol": "one_shot",
+      "trial": 1,
+      "pass_format": false,
+      "pass_content": true,
+      "pass_both": false,
+      "format_errors": [
+        "length:398>300"
+      ],
+      "content_errors": [],
+      "response_length": 398
+    },
+    {
+      "task_id": "explain_concept",
+      "tier": "low",
+      "tier_rho": 0.25,
+      "protocol": "staged",
+      "trial": 1,
+      "pass_format": false,
+      "pass_content": true,
+      "pass_both": false,
+      "format_errors": [
+        "length:915>300"
+      ],
+      "content_errors": [],
+      "response_length": 915
+    },
+    {
+      "task_id": "explain_concept",
+      "tier": "low",
+      "tier_rho": 0.25,
+      "protocol": "one_shot",
+      "trial": 2,
+      "pass_format": false,
+      "pass_content": true,
+      "pass_both": false,
+      "format_errors": [
+        "length:559>300"
+      ],
+      "content_errors": [],
+      "response_length": 559
+    },
+    {
+      "task_id": "explain_concept",
+      "tier": "low",
+      "tier_rho": 0.25,
+      "protocol": "staged",
+      "trial": 2,
+      "pass_format": false,
+      "pass_content": false,
+      "pass_both": false,
+      "format_errors": [
+        "length:583>300",
+        "json_parse:Expecting value: line 1 column"
+      ],
+      "content_errors": [
+        "json_failed"
+      ],
+      "response_length": 583
+    },
+    {
+      "task_id": "explain_concept",
+      "tier": "low",
+      "tier_rho": 0.25,
+      "protocol": "one_shot",
+      "trial": 3,
+      "pass_format": false,
+      "pass_content": true,
+      "pass_both": false,
+      "format_errors": [
+        "length:372>300"
+      ],
+      "content_errors": [],
+      "response_length": 372
+    },
+    {
+      "task_id": "explain_concept",
+      "tier": "low",
+      "tier_rho": 0.25,
+      "protocol": "staged",
+      "trial": 3,
+      "pass_format": false,
+      "pass_content": true,
+      "pass_both": false,
+      "format_errors": [
+        "length:456>300"
+      ],
+      "content_errors": [],
+      "response_length": 456
+    },
+    {
+      "task_id": "explain_concept",
+      "tier": "low",
+      "tier_rho": 0.25,
+      "protocol": "one_shot",
+      "trial": 4,
+      "pass_format": true,
+      "pass_content": true,
+      "pass_both": true,
+      "format_errors": [],
+      "content_errors": [],
+      "response_length": 251
+    },
+    {
+      "task_id": "explain_concept",
+      "tier": "low",
+      "tier_rho": 0.25,
+      "protocol": "staged",
+      "trial": 4,
+      "pass_format": false,
+      "pass_content": true,
+      "pass_both": false,
+      "format_errors": [
+        "length:657>300"
+      ],
+      "content_errors": [],
+      "response_length": 657
+    },
+    {
+      "task_id": "explain_concept",
+      "tier": "moderate",
+      "tier_rho": 0.55,
+      "protocol": "one_shot",
+      "trial": 0,
+      "pass_format": false,
+      "pass_content": true,
+      "pass_both": false,
+      "format_errors": [
+        "length:522>180"
+      ],
+      "content_errors": [],
+      "response_length": 522
+    },
+    {
+      "task_id": "explain_concept",
+      "tier": "moderate",
+      "tier_rho": 0.55,
+      "protocol": "staged",
+      "trial": 0,
+      "pass_format": false,
+      "pass_content": true,
+      "pass_both": false,
+      "format_errors": [
+        "length:871>180"
+      ],
+      "content_errors": [],
+      "response_length": 871
+    },
+    {
+      "task_id": "explain_concept",
+      "tier": "moderate",
+      "tier_rho": 0.55,
+      "protocol": "one_shot",
+      "trial": 1,
+      "pass_format": false,
+      "pass_content": true,
+      "pass_both": false,
+      "format_errors": [
+        "length:358>180"
+      ],
+      "content_errors": [],
+      "response_length": 358
+    },
+    {
+      "task_id": "explain_concept",
+      "tier": "moderate",
+      "tier_rho": 0.55,
+      "protocol": "staged",
+      "trial": 1,
+      "pass_format": false,
+      "pass_content": true,
+      "pass_both": false,
+      "format_errors": [
+        "length:508>180"
+      ],
+      "content_errors": [],
+      "response_length": 508
+    },
+    {
+      "task_id": "explain_concept",
+      "tier": "moderate",
+      "tier_rho": 0.55,
+      "protocol": "one_shot",
+      "trial": 2,
+      "pass_format": false,
+      "pass_content": true,
+      "pass_both": false,
+      "format_errors": [
+        "length:432>180"
+      ],
+      "content_errors": [],
+      "response_length": 432
+    },
+    {
+      "task_id": "explain_concept",
+      "tier": "moderate",
+      "tier_rho": 0.55,
+      "protocol": "staged",
+      "trial": 2,
+      "pass_format": false,
+      "pass_content": true,
+      "pass_both": false,
+      "format_errors": [
+        "length:492>180"
+      ],
+      "content_errors": [],
+      "response_length": 492
+    },
+    {
+      "task_id": "explain_concept",
+      "tier": "moderate",
+      "tier_rho": 0.55,
+      "protocol": "one_shot",
+      "trial": 3,
+      "pass_format": false,
+      "pass_content": true,
+      "pass_both": false,
+      "format_errors": [
+        "length:359>180"
+      ],
+      "content_errors": [],
+      "response_length": 359
+    },
+    {
+      "task_id": "explain_concept",
+      "tier": "moderate",
+      "tier_rho": 0.55,
+      "protocol": "staged",
+      "trial": 3,
+      "pass_format": false,
+      "pass_content": true,
+      "pass_both": false,
+      "format_errors": [
+        "length:733>180"
+      ],
+      "content_errors": [],
+      "response_length": 733
+    },
+    {
+      "task_id": "explain_concept",
+      "tier": "moderate",
+      "tier_rho": 0.55,
+      "protocol": "one_shot",
+      "trial": 4,
+      "pass_format": false,
+      "pass_content": true,
+      "pass_both": false,
+      "format_errors": [
+        "length:372>180"
+      ],
+      "content_errors": [],
+      "response_length": 372
+    },
+    {
+      "task_id": "explain_concept",
+      "tier": "moderate",
+      "tier_rho": 0.55,
+      "protocol": "staged",
+      "trial": 4,
+      "pass_format": false,
+      "pass_content": false,
+      "pass_both": false,
+      "format_errors": [
+        "length:988>180",
+        "json_parse:Expecting value: line 1 column"
+      ],
+      "content_errors": [
+        "json_failed"
+      ],
+      "response_length": 988
+    },
+    {
+      "task_id": "explain_concept",
+      "tier": "high",
+      "tier_rho": 0.7,
+      "protocol": "one_shot",
+      "trial": 0,
+      "pass_format": false,
+      "pass_content": true,
+      "pass_both": false,
+      "format_errors": [
+        "length:331>120"
+      ],
+      "content_errors": [],
+      "response_length": 331
+    },
+    {
+      "task_id": "explain_concept",
+      "tier": "high",
+      "tier_rho": 0.7,
+      "protocol": "staged",
+      "trial": 0,
+      "pass_format": false,
+      "pass_content": true,
+      "pass_both": false,
+      "format_errors": [
+        "length:465>120"
+      ],
+      "content_errors": [],
+      "response_length": 465
+    },
+    {
+      "task_id": "explain_concept",
+      "tier": "high",
+      "tier_rho": 0.7,
+      "protocol": "one_shot",
+      "trial": 1,
+      "pass_format": false,
+      "pass_content": true,
+      "pass_both": false,
+      "format_errors": [
+        "length:330>120"
+      ],
+      "content_errors": [],
+      "response_length": 330
+    },
+    {
+      "task_id": "explain_concept",
+      "tier": "high",
+      "tier_rho": 0.7,
+      "protocol": "staged",
+      "trial": 1,
+      "pass_format": false,
+      "pass_content": true,
+      "pass_both": false,
+      "format_errors": [
+        "length:430>120"
+      ],
+      "content_errors": [],
+      "response_length": 430
+    },
+    {
+      "task_id": "explain_concept",
+      "tier": "high",
+      "tier_rho": 0.7,
+      "protocol": "one_shot",
+      "trial": 2,
+      "pass_format": false,
+      "pass_content": true,
+      "pass_both": false,
+      "format_errors": [
+        "length:224>120"
+      ],
+      "content_errors": [],
+      "response_length": 224
+    },
+    {
+      "task_id": "explain_concept",
+      "tier": "high",
+      "tier_rho": 0.7,
+      "protocol": "staged",
+      "trial": 2,
+      "pass_format": false,
+      "pass_content": false,
+      "pass_both": false,
+      "format_errors": [
+        "length:198>120",
+        "json_parse:Expecting value: line 1 column"
+      ],
+      "content_errors": [
+        "json_failed"
+      ],
+      "response_length": 198
+    },
+    {
+      "task_id": "explain_concept",
+      "tier": "high",
+      "tier_rho": 0.7,
+      "protocol": "one_shot",
+      "trial": 3,
+      "pass_format": false,
+      "pass_content": true,
+      "pass_both": false,
+      "format_errors": [
+        "length:270>120"
+      ],
+      "content_errors": [],
+      "response_length": 270
+    },
+    {
+      "task_id": "explain_concept",
+      "tier": "high",
+      "tier_rho": 0.7,
+      "protocol": "staged",
+      "trial": 3,
+      "pass_format": false,
+      "pass_content": false,
+      "pass_both": false,
+      "format_errors": [
+        "length:939>120",
+        "json_parse:Expecting value: line 1 column"
+      ],
+      "content_errors": [
+        "json_failed"
+      ],
+      "response_length": 939
+    },
+    {
+      "task_id": "explain_concept",
+      "tier": "high",
+      "tier_rho": 0.7,
+      "protocol": "one_shot",
+      "trial": 4,
+      "pass_format": false,
+      "pass_content": true,
+      "pass_both": false,
+      "format_errors": [
+        "length:297>120"
+      ],
+      "content_errors": [],
+      "response_length": 297
+    },
+    {
+      "task_id": "explain_concept",
+      "tier": "high",
+      "tier_rho": 0.7,
+      "protocol": "staged",
+      "trial": 4,
+      "pass_format": false,
+      "pass_content": true,
+      "pass_both": false,
+      "format_errors": [
+        "length:478>120"
+      ],
+      "content_errors": [],
+      "response_length": 478
+    },
+    {
+      "task_id": "summarize_event",
+      "tier": "control",
+      "tier_rho": 0.01,
+      "protocol": "one_shot",
+      "trial": 0,
+      "pass_format": false,
+      "pass_content": false,
+      "pass_both": false,
+      "format_errors": [
+        "missing:summary",
+        "missing:significance",
+        "missing:key_figures"
+      ],
+      "content_errors": [
+        "missing_keyword:Apollo",
+        "missing_keyword:1969",
+        "too_short:70<100"
+      ],
+      "response_length": 137
+    },
+    {
+      "task_id": "summarize_event",
+      "tier": "control",
+      "tier_rho": 0.01,
+      "protocol": "staged",
+      "trial": 0,
+      "pass_format": false,
+      "pass_content": true,
+      "pass_both": false,
+      "format_errors": [
+        "missing:key_figures"
+      ],
+      "content_errors": [],
+      "response_length": 422
+    },
+    {
+      "task_id": "summarize_event",
+      "tier": "control",
+      "tier_rho": 0.01,
+      "protocol": "one_shot",
+      "trial": 1,
+      "pass_format": false,
+      "pass_content": false,
+      "pass_both": false,
+      "format_errors": [
+        "missing:summary",
+        "missing:significance",
+        "missing:key_figures"
+      ],
+      "content_errors": [
+        "missing_keyword:Apollo",
+        "missing_keyword:1969",
+        "missing_keyword:Armstrong",
+        "too_short:0<100"
+      ],
+      "response_length": 154
+    },
+    {
+      "task_id": "summarize_event",
+      "tier": "control",
+      "tier_rho": 0.01,
+      "protocol": "staged",
+      "trial": 1,
+      "pass_format": false,
+      "pass_content": false,
+      "pass_both": false,
+      "format_errors": [
+        "missing:summary",
+        "missing:significance",
+        "missing:key_figures"
+      ],
+      "content_errors": [
+        "missing_keyword:Apollo",
+        "missing_keyword:1969",
+        "missing_keyword:Armstrong",
+        "too_short:0<100"
+      ],
+      "response_length": 93
+    },
+    {
+      "task_id": "summarize_event",
+      "tier": "control",
+      "tier_rho": 0.01,
+      "protocol": "one_shot",
+      "trial": 2,
+      "pass_format": false,
+      "pass_content": false,
+      "pass_both": false,
+      "format_errors": [
+        "missing:summary",
+        "missing:significance",
+        "missing:key_figures"
+      ],
+      "content_errors": [
+        "missing_keyword:Apollo",
+        "missing_keyword:Armstrong",
+        "too_short:17<100"
+      ],
+      "response_length": 67
+    },
+    {
+      "task_id": "summarize_event",
+      "tier": "control",
+      "tier_rho": 0.01,
+      "protocol": "staged",
+      "trial": 2,
+      "pass_format": false,
+      "pass_content": false,
+      "pass_both": false,
+      "format_errors": [
+        "missing:summary",
+        "missing:significance",
+        "missing:key_figures"
+      ],
+      "content_errors": [
+        "missing_keyword:Apollo",
+        "missing_keyword:1969",
+        "too_short:23<100"
+      ],
+      "response_length": 66
+    },
+    {
+      "task_id": "summarize_event",
+      "tier": "control",
+      "tier_rho": 0.01,
+      "protocol": "one_shot",
+      "trial": 3,
+      "pass_format": false,
+      "pass_content": false,
+      "pass_both": false,
+      "format_errors": [
+        "missing:summary",
+        "missing:significance",
+        "missing:key_figures"
+      ],
+      "content_errors": [
+        "missing_keyword:Apollo",
+        "missing_keyword:Armstrong",
+        "too_short:17<100"
+      ],
+      "response_length": 67
+    },
+    {
+      "task_id": "summarize_event",
+      "tier": "control",
+      "tier_rho": 0.01,
+      "protocol": "staged",
+      "trial": 3,
+      "pass_format": false,
+      "pass_content": false,
+      "pass_both": false,
+      "format_errors": [
+        "missing:summary",
+        "missing:significance",
+        "missing:key_figures"
+      ],
+      "content_errors": [
+        "missing_keyword:Apollo",
+        "too_short:79<100"
+      ],
+      "response_length": 191
+    },
+    {
+      "task_id": "summarize_event",
+      "tier": "control",
+      "tier_rho": 0.01,
+      "protocol": "one_shot",
+      "trial": 4,
+      "pass_format": false,
+      "pass_content": false,
+      "pass_both": false,
+      "format_errors": [
+        "missing:summary",
+        "missing:significance",
+        "missing:key_figures"
+      ],
+      "content_errors": [
+        "too_short:75<100"
+      ],
+      "response_length": 171
+    },
+    {
+      "task_id": "summarize_event",
+      "tier": "control",
+      "tier_rho": 0.01,
+      "protocol": "staged",
+      "trial": 4,
+      "pass_format": false,
+      "pass_content": false,
+      "pass_both": false,
+      "format_errors": [
+        "missing:summary",
+        "missing:significance",
+        "missing:key_figures"
+      ],
+      "content_errors": [
+        "missing_keyword:Apollo",
+        "missing_keyword:1969",
+        "missing_keyword:Armstrong"
+      ],
+      "response_length": 249
+    },
+    {
+      "task_id": "summarize_event",
+      "tier": "low",
+      "tier_rho": 0.25,
+      "protocol": "one_shot",
+      "trial": 0,
+      "pass_format": false,
+      "pass_content": false,
+      "pass_both": false,
+      "format_errors": [
+        "missing:summary",
+        "missing:significance",
+        "missing:key_figures"
+      ],
+      "content_errors": [
+        "missing_keyword:Apollo",
+        "too_short:59<100"
+      ],
+      "response_length": 119
+    },
+    {
+      "task_id": "summarize_event",
+      "tier": "low",
+      "tier_rho": 0.25,
+      "protocol": "staged",
+      "trial": 0,
+      "pass_format": false,
+      "pass_content": false,
+      "pass_both": false,
+      "format_errors": [
+        "missing:summary",
+        "missing:significance",
+        "missing:key_figures"
+      ],
+      "content_errors": [
+        "missing_keyword:Apollo",
+        "missing_keyword:1969",
+        "too_short:23<100"
+      ],
+      "response_length": 47
+    },
+    {
+      "task_id": "summarize_event",
+      "tier": "low",
+      "tier_rho": 0.25,
+      "protocol": "one_shot",
+      "trial": 1,
+      "pass_format": false,
+      "pass_content": false,
+      "pass_both": false,
+      "format_errors": [
+        "missing:summary",
+        "missing:significance",
+        "missing:key_figures"
+      ],
+      "content_errors": [
+        "missing_keyword:Apollo"
+      ],
+      "response_length": 201
+    },
+    {
+      "task_id": "summarize_event",
+      "tier": "low",
+      "tier_rho": 0.25,
+      "protocol": "staged",
+      "trial": 1,
+      "pass_format": false,
+      "pass_content": false,
+      "pass_both": false,
+      "format_errors": [
+        "missing:summary",
+        "missing:significance",
+        "missing:key_figures"
+      ],
+      "content_errors": [
+        "missing_keyword:Apollo",
+        "missing_keyword:1969",
+        "missing_keyword:Armstrong",
+        "too_short:0<100"
+      ],
+      "response_length": 174
+    },
+    {
+      "task_id": "summarize_event",
+      "tier": "low",
+      "tier_rho": 0.25,
+      "protocol": "one_shot",
+      "trial": 2,
+      "pass_format": false,
+      "pass_content": true,
+      "pass_both": false,
+      "format_errors": [
+        "missing:summary",
+        "missing:significance",
+        "missing:key_figures"
+      ],
+      "content_errors": [],
+      "response_length": 230
+    },
+    {
+      "task_id": "summarize_event",
+      "tier": "low",
+      "tier_rho": 0.25,
+      "protocol": "staged",
+      "trial": 2,
+      "pass_format": false,
+      "pass_content": false,
+      "pass_both": false,
+      "format_errors": [
+        "json_parse:Expecting ',' delimiter: line "
+      ],
+      "content_errors": [
+        "json_failed"
+      ],
+      "response_length": 216
+    },
+    {
+      "task_id": "summarize_event",
+      "tier": "low",
+      "tier_rho": 0.25,
+      "protocol": "one_shot",
+      "trial": 3,
+      "pass_format": false,
+      "pass_content": false,
+      "pass_both": false,
+      "format_errors": [
+        "missing:summary",
+        "missing:significance",
+        "missing:key_figures"
+      ],
+      "content_errors": [
+        "missing_keyword:Apollo",
+        "missing_keyword:1969",
+        "too_short:55<100"
+      ],
+      "response_length": 125
+    },
+    {
+      "task_id": "summarize_event",
+      "tier": "low",
+      "tier_rho": 0.25,
+      "protocol": "staged",
+      "trial": 3,
+      "pass_format": false,
+      "pass_content": false,
+      "pass_both": false,
+      "format_errors": [
+        "json_parse:Expecting ',' delimiter: line "
+      ],
+      "content_errors": [
+        "json_failed"
+      ],
+      "response_length": 122
+    },
+    {
+      "task_id": "summarize_event",
+      "tier": "low",
+      "tier_rho": 0.25,
+      "protocol": "one_shot",
+      "trial": 4,
+      "pass_format": false,
+      "pass_content": false,
+      "pass_both": false,
+      "format_errors": [
+        "missing:summary",
+        "missing:significance",
+        "missing:key_figures"
+      ],
+      "content_errors": [
+        "missing_keyword:Apollo",
+        "missing_keyword:Armstrong",
+        "too_short:17<100"
+      ],
+      "response_length": 63
+    },
+    {
+      "task_id": "summarize_event",
+      "tier": "low",
+      "tier_rho": 0.25,
+      "protocol": "staged",
+      "trial": 4,
+      "pass_format": false,
+      "pass_content": false,
+      "pass_both": false,
+      "format_errors": [
+        "missing:summary",
+        "missing:significance",
+        "missing:key_figures"
+      ],
+      "content_errors": [
+        "missing_keyword:Apollo",
+        "missing_keyword:1969"
+      ],
+      "response_length": 253
+    },
+    {
+      "task_id": "summarize_event",
+      "tier": "moderate",
+      "tier_rho": 0.55,
+      "protocol": "one_shot",
+      "trial": 0,
+      "pass_format": false,
+      "pass_content": false,
+      "pass_both": false,
+      "format_errors": [
+        "missing:summary",
+        "missing:significance",
+        "missing:key_figures"
+      ],
+      "content_errors": [
+        "missing_keyword:1969",
+        "too_short:86<100"
+      ],
+      "response_length": 172
+    },
+    {
+      "task_id": "summarize_event",
+      "tier": "moderate",
+      "tier_rho": 0.55,
+      "protocol": "staged",
+      "trial": 0,
+      "pass_format": false,
+      "pass_content": false,
+      "pass_both": false,
+      "format_errors": [
+        "missing:summary",
+        "missing:significance",
+        "missing:key_figures"
+      ],
+      "content_errors": [
+        "missing_keyword:Apollo",
+        "missing_keyword:1969",
+        "too_short:83<100"
+      ],
+      "response_length": 149
+    },
+    {
+      "task_id": "summarize_event",
+      "tier": "moderate",
+      "tier_rho": 0.55,
+      "protocol": "one_shot",
+      "trial": 1,
+      "pass_format": false,
+      "pass_content": false,
+      "pass_both": false,
+      "format_errors": [
+        "length:198>180",
+        "missing:summary",
+        "missing:significance",
+        "missing:key_figures"
+      ],
+      "content_errors": [
+        "missing_keyword:Apollo",
+        "missing_keyword:1969"
+      ],
+      "response_length": 198
+    },
+    {
+      "task_id": "summarize_event",
+      "tier": "moderate",
+      "tier_rho": 0.55,
+      "protocol": "staged",
+      "trial": 1,
+      "pass_format": false,
+      "pass_content": false,
+      "pass_both": false,
+      "format_errors": [
+        "length:844>180",
+        "json_parse:Expecting value: line 1 column"
+      ],
+      "content_errors": [
+        "json_failed"
+      ],
+      "response_length": 844
+    },
+    {
+      "task_id": "summarize_event",
+      "tier": "moderate",
+      "tier_rho": 0.55,
+      "protocol": "one_shot",
+      "trial": 2,
+      "pass_format": false,
+      "pass_content": false,
+      "pass_both": false,
+      "format_errors": [
+        "length:393>180",
+        "missing:summary",
+        "missing:significance",
+        "missing:key_figures"
+      ],
+      "content_errors": [
+        "missing_keyword:Apollo"
+      ],
+      "response_length": 393
+    },
+    {
+      "task_id": "summarize_event",
+      "tier": "moderate",
+      "tier_rho": 0.55,
+      "protocol": "staged",
+      "trial": 2,
+      "pass_format": false,
+      "pass_content": false,
+      "pass_both": false,
+      "format_errors": [
+        "missing:summary",
+        "missing:significance",
+        "missing:key_figures"
+      ],
+      "content_errors": [
+        "missing_keyword:Apollo",
+        "missing_keyword:1969",
+        "missing_keyword:Armstrong",
+        "too_short:14<100"
+      ],
+      "response_length": 57
+    },
+    {
+      "task_id": "summarize_event",
+      "tier": "moderate",
+      "tier_rho": 0.55,
+      "protocol": "one_shot",
+      "trial": 3,
+      "pass_format": false,
+      "pass_content": false,
+      "pass_both": false,
+      "format_errors": [
+        "json_parse:Expecting ',' delimiter: line "
+      ],
+      "content_errors": [
+        "json_failed"
+      ],
+      "response_length": 129
+    },
+    {
+      "task_id": "summarize_event",
+      "tier": "moderate",
+      "tier_rho": 0.55,
+      "protocol": "staged",
+      "trial": 3,
+      "pass_format": false,
+      "pass_content": false,
+      "pass_both": false,
+      "format_errors": [
+        "missing:summary",
+        "missing:significance",
+        "missing:key_figures"
+      ],
+      "content_errors": [
+        "missing_keyword:Apollo",
+        "missing_keyword:1969",
+        "missing_keyword:Armstrong",
+        "too_short:67<100"
+      ],
+      "response_length": 111
+    },
+    {
+      "task_id": "summarize_event",
+      "tier": "moderate",
+      "tier_rho": 0.55,
+      "protocol": "one_shot",
+      "trial": 4,
+      "pass_format": false,
+      "pass_content": false,
+      "pass_both": false,
+      "format_errors": [
+        "missing:summary",
+        "missing:significance",
+        "missing:key_figures"
+      ],
+      "content_errors": [
+        "missing_keyword:Apollo",
+        "too_short:52<100"
+      ],
+      "response_length": 112
+    },
+    {
+      "task_id": "summarize_event",
+      "tier": "moderate",
+      "tier_rho": 0.55,
+      "protocol": "staged",
+      "trial": 4,
+      "pass_format": false,
+      "pass_content": false,
+      "pass_both": false,
+      "format_errors": [
+        "missing:summary",
+        "missing:significance",
+        "missing:key_figures"
+      ],
+      "content_errors": [
+        "missing_keyword:Apollo",
+        "missing_keyword:1969",
+        "too_short:23<100"
+      ],
+      "response_length": 81
+    },
+    {
+      "task_id": "summarize_event",
+      "tier": "high",
+      "tier_rho": 0.7,
+      "protocol": "one_shot",
+      "trial": 0,
+      "pass_format": false,
+      "pass_content": false,
+      "pass_both": false,
+      "format_errors": [
+        "missing:summary",
+        "missing:significance",
+        "missing:key_figures"
+      ],
+      "content_errors": [
+        "missing_keyword:Apollo",
+        "missing_keyword:1969",
+        "too_short:46<100"
+      ],
+      "response_length": 95
+    },
+    {
+      "task_id": "summarize_event",
+      "tier": "high",
+      "tier_rho": 0.7,
+      "protocol": "staged",
+      "trial": 0,
+      "pass_format": false,
+      "pass_content": false,
+      "pass_both": false,
+      "format_errors": [
+        "length:292>120",
+        "missing:summary",
+        "missing:significance",
+        "missing:key_figures"
+      ],
+      "content_errors": [
+        "missing_keyword:1969",
+        "missing_keyword:Armstrong"
+      ],
+      "response_length": 292
+    },
+    {
+      "task_id": "summarize_event",
+      "tier": "high",
+      "tier_rho": 0.7,
+      "protocol": "one_shot",
+      "trial": 1,
+      "pass_format": false,
+      "pass_content": false,
+      "pass_both": false,
+      "format_errors": [
+        "length:203>120",
+        "missing:summary",
+        "missing:significance",
+        "missing:key_figures"
+      ],
+      "content_errors": [
+        "missing_keyword:Apollo",
+        "missing_keyword:1969",
+        "too_short:73<100"
+      ],
+      "response_length": 203
+    },
+    {
+      "task_id": "summarize_event",
+      "tier": "high",
+      "tier_rho": 0.7,
+      "protocol": "staged",
+      "trial": 1,
+      "pass_format": false,
+      "pass_content": false,
+      "pass_both": false,
+      "format_errors": [
+        "missing:summary",
+        "missing:significance",
+        "missing:key_figures"
+      ],
+      "content_errors": [
+        "missing_keyword:Apollo",
+        "missing_keyword:1969",
+        "missing_keyword:Armstrong",
+        "too_short:0<100"
+      ],
+      "response_length": 95
+    },
+    {
+      "task_id": "summarize_event",
+      "tier": "high",
+      "tier_rho": 0.7,
+      "protocol": "one_shot",
+      "trial": 2,
+      "pass_format": false,
+      "pass_content": false,
+      "pass_both": false,
+      "format_errors": [
+        "length:150>120",
+        "missing:summary",
+        "missing:significance",
+        "missing:key_figures"
+      ],
+      "content_errors": [
+        "missing_keyword:Apollo",
+        "missing_keyword:1969",
+        "missing_keyword:Armstrong",
+        "too_short:37<100"
+      ],
+      "response_length": 150
+    },
+    {
+      "task_id": "summarize_event",
+      "tier": "high",
+      "tier_rho": 0.7,
+      "protocol": "staged",
+      "trial": 2,
+      "pass_format": false,
+      "pass_content": false,
+      "pass_both": false,
+      "format_errors": [
+        "json_parse:Expecting value: line 3 column"
+      ],
+      "content_errors": [
+        "json_failed"
+      ],
+      "response_length": 78
+    },
+    {
+      "task_id": "summarize_event",
+      "tier": "high",
+      "tier_rho": 0.7,
+      "protocol": "one_shot",
+      "trial": 3,
+      "pass_format": false,
+      "pass_content": false,
+      "pass_both": false,
+      "format_errors": [
+        "missing:summary",
+        "missing:significance",
+        "missing:key_figures"
+      ],
+      "content_errors": [
+        "missing_keyword:Armstrong",
+        "too_short:40<100"
+      ],
+      "response_length": 83
+    },
+    {
+      "task_id": "summarize_event",
+      "tier": "high",
+      "tier_rho": 0.7,
+      "protocol": "staged",
+      "trial": 3,
+      "pass_format": false,
+      "pass_content": false,
+      "pass_both": false,
+      "format_errors": [
+        "length:289>120",
+        "json_parse:Expecting ',' delimiter: line "
+      ],
+      "content_errors": [
+        "json_failed"
+      ],
+      "response_length": 289
+    },
+    {
+      "task_id": "summarize_event",
+      "tier": "high",
+      "tier_rho": 0.7,
+      "protocol": "one_shot",
+      "trial": 4,
+      "pass_format": false,
+      "pass_content": false,
+      "pass_both": false,
+      "format_errors": [
+        "missing:summary",
+        "missing:significance",
+        "missing:key_figures"
+      ],
+      "content_errors": [
+        "missing_keyword:Apollo",
+        "missing_keyword:1969",
+        "too_short:50<100"
+      ],
+      "response_length": 92
+    },
+    {
+      "task_id": "summarize_event",
+      "tier": "high",
+      "tier_rho": 0.7,
+      "protocol": "staged",
+      "trial": 4,
+      "pass_format": false,
+      "pass_content": false,
+      "pass_both": false,
+      "format_errors": [
+        "length:168>120",
+        "missing:summary",
+        "missing:significance",
+        "missing:key_figures"
+      ],
+      "content_errors": [
+        "missing_keyword:1969"
+      ],
+      "response_length": 168
+    },
+    {
+      "task_id": "analyze_problem",
+      "tier": "control",
+      "tier_rho": 0.01,
+      "protocol": "one_shot",
+      "trial": 0,
+      "pass_format": false,
+      "pass_content": false,
+      "pass_both": false,
+      "format_errors": [
+        "missing:causes",
+        "missing:effects",
+        "missing:solutions"
+      ],
+      "content_errors": [
+        "missing_keyword:commute",
+        "too_short:71<80"
+      ],
+      "response_length": 120
+    },
+    {
+      "task_id": "analyze_problem",
+      "tier": "control",
+      "tier_rho": 0.01,
+      "protocol": "staged",
+      "trial": 0,
+      "pass_format": false,
+      "pass_content": false,
+      "pass_both": false,
+      "format_errors": [
+        "missing:causes",
+        "missing:effects",
+        "missing:solutions"
+      ],
+      "content_errors": [
+        "missing_keyword:commute"
+      ],
+      "response_length": 210
+    },
+    {
+      "task_id": "analyze_problem",
+      "tier": "control",
+      "tier_rho": 0.01,
+      "protocol": "one_shot",
+      "trial": 1,
+      "pass_format": false,
+      "pass_content": false,
+      "pass_both": false,
+      "format_errors": [
+        "missing:causes",
+        "missing:effects",
+        "missing:solutions"
+      ],
+      "content_errors": [
+        "missing_keyword:commute"
+      ],
+      "response_length": 153
+    },
+    {
+      "task_id": "analyze_problem",
+      "tier": "control",
+      "tier_rho": 0.01,
+      "protocol": "staged",
+      "trial": 1,
+      "pass_format": false,
+      "pass_content": false,
+      "pass_both": false,
+      "format_errors": [
+        "length:543>500"
+      ],
+      "content_errors": [
+        "missing_keyword:commute"
+      ],
+      "response_length": 543
+    },
+    {
+      "task_id": "analyze_problem",
+      "tier": "control",
+      "tier_rho": 0.01,
+      "protocol": "one_shot",
+      "trial": 2,
+      "pass_format": true,
+      "pass_content": false,
+      "pass_both": false,
+      "format_errors": [],
+      "content_errors": [
+        "missing_keyword:commute"
+      ],
+      "response_length": 342
+    },
+    {
+      "task_id": "analyze_problem",
+      "tier": "control",
+      "tier_rho": 0.01,
+      "protocol": "staged",
+      "trial": 2,
+      "pass_format": false,
+      "pass_content": false,
+      "pass_both": false,
+      "format_errors": [
+        "missing:causes",
+        "missing:effects",
+        "missing:solutions"
+      ],
+      "content_errors": [
+        "missing_keyword:commute"
+      ],
+      "response_length": 231
+    },
+    {
+      "task_id": "analyze_problem",
+      "tier": "control",
+      "tier_rho": 0.01,
+      "protocol": "one_shot",
+      "trial": 3,
+      "pass_format": true,
+      "pass_content": false,
+      "pass_both": false,
+      "format_errors": [],
+      "content_errors": [
+        "missing_keyword:commute"
+      ],
+      "response_length": 319
+    },
+    {
+      "task_id": "analyze_problem",
+      "tier": "control",
+      "tier_rho": 0.01,
+      "protocol": "staged",
+      "trial": 3,
+      "pass_format": true,
+      "pass_content": false,
+      "pass_both": false,
+      "format_errors": [],
+      "content_errors": [
+        "missing_keyword:commute"
+      ],
+      "response_length": 271
+    },
+    {
+      "task_id": "analyze_problem",
+      "tier": "control",
+      "tier_rho": 0.01,
+      "protocol": "one_shot",
+      "trial": 4,
+      "pass_format": true,
+      "pass_content": false,
+      "pass_both": false,
+      "format_errors": [],
+      "content_errors": [
+        "missing_keyword:congestion",
+        "missing_keyword:commute"
+      ],
+      "response_length": 310
+    },
+    {
+      "task_id": "analyze_problem",
+      "tier": "control",
+      "tier_rho": 0.01,
+      "protocol": "staged",
+      "trial": 4,
+      "pass_format": false,
+      "pass_content": true,
+      "pass_both": false,
+      "format_errors": [
+        "missing:causes",
+        "missing:effects",
+        "missing:solutions"
+      ],
+      "content_errors": [],
+      "response_length": 395
+    },
+    {
+      "task_id": "analyze_problem",
+      "tier": "low",
+      "tier_rho": 0.25,
+      "protocol": "one_shot",
+      "trial": 0,
+      "pass_format": false,
+      "pass_content": false,
+      "pass_both": false,
+      "format_errors": [
+        "length:308>300"
+      ],
+      "content_errors": [
+        "missing_keyword:commute"
+      ],
+      "response_length": 308
+    },
+    {
+      "task_id": "analyze_problem",
+      "tier": "low",
+      "tier_rho": 0.25,
+      "protocol": "staged",
+      "trial": 0,
+      "pass_format": false,
+      "pass_content": false,
+      "pass_both": false,
+      "format_errors": [
+        "missing:causes",
+        "missing:effects",
+        "missing:solutions"
+      ],
+      "content_errors": [
+        "missing_keyword:congestion",
+        "missing_keyword:commute",
+        "too_short:77<80"
+      ],
+      "response_length": 127
+    },
+    {
+      "task_id": "analyze_problem",
+      "tier": "low",
+      "tier_rho": 0.25,
+      "protocol": "one_shot",
+      "trial": 1,
+      "pass_format": false,
+      "pass_content": true,
+      "pass_both": false,
+      "format_errors": [
+        "length:334>300"
+      ],
+      "content_errors": [],
+      "response_length": 334
+    },
+    {
+      "task_id": "analyze_problem",
+      "tier": "low",
+      "tier_rho": 0.25,
+      "protocol": "staged",
+      "trial": 1,
+      "pass_format": false,
+      "pass_content": false,
+      "pass_both": false,
+      "format_errors": [
+        "length:663>300",
+        "missing:effects"
+      ],
+      "content_errors": [
+        "missing_keyword:commute"
+      ],
+      "response_length": 663
+    },
+    {
+      "task_id": "analyze_problem",
+      "tier": "low",
+      "tier_rho": 0.25,
+      "protocol": "one_shot",
+      "trial": 2,
+      "pass_format": false,
+      "pass_content": false,
+      "pass_both": false,
+      "format_errors": [
+        "missing:causes",
+        "missing:effects",
+        "missing:solutions"
+      ],
+      "content_errors": [
+        "missing_keyword:commute"
+      ],
+      "response_length": 144
+    },
+    {
+      "task_id": "analyze_problem",
+      "tier": "low",
+      "tier_rho": 0.25,
+      "protocol": "staged",
+      "trial": 2,
+      "pass_format": false,
+      "pass_content": false,
+      "pass_both": false,
+      "format_errors": [
+        "length:382>300"
+      ],
+      "content_errors": [
+        "missing_keyword:congestion",
+        "missing_keyword:commute"
+      ],
+      "response_length": 382
+    },
+    {
+      "task_id": "analyze_problem",
+      "tier": "low",
+      "tier_rho": 0.25,
+      "protocol": "one_shot",
+      "trial": 3,
+      "pass_format": false,
+      "pass_content": false,
+      "pass_both": false,
+      "format_errors": [
+        "length:490>300"
+      ],
+      "content_errors": [
+        "missing_keyword:commute"
+      ],
+      "response_length": 490
+    },
+    {
+      "task_id": "analyze_problem",
+      "tier": "low",
+      "tier_rho": 0.25,
+      "protocol": "staged",
+      "trial": 3,
+      "pass_format": false,
+      "pass_content": false,
+      "pass_both": false,
+      "format_errors": [
+        "length:335>300"
+      ],
+      "content_errors": [
+        "missing_keyword:commute"
+      ],
+      "response_length": 335
+    },
+    {
+      "task_id": "analyze_problem",
+      "tier": "low",
+      "tier_rho": 0.25,
+      "protocol": "one_shot",
+      "trial": 4,
+      "pass_format": false,
+      "pass_content": false,
+      "pass_both": false,
+      "format_errors": [
+        "missing:causes",
+        "missing:effects",
+        "missing:solutions"
+      ],
+      "content_errors": [
+        "missing_keyword:commute",
+        "too_short:56<80"
+      ],
+      "response_length": 105
+    },
+    {
+      "task_id": "analyze_problem",
+      "tier": "low",
+      "tier_rho": 0.25,
+      "protocol": "staged",
+      "trial": 4,
+      "pass_format": false,
+      "pass_content": false,
+      "pass_both": false,
+      "format_errors": [
+        "length:384>300",
+        "missing:effects"
+      ],
+      "content_errors": [
+        "missing_keyword:commute"
+      ],
+      "response_length": 384
+    },
+    {
+      "task_id": "analyze_problem",
+      "tier": "moderate",
+      "tier_rho": 0.55,
+      "protocol": "one_shot",
+      "trial": 0,
+      "pass_format": false,
+      "pass_content": false,
+      "pass_both": false,
+      "format_errors": [
+        "missing:causes",
+        "missing:effects",
+        "missing:solutions"
+      ],
+      "content_errors": [
+        "missing_keyword:commute"
+      ],
+      "response_length": 133
+    },
+    {
+      "task_id": "analyze_problem",
+      "tier": "moderate",
+      "tier_rho": 0.55,
+      "protocol": "staged",
+      "trial": 0,
+      "pass_format": false,
+      "pass_content": false,
+      "pass_both": false,
+      "format_errors": [
+        "length:330>180"
+      ],
+      "content_errors": [
+        "missing_keyword:congestion",
+        "missing_keyword:commute"
+      ],
+      "response_length": 330
+    },
+    {
+      "task_id": "analyze_problem",
+      "tier": "moderate",
+      "tier_rho": 0.55,
+      "protocol": "one_shot",
+      "trial": 1,
+      "pass_format": false,
+      "pass_content": true,
+      "pass_both": false,
+      "format_errors": [
+        "length:360>180"
+      ],
+      "content_errors": [],
+      "response_length": 360
+    },
+    {
+      "task_id": "analyze_problem",
+      "tier": "moderate",
+      "tier_rho": 0.55,
+      "protocol": "staged",
+      "trial": 1,
+      "pass_format": false,
+      "pass_content": false,
+      "pass_both": false,
+      "format_errors": [
+        "missing:causes",
+        "missing:effects",
+        "missing:solutions"
+      ],
+      "content_errors": [
+        "missing_keyword:commute"
+      ],
+      "response_length": 160
+    },
+    {
+      "task_id": "analyze_problem",
+      "tier": "moderate",
+      "tier_rho": 0.55,
+      "protocol": "one_shot",
+      "trial": 2,
+      "pass_format": false,
+      "pass_content": false,
+      "pass_both": false,
+      "format_errors": [
+        "length:281>180"
+      ],
+      "content_errors": [
+        "missing_keyword:commute"
+      ],
+      "response_length": 281
+    },
+    {
+      "task_id": "analyze_problem",
+      "tier": "moderate",
+      "tier_rho": 0.55,
+      "protocol": "staged",
+      "trial": 2,
+      "pass_format": false,
+      "pass_content": false,
+      "pass_both": false,
+      "format_errors": [
+        "length:350>180"
+      ],
+      "content_errors": [
+        "missing_keyword:congestion",
+        "missing_keyword:commute"
+      ],
+      "response_length": 350
+    },
+    {
+      "task_id": "analyze_problem",
+      "tier": "moderate",
+      "tier_rho": 0.55,
+      "protocol": "one_shot",
+      "trial": 3,
+      "pass_format": false,
+      "pass_content": false,
+      "pass_both": false,
+      "format_errors": [
+        "missing:causes",
+        "missing:effects",
+        "missing:solutions"
+      ],
+      "content_errors": [
+        "missing_keyword:commute",
+        "too_short:47<80"
+      ],
+      "response_length": 102
+    },
+    {
+      "task_id": "analyze_problem",
+      "tier": "moderate",
+      "tier_rho": 0.55,
+      "protocol": "staged",
+      "trial": 3,
+      "pass_format": false,
+      "pass_content": false,
+      "pass_both": false,
+      "format_errors": [
+        "length:337>180"
+      ],
+      "content_errors": [
+        "missing_keyword:commute"
+      ],
+      "response_length": 337
+    },
+    {
+      "task_id": "analyze_problem",
+      "tier": "moderate",
+      "tier_rho": 0.55,
+      "protocol": "one_shot",
+      "trial": 4,
+      "pass_format": false,
+      "pass_content": true,
+      "pass_both": false,
+      "format_errors": [
+        "length:311>180"
+      ],
+      "content_errors": [],
+      "response_length": 311
+    },
+    {
+      "task_id": "analyze_problem",
+      "tier": "moderate",
+      "tier_rho": 0.55,
+      "protocol": "staged",
+      "trial": 4,
+      "pass_format": false,
+      "pass_content": false,
+      "pass_both": false,
+      "format_errors": [
+        "length:439>180"
+      ],
+      "content_errors": [
+        "missing_keyword:commute"
+      ],
+      "response_length": 439
+    },
+    {
+      "task_id": "analyze_problem",
+      "tier": "high",
+      "tier_rho": 0.7,
+      "protocol": "one_shot",
+      "trial": 0,
+      "pass_format": false,
+      "pass_content": true,
+      "pass_both": false,
+      "format_errors": [
+        "length:588>120"
+      ],
+      "content_errors": [],
+      "response_length": 588
+    },
+    {
+      "task_id": "analyze_problem",
+      "tier": "high",
+      "tier_rho": 0.7,
+      "protocol": "staged",
+      "trial": 0,
+      "pass_format": false,
+      "pass_content": false,
+      "pass_both": false,
+      "format_errors": [
+        "length:175>120"
+      ],
+      "content_errors": [
+        "missing_keyword:congestion",
+        "missing_keyword:commute"
+      ],
+      "response_length": 175
+    },
+    {
+      "task_id": "analyze_problem",
+      "tier": "high",
+      "tier_rho": 0.7,
+      "protocol": "one_shot",
+      "trial": 1,
+      "pass_format": false,
+      "pass_content": true,
+      "pass_both": false,
+      "format_errors": [
+        "length:596>120",
+        "missing:solutions"
+      ],
+      "content_errors": [],
+      "response_length": 596
+    },
+    {
+      "task_id": "analyze_problem",
+      "tier": "high",
+      "tier_rho": 0.7,
+      "protocol": "staged",
+      "trial": 1,
+      "pass_format": false,
+      "pass_content": false,
+      "pass_both": false,
+      "format_errors": [
+        "length:280>120",
+        "missing:causes",
+        "missing:effects",
+        "missing:solutions"
+      ],
+      "content_errors": [
+        "missing_keyword:commute"
+      ],
+      "response_length": 280
+    },
+    {
+      "task_id": "analyze_problem",
+      "tier": "high",
+      "tier_rho": 0.7,
+      "protocol": "one_shot",
+      "trial": 2,
+      "pass_format": false,
+      "pass_content": false,
+      "pass_both": false,
+      "format_errors": [
+        "length:453>120"
+      ],
+      "content_errors": [
+        "missing_keyword:commute"
+      ],
+      "response_length": 453
+    },
+    {
+      "task_id": "analyze_problem",
+      "tier": "high",
+      "tier_rho": 0.7,
+      "protocol": "staged",
+      "trial": 2,
+      "pass_format": false,
+      "pass_content": false,
+      "pass_both": false,
+      "format_errors": [
+        "length:502>120"
+      ],
+      "content_errors": [
+        "missing_keyword:congestion",
+        "missing_keyword:commute"
+      ],
+      "response_length": 502
+    },
+    {
+      "task_id": "analyze_problem",
+      "tier": "high",
+      "tier_rho": 0.7,
+      "protocol": "one_shot",
+      "trial": 3,
+      "pass_format": false,
+      "pass_content": true,
+      "pass_both": false,
+      "format_errors": [
+        "length:376>120"
+      ],
+      "content_errors": [],
+      "response_length": 376
+    },
+    {
+      "task_id": "analyze_problem",
+      "tier": "high",
+      "tier_rho": 0.7,
+      "protocol": "staged",
+      "trial": 3,
+      "pass_format": false,
+      "pass_content": false,
+      "pass_both": false,
+      "format_errors": [
+        "length:282>120"
+      ],
+      "content_errors": [
+        "missing_keyword:commute"
+      ],
+      "response_length": 282
+    },
+    {
+      "task_id": "analyze_problem",
+      "tier": "high",
+      "tier_rho": 0.7,
+      "protocol": "one_shot",
+      "trial": 4,
+      "pass_format": false,
+      "pass_content": false,
+      "pass_both": false,
+      "format_errors": [
+        "length:318>120"
+      ],
+      "content_errors": [
+        "missing_keyword:commute"
+      ],
+      "response_length": 318
+    },
+    {
+      "task_id": "analyze_problem",
+      "tier": "high",
+      "tier_rho": 0.7,
+      "protocol": "staged",
+      "trial": 4,
+      "pass_format": false,
+      "pass_content": false,
+      "pass_both": false,
+      "format_errors": [
+        "length:331>120",
+        "missing:causes",
+        "missing:effects"
+      ],
+      "content_errors": [
+        "missing_keyword:commute"
+      ],
+      "response_length": 331
+    },
+    {
+      "task_id": "compare_contrast",
+      "tier": "control",
+      "tier_rho": 0.01,
+      "protocol": "one_shot",
+      "trial": 0,
+      "pass_format": false,
+      "pass_content": false,
+      "pass_both": false,
+      "format_errors": [
+        "missing:similarities",
+        "missing:differences",
+        "missing:recommendation"
+      ],
+      "content_errors": [
+        "missing_keyword:pet",
+        "missing_keyword:care"
+      ],
+      "response_length": 159
+    },
+    {
+      "task_id": "compare_contrast",
+      "tier": "control",
+      "tier_rho": 0.01,
+      "protocol": "staged",
+      "trial": 0,
+      "pass_format": true,
+      "pass_content": false,
+      "pass_both": false,
+      "format_errors": [],
+      "content_errors": [
+        "missing_keyword:care"
+      ],
+      "response_length": 460
+    },
+    {
+      "task_id": "compare_contrast",
+      "tier": "control",
+      "tier_rho": 0.01,
+      "protocol": "one_shot",
+      "trial": 1,
+      "pass_format": true,
+      "pass_content": false,
+      "pass_both": false,
+      "format_errors": [],
+      "content_errors": [
+        "missing_keyword:pet",
+        "missing_keyword:care"
+      ],
+      "response_length": 320
+    },
+    {
+      "task_id": "compare_contrast",
+      "tier": "control",
+      "tier_rho": 0.01,
+      "protocol": "staged",
+      "trial": 1,
+      "pass_format": false,
+      "pass_content": false,
+      "pass_both": false,
+      "format_errors": [
+        "length:953>500",
+        "json_parse:Expecting value: line 1 column"
+      ],
+      "content_errors": [
+        "json_failed"
+      ],
+      "response_length": 953
+    },
+    {
+      "task_id": "compare_contrast",
+      "tier": "control",
+      "tier_rho": 0.01,
+      "protocol": "one_shot",
+      "trial": 2,
+      "pass_format": false,
+      "pass_content": false,
+      "pass_both": false,
+      "format_errors": [
+        "missing:similarities",
+        "missing:differences",
+        "missing:recommendation"
+      ],
+      "content_errors": [
+        "missing_keyword:pet",
+        "missing_keyword:care"
+      ],
+      "response_length": 189
+    },
+    {
+      "task_id": "compare_contrast",
+      "tier": "control",
+      "tier_rho": 0.01,
+      "protocol": "staged",
+      "trial": 2,
+      "pass_format": true,
+      "pass_content": false,
+      "pass_both": false,
+      "format_errors": [],
+      "content_errors": [
+        "missing_keyword:care"
+      ],
+      "response_length": 333
+    },
+    {
+      "task_id": "compare_contrast",
+      "tier": "control",
+      "tier_rho": 0.01,
+      "protocol": "one_shot",
+      "trial": 3,
+      "pass_format": false,
+      "pass_content": false,
+      "pass_both": false,
+      "format_errors": [
+        "missing:similarities",
+        "missing:differences",
+        "missing:recommendation"
+      ],
+      "content_errors": [
+        "missing_keyword:care"
+      ],
+      "response_length": 136
+    },
+    {
+      "task_id": "compare_contrast",
+      "tier": "control",
+      "tier_rho": 0.01,
+      "protocol": "staged",
+      "trial": 3,
+      "pass_format": false,
+      "pass_content": false,
+      "pass_both": false,
+      "format_errors": [
+        "length:602>500"
+      ],
+      "content_errors": [
+        "missing_keyword:pet",
+        "missing_keyword:care"
+      ],
+      "response_length": 602
+    },
+    {
+      "task_id": "compare_contrast",
+      "tier": "control",
+      "tier_rho": 0.01,
+      "protocol": "one_shot",
+      "trial": 4,
+      "pass_format": false,
+      "pass_content": false,
+      "pass_both": false,
+      "format_errors": [
+        "missing:similarities",
+        "missing:differences",
+        "missing:recommendation"
+      ],
+      "content_errors": [
+        "missing_keyword:care"
+      ],
+      "response_length": 320
+    },
+    {
+      "task_id": "compare_contrast",
+      "tier": "control",
+      "tier_rho": 0.01,
+      "protocol": "staged",
+      "trial": 4,
+      "pass_format": false,
+      "pass_content": false,
+      "pass_both": false,
+      "format_errors": [
+        "missing:similarities",
+        "missing:differences",
+        "missing:recommendation"
+      ],
+      "content_errors": [
+        "missing_keyword:care"
+      ],
+      "response_length": 459
+    },
+    {
+      "task_id": "compare_contrast",
+      "tier": "low",
+      "tier_rho": 0.25,
+      "protocol": "one_shot",
+      "trial": 0,
+      "pass_format": false,
+      "pass_content": false,
+      "pass_both": false,
+      "format_errors": [
+        "missing:similarities",
+        "missing:differences",
+        "missing:recommendation"
+      ],
+      "content_errors": [
+        "missing_keyword:pet",
+        "missing_keyword:care"
+      ],
+      "response_length": 188
+    },
+    {
+      "task_id": "compare_contrast",
+      "tier": "low",
+      "tier_rho": 0.25,
+      "protocol": "staged",
+      "trial": 0,
+      "pass_format": false,
+      "pass_content": true,
+      "pass_both": false,
+      "format_errors": [
+        "length:677>300"
+      ],
+      "content_errors": [],
+      "response_length": 677
+    },
+    {
+      "task_id": "compare_contrast",
+      "tier": "low",
+      "tier_rho": 0.25,
+      "protocol": "one_shot",
+      "trial": 1,
+      "pass_format": false,
+      "pass_content": true,
+      "pass_both": false,
+      "format_errors": [
+        "length:644>300"
+      ],
+      "content_errors": [],
+      "response_length": 644
+    },
+    {
+      "task_id": "compare_contrast",
+      "tier": "low",
+      "tier_rho": 0.25,
+      "protocol": "staged",
+      "trial": 1,
+      "pass_format": false,
+      "pass_content": false,
+      "pass_both": false,
+      "format_errors": [
+        "length:457>300"
+      ],
+      "content_errors": [
+        "missing_keyword:care"
+      ],
+      "response_length": 457
+    },
+    {
+      "task_id": "compare_contrast",
+      "tier": "low",
+      "tier_rho": 0.25,
+      "protocol": "one_shot",
+      "trial": 2,
+      "pass_format": false,
+      "pass_content": true,
+      "pass_both": false,
+      "format_errors": [
+        "length:542>300"
+      ],
+      "content_errors": [],
+      "response_length": 542
+    },
+    {
+      "task_id": "compare_contrast",
+      "tier": "low",
+      "tier_rho": 0.25,
+      "protocol": "staged",
+      "trial": 2,
+      "pass_format": false,
+      "pass_content": false,
+      "pass_both": false,
+      "format_errors": [
+        "length:645>300",
+        "missing:similarities",
+        "missing:differences"
+      ],
+      "content_errors": [
+        "missing_keyword:care"
+      ],
+      "response_length": 645
+    },
+    {
+      "task_id": "compare_contrast",
+      "tier": "low",
+      "tier_rho": 0.25,
+      "protocol": "one_shot",
+      "trial": 3,
+      "pass_format": false,
+      "pass_content": true,
+      "pass_both": false,
+      "format_errors": [
+        "length:447>300"
+      ],
+      "content_errors": [],
+      "response_length": 447
+    },
+    {
+      "task_id": "compare_contrast",
+      "tier": "low",
+      "tier_rho": 0.25,
+      "protocol": "staged",
+      "trial": 3,
+      "pass_format": true,
+      "pass_content": false,
+      "pass_both": false,
+      "format_errors": [],
+      "content_errors": [
+        "missing_keyword:pet",
+        "missing_keyword:care",
+        "too_short:6<80"
+      ],
+      "response_length": 69
+    },
+    {
+      "task_id": "compare_contrast",
+      "tier": "low",
+      "tier_rho": 0.25,
+      "protocol": "one_shot",
+      "trial": 4,
+      "pass_format": false,
+      "pass_content": false,
+      "pass_both": false,
+      "format_errors": [
+        "length:334>300"
+      ],
+      "content_errors": [
+        "missing_keyword:pet"
+      ],
+      "response_length": 334
+    },
+    {
+      "task_id": "compare_contrast",
+      "tier": "low",
+      "tier_rho": 0.25,
+      "protocol": "staged",
+      "trial": 4,
+      "pass_format": false,
+      "pass_content": false,
+      "pass_both": false,
+      "format_errors": [
+        "length:626>300",
+        "missing:recommendation"
+      ],
+      "content_errors": [
+        "missing_keyword:pet",
+        "missing_keyword:care"
+      ],
+      "response_length": 626
+    },
+    {
+      "task_id": "compare_contrast",
+      "tier": "moderate",
+      "tier_rho": 0.55,
+      "protocol": "one_shot",
+      "trial": 0,
+      "pass_format": false,
+      "pass_content": false,
+      "pass_both": false,
+      "format_errors": [
+        "length:600>180"
+      ],
+      "content_errors": [
+        "missing_keyword:pet"
+      ],
+      "response_length": 600
+    },
+    {
+      "task_id": "compare_contrast",
+      "tier": "moderate",
+      "tier_rho": 0.55,
+      "protocol": "staged",
+      "trial": 0,
+      "pass_format": false,
+      "pass_content": false,
+      "pass_both": false,
+      "format_errors": [
+        "length:310>180"
+      ],
+      "content_errors": [
+        "missing_keyword:care"
+      ],
+      "response_length": 310
+    },
+    {
+      "task_id": "compare_contrast",
+      "tier": "moderate",
+      "tier_rho": 0.55,
+      "protocol": "one_shot",
+      "trial": 1,
+      "pass_format": false,
+      "pass_content": false,
+      "pass_both": false,
+      "format_errors": [
+        "length:181>180",
+        "missing:similarities",
+        "missing:differences",
+        "missing:recommendation"
+      ],
+      "content_errors": [
+        "missing_keyword:pet"
+      ],
+      "response_length": 181
+    },
+    {
+      "task_id": "compare_contrast",
+      "tier": "moderate",
+      "tier_rho": 0.55,
+      "protocol": "staged",
+      "trial": 1,
+      "pass_format": false,
+      "pass_content": true,
+      "pass_both": false,
+      "format_errors": [
+        "length:613>180"
+      ],
+      "content_errors": [],
+      "response_length": 613
+    },
+    {
+      "task_id": "compare_contrast",
+      "tier": "moderate",
+      "tier_rho": 0.55,
+      "protocol": "one_shot",
+      "trial": 2,
+      "pass_format": false,
+      "pass_content": false,
+      "pass_both": false,
+      "format_errors": [
+        "length:430>180"
+      ],
+      "content_errors": [
+        "missing_keyword:pet"
+      ],
+      "response_length": 430
+    },
+    {
+      "task_id": "compare_contrast",
+      "tier": "moderate",
+      "tier_rho": 0.55,
+      "protocol": "staged",
+      "trial": 2,
+      "pass_format": false,
+      "pass_content": false,
+      "pass_both": false,
+      "format_errors": [
+        "length:966>180",
+        "json_parse:Expecting value: line 1 column"
+      ],
+      "content_errors": [
+        "json_failed"
+      ],
+      "response_length": 966
+    },
+    {
+      "task_id": "compare_contrast",
+      "tier": "moderate",
+      "tier_rho": 0.55,
+      "protocol": "one_shot",
+      "trial": 3,
+      "pass_format": false,
+      "pass_content": true,
+      "pass_both": false,
+      "format_errors": [
+        "length:423>180"
+      ],
+      "content_errors": [],
+      "response_length": 423
+    },
+    {
+      "task_id": "compare_contrast",
+      "tier": "moderate",
+      "tier_rho": 0.55,
+      "protocol": "staged",
+      "trial": 3,
+      "pass_format": false,
+      "pass_content": false,
+      "pass_both": false,
+      "format_errors": [
+        "length:934>180",
+        "json_parse:Expecting value: line 1 column"
+      ],
+      "content_errors": [
+        "json_failed"
+      ],
+      "response_length": 934
+    },
+    {
+      "task_id": "compare_contrast",
+      "tier": "moderate",
+      "tier_rho": 0.55,
+      "protocol": "one_shot",
+      "trial": 4,
+      "pass_format": false,
+      "pass_content": true,
+      "pass_both": false,
+      "format_errors": [
+        "length:480>180"
+      ],
+      "content_errors": [],
+      "response_length": 480
+    },
+    {
+      "task_id": "compare_contrast",
+      "tier": "moderate",
+      "tier_rho": 0.55,
+      "protocol": "staged",
+      "trial": 4,
+      "pass_format": false,
+      "pass_content": false,
+      "pass_both": false,
+      "format_errors": [
+        "missing:similarities",
+        "missing:differences",
+        "missing:recommendation"
+      ],
+      "content_errors": [
+        "missing_keyword:care",
+        "too_short:48<80"
+      ],
+      "response_length": 124
+    },
+    {
+      "task_id": "compare_contrast",
+      "tier": "high",
+      "tier_rho": 0.7,
+      "protocol": "one_shot",
+      "trial": 0,
+      "pass_format": false,
+      "pass_content": false,
+      "pass_both": false,
+      "format_errors": [
+        "missing:similarities",
+        "missing:differences",
+        "missing:recommendation"
+      ],
+      "content_errors": [
+        "missing_keyword:care",
+        "too_short:62<80"
+      ],
+      "response_length": 111
+    },
+    {
+      "task_id": "compare_contrast",
+      "tier": "high",
+      "tier_rho": 0.7,
+      "protocol": "staged",
+      "trial": 0,
+      "pass_format": false,
+      "pass_content": false,
+      "pass_both": false,
+      "format_errors": [
+        "length:291>120"
+      ],
+      "content_errors": [
+        "missing_keyword:care"
+      ],
+      "response_length": 291
+    },
+    {
+      "task_id": "compare_contrast",
+      "tier": "high",
+      "tier_rho": 0.7,
+      "protocol": "one_shot",
+      "trial": 1,
+      "pass_format": false,
+      "pass_content": false,
+      "pass_both": false,
+      "format_errors": [
+        "missing:similarities",
+        "missing:differences",
+        "missing:recommendation"
+      ],
+      "content_errors": [
+        "missing_keyword:pet",
+        "missing_keyword:care",
+        "too_short:45<80"
+      ],
+      "response_length": 94
+    },
+    {
+      "task_id": "compare_contrast",
+      "tier": "high",
+      "tier_rho": 0.7,
+      "protocol": "staged",
+      "trial": 1,
+      "pass_format": false,
+      "pass_content": false,
+      "pass_both": false,
+      "format_errors": [
+        "length:961>120",
+        "json_parse:Expecting value: line 1 column"
+      ],
+      "content_errors": [
+        "json_failed"
+      ],
+      "response_length": 961
+    },
+    {
+      "task_id": "compare_contrast",
+      "tier": "high",
+      "tier_rho": 0.7,
+      "protocol": "one_shot",
+      "trial": 2,
+      "pass_format": false,
+      "pass_content": true,
+      "pass_both": false,
+      "format_errors": [
+        "length:299>120"
+      ],
+      "content_errors": [],
+      "response_length": 299
+    },
+    {
+      "task_id": "compare_contrast",
+      "tier": "high",
+      "tier_rho": 0.7,
+      "protocol": "staged",
+      "trial": 2,
+      "pass_format": false,
+      "pass_content": false,
+      "pass_both": false,
+      "format_errors": [
+        "length:138>120",
+        "missing:similarities",
+        "missing:differences",
+        "missing:recommendation"
+      ],
+      "content_errors": [
+        "missing_keyword:pet",
+        "too_short:69<80"
+      ],
+      "response_length": 138
+    },
+    {
+      "task_id": "compare_contrast",
+      "tier": "high",
+      "tier_rho": 0.7,
+      "protocol": "one_shot",
+      "trial": 3,
+      "pass_format": false,
+      "pass_content": true,
+      "pass_both": false,
+      "format_errors": [
+        "length:290>120"
+      ],
+      "content_errors": [],
+      "response_length": 290
+    },
+    {
+      "task_id": "compare_contrast",
+      "tier": "high",
+      "tier_rho": 0.7,
+      "protocol": "staged",
+      "trial": 3,
+      "pass_format": false,
+      "pass_content": false,
+      "pass_both": false,
+      "format_errors": [
+        "length:194>120",
+        "missing:similarities",
+        "missing:differences",
+        "missing:recommendation"
+      ],
+      "content_errors": [
+        "missing_keyword:pet",
+        "missing_keyword:care"
+      ],
+      "response_length": 194
+    },
+    {
+      "task_id": "compare_contrast",
+      "tier": "high",
+      "tier_rho": 0.7,
+      "protocol": "one_shot",
+      "trial": 4,
+      "pass_format": false,
+      "pass_content": true,
+      "pass_both": false,
+      "format_errors": [
+        "length:390>120"
+      ],
+      "content_errors": [],
+      "response_length": 390
+    },
+    {
+      "task_id": "compare_contrast",
+      "tier": "high",
+      "tier_rho": 0.7,
+      "protocol": "staged",
+      "trial": 4,
+      "pass_format": false,
+      "pass_content": false,
+      "pass_both": false,
+      "format_errors": [
+        "length:308>120"
+      ],
+      "content_errors": [
+        "missing_keyword:care"
+      ],
+      "response_length": 308
+    },
+    {
+      "task_id": "give_advice",
+      "tier": "control",
+      "tier_rho": 0.01,
+      "protocol": "one_shot",
+      "trial": 0,
+      "pass_format": false,
+      "pass_content": false,
+      "pass_both": false,
+      "format_errors": [
+        "missing:strategy",
+        "missing:common_mistakes",
+        "missing:timeline"
+      ],
+      "content_errors": [
+        "missing_keyword:practice",
+        "missing_keyword:vocabulary",
+        "too_short:75<80"
+      ],
+      "response_length": 117
+    },
+    {
+      "task_id": "give_advice",
+      "tier": "control",
+      "tier_rho": 0.01,
+      "protocol": "staged",
+      "trial": 0,
+      "pass_format": true,
+      "pass_content": false,
+      "pass_both": false,
+      "format_errors": [],
+      "content_errors": [
+        "missing_keyword:vocabulary"
+      ],
+      "response_length": 444
+    },
+    {
+      "task_id": "give_advice",
+      "tier": "control",
+      "tier_rho": 0.01,
+      "protocol": "one_shot",
+      "trial": 1,
+      "pass_format": false,
+      "pass_content": true,
+      "pass_both": false,
+      "format_errors": [
+        "length:554>500"
+      ],
+      "content_errors": [],
+      "response_length": 554
+    },
+    {
+      "task_id": "give_advice",
+      "tier": "control",
+      "tier_rho": 0.01,
+      "protocol": "staged",
+      "trial": 1,
+      "pass_format": false,
+      "pass_content": false,
+      "pass_both": false,
+      "format_errors": [
+        "missing:strategy",
+        "missing:common_mistakes",
+        "missing:timeline"
+      ],
+      "content_errors": [
+        "missing_keyword:vocabulary",
+        "too_short:59<80"
+      ],
+      "response_length": 121
+    },
+    {
+      "task_id": "give_advice",
+      "tier": "control",
+      "tier_rho": 0.01,
+      "protocol": "one_shot",
+      "trial": 2,
+      "pass_format": false,
+      "pass_content": false,
+      "pass_both": false,
+      "format_errors": [
+        "missing:strategy",
+        "missing:common_mistakes",
+        "missing:timeline"
+      ],
+      "content_errors": [
+        "missing_keyword:practice",
+        "too_short:40<80"
+      ],
+      "response_length": 198
+    },
+    {
+      "task_id": "give_advice",
+      "tier": "control",
+      "tier_rho": 0.01,
+      "protocol": "staged",
+      "trial": 2,
+      "pass_format": false,
+      "pass_content": false,
+      "pass_both": false,
+      "format_errors": [
+        "missing:strategy",
+        "missing:common_mistakes",
+        "missing:timeline"
+      ],
+      "content_errors": [
+        "missing_keyword:practice",
+        "missing_keyword:vocabulary",
+        "too_short:29<80"
+      ],
+      "response_length": 57
+    },
+    {
+      "task_id": "give_advice",
+      "tier": "control",
+      "tier_rho": 0.01,
+      "protocol": "one_shot",
+      "trial": 3,
+      "pass_format": false,
+      "pass_content": false,
+      "pass_both": false,
+      "format_errors": [
+        "missing:strategy",
+        "missing:common_mistakes",
+        "missing:timeline"
+      ],
+      "content_errors": [
+        "missing_keyword:practice",
+        "missing_keyword:vocabulary",
+        "too_short:24<80"
+      ],
+      "response_length": 101
+    },
+    {
+      "task_id": "give_advice",
+      "tier": "control",
+      "tier_rho": 0.01,
+      "protocol": "staged",
+      "trial": 3,
+      "pass_format": false,
+      "pass_content": true,
+      "pass_both": false,
+      "format_errors": [
+        "length:644>500"
+      ],
+      "content_errors": [],
+      "response_length": 644
+    },
+    {
+      "task_id": "give_advice",
+      "tier": "control",
+      "tier_rho": 0.01,
+      "protocol": "one_shot",
+      "trial": 4,
+      "pass_format": false,
+      "pass_content": true,
+      "pass_both": false,
+      "format_errors": [
+        "missing:strategy",
+        "missing:common_mistakes",
+        "missing:timeline"
+      ],
+      "content_errors": [],
+      "response_length": 436
+    },
+    {
+      "task_id": "give_advice",
+      "tier": "control",
+      "tier_rho": 0.01,
+      "protocol": "staged",
+      "trial": 4,
+      "pass_format": false,
+      "pass_content": false,
+      "pass_both": false,
+      "format_errors": [
+        "missing:strategy",
+        "missing:common_mistakes",
+        "missing:timeline"
+      ],
+      "content_errors": [
+        "missing_keyword:practice",
+        "too_short:64<80"
+      ],
+      "response_length": 126
+    },
+    {
+      "task_id": "give_advice",
+      "tier": "low",
+      "tier_rho": 0.25,
+      "protocol": "one_shot",
+      "trial": 0,
+      "pass_format": false,
+      "pass_content": true,
+      "pass_both": false,
+      "format_errors": [
+        "missing:strategy",
+        "missing:common_mistakes",
+        "missing:timeline"
+      ],
+      "content_errors": [],
+      "response_length": 190
+    },
+    {
+      "task_id": "give_advice",
+      "tier": "low",
+      "tier_rho": 0.25,
+      "protocol": "staged",
+      "trial": 0,
+      "pass_format": true,
+      "pass_content": false,
+      "pass_both": false,
+      "format_errors": [],
+      "content_errors": [
+        "missing_keyword:practice",
+        "missing_keyword:vocabulary",
+        "too_short:0<80"
+      ],
+      "response_length": 78
+    },
+    {
+      "task_id": "give_advice",
+      "tier": "low",
+      "tier_rho": 0.25,
+      "protocol": "one_shot",
+      "trial": 1,
+      "pass_format": false,
+      "pass_content": false,
+      "pass_both": false,
+      "format_errors": [
+        "missing:strategy",
+        "missing:common_mistakes",
+        "missing:timeline"
+      ],
+      "content_errors": [
+        "missing_keyword:vocabulary",
+        "too_short:52<80"
+      ],
+      "response_length": 93
+    },
+    {
+      "task_id": "give_advice",
+      "tier": "low",
+      "tier_rho": 0.25,
+      "protocol": "staged",
+      "trial": 1,
+      "pass_format": true,
+      "pass_content": false,
+      "pass_both": false,
+      "format_errors": [],
+      "content_errors": [
+        "missing_keyword:vocabulary"
+      ],
+      "response_length": 257
+    },
+    {
+      "task_id": "give_advice",
+      "tier": "low",
+      "tier_rho": 0.25,
+      "protocol": "one_shot",
+      "trial": 2,
+      "pass_format": false,
+      "pass_content": false,
+      "pass_both": false,
+      "format_errors": [
+        "missing:strategy",
+        "missing:common_mistakes",
+        "missing:timeline"
+      ],
+      "content_errors": [
+        "missing_keyword:vocabulary"
+      ],
+      "response_length": 146
+    },
+    {
+      "task_id": "give_advice",
+      "tier": "low",
+      "tier_rho": 0.25,
+      "protocol": "staged",
+      "trial": 2,
+      "pass_format": false,
+      "pass_content": true,
+      "pass_both": false,
+      "format_errors": [
+        "length:566>300"
+      ],
+      "content_errors": [],
+      "response_length": 566
+    },
+    {
+      "task_id": "give_advice",
+      "tier": "low",
+      "tier_rho": 0.25,
+      "protocol": "one_shot",
+      "trial": 3,
+      "pass_format": false,
+      "pass_content": false,
+      "pass_both": false,
+      "format_errors": [
+        "missing:strategy",
+        "missing:common_mistakes",
+        "missing:timeline"
+      ],
+      "content_errors": [
+        "missing_keyword:practice",
+        "too_short:57<80"
+      ],
+      "response_length": 99
+    },
+    {
+      "task_id": "give_advice",
+      "tier": "low",
+      "tier_rho": 0.25,
+      "protocol": "staged",
+      "trial": 3,
+      "pass_format": false,
+      "pass_content": false,
+      "pass_both": false,
+      "format_errors": [
+        "missing:strategy",
+        "missing:common_mistakes",
+        "missing:timeline"
+      ],
+      "content_errors": [
+        "missing_keyword:practice",
+        "missing_keyword:vocabulary"
+      ],
+      "response_length": 117
+    },
+    {
+      "task_id": "give_advice",
+      "tier": "low",
+      "tier_rho": 0.25,
+      "protocol": "one_shot",
+      "trial": 4,
+      "pass_format": false,
+      "pass_content": true,
+      "pass_both": false,
+      "format_errors": [
+        "missing:strategy",
+        "missing:common_mistakes",
+        "missing:timeline"
+      ],
+      "content_errors": [],
+      "response_length": 286
+    },
+    {
+      "task_id": "give_advice",
+      "tier": "low",
+      "tier_rho": 0.25,
+      "protocol": "staged",
+      "trial": 4,
+      "pass_format": false,
+      "pass_content": false,
+      "pass_both": false,
+      "format_errors": [
+        "length:380>300"
+      ],
+      "content_errors": [
+        "missing_keyword:practice"
+      ],
+      "response_length": 380
+    },
+    {
+      "task_id": "give_advice",
+      "tier": "moderate",
+      "tier_rho": 0.55,
+      "protocol": "one_shot",
+      "trial": 0,
+      "pass_format": false,
+      "pass_content": false,
+      "pass_both": false,
+      "format_errors": [
+        "missing:strategy",
+        "missing:common_mistakes",
+        "missing:timeline"
+      ],
+      "content_errors": [
+        "missing_keyword:practice",
+        "missing_keyword:vocabulary",
+        "too_short:22<80"
+      ],
+      "response_length": 108
+    },
+    {
+      "task_id": "give_advice",
+      "tier": "moderate",
+      "tier_rho": 0.55,
+      "protocol": "staged",
+      "trial": 0,
+      "pass_format": false,
+      "pass_content": false,
+      "pass_both": false,
+      "format_errors": [
+        "length:380>180"
+      ],
+      "content_errors": [
+        "missing_keyword:practice"
+      ],
+      "response_length": 380
+    },
+    {
+      "task_id": "give_advice",
+      "tier": "moderate",
+      "tier_rho": 0.55,
+      "protocol": "one_shot",
+      "trial": 1,
+      "pass_format": false,
+      "pass_content": true,
+      "pass_both": false,
+      "format_errors": [
+        "length:312>180"
+      ],
+      "content_errors": [],
+      "response_length": 312
+    },
+    {
+      "task_id": "give_advice",
+      "tier": "moderate",
+      "tier_rho": 0.55,
+      "protocol": "staged",
+      "trial": 1,
+      "pass_format": true,
+      "pass_content": true,
+      "pass_both": true,
+      "format_errors": [],
+      "content_errors": [],
+      "response_length": 168
+    },
+    {
+      "task_id": "give_advice",
+      "tier": "moderate",
+      "tier_rho": 0.55,
+      "protocol": "one_shot",
+      "trial": 2,
+      "pass_format": false,
+      "pass_content": false,
+      "pass_both": false,
+      "format_errors": [
+        "missing:strategy",
+        "missing:common_mistakes",
+        "missing:timeline"
+      ],
+      "content_errors": [
+        "missing_keyword:vocabulary",
+        "too_short:70<80"
+      ],
+      "response_length": 109
+    },
+    {
+      "task_id": "give_advice",
+      "tier": "moderate",
+      "tier_rho": 0.55,
+      "protocol": "staged",
+      "trial": 2,
+      "pass_format": false,
+      "pass_content": true,
+      "pass_both": false,
+      "format_errors": [
+        "length:332>180"
+      ],
+      "content_errors": [],
+      "response_length": 332
+    },
+    {
+      "task_id": "give_advice",
+      "tier": "moderate",
+      "tier_rho": 0.55,
+      "protocol": "one_shot",
+      "trial": 3,
+      "pass_format": false,
+      "pass_content": false,
+      "pass_both": false,
+      "format_errors": [
+        "missing:strategy",
+        "missing:common_mistakes",
+        "missing:timeline"
+      ],
+      "content_errors": [
+        "missing_keyword:practice",
+        "missing_keyword:vocabulary",
+        "too_short:25<80"
+      ],
+      "response_length": 83
+    },
+    {
+      "task_id": "give_advice",
+      "tier": "moderate",
+      "tier_rho": 0.55,
+      "protocol": "staged",
+      "trial": 3,
+      "pass_format": false,
+      "pass_content": false,
+      "pass_both": false,
+      "format_errors": [
+        "missing:strategy",
+        "missing:common_mistakes",
+        "missing:timeline"
+      ],
+      "content_errors": [
+        "missing_keyword:vocabulary"
+      ],
+      "response_length": 178
+    },
+    {
+      "task_id": "give_advice",
+      "tier": "moderate",
+      "tier_rho": 0.55,
+      "protocol": "one_shot",
+      "trial": 4,
+      "pass_format": false,
+      "pass_content": true,
+      "pass_both": false,
+      "format_errors": [
+        "length:250>180",
+        "missing:strategy",
+        "missing:common_mistakes",
+        "missing:timeline"
+      ],
+      "content_errors": [],
+      "response_length": 250
+    },
+    {
+      "task_id": "give_advice",
+      "tier": "moderate",
+      "tier_rho": 0.55,
+      "protocol": "staged",
+      "trial": 4,
+      "pass_format": false,
+      "pass_content": false,
+      "pass_both": false,
+      "format_errors": [
+        "length:670>180"
+      ],
+      "content_errors": [
+        "missing_keyword:vocabulary"
+      ],
+      "response_length": 670
+    },
+    {
+      "task_id": "give_advice",
+      "tier": "high",
+      "tier_rho": 0.7,
+      "protocol": "one_shot",
+      "trial": 0,
+      "pass_format": false,
+      "pass_content": false,
+      "pass_both": false,
+      "format_errors": [
+        "length:141>120",
+        "missing:strategy",
+        "missing:common_mistakes",
+        "missing:timeline"
+      ],
+      "content_errors": [
+        "missing_keyword:vocabulary"
+      ],
+      "response_length": 141
+    },
+    {
+      "task_id": "give_advice",
+      "tier": "high",
+      "tier_rho": 0.7,
+      "protocol": "staged",
+      "trial": 0,
+      "pass_format": false,
+      "pass_content": false,
+      "pass_both": false,
+      "format_errors": [
+        "length:324>120"
+      ],
+      "content_errors": [
+        "missing_keyword:vocabulary"
+      ],
+      "response_length": 324
+    },
+    {
+      "task_id": "give_advice",
+      "tier": "high",
+      "tier_rho": 0.7,
+      "protocol": "one_shot",
+      "trial": 1,
+      "pass_format": false,
+      "pass_content": true,
+      "pass_both": false,
+      "format_errors": [
+        "length:263>120",
+        "missing:strategy",
+        "missing:common_mistakes",
+        "missing:timeline"
+      ],
+      "content_errors": [],
+      "response_length": 263
+    },
+    {
+      "task_id": "give_advice",
+      "tier": "high",
+      "tier_rho": 0.7,
+      "protocol": "staged",
+      "trial": 1,
+      "pass_format": false,
+      "pass_content": false,
+      "pass_both": false,
+      "format_errors": [
+        "length:485>120",
+        "missing:strategy",
+        "missing:common_mistakes",
+        "missing:timeline"
+      ],
+      "content_errors": [
+        "missing_keyword:vocabulary"
+      ],
+      "response_length": 485
+    },
+    {
+      "task_id": "give_advice",
+      "tier": "high",
+      "tier_rho": 0.7,
+      "protocol": "one_shot",
+      "trial": 2,
+      "pass_format": false,
+      "pass_content": false,
+      "pass_both": false,
+      "format_errors": [
+        "missing:strategy",
+        "missing:common_mistakes",
+        "missing:timeline"
+      ],
+      "content_errors": [
+        "missing_keyword:vocabulary",
+        "too_short:40<80"
+      ],
+      "response_length": 62
+    },
+    {
+      "task_id": "give_advice",
+      "tier": "high",
+      "tier_rho": 0.7,
+      "protocol": "staged",
+      "trial": 2,
+      "pass_format": false,
+      "pass_content": false,
+      "pass_both": false,
+      "format_errors": [
+        "length:424>120"
+      ],
+      "content_errors": [
+        "missing_keyword:practice"
+      ],
+      "response_length": 424
+    },
+    {
+      "task_id": "give_advice",
+      "tier": "high",
+      "tier_rho": 0.7,
+      "protocol": "one_shot",
+      "trial": 3,
+      "pass_format": false,
+      "pass_content": false,
+      "pass_both": false,
+      "format_errors": [
+        "missing:strategy",
+        "missing:common_mistakes",
+        "missing:timeline"
+      ],
+      "content_errors": [
+        "missing_keyword:practice",
+        "missing_keyword:vocabulary",
+        "too_short:43<80"
+      ],
+      "response_length": 111
+    },
+    {
+      "task_id": "give_advice",
+      "tier": "high",
+      "tier_rho": 0.7,
+      "protocol": "staged",
+      "trial": 3,
+      "pass_format": false,
+      "pass_content": false,
+      "pass_both": false,
+      "format_errors": [
+        "missing:strategy",
+        "missing:common_mistakes",
+        "missing:timeline"
+      ],
+      "content_errors": [
+        "missing_keyword:practice",
+        "too_short:49<80"
+      ],
+      "response_length": 115
+    },
+    {
+      "task_id": "give_advice",
+      "tier": "high",
+      "tier_rho": 0.7,
+      "protocol": "one_shot",
+      "trial": 4,
+      "pass_format": false,
+      "pass_content": false,
+      "pass_both": false,
+      "format_errors": [
+        "length:126>120",
+        "missing:strategy",
+        "missing:common_mistakes",
+        "missing:timeline"
+      ],
+      "content_errors": [
+        "missing_keyword:practice",
+        "missing_keyword:vocabulary",
+        "too_short:76<80"
+      ],
+      "response_length": 126
+    },
+    {
+      "task_id": "give_advice",
+      "tier": "high",
+      "tier_rho": 0.7,
+      "protocol": "staged",
+      "trial": 4,
+      "pass_format": false,
+      "pass_content": true,
+      "pass_both": false,
+      "format_errors": [
+        "length:232>120"
+      ],
+      "content_errors": [],
+      "response_length": 232
+    },
+    {
+      "task_id": "describe_process",
+      "tier": "control",
+      "tier_rho": 0.01,
+      "protocol": "one_shot",
+      "trial": 0,
+      "pass_format": true,
+      "pass_content": false,
+      "pass_both": false,
+      "format_errors": [],
+      "content_errors": [
+        "missing_keyword:sunlight"
+      ],
+      "response_length": 221
+    },
+    {
+      "task_id": "describe_process",
+      "tier": "control",
+      "tier_rho": 0.01,
+      "protocol": "staged",
+      "trial": 0,
+      "pass_format": true,
+      "pass_content": false,
+      "pass_both": false,
+      "format_errors": [],
+      "content_errors": [
+        "missing_keyword:sunlight"
+      ],
+      "response_length": 211
+    },
+    {
+      "task_id": "describe_process",
+      "tier": "control",
+      "tier_rho": 0.01,
+      "protocol": "one_shot",
+      "trial": 1,
+      "pass_format": true,
+      "pass_content": false,
+      "pass_both": false,
+      "format_errors": [],
+      "content_errors": [
+        "missing_keyword:sunlight"
+      ],
+      "response_length": 202
+    },
+    {
+      "task_id": "describe_process",
+      "tier": "control",
+      "tier_rho": 0.01,
+      "protocol": "staged",
+      "trial": 1,
+      "pass_format": true,
+      "pass_content": false,
+      "pass_both": false,
+      "format_errors": [],
+      "content_errors": [
+        "missing_keyword:sunlight"
+      ],
+      "response_length": 225
+    },
+    {
+      "task_id": "describe_process",
+      "tier": "control",
+      "tier_rho": 0.01,
+      "protocol": "one_shot",
+      "trial": 2,
+      "pass_format": true,
+      "pass_content": true,
+      "pass_both": true,
+      "format_errors": [],
+      "content_errors": [],
+      "response_length": 236
+    },
+    {
+      "task_id": "describe_process",
+      "tier": "control",
+      "tier_rho": 0.01,
+      "protocol": "staged",
+      "trial": 2,
+      "pass_format": false,
+      "pass_content": false,
+      "pass_both": false,
+      "format_errors": [
+        "missing:process"
+      ],
+      "content_errors": [
+        "missing_keyword:sunlight",
+        "missing_keyword:oxygen",
+        "missing_keyword:carbon",
+        "too_short:4<80"
+      ],
+      "response_length": 41
+    },
+    {
+      "task_id": "describe_process",
+      "tier": "control",
+      "tier_rho": 0.01,
+      "protocol": "one_shot",
+      "trial": 3,
+      "pass_format": true,
+      "pass_content": false,
+      "pass_both": false,
+      "format_errors": [],
+      "content_errors": [
+        "missing_keyword:sunlight",
+        "missing_keyword:oxygen"
+      ],
+      "response_length": 173
+    },
+    {
+      "task_id": "describe_process",
+      "tier": "control",
+      "tier_rho": 0.01,
+      "protocol": "staged",
+      "trial": 3,
+      "pass_format": true,
+      "pass_content": false,
+      "pass_both": false,
+      "format_errors": [],
+      "content_errors": [
+        "missing_keyword:sunlight"
+      ],
+      "response_length": 253
+    },
+    {
+      "task_id": "describe_process",
+      "tier": "control",
+      "tier_rho": 0.01,
+      "protocol": "one_shot",
+      "trial": 4,
+      "pass_format": true,
+      "pass_content": true,
+      "pass_both": true,
+      "format_errors": [],
+      "content_errors": [],
+      "response_length": 224
+    },
+    {
+      "task_id": "describe_process",
+      "tier": "control",
+      "tier_rho": 0.01,
+      "protocol": "staged",
+      "trial": 4,
+      "pass_format": true,
+      "pass_content": false,
+      "pass_both": false,
+      "format_errors": [],
+      "content_errors": [
+        "missing_keyword:sunlight"
+      ],
+      "response_length": 251
+    },
+    {
+      "task_id": "describe_process",
+      "tier": "low",
+      "tier_rho": 0.25,
+      "protocol": "one_shot",
+      "trial": 0,
+      "pass_format": true,
+      "pass_content": true,
+      "pass_both": true,
+      "format_errors": [],
+      "content_errors": [],
+      "response_length": 231
+    },
+    {
+      "task_id": "describe_process",
+      "tier": "low",
+      "tier_rho": 0.25,
+      "protocol": "staged",
+      "trial": 0,
+      "pass_format": true,
+      "pass_content": false,
+      "pass_both": false,
+      "format_errors": [],
+      "content_errors": [
+        "missing_keyword:sunlight"
+      ],
+      "response_length": 173
+    },
+    {
+      "task_id": "describe_process",
+      "tier": "low",
+      "tier_rho": 0.25,
+      "protocol": "one_shot",
+      "trial": 1,
+      "pass_format": true,
+      "pass_content": false,
+      "pass_both": false,
+      "format_errors": [],
+      "content_errors": [
+        "missing_keyword:sunlight"
+      ],
+      "response_length": 202
+    },
+    {
+      "task_id": "describe_process",
+      "tier": "low",
+      "tier_rho": 0.25,
+      "protocol": "staged",
+      "trial": 1,
+      "pass_format": true,
+      "pass_content": false,
+      "pass_both": false,
+      "format_errors": [],
+      "content_errors": [
+        "missing_keyword:sunlight"
+      ],
+      "response_length": 202
+    },
+    {
+      "task_id": "describe_process",
+      "tier": "low",
+      "tier_rho": 0.25,
+      "protocol": "one_shot",
+      "trial": 2,
+      "pass_format": true,
+      "pass_content": true,
+      "pass_both": true,
+      "format_errors": [],
+      "content_errors": [],
+      "response_length": 237
+    },
+    {
+      "task_id": "describe_process",
+      "tier": "low",
+      "tier_rho": 0.25,
+      "protocol": "staged",
+      "trial": 2,
+      "pass_format": false,
+      "pass_content": false,
+      "pass_both": false,
+      "format_errors": [
+        "missing:process",
+        "missing:inputs",
+        "missing:outputs"
+      ],
+      "content_errors": [
+        "missing_keyword:sunlight",
+        "missing_keyword:carbon"
+      ],
+      "response_length": 147
+    },
+    {
+      "task_id": "describe_process",
+      "tier": "low",
+      "tier_rho": 0.25,
+      "protocol": "one_shot",
+      "trial": 3,
+      "pass_format": true,
+      "pass_content": true,
+      "pass_both": true,
+      "format_errors": [],
+      "content_errors": [],
+      "response_length": 244
+    },
+    {
+      "task_id": "describe_process",
+      "tier": "low",
+      "tier_rho": 0.25,
+      "protocol": "staged",
+      "trial": 3,
+      "pass_format": true,
+      "pass_content": false,
+      "pass_both": false,
+      "format_errors": [],
+      "content_errors": [
+        "missing_keyword:sunlight",
+        "missing_keyword:oxygen"
+      ],
+      "response_length": 232
+    },
+    {
+      "task_id": "describe_process",
+      "tier": "low",
+      "tier_rho": 0.25,
+      "protocol": "one_shot",
+      "trial": 4,
+      "pass_format": true,
+      "pass_content": false,
+      "pass_both": false,
+      "format_errors": [],
+      "content_errors": [
+        "missing_keyword:sunlight"
+      ],
+      "response_length": 202
+    },
+    {
+      "task_id": "describe_process",
+      "tier": "low",
+      "tier_rho": 0.25,
+      "protocol": "staged",
+      "trial": 4,
+      "pass_format": true,
+      "pass_content": false,
+      "pass_both": false,
+      "format_errors": [],
+      "content_errors": [
+        "missing_keyword:sunlight"
+      ],
+      "response_length": 171
+    },
+    {
+      "task_id": "describe_process",
+      "tier": "moderate",
+      "tier_rho": 0.55,
+      "protocol": "one_shot",
+      "trial": 0,
+      "pass_format": true,
+      "pass_content": false,
+      "pass_both": false,
+      "format_errors": [],
+      "content_errors": [
+        "missing_keyword:sunlight"
+      ],
+      "response_length": 171
+    },
+    {
+      "task_id": "describe_process",
+      "tier": "moderate",
+      "tier_rho": 0.55,
+      "protocol": "staged",
+      "trial": 0,
+      "pass_format": true,
+      "pass_content": false,
+      "pass_both": false,
+      "format_errors": [],
+      "content_errors": [
+        "missing_keyword:sunlight",
+        "too_short:71<80"
+      ],
+      "response_length": 125
+    },
+    {
+      "task_id": "describe_process",
+      "tier": "moderate",
+      "tier_rho": 0.55,
+      "protocol": "one_shot",
+      "trial": 1,
+      "pass_format": false,
+      "pass_content": true,
+      "pass_both": false,
+      "format_errors": [
+        "length:210>180"
+      ],
+      "content_errors": [],
+      "response_length": 210
+    },
+    {
+      "task_id": "describe_process",
+      "tier": "moderate",
+      "tier_rho": 0.55,
+      "protocol": "staged",
+      "trial": 1,
+      "pass_format": false,
+      "pass_content": false,
+      "pass_both": false,
+      "format_errors": [
+        "missing:process",
+        "missing:inputs",
+        "missing:outputs"
+      ],
+      "content_errors": [
+        "missing_keyword:sunlight",
+        "missing_keyword:oxygen",
+        "missing_keyword:carbon",
+        "too_short:15<80"
+      ],
+      "response_length": 29
+    },
+    {
+      "task_id": "describe_process",
+      "tier": "moderate",
+      "tier_rho": 0.55,
+      "protocol": "one_shot",
+      "trial": 2,
+      "pass_format": false,
+      "pass_content": true,
+      "pass_both": false,
+      "format_errors": [
+        "length:230>180"
+      ],
+      "content_errors": [],
+      "response_length": 230
+    },
+    {
+      "task_id": "describe_process",
+      "tier": "moderate",
+      "tier_rho": 0.55,
+      "protocol": "staged",
+      "trial": 2,
+      "pass_format": false,
+      "pass_content": false,
+      "pass_both": false,
+      "format_errors": [
+        "length:228>180"
+      ],
+      "content_errors": [
+        "missing_keyword:sunlight"
+      ],
+      "response_length": 228
+    },
+    {
+      "task_id": "describe_process",
+      "tier": "moderate",
+      "tier_rho": 0.55,
+      "protocol": "one_shot",
+      "trial": 3,
+      "pass_format": false,
+      "pass_content": true,
+      "pass_both": false,
+      "format_errors": [
+        "length:187>180"
+      ],
+      "content_errors": [],
+      "response_length": 187
+    },
+    {
+      "task_id": "describe_process",
+      "tier": "moderate",
+      "tier_rho": 0.55,
+      "protocol": "staged",
+      "trial": 3,
+      "pass_format": false,
+      "pass_content": true,
+      "pass_both": false,
+      "format_errors": [
+        "length:190>180"
+      ],
+      "content_errors": [],
+      "response_length": 190
+    },
+    {
+      "task_id": "describe_process",
+      "tier": "moderate",
+      "tier_rho": 0.55,
+      "protocol": "one_shot",
+      "trial": 4,
+      "pass_format": true,
+      "pass_content": false,
+      "pass_both": false,
+      "format_errors": [],
+      "content_errors": [
+        "missing_keyword:sunlight"
+      ],
+      "response_length": 162
+    },
+    {
+      "task_id": "describe_process",
+      "tier": "moderate",
+      "tier_rho": 0.55,
+      "protocol": "staged",
+      "trial": 4,
+      "pass_format": false,
+      "pass_content": true,
+      "pass_both": false,
+      "format_errors": [
+        "length:210>180"
+      ],
+      "content_errors": [],
+      "response_length": 210
+    },
+    {
+      "task_id": "describe_process",
+      "tier": "high",
+      "tier_rho": 0.7,
+      "protocol": "one_shot",
+      "trial": 0,
+      "pass_format": false,
+      "pass_content": false,
+      "pass_both": false,
+      "format_errors": [
+        "length:169>120"
+      ],
+      "content_errors": [
+        "missing_keyword:sunlight"
+      ],
+      "response_length": 169
+    },
+    {
+      "task_id": "describe_process",
+      "tier": "high",
+      "tier_rho": 0.7,
+      "protocol": "staged",
+      "trial": 0,
+      "pass_format": false,
+      "pass_content": true,
+      "pass_both": false,
+      "format_errors": [
+        "length:414>120",
+        "missing:process"
+      ],
+      "content_errors": [],
+      "response_length": 414
+    },
+    {
+      "task_id": "describe_process",
+      "tier": "high",
+      "tier_rho": 0.7,
+      "protocol": "one_shot",
+      "trial": 1,
+      "pass_format": false,
+      "pass_content": false,
+      "pass_both": false,
+      "format_errors": [
+        "length:235>120"
+      ],
+      "content_errors": [
+        "missing_keyword:oxygen"
+      ],
+      "response_length": 235
+    },
+    {
+      "task_id": "describe_process",
+      "tier": "high",
+      "tier_rho": 0.7,
+      "protocol": "staged",
+      "trial": 1,
+      "pass_format": false,
+      "pass_content": false,
+      "pass_both": false,
+      "format_errors": [
+        "length:209>120"
+      ],
+      "content_errors": [
+        "missing_keyword:sunlight"
+      ],
+      "response_length": 209
+    },
+    {
+      "task_id": "describe_process",
+      "tier": "high",
+      "tier_rho": 0.7,
+      "protocol": "one_shot",
+      "trial": 2,
+      "pass_format": false,
+      "pass_content": false,
+      "pass_both": false,
+      "format_errors": [
+        "length:172>120"
+      ],
+      "content_errors": [
+        "missing_keyword:sunlight"
+      ],
+      "response_length": 172
+    },
+    {
+      "task_id": "describe_process",
+      "tier": "high",
+      "tier_rho": 0.7,
+      "protocol": "staged",
+      "trial": 2,
+      "pass_format": false,
+      "pass_content": false,
+      "pass_both": false,
+      "format_errors": [
+        "length:203>120",
+        "missing:process",
+        "missing:inputs",
+        "missing:outputs"
+      ],
+      "content_errors": [
+        "missing_keyword:sunlight",
+        "missing_keyword:oxygen"
+      ],
+      "response_length": 203
+    },
+    {
+      "task_id": "describe_process",
+      "tier": "high",
+      "tier_rho": 0.7,
+      "protocol": "one_shot",
+      "trial": 3,
+      "pass_format": false,
+      "pass_content": false,
+      "pass_both": false,
+      "format_errors": [
+        "length:246>120"
+      ],
+      "content_errors": [
+        "missing_keyword:sunlight"
+      ],
+      "response_length": 246
+    },
+    {
+      "task_id": "describe_process",
+      "tier": "high",
+      "tier_rho": 0.7,
+      "protocol": "staged",
+      "trial": 3,
+      "pass_format": false,
+      "pass_content": false,
+      "pass_both": false,
+      "format_errors": [
+        "length:229>120"
+      ],
+      "content_errors": [
+        "missing_keyword:sunlight"
+      ],
+      "response_length": 229
+    },
+    {
+      "task_id": "describe_process",
+      "tier": "high",
+      "tier_rho": 0.7,
+      "protocol": "one_shot",
+      "trial": 4,
+      "pass_format": false,
+      "pass_content": true,
+      "pass_both": false,
+      "format_errors": [
+        "length:174>120"
+      ],
+      "content_errors": [],
+      "response_length": 174
+    },
+    {
+      "task_id": "describe_process",
+      "tier": "high",
+      "tier_rho": 0.7,
+      "protocol": "staged",
+      "trial": 4,
+      "pass_format": false,
+      "pass_content": false,
+      "pass_both": false,
+      "format_errors": [
+        "length:133>120",
+        "missing:process",
+        "missing:inputs",
+        "missing:outputs"
+      ],
+      "content_errors": [
+        "missing_keyword:sunlight",
+        "missing_keyword:oxygen",
+        "missing_keyword:carbon"
+      ],
+      "response_length": 133
+    },
+    {
+      "task_id": "evaluate_argument",
+      "tier": "control",
+      "tier_rho": 0.01,
+      "protocol": "one_shot",
+      "trial": 0,
+      "pass_format": true,
+      "pass_content": false,
+      "pass_both": false,
+      "format_errors": [],
+      "content_errors": [
+        "missing_keyword:connection"
+      ],
+      "response_length": 314
+    },
+    {
+      "task_id": "evaluate_argument",
+      "tier": "control",
+      "tier_rho": 0.01,
+      "protocol": "staged",
+      "trial": 0,
+      "pass_format": true,
+      "pass_content": false,
+      "pass_both": false,
+      "format_errors": [],
+      "content_errors": [
+        "missing_keyword:connection"
+      ],
+      "response_length": 348
+    },
+    {
+      "task_id": "evaluate_argument",
+      "tier": "control",
+      "tier_rho": 0.01,
+      "protocol": "one_shot",
+      "trial": 1,
+      "pass_format": true,
+      "pass_content": false,
+      "pass_both": false,
+      "format_errors": [],
+      "content_errors": [
+        "missing_keyword:mental",
+        "missing_keyword:connection"
+      ],
+      "response_length": 229
+    },
+    {
+      "task_id": "evaluate_argument",
+      "tier": "control",
+      "tier_rho": 0.01,
+      "protocol": "staged",
+      "trial": 1,
+      "pass_format": false,
+      "pass_content": false,
+      "pass_both": false,
+      "format_errors": [
+        "length:640>500"
+      ],
+      "content_errors": [
+        "missing_keyword:mental",
+        "missing_keyword:connection"
+      ],
+      "response_length": 640
+    },
+    {
+      "task_id": "evaluate_argument",
+      "tier": "control",
+      "tier_rho": 0.01,
+      "protocol": "one_shot",
+      "trial": 2,
+      "pass_format": false,
+      "pass_content": false,
+      "pass_both": false,
+      "format_errors": [
+        "missing:pros",
+        "missing:cons",
+        "missing:verdict"
+      ],
+      "content_errors": [
+        "missing_keyword:mental",
+        "missing_keyword:connection"
+      ],
+      "response_length": 129
+    },
+    {
+      "task_id": "evaluate_argument",
+      "tier": "control",
+      "tier_rho": 0.01,
+      "protocol": "staged",
+      "trial": 2,
+      "pass_format": false,
+      "pass_content": true,
+      "pass_both": false,
+      "format_errors": [
+        "length:863>500"
+      ],
+      "content_errors": [],
+      "response_length": 863
+    },
+    {
+      "task_id": "evaluate_argument",
+      "tier": "control",
+      "tier_rho": 0.01,
+      "protocol": "one_shot",
+      "trial": 3,
+      "pass_format": true,
+      "pass_content": false,
+      "pass_both": false,
+      "format_errors": [],
+      "content_errors": [
+        "missing_keyword:mental",
+        "missing_keyword:connection"
+      ],
+      "response_length": 190
+    },
+    {
+      "task_id": "evaluate_argument",
+      "tier": "control",
+      "tier_rho": 0.01,
+      "protocol": "staged",
+      "trial": 3,
+      "pass_format": false,
+      "pass_content": false,
+      "pass_both": false,
+      "format_errors": [
+        "length:659>500"
+      ],
+      "content_errors": [
+        "missing_keyword:mental"
+      ],
+      "response_length": 659
+    },
+    {
+      "task_id": "evaluate_argument",
+      "tier": "control",
+      "tier_rho": 0.01,
+      "protocol": "one_shot",
+      "trial": 4,
+      "pass_format": true,
+      "pass_content": false,
+      "pass_both": false,
+      "format_errors": [],
+      "content_errors": [
+        "missing_keyword:connection"
+      ],
+      "response_length": 296
+    },
+    {
+      "task_id": "evaluate_argument",
+      "tier": "control",
+      "tier_rho": 0.01,
+      "protocol": "staged",
+      "trial": 4,
+      "pass_format": false,
+      "pass_content": false,
+      "pass_both": false,
+      "format_errors": [
+        "length:945>500"
+      ],
+      "content_errors": [
+        "missing_keyword:connection"
+      ],
+      "response_length": 945
+    },
+    {
+      "task_id": "evaluate_argument",
+      "tier": "low",
+      "tier_rho": 0.25,
+      "protocol": "one_shot",
+      "trial": 0,
+      "pass_format": true,
+      "pass_content": false,
+      "pass_both": false,
+      "format_errors": [],
+      "content_errors": [
+        "missing_keyword:mental",
+        "missing_keyword:connection"
+      ],
+      "response_length": 257
+    },
+    {
+      "task_id": "evaluate_argument",
+      "tier": "low",
+      "tier_rho": 0.25,
+      "protocol": "staged",
+      "trial": 0,
+      "pass_format": false,
+      "pass_content": false,
+      "pass_both": false,
+      "format_errors": [
+        "length:1045>300"
+      ],
+      "content_errors": [
+        "missing_keyword:mental"
+      ],
+      "response_length": 1045
+    },
+    {
+      "task_id": "evaluate_argument",
+      "tier": "low",
+      "tier_rho": 0.25,
+      "protocol": "one_shot",
+      "trial": 1,
+      "pass_format": true,
+      "pass_content": false,
+      "pass_both": false,
+      "format_errors": [],
+      "content_errors": [
+        "missing_keyword:mental",
+        "missing_keyword:connection"
+      ],
+      "response_length": 198
+    },
+    {
+      "task_id": "evaluate_argument",
+      "tier": "low",
+      "tier_rho": 0.25,
+      "protocol": "staged",
+      "trial": 1,
+      "pass_format": false,
+      "pass_content": false,
+      "pass_both": false,
+      "format_errors": [
+        "length:675>300"
+      ],
+      "content_errors": [
+        "missing_keyword:connection"
+      ],
+      "response_length": 675
+    },
+    {
+      "task_id": "evaluate_argument",
+      "tier": "low",
+      "tier_rho": 0.25,
+      "protocol": "one_shot",
+      "trial": 2,
+      "pass_format": false,
+      "pass_content": false,
+      "pass_both": false,
+      "format_errors": [
+        "length:394>300"
+      ],
+      "content_errors": [
+        "missing_keyword:connection"
+      ],
+      "response_length": 394
+    },
+    {
+      "task_id": "evaluate_argument",
+      "tier": "low",
+      "tier_rho": 0.25,
+      "protocol": "staged",
+      "trial": 2,
+      "pass_format": false,
+      "pass_content": false,
+      "pass_both": false,
+      "format_errors": [
+        "length:639>300"
+      ],
+      "content_errors": [
+        "missing_keyword:connection"
+      ],
+      "response_length": 639
+    },
+    {
+      "task_id": "evaluate_argument",
+      "tier": "low",
+      "tier_rho": 0.25,
+      "protocol": "one_shot",
+      "trial": 3,
+      "pass_format": true,
+      "pass_content": false,
+      "pass_both": false,
+      "format_errors": [],
+      "content_errors": [
+        "missing_keyword:mental",
+        "missing_keyword:connection"
+      ],
+      "response_length": 273
+    },
+    {
+      "task_id": "evaluate_argument",
+      "tier": "low",
+      "tier_rho": 0.25,
+      "protocol": "staged",
+      "trial": 3,
+      "pass_format": false,
+      "pass_content": false,
+      "pass_both": false,
+      "format_errors": [
+        "length:540>300"
+      ],
+      "content_errors": [
+        "missing_keyword:connection"
+      ],
+      "response_length": 540
+    },
+    {
+      "task_id": "evaluate_argument",
+      "tier": "low",
+      "tier_rho": 0.25,
+      "protocol": "one_shot",
+      "trial": 4,
+      "pass_format": false,
+      "pass_content": false,
+      "pass_both": false,
+      "format_errors": [
+        "missing:pros",
+        "missing:cons",
+        "missing:verdict"
+      ],
+      "content_errors": [
+        "missing_keyword:mental",
+        "missing_keyword:connection"
+      ],
+      "response_length": 174
+    },
+    {
+      "task_id": "evaluate_argument",
+      "tier": "low",
+      "tier_rho": 0.25,
+      "protocol": "staged",
+      "trial": 4,
+      "pass_format": false,
+      "pass_content": false,
+      "pass_both": false,
+      "format_errors": [
+        "length:505>300"
+      ],
+      "content_errors": [
+        "missing_keyword:connection"
+      ],
+      "response_length": 505
+    },
+    {
+      "task_id": "evaluate_argument",
+      "tier": "moderate",
+      "tier_rho": 0.55,
+      "protocol": "one_shot",
+      "trial": 0,
+      "pass_format": false,
+      "pass_content": false,
+      "pass_both": false,
+      "format_errors": [
+        "missing:pros",
+        "missing:cons",
+        "missing:verdict"
+      ],
+      "content_errors": [
+        "missing_keyword:connection"
+      ],
+      "response_length": 154
+    },
+    {
+      "task_id": "evaluate_argument",
+      "tier": "moderate",
+      "tier_rho": 0.55,
+      "protocol": "staged",
+      "trial": 0,
+      "pass_format": false,
+      "pass_content": false,
+      "pass_both": false,
+      "format_errors": [
+        "length:459>180"
+      ],
+      "content_errors": [
+        "missing_keyword:mental",
+        "missing_keyword:connection"
+      ],
+      "response_length": 459
+    },
+    {
+      "task_id": "evaluate_argument",
+      "tier": "moderate",
+      "tier_rho": 0.55,
+      "protocol": "one_shot",
+      "trial": 1,
+      "pass_format": false,
+      "pass_content": false,
+      "pass_both": false,
+      "format_errors": [
+        "length:181>180"
+      ],
+      "content_errors": [
+        "missing_keyword:mental",
+        "missing_keyword:connection"
+      ],
+      "response_length": 181
+    },
+    {
+      "task_id": "evaluate_argument",
+      "tier": "moderate",
+      "tier_rho": 0.55,
+      "protocol": "staged",
+      "trial": 1,
+      "pass_format": false,
+      "pass_content": false,
+      "pass_both": false,
+      "format_errors": [
+        "length:311>180"
+      ],
+      "content_errors": [
+        "missing_keyword:mental",
+        "missing_keyword:connection"
+      ],
+      "response_length": 311
+    },
+    {
+      "task_id": "evaluate_argument",
+      "tier": "moderate",
+      "tier_rho": 0.55,
+      "protocol": "one_shot",
+      "trial": 2,
+      "pass_format": false,
+      "pass_content": false,
+      "pass_both": false,
+      "format_errors": [
+        "missing:pros",
+        "missing:cons",
+        "missing:verdict"
+      ],
+      "content_errors": [
+        "missing_keyword:connection"
+      ],
+      "response_length": 159
+    },
+    {
+      "task_id": "evaluate_argument",
+      "tier": "moderate",
+      "tier_rho": 0.55,
+      "protocol": "staged",
+      "trial": 2,
+      "pass_format": false,
+      "pass_content": false,
+      "pass_both": false,
+      "format_errors": [
+        "length:623>180",
+        "json_parse:Expecting value: line 1 column"
+      ],
+      "content_errors": [
+        "json_failed"
+      ],
+      "response_length": 623
+    },
+    {
+      "task_id": "evaluate_argument",
+      "tier": "moderate",
+      "tier_rho": 0.55,
+      "protocol": "one_shot",
+      "trial": 3,
+      "pass_format": false,
+      "pass_content": false,
+      "pass_both": false,
+      "format_errors": [
+        "length:376>180"
+      ],
+      "content_errors": [
+        "missing_keyword:connection"
+      ],
+      "response_length": 376
+    },
+    {
+      "task_id": "evaluate_argument",
+      "tier": "moderate",
+      "tier_rho": 0.55,
+      "protocol": "staged",
+      "trial": 3,
+      "pass_format": false,
+      "pass_content": false,
+      "pass_both": false,
+      "format_errors": [
+        "length:289>180"
+      ],
+      "content_errors": [
+        "missing_keyword:connection"
+      ],
+      "response_length": 289
+    },
+    {
+      "task_id": "evaluate_argument",
+      "tier": "moderate",
+      "tier_rho": 0.55,
+      "protocol": "one_shot",
+      "trial": 4,
+      "pass_format": false,
+      "pass_content": false,
+      "pass_both": false,
+      "format_errors": [
+        "missing:pros",
+        "missing:cons",
+        "missing:verdict"
+      ],
+      "content_errors": [
+        "missing_keyword:mental",
+        "missing_keyword:connection",
+        "too_short:69<80"
+      ],
+      "response_length": 118
+    },
+    {
+      "task_id": "evaluate_argument",
+      "tier": "moderate",
+      "tier_rho": 0.55,
+      "protocol": "staged",
+      "trial": 4,
+      "pass_format": false,
+      "pass_content": false,
+      "pass_both": false,
+      "format_errors": [
+        "length:552>180"
+      ],
+      "content_errors": [
+        "missing_keyword:connection"
+      ],
+      "response_length": 552
+    },
+    {
+      "task_id": "evaluate_argument",
+      "tier": "high",
+      "tier_rho": 0.7,
+      "protocol": "one_shot",
+      "trial": 0,
+      "pass_format": false,
+      "pass_content": false,
+      "pass_both": false,
+      "format_errors": [
+        "length:247>120"
+      ],
+      "content_errors": [
+        "missing_keyword:mental",
+        "missing_keyword:connection"
+      ],
+      "response_length": 247
+    },
+    {
+      "task_id": "evaluate_argument",
+      "tier": "high",
+      "tier_rho": 0.7,
+      "protocol": "staged",
+      "trial": 0,
+      "pass_format": false,
+      "pass_content": false,
+      "pass_both": false,
+      "format_errors": [
+        "length:902>120"
+      ],
+      "content_errors": [
+        "missing_keyword:connection"
+      ],
+      "response_length": 902
+    },
+    {
+      "task_id": "evaluate_argument",
+      "tier": "high",
+      "tier_rho": 0.7,
+      "protocol": "one_shot",
+      "trial": 1,
+      "pass_format": false,
+      "pass_content": false,
+      "pass_both": false,
+      "format_errors": [
+        "length:152>120"
+      ],
+      "content_errors": [
+        "missing_keyword:connection"
+      ],
+      "response_length": 152
+    },
+    {
+      "task_id": "evaluate_argument",
+      "tier": "high",
+      "tier_rho": 0.7,
+      "protocol": "staged",
+      "trial": 1,
+      "pass_format": false,
+      "pass_content": false,
+      "pass_both": false,
+      "format_errors": [
+        "length:520>120"
+      ],
+      "content_errors": [
+        "missing_keyword:connection"
+      ],
+      "response_length": 520
+    },
+    {
+      "task_id": "evaluate_argument",
+      "tier": "high",
+      "tier_rho": 0.7,
+      "protocol": "one_shot",
+      "trial": 2,
+      "pass_format": false,
+      "pass_content": false,
+      "pass_both": false,
+      "format_errors": [
+        "length:147>120"
+      ],
+      "content_errors": [
+        "missing_keyword:mental",
+        "missing_keyword:connection"
+      ],
+      "response_length": 147
+    },
+    {
+      "task_id": "evaluate_argument",
+      "tier": "high",
+      "tier_rho": 0.7,
+      "protocol": "staged",
+      "trial": 2,
+      "pass_format": false,
+      "pass_content": false,
+      "pass_both": false,
+      "format_errors": [
+        "length:372>120"
+      ],
+      "content_errors": [
+        "missing_keyword:mental",
+        "missing_keyword:connection"
+      ],
+      "response_length": 372
+    },
+    {
+      "task_id": "evaluate_argument",
+      "tier": "high",
+      "tier_rho": 0.7,
+      "protocol": "one_shot",
+      "trial": 3,
+      "pass_format": false,
+      "pass_content": false,
+      "pass_both": false,
+      "format_errors": [
+        "length:207>120"
+      ],
+      "content_errors": [
+        "missing_keyword:connection"
+      ],
+      "response_length": 207
+    },
+    {
+      "task_id": "evaluate_argument",
+      "tier": "high",
+      "tier_rho": 0.7,
+      "protocol": "staged",
+      "trial": 3,
+      "pass_format": false,
+      "pass_content": false,
+      "pass_both": false,
+      "format_errors": [
+        "length:453>120"
+      ],
+      "content_errors": [
+        "missing_keyword:connection"
+      ],
+      "response_length": 453
+    },
+    {
+      "task_id": "evaluate_argument",
+      "tier": "high",
+      "tier_rho": 0.7,
+      "protocol": "one_shot",
+      "trial": 4,
+      "pass_format": false,
+      "pass_content": false,
+      "pass_both": false,
+      "format_errors": [
+        "length:319>120"
+      ],
+      "content_errors": [
+        "missing_keyword:connection"
+      ],
+      "response_length": 319
+    },
+    {
+      "task_id": "evaluate_argument",
+      "tier": "high",
+      "tier_rho": 0.7,
+      "protocol": "staged",
+      "trial": 4,
+      "pass_format": false,
+      "pass_content": true,
+      "pass_both": false,
+      "format_errors": [
+        "length:874>120"
+      ],
+      "content_errors": [],
+      "response_length": 874
+    },
+    {
+      "task_id": "predict_outcome",
+      "tier": "control",
+      "tier_rho": 0.01,
+      "protocol": "one_shot",
+      "trial": 0,
+      "pass_format": true,
+      "pass_content": true,
+      "pass_both": true,
+      "format_errors": [],
+      "content_errors": [],
+      "response_length": 431
+    },
+    {
+      "task_id": "predict_outcome",
+      "tier": "control",
+      "tier_rho": 0.01,
+      "protocol": "staged",
+      "trial": 0,
+      "pass_format": false,
+      "pass_content": true,
+      "pass_both": false,
+      "format_errors": [
+        "missing:short_term",
+        "missing:long_term",
+        "missing:most_affected"
+      ],
+      "content_errors": [],
+      "response_length": 232
+    },
+    {
+      "task_id": "predict_outcome",
+      "tier": "control",
+      "tier_rho": 0.01,
+      "protocol": "one_shot",
+      "trial": 1,
+      "pass_format": true,
+      "pass_content": true,
+      "pass_both": true,
+      "format_errors": [],
+      "content_errors": [],
+      "response_length": 430
+    },
+    {
+      "task_id": "predict_outcome",
+      "tier": "control",
+      "tier_rho": 0.01,
+      "protocol": "staged",
+      "trial": 1,
+      "pass_format": false,
+      "pass_content": true,
+      "pass_both": false,
+      "format_errors": [
+        "length:520>500"
+      ],
+      "content_errors": [],
+      "response_length": 520
+    },
+    {
+      "task_id": "predict_outcome",
+      "tier": "control",
+      "tier_rho": 0.01,
+      "protocol": "one_shot",
+      "trial": 2,
+      "pass_format": false,
+      "pass_content": true,
+      "pass_both": false,
+      "format_errors": [
+        "length:575>500"
+      ],
+      "content_errors": [],
+      "response_length": 575
+    },
+    {
+      "task_id": "predict_outcome",
+      "tier": "control",
+      "tier_rho": 0.01,
+      "protocol": "staged",
+      "trial": 2,
+      "pass_format": true,
+      "pass_content": true,
+      "pass_both": true,
+      "format_errors": [],
+      "content_errors": [],
+      "response_length": 423
+    },
+    {
+      "task_id": "predict_outcome",
+      "tier": "control",
+      "tier_rho": 0.01,
+      "protocol": "one_shot",
+      "trial": 3,
+      "pass_format": true,
+      "pass_content": true,
+      "pass_both": true,
+      "format_errors": [],
+      "content_errors": [],
+      "response_length": 448
+    },
+    {
+      "task_id": "predict_outcome",
+      "tier": "control",
+      "tier_rho": 0.01,
+      "protocol": "staged",
+      "trial": 3,
+      "pass_format": true,
+      "pass_content": true,
+      "pass_both": true,
+      "format_errors": [],
+      "content_errors": [],
+      "response_length": 453
+    },
+    {
+      "task_id": "predict_outcome",
+      "tier": "control",
+      "tier_rho": 0.01,
+      "protocol": "one_shot",
+      "trial": 4,
+      "pass_format": true,
+      "pass_content": true,
+      "pass_both": true,
+      "format_errors": [],
+      "content_errors": [],
+      "response_length": 358
+    },
+    {
+      "task_id": "predict_outcome",
+      "tier": "control",
+      "tier_rho": 0.01,
+      "protocol": "staged",
+      "trial": 4,
+      "pass_format": true,
+      "pass_content": true,
+      "pass_both": true,
+      "format_errors": [],
+      "content_errors": [],
+      "response_length": 377
+    },
+    {
+      "task_id": "predict_outcome",
+      "tier": "low",
+      "tier_rho": 0.25,
+      "protocol": "one_shot",
+      "trial": 0,
+      "pass_format": false,
+      "pass_content": true,
+      "pass_both": false,
+      "format_errors": [
+        "length:420>300"
+      ],
+      "content_errors": [],
+      "response_length": 420
+    },
+    {
+      "task_id": "predict_outcome",
+      "tier": "low",
+      "tier_rho": 0.25,
+      "protocol": "staged",
+      "trial": 0,
+      "pass_format": false,
+      "pass_content": false,
+      "pass_both": false,
+      "format_errors": [
+        "length:423>300",
+        "missing:short_term",
+        "missing:long_term",
+        "missing:most_affected"
+      ],
+      "content_errors": [
+        "missing_keyword:flood"
+      ],
+      "response_length": 423
+    },
+    {
+      "task_id": "predict_outcome",
+      "tier": "low",
+      "tier_rho": 0.25,
+      "protocol": "one_shot",
+      "trial": 1,
+      "pass_format": false,
+      "pass_content": true,
+      "pass_both": false,
+      "format_errors": [
+        "length:521>300"
+      ],
+      "content_errors": [],
+      "response_length": 521
+    },
+    {
+      "task_id": "predict_outcome",
+      "tier": "low",
+      "tier_rho": 0.25,
+      "protocol": "staged",
+      "trial": 1,
+      "pass_format": false,
+      "pass_content": true,
+      "pass_both": false,
+      "format_errors": [
+        "length:335>300"
+      ],
+      "content_errors": [],
+      "response_length": 335
+    },
+    {
+      "task_id": "predict_outcome",
+      "tier": "low",
+      "tier_rho": 0.25,
+      "protocol": "one_shot",
+      "trial": 2,
+      "pass_format": false,
+      "pass_content": true,
+      "pass_both": false,
+      "format_errors": [
+        "length:436>300"
+      ],
+      "content_errors": [],
+      "response_length": 436
+    },
+    {
+      "task_id": "predict_outcome",
+      "tier": "low",
+      "tier_rho": 0.25,
+      "protocol": "staged",
+      "trial": 2,
+      "pass_format": false,
+      "pass_content": true,
+      "pass_both": false,
+      "format_errors": [
+        "length:507>300"
+      ],
+      "content_errors": [],
+      "response_length": 507
+    },
+    {
+      "task_id": "predict_outcome",
+      "tier": "low",
+      "tier_rho": 0.25,
+      "protocol": "one_shot",
+      "trial": 3,
+      "pass_format": false,
+      "pass_content": true,
+      "pass_both": false,
+      "format_errors": [
+        "length:450>300"
+      ],
+      "content_errors": [],
+      "response_length": 450
+    },
+    {
+      "task_id": "predict_outcome",
+      "tier": "low",
+      "tier_rho": 0.25,
+      "protocol": "staged",
+      "trial": 3,
+      "pass_format": false,
+      "pass_content": false,
+      "pass_both": false,
+      "format_errors": [
+        "length:397>300"
+      ],
+      "content_errors": [
+        "missing_keyword:coastal",
+        "missing_keyword:flood"
+      ],
+      "response_length": 397
+    },
+    {
+      "task_id": "predict_outcome",
+      "tier": "low",
+      "tier_rho": 0.25,
+      "protocol": "one_shot",
+      "trial": 4,
+      "pass_format": false,
+      "pass_content": true,
+      "pass_both": false,
+      "format_errors": [
+        "length:436>300"
+      ],
+      "content_errors": [],
+      "response_length": 436
+    },
+    {
+      "task_id": "predict_outcome",
+      "tier": "low",
+      "tier_rho": 0.25,
+      "protocol": "staged",
+      "trial": 4,
+      "pass_format": false,
+      "pass_content": true,
+      "pass_both": false,
+      "format_errors": [
+        "length:621>300"
+      ],
+      "content_errors": [],
+      "response_length": 621
+    },
+    {
+      "task_id": "predict_outcome",
+      "tier": "moderate",
+      "tier_rho": 0.55,
+      "protocol": "one_shot",
+      "trial": 0,
+      "pass_format": false,
+      "pass_content": true,
+      "pass_both": false,
+      "format_errors": [
+        "length:334>180"
+      ],
+      "content_errors": [],
+      "response_length": 334
+    },
+    {
+      "task_id": "predict_outcome",
+      "tier": "moderate",
+      "tier_rho": 0.55,
+      "protocol": "staged",
+      "trial": 0,
+      "pass_format": false,
+      "pass_content": false,
+      "pass_both": false,
+      "format_errors": [
+        "missing:short_term",
+        "missing:long_term",
+        "missing:most_affected"
+      ],
+      "content_errors": [
+        "missing_keyword:coastal",
+        "missing_keyword:flood",
+        "too_short:63<80"
+      ],
+      "response_length": 112
+    },
+    {
+      "task_id": "predict_outcome",
+      "tier": "moderate",
+      "tier_rho": 0.55,
+      "protocol": "one_shot",
+      "trial": 1,
+      "pass_format": false,
+      "pass_content": true,
+      "pass_both": false,
+      "format_errors": [
+        "length:411>180"
+      ],
+      "content_errors": [],
+      "response_length": 411
+    },
+    {
+      "task_id": "predict_outcome",
+      "tier": "moderate",
+      "tier_rho": 0.55,
+      "protocol": "staged",
+      "trial": 1,
+      "pass_format": false,
+      "pass_content": true,
+      "pass_both": false,
+      "format_errors": [
+        "length:378>180"
+      ],
+      "content_errors": [],
+      "response_length": 378
+    },
+    {
+      "task_id": "predict_outcome",
+      "tier": "moderate",
+      "tier_rho": 0.55,
+      "protocol": "one_shot",
+      "trial": 2,
+      "pass_format": false,
+      "pass_content": true,
+      "pass_both": false,
+      "format_errors": [
+        "length:373>180"
+      ],
+      "content_errors": [],
+      "response_length": 373
+    },
+    {
+      "task_id": "predict_outcome",
+      "tier": "moderate",
+      "tier_rho": 0.55,
+      "protocol": "staged",
+      "trial": 2,
+      "pass_format": false,
+      "pass_content": false,
+      "pass_both": false,
+      "format_errors": [
+        "length:222>180"
+      ],
+      "content_errors": [
+        "missing_keyword:coastal",
+        "missing_keyword:flood"
+      ],
+      "response_length": 222
+    },
+    {
+      "task_id": "predict_outcome",
+      "tier": "moderate",
+      "tier_rho": 0.55,
+      "protocol": "one_shot",
+      "trial": 3,
+      "pass_format": false,
+      "pass_content": true,
+      "pass_both": false,
+      "format_errors": [
+        "length:347>180"
+      ],
+      "content_errors": [],
+      "response_length": 347
+    },
+    {
+      "task_id": "predict_outcome",
+      "tier": "moderate",
+      "tier_rho": 0.55,
+      "protocol": "staged",
+      "trial": 3,
+      "pass_format": false,
+      "pass_content": true,
+      "pass_both": false,
+      "format_errors": [
+        "length:636>180"
+      ],
+      "content_errors": [],
+      "response_length": 636
+    },
+    {
+      "task_id": "predict_outcome",
+      "tier": "moderate",
+      "tier_rho": 0.55,
+      "protocol": "one_shot",
+      "trial": 4,
+      "pass_format": false,
+      "pass_content": true,
+      "pass_both": false,
+      "format_errors": [
+        "length:396>180"
+      ],
+      "content_errors": [],
+      "response_length": 396
+    },
+    {
+      "task_id": "predict_outcome",
+      "tier": "moderate",
+      "tier_rho": 0.55,
+      "protocol": "staged",
+      "trial": 4,
+      "pass_format": false,
+      "pass_content": true,
+      "pass_both": false,
+      "format_errors": [
+        "length:580>180"
+      ],
+      "content_errors": [],
+      "response_length": 580
+    },
+    {
+      "task_id": "predict_outcome",
+      "tier": "high",
+      "tier_rho": 0.7,
+      "protocol": "one_shot",
+      "trial": 0,
+      "pass_format": false,
+      "pass_content": true,
+      "pass_both": false,
+      "format_errors": [
+        "length:333>120"
+      ],
+      "content_errors": [],
+      "response_length": 333
+    },
+    {
+      "task_id": "predict_outcome",
+      "tier": "high",
+      "tier_rho": 0.7,
+      "protocol": "staged",
+      "trial": 0,
+      "pass_format": false,
+      "pass_content": true,
+      "pass_both": false,
+      "format_errors": [
+        "length:548>120",
+        "missing:short_term",
+        "missing:long_term",
+        "missing:most_affected"
+      ],
+      "content_errors": [],
+      "response_length": 548
+    },
+    {
+      "task_id": "predict_outcome",
+      "tier": "high",
+      "tier_rho": 0.7,
+      "protocol": "one_shot",
+      "trial": 1,
+      "pass_format": false,
+      "pass_content": true,
+      "pass_both": false,
+      "format_errors": [
+        "length:353>120"
+      ],
+      "content_errors": [],
+      "response_length": 353
+    },
+    {
+      "task_id": "predict_outcome",
+      "tier": "high",
+      "tier_rho": 0.7,
+      "protocol": "staged",
+      "trial": 1,
+      "pass_format": false,
+      "pass_content": true,
+      "pass_both": false,
+      "format_errors": [
+        "length:256>120"
+      ],
+      "content_errors": [],
+      "response_length": 256
+    },
+    {
+      "task_id": "predict_outcome",
+      "tier": "high",
+      "tier_rho": 0.7,
+      "protocol": "one_shot",
+      "trial": 2,
+      "pass_format": false,
+      "pass_content": true,
+      "pass_both": false,
+      "format_errors": [
+        "length:453>120"
+      ],
+      "content_errors": [],
+      "response_length": 453
+    },
+    {
+      "task_id": "predict_outcome",
+      "tier": "high",
+      "tier_rho": 0.7,
+      "protocol": "staged",
+      "trial": 2,
+      "pass_format": false,
+      "pass_content": true,
+      "pass_both": false,
+      "format_errors": [
+        "length:217>120"
+      ],
+      "content_errors": [],
+      "response_length": 217
+    },
+    {
+      "task_id": "predict_outcome",
+      "tier": "high",
+      "tier_rho": 0.7,
+      "protocol": "one_shot",
+      "trial": 3,
+      "pass_format": false,
+      "pass_content": true,
+      "pass_both": false,
+      "format_errors": [
+        "length:229>120"
+      ],
+      "content_errors": [],
+      "response_length": 229
+    },
+    {
+      "task_id": "predict_outcome",
+      "tier": "high",
+      "tier_rho": 0.7,
+      "protocol": "staged",
+      "trial": 3,
+      "pass_format": false,
+      "pass_content": true,
+      "pass_both": false,
+      "format_errors": [
+        "length:643>120",
+        "missing:short_term",
+        "missing:long_term"
+      ],
+      "content_errors": [],
+      "response_length": 643
+    },
+    {
+      "task_id": "predict_outcome",
+      "tier": "high",
+      "tier_rho": 0.7,
+      "protocol": "one_shot",
+      "trial": 4,
+      "pass_format": false,
+      "pass_content": true,
+      "pass_both": false,
+      "format_errors": [
+        "length:362>120"
+      ],
+      "content_errors": [],
+      "response_length": 362
+    },
+    {
+      "task_id": "predict_outcome",
+      "tier": "high",
+      "tier_rho": 0.7,
+      "protocol": "staged",
+      "trial": 4,
+      "pass_format": false,
+      "pass_content": false,
+      "pass_both": false,
+      "format_errors": [
+        "length:200>120",
+        "missing:short_term",
+        "missing:long_term",
+        "missing:most_affected"
+      ],
+      "content_errors": [
+        "missing_keyword:flood"
+      ],
+      "response_length": 200
+    }
+  ]
+}

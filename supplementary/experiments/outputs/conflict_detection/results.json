@@ -1,0 +1,57 @@
+{
+  "n_total": 190,
+  "n_valid": 190,
+  "n_conflicts": 146,
+  "n_no_conflict": 44,
+  "conflict_rate": 0.7684210526315789,
+  "by_rho_bucket": {
+    "low": {
+      "rho_range": [
+        0.0,
+        0.25
+      ],
+      "n": 105,
+      "n_conflicts": 72,
+      "conflict_rate": 0.6857142857142857,
+      "mean_rho": 0.1664605196387995
+    },
+    "medium": {
+      "rho_range": [
+        0.25,
+        0.45
+      ],
+      "n": 64,
+      "n_conflicts": 58,
+      "conflict_rate": 0.90625,
+      "mean_rho": 0.3359379330649972
+    },
+    "high": {
+      "rho_range": [
+        0.45,
+        1.0
+      ],
+      "n": 21,
+      "n_conflicts": 16,
+      "conflict_rate": 0.7619047619047619,
+      "mean_rho": 0.5574304645969754
+    }
+  },
+  "correlation": {
+    "point_biserial_r": 0.12429770362801235,
+    "p_value": 0.08751543119014035,
+    "significant_05": false,
+    "significant_01": false
+  },
+  "group_comparison": {
+    "conflict_mean_rho": 0.2766496211239328,
+    "no_conflict_mean_rho": 0.23394493978809228,
+    "difference": 0.042704681335840544,
+    "t_statistic": 1.717604320092724,
+    "t_p_value": 0.08751543119014045
+  },
+  "resolution_strategies": {
+    "contextual": 139,
+    "balanced": 23,
+    "safety_priority": 4
+  }
+}

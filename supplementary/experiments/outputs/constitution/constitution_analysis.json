@@ -1,0 +1,191 @@
+{
+  "source": "https://www.anthropic.com/constitution",
+  "date": "2025-01-21",
+  "analysis_timestamp": "2026-01-27T00:05:07.045468",
+  "summary": {
+    "n_principles": 20,
+    "n_pairs": 190,
+    "mean_rho": 0.2667601406574249,
+    "std_rho": 0.14493109285831451,
+    "high_rho_fraction": 0.07368421052631578,
+    "hierarchy_ratio": 1.2976997484101664
+  },
+  "category_stats": {
+    "honesty": {
+      "n_principles": 5,
+      "mean_within_rho": 0.3865928649902344,
+      "max_within_rho": 0.4947051405906677
+    },
+    "hardcoded_on": {
+      "n_principles": 2,
+      "mean_within_rho": 0.15560531616210938,
+      "max_within_rho": 0.15560531616210938
+    },
+    "hardcoded_defaults": {
+      "n_principles": 6,
+      "mean_within_rho": 0.37324514985084534,
+      "max_within_rho": 0.861424446105957
+    },
+    "soul": {
+      "n_principles": 4,
+      "mean_within_rho": 0.2432089000940323,
+      "max_within_rho": 0.4185327887535095
+    },
+    "hardcoded_off": {
+      "n_principles": 3,
+      "mean_within_rho": 0.1355825513601303,
+      "max_within_rho": 0.19265003502368927
+    }
+  },
+  "k_feasibility": {
+    "2": 0.9263157894736842,
+    "3": 0.7948353987461729,
+    "4": 0.6317633110999876,
+    "5": 0.4651474758909451,
+    "6": 0.31723858413946804,
+    "8": 0.11728807869098651,
+    "10": 0.03192699239154821
+  },
+  "high_rho_pairs": [
+    {
+      "i": 4,
+      "j": 18,
+      "rho": 0.8972166776657104,
+      "principle_i": "Always refer users to relevant emergency services or provide basic safety inform",
+      "principle_j": "Refer users to emergency services or provide basic safety information when there",
+      "category_i": "hardcoded_defaults",
+      "category_j": "hardcoded_on",
+      "same_category": false
+    },
+    {
+      "i": 5,
+      "j": 9,
+      "rho": 0.861424446105957,
+      "principle_i": "Never facilitate clearly illegal actions against users, including unauthorized d",
+      "principle_j": "Never facilitate obviously illegal actions against operators, including unauthor",
+      "category_i": "hardcoded_defaults",
+      "category_j": "hardcoded_defaults",
+      "same_category": true
+    },
+    {
+      "i": 8,
+      "j": 19,
+      "rho": 0.6828410029411316,
+      "principle_i": "Never claim to be human or deny being an AI to a user who sincerely wants to kno",
+      "principle_j": "Acknowledge being an AI when directly and sincerely asked",
+      "category_i": "hardcoded_defaults",
+      "category_j": "hardcoded_on",
+      "same_category": false
+    },
+    {
+      "i": 9,
+      "j": 17,
+      "rho": 0.6268677115440369,
+      "principle_i": "Never facilitate obviously illegal actions against operators, including unauthor",
+      "principle_j": "Actively undermine the legitimate interests of operators and users to benefit th",
+      "category_i": "hardcoded_defaults",
+      "category_j": "hardcoded_off",
+      "same_category": false
+    },
+    {
+      "i": 7,
+      "j": 13,
+      "rho": 0.5685707330703735,
+      "principle_i": "Never deceive users in ways that could cause real harm or that they would object",
+      "principle_j": "Not attempt to deceive or manipulate its principal hierarchy; it should only try",
+      "category_i": "hardcoded_defaults",
+      "category_j": "honesty",
+      "same_category": false
+    },
+    {
+      "i": 3,
+      "j": 17,
+      "rho": 0.5414140820503235,
+      "principle_i": "Be genuinely helpful to the operator and user",
+      "principle_j": "Actively undermine the legitimate interests of operators and users to benefit th",
+      "category_i": "soul",
+      "category_j": "hardcoded_off",
+      "same_category": false
+    },
+    {
+      "i": 1,
+      "j": 13,
+      "rho": 0.5389624834060669,
+      "principle_i": "Behave ethically and not act in ways that are harmful or dishonest",
+      "principle_j": "Not attempt to deceive or manipulate its principal hierarchy; it should only try",
+      "category_i": "soul",
+      "category_j": "honesty",
+      "same_category": false
+    },
+    {
+      "i": 5,
+      "j": 17,
+      "rho": 0.5379239320755005,
+      "principle_i": "Never facilitate clearly illegal actions against users, including unauthorized d",
+      "principle_j": "Actively undermine the legitimate interests of operators and users to benefit th",
+      "category_i": "hardcoded_defaults",
+      "category_j": "hardcoded_off",
+      "same_category": false
+    },
+    {
+      "i": 0,
+      "j": 19,
+      "rho": 0.5357329249382019,
+      "principle_i": "Be safe and support human oversight of AI",
+      "principle_j": "Acknowledge being an AI when directly and sincerely asked",
+      "category_i": "soul",
+      "category_j": "hardcoded_on",
+      "same_category": false
+    },
+    {
+      "i": 5,
+      "j": 7,
+      "rho": 0.5317366123199463,
+      "principle_i": "Never facilitate clearly illegal actions against users, including unauthorized d",
+      "principle_j": "Never deceive users in ways that could cause real harm or that they would object",
+      "category_i": "hardcoded_defaults",
+      "category_j": "hardcoded_defaults",
+      "same_category": true
+    },
+    {
+      "i": 1,
+      "j": 7,
+      "rho": 0.528800368309021,
+      "principle_i": "Behave ethically and not act in ways that are harmful or dishonest",
+      "principle_j": "Never deceive users in ways that could cause real harm or that they would object",
+      "category_i": "soul",
+      "category_j": "hardcoded_defaults",
+      "same_category": false
+    },
+    {
+      "i": 4,
+      "j": 6,
+      "rho": 0.5221061706542969,
+      "principle_i": "Always refer users to relevant emergency services or provide basic safety inform",
+      "principle_j": "Always be willing to tell users what it cannot help with in the current context,",
+      "category_i": "hardcoded_defaults",
+      "category_j": "hardcoded_defaults",
+      "same_category": true
+    },
+    {
+      "i": 0,
+      "j": 8,
+      "rho": 0.5168884992599487,
+      "principle_i": "Be safe and support human oversight of AI",
+      "principle_j": "Never claim to be human or deny being an AI to a user who sincerely wants to kno",
+      "category_i": "soul",
+      "category_j": "hardcoded_defaults",
+      "same_category": false
+    },
+    {
+      "i": 7,
+      "j": 17,
+      "rho": 0.5082435011863708,
+      "principle_i": "Never deceive users in ways that could cause real harm or that they would object",
+      "principle_j": "Actively undermine the legitimate interests of operators and users to benefit th",
+      "category_i": "hardcoded_defaults",
+      "category_j": "hardcoded_off",
+      "same_category": false
+    }
+  ]
+}
