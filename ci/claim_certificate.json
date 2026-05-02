@@ -3,13 +3,13 @@
   "provenance": {
     "paper_title": "The Cost of Cacophony: Geometric Limits on Multi-Constraint Alignment",
     "venue": "NeurIPS 2026",
-    "generated_at": "2026-05-02T18:49:26",
+    "generated_at": "2026-05-02T18:56:50",
     "main_tex_path": "paper\\main.tex",
-    "main_tex_sha256": "601b3e611484ff184a76b703f24f3a557f0a72ced34abbf6664a78978b76e4ee",
-    "main_tex_mtime": "2026-05-02T18:48:05",
+    "main_tex_sha256": "b776383032095306affa10db7c96104b0d776e79cae68cf815f87596492ffe91",
+    "main_tex_mtime": "2026-05-02T18:56:11",
     "main_pdf_path": "paper\\main.pdf",
-    "main_pdf_size": 1038118,
-    "main_pdf_mtime": "2026-05-02T18:49:20",
+    "main_pdf_size": 1039241,
+    "main_pdf_mtime": "2026-05-02T18:56:45",
     "claim_audit_md_path": "CLAIM_AUDIT.md",
     "claim_audit_md_sha256": "a860cd02ec4eaf6b8d1e794905e97799bf037b6ebd1b81c066b067b9d83f0a57"
   },
@@ -51,11 +51,11 @@
       "return_code": 0,
       "status": "PASS",
       "summary": {
-        "total_numeric_tokens": 1145,
-        "covered": 1075,
-        "uncovered_raw": 70,
-        "uncovered_deduped": 67,
-        "coverage_percent": 93.9
+        "total_numeric_tokens": 1146,
+        "covered": 1077,
+        "uncovered_raw": 69,
+        "uncovered_deduped": 66,
+        "coverage_percent": 94.0
       },
       "notes": ""
     },
@@ -282,5 +282,5 @@
       "notes": ""
     }
   ],
-  "certificate_self_hash": "63c91b61bc7b61fdd5317c34727ebe52060c79bd79421412d4f94e3fb750d5ba"
+  "certificate_self_hash": "af7386cd9ea702aaabd76ea59b725778c80a0aafc0209a61739ca368dff8d43f"
 }

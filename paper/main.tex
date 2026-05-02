@@ -2428,9 +2428,31 @@ Following ICML reproducibility guidelines:
 \item[$\checkmark$] \textbf{Random seeds:} Fixed seeds for all stochastic components
 \end{itemize}
 
-\section{Scope of Mechanical Verification}\label{app:cert_scope}
+\section{Mechanical Verification Certificate and Its Limits}\label{app:cert_scope}
 
-A 14-layer certificate at \texttt{ci/claim\_certificate.md} runs against this paper at submission. Layers cover: claim registry self-consistency; presence of every registered numeric in main.tex; AST-walked reverse coverage of every numeric token in main.tex against the registry; figure asset freshness with content binding to declared scripts and data; in-figure numeric cross-check against the registry; citation graph closure between \texttt{\textbackslash citep} and \texttt{references.bib}; URL well-formedness with venue-year validation; \texttt{\textbackslash ref} and \texttt{\textbackslash hyperref} graph closure with \texttt{\textbackslash input} expansion; formula-vs-value consistency between Tier~1 theorems and their numerical instances; bib entry structural validation; figure-script smoke tests; asset re-render equivalence by token-multiset comparison; cross-tree consistency against the upstream supplementary source; provenance-binding for explanatory illustrations from a source LaTeX block to a deterministic asset hash. A mutation harness flips one digit per registered numeric claim and re-audits; 147 of 147 single-digit substitutions are caught at submission.
+This appendix verifies artifact integrity, not scientific truth: the certificate at \texttt{ci/claim\_certificate.md} checks that numeric claims, figures, references, formulas, and provenance links are internally consistent with the submitted source tree. A 14-layer certificate runs against the paper at submission. A mutation harness flips one digit per registered numeric claim and re-audits; 147 of 147 single-digit substitutions are caught at submission.
+
+The layers fall into five families. Each row names what the family checks and what it explicitly does \emph{not} prove.
+
+\begin{table}[h]
+\centering
+\small
+\begin{tabular}{p{0.30\linewidth}p{0.32\linewidth}p{0.30\linewidth}}
+\toprule
+\textbf{Layer family} & \textbf{What it checks} & \textbf{What it does NOT prove} \\
+\midrule
+Claim registry (L1, L2, L3) & Every registered numeric appears in main.tex; registry is internally consistent; reverse coverage flags numerics no claim covers (AST-walked) & The empirical design is correct \\
+\midrule
+Figure provenance (L4, L5, L11, L12, L14) & Figures bound to scripts and data; assets fresh; in-figure numerics match registry; scripts run; rendered output equals script output by token-multiset; illustrations bound to source LaTeX block hash & The plot's interpretation is correct \\
+\midrule
+Formula / value coherence (L9) & Numerical instances match their source formulas (e.g., $\sqrt{2/(1{-}\rho)}$ at $\rho{=}0.5$ is $2.0000$); tier orderings monotone; combinatorial identities hold & The theorem's assumptions hold \\
+\midrule
+Citation + reference graph (L7, L8, L10) & Every \texttt{\textbackslash citep} resolves to a bib entry; bib entries structurally well-formed; URLs well-formed and venue-year correct; \texttt{\textbackslash ref}/\texttt{\textbackslash hyperref} resolve through \texttt{\textbackslash input} expansion & The cited work is the appropriate reference \\
+\midrule
+Cross-tree + mutation (L13, mutation harness) & Recovered files match upstream byte-for-byte (or with documented divergence); single-digit substitution on every numeric claim is detected & Semantic claims are true \\
+\bottomrule
+\end{tabular}
+\end{table}
 
 What this establishes: the paper says what it says, without drift, substitution, broken references, or stale figure assets. What it does not establish: that the underlying claims are true of the world, that the experimental design is sound, that the inferences follow from the data, or that the framing is the right framing. Mechanical verification operates on form. Critical reading operates on meaning. The certificate is structurally analogous to the paper's screening statistic $\hat{\rho}$: a zeroth-order observable that orders regime membership without resolving the truth question one layer up. As $\hat{\rho}$ triggers checks rather than verdicts, the certificate triggers reading rather than verdicts. It frees the reading from bookkeeping verification. It does not replace judgment.
 
