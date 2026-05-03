@@ -3,13 +3,13 @@
   "provenance": {
     "paper_title": "The Cost of Cacophony: Geometric Limits on Multi-Constraint Alignment",
     "venue": "NeurIPS 2026",
-    "generated_at": "2026-05-03T09:45:41",
+    "generated_at": "2026-05-03T09:58:48",
     "main_tex_path": "paper\\main.tex",
-    "main_tex_sha256": "d5538b82b610587479d83e26cfd7976dd863c086cd72db84d0ce6eeec739b252",
-    "main_tex_mtime": "2026-05-03T09:27:55",
+    "main_tex_sha256": "1402b3f4ba04e8f93f64cae905b2662b2f6ac145406932be1e3f05f72d269fa7",
+    "main_tex_mtime": "2026-05-03T09:55:55",
     "main_pdf_path": "paper\\main.pdf",
-    "main_pdf_size": 1078328,
-    "main_pdf_mtime": "2026-05-03T09:45:36",
+    "main_pdf_size": 2641858,
+    "main_pdf_mtime": "2026-05-03T09:56:50",
     "claim_audit_md_path": "CLAIM_AUDIT.md",
     "claim_audit_md_sha256": "a860cd02ec4eaf6b8d1e794905e97799bf037b6ebd1b81c066b067b9d83f0a57"
   },
@@ -51,11 +51,11 @@
       "return_code": 0,
       "status": "PASS",
       "summary": {
-        "total_numeric_tokens": 1162,
-        "covered": 1093,
-        "uncovered_raw": 69,
-        "uncovered_deduped": 66,
-        "coverage_percent": 94.1
+        "total_numeric_tokens": 1172,
+        "covered": 1101,
+        "uncovered_raw": 71,
+        "uncovered_deduped": 68,
+        "coverage_percent": 93.9
       },
       "notes": ""
     },
@@ -68,7 +68,7 @@
         "checks_total": 8,
         "checks_passed": 8,
         "checks_failed": 0,
-        "figures_in_use": 11,
+        "figures_in_use": 13,
         "first_failure": null
       },
       "notes": ""
@@ -79,7 +79,7 @@
       "return_code": 0,
       "status": "PASS",
       "summary": {
-        "figures_checked": 7,
+        "figures_checked": 9,
         "total_numerics": 205,
         "total_covered": 159,
         "total_uncovered": 23,
@@ -113,6 +113,16 @@
           {
             "name": "soft_constraint_cliff.pdf",
             "coverage_percent": 100.0,
+            "uncovered_count": 0
+          },
+          {
+            "name": "D-fibonacci-high_t0.png",
+            "coverage_percent": 0,
+            "uncovered_count": 0
+          },
+          {
+            "name": "D-factorial-high_t0.png",
+            "coverage_percent": 0,
             "uncovered_count": 0
           },
           {
@@ -166,7 +176,7 @@
         "n_hyperref": 0,
         "n_hypertarget": 26,
         "n_refs": 121,
-        "n_labels": 165,
+        "n_labels": 166,
         "urls": [
           "https://anonymous.4open.science/r/cacophony",
           "https://neurips.cc/Conferences/2026/CallForPapers"
@@ -176,7 +186,7 @@
         "venue_year_mismatches": [],
         "unresolved_hyperref": [],
         "unresolved_refs": [],
-        "dead_labels_count": 44,
+        "dead_labels_count": 45,
         "dead_labels_sample": [
           "app:additional",
           "app:algorithm",
@@ -233,8 +243,8 @@
       "return_code": 0,
       "status": "PASS",
       "summary": {
-        "total_scripts": 13,
-        "passed": 13,
+        "total_scripts": 14,
+        "passed": 14,
         "failed": 0
       },
       "notes": ""
@@ -249,11 +259,11 @@
         "strict": false,
         "timeout_sec": 60,
         "verdict": "PASS",
-        "total": 15,
+        "total": 17,
         "pass": 7,
         "warn": 0,
         "fail": 0,
-        "skip": 8
+        "skip": 10
       },
       "notes": ""
     },
@@ -287,5 +297,5 @@
       "notes": ""
     }
   ],
-  "certificate_self_hash": "b3e36e337145e1c283089887406ca601c4948c4807369395d7aea03354173488"
+  "certificate_self_hash": "3ae47b1ebe1de99bd159ea3267ecb5572e7d3a9667ca7c9863dc53cc7082a462"
 }
