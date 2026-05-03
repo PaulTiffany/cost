@@ -1,0 +1,34 @@
+{
+  "_meta": {
+    "description": "Cross-domain transfer table (paper Table tab:transfer) parsed from paper/main.tex around line 826. Each domain row records router-decision agreement with domain-optimal, delta in pass rate, and regret vs. domain-specific tuning. Backs claims I42-I45.",
+    "source": "paper/main.tex Table tab:transfer (around line 826)",
+    "row_labels": [
+      "Code (calibration)",
+      "JSON-NL (transfer)",
+      "IF-DSL (transfer)",
+      "Bytebeat (transfer)"
+    ]
+  },
+  "domains": {
+    "code": {
+      "router_agree_pct": 100,
+      "delta_pass_pct": null,
+      "regret_pct": 1.8
+    },
+    "json_nl": {
+      "router_agree_pct": 94,
+      "delta_pass_pct": 2,
+      "regret_pct": 2.1
+    },
+    "if_dsl": {
+      "router_agree_pct": 91,
+      "delta_pass_pct": -1,
+      "regret_pct": 2.4
+    },
+    "bytebeat": {
+      "router_agree_pct": 88,
+      "delta_pass_pct": 1,
+      "regret_pct": 3.1
+    }
+  }
+}

@@ -243,19 +243,19 @@
               "snippet": "\\item Chord complexity $\\leftrightarrow$ $k$-constraint diagonal cost"
             },
             {
-              "line": 2514,
+              "line": 2520,
               "snippet": "\\paragraph{Key finding.} Feasibility decay is \\textbf{geometric}, not adversarial. The $\\binom{k}{2}$ pairwise compatibility checks compound: even 7.37\\% con..."
             },
             {
-              "line": 2518,
+              "line": 2524,
               "snippet": "\\paragraph{On \\emph{cost}.} The framing of intelligent behavior as cost minimization over structured spaces has deep roots in thermodynamics, variational inf..."
             },
             {
-              "line": 2524,
+              "line": 2530,
               "snippet": "We analyze a real deployed constraint system: the Claude Constitution \\citep{anthropic2025constitution}, published 2025-01-21 under CC0 license. This provide..."
             },
             {
-              "line": 2558,
+              "line": 2564,
               "snippet": "\\paragraph{Design implication.} The constitution exhibits exactly the structure our bound predicts is necessary: sparse pairwise similarity, hierarchical gro..."
             }
           ]
@@ -349,15 +349,15 @@
               "snippet": "\\item \\path{conflict_R_0.00.wav}: Smooth, consonant (orthogonal constraints)"
             },
             {
-              "line": 2489,
+              "line": 2495,
               "snippet": "For deterministic verifiers, $\\tau{=}1$ (binary). Soft constraints (e.g., ``be polite'') require a measurable proxy: the specification problem, orthogonal to..."
             },
             {
-              "line": 2577,
+              "line": 2583,
               "snippet": "\\noindent The relationship is \\emph{non-monotonic}: medium-$\\hat{\\rho}$ pairs show the highest conflict rate. This matches intuition. Low-$\\hat{\\rho}$ princi..."
             },
             {
-              "line": 2617,
+              "line": 2623,
               "snippet": "Each task contains 2--5 constraints with programmatic verifiers: JSON schema validation, word count bounds, regex patterns, Python AST checks, etc. Estimated..."
             }
           ]
@@ -1229,11 +1229,11 @@
           "pattern": "7\\.37\\s*\\\\?%",
           "hits": [
             {
-              "line": 2493,
+              "line": 2499,
               "snippet": "\\paragraph{Model.} We use the empirical structure from the Claude Constitution analysis (Appendix~\\ref{app:constitution}): 20 principles yield 190 pairs, of ..."
             },
             {
-              "line": 2514,
+              "line": 2520,
               "snippet": "\\paragraph{Key finding.} Feasibility decay is \\textbf{geometric}, not adversarial. The $\\binom{k}{2}$ pairwise compatibility checks compound: even 7.37\\% con..."
             }
           ]
@@ -1266,7 +1266,7 @@
               "snippet": "DeepSeek-Coder & $0.019 \\pm 0.006$ & 93\\% & 7\\% \\\\"
             },
             {
-              "line": 2512,
+              "line": 2518,
               "snippet": "\\noindent At $k{=}2$, 93\\% of charitable constraint pairs are jointly feasible. By $k{=}10$, only 3\\% remain feasible: a 30$\\times$ reduction despite \\emph{n..."
             }
           ]
@@ -1359,15 +1359,15 @@
               "snippet": "\\textbf{Geometric router} & \\textbf{18\\%} & \\textbf{384} & $\\mathbf{-3\\%}$ \\\\"
             },
             {
-              "line": 2474,
+              "line": 2476,
               "snippet": "\\caption{Diagonal-cost cliff transfers across modalities. Text-medium 4-model average (dark, $N{=}1839$, blinded external benchmark on Mistral-Large, DeepSee..."
             },
             {
-              "line": 2478,
+              "line": 2480,
               "snippet": "The cliff transfers. At the highest tier the image model satisfies all $11$ compounding format demands jointly at $33\\%$ across $6$ trials; the text-medium $..."
             },
             {
-              "line": 2512,
+              "line": 2518,
               "snippet": "\\noindent At $k{=}2$, 93\\% of charitable constraint pairs are jointly feasible. By $k{=}10$, only 3\\% remain feasible: a 30$\\times$ reduction despite \\emph{n..."
             }
           ]
@@ -1616,35 +1616,35 @@
               "snippet": "Mature predictive sciences diagnose \\emph{regimes}, not averages. Phase transitions and regime boundaries are central to weather prediction, climate modeling..."
             },
             {
-              "line": 2480,
+              "line": 2486,
               "snippet": "\\textbf{Methodological exploration} (Runs A--C, supplementary, full data preserved in \\texttt{supplementary/experiments\\_rebuttal/image\\_transfer/}). Three p..."
             },
             {
-              "line": 2484,
+              "line": 2490,
               "snippet": "\\section{Charitable Constraint Composition}\\label{app:charity}\\hypertarget{lim:soft}{}"
             },
             {
-              "line": 2486,
+              "line": 2492,
               "snippet": "We call a constraint set \\emph{charitable} if its elements are designed for mutual compatibility rather than selected to induce failure. This appendix demons..."
             },
             {
-              "line": 2491,
+              "line": 2497,
               "snippet": "\\paragraph{Definition.} Charitable constraints are \\textbf{designed for compatibility}: they encode cooperative intent (helpful, honest, harmless) and are in..."
             },
             {
-              "line": 2493,
+              "line": 2499,
               "snippet": "\\paragraph{Model.} We use the empirical structure from the Claude Constitution analysis (Appendix~\\ref{app:constitution}): 20 principles yield 190 pairs, of ..."
             },
             {
-              "line": 2512,
+              "line": 2518,
               "snippet": "\\noindent At $k{=}2$, 93\\% of charitable constraint pairs are jointly feasible. By $k{=}10$, only 3\\% remain feasible: a 30$\\times$ reduction despite \\emph{n..."
             },
             {
-              "line": 2514,
+              "line": 2520,
               "snippet": "\\paragraph{Key finding.} Feasibility decay is \\textbf{geometric}, not adversarial. The $\\binom{k}{2}$ pairwise compatibility checks compound: even 7.37\\% con..."
             },
             {
-              "line": 2516,
+              "line": 2522,
               "snippet": "\\paragraph{On \\emph{conflict}.} The term may suggest semantic opposition (constraints ``fighting''). But the geometry is simpler: each constraint defines a h..."
             }
           ]
@@ -1831,7 +1831,7 @@
               "snippet": "\\item \\textbf{Temperature sensitivity:} Greedy ($T{=}0$) reduces $\\hat{L}$ by $\\sim$15\\%; $T{=}0.7$ yields the reported values; $T{=}1.0$ increases $\\hat{L}$..."
             },
             {
-              "line": 2596,
+              "line": 2602,
               "snippet": "\\quad Orthogonal-similar & 1 & 20\\% \\\\"
             }
           ]
@@ -1984,7 +1984,7 @@
               "snippet": "\\item[$\\checkmark$] \\textbf{Hyperparameters:} All thresholds specified in Appendix~\\ref{app:experiments}"
             },
             {
-              "line": 2489,
+              "line": 2495,
               "snippet": "For deterministic verifiers, $\\tau{=}1$ (binary). Soft constraints (e.g., ``be polite'') require a measurable proxy: the specification problem, orthogonal to..."
             }
           ]
@@ -2172,11 +2172,11 @@
               "snippet": "\\item \\textbf{Safety-helpfulness}: Our measured $\\rho \\approx 0.15$"
             },
             {
-              "line": 2541,
+              "line": 2547,
               "snippet": "Hardcoded On & 2 & 0.156 & 0.156 \\\\"
             },
             {
-              "line": 2617,
+              "line": 2623,
               "snippet": "Each task contains 2--5 constraints with programmatic verifiers: JSON schema validation, word count bounds, regex patterns, Python AST checks, etc. Estimated..."
             }
           ]
@@ -2233,23 +2233,23 @@
               "snippet": "Self-refine & 15\\% & 640 & $-6\\%$ \\\\"
             },
             {
-              "line": 2549,
+              "line": 2555,
               "snippet": "\\noindent\\textbf{Distribution:} $\\hat{\\rho} \\in [0, 0.3)$: 68\\%; $[0.3, 0.5)$: 25\\%; $[0.5, 0.7)$: 6\\%; $\\ge 0.7$: 1\\%. Random $k{=}4$ subsets: $\\max_{ij}\\ha..."
             },
             {
-              "line": 2568,
+              "line": 2574,
               "snippet": "Low (0--0.25) & 105 & 72 & 68.6\\% \\\\"
             },
             {
-              "line": 2569,
+              "line": 2575,
               "snippet": "Med (0.25--0.45) & 64 & 58 & \\textbf{90.6\\%} \\\\"
             },
             {
-              "line": 2601,
+              "line": 2607,
               "snippet": "\\quad Edge-case tension & 1 & 6\\% \\\\"
             },
             {
-              "line": 2608,
+              "line": 2614,
               "snippet": "\\noindent \\textbf{Conflicting pairs} reveal an error taxonomy: (1)~\\emph{Priority ambiguity} (62\\%): both principles apply but resolution requires contextual..."
             }
           ]
@@ -2773,23 +2773,27 @@
               "snippet": "4 & 0.80 & 0\\% & Infeasible \\\\"
             },
             {
-              "line": 2478,
+              "line": 2480,
               "snippet": "The cliff transfers. At the highest tier the image model satisfies all $11$ compounding format demands jointly at $33\\%$ across $6$ trials; the text-medium $..."
             },
             {
-              "line": 2527,
+              "line": 2482,
+              "snippet": "Within the text-medium row, command-r-plus is a clean case of the screening problem the paper's $\\hat{\\rho}$ statistic is designed for. Pass rates of $100\\%$..."
+            },
+            {
+              "line": 2533,
               "snippet": "$\\hat{\\rho}$ screens for potential conflict. A hard-negative pair ($\\hat{\\rho}{=}0.50$, 100\\% pass) and a conflicting pair ($\\hat{\\rho}{=}0.52$, 0\\% pass) sh..."
             },
             {
-              "line": 2594,
+              "line": 2600,
               "snippet": "\\quad Reinforcing & 2 & 40\\% \\\\"
             },
             {
-              "line": 2595,
+              "line": 2601,
               "snippet": "\\quad Specialization & 2 & 40\\% \\\\"
             },
             {
-              "line": 2596,
+              "line": 2602,
               "snippet": "\\quad Orthogonal-similar & 1 & 20\\% \\\\"
             }
           ]
@@ -3018,43 +3022,51 @@
               "snippet": "Audio engineering has long used reverb, gating, and compression as diagnostic idioms for structured failure modes. Appendix~\\ref{app:sonification} demonstrat..."
             },
             {
-              "line": 2469,
+              "line": 2471,
               "snippet": "The constraint-composition framework is medium-agnostic: the same $k$-stacking that produces the diagonal-cost cliff in code generation (\\S\\ref{sec:empirical..."
             },
             {
-              "line": 2474,
+              "line": 2476,
               "snippet": "\\caption{Diagonal-cost cliff transfers across modalities. Text-medium 4-model average (dark, $N{=}1839$, blinded external benchmark on Mistral-Large, DeepSee..."
             },
             {
-              "line": 2478,
+              "line": 2480,
               "snippet": "The cliff transfers. At the highest tier the image model satisfies all $11$ compounding format demands jointly at $33\\%$ across $6$ trials; the text-medium $..."
             },
             {
               "line": 2482,
+              "snippet": "Within the text-medium row, command-r-plus is a clean case of the screening problem the paper's $\\hat{\\rho}$ statistic is designed for. Pass rates of $100\\%$..."
+            },
+            {
+              "line": 2484,
+              "snippet": "A note on the failure mode in image medium: the high-tier failures in Run~D are subtle. Outputs satisfy most demands and fall short on one or two compounded ..."
+            },
+            {
+              "line": 2488,
               "snippet": "\\textbf{Claim scope.} Small-$N$ pilot ($N{=}2$ trials per (task, tier) cell). Pass~B scoring is hand-coded by single rater with the rubric and per-trial rati..."
             },
             {
-              "line": 2527,
+              "line": 2533,
               "snippet": "$\\hat{\\rho}$ screens for potential conflict. A hard-negative pair ($\\hat{\\rho}{=}0.50$, 100\\% pass) and a conflicting pair ($\\hat{\\rho}{=}0.52$, 0\\% pass) sh..."
             },
             {
-              "line": 2553,
+              "line": 2559,
               "snippet": "\\item \\textbf{Sparse high-similarity:} Only 7.4\\% of pairs exceed $\\hat{\\rho}{=}0.5$, and 92\\% are below 0.5."
             },
             {
-              "line": 2577,
+              "line": 2583,
               "snippet": "\\noindent The relationship is \\emph{non-monotonic}: medium-$\\hat{\\rho}$ pairs show the highest conflict rate. This matches intuition. Low-$\\hat{\\rho}$ princi..."
             },
             {
-              "line": 2579,
+              "line": 2585,
               "snippet": "\\paragraph{Limitations.} While we now have behavioral validation, it measures \\emph{conflict identification} (can Claude articulate tension?) rather than \\em..."
             },
             {
-              "line": 2582,
+              "line": 2588,
               "snippet": "We deepen the analysis by examining \\emph{why} high-$\\hat{\\rho}$ pairs may or may not conflict. Of 21 pairs with $\\hat{\\rho} \\ge 0.45$: 5 show no conflict (`..."
             },
             {
-              "line": 2610,
+              "line": 2616,
               "snippet": "\\noindent \\textbf{Key insight:} High $\\hat{\\rho}$ is necessary but not sufficient for conflict. The 24\\% compatibility rate among high-$\\hat{\\rho}$ pairs sho..."
             }
           ]
@@ -3160,11 +3172,15 @@
               "snippet": "1 & 0.00 & 100\\% & Feasible \\\\"
             },
             {
-              "line": 2478,
+              "line": 2480,
               "snippet": "The cliff transfers. At the highest tier the image model satisfies all $11$ compounding format demands jointly at $33\\%$ across $6$ trials; the text-medium $..."
             },
             {
-              "line": 2527,
+              "line": 2482,
+              "snippet": "Within the text-medium row, command-r-plus is a clean case of the screening problem the paper's $\\hat{\\rho}$ statistic is designed for. Pass rates of $100\\%$..."
+            },
+            {
+              "line": 2533,
               "snippet": "$\\hat{\\rho}$ screens for potential conflict. A hard-negative pair ($\\hat{\\rho}{=}0.50$, 100\\% pass) and a conflicting pair ($\\hat{\\rho}{=}0.52$, 0\\% pass) sh..."
             }
           ]
@@ -3181,11 +3197,11 @@
           "pattern": "190\\s+pairs|190\\\\\\s*pairs",
           "hits": [
             {
-              "line": 2493,
+              "line": 2499,
               "snippet": "\\paragraph{Model.} We use the empirical structure from the Claude Constitution analysis (Appendix~\\ref{app:constitution}): 20 principles yield 190 pairs, of ..."
             },
             {
-              "line": 2544,
+              "line": 2550,
               "snippet": "\\textbf{All 190 pairs} & \\textbf{20} & \\textbf{0.267} & \\textbf{0.897} \\\\"
             }
           ]
@@ -3194,11 +3210,11 @@
           "pattern": "20\\s+principles|20\\\\\\s*principles",
           "hits": [
             {
-              "line": 2493,
+              "line": 2499,
               "snippet": "\\paragraph{Model.} We use the empirical structure from the Claude Constitution analysis (Appendix~\\ref{app:constitution}): 20 principles yield 190 pairs, of ..."
             },
             {
-              "line": 2529,
+              "line": 2535,
               "snippet": "\\paragraph{Method.} Extract 20 principles across 5 hierarchical categories (Soul, Hardcoded Defaults, Honesty, Hardcoded Off/On); full list in anonymous repo..."
             }
           ]
@@ -3456,7 +3472,7 @@
               "snippet": "DeepSeek-Coder & $0.019 \\pm 0.006$ & 93\\% & 7\\% \\\\"
             },
             {
-              "line": 2512,
+              "line": 2518,
               "snippet": "\\noindent At $k{=}2$, 93\\% of charitable constraint pairs are jointly feasible. By $k{=}10$, only 3\\% remain feasible: a 30$\\times$ reduction despite \\emph{n..."
             }
           ]
@@ -3710,8 +3726,12 @@
               "snippet": "IF-DSL is a \\emph{mechanistic analogue} of the diagonal-cost story: objective pass/fail verification, controllable step budget $\\delta$ via edit count, and m..."
             },
             {
-              "line": 2469,
+              "line": 2471,
               "snippet": "The constraint-composition framework is medium-agnostic: the same $k$-stacking that produces the diagonal-cost cliff in code generation (\\S\\ref{sec:empirical..."
+            },
+            {
+              "line": 2482,
+              "snippet": "Within the text-medium row, command-r-plus is a clean case of the screening problem the paper's $\\hat{\\rho}$ statistic is designed for. Pass rates of $100\\%$..."
             }
           ]
         },
@@ -3821,11 +3841,11 @@
               "snippet": "Low ($\\rho{\\approx}0$) & (A) & 100\\% & 100\\% & 100\\% & 100\\% & 100\\% & 100\\% \\\\"
             },
             {
-              "line": 2568,
+              "line": 2574,
               "snippet": "Low (0--0.25) & 105 & 72 & 68.6\\% \\\\"
             },
             {
-              "line": 2577,
+              "line": 2583,
               "snippet": "\\noindent The relationship is \\emph{non-monotonic}: medium-$\\hat{\\rho}$ pairs show the highest conflict rate. This matches intuition. Low-$\\hat{\\rho}$ princi..."
             }
           ]
@@ -3886,7 +3906,7 @@
               "snippet": "$\\rho < 1/(k{-}1)$ ensures $\\Gamma \\succ 0$; our $\\rho_{\\max} \\approx 0.12$--$0.20$ satisfies for $k \\le 4$. Under convex exit-cone assumptions, linear infea..."
             },
             {
-              "line": 2622,
+              "line": 2628,
               "snippet": "\\item \\textbf{formal\\_brief} ($\\hat{\\rho}{=}0.20$): ``Explain ML formally (no contractions) in under 50 words.'' Verifiers: word count $\\le 50$, no contracti..."
             }
           ]
@@ -3964,12 +3984,16 @@
               "snippet": "Table~\\ref{tab:if_dsl} shows pass rates across conflict levels under both contracts. The key finding is \\textbf{feasibility fragmentation}: at high conflict ..."
             },
             {
-              "line": 2469,
+              "line": 2471,
               "snippet": "The constraint-composition framework is medium-agnostic: the same $k$-stacking that produces the diagonal-cost cliff in code generation (\\S\\ref{sec:empirical..."
             },
             {
-              "line": 2474,
+              "line": 2476,
               "snippet": "\\caption{Diagonal-cost cliff transfers across modalities. Text-medium 4-model average (dark, $N{=}1839$, blinded external benchmark on Mistral-Large, DeepSee..."
+            },
+            {
+              "line": 2482,
+              "snippet": "Within the text-medium row, command-r-plus is a clean case of the screening problem the paper's $\\hat{\\rho}$ statistic is designed for. Pass rates of $100\\%$..."
             }
           ]
         },
@@ -4159,15 +4183,15 @@
               "snippet": "\\caption{Bytebeat pass rates by conflict ($N=64$). High-$\\rho$ sets show feasibility collapse, confirming the feasibility-cliff prediction.}"
             },
             {
-              "line": 2570,
+              "line": 2576,
               "snippet": "High (0.45--1) & 21 & 16 & 76.2\\% \\\\"
             },
             {
-              "line": 2587,
+              "line": 2593,
               "snippet": "\\caption{High-$\\hat{\\rho}$ pair analysis: why similar constraints may or may not conflict.}"
             },
             {
-              "line": 2610,
+              "line": 2616,
               "snippet": "\\noindent \\textbf{Key insight:} High $\\hat{\\rho}$ is necessary but not sufficient for conflict. The 24\\% compatibility rate among high-$\\hat{\\rho}$ pairs sho..."
             }
           ]
@@ -4216,7 +4240,7 @@
               "snippet": "\\item High tier ($\\hat{\\rho} = 0.65$): 23.1\\% regression rate"
             },
             {
-              "line": 2624,
+              "line": 2630,
               "snippet": "\\item \\textbf{no\\_common\\_words} ($\\hat{\\rho}{=}0.65$): ``Describe ocean without: water, blue, wave, fish, sea.'' Verifiers: 5 word-boundary regex checks."
             }
           ]
@@ -4296,7 +4320,7 @@
               "snippet": "0.5 & 2.0000 & 2.0000 \\\\"
             },
             {
-              "line": 2448,
+              "line": 2450,
               "snippet": "Formula / value coherence (L9) & Numerical instances match their source formulas (e.g., $\\sqrt{2/(1{-}\\rho)}$ at $\\rho{=}0.5$ is $2.0000$); tier orderings mo..."
             }
           ]
@@ -4621,7 +4645,7 @@
               "snippet": "$\\rho < 1/(k{-}1)$ ensures $\\Gamma \\succ 0$; our $\\rho_{\\max} \\approx 0.12$--$0.20$ satisfies for $k \\le 4$. Under convex exit-cone assumptions, linear infea..."
             },
             {
-              "line": 2577,
+              "line": 2583,
               "snippet": "\\noindent The relationship is \\emph{non-monotonic}: medium-$\\hat{\\rho}$ pairs show the highest conflict rate. This matches intuition. Low-$\\hat{\\rho}$ princi..."
             }
           ]
@@ -4727,7 +4751,7 @@
               "snippet": "\\item Encode with sentence-transformers (MiniLM-L6-v2 recommended; 384-dim, fast)"
             },
             {
-              "line": 2529,
+              "line": 2535,
               "snippet": "\\paragraph{Method.} Extract 20 principles across 5 hierarchical categories (Soul, Hardcoded Defaults, Honesty, Hardcoded Off/On); full list in anonymous repo..."
             }
           ]
@@ -4891,7 +4915,7 @@
               "snippet": "$\\rho < 1/(k{-}1)$ ensures $\\Gamma \\succ 0$; our $\\rho_{\\max} \\approx 0.12$--$0.20$ satisfies for $k \\le 4$. Under convex exit-cone assumptions, linear infea..."
             },
             {
-              "line": 2622,
+              "line": 2628,
               "snippet": "\\item \\textbf{formal\\_brief} ($\\hat{\\rho}{=}0.20$): ``Explain ML formally (no contractions) in under 50 words.'' Verifiers: word count $\\le 50$, no contracti..."
             }
           ]
@@ -5019,7 +5043,7 @@
               "snippet": "\\item High tier ($\\hat{\\rho} = 0.65$): 23.1\\% regression rate"
             },
             {
-              "line": 2624,
+              "line": 2630,
               "snippet": "\\item \\textbf{no\\_common\\_words} ($\\hat{\\rho}{=}0.65$): ``Describe ocean without: water, blue, wave, fish, sea.'' Verifiers: 5 word-boundary regex checks."
             }
           ]
@@ -5056,7 +5080,7 @@
               "snippet": "To isolate $\\hat{\\rho}$ from task difficulty, we construct \\emph{iso-difficulty pairs}: tasks with matched single-constraint pass rates but different $\\hat{\\..."
             },
             {
-              "line": 2577,
+              "line": 2583,
               "snippet": "\\noindent The relationship is \\emph{non-monotonic}: medium-$\\hat{\\rho}$ pairs show the highest conflict rate. This matches intuition. Low-$\\hat{\\rho}$ princi..."
             }
           ]
@@ -5149,7 +5173,7 @@
               "snippet": "\\item \\textbf{Temperature sensitivity:} Greedy ($T{=}0$) reduces $\\hat{L}$ by $\\sim$15\\%; $T{=}0.7$ yields the reported values; $T{=}1.0$ increases $\\hat{L}$..."
             },
             {
-              "line": 2596,
+              "line": 2602,
               "snippet": "\\quad Orthogonal-similar & 1 & 20\\% \\\\"
             }
           ]
@@ -5233,7 +5257,7 @@
               "snippet": "0.5 & 2.0000 & 2.0000 \\\\"
             },
             {
-              "line": 2448,
+              "line": 2450,
               "snippet": "Formula / value coherence (L9) & Numerical instances match their source formulas (e.g., $\\sqrt{2/(1{-}\\rho)}$ at $\\rho{=}0.5$ is $2.0000$); tier orderings mo..."
             }
           ]
@@ -5569,7 +5593,7 @@
               "snippet": "\\noindent \\textbf{Query efficiency:} As Table~\\ref{tab:baselines} shows, geometric routing uses 15--25\\% fewer tokens (evaluation budget) than always-stage w..."
             },
             {
-              "line": 2549,
+              "line": 2555,
               "snippet": "\\noindent\\textbf{Distribution:} $\\hat{\\rho} \\in [0, 0.3)$: 68\\%; $[0.3, 0.5)$: 25\\%; $[0.5, 0.7)$: 6\\%; $\\ge 0.7$: 1\\%. Random $k{=}4$ subsets: $\\max_{ij}\\ha..."
             }
           ]
@@ -5787,7 +5811,7 @@
               "snippet": "& & 1-shot & Staged & 1-shot & Staged & 1-shot & Staged \\\\"
             },
             {
-              "line": 2627,
+              "line": 2633,
               "snippet": "\\paragraph{Purpose.} This dataset enables future work to measure \\emph{constraint interference} directly: does staged prompting improve pass rates on determi..."
             }
           ]
@@ -6224,15 +6248,15 @@
               "snippet": "If naive listeners reliably perceive high-$\\rho$ sounds as rougher, this constitutes physical evidence that the geometric framework captures something real a..."
             },
             {
-              "line": 2489,
+              "line": 2495,
               "snippet": "For deterministic verifiers, $\\tau{=}1$ (binary). Soft constraints (e.g., ``be polite'') require a measurable proxy: the specification problem, orthogonal to..."
             },
             {
-              "line": 2514,
+              "line": 2520,
               "snippet": "\\paragraph{Key finding.} Feasibility decay is \\textbf{geometric}, not adversarial. The $\\binom{k}{2}$ pairwise compatibility checks compound: even 7.37\\% con..."
             },
             {
-              "line": 2518,
+              "line": 2524,
               "snippet": "\\paragraph{On \\emph{cost}.} The framing of intelligent behavior as cost minimization over structured spaces has deep roots in thermodynamics, variational inf..."
             }
           ]
@@ -6666,39 +6690,39 @@
               "snippet": "\\item[$\\checkmark$] \\textbf{Compute:} Core validation runs on CPU in $<5$ minutes. The full 4-model LLM code experiment takes $\\sim$20 hours on a single RTX ..."
             },
             {
-              "line": 2469,
+              "line": 2471,
               "snippet": "The constraint-composition framework is medium-agnostic: the same $k$-stacking that produces the diagonal-cost cliff in code generation (\\S\\ref{sec:empirical..."
             },
             {
-              "line": 2482,
+              "line": 2488,
               "snippet": "\\textbf{Claim scope.} Small-$N$ pilot ($N{=}2$ trials per (task, tier) cell). Pass~B scoring is hand-coded by single rater with the rubric and per-trial rati..."
             },
             {
-              "line": 2491,
+              "line": 2497,
               "snippet": "\\paragraph{Definition.} Charitable constraints are \\textbf{designed for compatibility}: they encode cooperative intent (helpful, honest, harmless) and are in..."
             },
             {
-              "line": 2529,
+              "line": 2535,
               "snippet": "\\paragraph{Method.} Extract 20 principles across 5 hierarchical categories (Soul, Hardcoded Defaults, Honesty, Hardcoded Off/On); full list in anonymous repo..."
             },
             {
-              "line": 2538,
+              "line": 2544,
               "snippet": "Hardcoded Defaults & 6 & 0.373 & 0.861 \\\\"
             },
             {
-              "line": 2540,
+              "line": 2546,
               "snippet": "Hardcoded Off & 3 & 0.136 & 0.193 \\\\"
             },
             {
-              "line": 2541,
+              "line": 2547,
               "snippet": "Hardcoded On & 2 & 0.156 & 0.156 \\\\"
             },
             {
-              "line": 2617,
+              "line": 2623,
               "snippet": "Each task contains 2--5 constraints with programmatic verifiers: JSON schema validation, word count bounds, regex patterns, Python AST checks, etc. Estimated..."
             },
             {
-              "line": 2627,
+              "line": 2633,
               "snippet": "\\paragraph{Purpose.} This dataset enables future work to measure \\emph{constraint interference} directly: does staged prompting improve pass rates on determi..."
             }
           ]
@@ -7281,7 +7305,7 @@
               "snippet": "Median direction drift: $0.07$ (IQR: $0.03$--$0.12$). 94\\% of trajectories show drift ${<}0.15$. The constraint geometry is remarkably stable: directions est..."
             },
             {
-              "line": 2495,
+              "line": 2501,
               "snippet": "P(\\text{feasible}) = (1 - p_{\\text{conflict}})^{\\binom{k}{2}} = (1 - 0.0737)^{k(k-1)/2}"
             }
           ]
@@ -7365,7 +7389,7 @@
               "snippet": "$\\rho < 1/(k{-}1)$ ensures $\\Gamma \\succ 0$; our $\\rho_{\\max} \\approx 0.12$--$0.20$ satisfies for $k \\le 4$. Under convex exit-cone assumptions, linear infea..."
             },
             {
-              "line": 2577,
+              "line": 2583,
               "snippet": "\\noindent The relationship is \\emph{non-monotonic}: medium-$\\hat{\\rho}$ pairs show the highest conflict rate. This matches intuition. Low-$\\hat{\\rho}$ princi..."
             }
           ]
@@ -7432,11 +7456,11 @@
           "pattern": "190\\s+pairs|190\\\\\\s*pairs",
           "hits": [
             {
-              "line": 2493,
+              "line": 2499,
               "snippet": "\\paragraph{Model.} We use the empirical structure from the Claude Constitution analysis (Appendix~\\ref{app:constitution}): 20 principles yield 190 pairs, of ..."
             },
             {
-              "line": 2544,
+              "line": 2550,
               "snippet": "\\textbf{All 190 pairs} & \\textbf{20} & \\textbf{0.267} & \\textbf{0.897} \\\\"
             }
           ]
@@ -7445,11 +7469,11 @@
           "pattern": "7\\.37",
           "hits": [
             {
-              "line": 2493,
+              "line": 2499,
               "snippet": "\\paragraph{Model.} We use the empirical structure from the Claude Constitution analysis (Appendix~\\ref{app:constitution}): 20 principles yield 190 pairs, of ..."
             },
             {
-              "line": 2514,
+              "line": 2520,
               "snippet": "\\paragraph{Key finding.} Feasibility decay is \\textbf{geometric}, not adversarial. The $\\binom{k}{2}$ pairwise compatibility checks compound: even 7.37\\% con..."
             }
           ]
@@ -7466,7 +7490,7 @@
           "pattern": "0\\.267",
           "hits": [
             {
-              "line": 2544,
+              "line": 2550,
               "snippet": "\\textbf{All 190 pairs} & \\textbf{20} & \\textbf{0.267} & \\textbf{0.897} \\\\"
             }
           ]
@@ -7483,11 +7507,11 @@
               "snippet": "\\draw[->, line width=1pt, constraintB] (0,0) -- (-0.5,0.866) node[above left, black] {\\tiny $v$};"
             },
             {
-              "line": 2538,
+              "line": 2544,
               "snippet": "Hardcoded Defaults & 6 & 0.373 & 0.861 \\\\"
             },
             {
-              "line": 2555,
+              "line": 2561,
               "snippet": "\\item \\textbf{Intentional redundancy:} Top pairs (0.90, 0.86) are \\emph{designed} duplicates (emergency services, illegal actions): reinforcement, not conflict."
             }
           ]
@@ -7504,7 +7528,7 @@
           "pattern": "15\\s+compound|compound\\s+tasks",
           "hits": [
             {
-              "line": 2614,
+              "line": 2620,
               "snippet": "To complement the constitution analysis, we curate 15 compound instruction tasks with \\textbf{deterministic verifiers}. No hand-crafted scenarios, no researc..."
             }
           ]
@@ -7573,11 +7597,11 @@
               "snippet": "\\item \\textbf{Safety-helpfulness}: Our measured $\\rho \\approx 0.15$"
             },
             {
-              "line": 2541,
+              "line": 2547,
               "snippet": "Hardcoded On & 2 & 0.156 & 0.156 \\\\"
             },
             {
-              "line": 2617,
+              "line": 2623,
               "snippet": "Each task contains 2--5 constraints with programmatic verifiers: JSON schema validation, word count bounds, regex patterns, Python AST checks, etc. Estimated..."
             }
           ]
@@ -7594,11 +7618,11 @@
               "snippet": "\\draw[white, line width=1pt, dashed] (axis cs:0,1.2) -- (axis cs:0.75,1.2);"
             },
             {
-              "line": 2617,
+              "line": 2623,
               "snippet": "Each task contains 2--5 constraints with programmatic verifiers: JSON schema validation, word count bounds, regex patterns, Python AST checks, etc. Estimated..."
             },
             {
-              "line": 2621,
+              "line": 2627,
               "snippet": "\\item \\textbf{json\\_recipe} ($\\hat{\\rho}{=}0.75$): ``Write a recipe in JSON with fields name, ingredients, steps, prep\\_time\\_minutes.'' Verifiers: valid JSO..."
             }
           ]
@@ -7756,23 +7780,23 @@
               "snippet": "2 & 0.47 & 59\\% & Marginal \\\\"
             },
             {
-              "line": 2537,
+              "line": 2543,
               "snippet": "Soul (core) & 4 & 0.243 & 0.419 \\\\"
             },
             {
-              "line": 2539,
+              "line": 2545,
               "snippet": "Honesty & 5 & 0.387 & 0.495 \\\\"
             },
             {
-              "line": 2569,
+              "line": 2575,
               "snippet": "Med (0.25--0.45) & 64 & 58 & \\textbf{90.6\\%} \\\\"
             },
             {
-              "line": 2570,
+              "line": 2576,
               "snippet": "High (0.45--1) & 21 & 16 & 76.2\\% \\\\"
             },
             {
-              "line": 2582,
+              "line": 2588,
               "snippet": "We deepen the analysis by examining \\emph{why} high-$\\hat{\\rho}$ pairs may or may not conflict. Of 21 pairs with $\\hat{\\rho} \\ge 0.45$: 5 show no conflict (`..."
             }
           ]
@@ -8121,23 +8145,27 @@
               "snippet": "4 & 0.80 & 0\\% & Infeasible \\\\"
             },
             {
-              "line": 2478,
+              "line": 2480,
               "snippet": "The cliff transfers. At the highest tier the image model satisfies all $11$ compounding format demands jointly at $33\\%$ across $6$ trials; the text-medium $..."
             },
             {
-              "line": 2527,
+              "line": 2482,
+              "snippet": "Within the text-medium row, command-r-plus is a clean case of the screening problem the paper's $\\hat{\\rho}$ statistic is designed for. Pass rates of $100\\%$..."
+            },
+            {
+              "line": 2533,
               "snippet": "$\\hat{\\rho}$ screens for potential conflict. A hard-negative pair ($\\hat{\\rho}{=}0.50$, 100\\% pass) and a conflicting pair ($\\hat{\\rho}{=}0.52$, 0\\% pass) sh..."
             },
             {
-              "line": 2594,
+              "line": 2600,
               "snippet": "\\quad Reinforcing & 2 & 40\\% \\\\"
             },
             {
-              "line": 2595,
+              "line": 2601,
               "snippet": "\\quad Specialization & 2 & 40\\% \\\\"
             },
             {
-              "line": 2596,
+              "line": 2602,
               "snippet": "\\quad Orthogonal-similar & 1 & 20\\% \\\\"
             }
           ]
@@ -8366,43 +8394,51 @@
               "snippet": "Audio engineering has long used reverb, gating, and compression as diagnostic idioms for structured failure modes. Appendix~\\ref{app:sonification} demonstrat..."
             },
             {
-              "line": 2469,
+              "line": 2471,
               "snippet": "The constraint-composition framework is medium-agnostic: the same $k$-stacking that produces the diagonal-cost cliff in code generation (\\S\\ref{sec:empirical..."
             },
             {
-              "line": 2474,
+              "line": 2476,
               "snippet": "\\caption{Diagonal-cost cliff transfers across modalities. Text-medium 4-model average (dark, $N{=}1839$, blinded external benchmark on Mistral-Large, DeepSee..."
             },
             {
-              "line": 2478,
+              "line": 2480,
               "snippet": "The cliff transfers. At the highest tier the image model satisfies all $11$ compounding format demands jointly at $33\\%$ across $6$ trials; the text-medium $..."
             },
             {
               "line": 2482,
+              "snippet": "Within the text-medium row, command-r-plus is a clean case of the screening problem the paper's $\\hat{\\rho}$ statistic is designed for. Pass rates of $100\\%$..."
+            },
+            {
+              "line": 2484,
+              "snippet": "A note on the failure mode in image medium: the high-tier failures in Run~D are subtle. Outputs satisfy most demands and fall short on one or two compounded ..."
+            },
+            {
+              "line": 2488,
               "snippet": "\\textbf{Claim scope.} Small-$N$ pilot ($N{=}2$ trials per (task, tier) cell). Pass~B scoring is hand-coded by single rater with the rubric and per-trial rati..."
             },
             {
-              "line": 2527,
+              "line": 2533,
               "snippet": "$\\hat{\\rho}$ screens for potential conflict. A hard-negative pair ($\\hat{\\rho}{=}0.50$, 100\\% pass) and a conflicting pair ($\\hat{\\rho}{=}0.52$, 0\\% pass) sh..."
             },
             {
-              "line": 2553,
+              "line": 2559,
               "snippet": "\\item \\textbf{Sparse high-similarity:} Only 7.4\\% of pairs exceed $\\hat{\\rho}{=}0.5$, and 92\\% are below 0.5."
             },
             {
-              "line": 2577,
+              "line": 2583,
               "snippet": "\\noindent The relationship is \\emph{non-monotonic}: medium-$\\hat{\\rho}$ pairs show the highest conflict rate. This matches intuition. Low-$\\hat{\\rho}$ princi..."
             },
             {
-              "line": 2579,
+              "line": 2585,
               "snippet": "\\paragraph{Limitations.} While we now have behavioral validation, it measures \\emph{conflict identification} (can Claude articulate tension?) rather than \\em..."
             },
             {
-              "line": 2582,
+              "line": 2588,
               "snippet": "We deepen the analysis by examining \\emph{why} high-$\\hat{\\rho}$ pairs may or may not conflict. Of 21 pairs with $\\hat{\\rho} \\ge 0.45$: 5 show no conflict (`..."
             },
             {
-              "line": 2610,
+              "line": 2616,
               "snippet": "\\noindent \\textbf{Key insight:} High $\\hat{\\rho}$ is necessary but not sufficient for conflict. The 24\\% compatibility rate among high-$\\hat{\\rho}$ pairs sho..."
             }
           ]
@@ -8511,15 +8547,15 @@
               "snippet": "4 & 0.80 & 0\\% & Infeasible \\\\"
             },
             {
-              "line": 2538,
+              "line": 2544,
               "snippet": "Hardcoded Defaults & 6 & 0.373 & 0.861 \\\\"
             },
             {
-              "line": 2544,
+              "line": 2550,
               "snippet": "\\textbf{All 190 pairs} & \\textbf{20} & \\textbf{0.267} & \\textbf{0.897} \\\\"
             },
             {
-              "line": 2555,
+              "line": 2561,
               "snippet": "\\item \\textbf{Intentional redundancy:} Top pairs (0.90, 0.86) are \\emph{designed} duplicates (emergency services, illegal actions): reinforcement, not conflict."
             }
           ]
@@ -8808,11 +8844,11 @@
               "snippet": "Control & 0.05 & 76\\% & 78\\% & 24\\% \\\\"
             },
             {
-              "line": 2527,
+              "line": 2533,
               "snippet": "$\\hat{\\rho}$ screens for potential conflict. A hard-negative pair ($\\hat{\\rho}{=}0.50$, 100\\% pass) and a conflicting pair ($\\hat{\\rho}{=}0.52$, 0\\% pass) sh..."
             },
             {
-              "line": 2610,
+              "line": 2616,
               "snippet": "\\noindent \\textbf{Key insight:} High $\\hat{\\rho}$ is necessary but not sufficient for conflict. The 24\\% compatibility rate among high-$\\hat{\\rho}$ pairs sho..."
             }
           ]
@@ -8821,7 +8857,7 @@
           "pattern": "reinforcing",
           "hits": [
             {
-              "line": 2527,
+              "line": 2533,
               "snippet": "$\\hat{\\rho}$ screens for potential conflict. A hard-negative pair ($\\hat{\\rho}{=}0.50$, 100\\% pass) and a conflicting pair ($\\hat{\\rho}{=}0.52$, 0\\% pass) sh..."
             }
           ]
@@ -8858,11 +8894,11 @@
               "snippet": "Hard-negative and conflicting have indistinguishable $\\hat{\\rho}$ ($0.50$ vs $0.52$) yet opposite outcomes (100\\% vs 0\\%). This falsifies ``high $\\hat{\\rho}$..."
             },
             {
-              "line": 2527,
+              "line": 2533,
               "snippet": "$\\hat{\\rho}$ screens for potential conflict. A hard-negative pair ($\\hat{\\rho}{=}0.50$, 100\\% pass) and a conflicting pair ($\\hat{\\rho}{=}0.52$, 0\\% pass) sh..."
             },
             {
-              "line": 2579,
+              "line": 2585,
               "snippet": "\\paragraph{Limitations.} While we now have behavioral validation, it measures \\emph{conflict identification} (can Claude articulate tension?) rather than \\em..."
             }
           ]
@@ -8875,7 +8911,7 @@
               "snippet": "\\item \\textbf{Hard-negative} ($k{=}8$, $\\hat{\\rho}{=}0.50$): reverse-string with near-identical constraint descriptions (``max 15 lines'' / ``at most 15 line..."
             },
             {
-              "line": 2527,
+              "line": 2533,
               "snippet": "$\\hat{\\rho}$ screens for potential conflict. A hard-negative pair ($\\hat{\\rho}{=}0.50$, 100\\% pass) and a conflicting pair ($\\hat{\\rho}{=}0.52$, 0\\% pass) sh..."
             }
           ]
@@ -8908,35 +8944,43 @@
               "snippet": "Medium & 10 & 0.53 & 100/100 & Solvable \\\\"
             },
             {
-              "line": 2468,
+              "line": 2470,
               "snippet": "\\paragraph{Bound Transfer to Image Medium.}\\label{app:image_transfer}"
             },
             {
-              "line": 2469,
+              "line": 2471,
               "snippet": "The constraint-composition framework is medium-agnostic: the same $k$-stacking that produces the diagonal-cost cliff in code generation (\\S\\ref{sec:empirical..."
             },
             {
-              "line": 2474,
+              "line": 2476,
               "snippet": "\\caption{Diagonal-cost cliff transfers across modalities. Text-medium 4-model average (dark, $N{=}1839$, blinded external benchmark on Mistral-Large, DeepSee..."
             },
             {
-              "line": 2478,
+              "line": 2480,
               "snippet": "The cliff transfers. At the highest tier the image model satisfies all $11$ compounding format demands jointly at $33\\%$ across $6$ trials; the text-medium $..."
             },
             {
-              "line": 2480,
+              "line": 2482,
+              "snippet": "Within the text-medium row, command-r-plus is a clean case of the screening problem the paper's $\\hat{\\rho}$ statistic is designed for. Pass rates of $100\\%$..."
+            },
+            {
+              "line": 2484,
+              "snippet": "A note on the failure mode in image medium: the high-tier failures in Run~D are subtle. Outputs satisfy most demands and fall short on one or two compounded ..."
+            },
+            {
+              "line": 2486,
               "snippet": "\\textbf{Methodological exploration} (Runs A--C, supplementary, full data preserved in \\texttt{supplementary/experiments\\_rebuttal/image\\_transfer/}). Three p..."
             },
             {
-              "line": 2482,
+              "line": 2488,
               "snippet": "\\textbf{Claim scope.} Small-$N$ pilot ($N{=}2$ trials per (task, tier) cell). Pass~B scoring is hand-coded by single rater with the rubric and per-trial rati..."
             },
             {
-              "line": 2577,
+              "line": 2583,
               "snippet": "\\noindent The relationship is \\emph{non-monotonic}: medium-$\\hat{\\rho}$ pairs show the highest conflict rate. This matches intuition. Low-$\\hat{\\rho}$ princi..."
             },
             {
-              "line": 2610,
+              "line": 2616,
               "snippet": "\\noindent \\textbf{Key insight:} High $\\hat{\\rho}$ is necessary but not sufficient for conflict. The 24\\% compatibility rate among high-$\\hat{\\rho}$ pairs sho..."
             }
           ]
@@ -9030,15 +9074,15 @@
               "snippet": "\\item Dissonant intervals $\\leftrightarrow$ High $\\rho$ (conflicting constraints)"
             },
             {
-              "line": 2527,
+              "line": 2533,
               "snippet": "$\\hat{\\rho}$ screens for potential conflict. A hard-negative pair ($\\hat{\\rho}{=}0.50$, 100\\% pass) and a conflicting pair ($\\hat{\\rho}{=}0.52$, 0\\% pass) sh..."
             },
             {
-              "line": 2598,
+              "line": 2604,
               "snippet": "\\multicolumn{3}{l}{\\textit{Conflicting:}} \\\\"
             },
             {
-              "line": 2608,
+              "line": 2614,
               "snippet": "\\noindent \\textbf{Conflicting pairs} reveal an error taxonomy: (1)~\\emph{Priority ambiguity} (62\\%): both principles apply but resolution requires contextual..."
             }
           ]
@@ -9059,7 +9103,7 @@
               "snippet": "Hard-negative and conflicting have indistinguishable $\\hat{\\rho}$ ($0.50$ vs $0.52$) yet opposite outcomes (100\\% vs 0\\%). This falsifies ``high $\\hat{\\rho}$..."
             },
             {
-              "line": 2527,
+              "line": 2533,
               "snippet": "$\\hat{\\rho}$ screens for potential conflict. A hard-negative pair ($\\hat{\\rho}{=}0.50$, 100\\% pass) and a conflicting pair ($\\hat{\\rho}{=}0.52$, 0\\% pass) sh..."
             }
           ]
@@ -9076,7 +9120,7 @@
           "pattern": "json\\\\?_recipe",
           "hits": [
             {
-              "line": 2621,
+              "line": 2627,
               "snippet": "\\item \\textbf{json\\_recipe} ($\\hat{\\rho}{=}0.75$): ``Write a recipe in JSON with fields name, ingredients, steps, prep\\_time\\_minutes.'' Verifiers: valid JSO..."
             }
           ]
@@ -9093,17 +9137,17 @@
               "snippet": "\\draw[white, line width=1pt, dashed] (axis cs:0,1.2) -- (axis cs:0.75,1.2);"
             },
             {
-              "line": 2617,
+              "line": 2623,
               "snippet": "Each task contains 2--5 constraints with programmatic verifiers: JSON schema validation, word count bounds, regex patterns, Python AST checks, etc. Estimated..."
             },
             {
-              "line": 2621,
+              "line": 2627,
               "snippet": "\\item \\textbf{json\\_recipe} ($\\hat{\\rho}{=}0.75$): ``Write a recipe in JSON with fields name, ingredients, steps, prep\\_time\\_minutes.'' Verifiers: valid JSO..."
             }
           ]
         }
       ],
-      "notes": "All 2 patterns co-occur within 3-line window (anchor line ~2620)."
+      "notes": "All 2 patterns co-occur within 3-line window (anchor line ~2626)."
     },
     {
       "claim_id": "T5",
@@ -9114,7 +9158,7 @@
           "pattern": "formal\\\\?_brief",
           "hits": [
             {
-              "line": 2622,
+              "line": 2628,
               "snippet": "\\item \\textbf{formal\\_brief} ($\\hat{\\rho}{=}0.20$): ``Explain ML formally (no contractions) in under 50 words.'' Verifiers: word count $\\le 50$, no contracti..."
             }
           ]
@@ -9175,13 +9219,13 @@
               "snippet": "$\\rho < 1/(k{-}1)$ ensures $\\Gamma \\succ 0$; our $\\rho_{\\max} \\approx 0.12$--$0.20$ satisfies for $k \\le 4$. Under convex exit-cone assumptions, linear infea..."
             },
             {
-              "line": 2622,
+              "line": 2628,
               "snippet": "\\item \\textbf{formal\\_brief} ($\\hat{\\rho}{=}0.20$): ``Explain ML formally (no contractions) in under 50 words.'' Verifiers: word count $\\le 50$, no contracti..."
             }
           ]
         }
       ],
-      "notes": "All 2 patterns co-occur within 3-line window (anchor line ~2621)."
+      "notes": "All 2 patterns co-occur within 3-line window (anchor line ~2627)."
     },
     {
       "claim_id": "T6",
@@ -9192,7 +9236,7 @@
           "pattern": "python\\\\?_no\\\\?_imports",
           "hits": [
             {
-              "line": 2623,
+              "line": 2629,
               "snippet": "\\item \\textbf{python\\_no\\_imports} ($\\hat{\\rho}{=}0.55$): ``Write factorial() without imports.'' Verifiers: valid Python AST, no Import nodes, defines factor..."
             }
           ]
@@ -9225,13 +9269,13 @@
               "snippet": "moderate & 0.55 & 180 & 0.0\\% & 2.5\\% & 5\\% & \\textbf{97.5\\%} \\\\"
             },
             {
-              "line": 2623,
+              "line": 2629,
               "snippet": "\\item \\textbf{python\\_no\\_imports} ($\\hat{\\rho}{=}0.55$): ``Write factorial() without imports.'' Verifiers: valid Python AST, no Import nodes, defines factor..."
             }
           ]
         }
       ],
-      "notes": "All 2 patterns co-occur within 3-line window (anchor line ~2622)."
+      "notes": "All 2 patterns co-occur within 3-line window (anchor line ~2628)."
     },
     {
       "claim_id": "T7",
@@ -9242,7 +9286,7 @@
           "pattern": "no\\\\?_common\\\\?_words",
           "hits": [
             {
-              "line": 2624,
+              "line": 2630,
               "snippet": "\\item \\textbf{no\\_common\\_words} ($\\hat{\\rho}{=}0.65$): ``Describe ocean without: water, blue, wave, fish, sea.'' Verifiers: 5 word-boundary regex checks."
             }
           ]
@@ -9291,13 +9335,13 @@
               "snippet": "\\item High tier ($\\hat{\\rho} = 0.65$): 23.1\\% regression rate"
             },
             {
-              "line": 2624,
+              "line": 2630,
               "snippet": "\\item \\textbf{no\\_common\\_words} ($\\hat{\\rho}{=}0.65$): ``Describe ocean without: water, blue, wave, fish, sea.'' Verifiers: 5 word-boundary regex checks."
             }
           ]
         }
       ],
-      "notes": "All 2 patterns co-occur within 3-line window (anchor line ~2623)."
+      "notes": "All 2 patterns co-occur within 3-line window (anchor line ~2629)."
     },
     {
       "claim_id": "T8",
@@ -9308,7 +9352,7 @@
           "pattern": "[Ww]ithin[-\\s]?category",
           "hits": [
             {
-              "line": 2554,
+              "line": 2560,
               "snippet": "\\item \\textbf{Hierarchical grouping:} Within-category $\\hat{\\rho}$ (0.328) $>$ cross-category (0.253), with ratio 1.30$\\times$."
             }
           ]
@@ -9317,13 +9361,13 @@
           "pattern": "0\\.328",
           "hits": [
             {
-              "line": 2554,
+              "line": 2560,
               "snippet": "\\item \\textbf{Hierarchical grouping:} Within-category $\\hat{\\rho}$ (0.328) $>$ cross-category (0.253), with ratio 1.30$\\times$."
             }
           ]
         }
       ],
-      "notes": "All 2 patterns co-occur within 3-line window (anchor line ~2553)."
+      "notes": "All 2 patterns co-occur within 3-line window (anchor line ~2559)."
     },
     {
       "claim_id": "T9",
@@ -9334,11 +9378,11 @@
           "pattern": "[Cc]ross[-\\s]?category",
           "hits": [
             {
-              "line": 2543,
+              "line": 2549,
               "snippet": "Cross-category & --- & 0.253 & --- \\\\"
             },
             {
-              "line": 2554,
+              "line": 2560,
               "snippet": "\\item \\textbf{Hierarchical grouping:} Within-category $\\hat{\\rho}$ (0.328) $>$ cross-category (0.253), with ratio 1.30$\\times$."
             }
           ]
@@ -9347,17 +9391,17 @@
           "pattern": "0\\.253",
           "hits": [
             {
-              "line": 2543,
+              "line": 2549,
               "snippet": "Cross-category & --- & 0.253 & --- \\\\"
             },
             {
-              "line": 2554,
+              "line": 2560,
               "snippet": "\\item \\textbf{Hierarchical grouping:} Within-category $\\hat{\\rho}$ (0.328) $>$ cross-category (0.253), with ratio 1.30$\\times$."
             }
           ]
         }
       ],
-      "notes": "All 2 patterns co-occur within 3-line window (anchor line ~2542)."
+      "notes": "All 2 patterns co-occur within 3-line window (anchor line ~2548)."
     },
     {
       "claim_id": "T10",
@@ -9828,39 +9872,43 @@
               "snippet": "An open question for future work: can we construct \\emph{looping systems with no spikes}, protocols that sustain performance across many iterations without b..."
             },
             {
-              "line": 2446,
+              "line": 2448,
               "snippet": "Figure provenance (L4, L5, L11, L12, L14) & Figures bound to scripts and data; assets fresh; in-figure numerics match registry; scripts run; rendered output ..."
             },
             {
-              "line": 2459,
+              "line": 2461,
               "snippet": "\\paragraph{Explanatory Illustrations.}\\label{app:illustrations}"
             },
             {
-              "line": 2460,
+              "line": 2462,
               "snippet": "The framework extends to schematic illustrations: reviewer aids that make formal blocks in the body easier to grok. Each illustration is bound to a specific ..."
             },
             {
-              "line": 2469,
+              "line": 2471,
               "snippet": "The constraint-composition framework is medium-agnostic: the same $k$-stacking that produces the diagonal-cost cliff in code generation (\\S\\ref{sec:empirical..."
             },
             {
-              "line": 2478,
+              "line": 2480,
               "snippet": "The cliff transfers. At the highest tier the image model satisfies all $11$ compounding format demands jointly at $33\\%$ across $6$ trials; the text-medium $..."
             },
             {
-              "line": 2480,
+              "line": 2484,
+              "snippet": "A note on the failure mode in image medium: the high-tier failures in Run~D are subtle. Outputs satisfy most demands and fall short on one or two compounded ..."
+            },
+            {
+              "line": 2486,
               "snippet": "\\textbf{Methodological exploration} (Runs A--C, supplementary, full data preserved in \\texttt{supplementary/experiments\\_rebuttal/image\\_transfer/}). Three p..."
             },
             {
-              "line": 2482,
+              "line": 2488,
               "snippet": "\\textbf{Claim scope.} Small-$N$ pilot ($N{=}2$ trials per (task, tier) cell). Pass~B scoring is hand-coded by single rater with the rubric and per-trial rati..."
             },
             {
-              "line": 2516,
+              "line": 2522,
               "snippet": "\\paragraph{On \\emph{conflict}.} The term may suggest semantic opposition (constraints ``fighting''). But the geometry is simpler: each constraint defines a h..."
             },
             {
-              "line": 2554,
+              "line": 2560,
               "snippet": "\\item \\textbf{Hierarchical grouping:} Within-category $\\hat{\\rho}$ (0.328) $>$ cross-category (0.253), with ratio 1.30$\\times$."
             }
           ]
@@ -9869,13 +9917,13 @@
           "pattern": "1\\.30",
           "hits": [
             {
-              "line": 2554,
+              "line": 2560,
               "snippet": "\\item \\textbf{Hierarchical grouping:} Within-category $\\hat{\\rho}$ (0.328) $>$ cross-category (0.253), with ratio 1.30$\\times$."
             }
           ]
         }
       ],
-      "notes": "All 2 patterns co-occur within 3-line window (anchor line ~2553)."
+      "notes": "All 2 patterns co-occur within 3-line window (anchor line ~2559)."
     },
     {
       "claim_id": "T11",
@@ -9886,19 +9934,19 @@
           "pattern": "190",
           "hits": [
             {
-              "line": 2493,
+              "line": 2499,
               "snippet": "\\paragraph{Model.} We use the empirical structure from the Claude Constitution analysis (Appendix~\\ref{app:constitution}): 20 principles yield 190 pairs, of ..."
             },
             {
-              "line": 2544,
+              "line": 2550,
               "snippet": "\\textbf{All 190 pairs} & \\textbf{20} & \\textbf{0.267} & \\textbf{0.897} \\\\"
             },
             {
-              "line": 2560,
+              "line": 2566,
               "snippet": "\\paragraph{Behavioral Validation.} We validate the structural analysis behaviorally by probing Claude with all 190 principle pairs, asking: ``Can these two p..."
             },
             {
-              "line": 2572,
+              "line": 2578,
               "snippet": "All & 190 & 146 & 76.8\\% \\\\"
             }
           ]
@@ -9907,7 +9955,7 @@
           "pattern": "146",
           "hits": [
             {
-              "line": 2572,
+              "line": 2578,
               "snippet": "All & 190 & 146 & 76.8\\% \\\\"
             }
           ]
@@ -9916,13 +9964,13 @@
           "pattern": "76\\.8",
           "hits": [
             {
-              "line": 2572,
+              "line": 2578,
               "snippet": "All & 190 & 146 & 76.8\\% \\\\"
             }
           ]
         }
       ],
-      "notes": "All 3 patterns co-occur within 3-line window (anchor line ~2571)."
+      "notes": "All 3 patterns co-occur within 3-line window (anchor line ~2577)."
     },
     {
       "claim_id": "T12",
@@ -9933,11 +9981,11 @@
           "pattern": "emergency[-\\s]?service",
           "hits": [
             {
-              "line": 2555,
+              "line": 2561,
               "snippet": "\\item \\textbf{Intentional redundancy:} Top pairs (0.90, 0.86) are \\emph{designed} duplicates (emergency services, illegal actions): reinforcement, not conflict."
             },
             {
-              "line": 2606,
+              "line": 2612,
               "snippet": "\\noindent \\textbf{Compatible pairs} fall into three types: (1)~\\emph{Reinforcing}: both principles address the same goal from complementary angles (e.g., two..."
             }
           ]
@@ -9950,17 +9998,17 @@
               "snippet": "\\item \\path{conflict_R_0.90.wav}: Harsh, rough (near-opposed constraints)"
             },
             {
-              "line": 2555,
+              "line": 2561,
               "snippet": "\\item \\textbf{Intentional redundancy:} Top pairs (0.90, 0.86) are \\emph{designed} duplicates (emergency services, illegal actions): reinforcement, not conflict."
             },
             {
-              "line": 2606,
+              "line": 2612,
               "snippet": "\\noindent \\textbf{Compatible pairs} fall into three types: (1)~\\emph{Reinforcing}: both principles address the same goal from complementary angles (e.g., two..."
             }
           ]
         }
       ],
-      "notes": "All 2 patterns co-occur within 3-line window (anchor line ~2554)."
+      "notes": "All 2 patterns co-occur within 3-line window (anchor line ~2560)."
     },
     {
       "claim_id": "T13",
@@ -10016,11 +10064,11 @@
               "snippet": "Best-of-4 & 12\\% & 1024 & $-9\\%$ \\\\"
             },
             {
-              "line": 2446,
+              "line": 2448,
               "snippet": "Figure provenance (L4, L5, L11, L12, L14) & Figures bound to scripts and data; assets fresh; in-figure numerics match registry; scripts run; rendered output ..."
             },
             {
-              "line": 2577,
+              "line": 2583,
               "snippet": "\\noindent The relationship is \\emph{non-monotonic}: medium-$\\hat{\\rho}$ pairs show the highest conflict rate. This matches intuition. Low-$\\hat{\\rho}$ princi..."
             }
           ]
@@ -10224,7 +10272,7 @@
               "snippet": "To isolate $\\hat{\\rho}$ from task difficulty, we construct \\emph{iso-difficulty pairs}: tasks with matched single-constraint pass rates but different $\\hat{\\..."
             },
             {
-              "line": 2577,
+              "line": 2583,
               "snippet": "\\noindent The relationship is \\emph{non-monotonic}: medium-$\\hat{\\rho}$ pairs show the highest conflict rate. This matches intuition. Low-$\\hat{\\rho}$ princi..."
             }
           ]
@@ -10293,11 +10341,11 @@
               "snippet": "\\item \\textbf{Safety-helpfulness}: Our measured $\\rho \\approx 0.15$"
             },
             {
-              "line": 2541,
+              "line": 2547,
               "snippet": "Hardcoded On & 2 & 0.156 & 0.156 \\\\"
             },
             {
-              "line": 2617,
+              "line": 2623,
               "snippet": "Each task contains 2--5 constraints with programmatic verifiers: JSON schema validation, word count bounds, regex patterns, Python AST checks, etc. Estimated..."
             }
           ]
@@ -10376,7 +10424,7 @@
               "snippet": "\\item \\textbf{One-shot} if: $\\hat{\\rho} < 0.15$ \\emph{or} $c > 0.85$ (low conflict or near-ceiling capability)"
             },
             {
-              "line": 2617,
+              "line": 2623,
               "snippet": "Each task contains 2--5 constraints with programmatic verifiers: JSON schema validation, word count bounds, regex patterns, Python AST checks, etc. Estimated..."
             }
           ]
@@ -10765,7 +10813,7 @@
               "snippet": "An open question for future work: can we construct \\emph{looping systems with no spikes}, protocols that sustain performance across many iterations without b..."
             },
             {
-              "line": 2627,
+              "line": 2633,
               "snippet": "\\paragraph{Purpose.} This dataset enables future work to measure \\emph{constraint interference} directly: does staged prompting improve pass rates on determi..."
             }
           ]
@@ -10782,11 +10830,11 @@
           "pattern": "[Hh]ardcoded[-\\s]?[Oo]ff",
           "hits": [
             {
-              "line": 2529,
+              "line": 2535,
               "snippet": "\\paragraph{Method.} Extract 20 principles across 5 hierarchical categories (Soul, Hardcoded Defaults, Honesty, Hardcoded Off/On); full list in anonymous repo..."
             },
             {
-              "line": 2540,
+              "line": 2546,
               "snippet": "Hardcoded Off & 3 & 0.136 & 0.193 \\\\"
             }
           ]
@@ -10795,7 +10843,7 @@
           "pattern": "0\\.136",
           "hits": [
             {
-              "line": 2540,
+              "line": 2546,
               "snippet": "Hardcoded Off & 3 & 0.136 & 0.193 \\\\"
             }
           ]
@@ -10804,13 +10852,13 @@
           "pattern": "0\\.193",
           "hits": [
             {
-              "line": 2540,
+              "line": 2546,
               "snippet": "Hardcoded Off & 3 & 0.136 & 0.193 \\\\"
             }
           ]
         }
       ],
-      "notes": "All 3 patterns co-occur within 3-line window (anchor line ~2539)."
+      "notes": "All 3 patterns co-occur within 3-line window (anchor line ~2545)."
     },
     {
       "claim_id": "T23",
@@ -10881,7 +10929,7 @@
           "pattern": "\\$k\\$\\s*&\\s*2\\s*&\\s*3\\s*&\\s*4\\s*&\\s*5\\s*&\\s*6\\s*&\\s*8\\s*&\\s*10",
           "hits": [
             {
-              "line": 2504,
+              "line": 2510,
               "snippet": "$k$ & 2 & 3 & 4 & 5 & 6 & 8 & 10 \\\\"
             }
           ]
@@ -10942,55 +10990,55 @@
               "snippet": "Audio engineering has long used reverb, gating, and compression as diagnostic idioms for structured failure modes. Appendix~\\ref{app:sonification} demonstrat..."
             },
             {
-              "line": 2493,
+              "line": 2499,
               "snippet": "\\paragraph{Model.} We use the empirical structure from the Claude Constitution analysis (Appendix~\\ref{app:constitution}): 20 principles yield 190 pairs, of ..."
             },
             {
-              "line": 2506,
+              "line": 2512,
               "snippet": "pairs & 1 & 3 & 6 & 10 & 15 & 28 & 45 \\\\"
             },
             {
-              "line": 2512,
+              "line": 2518,
               "snippet": "\\noindent At $k{=}2$, 93\\% of charitable constraint pairs are jointly feasible. By $k{=}10$, only 3\\% remain feasible: a 30$\\times$ reduction despite \\emph{n..."
             },
             {
-              "line": 2527,
+              "line": 2533,
               "snippet": "$\\hat{\\rho}$ screens for potential conflict. A hard-negative pair ($\\hat{\\rho}{=}0.50$, 100\\% pass) and a conflicting pair ($\\hat{\\rho}{=}0.52$, 0\\% pass) sh..."
             },
             {
-              "line": 2544,
+              "line": 2550,
               "snippet": "\\textbf{All 190 pairs} & \\textbf{20} & \\textbf{0.267} & \\textbf{0.897} \\\\"
             },
             {
-              "line": 2553,
+              "line": 2559,
               "snippet": "\\item \\textbf{Sparse high-similarity:} Only 7.4\\% of pairs exceed $\\hat{\\rho}{=}0.5$, and 92\\% are below 0.5."
             },
             {
-              "line": 2555,
+              "line": 2561,
               "snippet": "\\item \\textbf{Intentional redundancy:} Top pairs (0.90, 0.86) are \\emph{designed} duplicates (emergency services, illegal actions): reinforcement, not conflict."
             },
             {
-              "line": 2560,
+              "line": 2566,
               "snippet": "\\paragraph{Behavioral Validation.} We validate the structural analysis behaviorally by probing Claude with all 190 principle pairs, asking: ``Can these two p..."
             },
             {
-              "line": 2577,
+              "line": 2583,
               "snippet": "\\noindent The relationship is \\emph{non-monotonic}: medium-$\\hat{\\rho}$ pairs show the highest conflict rate. This matches intuition. Low-$\\hat{\\rho}$ princi..."
             },
             {
-              "line": 2582,
+              "line": 2588,
               "snippet": "We deepen the analysis by examining \\emph{why} high-$\\hat{\\rho}$ pairs may or may not conflict. Of 21 pairs with $\\hat{\\rho} \\ge 0.45$: 5 show no conflict (`..."
             },
             {
-              "line": 2606,
+              "line": 2612,
               "snippet": "\\noindent \\textbf{Compatible pairs} fall into three types: (1)~\\emph{Reinforcing}: both principles address the same goal from complementary angles (e.g., two..."
             },
             {
-              "line": 2608,
+              "line": 2614,
               "snippet": "\\noindent \\textbf{Conflicting pairs} reveal an error taxonomy: (1)~\\emph{Priority ambiguity} (62\\%): both principles apply but resolution requires contextual..."
             },
             {
-              "line": 2610,
+              "line": 2616,
               "snippet": "\\noindent \\textbf{Key insight:} High $\\hat{\\rho}$ is necessary but not sufficient for conflict. The 24\\% compatibility rate among high-$\\hat{\\rho}$ pairs sho..."
             }
           ]
@@ -11003,13 +11051,13 @@
               "snippet": "192 & 45.0\\% & 50.0\\% & $+5.0$\\% \\\\"
             },
             {
-              "line": 2506,
+              "line": 2512,
               "snippet": "pairs & 1 & 3 & 6 & 10 & 15 & 28 & 45 \\\\"
             }
           ]
         }
       ],
-      "notes": "All 2 patterns co-occur within 3-line window (anchor line ~2505)."
+      "notes": "All 2 patterns co-occur within 3-line window (anchor line ~2511)."
     },
     {
       "claim_id": "T27",
@@ -11168,23 +11216,23 @@
               "snippet": "An open question for future work: can we construct \\emph{looping systems with no spikes}, protocols that sustain performance across many iterations without b..."
             },
             {
-              "line": 2478,
+              "line": 2480,
               "snippet": "The cliff transfers. At the highest tier the image model satisfies all $11$ compounding format demands jointly at $33\\%$ across $6$ trials; the text-medium $..."
             },
             {
-              "line": 2495,
+              "line": 2501,
               "snippet": "P(\\text{feasible}) = (1 - p_{\\text{conflict}})^{\\binom{k}{2}} = (1 - 0.0737)^{k(k-1)/2}"
             },
             {
-              "line": 2507,
+              "line": 2513,
               "snippet": "feasible (\\%) & 93 & 79 & 63 & 46 & 31 & 12 & 3 \\\\"
             },
             {
-              "line": 2512,
+              "line": 2518,
               "snippet": "\\noindent At $k{=}2$, 93\\% of charitable constraint pairs are jointly feasible. By $k{=}10$, only 3\\% remain feasible: a 30$\\times$ reduction despite \\emph{n..."
             },
             {
-              "line": 2516,
+              "line": 2522,
               "snippet": "\\paragraph{On \\emph{conflict}.} The term may suggest semantic opposition (constraints ``fighting''). But the geometry is simpler: each constraint defines a h..."
             }
           ]
@@ -11221,15 +11269,15 @@
               "snippet": "The iterative protocol defined in Section~J.14 is a behavioral instantiation of the Kaczmarz method \\citep{kaczmarz1937angenaherte}, also known in the optimi..."
             },
             {
-              "line": 2507,
+              "line": 2513,
               "snippet": "feasible (\\%) & 93 & 79 & 63 & 46 & 31 & 12 & 3 \\\\"
             },
             {
-              "line": 2512,
+              "line": 2518,
               "snippet": "\\noindent At $k{=}2$, 93\\% of charitable constraint pairs are jointly feasible. By $k{=}10$, only 3\\% remain feasible: a 30$\\times$ reduction despite \\emph{n..."
             },
             {
-              "line": 2540,
+              "line": 2546,
               "snippet": "Hardcoded Off & 3 & 0.136 & 0.193 \\\\"
             }
           ]
@@ -11238,7 +11286,7 @@
           "pattern": "79",
           "hits": [
             {
-              "line": 2507,
+              "line": 2513,
               "snippet": "feasible (\\%) & 93 & 79 & 63 & 46 & 31 & 12 & 3 \\\\"
             }
           ]
@@ -11251,13 +11299,13 @@
               "snippet": "Qwen-Coder-1.5B & $-63$ & $-37$ & $-30$ & $-33$ & $-30$ \\\\"
             },
             {
-              "line": 2507,
+              "line": 2513,
               "snippet": "feasible (\\%) & 93 & 79 & 63 & 46 & 31 & 12 & 3 \\\\"
             }
           ]
         }
       ],
-      "notes": "All 4 patterns co-occur within 3-line window (anchor line ~2506)."
+      "notes": "All 4 patterns co-occur within 3-line window (anchor line ~2512)."
     },
     {
       "claim_id": "T28",
@@ -11416,23 +11464,23 @@
               "snippet": "An open question for future work: can we construct \\emph{looping systems with no spikes}, protocols that sustain performance across many iterations without b..."
             },
             {
-              "line": 2478,
+              "line": 2480,
               "snippet": "The cliff transfers. At the highest tier the image model satisfies all $11$ compounding format demands jointly at $33\\%$ across $6$ trials; the text-medium $..."
             },
             {
-              "line": 2495,
+              "line": 2501,
               "snippet": "P(\\text{feasible}) = (1 - p_{\\text{conflict}})^{\\binom{k}{2}} = (1 - 0.0737)^{k(k-1)/2}"
             },
             {
-              "line": 2507,
+              "line": 2513,
               "snippet": "feasible (\\%) & 93 & 79 & 63 & 46 & 31 & 12 & 3 \\\\"
             },
             {
-              "line": 2512,
+              "line": 2518,
               "snippet": "\\noindent At $k{=}2$, 93\\% of charitable constraint pairs are jointly feasible. By $k{=}10$, only 3\\% remain feasible: a 30$\\times$ reduction despite \\emph{n..."
             },
             {
-              "line": 2516,
+              "line": 2522,
               "snippet": "\\paragraph{On \\emph{conflict}.} The term may suggest semantic opposition (constraints ``fighting''). But the geometry is simpler: each constraint defines a h..."
             }
           ]
@@ -11445,11 +11493,11 @@
               "snippet": "256 & 46.7\\% & 49.2\\% & $+2.5$\\% \\\\"
             },
             {
-              "line": 2507,
+              "line": 2513,
               "snippet": "feasible (\\%) & 93 & 79 & 63 & 46 & 31 & 12 & 3 \\\\"
             },
             {
-              "line": 2572,
+              "line": 2578,
               "snippet": "All & 190 & 146 & 76.8\\% \\\\"
             }
           ]
@@ -11478,15 +11526,19 @@
               "snippet": "\\citep[cf.~pp.~231--233]{boyd2004convex},"
             },
             {
-              "line": 2507,
+              "line": 2482,
+              "snippet": "Within the text-medium row, command-r-plus is a clean case of the screening problem the paper's $\\hat{\\rho}$ statistic is designed for. Pass rates of $100\\%$..."
+            },
+            {
+              "line": 2513,
               "snippet": "feasible (\\%) & 93 & 79 & 63 & 46 & 31 & 12 & 3 \\\\"
             },
             {
-              "line": 2600,
+              "line": 2606,
               "snippet": "\\quad Semantic overlap & 5 & 31\\% \\\\"
             },
             {
-              "line": 2608,
+              "line": 2614,
               "snippet": "\\noindent \\textbf{Conflicting pairs} reveal an error taxonomy: (1)~\\emph{Priority ambiguity} (62\\%): both principles apply but resolution requires contextual..."
             }
           ]
@@ -11619,21 +11671,21 @@
               "snippet": "\\item \\textbf{Continuous sweep}: 12-second transition from $\\rho=0$ to $\\rho=0.9$"
             },
             {
-              "line": 2446,
+              "line": 2448,
               "snippet": "Figure provenance (L4, L5, L11, L12, L14) & Figures bound to scripts and data; assets fresh; in-figure numerics match registry; scripts run; rendered output ..."
             },
             {
-              "line": 2507,
+              "line": 2513,
               "snippet": "feasible (\\%) & 93 & 79 & 63 & 46 & 31 & 12 & 3 \\\\"
             },
             {
-              "line": 2577,
+              "line": 2583,
               "snippet": "\\noindent The relationship is \\emph{non-monotonic}: medium-$\\hat{\\rho}$ pairs show the highest conflict rate. This matches intuition. Low-$\\hat{\\rho}$ princi..."
             }
           ]
         }
       ],
-      "notes": "All 4 patterns co-occur within 3-line window (anchor line ~2506)."
+      "notes": "All 4 patterns co-occur within 3-line window (anchor line ~2512)."
     },
     {
       "claim_id": "T29",
@@ -11884,7 +11936,7 @@
               "snippet": "Constraint count $k$ & $\\{2, 3, 4, 5, 8\\}$ & Tab.~\\ref{tab:ablation} \\\\"
             },
             {
-              "line": 2478,
+              "line": 2480,
               "snippet": "The cliff transfers. At the highest tier the image model satisfies all $11$ compounding format demands jointly at $33\\%$ across $6$ trials; the text-medium $..."
             }
           ]
@@ -12017,15 +12069,15 @@
               "snippet": "Autonomy & A & 3 & Three fifths (major 6th from root) \\\\"
             },
             {
-              "line": 2504,
+              "line": 2510,
               "snippet": "$k$ & 2 & 3 & 4 & 5 & 6 & 8 & 10 \\\\"
             },
             {
-              "line": 2506,
+              "line": 2512,
               "snippet": "pairs & 1 & 3 & 6 & 10 & 15 & 28 & 45 \\\\"
             },
             {
-              "line": 2540,
+              "line": 2546,
               "snippet": "Hardcoded Off & 3 & 0.136 & 0.193 \\\\"
             }
           ]
@@ -12163,15 +12215,15 @@
               "snippet": "\\item \\textbf{Individual $R$ levels}: Audio files for $\\rho \\in \\{0.0, 0.15, 0.3\\}$ and $\\rho \\in \\{0.5, 0.7, 0.9\\}$"
             },
             {
-              "line": 2549,
+              "line": 2555,
               "snippet": "\\noindent\\textbf{Distribution:} $\\hat{\\rho} \\in [0, 0.3)$: 68\\%; $[0.3, 0.5)$: 25\\%; $[0.5, 0.7)$: 6\\%; $\\ge 0.7$: 1\\%. Random $k{=}4$ subsets: $\\max_{ij}\\ha..."
             },
             {
-              "line": 2617,
+              "line": 2623,
               "snippet": "Each task contains 2--5 constraints with programmatic verifiers: JSON schema validation, word count bounds, regex patterns, Python AST checks, etc. Estimated..."
             },
             {
-              "line": 2621,
+              "line": 2627,
               "snippet": "\\item \\textbf{json\\_recipe} ($\\hat{\\rho}{=}0.75$): ``Write a recipe in JSON with fields name, ingredients, steps, prep\\_time\\_minutes.'' Verifiers: valid JSO..."
             }
           ]
@@ -12201,15 +12253,15 @@
               "snippet": "Trials per cell & 5 & Per task per tier \\\\"
             },
             {
-              "line": 2504,
+              "line": 2510,
               "snippet": "$k$ & 2 & 3 & 4 & 5 & 6 & 8 & 10 \\\\"
             },
             {
-              "line": 2539,
+              "line": 2545,
               "snippet": "Honesty & 5 & 0.387 & 0.495 \\\\"
             },
             {
-              "line": 2600,
+              "line": 2606,
               "snippet": "\\quad Semantic overlap & 5 & 31\\% \\\\"
             }
           ]
@@ -12453,7 +12505,7 @@
               "snippet": "\\caption{\\textbf{Cost Amplification.} The diagonal cost factor $\\sqrt{2/(1-\\rho)}$ diverges as conflict $\\rho \\to 1$. At $\\rho=0$ (orthogonal), cost is $\\sqr..."
             },
             {
-              "line": 2448,
+              "line": 2450,
               "snippet": "Formula / value coherence (L9) & Numerical instances match their source formulas (e.g., $\\sqrt{2/(1{-}\\rho)}$ at $\\rho{=}0.5$ is $2.0000$); tier orderings mo..."
             }
           ]
@@ -12879,11 +12931,7 @@
           "pattern": "14[-\\s]?layer",
           "hits": [
             {
-              "line": 2433,
-              "snippet": "This appendix verifies artifact integrity, not scientific truth: the certificate at \\texttt{ci/claim\\_certificate.md} checks that numeric claims, figures, re..."
-            },
-            {
-              "line": 2460,
+              "line": 2462,
               "snippet": "The framework extends to schematic illustrations: reviewer aids that make formal blocks in the body easier to grok. Each illustration is bound to a specific ..."
             }
           ]
@@ -12904,25 +12952,25 @@
               "snippet": "This appendix verifies artifact integrity, not scientific truth: the certificate at \\texttt{ci/claim\\_certificate.md} checks that numeric claims, figures, re..."
             },
             {
-              "line": 2457,
-              "snippet": "What this establishes: the paper says what it says, without drift, substitution, broken references, or stale figure assets. What it does not establish: that ..."
+              "line": 2459,
+              "snippet": "What this establishes (Table~\\ref{tab:cert_layers}): the paper says what it says, without drift, substitution, broken references, or stale figure assets. Wha..."
             },
             {
-              "line": 2460,
+              "line": 2462,
               "snippet": "The framework extends to schematic illustrations: reviewer aids that make formal blocks in the body easier to grok. Each illustration is bound to a specific ..."
             },
             {
-              "line": 2527,
+              "line": 2533,
               "snippet": "$\\hat{\\rho}$ screens for potential conflict. A hard-negative pair ($\\hat{\\rho}{=}0.50$, 100\\% pass) and a conflicting pair ($\\hat{\\rho}{=}0.52$, 0\\% pass) sh..."
             },
             {
-              "line": 2581,
+              "line": 2587,
               "snippet": "\\paragraph{Compatibility Certificates and Error Taxonomy.}\\label{par:certificates}"
             }
           ]
         }
       ],
-      "notes": "All 2 patterns co-occur within 3-line window (anchor line ~2432)."
+      "notes": "All 2 patterns co-occur within 3-line window (anchor line ~2461)."
     },
     {
       "claim_id": "T56",
@@ -12946,7 +12994,7 @@
               "snippet": "This appendix verifies artifact integrity, not scientific truth: the certificate at \\texttt{ci/claim\\_certificate.md} checks that numeric claims, figures, re..."
             },
             {
-              "line": 2452,
+              "line": 2454,
               "snippet": "Cross-tree + mutation (L13, mutation harness) & Recovered files match upstream byte-for-byte (or with documented divergence); single-digit substitution on ev..."
             }
           ]

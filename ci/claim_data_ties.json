@@ -725,6 +725,357 @@
       "expected": 190,
       "tolerance": 0,
       "compare_as": "int"
+    },
+    "bytebeat_n_constraints": {
+      "claim_text_excerpt": "Bytebeat bridge has 4 constraints (pitch_A4, rhythm_120bpm, high_flatness, high_roughness); k=4 row in Table tab:bytebeat",
+      "paper_location_hint": "Appendix app:bytebeat_bridge / Table tab:bytebeat (k=4 conflict set)",
+      "source_file": "ci/derivations/bridge_baselines_derived.json",
+      "value_expr": "d['bytebeat']['n_constraints']",
+      "expected": 4,
+      "tolerance": 0,
+      "compare_as": "int"
+    },
+    "bytebeat_baseline_valid_samples": {
+      "claim_text_excerpt": "Bytebeat baseline grammar yields 62 valid samples used for empirical rho estimation",
+      "paper_location_hint": "Appendix app:bytebeat_bridge baseline grammar sampling",
+      "source_file": "ci/derivations/bridge_baselines_derived.json",
+      "value_expr": "d['bytebeat']['baseline_valid_samples']",
+      "expected": 62,
+      "tolerance": 0,
+      "compare_as": "int"
+    },
+    "bytebeat_pitch_pair_max_rho": {
+      "claim_text_excerpt": "Bytebeat collapse to 0% at rho >= 0.8 (C22): pitch_A4 marginal is 0 in baseline grammar so any pair with pitch_A4 has rho=1.0, anchoring the high-rho infeasible regime",
+      "paper_location_hint": "Section 5.2 Bytebeat 0% claim / Table tab:bytebeat rho=1.00 row",
+      "source_file": "ci/derivations/bridge_baselines_derived.json",
+      "value_expr": "d['bytebeat']['pitch_A4_pair_max_rho']",
+      "expected": 1.0,
+      "tolerance": 1e-9,
+      "compare_as": "float"
+    },
+    "if_dsl_n_constraints": {
+      "claim_text_excerpt": "IF-DSL bridge uses 6 constraints (connected, solvable, two_routes, one_bottleneck, rooms_eq_6, pathlen_eq_5)",
+      "paper_location_hint": "Appendix app:if_dsl_bridge constraint listing",
+      "source_file": "ci/derivations/bridge_baselines_derived.json",
+      "value_expr": "d['if_dsl']['n_constraints']",
+      "expected": 6,
+      "tolerance": 0,
+      "compare_as": "int"
+    },
+    "if_dsl_baseline_samples": {
+      "claim_text_excerpt": "IF-DSL baseline samples (n=100) used for empirical rho estimation",
+      "paper_location_hint": "Appendix app:if_dsl_bridge baseline parameters",
+      "source_file": "ci/derivations/bridge_baselines_derived.json",
+      "value_expr": "d['if_dsl']['baseline_valid_samples']",
+      "expected": 100,
+      "tolerance": 0,
+      "compare_as": "int"
+    },
+    "if_dsl_high_rho_pair_value": {
+      "claim_text_excerpt": "0% IF-DSL at high rho (C23): one_bottleneck + pathlen_eq_5 yields rho=1.0, the maximally conflicting pair anchoring the 0% high-rho row in Table tab:if_dsl (Section 5.2)",
+      "paper_location_hint": "Line 1511 main.tex 'rho=1.0 (maximally conflicting constraints like one_bottleneck + pathlen_eq_5), pass rates collapse to 0%' / Table tab:if_dsl high-rho row",
+      "source_file": "ci/derivations/bridge_baselines_derived.json",
+      "value_expr": "d['if_dsl']['high_rho_value']",
+      "expected": 1.0,
+      "tolerance": 1e-9,
+      "compare_as": "float"
+    },
+    "alg1_rho_hat_stage": {
+      "claim_text_excerpt": "rho_hat_stage = 0.15 (Algorithm 1 / pre-registered C13)",
+      "paper_location_hint": "paper/main.tex line 824 (App app:transfer pre-registration); Algorithm 1 line 106",
+      "source_file": "ci/derivations/algorithm1_thresholds.json",
+      "value_expr": "d['rho_hat_stage']",
+      "expected": 0.15,
+      "tolerance": 1e-9,
+      "compare_as": "float"
+    },
+    "alg1_rho_hat_fail": {
+      "claim_text_excerpt": "rho_hat_fail = 0.5 (Algorithm 1 / pre-registered C14)",
+      "paper_location_hint": "paper/main.tex line 824 (App app:transfer pre-registration); Algorithm 1 line 108",
+      "source_file": "ci/derivations/algorithm1_thresholds.json",
+      "value_expr": "d['rho_hat_fail']",
+      "expected": 0.5,
+      "tolerance": 1e-9,
+      "compare_as": "float"
+    },
+    "alg1_pivot_step_mult": {
+      "claim_text_excerpt": "Pivot step threshold = 2.5 x L_hat (I50)",
+      "paper_location_hint": "paper/main.tex line 509 'pivot signatures (upper-tail steps >2sigma or direction drift >15deg)'; supplementary/experiments_rebuttal/unconditional_pivot_analysis.py docstring",
+      "source_file": "ci/derivations/algorithm1_thresholds.json",
+      "value_expr": "d['pivot_step_mult']",
+      "expected": 2.5,
+      "tolerance": 1e-9,
+      "compare_as": "float"
+    },
+    "alg1_drift_threshold_deg": {
+      "claim_text_excerpt": "Direction drift threshold 15 deg (I51)",
+      "paper_location_hint": "paper/main.tex line 509 'direction drift >15deg'; pivot script",
+      "source_file": "ci/derivations/algorithm1_thresholds.json",
+      "value_expr": "d['drift_threshold_deg']",
+      "expected": 15,
+      "tolerance": 0,
+      "compare_as": "int"
+    },
+    "alg1_default_l_hat": {
+      "claim_text_excerpt": "Default L_hat ~ 0.025 (I49)",
+      "paper_location_hint": "paper/main.tex Table tab:lipschitz_calibration caption; line 1153 'Default $\\hat{L} \\approx 0.025$'",
+      "source_file": "ci/derivations/algorithm1_thresholds.json",
+      "value_expr": "d['default_L_hat']",
+      "expected": 0.025,
+      "tolerance": 1e-9,
+      "compare_as": "float"
+    },
+    "table11_one_shot_pass_pct": {
+      "claim_text_excerpt": "One-shot 5% pass (Table 11 / I36)",
+      "paper_location_hint": "paper/main.tex protocol comparison table line 809",
+      "source_file": "ci/derivations/protocol_table11.json",
+      "value_expr": "d['protocols']['one_shot']['pass_pct']",
+      "expected": 5,
+      "tolerance": 0,
+      "compare_as": "int"
+    },
+    "table11_one_shot_tokens": {
+      "claim_text_excerpt": "One-shot 256 tokens (Table 11 / I36)",
+      "paper_location_hint": "paper/main.tex protocol comparison table line 809",
+      "source_file": "ci/derivations/protocol_table11.json",
+      "value_expr": "d['protocols']['one_shot']['tokens']",
+      "expected": 256,
+      "tolerance": 0,
+      "compare_as": "int"
+    },
+    "table11_staged_pass_pct": {
+      "claim_text_excerpt": "Staged 18% pass (Table 11 / I37)",
+      "paper_location_hint": "paper/main.tex protocol comparison table line 810",
+      "source_file": "ci/derivations/protocol_table11.json",
+      "value_expr": "d['protocols']['staged']['pass_pct']",
+      "expected": 18,
+      "tolerance": 0,
+      "compare_as": "int"
+    },
+    "table11_staged_tokens": {
+      "claim_text_excerpt": "Staged 512 tokens (Table 11 / I37)",
+      "paper_location_hint": "paper/main.tex protocol comparison table line 810",
+      "source_file": "ci/derivations/protocol_table11.json",
+      "value_expr": "d['protocols']['staged']['tokens']",
+      "expected": 512,
+      "tolerance": 0,
+      "compare_as": "int"
+    },
+    "table11_best_of_4_pass_pct": {
+      "claim_text_excerpt": "Best-of-4 12% pass (Table 11 / I38)",
+      "paper_location_hint": "paper/main.tex protocol comparison table line 811",
+      "source_file": "ci/derivations/protocol_table11.json",
+      "value_expr": "d['protocols']['best_of_4']['pass_pct']",
+      "expected": 12,
+      "tolerance": 0,
+      "compare_as": "int"
+    },
+    "table11_best_of_4_tokens": {
+      "claim_text_excerpt": "Best-of-4 1024 tokens (Table 11 / I38)",
+      "paper_location_hint": "paper/main.tex protocol comparison table line 811",
+      "source_file": "ci/derivations/protocol_table11.json",
+      "value_expr": "d['protocols']['best_of_4']['tokens']",
+      "expected": 1024,
+      "tolerance": 0,
+      "compare_as": "int"
+    },
+    "table11_self_refine_pass_pct": {
+      "claim_text_excerpt": "Self-refine 15% pass (Table 11 / I39)",
+      "paper_location_hint": "paper/main.tex protocol comparison table line 812",
+      "source_file": "ci/derivations/protocol_table11.json",
+      "value_expr": "d['protocols']['self_refine']['pass_pct']",
+      "expected": 15,
+      "tolerance": 0,
+      "compare_as": "int"
+    },
+    "table11_self_refine_tokens": {
+      "claim_text_excerpt": "Self-refine 640 tokens (Table 11 / I39)",
+      "paper_location_hint": "paper/main.tex protocol comparison table line 812",
+      "source_file": "ci/derivations/protocol_table11.json",
+      "value_expr": "d['protocols']['self_refine']['tokens']",
+      "expected": 640,
+      "tolerance": 0,
+      "compare_as": "int"
+    },
+    "table11_geometric_router_pass_pct": {
+      "claim_text_excerpt": "Geometric router 18% pass (Table 11 / I40 / C15)",
+      "paper_location_hint": "paper/main.tex protocol comparison table line 813",
+      "source_file": "ci/derivations/protocol_table11.json",
+      "value_expr": "d['protocols']['geometric_router']['pass_pct']",
+      "expected": 18,
+      "tolerance": 0,
+      "compare_as": "int"
+    },
+    "table11_geometric_router_tokens": {
+      "claim_text_excerpt": "Geometric router 384 tokens (Table 11 / I40 / C15)",
+      "paper_location_hint": "paper/main.tex protocol comparison table line 813",
+      "source_file": "ci/derivations/protocol_table11.json",
+      "value_expr": "d['protocols']['geometric_router']['tokens']",
+      "expected": 384,
+      "tolerance": 0,
+      "compare_as": "int"
+    },
+    "table11_geometric_router_speedup": {
+      "claim_text_excerpt": "Geometric router 0.67x speedup (Table 11 / I40 / C15)",
+      "paper_location_hint": "paper/main.tex protocol comparison table line 813",
+      "source_file": "ci/derivations/protocol_table11.json",
+      "value_expr": "d['protocols']['geometric_router']['speedup_vs_oneshot']",
+      "expected": 0.67,
+      "tolerance": 1e-9,
+      "compare_as": "float"
+    },
+    "table11_oracle_pass_pct": {
+      "claim_text_excerpt": "Oracle 21% pass (Table 11 / I41)",
+      "paper_location_hint": "paper/main.tex protocol comparison table line 815",
+      "source_file": "ci/derivations/protocol_table11.json",
+      "value_expr": "d['protocols']['oracle']['pass_pct']",
+      "expected": 21,
+      "tolerance": 0,
+      "compare_as": "int"
+    },
+    "table11_oracle_tokens": {
+      "claim_text_excerpt": "Oracle 320 tokens (Table 11 / I41)",
+      "paper_location_hint": "paper/main.tex protocol comparison table line 815",
+      "source_file": "ci/derivations/protocol_table11.json",
+      "value_expr": "d['protocols']['oracle']['tokens']",
+      "expected": 320,
+      "tolerance": 0,
+      "compare_as": "int"
+    },
+    "transfer_code_router_agree_pct": {
+      "claim_text_excerpt": "Code: 100% router agreement (I42)",
+      "paper_location_hint": "paper/main.tex Table tab:transfer line 835",
+      "source_file": "ci/derivations/cross_domain_router.json",
+      "value_expr": "d['domains']['code']['router_agree_pct']",
+      "expected": 100,
+      "tolerance": 0,
+      "compare_as": "int"
+    },
+    "transfer_code_regret_pct": {
+      "claim_text_excerpt": "Code: 1.8% regret vs domain-specific tuning (I42)",
+      "paper_location_hint": "paper/main.tex Table tab:transfer line 835",
+      "source_file": "ci/derivations/cross_domain_router.json",
+      "value_expr": "d['domains']['code']['regret_pct']",
+      "expected": 1.8,
+      "tolerance": 0.05,
+      "compare_as": "float"
+    },
+    "transfer_json_nl_router_agree_pct": {
+      "claim_text_excerpt": "JSON-NL: 94% router agreement (I43)",
+      "paper_location_hint": "paper/main.tex Table tab:transfer line 836",
+      "source_file": "ci/derivations/cross_domain_router.json",
+      "value_expr": "d['domains']['json_nl']['router_agree_pct']",
+      "expected": 94,
+      "tolerance": 0,
+      "compare_as": "int"
+    },
+    "transfer_json_nl_regret_pct": {
+      "claim_text_excerpt": "JSON-NL: 2.1% regret (I43)",
+      "paper_location_hint": "paper/main.tex Table tab:transfer line 836",
+      "source_file": "ci/derivations/cross_domain_router.json",
+      "value_expr": "d['domains']['json_nl']['regret_pct']",
+      "expected": 2.1,
+      "tolerance": 0.05,
+      "compare_as": "float"
+    },
+    "transfer_if_dsl_router_agree_pct": {
+      "claim_text_excerpt": "IF-DSL: 91% router agreement (I44)",
+      "paper_location_hint": "paper/main.tex Table tab:transfer line 837",
+      "source_file": "ci/derivations/cross_domain_router.json",
+      "value_expr": "d['domains']['if_dsl']['router_agree_pct']",
+      "expected": 91,
+      "tolerance": 0,
+      "compare_as": "int"
+    },
+    "transfer_if_dsl_regret_pct": {
+      "claim_text_excerpt": "IF-DSL: 2.4% regret (I44)",
+      "paper_location_hint": "paper/main.tex Table tab:transfer line 837",
+      "source_file": "ci/derivations/cross_domain_router.json",
+      "value_expr": "d['domains']['if_dsl']['regret_pct']",
+      "expected": 2.4,
+      "tolerance": 0.05,
+      "compare_as": "float"
+    },
+    "transfer_bytebeat_router_agree_pct": {
+      "claim_text_excerpt": "Bytebeat: 88% router agreement (I45)",
+      "paper_location_hint": "paper/main.tex Table tab:transfer line 838",
+      "source_file": "ci/derivations/cross_domain_router.json",
+      "value_expr": "d['domains']['bytebeat']['router_agree_pct']",
+      "expected": 88,
+      "tolerance": 0,
+      "compare_as": "int"
+    },
+    "transfer_bytebeat_regret_pct": {
+      "claim_text_excerpt": "Bytebeat: 3.1% regret (I45)",
+      "paper_location_hint": "paper/main.tex Table tab:transfer line 838",
+      "source_file": "ci/derivations/cross_domain_router.json",
+      "value_expr": "d['domains']['bytebeat']['regret_pct']",
+      "expected": 3.1,
+      "tolerance": 0.05,
+      "compare_as": "float"
+    },
+    "drift_median": {
+      "claim_text_excerpt": "Median direction drift 0.07 (I54)",
+      "paper_location_hint": "paper/main.tex line 1107 (App app:direction_stability)",
+      "source_file": "ci/derivations/drift_stats.json",
+      "value_expr": "d['direction_drift']['median']",
+      "expected": 0.07,
+      "tolerance": 1e-9,
+      "compare_as": "float"
+    },
+    "drift_iqr_low": {
+      "claim_text_excerpt": "IQR low 0.03 (I54)",
+      "paper_location_hint": "paper/main.tex line 1107",
+      "source_file": "ci/derivations/drift_stats.json",
+      "value_expr": "d['direction_drift']['iqr_low']",
+      "expected": 0.03,
+      "tolerance": 1e-9,
+      "compare_as": "float"
+    },
+    "drift_iqr_high": {
+      "claim_text_excerpt": "IQR high 0.12 (I54)",
+      "paper_location_hint": "paper/main.tex line 1107",
+      "source_file": "ci/derivations/drift_stats.json",
+      "value_expr": "d['direction_drift']['iqr_high']",
+      "expected": 0.12,
+      "tolerance": 1e-9,
+      "compare_as": "float"
+    },
+    "drift_pct_below_015": {
+      "claim_text_excerpt": "94% trajectories with drift <0.15 (C18)",
+      "paper_location_hint": "paper/main.tex line 1107",
+      "source_file": "ci/derivations/drift_stats.json",
+      "value_expr": "d['direction_drift']['pct_below_threshold']",
+      "expected": 94,
+      "tolerance": 0,
+      "compare_as": "int"
+    },
+    "high_drift_pct": {
+      "claim_text_excerpt": "6% high-drift = pivot completions (C19)",
+      "paper_location_hint": "paper/main.tex line 1110 (App app:direction_stability interpretation)",
+      "source_file": "ci/derivations/drift_stats.json",
+      "value_expr": "d['high_drift_pct']",
+      "expected": 6,
+      "tolerance": 0,
+      "compare_as": "int"
+    },
+    "step_size_p95": {
+      "claim_text_excerpt": "95th percentile step 0.041 (I55)",
+      "paper_location_hint": "paper/main.tex line 1168 (Step-Size Distribution paragraph)",
+      "source_file": "ci/derivations/drift_stats.json",
+      "value_expr": "d['step_size']['p95']",
+      "expected": 0.041,
+      "tolerance": 1e-9,
+      "compare_as": "float"
+    },
+    "unconditional_infeasible_regret_pct": {
+      "claim_text_excerpt": "<2% regret vs oracle: 1.7% unconditional infeasible-region success rate (C20)",
+      "paper_location_hint": "rebuttal/figures/unconditional_pivot_results.json; supports paper claim that all infeasible-region successes carry pivot signatures",
+      "source_file": "rebuttal/figures/unconditional_pivot_results.json",
+      "value_expr": "round(d['high_tier']['unconditional_rate'] * 100, 1)",
+      "expected": 1.7,
+      "tolerance": 0.05,
+      "compare_as": "float"
     }
   }
 }

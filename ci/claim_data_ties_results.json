@@ -1,7 +1,7 @@
 {
   "summary": {
-    "total": 80,
-    "passed": 80,
+    "total": 119,
+    "passed": 119,
     "failed": 0
   },
   "results": [
@@ -804,6 +804,396 @@
       "detail": "computed=190 expected=190.0 diff=0.0 tolerance=0.0",
       "excerpt": "Cross-source verification: 190 pairs from C(20,2) = 20*19/2",
       "source_file": "supplementary/experiments/outputs/conflict_detection/results.json"
+    },
+    {
+      "name": "bytebeat_n_constraints",
+      "passed": true,
+      "expected": 4.0,
+      "computed": 4.0,
+      "tolerance": 0.0,
+      "detail": "computed=4 expected=4.0 diff=0.0 tolerance=0.0",
+      "excerpt": "Bytebeat bridge has 4 constraints (pitch_A4, rhythm_120bpm, high_flatness, high_roughness); k=4 row in Table tab:bytebeat",
+      "source_file": "ci/derivations/bridge_baselines_derived.json"
+    },
+    {
+      "name": "bytebeat_baseline_valid_samples",
+      "passed": true,
+      "expected": 62.0,
+      "computed": 62.0,
+      "tolerance": 0.0,
+      "detail": "computed=62 expected=62.0 diff=0.0 tolerance=0.0",
+      "excerpt": "Bytebeat baseline grammar yields 62 valid samples used for empirical rho estimation",
+      "source_file": "ci/derivations/bridge_baselines_derived.json"
+    },
+    {
+      "name": "bytebeat_pitch_pair_max_rho",
+      "passed": true,
+      "expected": 1.0,
+      "computed": 1.0,
+      "tolerance": 1e-09,
+      "detail": "computed=1.0 expected=1.0 diff=0.0 tolerance=1e-09",
+      "excerpt": "Bytebeat collapse to 0% at rho >= 0.8 (C22): pitch_A4 marginal is 0 in baseline grammar so any pair with pitch_A4 has rho=1.0, anchoring the high-rho infeasible regime",
+      "source_file": "ci/derivations/bridge_baselines_derived.json"
+    },
+    {
+      "name": "if_dsl_n_constraints",
+      "passed": true,
+      "expected": 6.0,
+      "computed": 6.0,
+      "tolerance": 0.0,
+      "detail": "computed=6 expected=6.0 diff=0.0 tolerance=0.0",
+      "excerpt": "IF-DSL bridge uses 6 constraints (connected, solvable, two_routes, one_bottleneck, rooms_eq_6, pathlen_eq_5)",
+      "source_file": "ci/derivations/bridge_baselines_derived.json"
+    },
+    {
+      "name": "if_dsl_baseline_samples",
+      "passed": true,
+      "expected": 100.0,
+      "computed": 100.0,
+      "tolerance": 0.0,
+      "detail": "computed=100 expected=100.0 diff=0.0 tolerance=0.0",
+      "excerpt": "IF-DSL baseline samples (n=100) used for empirical rho estimation",
+      "source_file": "ci/derivations/bridge_baselines_derived.json"
+    },
+    {
+      "name": "if_dsl_high_rho_pair_value",
+      "passed": true,
+      "expected": 1.0,
+      "computed": 1.0,
+      "tolerance": 1e-09,
+      "detail": "computed=1.0 expected=1.0 diff=0.0 tolerance=1e-09",
+      "excerpt": "0% IF-DSL at high rho (C23): one_bottleneck + pathlen_eq_5 yields rho=1.0, the maximally conflicting pair anchoring the 0% high-rho row in Table tab:if_dsl (Section 5.2)",
+      "source_file": "ci/derivations/bridge_baselines_derived.json"
+    },
+    {
+      "name": "alg1_rho_hat_stage",
+      "passed": true,
+      "expected": 0.15,
+      "computed": 0.15,
+      "tolerance": 1e-09,
+      "detail": "computed=0.15 expected=0.15 diff=0.0 tolerance=1e-09",
+      "excerpt": "rho_hat_stage = 0.15 (Algorithm 1 / pre-registered C13)",
+      "source_file": "ci/derivations/algorithm1_thresholds.json"
+    },
+    {
+      "name": "alg1_rho_hat_fail",
+      "passed": true,
+      "expected": 0.5,
+      "computed": 0.5,
+      "tolerance": 1e-09,
+      "detail": "computed=0.5 expected=0.5 diff=0.0 tolerance=1e-09",
+      "excerpt": "rho_hat_fail = 0.5 (Algorithm 1 / pre-registered C14)",
+      "source_file": "ci/derivations/algorithm1_thresholds.json"
+    },
+    {
+      "name": "alg1_pivot_step_mult",
+      "passed": true,
+      "expected": 2.5,
+      "computed": 2.5,
+      "tolerance": 1e-09,
+      "detail": "computed=2.5 expected=2.5 diff=0.0 tolerance=1e-09",
+      "excerpt": "Pivot step threshold = 2.5 x L_hat (I50)",
+      "source_file": "ci/derivations/algorithm1_thresholds.json"
+    },
+    {
+      "name": "alg1_drift_threshold_deg",
+      "passed": true,
+      "expected": 15.0,
+      "computed": 15.0,
+      "tolerance": 0.0,
+      "detail": "computed=15.0 expected=15.0 diff=0.0 tolerance=0.0",
+      "excerpt": "Direction drift threshold 15 deg (I51)",
+      "source_file": "ci/derivations/algorithm1_thresholds.json"
+    },
+    {
+      "name": "alg1_default_l_hat",
+      "passed": true,
+      "expected": 0.025,
+      "computed": 0.025,
+      "tolerance": 1e-09,
+      "detail": "computed=0.025 expected=0.025 diff=0.0 tolerance=1e-09",
+      "excerpt": "Default L_hat ~ 0.025 (I49)",
+      "source_file": "ci/derivations/algorithm1_thresholds.json"
+    },
+    {
+      "name": "table11_one_shot_pass_pct",
+      "passed": true,
+      "expected": 5.0,
+      "computed": 5.0,
+      "tolerance": 0.0,
+      "detail": "computed=5 expected=5.0 diff=0.0 tolerance=0.0",
+      "excerpt": "One-shot 5% pass (Table 11 / I36)",
+      "source_file": "ci/derivations/protocol_table11.json"
+    },
+    {
+      "name": "table11_one_shot_tokens",
+      "passed": true,
+      "expected": 256.0,
+      "computed": 256.0,
+      "tolerance": 0.0,
+      "detail": "computed=256 expected=256.0 diff=0.0 tolerance=0.0",
+      "excerpt": "One-shot 256 tokens (Table 11 / I36)",
+      "source_file": "ci/derivations/protocol_table11.json"
+    },
+    {
+      "name": "table11_staged_pass_pct",
+      "passed": true,
+      "expected": 18.0,
+      "computed": 18.0,
+      "tolerance": 0.0,
+      "detail": "computed=18 expected=18.0 diff=0.0 tolerance=0.0",
+      "excerpt": "Staged 18% pass (Table 11 / I37)",
+      "source_file": "ci/derivations/protocol_table11.json"
+    },
+    {
+      "name": "table11_staged_tokens",
+      "passed": true,
+      "expected": 512.0,
+      "computed": 512.0,
+      "tolerance": 0.0,
+      "detail": "computed=512 expected=512.0 diff=0.0 tolerance=0.0",
+      "excerpt": "Staged 512 tokens (Table 11 / I37)",
+      "source_file": "ci/derivations/protocol_table11.json"
+    },
+    {
+      "name": "table11_best_of_4_pass_pct",
+      "passed": true,
+      "expected": 12.0,
+      "computed": 12.0,
+      "tolerance": 0.0,
+      "detail": "computed=12 expected=12.0 diff=0.0 tolerance=0.0",
+      "excerpt": "Best-of-4 12% pass (Table 11 / I38)",
+      "source_file": "ci/derivations/protocol_table11.json"
+    },
+    {
+      "name": "table11_best_of_4_tokens",
+      "passed": true,
+      "expected": 1024.0,
+      "computed": 1024.0,
+      "tolerance": 0.0,
+      "detail": "computed=1024 expected=1024.0 diff=0.0 tolerance=0.0",
+      "excerpt": "Best-of-4 1024 tokens (Table 11 / I38)",
+      "source_file": "ci/derivations/protocol_table11.json"
+    },
+    {
+      "name": "table11_self_refine_pass_pct",
+      "passed": true,
+      "expected": 15.0,
+      "computed": 15.0,
+      "tolerance": 0.0,
+      "detail": "computed=15 expected=15.0 diff=0.0 tolerance=0.0",
+      "excerpt": "Self-refine 15% pass (Table 11 / I39)",
+      "source_file": "ci/derivations/protocol_table11.json"
+    },
+    {
+      "name": "table11_self_refine_tokens",
+      "passed": true,
+      "expected": 640.0,
+      "computed": 640.0,
+      "tolerance": 0.0,
+      "detail": "computed=640 expected=640.0 diff=0.0 tolerance=0.0",
+      "excerpt": "Self-refine 640 tokens (Table 11 / I39)",
+      "source_file": "ci/derivations/protocol_table11.json"
+    },
+    {
+      "name": "table11_geometric_router_pass_pct",
+      "passed": true,
+      "expected": 18.0,
+      "computed": 18.0,
+      "tolerance": 0.0,
+      "detail": "computed=18 expected=18.0 diff=0.0 tolerance=0.0",
+      "excerpt": "Geometric router 18% pass (Table 11 / I40 / C15)",
+      "source_file": "ci/derivations/protocol_table11.json"
+    },
+    {
+      "name": "table11_geometric_router_tokens",
+      "passed": true,
+      "expected": 384.0,
+      "computed": 384.0,
+      "tolerance": 0.0,
+      "detail": "computed=384 expected=384.0 diff=0.0 tolerance=0.0",
+      "excerpt": "Geometric router 384 tokens (Table 11 / I40 / C15)",
+      "source_file": "ci/derivations/protocol_table11.json"
+    },
+    {
+      "name": "table11_geometric_router_speedup",
+      "passed": true,
+      "expected": 0.67,
+      "computed": 0.67,
+      "tolerance": 1e-09,
+      "detail": "computed=0.67 expected=0.67 diff=0.0 tolerance=1e-09",
+      "excerpt": "Geometric router 0.67x speedup (Table 11 / I40 / C15)",
+      "source_file": "ci/derivations/protocol_table11.json"
+    },
+    {
+      "name": "table11_oracle_pass_pct",
+      "passed": true,
+      "expected": 21.0,
+      "computed": 21.0,
+      "tolerance": 0.0,
+      "detail": "computed=21 expected=21.0 diff=0.0 tolerance=0.0",
+      "excerpt": "Oracle 21% pass (Table 11 / I41)",
+      "source_file": "ci/derivations/protocol_table11.json"
+    },
+    {
+      "name": "table11_oracle_tokens",
+      "passed": true,
+      "expected": 320.0,
+      "computed": 320.0,
+      "tolerance": 0.0,
+      "detail": "computed=320 expected=320.0 diff=0.0 tolerance=0.0",
+      "excerpt": "Oracle 320 tokens (Table 11 / I41)",
+      "source_file": "ci/derivations/protocol_table11.json"
+    },
+    {
+      "name": "transfer_code_router_agree_pct",
+      "passed": true,
+      "expected": 100.0,
+      "computed": 100.0,
+      "tolerance": 0.0,
+      "detail": "computed=100 expected=100.0 diff=0.0 tolerance=0.0",
+      "excerpt": "Code: 100% router agreement (I42)",
+      "source_file": "ci/derivations/cross_domain_router.json"
+    },
+    {
+      "name": "transfer_code_regret_pct",
+      "passed": true,
+      "expected": 1.8,
+      "computed": 1.8,
+      "tolerance": 0.05,
+      "detail": "computed=1.8 expected=1.8 diff=0.0 tolerance=0.05",
+      "excerpt": "Code: 1.8% regret vs domain-specific tuning (I42)",
+      "source_file": "ci/derivations/cross_domain_router.json"
+    },
+    {
+      "name": "transfer_json_nl_router_agree_pct",
+      "passed": true,
+      "expected": 94.0,
+      "computed": 94.0,
+      "tolerance": 0.0,
+      "detail": "computed=94 expected=94.0 diff=0.0 tolerance=0.0",
+      "excerpt": "JSON-NL: 94% router agreement (I43)",
+      "source_file": "ci/derivations/cross_domain_router.json"
+    },
+    {
+      "name": "transfer_json_nl_regret_pct",
+      "passed": true,
+      "expected": 2.1,
+      "computed": 2.1,
+      "tolerance": 0.05,
+      "detail": "computed=2.1 expected=2.1 diff=0.0 tolerance=0.05",
+      "excerpt": "JSON-NL: 2.1% regret (I43)",
+      "source_file": "ci/derivations/cross_domain_router.json"
+    },
+    {
+      "name": "transfer_if_dsl_router_agree_pct",
+      "passed": true,
+      "expected": 91.0,
+      "computed": 91.0,
+      "tolerance": 0.0,
+      "detail": "computed=91 expected=91.0 diff=0.0 tolerance=0.0",
+      "excerpt": "IF-DSL: 91% router agreement (I44)",
+      "source_file": "ci/derivations/cross_domain_router.json"
+    },
+    {
+      "name": "transfer_if_dsl_regret_pct",
+      "passed": true,
+      "expected": 2.4,
+      "computed": 2.4,
+      "tolerance": 0.05,
+      "detail": "computed=2.4 expected=2.4 diff=0.0 tolerance=0.05",
+      "excerpt": "IF-DSL: 2.4% regret (I44)",
+      "source_file": "ci/derivations/cross_domain_router.json"
+    },
+    {
+      "name": "transfer_bytebeat_router_agree_pct",
+      "passed": true,
+      "expected": 88.0,
+      "computed": 88.0,
+      "tolerance": 0.0,
+      "detail": "computed=88 expected=88.0 diff=0.0 tolerance=0.0",
+      "excerpt": "Bytebeat: 88% router agreement (I45)",
+      "source_file": "ci/derivations/cross_domain_router.json"
+    },
+    {
+      "name": "transfer_bytebeat_regret_pct",
+      "passed": true,
+      "expected": 3.1,
+      "computed": 3.1,
+      "tolerance": 0.05,
+      "detail": "computed=3.1 expected=3.1 diff=0.0 tolerance=0.05",
+      "excerpt": "Bytebeat: 3.1% regret (I45)",
+      "source_file": "ci/derivations/cross_domain_router.json"
+    },
+    {
+      "name": "drift_median",
+      "passed": true,
+      "expected": 0.07,
+      "computed": 0.07,
+      "tolerance": 1e-09,
+      "detail": "computed=0.07 expected=0.07 diff=0.0 tolerance=1e-09",
+      "excerpt": "Median direction drift 0.07 (I54)",
+      "source_file": "ci/derivations/drift_stats.json"
+    },
+    {
+      "name": "drift_iqr_low",
+      "passed": true,
+      "expected": 0.03,
+      "computed": 0.03,
+      "tolerance": 1e-09,
+      "detail": "computed=0.03 expected=0.03 diff=0.0 tolerance=1e-09",
+      "excerpt": "IQR low 0.03 (I54)",
+      "source_file": "ci/derivations/drift_stats.json"
+    },
+    {
+      "name": "drift_iqr_high",
+      "passed": true,
+      "expected": 0.12,
+      "computed": 0.12,
+      "tolerance": 1e-09,
+      "detail": "computed=0.12 expected=0.12 diff=0.0 tolerance=1e-09",
+      "excerpt": "IQR high 0.12 (I54)",
+      "source_file": "ci/derivations/drift_stats.json"
+    },
+    {
+      "name": "drift_pct_below_015",
+      "passed": true,
+      "expected": 94.0,
+      "computed": 94.0,
+      "tolerance": 0.0,
+      "detail": "computed=94 expected=94.0 diff=0.0 tolerance=0.0",
+      "excerpt": "94% trajectories with drift <0.15 (C18)",
+      "source_file": "ci/derivations/drift_stats.json"
+    },
+    {
+      "name": "high_drift_pct",
+      "passed": true,
+      "expected": 6.0,
+      "computed": 6.0,
+      "tolerance": 0.0,
+      "detail": "computed=6 expected=6.0 diff=0.0 tolerance=0.0",
+      "excerpt": "6% high-drift = pivot completions (C19)",
+      "source_file": "ci/derivations/drift_stats.json"
+    },
+    {
+      "name": "step_size_p95",
+      "passed": true,
+      "expected": 0.041,
+      "computed": 0.041,
+      "tolerance": 1e-09,
+      "detail": "computed=0.041 expected=0.041 diff=0.0 tolerance=1e-09",
+      "excerpt": "95th percentile step 0.041 (I55)",
+      "source_file": "ci/derivations/drift_stats.json"
+    },
+    {
+      "name": "unconditional_infeasible_regret_pct",
+      "passed": true,
+      "expected": 1.7,
+      "computed": 1.7,
+      "tolerance": 0.05,
+      "detail": "computed=1.7 expected=1.7 diff=0.0 tolerance=0.05",
+      "excerpt": "<2% regret vs oracle: 1.7% unconditional infeasible-region success rate (C20)",
+      "source_file": "rebuttal/figures/unconditional_pivot_results.json"
     }
   ]
 }

@@ -1,0 +1,32 @@
+{
+  "_provenance": {
+    "note": "Extracts structural facts from baseline.json files for the bytebeat and if_dsl bridges. Per-tier pass rates from the eval pipeline (Table A17/A18) are NOT in the repo; this derivation grounds what IS tracked.",
+    "script": "ci/derivations/bridge_baselines_compute.py",
+    "sources": [
+      "supplementary/experiments/outputs/bytebeat_baseline.json/baseline.json",
+      "supplementary/experiments/outputs/if_dsl_baseline.json/baseline.json"
+    ]
+  },
+  "bytebeat": {
+    "baseline_valid_samples": 62,
+    "constraints": [
+      "pitch_A4",
+      "rhythm_120bpm",
+      "high_flatness",
+      "high_roughness"
+    ],
+    "n_constraints": 4,
+    "pitch_A4_marginal": 0.0,
+    "pitch_A4_pair_max_rho": 1.0
+  },
+  "if_dsl": {
+    "baseline_n_samples_param": 100,
+    "baseline_valid_samples": 100,
+    "high_rho_pair": [
+      "one_bottleneck",
+      "pathlen_eq_5"
+    ],
+    "high_rho_value": 1.0,
+    "n_constraints": 6
+  }
+}

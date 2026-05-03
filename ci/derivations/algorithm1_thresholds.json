@@ -1,0 +1,17 @@
+{
+  "_meta": {
+    "description": "Algorithm 1 routing-threshold constants, derived from canonical sources (paper/main.tex App:transfer, unconditional_pivot_analysis.py, Table tab:lipschitz_calibration). Single source of truth for L15.",
+    "sources": {
+      "rho_hat_stage": "paper/main.tex line 824 (App:transfer pre-registration)",
+      "rho_hat_fail": "paper/main.tex line 824 (App:transfer pre-registration)",
+      "pivot_step_mult": "supplementary/experiments_rebuttal/unconditional_pivot_analysis.py docstring line 10",
+      "drift_threshold_deg": "supplementary/experiments_rebuttal/unconditional_pivot_analysis.py docstring line 10",
+      "default_L_hat": "paper/main.tex Table tab:lipschitz_calibration caption"
+    }
+  },
+  "rho_hat_stage": 0.15,
+  "rho_hat_fail": 0.5,
+  "pivot_step_mult": 2.5,
+  "drift_threshold_deg": 15.0,
+  "default_L_hat": 0.025
+}

@@ -1,0 +1,19 @@
+{
+  "_meta": {
+    "description": "Direction-drift and step-size statistics parsed from paper/main.tex App app:direction_stability (line ~1107) and step-size paragraph (line ~1168). Backs claims I54 (drift median/IQR), I55 (95th step), C18 (94% drift<0.15), C19 (6% high-drift).",
+    "source": "paper/main.tex direction stability and step-size paragraphs"
+  },
+  "direction_drift": {
+    "median": 0.07,
+    "iqr_low": 0.03,
+    "iqr_high": 0.12,
+    "pct_below_threshold": 94,
+    "threshold": 0.15
+  },
+  "high_drift_pct": 6,
+  "step_size": {
+    "p95": 0.041,
+    "p99": 0.067,
+    "max_observed": 0.12
+  }
+}

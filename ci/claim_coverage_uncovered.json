@@ -1,8 +1,8 @@
 {
   "paper_path": "C:\\src\\NeurIPS\\paper\\main.tex",
   "summary": {
-    "total_numeric_tokens": 1162,
-    "covered": 1093,
+    "total_numeric_tokens": 1166,
+    "covered": 1097,
     "uncovered_raw": 69,
     "uncovered_deduped": 66,
     "coverage_percent": 94.1
@@ -363,43 +363,43 @@
       "section": "paragraph: IF-DSL Results."
     },
     {
-      "line_no": 2499,
+      "line_no": 2505,
       "value": "10",
       "context": "10",
       "section": "paragraph: Results."
     },
     {
-      "line_no": 2499,
+      "line_no": 2505,
       "value": "000",
       "context": "000",
       "section": "paragraph: Results."
     },
     {
-      "line_no": 2593,
+      "line_no": 2599,
       "value": "3",
       "context": "3",
       "section": "paragraph: Compatibility Certificates and Error Taxonomy."
     },
     {
-      "line_no": 2599,
+      "line_no": 2605,
       "value": "10",
       "context": "10",
       "section": "paragraph: Compatibility Certificates and Error Taxonomy."
     },
     {
-      "line_no": 2599,
+      "line_no": 2605,
       "value": "62",
       "context": "62",
       "section": "paragraph: Compatibility Certificates and Error Taxonomy."
     },
     {
-      "line_no": 2612,
+      "line_no": 2618,
       "value": "15",
       "context": "stitution analysis, we curate 15 compound instruction tasks wi",
       "section": "section: In-the-Wild Compound Instructions"
     },
     {
-      "line_no": 2616,
+      "line_no": 2622,
       "value": "2",
       "context": "Each task contains 2",
       "section": "paragraph: Dataset design."

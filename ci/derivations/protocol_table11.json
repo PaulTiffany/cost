@@ -1,0 +1,46 @@
+{
+  "_meta": {
+    "description": "Protocol comparison table parsed from paper/main.tex (the table captioned around line 807, referenced as C15 / I36-I41 / I47 / Table 11 in claim audit). Each row: pass_pct (integer percent), tokens (integer), speedup_vs_oneshot (float, 1.0x = one-shot baseline).",
+    "source": "paper/main.tex protocol comparison table (around line 807)",
+    "row_labels": [
+      "One-shot (always)",
+      "Staged (always)",
+      "Best-of-4 sampling",
+      "Self-refine",
+      "Geometric router",
+      "Oracle (per-instance)"
+    ]
+  },
+  "protocols": {
+    "one_shot": {
+      "pass_pct": 5,
+      "tokens": 256,
+      "speedup_vs_oneshot": 1.0
+    },
+    "staged": {
+      "pass_pct": 18,
+      "tokens": 512,
+      "speedup_vs_oneshot": 0.5
+    },
+    "best_of_4": {
+      "pass_pct": 12,
+      "tokens": 1024,
+      "speedup_vs_oneshot": 0.25
+    },
+    "self_refine": {
+      "pass_pct": 15,
+      "tokens": 640,
+      "speedup_vs_oneshot": 0.4
+    },
+    "geometric_router": {
+      "pass_pct": 18,
+      "tokens": 384,
+      "speedup_vs_oneshot": 0.67
+    },
+    "oracle": {
+      "pass_pct": 21,
+      "tokens": 320,
+      "speedup_vs_oneshot": 0.8
+    }
+  }
+}
