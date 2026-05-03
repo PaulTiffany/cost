@@ -45,7 +45,8 @@ RESULTS_JSON = SCRIPT_DIR / "claim_data_ties_results.json"
 _ALLOWED_BUILTINS = {
     "sum": sum, "len": len, "min": min, "max": max,
     "abs": abs, "round": round, "int": int, "float": float,
-    "any": any, "all": all,
+    "any": any, "all": all, "next": next, "iter": iter,
+    "list": list, "tuple": tuple, "dict": dict, "set": set,
     "True": True, "False": False, "None": None,
 }
 

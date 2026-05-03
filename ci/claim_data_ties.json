@@ -284,6 +284,222 @@
       "expected": 480,
       "tolerance": 0,
       "compare_as": "int"
+    },
+    "claude_family_haiku3_ratio": {
+      "claim_text_excerpt": "haiku-3 2.5x staging ratio (I16, Table 4)",
+      "paper_location_hint": "Frontier transfer paragraph; Table tab:claude_family",
+      "source_file": "supplementary/experiments/fixed_point_claude_family.json",
+      "value_expr": "round(next(m['avg_improvement_ratio'] for m in d['model_analyses'] if m['model_name']=='haiku-3'), 1)",
+      "expected": 2.5,
+      "tolerance": 0.05,
+      "compare_as": "float"
+    },
+    "claude_family_sonnet4_ratio": {
+      "claim_text_excerpt": "sonnet-4 4.4x staging ratio (I17, Table 4)",
+      "paper_location_hint": "Frontier transfer paragraph; Table tab:claude_family",
+      "source_file": "supplementary/experiments/fixed_point_claude_family.json",
+      "value_expr": "round(next(m['avg_improvement_ratio'] for m in d['model_analyses'] if m['model_name']=='sonnet-4'), 1)",
+      "expected": 4.4,
+      "tolerance": 0.05,
+      "compare_as": "float"
+    },
+    "claude_family_opus4_ratio": {
+      "claim_text_excerpt": "opus-4 22.7x staging ratio (I18, Table 4)",
+      "paper_location_hint": "Frontier transfer paragraph; Table tab:claude_family",
+      "source_file": "supplementary/experiments/fixed_point_claude_family.json",
+      "value_expr": "round(next(m['avg_improvement_ratio'] for m in d['model_analyses'] if m['model_name']=='opus-4'), 1)",
+      "expected": 22.7,
+      "tolerance": 0.05,
+      "compare_as": "float"
+    },
+    "claude_family_opus41_ratio": {
+      "claim_text_excerpt": "opus-4.1 26.4x staging ratio (I19, C6, highest in Table 4)",
+      "paper_location_hint": "Frontier transfer paragraph; Table tab:claude_family",
+      "source_file": "supplementary/experiments/fixed_point_claude_family.json",
+      "value_expr": "round(next(m['avg_improvement_ratio'] for m in d['model_analyses'] if m['model_name']=='opus-4.1'), 1)",
+      "expected": 26.4,
+      "tolerance": 0.05,
+      "compare_as": "float"
+    },
+    "claude_family_haiku45_ratio": {
+      "claim_text_excerpt": "haiku-4.5 23.3x staging ratio (I20, Table 4)",
+      "paper_location_hint": "Frontier transfer paragraph; Table tab:claude_family",
+      "source_file": "supplementary/experiments/fixed_point_claude_family.json",
+      "value_expr": "round(next(m['avg_improvement_ratio'] for m in d['model_analyses'] if m['model_name']=='haiku-4.5'), 1)",
+      "expected": 23.3,
+      "tolerance": 0.05,
+      "compare_as": "float"
+    },
+    "claude_family_sonnet45_ratio": {
+      "claim_text_excerpt": "sonnet-4.5 23.8x staging ratio (I21, Table 4)",
+      "paper_location_hint": "Frontier transfer paragraph; Table tab:claude_family",
+      "source_file": "supplementary/experiments/fixed_point_claude_family.json",
+      "value_expr": "round(next(m['avg_improvement_ratio'] for m in d['model_analyses'] if m['model_name']=='sonnet-4.5'), 1)",
+      "expected": 23.8,
+      "tolerance": 0.05,
+      "compare_as": "float"
+    },
+    "claude_family_opus45_ratio": {
+      "claim_text_excerpt": "opus-4.5 4.8x staging ratio (I22, C5, frontier; Table 4)",
+      "paper_location_hint": "Frontier transfer paragraph (line 512); Table tab:claude_family",
+      "source_file": "supplementary/experiments/fixed_point_claude_family.json",
+      "value_expr": "round(next(m['avg_improvement_ratio'] for m in d['model_analyses'] if m['model_name']=='opus-4.5'), 1)",
+      "expected": 4.8,
+      "tolerance": 0.05,
+      "compare_as": "float"
+    },
+    "json_nl_failure_control_pct": {
+      "claim_text_excerpt": "77.5% JSON-NL failure at control (C24 first number)",
+      "paper_location_hint": "App H json_harness; line 1083 progression",
+      "source_file": "supplementary/experiments/json_nl_v4_results.json",
+      "value_expr": "d['summary']['control']['failure_rate']",
+      "expected": 77.5,
+      "tolerance": 0.05,
+      "compare_as": "float"
+    },
+    "json_nl_failure_low_pct": {
+      "claim_text_excerpt": "90.0% JSON-NL failure at low (C24 progression)",
+      "paper_location_hint": "App H json_harness; line 1083 progression",
+      "source_file": "supplementary/experiments/json_nl_v4_results.json",
+      "value_expr": "d['summary']['low']['failure_rate']",
+      "expected": 90.0,
+      "tolerance": 0.05,
+      "compare_as": "float"
+    },
+    "json_nl_failure_moderate_pct": {
+      "claim_text_excerpt": "97.5% JSON-NL failure at moderate (C24 progression)",
+      "paper_location_hint": "App H json_harness; line 1083 progression",
+      "source_file": "supplementary/experiments/json_nl_v4_results.json",
+      "value_expr": "d['summary']['moderate']['failure_rate']",
+      "expected": 97.5,
+      "tolerance": 0.05,
+      "compare_as": "float"
+    },
+    "json_nl_failure_high_pct": {
+      "claim_text_excerpt": "100% JSON-NL failure at high (C24 endpoint)",
+      "paper_location_hint": "App H json_harness; line 1083 progression",
+      "source_file": "supplementary/experiments/json_nl_v4_results.json",
+      "value_expr": "d['summary']['high']['failure_rate']",
+      "expected": 100.0,
+      "tolerance": 0.05,
+      "compare_as": "float"
+    },
+    "per_task_spearman_r_s": {
+      "claim_text_excerpt": "r_s = -0.942 (48-point per-task correlation, Section 5.1)",
+      "paper_location_hint": "Line 355 fig caption / line 898 spearman claim",
+      "source_file": "rebuttal/figures/per_task_correlation_results.json",
+      "value_expr": "round(d['spearman_48pt']['r_s'], 3)",
+      "expected": -0.942,
+      "tolerance": 0.001,
+      "compare_as": "float"
+    },
+    "per_task_n_tasks": {
+      "claim_text_excerpt": "12 tasks (per-task correlation)",
+      "paper_location_hint": "Line 355 fig caption (12~tasks)",
+      "source_file": "rebuttal/figures/per_task_correlation_results.json",
+      "value_expr": "d['n_tasks']",
+      "expected": 12,
+      "tolerance": 0,
+      "compare_as": "int"
+    },
+    "per_task_n_trials_total": {
+      "claim_text_excerpt": "1920 trials (per-task correlation; 12 tasks x 4 tiers x 4 models x 5 trials x 2 protocols)",
+      "paper_location_hint": "Line 1113 high-tier 4 models x 12 tasks x 2 protocols x N=5",
+      "source_file": "rebuttal/figures/per_task_correlation_results.json",
+      "value_expr": "d['n_trials']",
+      "expected": 1920,
+      "tolerance": 0,
+      "compare_as": "int"
+    },
+    "per_task_monotone_count": {
+      "claim_text_excerpt": "11 of 12 tasks monotone in pass rate vs tier",
+      "paper_location_hint": "Per-task analysis monotonicity claim",
+      "source_file": "rebuttal/figures/per_task_correlation_results.json",
+      "value_expr": "d['monotone_tasks']",
+      "expected": 11,
+      "tolerance": 0,
+      "compare_as": "int"
+    },
+    "charitable_feasibility_k2_pct": {
+      "claim_text_excerpt": "93% feasible at k=2 (charitable composition table)",
+      "paper_location_hint": "App charity feasibility table line 2491",
+      "source_file": "supplementary/experiments/outputs/charitable/charitable_feasibility.json",
+      "value_expr": "round(d['results']['2']['feasibility_rate'] * 100)",
+      "expected": 93,
+      "tolerance": 1,
+      "compare_as": "int"
+    },
+    "charitable_feasibility_k3_pct": {
+      "claim_text_excerpt": "79% feasible at k=3",
+      "paper_location_hint": "App charity feasibility table line 2491",
+      "source_file": "supplementary/experiments/outputs/charitable/charitable_feasibility.json",
+      "value_expr": "round(d['results']['3']['feasibility_rate'] * 100)",
+      "expected": 79,
+      "tolerance": 1,
+      "compare_as": "int"
+    },
+    "charitable_feasibility_k4_pct": {
+      "claim_text_excerpt": "63% feasible at k=4 (paper rounds 62.5 -> 63)",
+      "paper_location_hint": "App charity feasibility table line 2491",
+      "source_file": "supplementary/experiments/outputs/charitable/charitable_feasibility.json",
+      "value_expr": "d['results']['4']['feasibility_rate'] * 100",
+      "expected": 63,
+      "tolerance": 1,
+      "compare_as": "float"
+    },
+    "charitable_feasibility_k5_pct": {
+      "claim_text_excerpt": "46% feasible at k=5",
+      "paper_location_hint": "App charity feasibility table line 2491",
+      "source_file": "supplementary/experiments/outputs/charitable/charitable_feasibility.json",
+      "value_expr": "round(d['results']['5']['feasibility_rate'] * 100)",
+      "expected": 46,
+      "tolerance": 1,
+      "compare_as": "int"
+    },
+    "charitable_feasibility_k6_pct": {
+      "claim_text_excerpt": "31% feasible at k=6",
+      "paper_location_hint": "App charity feasibility table line 2491",
+      "source_file": "supplementary/experiments/outputs/charitable/charitable_feasibility.json",
+      "value_expr": "round(d['results']['6']['feasibility_rate'] * 100)",
+      "expected": 31,
+      "tolerance": 1,
+      "compare_as": "int"
+    },
+    "charitable_feasibility_k8_pct": {
+      "claim_text_excerpt": "12% feasible at k=8",
+      "paper_location_hint": "App charity feasibility table line 2491",
+      "source_file": "supplementary/experiments/outputs/charitable/charitable_feasibility.json",
+      "value_expr": "round(d['results']['8']['feasibility_rate'] * 100)",
+      "expected": 12,
+      "tolerance": 1,
+      "compare_as": "int"
+    },
+    "charitable_feasibility_k10_pct": {
+      "claim_text_excerpt": "3% feasible at k=10",
+      "paper_location_hint": "App charity feasibility table line 2491",
+      "source_file": "supplementary/experiments/outputs/charitable/charitable_feasibility.json",
+      "value_expr": "round(d['results']['10']['feasibility_rate'] * 100)",
+      "expected": 3,
+      "tolerance": 1,
+      "compare_as": "int"
+    },
+    "charitable_p_high_conflict": {
+      "claim_text_excerpt": "p_high_conflict = 0.0737 (charitable model parameter from Constitution)",
+      "paper_location_hint": "App charity model parameters",
+      "source_file": "supplementary/experiments/outputs/charitable/charitable_feasibility.json",
+      "value_expr": "d['parameters']['p_high_conflict']",
+      "expected": 0.0737,
+      "tolerance": 0.0001,
+      "compare_as": "float"
+    },
+    "charitable_n_trials": {
+      "claim_text_excerpt": "n=10,000 Monte Carlo trials per k (charitable composition)",
+      "paper_location_hint": "Line 2483 'n=10,000 trials'",
+      "source_file": "supplementary/experiments/outputs/charitable/charitable_feasibility.json",
+      "value_expr": "d['parameters']['n_trials']",
+      "expected": 10000,
+      "tolerance": 0,
+      "compare_as": "int"
     }
   }
 }

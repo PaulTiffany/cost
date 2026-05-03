@@ -1,7 +1,7 @@
 {
   "summary": {
-    "total": 31,
-    "passed": 31,
+    "total": 55,
+    "passed": 55,
     "failed": 0
   },
   "results": [
@@ -314,6 +314,246 @@
       "detail": "computed=480 expected=480.0 diff=0.0 tolerance=0.0",
       "excerpt": "N=480 per tier (calibration; 4 models x 12 tasks x 5 trials x 2 protocols)",
       "source_file": "supplementary/experiments/calibration_results.json"
+    },
+    {
+      "name": "claude_family_haiku3_ratio",
+      "passed": true,
+      "expected": 2.5,
+      "computed": 2.5,
+      "tolerance": 0.05,
+      "detail": "computed=2.5 expected=2.5 diff=0.0 tolerance=0.05",
+      "excerpt": "haiku-3 2.5x staging ratio (I16, Table 4)",
+      "source_file": "supplementary/experiments/fixed_point_claude_family.json"
+    },
+    {
+      "name": "claude_family_sonnet4_ratio",
+      "passed": true,
+      "expected": 4.4,
+      "computed": 4.4,
+      "tolerance": 0.05,
+      "detail": "computed=4.4 expected=4.4 diff=0.0 tolerance=0.05",
+      "excerpt": "sonnet-4 4.4x staging ratio (I17, Table 4)",
+      "source_file": "supplementary/experiments/fixed_point_claude_family.json"
+    },
+    {
+      "name": "claude_family_opus4_ratio",
+      "passed": true,
+      "expected": 22.7,
+      "computed": 22.7,
+      "tolerance": 0.05,
+      "detail": "computed=22.7 expected=22.7 diff=0.0 tolerance=0.05",
+      "excerpt": "opus-4 22.7x staging ratio (I18, Table 4)",
+      "source_file": "supplementary/experiments/fixed_point_claude_family.json"
+    },
+    {
+      "name": "claude_family_opus41_ratio",
+      "passed": true,
+      "expected": 26.4,
+      "computed": 26.4,
+      "tolerance": 0.05,
+      "detail": "computed=26.4 expected=26.4 diff=0.0 tolerance=0.05",
+      "excerpt": "opus-4.1 26.4x staging ratio (I19, C6, highest in Table 4)",
+      "source_file": "supplementary/experiments/fixed_point_claude_family.json"
+    },
+    {
+      "name": "claude_family_haiku45_ratio",
+      "passed": true,
+      "expected": 23.3,
+      "computed": 23.3,
+      "tolerance": 0.05,
+      "detail": "computed=23.3 expected=23.3 diff=0.0 tolerance=0.05",
+      "excerpt": "haiku-4.5 23.3x staging ratio (I20, Table 4)",
+      "source_file": "supplementary/experiments/fixed_point_claude_family.json"
+    },
+    {
+      "name": "claude_family_sonnet45_ratio",
+      "passed": true,
+      "expected": 23.8,
+      "computed": 23.8,
+      "tolerance": 0.05,
+      "detail": "computed=23.8 expected=23.8 diff=0.0 tolerance=0.05",
+      "excerpt": "sonnet-4.5 23.8x staging ratio (I21, Table 4)",
+      "source_file": "supplementary/experiments/fixed_point_claude_family.json"
+    },
+    {
+      "name": "claude_family_opus45_ratio",
+      "passed": true,
+      "expected": 4.8,
+      "computed": 4.8,
+      "tolerance": 0.05,
+      "detail": "computed=4.8 expected=4.8 diff=0.0 tolerance=0.05",
+      "excerpt": "opus-4.5 4.8x staging ratio (I22, C5, frontier; Table 4)",
+      "source_file": "supplementary/experiments/fixed_point_claude_family.json"
+    },
+    {
+      "name": "json_nl_failure_control_pct",
+      "passed": true,
+      "expected": 77.5,
+      "computed": 77.5,
+      "tolerance": 0.05,
+      "detail": "computed=77.5 expected=77.5 diff=0.0 tolerance=0.05",
+      "excerpt": "77.5% JSON-NL failure at control (C24 first number)",
+      "source_file": "supplementary/experiments/json_nl_v4_results.json"
+    },
+    {
+      "name": "json_nl_failure_low_pct",
+      "passed": true,
+      "expected": 90.0,
+      "computed": 90.0,
+      "tolerance": 0.05,
+      "detail": "computed=90.0 expected=90.0 diff=0.0 tolerance=0.05",
+      "excerpt": "90.0% JSON-NL failure at low (C24 progression)",
+      "source_file": "supplementary/experiments/json_nl_v4_results.json"
+    },
+    {
+      "name": "json_nl_failure_moderate_pct",
+      "passed": true,
+      "expected": 97.5,
+      "computed": 97.5,
+      "tolerance": 0.05,
+      "detail": "computed=97.5 expected=97.5 diff=0.0 tolerance=0.05",
+      "excerpt": "97.5% JSON-NL failure at moderate (C24 progression)",
+      "source_file": "supplementary/experiments/json_nl_v4_results.json"
+    },
+    {
+      "name": "json_nl_failure_high_pct",
+      "passed": true,
+      "expected": 100.0,
+      "computed": 100.0,
+      "tolerance": 0.05,
+      "detail": "computed=100.0 expected=100.0 diff=0.0 tolerance=0.05",
+      "excerpt": "100% JSON-NL failure at high (C24 endpoint)",
+      "source_file": "supplementary/experiments/json_nl_v4_results.json"
+    },
+    {
+      "name": "per_task_spearman_r_s",
+      "passed": true,
+      "expected": -0.942,
+      "computed": -0.942,
+      "tolerance": 0.001,
+      "detail": "computed=-0.942 expected=-0.942 diff=0.0 tolerance=0.001",
+      "excerpt": "r_s = -0.942 (48-point per-task correlation, Section 5.1)",
+      "source_file": "rebuttal/figures/per_task_correlation_results.json"
+    },
+    {
+      "name": "per_task_n_tasks",
+      "passed": true,
+      "expected": 12.0,
+      "computed": 12.0,
+      "tolerance": 0.0,
+      "detail": "computed=12 expected=12.0 diff=0.0 tolerance=0.0",
+      "excerpt": "12 tasks (per-task correlation)",
+      "source_file": "rebuttal/figures/per_task_correlation_results.json"
+    },
+    {
+      "name": "per_task_n_trials_total",
+      "passed": true,
+      "expected": 1920.0,
+      "computed": 1920.0,
+      "tolerance": 0.0,
+      "detail": "computed=1920 expected=1920.0 diff=0.0 tolerance=0.0",
+      "excerpt": "1920 trials (per-task correlation; 12 tasks x 4 tiers x 4 models x 5 trials x 2 protocols)",
+      "source_file": "rebuttal/figures/per_task_correlation_results.json"
+    },
+    {
+      "name": "per_task_monotone_count",
+      "passed": true,
+      "expected": 11.0,
+      "computed": 11.0,
+      "tolerance": 0.0,
+      "detail": "computed=11 expected=11.0 diff=0.0 tolerance=0.0",
+      "excerpt": "11 of 12 tasks monotone in pass rate vs tier",
+      "source_file": "rebuttal/figures/per_task_correlation_results.json"
+    },
+    {
+      "name": "charitable_feasibility_k2_pct",
+      "passed": true,
+      "expected": 93.0,
+      "computed": 93.0,
+      "tolerance": 1.0,
+      "detail": "computed=93 expected=93.0 diff=0.0 tolerance=1.0",
+      "excerpt": "93% feasible at k=2 (charitable composition table)",
+      "source_file": "supplementary/experiments/outputs/charitable/charitable_feasibility.json"
+    },
+    {
+      "name": "charitable_feasibility_k3_pct",
+      "passed": true,
+      "expected": 79.0,
+      "computed": 79.0,
+      "tolerance": 1.0,
+      "detail": "computed=79 expected=79.0 diff=0.0 tolerance=1.0",
+      "excerpt": "79% feasible at k=3",
+      "source_file": "supplementary/experiments/outputs/charitable/charitable_feasibility.json"
+    },
+    {
+      "name": "charitable_feasibility_k4_pct",
+      "passed": true,
+      "expected": 63.0,
+      "computed": 62.5,
+      "tolerance": 1.0,
+      "detail": "computed=62.5 expected=63.0 diff=0.5 tolerance=1.0",
+      "excerpt": "63% feasible at k=4 (paper rounds 62.5 -> 63)",
+      "source_file": "supplementary/experiments/outputs/charitable/charitable_feasibility.json"
+    },
+    {
+      "name": "charitable_feasibility_k5_pct",
+      "passed": true,
+      "expected": 46.0,
+      "computed": 46.0,
+      "tolerance": 1.0,
+      "detail": "computed=46 expected=46.0 diff=0.0 tolerance=1.0",
+      "excerpt": "46% feasible at k=5",
+      "source_file": "supplementary/experiments/outputs/charitable/charitable_feasibility.json"
+    },
+    {
+      "name": "charitable_feasibility_k6_pct",
+      "passed": true,
+      "expected": 31.0,
+      "computed": 31.0,
+      "tolerance": 1.0,
+      "detail": "computed=31 expected=31.0 diff=0.0 tolerance=1.0",
+      "excerpt": "31% feasible at k=6",
+      "source_file": "supplementary/experiments/outputs/charitable/charitable_feasibility.json"
+    },
+    {
+      "name": "charitable_feasibility_k8_pct",
+      "passed": true,
+      "expected": 12.0,
+      "computed": 12.0,
+      "tolerance": 1.0,
+      "detail": "computed=12 expected=12.0 diff=0.0 tolerance=1.0",
+      "excerpt": "12% feasible at k=8",
+      "source_file": "supplementary/experiments/outputs/charitable/charitable_feasibility.json"
+    },
+    {
+      "name": "charitable_feasibility_k10_pct",
+      "passed": true,
+      "expected": 3.0,
+      "computed": 3.0,
+      "tolerance": 1.0,
+      "detail": "computed=3 expected=3.0 diff=0.0 tolerance=1.0",
+      "excerpt": "3% feasible at k=10",
+      "source_file": "supplementary/experiments/outputs/charitable/charitable_feasibility.json"
+    },
+    {
+      "name": "charitable_p_high_conflict",
+      "passed": true,
+      "expected": 0.0737,
+      "computed": 0.0737,
+      "tolerance": 0.0001,
+      "detail": "computed=0.0737 expected=0.0737 diff=0.0 tolerance=0.0001",
+      "excerpt": "p_high_conflict = 0.0737 (charitable model parameter from Constitution)",
+      "source_file": "supplementary/experiments/outputs/charitable/charitable_feasibility.json"
+    },
+    {
+      "name": "charitable_n_trials",
+      "passed": true,
+      "expected": 10000.0,
+      "computed": 10000.0,
+      "tolerance": 0.0,
+      "detail": "computed=10000 expected=10000.0 diff=0.0 tolerance=0.0",
+      "excerpt": "n=10,000 Monte Carlo trials per k (charitable composition)",
+      "source_file": "supplementary/experiments/outputs/charitable/charitable_feasibility.json"
     }
   ]
 }
