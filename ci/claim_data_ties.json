@@ -1461,6 +1461,77 @@
       "tolerance": 0,
       "compare_as": "int",
       "metadata": {"check_kind": "identifier_count", "type": "model_count", "context": "claude_family_frontier_transfer"}
+    },
+
+    "identifier_count_cross_model_5models": {
+      "claim_text_excerpt": "5-model cross-provider benchmark (would have caught: paper said 4 named, source had 5)",
+      "paper_location_hint": "Body line 512 'across GPT-4o, DeepSeek-v3, Llama-3.1-70B, Gemini 2.5 Flash, and Gemini 2.5 Pro'",
+      "source_file": "rebuttal/figures/cross_model_results.json",
+      "value_expr": "len({r['model'] for r in d['results']})",
+      "expected": 5,
+      "tolerance": 0,
+      "compare_as": "int",
+      "metadata": {"check_kind": "identifier_count", "type": "model_count", "context": "cross_model_5provider", "drift_history": "First version of paper undercounted: said 4 models, source had 5; cert added after the catch"}
+    },
+    "identifier_gpt4o_in_cross_model": {
+      "claim_text_excerpt": "GPT-4o present in cross-provider source",
+      "paper_location_hint": "Body line 512",
+      "source_file": "rebuttal/figures/cross_model_results.json",
+      "value_expr": "1 if 'gpt-4o' in {r['model'] for r in d['results']} else 0",
+      "expected": 1,
+      "tolerance": 0,
+      "compare_as": "int",
+      "metadata": {"check_kind": "identifier", "type": "model_id", "family": "gpt", "openrouter_id": "openai/gpt-4o", "provider": "OpenAI", "via": "OpenRouter"}
+    },
+    "identifier_deepseek_v3_in_cross_model": {
+      "claim_text_excerpt": "DeepSeek-v3 present in cross-provider source",
+      "paper_location_hint": "Body line 512",
+      "source_file": "rebuttal/figures/cross_model_results.json",
+      "value_expr": "1 if 'deepseek-v3' in {r['model'] for r in d['results']} else 0",
+      "expected": 1,
+      "tolerance": 0,
+      "compare_as": "int",
+      "metadata": {"check_kind": "identifier", "type": "model_id", "family": "deepseek", "openrouter_id": "deepseek/deepseek-chat-v3-0324", "provider": "DeepSeek", "via": "OpenRouter"}
+    },
+    "identifier_llama_31_70b_in_cross_model": {
+      "claim_text_excerpt": "Llama-3.1-70B present in cross-provider source",
+      "paper_location_hint": "Body line 512",
+      "source_file": "rebuttal/figures/cross_model_results.json",
+      "value_expr": "1 if 'llama-3.1-70b' in {r['model'] for r in d['results']} else 0",
+      "expected": 1,
+      "tolerance": 0,
+      "compare_as": "int",
+      "metadata": {"check_kind": "identifier", "type": "model_id", "family": "llama", "size_b": 70, "openrouter_id": "meta-llama/llama-3.1-70b-instruct", "provider": "Meta", "via": "OpenRouter"}
+    },
+    "identifier_gemini_25_flash_in_cross_model": {
+      "claim_text_excerpt": "Gemini 2.5 Flash present in cross-provider source",
+      "paper_location_hint": "Body line 512",
+      "source_file": "rebuttal/figures/cross_model_results.json",
+      "value_expr": "1 if 'gemini-2.5-flash' in {r['model'] for r in d['results']} else 0",
+      "expected": 1,
+      "tolerance": 0,
+      "compare_as": "int",
+      "metadata": {"check_kind": "identifier", "type": "model_id", "family": "gemini", "openrouter_id": "google/gemini-2.5-flash", "provider": "Google", "via": "OpenRouter"}
+    },
+    "identifier_gemini_25_pro_in_cross_model": {
+      "claim_text_excerpt": "Gemini 2.5 Pro present in cross-provider source (the one that was silently dropped from prose)",
+      "paper_location_hint": "Body line 512 (added 2026-05 after drift catch)",
+      "source_file": "rebuttal/figures/cross_model_results.json",
+      "value_expr": "1 if 'gemini-2.5-pro' in {r['model'] for r in d['results']} else 0",
+      "expected": 1,
+      "tolerance": 0,
+      "compare_as": "int",
+      "metadata": {"check_kind": "identifier", "type": "model_id", "family": "gemini", "openrouter_id": "google/gemini-2.5-pro", "provider": "Google", "via": "OpenRouter", "note": "Paper drift: this model was in source but missing from prose until cert caught it"}
+    },
+    "identifier_named_models_match_total_n_cross_model": {
+      "claim_text_excerpt": "Named models in body == distinct models in source (consistency check)",
+      "paper_location_hint": "Body line 512: paper now names 5 models; source has 5 distinct",
+      "source_file": "rebuttal/figures/cross_model_results.json",
+      "value_expr": "1 if {r['model'] for r in d['results']} == {'gpt-4o','deepseek-v3','llama-3.1-70b','gemini-2.5-flash','gemini-2.5-pro'} else 0",
+      "expected": 1,
+      "tolerance": 0,
+      "compare_as": "int",
+      "metadata": {"check_kind": "set_equality", "type": "model_set_consistency", "context": "cross_provider_5model"}
     }
   }
 }

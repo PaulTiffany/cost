@@ -1,7 +1,7 @@
 {
   "summary": {
-    "total": 159,
-    "passed": 159,
+    "total": 166,
+    "passed": 166,
     "failed": 0
   },
   "results": [
@@ -1594,6 +1594,76 @@
       "detail": "computed=7 expected=7.0 diff=0.0 tolerance=0.0",
       "excerpt": "7 Claude family models in fixed_point analysis (matches body claim)",
       "source_file": "supplementary/experiments/fixed_point_claude_family.json"
+    },
+    {
+      "name": "identifier_count_cross_model_5models",
+      "passed": true,
+      "expected": 5.0,
+      "computed": 5.0,
+      "tolerance": 0.0,
+      "detail": "computed=5 expected=5.0 diff=0.0 tolerance=0.0",
+      "excerpt": "5-model cross-provider benchmark (would have caught: paper said 4 named, source had 5)",
+      "source_file": "rebuttal/figures/cross_model_results.json"
+    },
+    {
+      "name": "identifier_gpt4o_in_cross_model",
+      "passed": true,
+      "expected": 1.0,
+      "computed": 1.0,
+      "tolerance": 0.0,
+      "detail": "computed=1 expected=1.0 diff=0.0 tolerance=0.0",
+      "excerpt": "GPT-4o present in cross-provider source",
+      "source_file": "rebuttal/figures/cross_model_results.json"
+    },
+    {
+      "name": "identifier_deepseek_v3_in_cross_model",
+      "passed": true,
+      "expected": 1.0,
+      "computed": 1.0,
+      "tolerance": 0.0,
+      "detail": "computed=1 expected=1.0 diff=0.0 tolerance=0.0",
+      "excerpt": "DeepSeek-v3 present in cross-provider source",
+      "source_file": "rebuttal/figures/cross_model_results.json"
+    },
+    {
+      "name": "identifier_llama_31_70b_in_cross_model",
+      "passed": true,
+      "expected": 1.0,
+      "computed": 1.0,
+      "tolerance": 0.0,
+      "detail": "computed=1 expected=1.0 diff=0.0 tolerance=0.0",
+      "excerpt": "Llama-3.1-70B present in cross-provider source",
+      "source_file": "rebuttal/figures/cross_model_results.json"
+    },
+    {
+      "name": "identifier_gemini_25_flash_in_cross_model",
+      "passed": true,
+      "expected": 1.0,
+      "computed": 1.0,
+      "tolerance": 0.0,
+      "detail": "computed=1 expected=1.0 diff=0.0 tolerance=0.0",
+      "excerpt": "Gemini 2.5 Flash present in cross-provider source",
+      "source_file": "rebuttal/figures/cross_model_results.json"
+    },
+    {
+      "name": "identifier_gemini_25_pro_in_cross_model",
+      "passed": true,
+      "expected": 1.0,
+      "computed": 1.0,
+      "tolerance": 0.0,
+      "detail": "computed=1 expected=1.0 diff=0.0 tolerance=0.0",
+      "excerpt": "Gemini 2.5 Pro present in cross-provider source (the one that was silently dropped from prose)",
+      "source_file": "rebuttal/figures/cross_model_results.json"
+    },
+    {
+      "name": "identifier_named_models_match_total_n_cross_model",
+      "passed": true,
+      "expected": 1.0,
+      "computed": 1.0,
+      "tolerance": 0.0,
+      "detail": "computed=1 expected=1.0 diff=0.0 tolerance=0.0",
+      "excerpt": "Named models in body == distinct models in source (consistency check)",
+      "source_file": "rebuttal/figures/cross_model_results.json"
     }
   ]
 }
