@@ -112,6 +112,14 @@ else
     echo "[OK]   L14 illustration lineage"
 fi
 
+if ! python ci/claim_data_ties_check.py > /tmp/claim_data_ties.out 2>&1; then
+    echo "[FAIL] L15 data-tied claims (claim_data_ties_check.py)"
+    tail -10 /tmp/claim_data_ties.out
+    failed=1
+else
+    echo "[OK]   L15 data-tied claims"
+fi
+
 if [ $failed -ne 0 ]; then
     echo ""
     echo "Pre-commit blocked: a structural layer failed."

@@ -1,7 +1,7 @@
 {
   "summary": {
-    "total": 9,
-    "passed": 9,
+    "total": 17,
+    "passed": 17,
     "failed": 0
   },
   "results": [
@@ -94,6 +94,86 @@
       "detail": "computed=31 expected=31.0 diff=0.0 tolerance=0.0",
       "excerpt": "command-r-plus 31% at high",
       "source_file": "rebuttal/figures/blinded_external/cross_model_results.json"
+    },
+    {
+      "name": "cross_model_n_total_older",
+      "passed": true,
+      "expected": 1200.0,
+      "computed": 1200.0,
+      "tolerance": 0.0,
+      "detail": "computed=1200 expected=1200.0 diff=0.0 tolerance=0.0",
+      "excerpt": "N=1,200 cross-model (5-model body text)",
+      "source_file": "rebuttal/figures/cross_model_results.json"
+    },
+    {
+      "name": "constitution_n_principles",
+      "passed": true,
+      "expected": 20.0,
+      "computed": 20.0,
+      "tolerance": 0.0,
+      "detail": "computed=20 expected=20.0 diff=0.0 tolerance=0.0",
+      "excerpt": "20 principles (Claude Constitution analysis)",
+      "source_file": "supplementary/experiments/outputs/constitution/constitution_analysis.json"
+    },
+    {
+      "name": "constitution_n_pairs",
+      "passed": true,
+      "expected": 190.0,
+      "computed": 190.0,
+      "tolerance": 0.0,
+      "detail": "computed=190 expected=190.0 diff=0.0 tolerance=0.0",
+      "excerpt": "190 pairs (Claude Constitution analysis)",
+      "source_file": "supplementary/experiments/outputs/constitution/constitution_analysis.json"
+    },
+    {
+      "name": "constitution_high_rho_fraction_pct",
+      "passed": true,
+      "expected": 7.37,
+      "computed": 7.37,
+      "tolerance": 0.005,
+      "detail": "computed=7.37 expected=7.37 diff=0.0 tolerance=0.005",
+      "excerpt": "7.37% pairs exceed rho >= 0.5 (Claude Constitution)",
+      "source_file": "supplementary/experiments/outputs/constitution/constitution_analysis.json"
+    },
+    {
+      "name": "constitution_high_rho_fraction_decimal",
+      "passed": true,
+      "expected": 0.0737,
+      "computed": 0.0737,
+      "tolerance": 5e-05,
+      "detail": "computed=0.0737 expected=0.0737 diff=0.0 tolerance=5e-05",
+      "excerpt": "0.0737 (used in formula (1 - 0.0737)^k(k-1)/2)",
+      "source_file": "supplementary/experiments/outputs/constitution/constitution_analysis.json"
+    },
+    {
+      "name": "constitution_mean_rho",
+      "passed": true,
+      "expected": 0.267,
+      "computed": 0.267,
+      "tolerance": 0.0005,
+      "detail": "computed=0.267 expected=0.267 diff=0.0 tolerance=0.0005",
+      "excerpt": "mean rho = 0.267 (Claude Constitution Gram analysis)",
+      "source_file": "supplementary/experiments/outputs/constitution/constitution_analysis.json"
+    },
+    {
+      "name": "mutation_caught",
+      "passed": true,
+      "expected": 147.0,
+      "computed": 147.0,
+      "tolerance": 0.0,
+      "detail": "computed=147 expected=147.0 diff=0.0 tolerance=0.0",
+      "excerpt": "147 of 147 single-digit substitutions caught",
+      "source_file": "ci/tests/systematic_mutation_results.json"
+    },
+    {
+      "name": "mutation_total_testable",
+      "passed": true,
+      "expected": 147.0,
+      "computed": 147.0,
+      "tolerance": 0.0,
+      "detail": "computed=147 expected=147.0 diff=0.0 tolerance=0.0",
+      "excerpt": "147 testable mutations (total - skipped)",
+      "source_file": "ci/tests/systematic_mutation_results.json"
     }
   ]
 }

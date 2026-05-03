@@ -86,6 +86,78 @@
       "expected": 31,
       "tolerance": 0,
       "compare_as": "int"
+    },
+    "cross_model_n_total_older": {
+      "claim_text_excerpt": "N=1,200 cross-model (5-model body text)",
+      "paper_location_hint": "Body section Frontier Transfer and Generalization (line ~512)",
+      "source_file": "rebuttal/figures/cross_model_results.json",
+      "value_expr": "d['total_results']",
+      "expected": 1200,
+      "tolerance": 0,
+      "compare_as": "int"
+    },
+    "constitution_n_principles": {
+      "claim_text_excerpt": "20 principles (Claude Constitution analysis)",
+      "paper_location_hint": "App Charitable Constraint Composition (line ~2497)",
+      "source_file": "supplementary/experiments/outputs/constitution/constitution_analysis.json",
+      "value_expr": "d['summary']['n_principles']",
+      "expected": 20,
+      "tolerance": 0,
+      "compare_as": "int"
+    },
+    "constitution_n_pairs": {
+      "claim_text_excerpt": "190 pairs (Claude Constitution analysis)",
+      "paper_location_hint": "App Charitable Constraint Composition (line ~2497)",
+      "source_file": "supplementary/experiments/outputs/constitution/constitution_analysis.json",
+      "value_expr": "d['summary']['n_pairs']",
+      "expected": 190,
+      "tolerance": 0,
+      "compare_as": "int"
+    },
+    "constitution_high_rho_fraction_pct": {
+      "claim_text_excerpt": "7.37% pairs exceed rho >= 0.5 (Claude Constitution)",
+      "paper_location_hint": "App Charitable Constraint Composition; also Key finding paragraph",
+      "source_file": "supplementary/experiments/outputs/constitution/constitution_analysis.json",
+      "value_expr": "round(d['summary']['high_rho_fraction'] * 100, 2)",
+      "expected": 7.37,
+      "tolerance": 0.005,
+      "compare_as": "float"
+    },
+    "constitution_high_rho_fraction_decimal": {
+      "claim_text_excerpt": "0.0737 (used in formula (1 - 0.0737)^k(k-1)/2)",
+      "paper_location_hint": "App Charitable Constraint Composition feasibility formula",
+      "source_file": "supplementary/experiments/outputs/constitution/constitution_analysis.json",
+      "value_expr": "round(d['summary']['high_rho_fraction'], 4)",
+      "expected": 0.0737,
+      "tolerance": 0.00005,
+      "compare_as": "float"
+    },
+    "constitution_mean_rho": {
+      "claim_text_excerpt": "mean rho = 0.267 (Claude Constitution Gram analysis)",
+      "paper_location_hint": "Constitution analysis appendix table",
+      "source_file": "supplementary/experiments/outputs/constitution/constitution_analysis.json",
+      "value_expr": "round(d['summary']['mean_rho'], 3)",
+      "expected": 0.267,
+      "tolerance": 0.0005,
+      "compare_as": "float"
+    },
+    "mutation_caught": {
+      "claim_text_excerpt": "147 of 147 single-digit substitutions caught",
+      "paper_location_hint": "App C cert overview (line ~2433)",
+      "source_file": "ci/tests/systematic_mutation_results.json",
+      "value_expr": "d['summary']['caught']",
+      "expected": 147,
+      "tolerance": 0,
+      "compare_as": "int"
+    },
+    "mutation_total_testable": {
+      "claim_text_excerpt": "147 testable mutations (total - skipped)",
+      "paper_location_hint": "App C cert overview; second 147 in '147 of 147'",
+      "source_file": "ci/tests/systematic_mutation_results.json",
+      "value_expr": "d['summary']['total'] - d['summary']['skipped']",
+      "expected": 147,
+      "tolerance": 0,
+      "compare_as": "int"
     }
   }
 }
