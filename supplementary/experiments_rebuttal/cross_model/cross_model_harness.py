@@ -131,10 +131,15 @@ MODELS = {
     "llama-3.3-70b": "meta-llama/llama-3.3-70b-instruct",
     "deepseek-v3": "deepseek/deepseek-chat-v3-0324",
     "gemini-2.5-pro": "google/gemini-2.5-pro",
-    # "deepseek-r1": "deepseek/deepseek-r1",
+    # Blinded external benchmark additions (4 distinctively new providers)
+    "mistral-large": "mistralai/mistral-large-2411",
+    "command-r-plus": "cohere/command-r-plus",
+    "qwen-2.5-72b": "qwen/qwen-2.5-72b-instruct",
+    "deepseek-r1": "deepseek/deepseek-r1",
 }
 
 DEFAULT_MODELS = ["gpt-4o", "gemini-2.5-flash", "llama-3.1-70b", "llama-3.3-70b", "deepseek-v3"]
+BLINDED_EXTERNAL = ["mistral-large", "command-r-plus", "qwen-2.5-72b", "deepseek-r1"]
 
 
 # ---------------------------------------------------------------------------
