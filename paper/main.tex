@@ -2479,21 +2479,7 @@ The cliff transfers. At the highest tier the image model satisfies all $11$ comp
 
 Within the text-medium row, command-r-plus is a clean case of the screening problem the paper's $\hat{\rho}$ statistic is designed for. Pass rates of $100\%$, $99\%$, $100\%$ at control, low, and moderate tiers are statistically indistinguishable from the frontier peers. At the high tier the same model scores $31\%$. A benchmark that does not exercise high-$\rho$ cells would treat command-r-plus as interchangeable with its peers; only the cliff regime separates them.
 
-\begin{figure}[h]
-\centering
-\begin{minipage}[t]{0.46\linewidth}
-\centering
-\includegraphics[width=\linewidth]{../supplementary/experiments_rebuttal/image_transfer/outputs/runD/D-fibonacci-high_t0.png}
-\\\footnotesize (a) Pass~B: all 11 demands met. Single accent (blue), gray neutral.
-\end{minipage}\hfill
-\begin{minipage}[t]{0.46\linewidth}
-\centering
-\includegraphics[width=\linewidth]{../supplementary/experiments_rebuttal/image_transfer/outputs/runD/D-factorial-high_t0.png}
-\\\footnotesize (b) Fail~B: multi-accent (blue + red). Other 10 demands met.
-\end{minipage}
-\caption{Two high-tier Run~D outputs at the per-image level. Both are competent schematics of their tasks. Both satisfy 10 of 11 demands. The left output uses a single chromatic accent and passes strict Pass~B; the right uses two and fails the single-accent rule. Strict scoring treats both as binary pass/fail, so a one-demand violation registers as the same outcome as a complete failure of format compliance. Experimental output; per-image rationale is in \texttt{image\_transfer\_runD\_passB.json}. Not formal evidence of relative demand difficulty.}
-\label{fig:image_cliff_examples}
-\end{figure}
+A note on the failure mode in image medium: the high-tier failures in Run~D are subtle. Outputs satisfy most demands and fall short on one or two compounded constraints (most commonly the single-accent rule, where the model resolves a competing labeling demand by adding a second accent color). Per-trial rationale is recorded at \texttt{image\_transfer\_runD\_passB.json}. This is itself a property of the diagonal-cost regime: the bound predicts joint-satisfaction collapse, not per-demand collapse, so the artifact-level signature is competent-but-jointly-noncompliant rather than catastrophic.
 
 \textbf{Methodological exploration} (Runs A--C, supplementary, full data preserved in \texttt{supplementary/experiments\_rebuttal/image\_transfer/}). Three pilot runs preceded the design above: (a) Run~A documented that the modality frame is non-optional -- bare LaTeX content is interpreted as a text query without an explicit ``Generate an image'' instruction following the OpenAI image-gen prompting cookbook; (b) Run~B confirmed that implicit-vs-explicit constraint decomposition does not differ once the modality is locked; (c) Run~C tested charitable prohibition-style constraints (the $11$ NeurIPS SOCIETAL IMPACT topics) and produced no visible cliff because such prohibitions are auto-satisfiable by a schematic that already does not violate them ($\rho \approx 0$ as predicted by the bound). Run~D's positive compounding format demands is the first cell to surface the cliff in image medium, replicating the FORMAT\_TIERS structure faithfully.
 

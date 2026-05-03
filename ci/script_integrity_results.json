@@ -1,7 +1,7 @@
 {
   "summary": {
-    "total_scripts": 14,
-    "passed": 14,
+    "total_scripts": 13,
+    "passed": 13,
     "failed": 0
   },
   "scripts": [
@@ -68,14 +68,6 @@
       "syntax_error": null,
       "missing_imports": [],
       "n_imports_checked": 2
-    },
-    {
-      "name": "D-fibonacci-high_t0.png (+1 more)",
-      "script_path": "supplementary\\experiments_rebuttal\\image_transfer\\run_image_transfer.py",
-      "syntax_ok": true,
-      "syntax_error": null,
-      "missing_imports": [],
-      "n_imports_checked": 3
     },
     {
       "name": "per_task_correlation.pdf",

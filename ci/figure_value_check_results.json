@@ -1,6 +1,6 @@
 {
   "summary": {
-    "figures_checked": 9,
+    "figures_checked": 7,
     "total_numerics": 205,
     "total_covered": 159,
     "total_uncovered": 23,
@@ -88,26 +88,6 @@
       "raw_numerics": 5,
       "filtered_numerics": 0,
       "covered": 5,
-      "uncovered_count": 0,
-      "uncovered_values": []
-    },
-    {
-      "name": "D-fibonacci-high_t0.png",
-      "asset_path": "supplementary\\experiments_rebuttal\\image_transfer\\outputs\\runD\\D-fibonacci-high_t0.png",
-      "pdftotext_chars": 0,
-      "raw_numerics": 0,
-      "filtered_numerics": 0,
-      "covered": 0,
-      "uncovered_count": 0,
-      "uncovered_values": []
-    },
-    {
-      "name": "D-factorial-high_t0.png",
-      "asset_path": "supplementary\\experiments_rebuttal\\image_transfer\\outputs\\runD\\D-factorial-high_t0.png",
-      "pdftotext_chars": 0,
-      "raw_numerics": 0,
-      "filtered_numerics": 0,
-      "covered": 0,
       "uncovered_count": 0,
       "uncovered_values": []
     },

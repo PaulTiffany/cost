@@ -1,17 +1,17 @@
 # Claim Certificate
 
 **Paper:** The Cost of Cacophony: Geometric Limits on Multi-Constraint Alignment
-**Generated:** 2026-05-03T09:58:48
+**Generated:** 2026-05-03T10:19:06
 **Verdict:** **PASS** — all structural checks clean (L1+L2+L4+L7+L8+L9+L10+L11+L12+L13+L14); L3+L5 coverage is advisory, see triage JSONs
 
 ## Provenance
 
-- main.tex sha256: `1402b3f4ba04e8f9...` (full hash in JSON)
-- main.tex mtime: 2026-05-03T09:55:55
-- main.pdf size: 2,641,858 bytes
-- main.pdf mtime: 2026-05-03T09:56:50
+- main.tex sha256: `1817324d314943ef...` (full hash in JSON)
+- main.tex mtime: 2026-05-03T10:18:06
+- main.pdf size: 1,079,390 bytes
+- main.pdf mtime: 2026-05-03T10:19:01
 - registry sha256: `a860cd02ec4eaf6b...`
-- certificate self-hash: `3ae47b1ebe1de99b...` (sha256 of this payload minus the hash field; recompute to verify integrity)
+- certificate self-hash: `cdd82e44035af69a...` (sha256 of this payload minus the hash field; recompute to verify integrity)
 
 ## Layer-by-layer Results
 
@@ -19,15 +19,15 @@
 |---|---|---|---|
 | L1_audit | `ci\claim_audit.py` | PASS | 152/152 verbatim |
 | L2_validator | `ci\claim_audit_validator.py` | PASS | 14/14 checks pass |
-| L3_sweep | `ci\claim_coverage_sweep.py` | PASS | 93.9% coverage, 68 uncovered |
-| L4_lineage | `ci\figure_lineage_check.py` | PASS | 8/8 checks pass, 13 figures fresh |
+| L3_sweep | `ci\claim_coverage_sweep.py` | PASS | 94.1% coverage, 66 uncovered |
+| L4_lineage | `ci\figure_lineage_check.py` | PASS | 8/8 checks pass, 11 figures fresh |
 | L5_figure_values | `ci\figure_value_check.py` | PASS | 77.6% overall figure coverage, 23 uncovered |
 | L7_citations | `ci\citation_integrity_check.py` | PASS | 26 cites, 42 bib entries, 0 unresolved, 16 dead |
-| L8_links | `ci\link_integrity_check.py` | PASS | 2 URLs, 121 refs / 166 labels, 0 unresolved, 45 dead labels |
+| L8_links | `ci\link_integrity_check.py` | PASS | 2 URLs, 121 refs / 165 labels, 0 unresolved, 44 dead labels |
 | L9_consistency | `ci\cross_claim_consistency_check.py` | PASS | 33/33 consistency relations hold |
 | L10_bib | `ci\bib_entry_check.py` | PASS | 42/42 bib entries well-formed |
-| L11_scripts | `ci\script_integrity_check.py` | PASS | 14/14 figure scripts pass smoke test |
-| L12_build_equiv | `ci\build_equivalence_check.py` | PASS | --quick mode: ?/17 figures fresh; full mode optional |
+| L11_scripts | `ci\script_integrity_check.py` | PASS | 13/13 figure scripts pass smoke test |
+| L12_build_equiv | `ci\build_equivalence_check.py` | PASS | --quick mode: ?/15 figures fresh; full mode optional |
 | L13_cross_tree | `ci\cross_tree_consistency_check.py` | PASS | 11/? cross-tree files match (incl. expected divergences) |
 | L14_illustrations | `ci\illustration_lineage_check.py` | PASS | 7/7 illustration provenance checks pass |
 
@@ -41,8 +41,6 @@
 | constrained_decoding.pdf | 100.0% | 0 |
 | cross_model_cliff.pdf | 100.0% | 0 |
 | soft_constraint_cliff.pdf | 100.0% | 0 |
-| D-fibonacci-high_t0.png | 0.0% | 0 |
-| D-factorial-high_t0.png | 0.0% | 0 |
 | image_format_cliff.pdf | 60.0% | 2 |
 
 ## Triage Pointers

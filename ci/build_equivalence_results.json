@@ -4,11 +4,11 @@
     "strict": false,
     "timeout_sec": 60,
     "verdict": "PASS",
-    "total": 17,
+    "total": 15,
     "pass": 7,
     "warn": 0,
     "fail": 0,
-    "skip": 10
+    "skip": 8
   },
   "figures": [
     {
@@ -108,32 +108,6 @@
       "script": "supplementary/experiments_rebuttal/image_transfer/plot_image_transfer_conflict.py",
       "status": "SKIP",
       "reason": "in_use=false (skipped in quick mode)",
-      "original_sha256": null,
-      "rebuilt_sha256": null,
-      "original_pdftext_len": 0,
-      "rebuilt_pdftext_len": 0,
-      "diff_snippet": "",
-      "runtime_sec": 0.0
-    },
-    {
-      "name": "D-fibonacci-high_t0.png",
-      "asset": "supplementary/experiments_rebuttal/image_transfer/outputs/runD/D-fibonacci-high_t0.png",
-      "script": "supplementary/experiments_rebuttal/image_transfer/run_image_transfer.py",
-      "status": "SKIP",
-      "reason": "binary audio asset",
-      "original_sha256": null,
-      "rebuilt_sha256": null,
-      "original_pdftext_len": 0,
-      "rebuilt_pdftext_len": 0,
-      "diff_snippet": "",
-      "runtime_sec": 0.0
-    },
-    {
-      "name": "D-factorial-high_t0.png",
-      "asset": "supplementary/experiments_rebuttal/image_transfer/outputs/runD/D-factorial-high_t0.png",
-      "script": "supplementary/experiments_rebuttal/image_transfer/run_image_transfer.py",
-      "status": "SKIP",
-      "reason": "binary audio asset",
       "original_sha256": null,
       "rebuilt_sha256": null,
       "original_pdftext_len": 0,
