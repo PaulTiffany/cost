@@ -1,29 +1,19 @@
 {
   "summary": {
-    "total": 7,
-    "passed": 7,
+    "total": 5,
+    "passed": 5,
     "failed": 0
   },
   "results": [
     {
-      "name": "A1. Every illustration's source_file exists (3 entries)",
+      "name": "A1. Every input file exists (3 entries)",
       "passed": true,
-      "detail": "all source files present"
+      "detail": "all input files resolved"
     },
     {
-      "name": "A2. Source LaTeX block hashes match (no drift)",
+      "name": "A2. Every input hash matches its current file content",
       "passed": true,
-      "detail": "all source blocks unchanged since illustration was authored"
-    },
-    {
-      "name": "A3. (deprecated, see A4) \u2014 visual_spec field no longer used",
-      "passed": true,
-      "detail": "direction_prompt replaces text-model spec layer"
-    },
-    {
-      "name": "A4. Direction-prompt hashes match (human exploration intent unchanged)",
-      "passed": true,
-      "detail": "all direction_hash values match the stored direction_prompt"
+      "detail": "all inputs unchanged since illustration was authored"
     },
     {
       "name": "A5. Final assets exist and hash-match",

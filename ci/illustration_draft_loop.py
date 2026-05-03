@@ -2,30 +2,23 @@
 """
 illustration_draft_loop.py - Run the L14 draft step.
 
-For a given source LaTeX block + a human-authored direction prompt,
-call an image model to produce a visual draft. The draft is for
-exploration only; the certificate trusts only the deterministic
-TikZ redraw the human authors next.
-
-Why no text-model layer? Earlier versions of this script had a
-text model translate the source LaTeX block into a "spec" before
-calling the image model. That layer was an LLM judge in disguise:
-it interpreted what the human already knows and removed the human's
-ability to say "compare this to X" or "highlight Y". The image
-model is a TOOL for visual exploration; the human writes the
-direction directly. The source LaTeX hash provides the provenance
-anchor; the human's direction provides the creative intent.
+Sends the source LaTeX block (and any extra input files) to an image
+model. Each input is hashed for provenance. The model returns a draft
+PNG. The human authors a deterministic TikZ asset from there; that
+asset is what ships.
 
 Usage:
   export OPENROUTER_API_KEY=...
+  # Source block alone
   python illustration_draft_loop.py \\
-    --source-file paper/main.tex \\
+    --start 96 --end 114 \\
+    --target algorithm1_routing
+
+  # Source block + extra input file(s)
+  python illustration_draft_loop.py \\
     --start 349 --end 350 \\
     --target staging_vs_refine \\
-    --direction "3-panel comparison: Self-Refine (loop around output) | \\
-                 Decompose (split->solve->combine) | Staged (sequential \\
-                 per-constraint with anchor). Token costs: 640 / parallel / 512." \\
-    --image-model openai/gpt-5.4-image-2
+    --extra-input supplementary/illustrations/staging_vs_refine_direction.txt
 """
 
 from __future__ import annotations
@@ -48,17 +41,10 @@ REPO_ROOT = Path(__file__).resolve().parent.parent
 ILLUSTRATIONS_DIR = REPO_ROOT / "supplementary" / "illustrations"
 
 
-IMAGE_PROMPT_TEMPLATE = """Generate a clean schematic diagram for a research paper.
-
-Source context (LaTeX block being illustrated, for grounding only):
-{source_block}
-
-Visualization direction (what to actually draw):
-{direction}
+STYLE_SUFFIX = """
 
 Style: minimal, sans-serif labels, rounded rectangles for nodes, arrows for flow,
-white background, publication-quality. No artistic flourishes.
-"""
+white background, publication-quality. No artistic flourishes."""
 
 
 def sha256_of_text(text: str) -> str:
@@ -113,8 +99,8 @@ def main() -> int:
     parser.add_argument("--start", type=int, required=True, help="source block line start (1-indexed)")
     parser.add_argument("--end", type=int, required=True, help="source block line end (inclusive)")
     parser.add_argument("--target", required=True, help="short slug for output filenames")
-    parser.add_argument("--direction", required=True,
-                        help="Human-authored direction for what to draw. This is the exploration intent — say what you want, not what the source says. Hashed and stored in the manifest as direction_hash.")
+    parser.add_argument("--extra-input", action="append", default=[],
+                        help="OPTIONAL: path to an additional input file (text). Each --extra-input adds another constraint to the image model's joint input. Each file is hashed for provenance. Use when the source block alone needs more framing.")
     parser.add_argument("--image-model", default="openai/gpt-5.4-image-2",
                         help="OpenRouter image model id (default verified working)")
     args = parser.parse_args()
@@ -126,29 +112,51 @@ def main() -> int:
 
     client = OpenAI(api_key=api_key, base_url="https://openrouter.ai/api/v1")
 
-    block = extract_block(args.source_file, args.start, args.end)
-    block_hash = sha256_of_text(block)
-    direction_hash = sha256_of_text(args.direction)
-
-    print(f"=== source block (lines {args.start}-{args.end}, sha256={block_hash[:16]}...) ===")
-    print(block[:240] + ("..." if len(block) > 240 else ""))
-    print()
-    print(f"=== direction (sha256={direction_hash[:16]}...) ===")
-    print(args.direction[:300] + ("..." if len(args.direction) > 300 else ""))
-    print()
-
     ILLUSTRATIONS_DIR.mkdir(parents=True, exist_ok=True)
 
-    # Save the direction prompt to a file for human inspection (and so
-    # the hash check has something to recompute against later).
-    direction_path = ILLUSTRATIONS_DIR / f"{args.target}_direction.txt"
-    direction_path.write_text(args.direction, encoding="utf-8")
-    print(f"direction written: {direction_path}")
+    # Build the inputs list. The source LaTeX block is one input;
+    # any --extra-input file is another. All hashed; all concatenated
+    # for the image model prompt.
+    inputs: list[dict] = []
+    prompt_parts: list[str] = []
+
+    block = extract_block(args.source_file, args.start, args.end)
+    block_hash = sha256_of_text(block)
+    inputs.append({
+        "kind": "latex_block",
+        "file": str(args.source_file.relative_to(REPO_ROOT)).replace("\\", "/"),
+        "line_start": args.start,
+        "line_end": args.end,
+        "hash": block_hash,
+    })
+    prompt_parts.append(f"Source LaTeX block:\n{block}")
+    print(f"=== input 0: latex_block from {args.source_file.name}:{args.start}-{args.end} (sha256={block_hash[:16]}...) ===")
+    print(block[:240] + ("..." if len(block) > 240 else ""))
     print()
+
+    for i, extra_path_str in enumerate(args.extra_input, start=1):
+        extra_path = Path(extra_path_str)
+        if not extra_path.is_absolute():
+            extra_path = (REPO_ROOT / extra_path).resolve()
+        if not extra_path.exists():
+            print(f"ERROR: extra-input not found: {extra_path}", file=sys.stderr)
+            return 2
+        extra_text = extra_path.read_text(encoding="utf-8")
+        extra_hash = sha256_of_text(extra_text)
+        inputs.append({
+            "kind": "text_file",
+            "file": str(extra_path.relative_to(REPO_ROOT)).replace("\\", "/") if extra_path.is_relative_to(REPO_ROOT) else str(extra_path),
+            "hash": extra_hash,
+        })
+        prompt_parts.append(f"Additional input ({extra_path.name}):\n{extra_text}")
+        print(f"=== input {i}: text_file {extra_path.name} (sha256={extra_hash[:16]}...) ===")
+        print(extra_text[:240] + ("..." if len(extra_text) > 240 else ""))
+        print()
+
+    image_prompt = "Generate a clean schematic diagram for a research paper.\n\n" + "\n\n".join(prompt_parts) + STYLE_SUFFIX
 
     draft_path = ILLUSTRATIONS_DIR / f"{args.target}_draft.png"
     print(f"=== generating draft via {args.image_model}... ===")
-    image_prompt = IMAGE_PROMPT_TEMPLATE.format(source_block=block, direction=args.direction)
     image_bytes, raw = call_image_model(client, args.image_model, image_prompt)
     if image_bytes is None:
         print("WARNING: no image returned. Raw response:")
@@ -163,13 +171,7 @@ def main() -> int:
     print("=== manifest stub for ci/illustration_lineage.json ===")
     manifest_stub = {
         f"{args.target}.tex": {
-            "source_file": str(args.source_file.relative_to(REPO_ROOT)).replace("\\", "/"),
-            "source_line_start": args.start,
-            "source_line_end": args.end,
-            "source_excerpt": block[:200].replace("\n", " ")[:200] + "...",
-            "source_hash": block_hash,
-            "direction_prompt": args.direction,
-            "direction_hash": direction_hash,
+            "inputs": inputs,
             "draft_model": args.image_model,
             "draft_image": str(draft_path.relative_to(REPO_ROOT)).replace("\\", "/"),
             "draft_image_hash": draft_hash,
@@ -178,7 +180,6 @@ def main() -> int:
             "main_tex_ref": None,
             "in_use": False,
             "claim_scope": "schematic illustration only; not empirical evidence",
-            "notes": f"Direction prompt human-authored; image draft via {args.image_model}; deterministic TikZ is the shipping asset.",
         }
     }
     print(json.dumps(manifest_stub, indent=2))

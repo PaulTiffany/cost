@@ -160,61 +160,44 @@ def check_illustrations(manifest: dict) -> list[CheckResult]:
     paper_refs = extract_main_tex_figure_refs()
 
     # A1-A7 collected per-illustration; aggregate at end
-    a1_missing_source: list[str] = []
-    a2_source_drift: list[str] = []
-    a3_missing_spec: list[str] = []
-    a4_spec_drift: list[str] = []
+    a1_missing_input: list[str] = []
+    a2_input_drift: list[str] = []
     a5_missing_asset: list[str] = []
     a5_asset_drift: list[str] = []
     a6_orphans: list[str] = []
     a7_no_scope: list[str] = []
 
     for name, entry in illus.items():
-        # A1
-        source_file = resolve(entry.get("source_file", ""))
-        if not source_file.exists():
-            a1_missing_source.append(f"{name} -> {entry.get('source_file')}")
+        # A1 + A2: walk inputs[] uniformly. Each input is a dict with
+        # kind, file, and hash. For latex_block, also line_start/end.
+        # For text_file, just the whole-file content.
+        inputs = entry.get("inputs", [])
+        if not inputs:
+            a1_missing_input.append(f"{name}: no inputs[] in manifest")
             continue
-
-        # A2: extract source block (by label OR line range), hash, compare
-        block = None
-        if entry.get("source_label"):
-            block = extract_block_by_label(source_file, entry["source_label"])
-        elif entry.get("source_line_start") and entry.get("source_line_end"):
-            block = extract_block_by_line_range(
-                source_file,
-                int(entry["source_line_start"]),
-                int(entry["source_line_end"]),
-            )
-        if block is None:
-            a2_source_drift.append(f"{name}: could not locate source block")
-        else:
-            actual = sha256_of_text(block)
-            expected = entry.get("source_hash", "")
-            if actual != expected:
-                a2_source_drift.append(
-                    f"{name}: source_hash mismatch (manifest={expected[:12]}..., actual={actual[:12]}...). "
-                    "The LaTeX block was edited after illustration was authored. Re-author and re-certify."
+        for idx, inp in enumerate(inputs):
+            file_str = inp.get("file", "")
+            file_path = resolve(file_str)
+            if not file_path.exists():
+                a1_missing_input.append(f"{name} input #{idx}: {file_str} not found")
+                continue
+            kind = inp.get("kind", "text_file")
+            expected_hash = inp.get("hash", "")
+            if kind == "latex_block":
+                start = int(inp.get("line_start", 0))
+                end = int(inp.get("line_end", 0))
+                content = extract_block_by_line_range(file_path, start, end)
+                if content is None:
+                    a2_input_drift.append(f"{name} input #{idx}: could not extract lines {start}-{end} from {file_str}")
+                    continue
+            else:  # text_file or unknown
+                content = file_path.read_text(encoding="utf-8")
+            actual_hash = sha256_of_text(content)
+            if actual_hash != expected_hash:
+                a2_input_drift.append(
+                    f"{name} input #{idx} ({kind}, {file_str}): hash mismatch "
+                    f"(manifest={expected_hash[:12]}..., actual={actual_hash[:12]}...)"
                 )
-
-        # A3 / A4: direction_prompt_file is the source of truth for the
-        # human-authored exploration intent. Hash the file on disk and
-        # compare to direction_hash. If direction_hash drifts from the
-        # file's content, it means either the human edited the
-        # direction or the manifest's recorded hash is stale.
-        direction_file_str = entry.get("direction_prompt_file")
-        if direction_file_str:
-            direction_file = resolve(direction_file_str)
-            if not direction_file.exists():
-                a3_missing_spec.append(f"{name}: direction file {direction_file_str} not found")
-            else:
-                disk_text = direction_file.read_text(encoding="utf-8")
-                actual_dir_hash = sha256_of_text(disk_text)
-                expected_dir_hash = entry.get("direction_hash", "")
-                if actual_dir_hash != expected_dir_hash:
-                    a4_spec_drift.append(
-                        f"{name}: direction_hash mismatch — file {direction_file_str} hashes to {actual_dir_hash[:12]}..., manifest expects {expected_dir_hash[:12]}..."
-                    )
 
         # A5: final asset
         asset_path = resolve(entry.get("final_asset", ""))
@@ -240,24 +223,14 @@ def check_illustrations(manifest: dict) -> list[CheckResult]:
 
     return [
         CheckResult(
-            f"A1. Every illustration's source_file exists ({len(illus)} entries)",
-            not a1_missing_source,
-            "; ".join(a1_missing_source) if a1_missing_source else "all source files present",
+            f"A1. Every input file exists ({len(illus)} entries)",
+            not a1_missing_input,
+            "\n         ".join(a1_missing_input) if a1_missing_input else "all input files resolved",
         ),
         CheckResult(
-            "A2. Source LaTeX block hashes match (no drift)",
-            not a2_source_drift,
-            "\n         ".join(a2_source_drift) if a2_source_drift else "all source blocks unchanged since illustration was authored",
-        ),
-        CheckResult(
-            "A3. (deprecated, see A4) — visual_spec field no longer used",
-            True,
-            "direction_prompt replaces text-model spec layer",
-        ),
-        CheckResult(
-            "A4. Direction-prompt hashes match (human exploration intent unchanged)",
-            not a4_spec_drift,
-            "\n         ".join(a4_spec_drift) if a4_spec_drift else "all direction_hash values match the stored direction_prompt",
+            "A2. Every input hash matches its current file content",
+            not a2_input_drift,
+            "\n         ".join(a2_input_drift) if a2_input_drift else "all inputs unchanged since illustration was authored",
         ),
         CheckResult(
             "A5. Final assets exist and hash-match",
