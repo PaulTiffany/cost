@@ -4,11 +4,11 @@
     "strict": false,
     "timeout_sec": 60,
     "verdict": "PASS",
-    "total": 14,
-    "pass": 8,
+    "total": 15,
+    "pass": 7,
     "warn": 0,
     "fail": 0,
-    "skip": 6
+    "skip": 8
   },
   "figures": [
     {
@@ -91,11 +91,11 @@
     },
     {
       "name": "image_transfer.pdf",
-      "asset": "paper\\figures\\image_transfer.pdf",
+      "asset": "paper/figures/image_transfer.pdf",
       "script": "supplementary/experiments_rebuttal/image_transfer/plot_image_transfer.py",
-      "status": "PASS",
-      "reason": "asset exists, non-empty, mtime ordering ok (quick mode)",
-      "original_sha256": "28e1be87977e13103be6a4c304ce21a6b7a904f08f10213878dc76e8cb55e8a3",
+      "status": "SKIP",
+      "reason": "in_use=false (skipped in quick mode)",
+      "original_sha256": null,
       "rebuilt_sha256": null,
       "original_pdftext_len": 0,
       "rebuilt_pdftext_len": 0,
@@ -104,11 +104,24 @@
     },
     {
       "name": "image_transfer_conflict.pdf",
-      "asset": "paper\\figures\\image_transfer_conflict.pdf",
+      "asset": "paper/figures/image_transfer_conflict.pdf",
       "script": "supplementary/experiments_rebuttal/image_transfer/plot_image_transfer_conflict.py",
+      "status": "SKIP",
+      "reason": "in_use=false (skipped in quick mode)",
+      "original_sha256": null,
+      "rebuilt_sha256": null,
+      "original_pdftext_len": 0,
+      "rebuilt_pdftext_len": 0,
+      "diff_snippet": "",
+      "runtime_sec": 0.0
+    },
+    {
+      "name": "image_format_cliff.pdf",
+      "asset": "paper\\figures\\image_format_cliff.pdf",
+      "script": "supplementary/experiments_rebuttal/image_transfer/plot_image_format_cliff.py",
       "status": "PASS",
       "reason": "asset exists, non-empty, mtime ordering ok (quick mode)",
-      "original_sha256": "f83a9f9cb89e3e4b68cae0e42cb6dbcb847a6454c03f21ff7f9fb6bac79065f8",
+      "original_sha256": "638ecbc8ee00d79c3c6124952a433d14a075545cf5f9f6b61ac58d2c22ceff47",
       "rebuilt_sha256": null,
       "original_pdftext_len": 0,
       "rebuilt_pdftext_len": 0,

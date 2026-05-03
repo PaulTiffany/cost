@@ -1,0 +1,641 @@
+{
+  "rubric_doc": "\nscore_runD_passB.py - Apply the Pass B rubric to Run D images.\n\nRubric (cumulative; tier strictly extends):\n\n  CONTROL: 1 demand\n    C1. Image is a clear schematic illustration of the requested subject.\n\n  LOW: CONTROL + 3 demands\n    L1. <=5 visible primary elements (each visually distinct labeled\n        block; a sequence of 7 terms counts as 7 elements).\n    L2. <=3 distinct chromatic colors (excluding white background and\n        black text/lines; gray is neutral, not chromatic).\n    L3. Directional arrows for flow/ordering.\n\n  MODERATE: LOW + 3 demands\n    M1. Each primary element has a text label.\n    M2. Consistent sans-serif font throughout.\n    M3. ONE accent color used for emphasis (not multiple chromatic\n        colors used as accents).\n\n  HIGH: MODERATE + 4 demands\n    H1. Structured legend at bottom listing visual symbols.\n    H2. All primary elements horizontally aligned on a single baseline.\n    H3. Consistent stroke weight throughout.\n    H4. One-line title at top.\n\nPass B = ALL accumulated demands satisfied (binary, strict).\n\nScoring is hand-coded based on inspection of each PNG. Each cell records\nper-demand binary and a rationale; the JSON is the auditable rubric trail.\n",
+  "scoring_methodology": "Hand-coded by single rater, strict rubric, cumulative tiers. Borderline cases are noted in rationale; rater chose strict reading where ambiguous to maintain consistency.",
+  "by_tier": {
+    "control": {
+      "n_trials": 6,
+      "n_pass_b": 6,
+      "pass_b_rate": 1.0,
+      "demands_required": [
+        "C1"
+      ],
+      "n_demands": 1
+    },
+    "low": {
+      "n_trials": 6,
+      "n_pass_b": 4,
+      "pass_b_rate": 0.6666666666666666,
+      "demands_required": [
+        "C1",
+        "L1",
+        "L2",
+        "L3"
+      ],
+      "n_demands": 4
+    },
+    "moderate": {
+      "n_trials": 6,
+      "n_pass_b": 5,
+      "pass_b_rate": 0.8333333333333334,
+      "demands_required": [
+        "C1",
+        "L1",
+        "L2",
+        "L3",
+        "M1",
+        "M2",
+        "M3"
+      ],
+      "n_demands": 7
+    },
+    "high": {
+      "n_trials": 6,
+      "n_pass_b": 2,
+      "pass_b_rate": 0.3333333333333333,
+      "demands_required": [
+        "C1",
+        "L1",
+        "L2",
+        "L3",
+        "M1",
+        "M2",
+        "M3",
+        "H1",
+        "H2",
+        "H3",
+        "H4"
+      ],
+      "n_demands": 11
+    }
+  },
+  "by_trial": [
+    {
+      "cell_id": "D-factorial-control",
+      "trial": 0,
+      "tier": "control",
+      "required_demands": [
+        "C1"
+      ],
+      "scores_by_demand": {
+        "C1": true
+      },
+      "unsatisfied": [],
+      "pass_b": true,
+      "rationale": "Clear factorial recursion schematic with call/return phases."
+    },
+    {
+      "cell_id": "D-factorial-control",
+      "trial": 1,
+      "tier": "control",
+      "required_demands": [
+        "C1"
+      ],
+      "scores_by_demand": {
+        "C1": true
+      },
+      "unsatisfied": [],
+      "pass_b": true,
+      "rationale": "Clear factorial schematic, two-phase layout."
+    },
+    {
+      "cell_id": "D-fibonacci-control",
+      "trial": 0,
+      "tier": "control",
+      "required_demands": [
+        "C1"
+      ],
+      "scores_by_demand": {
+        "C1": true
+      },
+      "unsatisfied": [],
+      "pass_b": true,
+      "rationale": "Clear Fibonacci recurrence + sequence layout."
+    },
+    {
+      "cell_id": "D-fibonacci-control",
+      "trial": 1,
+      "tier": "control",
+      "required_demands": [
+        "C1"
+      ],
+      "scores_by_demand": {
+        "C1": true
+      },
+      "unsatisfied": [],
+      "pass_b": true,
+      "rationale": "Clear Fibonacci sequence with arcs showing sums."
+    },
+    {
+      "cell_id": "D-binary_search-control",
+      "trial": 0,
+      "tier": "control",
+      "required_demands": [
+        "C1"
+      ],
+      "scores_by_demand": {
+        "C1": true
+      },
+      "unsatisfied": [],
+      "pass_b": true,
+      "rationale": "Clear binary search across iterations on a sorted array."
+    },
+    {
+      "cell_id": "D-binary_search-control",
+      "trial": 1,
+      "tier": "control",
+      "required_demands": [
+        "C1"
+      ],
+      "scores_by_demand": {
+        "C1": true
+      },
+      "unsatisfied": [],
+      "pass_b": true,
+      "rationale": "Clear binary search with iteration panels."
+    },
+    {
+      "cell_id": "D-factorial-low",
+      "trial": 0,
+      "tier": "low",
+      "required_demands": [
+        "C1",
+        "L1",
+        "L2",
+        "L3"
+      ],
+      "scores_by_demand": {
+        "C1": true,
+        "L1": true,
+        "L2": true,
+        "L3": true
+      },
+      "unsatisfied": [],
+      "pass_b": true,
+      "rationale": "5 boxes (PASS L1); blue+orange = 2 chrom (PASS L2); arrows (PASS L3)."
+    },
+    {
+      "cell_id": "D-factorial-low",
+      "trial": 1,
+      "tier": "low",
+      "required_demands": [
+        "C1",
+        "L1",
+        "L2",
+        "L3"
+      ],
+      "scores_by_demand": {
+        "C1": true,
+        "L1": true,
+        "L2": true,
+        "L3": true
+      },
+      "unsatisfied": [],
+      "pass_b": true,
+      "rationale": "4 boxes; blue+orange = 2 chrom; arrows."
+    },
+    {
+      "cell_id": "D-fibonacci-low",
+      "trial": 0,
+      "tier": "low",
+      "required_demands": [
+        "C1",
+        "L1",
+        "L2",
+        "L3"
+      ],
+      "scores_by_demand": {
+        "C1": true,
+        "L1": false,
+        "L2": true,
+        "L3": true
+      },
+      "unsatisfied": [
+        "L1"
+      ],
+      "pass_b": false,
+      "rationale": "7 distinct F(n) labeled terms (FAIL L1 >5); blue = 1 chrom; arcs/arrows."
+    },
+    {
+      "cell_id": "D-fibonacci-low",
+      "trial": 1,
+      "tier": "low",
+      "required_demands": [
+        "C1",
+        "L1",
+        "L2",
+        "L3"
+      ],
+      "scores_by_demand": {
+        "C1": true,
+        "L1": false,
+        "L2": true,
+        "L3": true
+      },
+      "unsatisfied": [
+        "L1"
+      ],
+      "pass_b": false,
+      "rationale": "7 sequence terms + equation = 8 distinct elements (FAIL L1); blue = 1; arrows."
+    },
+    {
+      "cell_id": "D-binary_search-low",
+      "trial": 0,
+      "tier": "low",
+      "required_demands": [
+        "C1",
+        "L1",
+        "L2",
+        "L3"
+      ],
+      "scores_by_demand": {
+        "C1": true,
+        "L1": true,
+        "L2": true,
+        "L3": true
+      },
+      "unsatisfied": [],
+      "pass_b": true,
+      "rationale": "5 distinct stages/panels; blue+gray+green = ~3 chrom (borderline pass); arrows."
+    },
+    {
+      "cell_id": "D-binary_search-low",
+      "trial": 1,
+      "tier": "low",
+      "required_demands": [
+        "C1",
+        "L1",
+        "L2",
+        "L3"
+      ],
+      "scores_by_demand": {
+        "C1": true,
+        "L1": true,
+        "L2": true,
+        "L3": true
+      },
+      "unsatisfied": [],
+      "pass_b": true,
+      "rationale": "3 iteration panels + sorted-list overview = ~4 elements; blue+orange+gray = <=3 chrom; arrows."
+    },
+    {
+      "cell_id": "D-factorial-moderate",
+      "trial": 0,
+      "tier": "moderate",
+      "required_demands": [
+        "C1",
+        "L1",
+        "L2",
+        "L3",
+        "M1",
+        "M2",
+        "M3"
+      ],
+      "scores_by_demand": {
+        "C1": false,
+        "L1": false,
+        "L2": false,
+        "L3": false,
+        "M1": false,
+        "M2": false,
+        "M3": false
+      },
+      "unsatisfied": [
+        "(no image returned)"
+      ],
+      "pass_b": false,
+      "rationale": "Pass A FAIL: API returned no image (single failure in Run D)."
+    },
+    {
+      "cell_id": "D-factorial-moderate",
+      "trial": 1,
+      "tier": "moderate",
+      "required_demands": [
+        "C1",
+        "L1",
+        "L2",
+        "L3",
+        "M1",
+        "M2",
+        "M3"
+      ],
+      "scores_by_demand": {
+        "C1": true,
+        "L1": true,
+        "L2": true,
+        "L3": true,
+        "M1": true,
+        "M2": true,
+        "M3": true
+      },
+      "unsatisfied": [],
+      "pass_b": true,
+      "rationale": "5 boxes; blue is single accent; sans-serif; labels on every element."
+    },
+    {
+      "cell_id": "D-fibonacci-moderate",
+      "trial": 0,
+      "tier": "moderate",
+      "required_demands": [
+        "C1",
+        "L1",
+        "L2",
+        "L3",
+        "M1",
+        "M2",
+        "M3"
+      ],
+      "scores_by_demand": {
+        "C1": true,
+        "L1": true,
+        "L2": true,
+        "L3": true,
+        "M1": true,
+        "M2": true,
+        "M3": true
+      },
+      "unsatisfied": [],
+      "pass_b": true,
+      "rationale": "5 numbered compositional panels (Recurrence/Sequence/Build/Rule/Flow); blue accent + gray neutral; sans-serif; labeled."
+    },
+    {
+      "cell_id": "D-fibonacci-moderate",
+      "trial": 1,
+      "tier": "moderate",
+      "required_demands": [
+        "C1",
+        "L1",
+        "L2",
+        "L3",
+        "M1",
+        "M2",
+        "M3"
+      ],
+      "scores_by_demand": {
+        "C1": true,
+        "L1": true,
+        "L2": true,
+        "L3": true,
+        "M1": true,
+        "M2": true,
+        "M3": true
+      },
+      "unsatisfied": [],
+      "pass_b": true,
+      "rationale": "4 panels; blue single accent; sans-serif; labels."
+    },
+    {
+      "cell_id": "D-binary_search-moderate",
+      "trial": 0,
+      "tier": "moderate",
+      "required_demands": [
+        "C1",
+        "L1",
+        "L2",
+        "L3",
+        "M1",
+        "M2",
+        "M3"
+      ],
+      "scores_by_demand": {
+        "C1": true,
+        "L1": true,
+        "L2": true,
+        "L3": true,
+        "M1": true,
+        "M2": true,
+        "M3": true
+      },
+      "unsatisfied": [],
+      "pass_b": true,
+      "rationale": "5 numbered steps; blue accent + gray neutral; sans-serif; labels."
+    },
+    {
+      "cell_id": "D-binary_search-moderate",
+      "trial": 1,
+      "tier": "moderate",
+      "required_demands": [
+        "C1",
+        "L1",
+        "L2",
+        "L3",
+        "M1",
+        "M2",
+        "M3"
+      ],
+      "scores_by_demand": {
+        "C1": true,
+        "L1": true,
+        "L2": true,
+        "L3": true,
+        "M1": true,
+        "M2": true,
+        "M3": true
+      },
+      "unsatisfied": [],
+      "pass_b": true,
+      "rationale": "3 iteration panels + sorted-list header; blue accent + gray; sans-serif; labels."
+    },
+    {
+      "cell_id": "D-factorial-high",
+      "trial": 0,
+      "tier": "high",
+      "required_demands": [
+        "C1",
+        "L1",
+        "L2",
+        "L3",
+        "M1",
+        "M2",
+        "M3",
+        "H1",
+        "H2",
+        "H3",
+        "H4"
+      ],
+      "scores_by_demand": {
+        "C1": true,
+        "L1": true,
+        "L2": true,
+        "L3": true,
+        "M1": true,
+        "M2": true,
+        "M3": false,
+        "H1": true,
+        "H2": true,
+        "H3": true,
+        "H4": true
+      },
+      "unsatisfied": [
+        "M3"
+      ],
+      "pass_b": false,
+      "rationale": "5 boxes; blue + RED highlight 'x4=24' = MULTIPLE accent colors (FAIL M3); legend + horizontal alignment + title all met."
+    },
+    {
+      "cell_id": "D-factorial-high",
+      "trial": 1,
+      "tier": "high",
+      "required_demands": [
+        "C1",
+        "L1",
+        "L2",
+        "L3",
+        "M1",
+        "M2",
+        "M3",
+        "H1",
+        "H2",
+        "H3",
+        "H4"
+      ],
+      "scores_by_demand": {
+        "C1": true,
+        "L1": true,
+        "L2": true,
+        "L3": true,
+        "M1": true,
+        "M2": true,
+        "M3": false,
+        "H1": true,
+        "H2": true,
+        "H3": true,
+        "H4": true
+      },
+      "unsatisfied": [
+        "M3"
+      ],
+      "pass_b": false,
+      "rationale": "5 boxes; blue text/box + ORANGE math labels = MULTIPLE accents (FAIL M3); legend, alignment, title all met."
+    },
+    {
+      "cell_id": "D-fibonacci-high",
+      "trial": 0,
+      "tier": "high",
+      "required_demands": [
+        "C1",
+        "L1",
+        "L2",
+        "L3",
+        "M1",
+        "M2",
+        "M3",
+        "H1",
+        "H2",
+        "H3",
+        "H4"
+      ],
+      "scores_by_demand": {
+        "C1": true,
+        "L1": true,
+        "L2": true,
+        "L3": true,
+        "M1": true,
+        "M2": true,
+        "M3": true,
+        "H1": true,
+        "H2": true,
+        "H3": true,
+        "H4": true
+      },
+      "unsatisfied": [],
+      "pass_b": true,
+      "rationale": "5 boxes horizontally aligned; blue is single accent (gray is neutral); sans-serif; legend at bottom; title; consistent stroke."
+    },
+    {
+      "cell_id": "D-fibonacci-high",
+      "trial": 1,
+      "tier": "high",
+      "required_demands": [
+        "C1",
+        "L1",
+        "L2",
+        "L3",
+        "M1",
+        "M2",
+        "M3",
+        "H1",
+        "H2",
+        "H3",
+        "H4"
+      ],
+      "scores_by_demand": {
+        "C1": true,
+        "L1": true,
+        "L2": true,
+        "L3": true,
+        "M1": true,
+        "M2": true,
+        "M3": true,
+        "H1": true,
+        "H2": true,
+        "H3": true,
+        "H4": true
+      },
+      "unsatisfied": [],
+      "pass_b": true,
+      "rationale": "5 boxes horizontally aligned; blue single accent; sans-serif; legend; title; consistent stroke."
+    },
+    {
+      "cell_id": "D-binary_search-high",
+      "trial": 0,
+      "tier": "high",
+      "required_demands": [
+        "C1",
+        "L1",
+        "L2",
+        "L3",
+        "M1",
+        "M2",
+        "M3",
+        "H1",
+        "H2",
+        "H3",
+        "H4"
+      ],
+      "scores_by_demand": {
+        "C1": true,
+        "L1": true,
+        "L2": true,
+        "L3": true,
+        "M1": true,
+        "M2": true,
+        "M3": false,
+        "H1": true,
+        "H2": true,
+        "H3": true,
+        "H4": true
+      },
+      "unsatisfied": [
+        "M3"
+      ],
+      "pass_b": false,
+      "rationale": "5 panels; blue + RED 'Target=21' + ORANGE 'Found' = MULTIPLE accents (FAIL M3); structure otherwise met."
+    },
+    {
+      "cell_id": "D-binary_search-high",
+      "trial": 1,
+      "tier": "high",
+      "required_demands": [
+        "C1",
+        "L1",
+        "L2",
+        "L3",
+        "M1",
+        "M2",
+        "M3",
+        "H1",
+        "H2",
+        "H3",
+        "H4"
+      ],
+      "scores_by_demand": {
+        "C1": true,
+        "L1": true,
+        "L2": true,
+        "L3": true,
+        "M1": true,
+        "M2": true,
+        "M3": false,
+        "H1": true,
+        "H2": true,
+        "H3": true,
+        "H4": true
+      },
+      "unsatisfied": [
+        "M3"
+      ],
+      "pass_b": false,
+      "rationale": "5 panels; blue accent + ORANGE label = multiple accents (FAIL M3); structure otherwise met."
+    }
+  ]
+}

@@ -1,0 +1,16 @@
+# Run D format tier: moderate (k_effective ~= 6).
+# SOURCE:        hand-authored, mirrors FORMAT_TIERS in
+#                supplementary/experiments/code_constraint_verifier.py
+
+[Format tier: moderate]
+
+Render the image as a clear schematic illustration of the requested
+subject. Convey the underlying concept clearly to a researcher
+audience. Additional format demands:
+
+- Limit the image to at most 5 visible primary elements.
+- Use no more than 3 distinct colors total.
+- Use directional arrows to indicate any flow or ordering.
+- Label each primary element with a short text caption.
+- Use a consistent sans-serif font for all text.
+- Use one accent color for emphasis; the rest neutral.

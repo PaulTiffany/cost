@@ -111,6 +111,19 @@ SOCIETAL_IMPACT_CONSTRAINTS = [
     "dual_use", "data_enrichment", "synthetic_media",
 ]
 
+# Run D: image-medium FORMAT_TIERS analog. 1-for-1 replication of the
+# code-constraint experiment structure (same task identities -- factorial,
+# fibonacci, binary_search -- same tier names -- control/low/moderate/high
+# -- just translated to image medium). Tier files at
+# supplementary/illustrations/format_tiers/{tier}.txt and task files at
+# supplementary/illustrations/image_tasks/{task}.txt. Each tier strictly
+# extends the previous: compounding visual format demands sharing latent
+# structure, the same shape of escalating-rho the code experiment uses.
+RUN_D_TIERS = ["control", "low", "moderate", "high"]
+RUN_D_TASKS = ["factorial", "fibonacci", "binary_search"]
+FORMAT_TIERS_DIR = REPO_ROOT / "supplementary" / "illustrations" / "format_tiers"
+IMAGE_TASKS_DIR = REPO_ROOT / "supplementary" / "illustrations" / "image_tasks"
+
 CELLS = {
     "S0": {
         "k": 0,
@@ -197,6 +210,22 @@ CELLS["C-staged-11"] = {
     "description": "Image-staged k=11 cure: stage 1 emits base image; stage 2 ingests stage-1 PNG as input AND adds all 11 ethics constraints in one call (the snap-to-coherence test)",
 }
 
+# Run D cells: 3 tasks x 4 tiers = 12 cells. Each cell is a single-shot
+# image-gen with a task description (image_task) plus a tier spec
+# (format_tier). The combination mirrors a single trial of the code
+# experiment exactly, just in image medium.
+for task in RUN_D_TASKS:
+    for tier in RUN_D_TIERS:
+        CELLS[f"D-{task}-{tier}"] = {
+            "k": tier,  # tier name as the k axis (matches code experiment)
+            "protocol": "staged",  # one-shot
+            "include_target": False,  # no LaTeX block; uses task_file instead
+            "task_file": f"image_tasks/{task}.txt",
+            "tier_file": f"format_tiers/{tier}.txt",
+            "constraints": [],  # tier replaces the constraints[] field for Run D cells
+            "description": f"Run D ({task} task, {tier} tier): 1-for-1 replication of code experiment in image medium",
+        }
+
 DEFAULT_MODEL = "openai/gpt-5.4-image-2"
 DEFAULT_N_TRIALS = 3
 
@@ -267,14 +296,21 @@ def build_staged_prompt(cell_id: str, cell: dict, target_block: str | None,
     request, not a content constraint.
     """
     parts: list[str] = []
-    if cell.get("include_target") and target_block is not None:
-        parts.append(f"Source LaTeX block:\n{target_block}")
-    if cell.get("bundle"):
-        if bundle_text is None:
-            raise RuntimeError("bundle cell requested but bundle_text not loaded")
-        parts.append(f"NeurIPS compliance bundle:\n{bundle_text}")
-    for name in cell.get("constraints", []):
-        parts.append(f"Constraint ({name}):\n{constraint_texts[name]}")
+    # Run D path: task_file + tier_file (replaces include_target + constraints)
+    if cell.get("task_file") and cell.get("tier_file"):
+        task_path = REPO_ROOT / "supplementary" / "illustrations" / cell["task_file"]
+        tier_path = REPO_ROOT / "supplementary" / "illustrations" / cell["tier_file"]
+        parts.append(f"Task:\n{task_path.read_text(encoding='utf-8')}")
+        parts.append(f"Format requirements:\n{tier_path.read_text(encoding='utf-8')}")
+    else:
+        if cell.get("include_target") and target_block is not None:
+            parts.append(f"Source LaTeX block:\n{target_block}")
+        if cell.get("bundle"):
+            if bundle_text is None:
+                raise RuntimeError("bundle cell requested but bundle_text not loaded")
+            parts.append(f"NeurIPS compliance bundle:\n{bundle_text}")
+        for name in cell.get("constraints", []):
+            parts.append(f"Constraint ({name}):\n{constraint_texts[name]}")
     body = "\n\n".join(parts) if parts else ""  # S0 emits empty string
     if not body:
         return body  # k=0 stays truly empty regardless of medium frame
@@ -568,6 +604,8 @@ def main() -> int:
                         help="Disable medium frame (Run A baseline)")
     parser.add_argument("--dry-run", action="store_true",
                         help="Build prompts and write JSON without calling the API")
+    parser.add_argument("--concurrency", type=int, default=1,
+                        help="Number of trials to run in parallel via ThreadPoolExecutor (default 1 = serial)")
     args = parser.parse_args()
     outputs_dir = OUTPUTS_DIR / args.run_id
     results_json = Path(str(RESULTS_JSON_TEMPLATE).format(run_id=args.run_id))
@@ -613,16 +651,43 @@ def main() -> int:
     print(f"  Dry run:     {args.dry_run}")
     print()
 
-    all_trials: list[TrialResult] = []
+    # Build the full work queue (cell, trial) pairs across all selected cells.
+    work_items: list[tuple[str, int]] = []
     for cell_id in selected:
-        cell = CELLS[cell_id]
-        print(f"--- Cell {cell_id} ({cell['description']}) ---")
         for t in range(args.n_trials):
-            tr = run_trial(client, args.model, cell_id, t, cell, target_block,
-                            constraint_texts, bundle_text,
-                            outputs_dir=outputs_dir, use_medium_frame=args.medium_frame,
-                            dry_run=args.dry_run)
-            all_trials.append(tr)
+            work_items.append((cell_id, t))
+
+    print(f"  Concurrency: {args.concurrency} (serial if 1)")
+    print()
+
+    def _run_one(item: tuple[str, int]) -> TrialResult:
+        cid, tnum = item
+        c = CELLS[cid]
+        return run_trial(client, args.model, cid, tnum, c, target_block,
+                          constraint_texts, bundle_text,
+                          outputs_dir=outputs_dir, use_medium_frame=args.medium_frame,
+                          dry_run=args.dry_run)
+
+    all_trials: list[TrialResult] = []
+    if args.concurrency <= 1:
+        # Serial path -- preserves original cell-by-cell printing
+        cur_cell = None
+        for item in work_items:
+            cid, _ = item
+            if cid != cur_cell:
+                cur_cell = cid
+                print(f"--- Cell {cid} ({CELLS[cid]['description']}) ---")
+            all_trials.append(_run_one(item))
+    else:
+        from concurrent.futures import ThreadPoolExecutor, as_completed
+        print(f"--- Pool: {len(work_items)} trials across {len(selected)} cells, concurrency={args.concurrency} ---")
+        with ThreadPoolExecutor(max_workers=args.concurrency) as pool:
+            futures = {pool.submit(_run_one, item): item for item in work_items}
+            for fut in as_completed(futures):
+                all_trials.append(fut.result())
+        # Sort for deterministic JSON ordering
+        cell_order = {cid: i for i, cid in enumerate(selected)}
+        all_trials.sort(key=lambda tr: (cell_order.get(tr.cell_id, 999), tr.trial))
 
     # Aggregate
     cells_summary: dict[str, dict] = {}

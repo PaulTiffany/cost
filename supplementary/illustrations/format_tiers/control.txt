@@ -1,0 +1,14 @@
+# Run D format tier: control (k_effective ~= 1).
+# SOURCE:        hand-authored, mirrors FORMAT_TIERS in
+#                supplementary/experiments/code_constraint_verifier.py
+# DESIGN:        partially-correlated visual format demands. Tiers
+#                strictly extend (control < low < moderate < high).
+#                Each tier compounds more compounding-style demands
+#                that share latent structure -- the same shape as the
+#                code experiment, in image medium.
+
+[Format tier: control]
+
+Render the image as a clear schematic illustration of the requested
+subject. Convey the underlying concept clearly to a researcher
+audience. No additional format demands.

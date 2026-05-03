@@ -1,0 +1,21 @@
+# Run D format tier: high (k_effective ~= 10).
+# SOURCE:        hand-authored, mirrors FORMAT_TIERS in
+#                supplementary/experiments/code_constraint_verifier.py
+
+[Format tier: high]
+
+Render the image as a clear schematic illustration of the requested
+subject. Convey the underlying concept clearly to a researcher
+audience. Additional format demands:
+
+- Limit the image to at most 5 visible primary elements.
+- Use no more than 3 distinct colors total.
+- Use directional arrows to indicate any flow or ordering.
+- Label each primary element with a short text caption.
+- Use a consistent sans-serif font for all text.
+- Use one accent color for emphasis; the rest neutral.
+- Include a structured legend at the bottom of the image listing
+  every distinct visual symbol used.
+- Align all primary elements horizontally on a single baseline.
+- Use consistent stroke weight throughout (no varying line widths).
+- Include a one-line title at the top in the same sans-serif font.

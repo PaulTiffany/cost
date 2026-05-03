@@ -1,7 +1,7 @@
 {
   "summary": {
-    "total_scripts": 12,
-    "passed": 12,
+    "total_scripts": 13,
+    "passed": 13,
     "failed": 0
   },
   "scripts": [
@@ -40,6 +40,14 @@
     {
       "name": "gram_eigendecomposition.pdf",
       "script_path": "supplementary\\experiments_rebuttal\\dct_analysis\\gram_eigendecomposition.py",
+      "syntax_ok": true,
+      "syntax_error": null,
+      "missing_imports": [],
+      "n_imports_checked": 2
+    },
+    {
+      "name": "image_format_cliff.pdf",
+      "script_path": "supplementary\\experiments_rebuttal\\image_transfer\\plot_image_format_cliff.py",
       "syntax_ok": true,
       "syntax_error": null,
       "missing_imports": [],

@@ -1,0 +1,7 @@
+# Run D image task: binary_search (mirrors code_constraint_tasks.py task `binary_search`).
+# Same task identity as the code experiment; medium translated from text to image.
+
+Subject: visualize the binary-search algorithm operating on a sorted
+list of values. Show how each iteration narrows the search range by
+comparing the target to the midpoint of the current range and
+discarding the half that cannot contain the target.

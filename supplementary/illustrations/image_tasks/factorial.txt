@@ -1,0 +1,7 @@
+# Run D image task: factorial (mirrors code_constraint_tasks.py task `factorial`).
+# Same task identity as the code experiment; medium translated from text to image.
+
+Subject: visualize the recursive computation of factorial(n) =
+n * (n-1) * (n-2) * ... * 2 * 1 for an example n (e.g., n=4 or n=5).
+Show how the recursion unfolds: f(n) calls f(n-1), f(n-1) calls f(n-2),
+down to the base case, then results multiply back up.
