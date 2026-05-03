@@ -197,18 +197,23 @@ def check_illustrations(manifest: dict) -> list[CheckResult]:
                     "The LaTeX block was edited after illustration was authored. Re-author and re-certify."
                 )
 
-        # A3 / A4: visual_spec (optional)
-        spec_path_str = entry.get("visual_spec")
-        if spec_path_str:
-            spec_path = resolve(spec_path_str)
-            if not spec_path.exists():
-                a3_missing_spec.append(f"{name} -> {spec_path_str}")
+        # A3 / A4: direction_prompt_file is the source of truth for the
+        # human-authored exploration intent. Hash the file on disk and
+        # compare to direction_hash. If direction_hash drifts from the
+        # file's content, it means either the human edited the
+        # direction or the manifest's recorded hash is stale.
+        direction_file_str = entry.get("direction_prompt_file")
+        if direction_file_str:
+            direction_file = resolve(direction_file_str)
+            if not direction_file.exists():
+                a3_missing_spec.append(f"{name}: direction file {direction_file_str} not found")
             else:
-                actual_spec = sha256_of_file(spec_path)
-                expected_spec = entry.get("visual_spec_hash", "")
-                if actual_spec != expected_spec:
+                disk_text = direction_file.read_text(encoding="utf-8")
+                actual_dir_hash = sha256_of_text(disk_text)
+                expected_dir_hash = entry.get("direction_hash", "")
+                if actual_dir_hash != expected_dir_hash:
                     a4_spec_drift.append(
-                        f"{name}: spec hash mismatch (spec={spec_path_str})"
+                        f"{name}: direction_hash mismatch — file {direction_file_str} hashes to {actual_dir_hash[:12]}..., manifest expects {expected_dir_hash[:12]}..."
                     )
 
         # A5: final asset
@@ -245,14 +250,14 @@ def check_illustrations(manifest: dict) -> list[CheckResult]:
             "\n         ".join(a2_source_drift) if a2_source_drift else "all source blocks unchanged since illustration was authored",
         ),
         CheckResult(
-            "A3. Visual spec files exist (where declared)",
-            not a3_missing_spec,
-            "\n         ".join(a3_missing_spec) if a3_missing_spec else "all declared spec files present",
+            "A3. (deprecated, see A4) — visual_spec field no longer used",
+            True,
+            "direction_prompt replaces text-model spec layer",
         ),
         CheckResult(
-            "A4. Visual spec hashes match (no drift)",
+            "A4. Direction-prompt hashes match (human exploration intent unchanged)",
             not a4_spec_drift,
-            "\n         ".join(a4_spec_drift) if a4_spec_drift else "all spec hashes unchanged",
+            "\n         ".join(a4_spec_drift) if a4_spec_drift else "all direction_hash values match the stored direction_prompt",
         ),
         CheckResult(
             "A5. Final assets exist and hash-match",

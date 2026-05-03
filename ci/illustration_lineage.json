@@ -1,20 +1,39 @@
 {
   "_meta": {
-    "version": 1,
-    "description": "Illustration provenance manifest. Each entry binds a deterministic asset (TikZ / SVG / matplotlib redraw) to a source LaTeX block via cryptographic hashes. Image generation models MAY be used during draft exploration; the final asset is the deterministic redraw that the certificate trusts. Edits to the source block invalidate the asset's certificate until the asset is re-authored and re-certified.",
+    "version": 2,
+    "description": "Illustration provenance manifest. Each entry binds a deterministic asset (TikZ / SVG / matplotlib redraw) to a source LaTeX block AND a human-authored direction prompt via cryptographic hashes. Image generation models MAY be used during draft exploration; the certificate trusts only the deterministic redraw. Edits to the source block OR the direction invalidate the asset's certificate until re-authored.",
     "claim_scope_default": "schematic illustration only; not empirical evidence",
-    "design": "Source LaTeX block --hash--> manifest_source_hash. Final asset --hash--> manifest_asset_hash. Optional visual_spec markdown --hash--> manifest_spec_hash. Layer 14 (illustration_lineage_check.py) verifies all three."
+    "design_v2_change": "Removed the text-model spec layer (was a tool used as a judge: it interpreted what the human already knew, removing the human's ability to inject 'compare to X' direction). v2 takes the human direction prompt directly. Source LaTeX hash anchors provenance; direction hash records exploration intent; image model produces draft; deterministic redraw is what ships."
   },
   "illustrations": {
+    "staging_vs_refine.tex": {
+      "source_file": "paper/main.tex",
+      "source_line_start": 349,
+      "source_line_end": 350,
+      "source_excerpt": "\\textbf{Constitutional AI.} Critique-revision ... is the geometric solution: one principle per revision avoids diagonal cost. Our bound explains why: sequential satisfaction sidesteps the sqrt(k/(1-rho(k-1))) penalty.",
+      "source_hash": "c2404f05cfbe12a7246fbd0ba4a52b00e9f28d3b95a32fbf802d63078a00c722",
+      "direction_prompt_file": "supplementary/illustrations/staging_vs_refine_direction.txt",
+      "direction_prompt": "3-panel side-by-side comparison of three control protocols on the same multi-constraint problem: (a) Self-Refine, (b) Decompose, (c) Staged.\n\nPanel (a) Self-Refine: vertical chain of red-tinted boxes — generate -> output y_t -> critique -> revise — with a dashed red arrow looping back from \"revise\" to \"output y_t\" labeled \"iterate\". Caption: \"Loops around the output, not the constraint structure\". Cost annotation: \"640 tokens (Tab.~ref{tab:baselines})\".\n\nPanel (b) Decompose: purple-tinted boxes — top \"split: k -> k subproblems\" forks down to three sub-boxes \"sub C_1\", \"sub C_2\", \"... sub C_k\" which converge into \"combine\". Caption: \"Each subproblem has effective k=1; combine inherits coupling\". Cost annotation: \"parallel; coupling cost on combine\".\n\nPanel (c) Staged: vertical chain of blue-tinted boxes — z^(0) start -> satisfy C_1 -> anchor z^(1) -> satisfy C_2 -> anchor z^(2) ... Caption: \"One constraint per step; sidesteps sqrt(k/(1-rho(k-1)))\". Cost annotation: \"512 tokens; geometric router 384\".\n\nBottom summary line spanning all three panels: \"Self-Refine addresses CAPABILITY VARIANCE; Staged addresses CONSTRAINT STRUCTURE; Decompose reduces effective k.\"\n\nStyle: minimal, sans-serif labels, rounded rectangles, color-tinted fills (red / purple / blue per panel), arrows for flow. White background.\n",
+      "direction_hash": "4353a119ef96cbffabd2c7119d2a917904c683518ccecfdf0cfb24bb7152cc84",
+      "draft_model": "openai/gpt-5.4-image-2",
+      "draft_image": "supplementary/illustrations/staging_vs_refine_draft.png",
+      "draft_image_hash": "b734f15b206887bfc0040089abb6389be911a0971788909891361c4eda82c8bb",
+      "final_asset": "paper/figures/staging_vs_refine.tex",
+      "final_asset_hash": "6b699bb0822d04c617262dd6a486ee62382ff5476e7dbf15849b6bf7475c067d",
+      "main_tex_ref": "figures/staging_vs_refine.tex",
+      "in_use": true,
+      "claim_scope": "schematic illustration only; not empirical evidence. Three-protocol comparison (Self-Refine, Decompose, Staged) of the same multi-constraint problem, addressing reviewer concern about distinguishing staging from iterative refinement. Token counts cite Table tab:baselines.",
+      "notes": "First illustration authored under the v2 (no-spec-model) schema. Direction prompt captures the human's exploration intent (3-panel comparison with specific token costs and per-panel captions). Image draft will be regenerated with this direction; the deterministic TikZ asset is already authored."
+    },
     "algorithm1_routing.tex": {
       "source_file": "paper/main.tex",
       "source_line_start": 96,
       "source_line_end": 114,
-      "source_excerpt": "\\begin{algorithm}[t] \\caption{Regime-Based Routing: One-Shot, Stage, or Decompose, Decided Before Generation} \\label{alg:routing} \\begin{algorithmic}[1] \\REQUIRE Prompt $P$, token budget $T$, encoder $\\Phi$ ...",
+      "source_excerpt": "\\begin{algorithm}[t] \\caption{Regime-Based Routing: One-Shot, Stage, or Decompose, Decided Before Generation} \\label{alg:routing} ...",
       "source_hash": "4d88d127a44f8b88de6459284d089eda84b9fc0ce48bc10ca899dc438fc118d4",
-      "visual_spec": "supplementary/illustrations/algorithm1_routing_spec.md",
-      "visual_spec_hash": "a26a60fd503337fc60b51122f5fd25dbc0111375acd2087e25da69ed85003f2b",
-      "spec_model": "openai/gpt-4o",
+      "direction_prompt_file": "supplementary/illustrations/algorithm1_routing_direction.txt",
+      "direction_prompt": "Vertical decision tree of Algorithm 1 routing logic. Layers top to bottom: (1) Input box \"prompt P, budget T, encoder Phi\". (2) Compute box \"Parse constraints C_1 ... C_k from P\". (3) Two parallel compute boxes side by side: \"Compute rho-hat = max cos(Phi(C_i), Phi(C_j))\" and \"Estimate delta = L-hat * T\". (4) Compute box \"Screened cost delta-min-hat = (tau/m) sqrt(k / (1 - rho-hat (k-1)))\". (5) Decision box (orange) \"Route on rho-hat and delta/delta-min-hat\". (6) Three terminal boxes side by side: One-Shot (green) condition \"rho-hat < 0.15 OR delta/delta-min-hat > 2\"; Staged (blue) condition \"rho-hat < 0.5 AND delta/delta-min-hat > 1.2\"; Decompose-First (purple) condition \"else: rho-hat >= 0.5\". Conditions printed in small font next to each terminal arrow. Arrows from parallel compute boxes converge into the screened cost. Style: minimal, sans-serif, rounded boxes, light-tinted fills.\n",
+      "direction_hash": "2ad3ffb8366ece5bbb99f23746d06a6dfe77ef183aa81d04e0afe400bcf0cc79",
       "draft_model": "openai/gpt-5.4-image-2",
       "draft_image": "supplementary/illustrations/algorithm1_routing_draft.png",
       "draft_image_hash": "bc58ec3ee3fb2007ede7e05aff27347f5318bd92ba6bd96c6ba10ea030607644",
@@ -22,8 +41,8 @@
       "final_asset_hash": "801326e23e5fed0a01c6838958fa0f7849a51b9c7ee4650cb542e8cdb35ad4e8",
       "main_tex_ref": "figures/algorithm1_routing.tex",
       "in_use": true,
-      "claim_scope": "schematic illustration only; not empirical evidence. Decision-tree shape derived from gpt-5.4-image-2 draft (kept for provenance, not for shipping); the deterministic TikZ asset implements the tree with paper-accurate conditions (lines 6-12 of Algorithm 1).",
-      "notes": "First demonstration of the full draft-then-redraw L14 workflow. Spec generated by openai/gpt-4o from the source LaTeX block; image draft by openai/gpt-5.4-image-2; deterministic redraw hand-authored as TikZ. The certificate trusts only the final asset hash; the spec and draft hashes are recorded for provenance and to enable a re-author when the source block drifts."
+      "claim_scope": "schematic illustration only; not empirical evidence. Decision-tree shape derived under v1 schema (text-model + image-model); the deterministic TikZ asset implements the tree with paper-accurate conditions (lines 6-12 of Algorithm 1).",
+      "notes": "Migrated from v1 schema. The original draft and final asset were produced when a text-model spec layer existed; the direction_prompt above reverse-engineers what a human direction would have said. Original spec retained at supplementary/illustrations/algorithm1_routing_spec.md for historical record."
     },
     "interface_assumption.tex": {
       "source_file": "paper/main.tex",
@@ -31,16 +50,18 @@
       "source_line_end": 257,
       "source_excerpt": "\\fbox{\\begin{minipage}...Interface Assumption (text-in, text-out, frozen encoder, deterministic verifier; High-Probability Lipschitz)...$\\|x_T - x_0\\|_2 \\le LT$...The $\\varepsilon$-mass (11%) is the pivot regime...",
       "source_hash": "9e2a19e903f1f762037b370002eb302c278beaf6fcfb490f3641a6cbe76c9415",
-      "visual_spec": null,
-      "visual_spec_hash": null,
+      "direction_prompt_file": "supplementary/illustrations/interface_assumption_direction.txt",
+      "direction_prompt": "Horizontal dataflow with 5 boxes: Prompt P (text in) -> Frozen encoder Phi (no internals accessed) -> Decoder (per-token displacement <= L) -> Response y (text out) -> Verifier (deterministic pass/fail). Above the Decoder, an annotation in dark orange: \"epsilon-mass (epsilon-hat <= 0.11): pivot regime, detected mid-generation, rerouted.\" Below the Decoder, an annotation: \"Triangle inequality over T tokens: ||x_T - x_0||_2 <= L T.\" Style: minimal, sans-serif, rounded boxes with light fill (gray for encoder, white for I/O, orange for decoder, blue for verifier). Arrows between boxes; dashed connector arrows from annotations to the Decoder.\n",
+      "direction_hash": "426ce6a09ff9cb1312903c28ed59656c0642ae228504f1ebb69e353ae522fe81",
       "draft_model": "none",
       "draft_image": null,
+      "draft_image_hash": null,
       "final_asset": "paper/figures/interface_assumption.tex",
       "final_asset_hash": "e3654b1182fd4fc0ee6e1ee2017c9fe0f220bef74293c4328199de790651b7ec",
       "main_tex_ref": "figures/interface_assumption.tex",
       "in_use": true,
       "claim_scope": "schematic illustration only; not empirical evidence. Reviewer aid; the dataflow it depicts (text -> frozen encoder -> bounded per-token displacement -> deterministic verifier) is exactly what the source LaTeX block at main.tex:253-257 asserts in prose.",
-      "notes": "Hand-authored TikZ; no image-model draft used. The framework supports gpt-image-2 / similar for draft exploration but the final asset must be deterministic. Activated in App app:illustrations via \\input{figures/interface_assumption.tex}."
+      "notes": "First illustration in the framework. Originally authored without a draft model (hand-authored TikZ from the human's understanding of the source); migrated to v2 schema by recording the direction the human had in mind. Demonstrates that draft_model is OPTIONAL — the framework supports hand-authored illustrations alongside image-model-drafted ones, with the same provenance binding."
     }
   }
 }

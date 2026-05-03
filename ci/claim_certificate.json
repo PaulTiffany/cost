@@ -3,13 +3,13 @@
   "provenance": {
     "paper_title": "The Cost of Cacophony: Geometric Limits on Multi-Constraint Alignment",
     "venue": "NeurIPS 2026",
-    "generated_at": "2026-05-02T19:01:34",
+    "generated_at": "2026-05-02T20:16:54",
     "main_tex_path": "paper\\main.tex",
-    "main_tex_sha256": "b776383032095306affa10db7c96104b0d776e79cae68cf815f87596492ffe91",
-    "main_tex_mtime": "2026-05-02T18:56:11",
+    "main_tex_sha256": "3660414add7b0104863dc35549c9c9dbdb8732b3d70d1c02443fb73a035d5848",
+    "main_tex_mtime": "2026-05-02T20:15:54",
     "main_pdf_path": "paper\\main.pdf",
-    "main_pdf_size": 1039241,
-    "main_pdf_mtime": "2026-05-02T18:56:45",
+    "main_pdf_size": 1047120,
+    "main_pdf_mtime": "2026-05-02T20:16:49",
     "claim_audit_md_path": "CLAIM_AUDIT.md",
     "claim_audit_md_sha256": "a860cd02ec4eaf6b8d1e794905e97799bf037b6ebd1b81c066b067b9d83f0a57"
   },
@@ -68,7 +68,7 @@
         "checks_total": 8,
         "checks_passed": 8,
         "checks_failed": 0,
-        "figures_in_use": 9,
+        "figures_in_use": 10,
         "first_failure": null
       },
       "notes": ""
@@ -161,7 +161,7 @@
         "n_hyperref": 0,
         "n_hypertarget": 26,
         "n_refs": 121,
-        "n_labels": 162,
+        "n_labels": 163,
         "urls": [
           "https://anonymous.4open.science/r/cacophony",
           "https://neurips.cc/Conferences/2026/CallForPapers"
@@ -171,7 +171,7 @@
         "venue_year_mismatches": [],
         "unresolved_hyperref": [],
         "unresolved_refs": [],
-        "dead_labels_count": 41,
+        "dead_labels_count": 42,
         "dead_labels_sample": [
           "app:additional",
           "app:algorithm",
@@ -282,5 +282,5 @@
       "notes": ""
     }
   ],
-  "certificate_self_hash": "d99877eed4a7ecdc0060876a43b0006c47962da548c647a82788dfe5470bf95e"
+  "certificate_self_hash": "abb00378323d8f9476d2bf2419c1223314d11ef86616773c48c66641f452a4fe"
 }

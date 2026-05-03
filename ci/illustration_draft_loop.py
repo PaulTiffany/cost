@@ -1,26 +1,30 @@
 #!/usr/bin/env python3
 """
-illustration_draft_loop.py - Demonstrate the L14 framework's intended
-draft-then-redraw workflow.
+illustration_draft_loop.py - Run the L14 draft step.
 
-For a given source LaTeX block:
-  1. Send the block to a TEXT model. Ask it to produce a visual_spec
-     markdown describing the cleanest schematic. Save to disk.
-  2. Send the visual_spec to an IMAGE model. Get a draft PNG. Save.
-  3. Print hashes for both. The human (or Codex) then redraws the
-     deterministic TikZ asset based on the draft direction. The
-     manifest entry records all three hashes.
+For a given source LaTeX block + a human-authored direction prompt,
+call an image model to produce a visual draft. The draft is for
+exploration only; the certificate trusts only the deterministic
+TikZ redraw the human authors next.
 
-The certificate trusts only the deterministic redraw. The draft is
-exploration; the spec is documentation; the asset is what ships.
+Why no text-model layer? Earlier versions of this script had a
+text model translate the source LaTeX block into a "spec" before
+calling the image model. That layer was an LLM judge in disguise:
+it interpreted what the human already knows and removed the human's
+ability to say "compare this to X" or "highlight Y". The image
+model is a TOOL for visual exploration; the human writes the
+direction directly. The source LaTeX hash provides the provenance
+anchor; the human's direction provides the creative intent.
 
 Usage:
   export OPENROUTER_API_KEY=...
   python illustration_draft_loop.py \\
     --source-file paper/main.tex \\
-    --start 96 --end 114 \\
-    --target algorithm1_routing \\
-    --text-model openai/gpt-4o \\
+    --start 349 --end 350 \\
+    --target staging_vs_refine \\
+    --direction "3-panel comparison: Self-Refine (loop around output) | \\
+                 Decompose (split->solve->combine) | Staged (sequential \\
+                 per-constraint with anchor). Token costs: 640 / parallel / 512." \\
     --image-model openai/gpt-5.4-image-2
 """
 
@@ -44,28 +48,16 @@ REPO_ROOT = Path(__file__).resolve().parent.parent
 ILLUSTRATIONS_DIR = REPO_ROOT / "supplementary" / "illustrations"
 
 
-SPEC_META_PROMPT = """You are helping author a clean schematic illustration of a formal LaTeX block from a research paper. The illustration is a *reviewer aid*: it must match what the source asserts in prose, not invent claims.
+IMAGE_PROMPT_TEMPLATE = """Generate a clean schematic diagram for a research paper.
 
-Read the source LaTeX block below. Output a markdown visual specification describing the cleanest schematic representation. Constraints:
-
-- About 150 words total.
-- Sections: TITLE, LAYOUT (top-level structure: nodes/boxes and connections), KEY ELEMENTS (what each node represents), EMPHASIS (what should be visually prominent), OMIT (what NOT to depict; common over-additions), CLAIM SCOPE (what the figure claims and does not claim).
-- No invented numbers. Use the values present in the source block.
-- Favor a horizontal dataflow OR a decision-tree shape, depending on what the source describes.
-- Output ONLY the markdown spec. No preamble, no chat.
-
-SOURCE LATEX BLOCK:
-```latex
+Source context (LaTeX block being illustrated, for grounding only):
 {source_block}
-```
-"""
 
+Visualization direction (what to actually draw):
+{direction}
 
-IMAGE_PROMPT_TEMPLATE = """Generate a clean schematic diagram following this specification:
-
-{spec}
-
-Style: minimal, monochrome with one accent color, rounded rectangles for nodes, arrows for flow, sans-serif labels. The diagram should look like a publication-quality schematic from a peer-reviewed CS paper. White background. No artistic flourishes.
+Style: minimal, sans-serif labels, rounded rectangles for nodes, arrows for flow,
+white background, publication-quality. No artistic flourishes.
 """
 
 
@@ -82,38 +74,23 @@ def extract_block(source_file: Path, start: int, end: int) -> str:
     return "\n".join(lines[start - 1:end])
 
 
-def call_text_model(client: OpenAI, model: str, prompt: str) -> str:
-    resp = client.chat.completions.create(
-        model=model,
-        messages=[{"role": "user", "content": prompt}],
-        max_tokens=600,
-        temperature=0.3,
-    )
-    return resp.choices[0].message.content or ""
-
-
 def call_image_model(client: OpenAI, model: str, prompt: str) -> tuple[bytes | None, str]:
     """Return (image_bytes, response_text). Image models on OpenRouter
-    return either an image URL or base64 in the message content."""
+    return image data via the message.images field."""
     resp = client.chat.completions.create(
         model=model,
         messages=[{"role": "user", "content": prompt}],
-        # OpenRouter's image gen uses the chat endpoint; output appears
-        # in choices[0].message.content (text) or in an extra field.
         modalities=["image", "text"],
     )
     msg = resp.choices[0].message
     content = msg.content or ""
-    # Try various shapes the response might take
     images = getattr(msg, "images", None)
     if images:
         first = images[0]
-        # Common shape: {"image_url": {"url": "data:image/png;base64,..."}}
         url = first.get("image_url", {}).get("url") if isinstance(first, dict) else None
         if url and url.startswith("data:image"):
             _, b64 = url.split(",", 1)
             return base64.b64decode(b64), str(content)
-    # Fallback: scan the text for a data: URL
     if "data:image" in str(content):
         idx = str(content).find("data:image")
         chunk = str(content)[idx:]
@@ -135,12 +112,11 @@ def main() -> int:
     parser.add_argument("--source-file", type=Path, default=REPO_ROOT / "paper" / "main.tex")
     parser.add_argument("--start", type=int, required=True, help="source block line start (1-indexed)")
     parser.add_argument("--end", type=int, required=True, help="source block line end (inclusive)")
-    parser.add_argument("--target", required=True, help="short slug for output filenames (e.g. algorithm1_routing)")
-    parser.add_argument("--text-model", default="openai/gpt-4o",
-                        help="OpenRouter text model id for spec generation (default verified working)")
+    parser.add_argument("--target", required=True, help="short slug for output filenames")
+    parser.add_argument("--direction", required=True,
+                        help="Human-authored direction for what to draw. This is the exploration intent — say what you want, not what the source says. Hashed and stored in the manifest as direction_hash.")
     parser.add_argument("--image-model", default="openai/gpt-5.4-image-2",
-                        help="OpenRouter image model id for draft (default verified working)")
-    parser.add_argument("--skip-image", action="store_true", help="generate spec only, skip image gen")
+                        help="OpenRouter image model id (default verified working)")
     args = parser.parse_args()
 
     api_key = os.environ.get("OPENROUTER_API_KEY")
@@ -152,34 +128,27 @@ def main() -> int:
 
     block = extract_block(args.source_file, args.start, args.end)
     block_hash = sha256_of_text(block)
+    direction_hash = sha256_of_text(args.direction)
+
     print(f"=== source block (lines {args.start}-{args.end}, sha256={block_hash[:16]}...) ===")
-    print(block[:300] + ("..." if len(block) > 300 else ""))
+    print(block[:240] + ("..." if len(block) > 240 else ""))
+    print()
+    print(f"=== direction (sha256={direction_hash[:16]}...) ===")
+    print(args.direction[:300] + ("..." if len(args.direction) > 300 else ""))
     print()
 
     ILLUSTRATIONS_DIR.mkdir(parents=True, exist_ok=True)
 
-    # 1. Text model -> visual spec
-    spec_path = ILLUSTRATIONS_DIR / f"{args.target}_spec.md"
-    print(f"=== generating spec via {args.text_model}... ===")
-    spec = call_text_model(client, args.text_model, SPEC_META_PROMPT.format(source_block=block))
-    spec_path.write_text(spec, encoding="utf-8")
-    spec_hash = sha256_of_text(spec)
-    print(f"spec written: {spec_path}")
-    print(f"spec hash: {spec_hash}")
+    # Save the direction prompt to a file for human inspection (and so
+    # the hash check has something to recompute against later).
+    direction_path = ILLUSTRATIONS_DIR / f"{args.target}_direction.txt"
+    direction_path.write_text(args.direction, encoding="utf-8")
+    print(f"direction written: {direction_path}")
     print()
-    print("--- spec preview (first 400 chars) ---")
-    print(spec[:400])
-    print("..." if len(spec) > 400 else "")
-    print()
-
-    # 2. Image model -> draft
-    if args.skip_image:
-        print("--skip-image set; not generating draft image")
-        return 0
 
     draft_path = ILLUSTRATIONS_DIR / f"{args.target}_draft.png"
-    print(f"=== generating draft image via {args.image_model}... ===")
-    image_prompt = IMAGE_PROMPT_TEMPLATE.format(spec=spec)
+    print(f"=== generating draft via {args.image_model}... ===")
+    image_prompt = IMAGE_PROMPT_TEMPLATE.format(source_block=block, direction=args.direction)
     image_bytes, raw = call_image_model(client, args.image_model, image_prompt)
     if image_bytes is None:
         print("WARNING: no image returned. Raw response:")
@@ -191,7 +160,6 @@ def main() -> int:
     print(f"draft hash: {draft_hash}")
     print()
 
-    # Print manifest stub
     print("=== manifest stub for ci/illustration_lineage.json ===")
     manifest_stub = {
         f"{args.target}.tex": {
@@ -200,9 +168,8 @@ def main() -> int:
             "source_line_end": args.end,
             "source_excerpt": block[:200].replace("\n", " ")[:200] + "...",
             "source_hash": block_hash,
-            "visual_spec": str(spec_path.relative_to(REPO_ROOT)).replace("\\", "/"),
-            "visual_spec_hash": spec_hash,
-            "spec_model": args.text_model,
+            "direction_prompt": args.direction,
+            "direction_hash": direction_hash,
             "draft_model": args.image_model,
             "draft_image": str(draft_path.relative_to(REPO_ROOT)).replace("\\", "/"),
             "draft_image_hash": draft_hash,
@@ -211,7 +178,7 @@ def main() -> int:
             "main_tex_ref": None,
             "in_use": False,
             "claim_scope": "schematic illustration only; not empirical evidence",
-            "notes": f"Draft generated by {args.image_model} via OpenRouter; final asset is hand-authored TikZ inspired by the draft.",
+            "notes": f"Direction prompt human-authored; image draft via {args.image_model}; deterministic TikZ is the shipping asset.",
         }
     }
     print(json.dumps(manifest_stub, indent=2))

@@ -110,6 +110,12 @@
       "main_tex_ref": "figures/algorithm1_routing.tex",
       "notes": "Hand-authored TikZ decision-tree schematic of Algorithm 1 routing logic. Bound by L14 to main.tex:96-114. Composition direction explored via gpt-5.4-image-2 draft; final asset is the deterministic redraw."
     },
+    "staging_vs_refine.tex": {
+      "asset": "paper/figures/staging_vs_refine.tex",
+      "tikz_source": true,
+      "main_tex_ref": "figures/staging_vs_refine.tex",
+      "notes": "Hand-authored TikZ 3-panel comparison: Self-Refine vs Decompose vs Staged. Bound by L14 to main.tex:349-350 (Constitutional AI block). Direction prompt human-authored; gpt-5.4-image-2 draft used for visual exploration; final asset is the deterministic redraw."
+    },
     "proxy_ablation.pdf": {
       "asset": "rebuttal/figures/proxy_ablation.pdf",
       "script": "supplementary/experiments_rebuttal/proxy_ablation/proxy_ablation.py",
