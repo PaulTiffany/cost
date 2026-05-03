@@ -3,10 +3,10 @@
   "provenance": {
     "paper_title": "The Cost of Cacophony: Geometric Limits on Multi-Constraint Alignment",
     "venue": "NeurIPS 2026",
-    "generated_at": "2026-05-03T10:48:50",
+    "generated_at": "2026-05-03T10:57:40",
     "main_tex_path": "paper\\main.tex",
-    "main_tex_sha256": "0c47a2a6b68a9ea762716cda17ae319c312a1a5c4b27e35609418207c3657fe3",
-    "main_tex_mtime": "2026-05-03T10:47:53",
+    "main_tex_sha256": "0b7a6e3a4a589c415e5f4c430bc91c62d486eaa67afb9d523206c54f09b7af4b",
+    "main_tex_mtime": "2026-05-03T10:53:55",
     "main_pdf_path": "paper\\main.pdf",
     "main_pdf_size": 1079391,
     "main_pdf_mtime": "2026-05-03T10:48:45",
@@ -165,8 +165,8 @@
         "n_urls": 2,
         "n_hyperref": 0,
         "n_hypertarget": 26,
-        "n_refs": 121,
-        "n_labels": 165,
+        "n_refs": 122,
+        "n_labels": 166,
         "urls": [
           "https://anonymous.4open.science/r/cacophony",
           "https://neurips.cc/Conferences/2026/CallForPapers"
@@ -292,8 +292,8 @@
       "return_code": 0,
       "status": "PASS",
       "summary": {
-        "total": 17,
-        "passed": 17,
+        "total": 31,
+        "passed": 31,
         "failed": 0
       },
       "notes": ""
@@ -305,13 +305,13 @@
       "status": "PASS",
       "summary": {
         "total": 22,
-        "tied": 20,
-        "untied": 2,
-        "tied_ratio": 0.9090909090909091,
+        "tied": 22,
+        "untied": 0,
+        "tied_ratio": 1.0,
         "window_chars": 300
       },
       "notes": ""
     }
   ],
-  "certificate_self_hash": "dd258b3a462e42336c99b4c250a66b61264b9eb587a4440b84a14da764776d07"
+  "certificate_self_hash": "f22d0b772b3352b12016ac1721e3b8c9401aaf5e5cf5713b94b285078ad73430"
 }

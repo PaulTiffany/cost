@@ -1,9 +1,9 @@
 {
   "summary": {
     "total": 22,
-    "tied": 20,
-    "untied": 2,
-    "tied_ratio": 0.9090909090909091,
+    "tied": 22,
+    "untied": 0,
+    "tied_ratio": 1.0,
     "window_chars": 300
   },
   "judgment_patterns": [
@@ -54,7 +54,7 @@
     },
     {
       "pattern": "\\bwe\\s+treat\\s+(?:this|these|the\\s+\\w+)\\s+as\\s+evidence\\b",
-      "line": 2478,
+      "line": 2480,
       "col": 410,
       "context": "past the regime where joint satisfaction remains feasible. We treat this as evidence that the diagonal-cost geometry is a property of constraint",
       "has_anchor": true,
@@ -66,7 +66,7 @@
     },
     {
       "pattern": "\\bwe\\s+treat\\s+this\\s+as\\b",
-      "line": 2478,
+      "line": 2480,
       "col": 410,
       "context": "past the regime where joint satisfaction remains feasible. We treat this as evidence that the diagonal-cost geometry is a property of c",
       "has_anchor": true,
@@ -196,7 +196,7 @@
     },
     {
       "pattern": "\\bdemonstrates?\\b",
-      "line": 2490,
+      "line": 2492,
       "col": 152,
       "context": "ility rather than selected to induce failure. This appendix demonstrates that feasibility decays with $k$ even for charitable constr",
       "has_anchor": true,
@@ -234,12 +234,15 @@
       "line": 1805,
       "col": 118,
       "context": "onal budgets, local linearity, and staged decomposition. We show that (i) local linearity is an \\emph{operational consequence} of",
-      "has_anchor": false,
-      "matched_anchors": []
+      "has_anchor": true,
+      "matched_anchors": [
+        "\\ref{lem:token_to_ball}",
+        "\\ref{lem:taylor_remainder}"
+      ]
     },
     {
       "pattern": "\\bshows?\\s+that\\b",
-      "line": 2486,
+      "line": 2488,
       "col": 215,
       "context": "ationale recorded in the sidecar JSON for audit. The figure shows that the diagonal-cost cliff replicates qualitatively in image m",
       "has_anchor": true,
@@ -251,7 +254,7 @@
     },
     {
       "pattern": "\\bshows?\\s+that\\b",
-      "line": 2614,
+      "line": 2616,
       "col": 155,
       "context": ". The 24\\% compatibility rate among high-$\\hat{\\rho}$ pairs shows that semantic similarity can indicate \\emph{reinforcement} (spec",
       "has_anchor": true,
@@ -275,15 +278,17 @@
     },
     {
       "pattern": "\\bestablish(?:es|ed)\\b",
-      "line": 2457,
+      "line": 2459,
       "col": 11,
-      "context": "re true \\\\ \\bottomrule \\end{tabular} \\end{table} What this establishes: the paper says what it says, without drift, substitution,",
-      "has_anchor": false,
-      "matched_anchors": []
+      "context": "re true \\\\ \\bottomrule \\end{tabular} \\end{table} What this establishes (Table~\\ref{tab:cert_layers}): the paper says what it says,",
+      "has_anchor": true,
+      "matched_anchors": [
+        "\\ref{tab:cert_layers}"
+      ]
     },
     {
       "pattern": "\\bthis\\s+is\\s+itself\\b",
-      "line": 2482,
+      "line": 2484,
       "col": 375,
       "context": "is recorded at \\texttt{image\\_transfer\\_runD\\_passB.json}. This is itself a property of the diagonal-cost regime: the bound predicts",
       "has_anchor": true,
@@ -293,7 +298,7 @@
     },
     {
       "pattern": "\\bqualitatively\\b",
-      "line": 2486,
+      "line": 2488,
       "col": 261,
       "context": "t. The figure shows that the diagonal-cost cliff replicates qualitatively in image medium at the high tier; quantitative shape parame",
       "has_anchor": true,

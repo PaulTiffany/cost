@@ -1802,7 +1802,7 @@ Self-refine & 15\% & 640 & $-6\%$ \\
 \section{Budgeted Local Linearity and Staging as Path Parameterization}
 \label{app:budgeted_local_linearity}\hypertarget{lim:internal}{}
 
-This appendix formalizes the relationship between operational budgets, local linearity, and staged decomposition. We show that (i) local linearity is an \emph{operational consequence} of small-step budgeting, not a global flatness assumption, and (ii) staging is an explicit reparameterization of total budget into a piecewise-linear path.
+This appendix formalizes the relationship between operational budgets, local linearity, and staged decomposition. We show that (i) local linearity is an \emph{operational consequence} of small-step budgeting (Lemmas~\ref{lem:token_to_ball},~\ref{lem:taylor_remainder}), not a global flatness assumption, and (ii) staging is an explicit reparameterization of total budget into a piecewise-linear path (Proposition~\ref{prop:polygonal}).
 
 \subsection{Trajectories, Budget, and Utilized Budget}
 Let $x_t$ denote the model's state after emitting $t$ tokens, and let $\Phi(x)$ denote the chosen representation (e.g., encoder embedding). We study the induced trajectory $z_t := \Phi(x_t) \in \mathbb{R}^d$.
@@ -2437,6 +2437,8 @@ The layers fall into five families. Each row names what the family checks and wh
 \begin{table}[h]
 \centering
 \small
+\caption{Certificate layer families and the boundary between mechanical verification and judgment.}
+\label{tab:cert_layers}
 \begin{tabular}{p{0.30\linewidth}p{0.32\linewidth}p{0.30\linewidth}}
 \toprule
 \textbf{Layer family} & \textbf{What it checks} & \textbf{What it does NOT prove} \\
@@ -2454,7 +2456,7 @@ Cross-tree + mutation (L13, mutation harness) & Recovered files match upstream b
 \end{tabular}
 \end{table}
 
-What this establishes: the paper says what it says, without drift, substitution, broken references, or stale figure assets. What it does not establish: that the underlying claims are true of the world, that the experimental design is sound, that the inferences follow from the data, or that the framing is the right framing. Mechanical verification operates on form. Critical reading operates on meaning. The certificate is structurally analogous to the paper's screening statistic $\hat{\rho}$: a zeroth-order observable that orders regime membership without resolving the truth question one layer up. As $\hat{\rho}$ triggers checks rather than verdicts, the certificate triggers reading rather than verdicts. It frees the reading from bookkeeping verification. It does not replace judgment.
+What this establishes (Table~\ref{tab:cert_layers}): the paper says what it says, without drift, substitution, broken references, or stale figure assets. What it does not establish: that the underlying claims are true of the world, that the experimental design is sound, that the inferences follow from the data, or that the framing is the right framing. Mechanical verification operates on form. Critical reading operates on meaning. The certificate is structurally analogous to the paper's screening statistic $\hat{\rho}$: a zeroth-order observable that orders regime membership without resolving the truth question one layer up. As $\hat{\rho}$ triggers checks rather than verdicts, the certificate triggers reading rather than verdicts. It frees the reading from bookkeeping verification. It does not replace judgment.
 
 \paragraph{Explanatory Illustrations.}\label{app:illustrations}
 The framework extends to schematic illustrations: reviewer aids that make formal blocks in the body easier to grok. Each illustration is bound to a specific source LaTeX block via the certificate's L14 layer: the source block's hash, an optional visual-spec hash, and the deterministic asset's hash live together in \texttt{ci/illustration\_lineage.json}. If the source block drifts, the illustration's certificate fails until the asset is re-authored. \textbf{Image generation models are used as a tool, not as a judge:} they explore visual composition during drafting; the certificate trusts only the deterministic redraw. The draft model and any text spec model are recorded in the manifest (\texttt{spec\_model}, \texttt{draft\_model} fields) for full provenance, but their outputs are never the shipping artifact. Each illustration's certificate also binds a hashed set of venue-sourced compliance constraints (visual accessibility, double-blind anonymity, ethics scope) lifted verbatim from the NeurIPS 2026 Main Track Handbook~\cite{neurips2026handbook}; the constraint file declares the upstream source's hash so handbook updates are detected as drift, and L14 fails until a human re-curates. \textbf{Claim scope: schematic illustration only; not empirical evidence.} The dataflow each schematic depicts is exactly what the bound source block asserts in prose; the schematic shifts the cognitive load from parsing equations to recognizing structure.

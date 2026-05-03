@@ -1,17 +1,17 @@
 # Claim Certificate
 
 **Paper:** The Cost of Cacophony: Geometric Limits on Multi-Constraint Alignment
-**Generated:** 2026-05-03T10:48:50
+**Generated:** 2026-05-03T10:57:40
 **Verdict:** **PASS** — all structural checks clean (L1+L2+L4+L7+L8+L9+L10+L11+L12+L13+L14+L15); L3+L5+L16 coverage is advisory, see triage JSONs
 
 ## Provenance
 
-- main.tex sha256: `0c47a2a6b68a9ea7...` (full hash in JSON)
-- main.tex mtime: 2026-05-03T10:47:53
+- main.tex sha256: `0b7a6e3a4a589c41...` (full hash in JSON)
+- main.tex mtime: 2026-05-03T10:53:55
 - main.pdf size: 1,079,391 bytes
 - main.pdf mtime: 2026-05-03T10:48:45
 - registry sha256: `a860cd02ec4eaf6b...`
-- certificate self-hash: `dd258b3a462e4233...` (sha256 of this payload minus the hash field; recompute to verify integrity)
+- certificate self-hash: `f22d0b772b3352b1...` (sha256 of this payload minus the hash field; recompute to verify integrity)
 
 ## Layer-by-layer Results
 
@@ -23,15 +23,15 @@
 | L4_lineage | `ci\figure_lineage_check.py` | PASS | 8/8 checks pass, 11 figures fresh |
 | L5_figure_values | `ci\figure_value_check.py` | PASS | 77.6% overall figure coverage, 23 uncovered |
 | L7_citations | `ci\citation_integrity_check.py` | PASS | 26 cites, 42 bib entries, 0 unresolved, 16 dead |
-| L8_links | `ci\link_integrity_check.py` | PASS | 2 URLs, 121 refs / 165 labels, 0 unresolved, 44 dead labels |
+| L8_links | `ci\link_integrity_check.py` | PASS | 2 URLs, 122 refs / 166 labels, 0 unresolved, 44 dead labels |
 | L9_consistency | `ci\cross_claim_consistency_check.py` | PASS | 33/33 consistency relations hold |
 | L10_bib | `ci\bib_entry_check.py` | PASS | 42/42 bib entries well-formed |
 | L11_scripts | `ci\script_integrity_check.py` | PASS | 13/13 figure scripts pass smoke test |
 | L12_build_equiv | `ci\build_equivalence_check.py` | PASS | --quick mode: ?/15 figures fresh; full mode optional |
 | L13_cross_tree | `ci\cross_tree_consistency_check.py` | PASS | 11/? cross-tree files match (incl. expected divergences) |
 | L14_illustrations | `ci\illustration_lineage_check.py` | PASS | 7/7 illustration provenance checks pass |
-| L15_data_ties | `ci\claim_data_ties_check.py` | PASS | 17/17 numerical claims tied to source data |
-| L16_author_claims | `ci\author_claims_check.py` | PASS | 20/22 judgment claims have data anchors (91%; advisory) |
+| L15_data_ties | `ci\claim_data_ties_check.py` | PASS | 31/31 numerical claims tied to source data |
+| L16_author_claims | `ci\author_claims_check.py` | PASS | 22/22 judgment claims have data anchors (100%; advisory) |
 
 ### Per-figure coverage (L5)
 

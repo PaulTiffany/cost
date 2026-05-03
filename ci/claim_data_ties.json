@@ -158,6 +158,132 @@
       "expected": 147,
       "tolerance": 0,
       "compare_as": "int"
+    },
+    "calibration_spearman_r": {
+      "claim_text_excerpt": "r_s = 1.0 rank correlation (Table 2 calibration)",
+      "paper_location_hint": "C4; Table tab:calibration",
+      "source_file": "supplementary/experiments/calibration_results.json",
+      "value_expr": "round(d['correlation']['spearman_r'], 2)",
+      "expected": 1.0,
+      "tolerance": 0.005,
+      "compare_as": "float"
+    },
+    "tier_rho_control": {
+      "claim_text_excerpt": "Control rho = 0.05",
+      "paper_location_hint": "I7; calibration",
+      "source_file": "supplementary/experiments/calibration_results.json",
+      "value_expr": "d['tier_rho_estimates']['control']",
+      "expected": 0.05,
+      "tolerance": 0.005,
+      "compare_as": "float"
+    },
+    "tier_rho_low": {
+      "claim_text_excerpt": "Low rho = 0.20",
+      "paper_location_hint": "I8; calibration",
+      "source_file": "supplementary/experiments/calibration_results.json",
+      "value_expr": "d['tier_rho_estimates']['low']",
+      "expected": 0.20,
+      "tolerance": 0.005,
+      "compare_as": "float"
+    },
+    "tier_rho_moderate": {
+      "claim_text_excerpt": "Moderate rho = 0.40",
+      "paper_location_hint": "I9; calibration",
+      "source_file": "supplementary/experiments/calibration_results.json",
+      "value_expr": "d['tier_rho_estimates']['moderate']",
+      "expected": 0.40,
+      "tolerance": 0.005,
+      "compare_as": "float"
+    },
+    "tier_rho_high": {
+      "claim_text_excerpt": "High rho = 0.65",
+      "paper_location_hint": "I10; calibration",
+      "source_file": "supplementary/experiments/calibration_results.json",
+      "value_expr": "d['tier_rho_estimates']['high']",
+      "expected": 0.65,
+      "tolerance": 0.005,
+      "compare_as": "float"
+    },
+    "calibration_failure_control_pct": {
+      "claim_text_excerpt": "Control failure 24% (one-shot)",
+      "paper_location_hint": "C12 / I7 second number; calibration table",
+      "source_file": "supplementary/experiments/calibration_results.json",
+      "value_expr": "round(d['aggregate']['stats']['control']['failure_rate_oneshot'] * 100)",
+      "expected": 24,
+      "tolerance": 0,
+      "compare_as": "int"
+    },
+    "calibration_failure_low_pct": {
+      "claim_text_excerpt": "Low failure 44% (one-shot)",
+      "paper_location_hint": "C12 / I8 second number; calibration table",
+      "source_file": "supplementary/experiments/calibration_results.json",
+      "value_expr": "round(d['aggregate']['stats']['low']['failure_rate_oneshot'] * 100)",
+      "expected": 44,
+      "tolerance": 0,
+      "compare_as": "int"
+    },
+    "calibration_failure_moderate_pct": {
+      "claim_text_excerpt": "Moderate failure 77% (one-shot)",
+      "paper_location_hint": "C12 / I9 second number; calibration table",
+      "source_file": "supplementary/experiments/calibration_results.json",
+      "value_expr": "round(d['aggregate']['stats']['moderate']['failure_rate_oneshot'] * 100)",
+      "expected": 77,
+      "tolerance": 0,
+      "compare_as": "int"
+    },
+    "calibration_failure_high_pct": {
+      "claim_text_excerpt": "High failure 98% (one-shot)",
+      "paper_location_hint": "C12 / I10 second number; calibration table",
+      "source_file": "supplementary/experiments/calibration_results.json",
+      "value_expr": "round(d['aggregate']['stats']['high']['failure_rate_oneshot'] * 100)",
+      "expected": 98,
+      "tolerance": 0,
+      "compare_as": "int"
+    },
+    "calibration_pass_control_pct": {
+      "claim_text_excerpt": "Control pass 76% (one-shot, I7 first number)",
+      "paper_location_hint": "I7 first number",
+      "source_file": "supplementary/experiments/calibration_results.json",
+      "value_expr": "round(d['aggregate']['stats']['control']['pass_rate_oneshot'] * 100)",
+      "expected": 76,
+      "tolerance": 0,
+      "compare_as": "int"
+    },
+    "calibration_pass_low_pct": {
+      "claim_text_excerpt": "Low pass 56% (one-shot, I8 first number)",
+      "paper_location_hint": "I8 first number",
+      "source_file": "supplementary/experiments/calibration_results.json",
+      "value_expr": "round(d['aggregate']['stats']['low']['pass_rate_oneshot'] * 100)",
+      "expected": 56,
+      "tolerance": 0,
+      "compare_as": "int"
+    },
+    "calibration_pass_moderate_pct": {
+      "claim_text_excerpt": "Moderate pass 23% (one-shot, I9 first number)",
+      "paper_location_hint": "I9 first number",
+      "source_file": "supplementary/experiments/calibration_results.json",
+      "value_expr": "round(d['aggregate']['stats']['moderate']['pass_rate_oneshot'] * 100)",
+      "expected": 23,
+      "tolerance": 0,
+      "compare_as": "int"
+    },
+    "calibration_pass_high_pct": {
+      "claim_text_excerpt": "High pass 2% (one-shot, I10 first number)",
+      "paper_location_hint": "I10 first number",
+      "source_file": "supplementary/experiments/calibration_results.json",
+      "value_expr": "round(d['aggregate']['stats']['high']['pass_rate_oneshot'] * 100)",
+      "expected": 2,
+      "tolerance": 0,
+      "compare_as": "int"
+    },
+    "calibration_n_per_tier": {
+      "claim_text_excerpt": "N=480 per tier (calibration; 4 models x 12 tasks x 5 trials x 2 protocols)",
+      "paper_location_hint": "Per-tier N in calibration table",
+      "source_file": "supplementary/experiments/calibration_results.json",
+      "value_expr": "d['aggregate']['stats']['high']['n_trials']",
+      "expected": 480,
+      "tolerance": 0,
+      "compare_as": "int"
     }
   }
 }

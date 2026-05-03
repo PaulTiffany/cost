@@ -1,7 +1,7 @@
 {
   "summary": {
-    "total": 17,
-    "passed": 17,
+    "total": 31,
+    "passed": 31,
     "failed": 0
   },
   "results": [
@@ -174,6 +174,146 @@
       "detail": "computed=147 expected=147.0 diff=0.0 tolerance=0.0",
       "excerpt": "147 testable mutations (total - skipped)",
       "source_file": "ci/tests/systematic_mutation_results.json"
+    },
+    {
+      "name": "calibration_spearman_r",
+      "passed": true,
+      "expected": 1.0,
+      "computed": 1.0,
+      "tolerance": 0.005,
+      "detail": "computed=1.0 expected=1.0 diff=0.0 tolerance=0.005",
+      "excerpt": "r_s = 1.0 rank correlation (Table 2 calibration)",
+      "source_file": "supplementary/experiments/calibration_results.json"
+    },
+    {
+      "name": "tier_rho_control",
+      "passed": true,
+      "expected": 0.05,
+      "computed": 0.05,
+      "tolerance": 0.005,
+      "detail": "computed=0.05 expected=0.05 diff=0.0 tolerance=0.005",
+      "excerpt": "Control rho = 0.05",
+      "source_file": "supplementary/experiments/calibration_results.json"
+    },
+    {
+      "name": "tier_rho_low",
+      "passed": true,
+      "expected": 0.2,
+      "computed": 0.2,
+      "tolerance": 0.005,
+      "detail": "computed=0.2 expected=0.2 diff=0.0 tolerance=0.005",
+      "excerpt": "Low rho = 0.20",
+      "source_file": "supplementary/experiments/calibration_results.json"
+    },
+    {
+      "name": "tier_rho_moderate",
+      "passed": true,
+      "expected": 0.4,
+      "computed": 0.4,
+      "tolerance": 0.005,
+      "detail": "computed=0.4 expected=0.4 diff=0.0 tolerance=0.005",
+      "excerpt": "Moderate rho = 0.40",
+      "source_file": "supplementary/experiments/calibration_results.json"
+    },
+    {
+      "name": "tier_rho_high",
+      "passed": true,
+      "expected": 0.65,
+      "computed": 0.65,
+      "tolerance": 0.005,
+      "detail": "computed=0.65 expected=0.65 diff=0.0 tolerance=0.005",
+      "excerpt": "High rho = 0.65",
+      "source_file": "supplementary/experiments/calibration_results.json"
+    },
+    {
+      "name": "calibration_failure_control_pct",
+      "passed": true,
+      "expected": 24.0,
+      "computed": 24.0,
+      "tolerance": 0.0,
+      "detail": "computed=24 expected=24.0 diff=0.0 tolerance=0.0",
+      "excerpt": "Control failure 24% (one-shot)",
+      "source_file": "supplementary/experiments/calibration_results.json"
+    },
+    {
+      "name": "calibration_failure_low_pct",
+      "passed": true,
+      "expected": 44.0,
+      "computed": 44.0,
+      "tolerance": 0.0,
+      "detail": "computed=44 expected=44.0 diff=0.0 tolerance=0.0",
+      "excerpt": "Low failure 44% (one-shot)",
+      "source_file": "supplementary/experiments/calibration_results.json"
+    },
+    {
+      "name": "calibration_failure_moderate_pct",
+      "passed": true,
+      "expected": 77.0,
+      "computed": 77.0,
+      "tolerance": 0.0,
+      "detail": "computed=77 expected=77.0 diff=0.0 tolerance=0.0",
+      "excerpt": "Moderate failure 77% (one-shot)",
+      "source_file": "supplementary/experiments/calibration_results.json"
+    },
+    {
+      "name": "calibration_failure_high_pct",
+      "passed": true,
+      "expected": 98.0,
+      "computed": 98.0,
+      "tolerance": 0.0,
+      "detail": "computed=98 expected=98.0 diff=0.0 tolerance=0.0",
+      "excerpt": "High failure 98% (one-shot)",
+      "source_file": "supplementary/experiments/calibration_results.json"
+    },
+    {
+      "name": "calibration_pass_control_pct",
+      "passed": true,
+      "expected": 76.0,
+      "computed": 76.0,
+      "tolerance": 0.0,
+      "detail": "computed=76 expected=76.0 diff=0.0 tolerance=0.0",
+      "excerpt": "Control pass 76% (one-shot, I7 first number)",
+      "source_file": "supplementary/experiments/calibration_results.json"
+    },
+    {
+      "name": "calibration_pass_low_pct",
+      "passed": true,
+      "expected": 56.0,
+      "computed": 56.0,
+      "tolerance": 0.0,
+      "detail": "computed=56 expected=56.0 diff=0.0 tolerance=0.0",
+      "excerpt": "Low pass 56% (one-shot, I8 first number)",
+      "source_file": "supplementary/experiments/calibration_results.json"
+    },
+    {
+      "name": "calibration_pass_moderate_pct",
+      "passed": true,
+      "expected": 23.0,
+      "computed": 23.0,
+      "tolerance": 0.0,
+      "detail": "computed=23 expected=23.0 diff=0.0 tolerance=0.0",
+      "excerpt": "Moderate pass 23% (one-shot, I9 first number)",
+      "source_file": "supplementary/experiments/calibration_results.json"
+    },
+    {
+      "name": "calibration_pass_high_pct",
+      "passed": true,
+      "expected": 2.0,
+      "computed": 2.0,
+      "tolerance": 0.0,
+      "detail": "computed=2 expected=2.0 diff=0.0 tolerance=0.0",
+      "excerpt": "High pass 2% (one-shot, I10 first number)",
+      "source_file": "supplementary/experiments/calibration_results.json"
+    },
+    {
+      "name": "calibration_n_per_tier",
+      "passed": true,
+      "expected": 480.0,
+      "computed": 480.0,
+      "tolerance": 0.0,
+      "detail": "computed=480 expected=480.0 diff=0.0 tolerance=0.0",
+      "excerpt": "N=480 per tier (calibration; 4 models x 12 tasks x 5 trials x 2 protocols)",
+      "source_file": "supplementary/experiments/calibration_results.json"
     }
   ]
 }
