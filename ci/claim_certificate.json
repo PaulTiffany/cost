@@ -3,19 +3,19 @@
   "provenance": {
     "paper_title": "The Cost of Cacophony: Geometric Limits on Multi-Constraint Alignment",
     "venue": "NeurIPS 2026",
-    "generated_at": "2026-05-03T10:43:14",
+    "generated_at": "2026-05-03T10:48:50",
     "main_tex_path": "paper\\main.tex",
-    "main_tex_sha256": "3227e48b26c68870f8d4f70c28f08058ed33e68351ee1d219e1ff6ca057da840",
-    "main_tex_mtime": "2026-05-03T10:38:17",
+    "main_tex_sha256": "0c47a2a6b68a9ea762716cda17ae319c312a1a5c4b27e35609418207c3657fe3",
+    "main_tex_mtime": "2026-05-03T10:47:53",
     "main_pdf_path": "paper\\main.pdf",
     "main_pdf_size": 1079391,
-    "main_pdf_mtime": "2026-05-03T10:39:11",
+    "main_pdf_mtime": "2026-05-03T10:48:45",
     "claim_audit_md_path": "CLAIM_AUDIT.md",
     "claim_audit_md_sha256": "a860cd02ec4eaf6b8d1e794905e97799bf037b6ebd1b81c066b067b9d83f0a57"
   },
   "verdict": {
     "verdict": "PASS",
-    "rationale": "all structural checks clean (L1+L2+L4+L7+L8+L9+L10+L11+L12+L13+L14+L15); L3+L5 coverage is advisory, see triage JSONs"
+    "rationale": "all structural checks clean (L1+L2+L4+L7+L8+L9+L10+L11+L12+L13+L14+L15); L3+L5+L16 coverage is advisory, see triage JSONs"
   },
   "layers": [
     {
@@ -297,7 +297,21 @@
         "failed": 0
       },
       "notes": ""
+    },
+    {
+      "name": "L16_author_claims",
+      "script": "ci\\author_claims_check.py",
+      "return_code": 0,
+      "status": "PASS",
+      "summary": {
+        "total": 22,
+        "tied": 20,
+        "untied": 2,
+        "tied_ratio": 0.9090909090909091,
+        "window_chars": 300
+      },
+      "notes": ""
     }
   ],
-  "certificate_self_hash": "db1741516c5e0fd2b1bd5256ff055a706ce4d3b30b30563ca8db26b4194c9747"
+  "certificate_self_hash": "dd258b3a462e42336c99b4c250a66b61264b9eb587a4440b84a14da764776d07"
 }

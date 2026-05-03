@@ -120,6 +120,13 @@ else
     echo "[OK]   L15 data-tied claims"
 fi
 
+# L16 is advisory: print the metric but do not fail the commit on it.
+python ci/author_claims_check.py > /tmp/author_claims.out 2>&1 || true
+if [ -f ci/author_claims_results.json ]; then
+    ratio=$(python -c "import json; d=json.load(open('ci/author_claims_results.json')); s=d['summary']; print(f\"{s['tied']}/{s['total']} ({100*s['tied_ratio']:.0f}%)\")" 2>/dev/null)
+    echo "[INFO] L16 author-judgment claims (advisory): $ratio tied"
+fi
+
 if [ $failed -ne 0 ]; then
     echo ""
     echo "Pre-commit blocked: a structural layer failed."

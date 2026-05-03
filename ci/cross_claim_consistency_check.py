@@ -479,9 +479,9 @@ def _populate_self_referential_relations() -> None:
             n_named_layers = len(mod.LAYER_SCRIPTS) + 1
             RELATIONS.append(ConsistencyRelation(
                 name="paper_says_N_layer_certificate",
-                description=f"Paper appendix says '15-layer'; runtime named-layer count = len(LAYER_SCRIPTS)+1 = {n_named_layers} (the +1 is L6, the aggregator)",
+                description=f"Paper appendix says '16-layer'; runtime named-layer count = len(LAYER_SCRIPTS)+1 = {n_named_layers} (the +1 is L6, the aggregator)",
                 formula="paper_count == runtime_count",
-                params={"paper_count": 15, "runtime_count": n_named_layers},
+                params={"paper_count": 16, "runtime_count": n_named_layers},
                 expected=True,
                 claim_ids=["T55"],
             ))

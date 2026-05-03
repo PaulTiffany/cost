@@ -515,11 +515,11 @@
     },
     {
       "name": "paper_says_N_layer_certificate",
-      "description": "Paper appendix says '15-layer'; runtime named-layer count = len(LAYER_SCRIPTS)+1 = 15 (the +1 is L6, the aggregator)",
+      "description": "Paper appendix says '16-layer'; runtime named-layer count = len(LAYER_SCRIPTS)+1 = 16 (the +1 is L6, the aggregator)",
       "formula": "paper_count == runtime_count",
       "params": {
-        "paper_count": 15,
-        "runtime_count": 15
+        "paper_count": 16,
+        "runtime_count": 16
       },
       "expected": true,
       "computed": 1.0,

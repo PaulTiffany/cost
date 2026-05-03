@@ -66,6 +66,7 @@ LAYER_SCRIPTS = {
     "L13_cross_tree": SCRIPT_DIR / "cross_tree_consistency_check.py",
     "L14_illustrations": SCRIPT_DIR / "illustration_lineage_check.py",
     "L15_data_ties": SCRIPT_DIR / "claim_data_ties_check.py",
+    "L16_author_claims": SCRIPT_DIR / "author_claims_check.py",
 }
 
 # L12 in unified-cert mode runs --quick (mtime + asset-hash only) so
@@ -87,6 +88,7 @@ LAYER_RESULT_JSONS = {
     "L13_cross_tree": SCRIPT_DIR / "cross_tree_consistency_results.json",
     "L14_illustrations": SCRIPT_DIR / "illustration_lineage_results.json",
     "L15_data_ties": SCRIPT_DIR / "claim_data_ties_results.json",
+    "L16_author_claims": SCRIPT_DIR / "author_claims_results.json",
 }
 
 
@@ -302,6 +304,15 @@ def attach_summary_l15(outcome: LayerOutcome) -> None:
     outcome.summary = payload.get("summary", {})
 
 
+def attach_summary_l16(outcome: LayerOutcome) -> None:
+    p = LAYER_RESULT_JSONS["L16_author_claims"]
+    if not p.exists():
+        outcome.notes = "no results JSON found"
+        return
+    payload = json.loads(p.read_text(encoding="utf-8"))
+    outcome.summary = payload.get("summary", {})
+
+
 # ---------------------------------------------------------------------------
 # Aggregate verdict
 # ---------------------------------------------------------------------------
@@ -321,7 +332,7 @@ def aggregate_verdict(outcomes: list[LayerOutcome]) -> tuple[str, str]:
     if structurally_failed:
         names = ", ".join(o.name for o in structurally_failed)
         return ("FAIL", f"Structural layers failed: {names}")
-    return ("PASS", "all structural checks clean (L1+L2+L4+L7+L8+L9+L10+L11+L12+L13+L14+L15); L3+L5 coverage is advisory, see triage JSONs")
+    return ("PASS", "all structural checks clean (L1+L2+L4+L7+L8+L9+L10+L11+L12+L13+L14+L15); L3+L5+L16 coverage is advisory, see triage JSONs")
 
 
 # ---------------------------------------------------------------------------
@@ -386,6 +397,11 @@ def render_markdown(payload: dict) -> str:
             blurb = f"{s.get('passed','?')}/{s.get('total','?')} illustration provenance checks pass"
         elif layer["name"] == "L15_data_ties":
             blurb = f"{s.get('passed','?')}/{s.get('total','?')} numerical claims tied to source data"
+        elif layer["name"] == "L16_author_claims":
+            tied = s.get('tied','?'); total = s.get('total','?')
+            ratio = s.get('tied_ratio')
+            ratio_str = f"{100*ratio:.0f}%" if isinstance(ratio,(int,float)) else "?"
+            blurb = f"{tied}/{total} judgment claims have data anchors ({ratio_str}; advisory)"
         else:
             blurb = "(no summary)"
         lines.append(f"| {layer['name']} | `{layer['script']}` | {status} | {blurb} |")
@@ -512,6 +528,11 @@ def main() -> int:
     if not args.quiet: print("  L15 data-tied claims...")
     o = run_layer("L15_data_ties", LAYER_SCRIPTS["L15_data_ties"])
     attach_summary_l15(o)
+    outcomes.append(o)
+
+    if not args.quiet: print("  L16 author-judgment claims (advisory)...")
+    o = run_layer("L16_author_claims", LAYER_SCRIPTS["L16_author_claims"])
+    attach_summary_l16(o)
     outcomes.append(o)
 
     verdict, rationale = aggregate_verdict(outcomes)
