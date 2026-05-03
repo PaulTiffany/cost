@@ -1,7 +1,7 @@
 {
   "summary": {
-    "total": 139,
-    "passed": 139,
+    "total": 159,
+    "passed": 159,
     "failed": 0
   },
   "results": [
@@ -1394,6 +1394,206 @@
       "detail": "computed=93.0 expected=93.0 diff=0.0 tolerance=0.0",
       "excerpt": "multilingual-MiniLM outcome agreement 93% (I28)",
       "source_file": "ci/derivations/encoder_lipschitz.json"
+    },
+    {
+      "name": "identifier_qwen_coder_in_lipschitz",
+      "passed": true,
+      "expected": 1.0,
+      "computed": 1.0,
+      "tolerance": 0.0,
+      "detail": "computed=1 expected=1.0 diff=0.0 tolerance=0.0",
+      "excerpt": "Qwen-2.5-Coder-1.5B-Instruct present in Lipschitz calibration source",
+      "source_file": "supplementary/experiments/lipschitz_calibration_results.json"
+    },
+    {
+      "name": "identifier_deepseek_coder_in_lipschitz",
+      "passed": true,
+      "expected": 1.0,
+      "computed": 1.0,
+      "tolerance": 0.0,
+      "detail": "computed=1 expected=1.0 diff=0.0 tolerance=0.0",
+      "excerpt": "deepseek-coder-1.3b-instruct present in Lipschitz calibration source",
+      "source_file": "supplementary/experiments/lipschitz_calibration_results.json"
+    },
+    {
+      "name": "identifier_tinyllama_in_lipschitz",
+      "passed": true,
+      "expected": 1.0,
+      "computed": 1.0,
+      "tolerance": 0.0,
+      "detail": "computed=1 expected=1.0 diff=0.0 tolerance=0.0",
+      "excerpt": "TinyLlama-1.1B-Chat-v1.0 present in Lipschitz calibration source",
+      "source_file": "supplementary/experiments/lipschitz_calibration_results.json"
+    },
+    {
+      "name": "identifier_qwen_coder_in_code_experiment",
+      "passed": true,
+      "expected": 1.0,
+      "computed": 1.0,
+      "tolerance": 0.0,
+      "detail": "computed=1 expected=1.0 diff=0.0 tolerance=0.0",
+      "excerpt": "Qwen-2.5-Coder-1.5B-Instruct present in code_constraint source (cross-file consistency)",
+      "source_file": "supplementary/experiments/code_constraint_results.json"
+    },
+    {
+      "name": "identifier_deepseek_coder_in_code_experiment",
+      "passed": true,
+      "expected": 1.0,
+      "computed": 1.0,
+      "tolerance": 0.0,
+      "detail": "computed=1 expected=1.0 diff=0.0 tolerance=0.0",
+      "excerpt": "deepseek-coder-1.3b-instruct present in code_constraint source",
+      "source_file": "supplementary/experiments/code_constraint_results.json"
+    },
+    {
+      "name": "identifier_tinyllama_in_code_experiment",
+      "passed": true,
+      "expected": 1.0,
+      "computed": 1.0,
+      "tolerance": 0.0,
+      "detail": "computed=1 expected=1.0 diff=0.0 tolerance=0.0",
+      "excerpt": "TinyLlama-1.1B-Chat-v1.0 present in code_constraint source",
+      "source_file": "supplementary/experiments/code_constraint_results.json"
+    },
+    {
+      "name": "identifier_qwen_3b_in_code_experiment",
+      "passed": true,
+      "expected": 1.0,
+      "computed": 1.0,
+      "tolerance": 0.0,
+      "detail": "computed=1 expected=1.0 diff=0.0 tolerance=0.0",
+      "excerpt": "Qwen-2.5-3B-Instruct present in code_constraint source (4th open-weight model)",
+      "source_file": "supplementary/experiments/code_constraint_results.json"
+    },
+    {
+      "name": "identifier_haiku3_in_claude_family",
+      "passed": true,
+      "expected": 1.0,
+      "computed": 1.0,
+      "tolerance": 0.0,
+      "detail": "computed=1 expected=1.0 diff=0.0 tolerance=0.0",
+      "excerpt": "haiku-3 present in Claude family source",
+      "source_file": "supplementary/experiments/fixed_point_claude_family.json"
+    },
+    {
+      "name": "identifier_sonnet4_in_claude_family",
+      "passed": true,
+      "expected": 1.0,
+      "computed": 1.0,
+      "tolerance": 0.0,
+      "detail": "computed=1 expected=1.0 diff=0.0 tolerance=0.0",
+      "excerpt": "sonnet-4 present in Claude family source",
+      "source_file": "supplementary/experiments/fixed_point_claude_family.json"
+    },
+    {
+      "name": "identifier_opus4_in_claude_family",
+      "passed": true,
+      "expected": 1.0,
+      "computed": 1.0,
+      "tolerance": 0.0,
+      "detail": "computed=1 expected=1.0 diff=0.0 tolerance=0.0",
+      "excerpt": "opus-4 present in Claude family source",
+      "source_file": "supplementary/experiments/fixed_point_claude_family.json"
+    },
+    {
+      "name": "identifier_opus41_in_claude_family",
+      "passed": true,
+      "expected": 1.0,
+      "computed": 1.0,
+      "tolerance": 0.0,
+      "detail": "computed=1 expected=1.0 diff=0.0 tolerance=0.0",
+      "excerpt": "opus-4.1 present in Claude family source",
+      "source_file": "supplementary/experiments/fixed_point_claude_family.json"
+    },
+    {
+      "name": "identifier_haiku45_in_claude_family",
+      "passed": true,
+      "expected": 1.0,
+      "computed": 1.0,
+      "tolerance": 0.0,
+      "detail": "computed=1 expected=1.0 diff=0.0 tolerance=0.0",
+      "excerpt": "haiku-4.5 present in Claude family source",
+      "source_file": "supplementary/experiments/fixed_point_claude_family.json"
+    },
+    {
+      "name": "identifier_sonnet45_in_claude_family",
+      "passed": true,
+      "expected": 1.0,
+      "computed": 1.0,
+      "tolerance": 0.0,
+      "detail": "computed=1 expected=1.0 diff=0.0 tolerance=0.0",
+      "excerpt": "sonnet-4.5 present in Claude family source",
+      "source_file": "supplementary/experiments/fixed_point_claude_family.json"
+    },
+    {
+      "name": "identifier_opus45_in_claude_family",
+      "passed": true,
+      "expected": 1.0,
+      "computed": 1.0,
+      "tolerance": 0.0,
+      "detail": "computed=1 expected=1.0 diff=0.0 tolerance=0.0",
+      "excerpt": "opus-4.5 present in Claude family source (frontier model)",
+      "source_file": "supplementary/experiments/fixed_point_claude_family.json"
+    },
+    {
+      "name": "identifier_command_r_plus_in_blinded",
+      "passed": true,
+      "expected": 1.0,
+      "computed": 1.0,
+      "tolerance": 0.0,
+      "detail": "computed=1 expected=1.0 diff=0.0 tolerance=0.0",
+      "excerpt": "command-r-plus present in blinded external benchmark",
+      "source_file": "rebuttal/figures/blinded_external/cross_model_results.json"
+    },
+    {
+      "name": "identifier_deepseek_r1_in_blinded",
+      "passed": true,
+      "expected": 1.0,
+      "computed": 1.0,
+      "tolerance": 0.0,
+      "detail": "computed=1 expected=1.0 diff=0.0 tolerance=0.0",
+      "excerpt": "deepseek-r1 present in blinded external benchmark",
+      "source_file": "rebuttal/figures/blinded_external/cross_model_results.json"
+    },
+    {
+      "name": "identifier_qwen_72b_in_blinded",
+      "passed": true,
+      "expected": 1.0,
+      "computed": 1.0,
+      "tolerance": 0.0,
+      "detail": "computed=1 expected=1.0 diff=0.0 tolerance=0.0",
+      "excerpt": "qwen-2.5-72b present in blinded external benchmark",
+      "source_file": "rebuttal/figures/blinded_external/cross_model_results.json"
+    },
+    {
+      "name": "identifier_mistral_large_in_blinded",
+      "passed": true,
+      "expected": 1.0,
+      "computed": 1.0,
+      "tolerance": 0.0,
+      "detail": "computed=1 expected=1.0 diff=0.0 tolerance=0.0",
+      "excerpt": "mistral-large present in blinded external benchmark",
+      "source_file": "rebuttal/figures/blinded_external/cross_model_results.json"
+    },
+    {
+      "name": "identifier_count_blinded_external_4models",
+      "passed": true,
+      "expected": 4.0,
+      "computed": 4.0,
+      "tolerance": 0.0,
+      "detail": "computed=4 expected=4.0 diff=0.0 tolerance=0.0",
+      "excerpt": "4-model blinded benchmark \u2014 exactly 4 distinct models in source",
+      "source_file": "rebuttal/figures/blinded_external/cross_model_results.json"
+    },
+    {
+      "name": "identifier_count_claude_family_7models",
+      "passed": true,
+      "expected": 7.0,
+      "computed": 7.0,
+      "tolerance": 0.0,
+      "detail": "computed=7 expected=7.0 diff=0.0 tolerance=0.0",
+      "excerpt": "7 Claude family models in fixed_point analysis (matches body claim)",
+      "source_file": "supplementary/experiments/fixed_point_claude_family.json"
     }
   ]
 }

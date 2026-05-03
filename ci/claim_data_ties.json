@@ -1256,6 +1256,211 @@
       "expected": 93,
       "tolerance": 0,
       "compare_as": "int"
+    },
+
+    "identifier_qwen_coder_in_lipschitz": {
+      "claim_text_excerpt": "Qwen-2.5-Coder-1.5B-Instruct present in Lipschitz calibration source",
+      "paper_location_hint": "Table tab:lipschitz_calibration model column; Method paragraph",
+      "source_file": "supplementary/experiments/lipschitz_calibration_results.json",
+      "value_expr": "1 if 'Qwen/Qwen2.5-Coder-1.5B-Instruct' in d['per_model_summary'] else 0",
+      "expected": 1,
+      "tolerance": 0,
+      "compare_as": "int",
+      "metadata": {"check_kind": "identifier", "type": "model_id", "family": "qwen", "size_b": 1.5, "specialization": "code", "tuning": "instruct", "provider": "Alibaba"}
+    },
+    "identifier_deepseek_coder_in_lipschitz": {
+      "claim_text_excerpt": "deepseek-coder-1.3b-instruct present in Lipschitz calibration source",
+      "paper_location_hint": "Table tab:lipschitz_calibration model column",
+      "source_file": "supplementary/experiments/lipschitz_calibration_results.json",
+      "value_expr": "1 if 'deepseek-ai/deepseek-coder-1.3b-instruct' in d['per_model_summary'] else 0",
+      "expected": 1,
+      "tolerance": 0,
+      "compare_as": "int",
+      "metadata": {"check_kind": "identifier", "type": "model_id", "family": "deepseek", "size_b": 1.3, "specialization": "code", "tuning": "instruct", "provider": "DeepSeek"}
+    },
+    "identifier_tinyllama_in_lipschitz": {
+      "claim_text_excerpt": "TinyLlama-1.1B-Chat-v1.0 present in Lipschitz calibration source",
+      "paper_location_hint": "Table tab:lipschitz_calibration model column",
+      "source_file": "supplementary/experiments/lipschitz_calibration_results.json",
+      "value_expr": "1 if 'TinyLlama/TinyLlama-1.1B-Chat-v1.0' in d['per_model_summary'] else 0",
+      "expected": 1,
+      "tolerance": 0,
+      "compare_as": "int",
+      "metadata": {"check_kind": "identifier", "type": "model_id", "family": "tinyllama", "size_b": 1.1, "specialization": "general", "tuning": "chat", "provider": "TinyLlama"}
+    },
+
+    "identifier_qwen_coder_in_code_experiment": {
+      "claim_text_excerpt": "Qwen-2.5-Coder-1.5B-Instruct present in code_constraint source (cross-file consistency)",
+      "paper_location_hint": "Open-weight code experiment; Section 5.1; Tab tab:calibration",
+      "source_file": "supplementary/experiments/code_constraint_results.json",
+      "value_expr": "1 if 'Qwen/Qwen2.5-Coder-1.5B-Instruct' in d else 0",
+      "expected": 1,
+      "tolerance": 0,
+      "compare_as": "int",
+      "metadata": {"check_kind": "identifier", "type": "model_id", "family": "qwen", "size_b": 1.5, "specialization": "code", "tuning": "instruct", "provider": "Alibaba"}
+    },
+    "identifier_deepseek_coder_in_code_experiment": {
+      "claim_text_excerpt": "deepseek-coder-1.3b-instruct present in code_constraint source",
+      "paper_location_hint": "Open-weight code experiment",
+      "source_file": "supplementary/experiments/code_constraint_results.json",
+      "value_expr": "1 if 'deepseek-ai/deepseek-coder-1.3b-instruct' in d else 0",
+      "expected": 1,
+      "tolerance": 0,
+      "compare_as": "int",
+      "metadata": {"check_kind": "identifier", "type": "model_id", "family": "deepseek", "size_b": 1.3, "specialization": "code", "tuning": "instruct", "provider": "DeepSeek"}
+    },
+    "identifier_tinyllama_in_code_experiment": {
+      "claim_text_excerpt": "TinyLlama-1.1B-Chat-v1.0 present in code_constraint source",
+      "paper_location_hint": "Open-weight code experiment",
+      "source_file": "supplementary/experiments/code_constraint_results.json",
+      "value_expr": "1 if 'TinyLlama/TinyLlama-1.1B-Chat-v1.0' in d else 0",
+      "expected": 1,
+      "tolerance": 0,
+      "compare_as": "int",
+      "metadata": {"check_kind": "identifier", "type": "model_id", "family": "tinyllama", "size_b": 1.1, "specialization": "general", "tuning": "chat", "provider": "TinyLlama"}
+    },
+    "identifier_qwen_3b_in_code_experiment": {
+      "claim_text_excerpt": "Qwen-2.5-3B-Instruct present in code_constraint source (4th open-weight model)",
+      "paper_location_hint": "Open-weight code experiment; calibration N=480 implies 4 models",
+      "source_file": "supplementary/experiments/code_constraint_results.json",
+      "value_expr": "1 if 'Qwen/Qwen2.5-3B-Instruct' in d else 0",
+      "expected": 1,
+      "tolerance": 0,
+      "compare_as": "int",
+      "metadata": {"check_kind": "identifier", "type": "model_id", "family": "qwen", "size_b": 3.0, "specialization": "general", "tuning": "instruct", "provider": "Alibaba"}
+    },
+
+    "identifier_haiku3_in_claude_family": {
+      "claim_text_excerpt": "haiku-3 present in Claude family source",
+      "paper_location_hint": "Table tab:claude_family; Frontier Transfer paragraph",
+      "source_file": "supplementary/experiments/fixed_point_claude_family.json",
+      "value_expr": "1 if any(m['model_name']=='haiku-3' for m in d['model_analyses']) else 0",
+      "expected": 1,
+      "tolerance": 0,
+      "compare_as": "int",
+      "metadata": {"check_kind": "identifier", "type": "model_id", "family": "claude", "tier": "haiku", "generation": 3, "provider": "Anthropic", "via": "API"}
+    },
+    "identifier_sonnet4_in_claude_family": {
+      "claim_text_excerpt": "sonnet-4 present in Claude family source",
+      "paper_location_hint": "Table tab:claude_family",
+      "source_file": "supplementary/experiments/fixed_point_claude_family.json",
+      "value_expr": "1 if any(m['model_name']=='sonnet-4' for m in d['model_analyses']) else 0",
+      "expected": 1,
+      "tolerance": 0,
+      "compare_as": "int",
+      "metadata": {"check_kind": "identifier", "type": "model_id", "family": "claude", "tier": "sonnet", "generation": 4, "provider": "Anthropic", "via": "API"}
+    },
+    "identifier_opus4_in_claude_family": {
+      "claim_text_excerpt": "opus-4 present in Claude family source",
+      "paper_location_hint": "Table tab:claude_family",
+      "source_file": "supplementary/experiments/fixed_point_claude_family.json",
+      "value_expr": "1 if any(m['model_name']=='opus-4' for m in d['model_analyses']) else 0",
+      "expected": 1,
+      "tolerance": 0,
+      "compare_as": "int",
+      "metadata": {"check_kind": "identifier", "type": "model_id", "family": "claude", "tier": "opus", "generation": 4, "provider": "Anthropic", "via": "API"}
+    },
+    "identifier_opus41_in_claude_family": {
+      "claim_text_excerpt": "opus-4.1 present in Claude family source",
+      "paper_location_hint": "Table tab:claude_family; line 512 frontier transfer",
+      "source_file": "supplementary/experiments/fixed_point_claude_family.json",
+      "value_expr": "1 if any(m['model_name']=='opus-4.1' for m in d['model_analyses']) else 0",
+      "expected": 1,
+      "tolerance": 0,
+      "compare_as": "int",
+      "metadata": {"check_kind": "identifier", "type": "model_id", "family": "claude", "tier": "opus", "generation": 4.1, "provider": "Anthropic", "via": "API"}
+    },
+    "identifier_haiku45_in_claude_family": {
+      "claim_text_excerpt": "haiku-4.5 present in Claude family source",
+      "paper_location_hint": "Table tab:claude_family",
+      "source_file": "supplementary/experiments/fixed_point_claude_family.json",
+      "value_expr": "1 if any(m['model_name']=='haiku-4.5' for m in d['model_analyses']) else 0",
+      "expected": 1,
+      "tolerance": 0,
+      "compare_as": "int",
+      "metadata": {"check_kind": "identifier", "type": "model_id", "family": "claude", "tier": "haiku", "generation": 4.5, "provider": "Anthropic", "via": "API"}
+    },
+    "identifier_sonnet45_in_claude_family": {
+      "claim_text_excerpt": "sonnet-4.5 present in Claude family source",
+      "paper_location_hint": "Table tab:claude_family",
+      "source_file": "supplementary/experiments/fixed_point_claude_family.json",
+      "value_expr": "1 if any(m['model_name']=='sonnet-4.5' for m in d['model_analyses']) else 0",
+      "expected": 1,
+      "tolerance": 0,
+      "compare_as": "int",
+      "metadata": {"check_kind": "identifier", "type": "model_id", "family": "claude", "tier": "sonnet", "generation": 4.5, "provider": "Anthropic", "via": "API"}
+    },
+    "identifier_opus45_in_claude_family": {
+      "claim_text_excerpt": "opus-4.5 present in Claude family source (frontier model)",
+      "paper_location_hint": "Table tab:claude_family; line 512 'opus-4.5 4.8x staging'",
+      "source_file": "supplementary/experiments/fixed_point_claude_family.json",
+      "value_expr": "1 if any(m['model_name']=='opus-4.5' for m in d['model_analyses']) else 0",
+      "expected": 1,
+      "tolerance": 0,
+      "compare_as": "int",
+      "metadata": {"check_kind": "identifier", "type": "model_id", "family": "claude", "tier": "opus", "generation": 4.5, "provider": "Anthropic", "via": "API"}
+    },
+
+    "identifier_command_r_plus_in_blinded": {
+      "claim_text_excerpt": "command-r-plus present in blinded external benchmark",
+      "paper_location_hint": "App C Bound Transfer; screening-statistic call-out",
+      "source_file": "rebuttal/figures/blinded_external/cross_model_results.json",
+      "value_expr": "1 if 'command-r-plus' in d['models'] else 0",
+      "expected": 1,
+      "tolerance": 0,
+      "compare_as": "int",
+      "metadata": {"check_kind": "identifier", "type": "model_id", "family": "cohere", "openrouter_id": "cohere/command-r-plus-08-2024", "provider": "Cohere", "via": "OpenRouter"}
+    },
+    "identifier_deepseek_r1_in_blinded": {
+      "claim_text_excerpt": "deepseek-r1 present in blinded external benchmark",
+      "paper_location_hint": "App C Bound Transfer figure caption",
+      "source_file": "rebuttal/figures/blinded_external/cross_model_results.json",
+      "value_expr": "1 if 'deepseek-r1' in d['models'] else 0",
+      "expected": 1,
+      "tolerance": 0,
+      "compare_as": "int",
+      "metadata": {"check_kind": "identifier", "type": "model_id", "family": "deepseek", "openrouter_id": "deepseek/deepseek-r1", "provider": "DeepSeek", "via": "OpenRouter"}
+    },
+    "identifier_qwen_72b_in_blinded": {
+      "claim_text_excerpt": "qwen-2.5-72b present in blinded external benchmark",
+      "paper_location_hint": "App C Bound Transfer figure caption",
+      "source_file": "rebuttal/figures/blinded_external/cross_model_results.json",
+      "value_expr": "1 if 'qwen-2.5-72b' in d['models'] else 0",
+      "expected": 1,
+      "tolerance": 0,
+      "compare_as": "int",
+      "metadata": {"check_kind": "identifier", "type": "model_id", "family": "qwen", "size_b": 72, "openrouter_id": "qwen/qwen-2.5-72b-instruct", "provider": "Alibaba", "via": "OpenRouter"}
+    },
+    "identifier_mistral_large_in_blinded": {
+      "claim_text_excerpt": "mistral-large present in blinded external benchmark",
+      "paper_location_hint": "App C Bound Transfer figure caption",
+      "source_file": "rebuttal/figures/blinded_external/cross_model_results.json",
+      "value_expr": "1 if 'mistral-large' in d['models'] else 0",
+      "expected": 1,
+      "tolerance": 0,
+      "compare_as": "int",
+      "metadata": {"check_kind": "identifier", "type": "model_id", "family": "mistral", "openrouter_id": "mistralai/mistral-large-2411", "provider": "Mistral", "via": "OpenRouter"}
+    },
+
+    "identifier_count_blinded_external_4models": {
+      "claim_text_excerpt": "4-model blinded benchmark — exactly 4 distinct models in source",
+      "paper_location_hint": "App C Bound Transfer figure caption '4-model blinded benchmark'",
+      "source_file": "rebuttal/figures/blinded_external/cross_model_results.json",
+      "value_expr": "len(set(d['models']))",
+      "expected": 4,
+      "tolerance": 0,
+      "compare_as": "int",
+      "metadata": {"check_kind": "identifier_count", "type": "model_count", "context": "blinded_external_benchmark"}
+    },
+    "identifier_count_claude_family_7models": {
+      "claim_text_excerpt": "7 Claude family models in fixed_point analysis (matches body claim)",
+      "paper_location_hint": "Frontier transfer paragraph: '7 models, haiku-opus'",
+      "source_file": "supplementary/experiments/fixed_point_claude_family.json",
+      "value_expr": "len({m['model_name'] for m in d['model_analyses']})",
+      "expected": 7,
+      "tolerance": 0,
+      "compare_as": "int",
+      "metadata": {"check_kind": "identifier_count", "type": "model_count", "context": "claude_family_frontier_transfer"}
     }
   }
 }
