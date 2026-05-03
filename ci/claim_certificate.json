@@ -3,7 +3,7 @@
   "provenance": {
     "paper_title": "The Cost of Cacophony: Geometric Limits on Multi-Constraint Alignment",
     "venue": "NeurIPS 2026",
-    "generated_at": "2026-05-03T11:07:35",
+    "generated_at": "2026-05-03T11:14:36",
     "main_tex_path": "paper\\main.tex",
     "main_tex_sha256": "0b7a6e3a4a589c415e5f4c430bc91c62d486eaa67afb9d523206c54f09b7af4b",
     "main_tex_mtime": "2026-05-03T10:53:55",
@@ -292,8 +292,8 @@
       "return_code": 0,
       "status": "PASS",
       "summary": {
-        "total": 55,
-        "passed": 55,
+        "total": 80,
+        "passed": 80,
         "failed": 0
       },
       "notes": ""
@@ -313,5 +313,5 @@
       "notes": ""
     }
   ],
-  "certificate_self_hash": "7422cc06223cb8cea90f375e73d1bb9114d26ea2a5a09f4246ac042bc607c97d"
+  "certificate_self_hash": "7e86623decb8eacbb5f362495cadc15d54f6f659051418155cbfbc5f233cee00"
 }

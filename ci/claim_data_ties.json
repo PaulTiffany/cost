@@ -500,6 +500,231 @@
       "expected": 10000,
       "tolerance": 0,
       "compare_as": "int"
+    },
+    "high_k_opus_clustered_pass": {
+      "claim_text_excerpt": "high_k_opus clustered regime: 100/100 (App high_k_opus, k=10 succeeds when constraints clustered)",
+      "paper_location_hint": "C21 / k=10 vs k=8 conflicting comparison",
+      "source_file": "supplementary/experiments/outputs/high_k_opus/high_k_opus_results.json",
+      "value_expr": "sum(1 for r in d['results'] if r['regime']=='clustered' and r.get('all_pass'))",
+      "expected": 100,
+      "tolerance": 0,
+      "compare_as": "int"
+    },
+    "high_k_opus_conflicting_pass": {
+      "claim_text_excerpt": "high_k_opus conflicting regime: 0/100 (k=8 conflicting fails completely)",
+      "paper_location_hint": "C21 / k=8 conflicting (Appendix high_k_opus)",
+      "source_file": "supplementary/experiments/outputs/high_k_opus/high_k_opus_results.json",
+      "value_expr": "sum(1 for r in d['results'] if r['regime']=='conflicting' and r.get('all_pass'))",
+      "expected": 0,
+      "tolerance": 0,
+      "compare_as": "int"
+    },
+    "high_k_opus_hard_negative_pass": {
+      "claim_text_excerpt": "high_k_opus hard_negative regime: 100/100 (high rho_hat but compatible -> still solvable)",
+      "paper_location_hint": "Hard-negative regime in high_k_opus",
+      "source_file": "supplementary/experiments/outputs/high_k_opus/high_k_opus_results.json",
+      "value_expr": "sum(1 for r in d['results'] if r['regime']=='hard_negative' and r.get('all_pass'))",
+      "expected": 100,
+      "tolerance": 0,
+      "compare_as": "int"
+    },
+    "high_k_opus_n_per_regime": {
+      "claim_text_excerpt": "n=100 per regime (high_k_opus; 4 regimes x 100 trials = 400 total)",
+      "paper_location_hint": "high_k_opus methodology",
+      "source_file": "supplementary/experiments/outputs/high_k_opus/high_k_opus_results.json",
+      "value_expr": "sum(1 for r in d['results'] if r['regime']=='clustered')",
+      "expected": 100,
+      "tolerance": 0,
+      "compare_as": "int"
+    },
+    "unconditional_pivot_high_total": {
+      "claim_text_excerpt": "480 high-tier trials (4 models x 12 tasks x 2 protocols x N=5)",
+      "paper_location_hint": "Line 1113 high-tier breakdown",
+      "source_file": "rebuttal/figures/unconditional_pivot_results.json",
+      "value_expr": "d['high_tier']['total']",
+      "expected": 480,
+      "tolerance": 0,
+      "compare_as": "int"
+    },
+    "unconditional_pivot_high_pass": {
+      "claim_text_excerpt": "8/480 unconditional high-tier success (1.7%)",
+      "paper_location_hint": "Line 1113 '8/480'",
+      "source_file": "rebuttal/figures/unconditional_pivot_results.json",
+      "value_expr": "d['high_tier']['pass']",
+      "expected": 8,
+      "tolerance": 0,
+      "compare_as": "int"
+    },
+    "unconditional_pivot_high_pct": {
+      "claim_text_excerpt": "1.7% unconditional high-tier success rate",
+      "paper_location_hint": "Line 1113 '1.7%'",
+      "source_file": "rebuttal/figures/unconditional_pivot_results.json",
+      "value_expr": "round(d['high_tier']['unconditional_rate'] * 100, 1)",
+      "expected": 1.7,
+      "tolerance": 0.05,
+      "compare_as": "float"
+    },
+    "abstract_smooth_zero_successes": {
+      "claim_text_excerpt": "0 smooth-regime successes in infeasible region (the '0' in '0/4,800')",
+      "paper_location_hint": "Abstract: 0/4,800 smooth-regime refutations (C3)",
+      "source_file": "rebuttal/figures/unconditional_pivot_results.json",
+      "value_expr": "d['full_paper_claim']['smooth_successes']",
+      "expected": 0,
+      "tolerance": 0,
+      "compare_as": "int"
+    },
+    "abstract_total_infeasible": {
+      "claim_text_excerpt": "4800 total infeasible-region trials (the '4,800' in '0/4,800')",
+      "paper_location_hint": "Abstract: 0/4,800 smooth-regime refutations (C3)",
+      "source_file": "rebuttal/figures/unconditional_pivot_results.json",
+      "value_expr": "d['full_paper_claim']['total_infeasible']",
+      "expected": 4800,
+      "tolerance": 0,
+      "compare_as": "int"
+    },
+    "regime_split_smooth_pct": {
+      "claim_text_excerpt": "89% smooth regime fraction (C9)",
+      "paper_location_hint": "C9 89%/11% split",
+      "source_file": "rebuttal/figures/unconditional_pivot_results.json",
+      "value_expr": "round(100 * d['full_paper_claim']['smooth_total'] / d['full_paper_claim']['total_infeasible'])",
+      "expected": 89,
+      "tolerance": 1,
+      "compare_as": "int"
+    },
+    "regime_split_pivot_pct": {
+      "claim_text_excerpt": "11% pivot regime fraction (C9)",
+      "paper_location_hint": "C9 89%/11% split",
+      "source_file": "rebuttal/figures/unconditional_pivot_results.json",
+      "value_expr": "round(100 * d['full_paper_claim']['pivot_total'] / d['full_paper_claim']['total_infeasible'])",
+      "expected": 11,
+      "tolerance": 1,
+      "compare_as": "int"
+    },
+    "conflict_detection_n_pairs": {
+      "claim_text_excerpt": "190 constitution pairs analyzed for conflict detection",
+      "paper_location_hint": "C25 / Constitution analysis",
+      "source_file": "supplementary/experiments/outputs/conflict_detection/results.json",
+      "value_expr": "d['n_total']",
+      "expected": 190,
+      "tolerance": 0,
+      "compare_as": "int"
+    },
+    "gram_n_negative_eigenvalues": {
+      "claim_text_excerpt": "Constitution Gram matrix: 1 negative eigenvalue (lambda_min < 0 -> not positive definite)",
+      "paper_location_hint": "Gram eigendecomposition section / constitution analysis",
+      "source_file": "rebuttal/figures/gram_eigendecomposition_results.json",
+      "value_expr": "d['constitution_gram']['n_negative_eigenvalues']",
+      "expected": 1,
+      "tolerance": 0,
+      "compare_as": "int"
+    },
+    "gram_lambda_min": {
+      "claim_text_excerpt": "Constitution Gram lambda_min = -4.31 (negative, indicates non-PSD)",
+      "paper_location_hint": "Gram eigendecomposition; figure caption note",
+      "source_file": "rebuttal/figures/gram_eigendecomposition_results.json",
+      "value_expr": "round(d['constitution_gram']['lambda_min'], 2)",
+      "expected": -4.31,
+      "tolerance": 0.005,
+      "compare_as": "float"
+    },
+    "gram_n_eigenvalues": {
+      "claim_text_excerpt": "20 eigenvalues in Constitution Gram matrix (n=20 principles)",
+      "paper_location_hint": "Constitution Gram analysis",
+      "source_file": "rebuttal/figures/gram_eigendecomposition_results.json",
+      "value_expr": "d['constitution_gram']['n']",
+      "expected": 20,
+      "tolerance": 0,
+      "compare_as": "int"
+    },
+    "gram_empirical_cliff_high": {
+      "claim_text_excerpt": "Empirical cliff at high tier: ~1.7% pass rate (matches calibration)",
+      "paper_location_hint": "Gram analysis empirical cliff comparison",
+      "source_file": "rebuttal/figures/gram_eigendecomposition_results.json",
+      "value_expr": "round(d['empirical_cliff']['high'] * 100, 1)",
+      "expected": 1.7,
+      "tolerance": 0.05,
+      "compare_as": "float"
+    },
+    "delta_capacity_n_token_budgets": {
+      "claim_text_excerpt": "5 token budgets tested: 128, 192, 256, 384, 512 (I46)",
+      "paper_location_hint": "I46; delta capacity experiment",
+      "source_file": "supplementary/experiments/delta_capacity_results.json",
+      "value_expr": "len(d['meta']['token_budgets'])",
+      "expected": 5,
+      "tolerance": 0,
+      "compare_as": "int"
+    },
+    "delta_capacity_smallest_budget": {
+      "claim_text_excerpt": "Smallest token budget = 128 (delta capacity I46 first value)",
+      "paper_location_hint": "I46 budgets list",
+      "source_file": "supplementary/experiments/delta_capacity_results.json",
+      "value_expr": "d['meta']['token_budgets'][0]",
+      "expected": 128,
+      "tolerance": 0,
+      "compare_as": "int"
+    },
+    "delta_capacity_largest_budget": {
+      "claim_text_excerpt": "Largest token budget = 512 (delta capacity I46 last value)",
+      "paper_location_hint": "I46 budgets list",
+      "source_file": "supplementary/experiments/delta_capacity_results.json",
+      "value_expr": "d['meta']['token_budgets'][-1]",
+      "expected": 512,
+      "tolerance": 0,
+      "compare_as": "int"
+    },
+    "delta_capacity_n_total_trials": {
+      "claim_text_excerpt": "1200 trials in delta capacity experiment (4 models x 6 tasks x 5 budgets x 5 trials x 2 protocols)",
+      "paper_location_hint": "Delta capacity experiment scale",
+      "source_file": "supplementary/experiments/delta_capacity_results.json",
+      "value_expr": "len(d['trials'])",
+      "expected": 1200,
+      "tolerance": 0,
+      "compare_as": "int"
+    },
+    "fixed_point_floor_total_tasks": {
+      "claim_text_excerpt": "6 tasks tested for opus-4.3 fixed-point floor",
+      "paper_location_hint": "Fixed-point floor experiment scope",
+      "source_file": "supplementary/experiments/fixed_point_floor_opus_43.json",
+      "value_expr": "d['summary']['total_tasks']",
+      "expected": 6,
+      "tolerance": 0,
+      "compare_as": "int"
+    },
+    "fixed_point_floor_floors_found": {
+      "claim_text_excerpt": "0 fixed-point floors found at opus-4.3 (all tasks staged successfully)",
+      "paper_location_hint": "Fixed-point floor result",
+      "source_file": "supplementary/experiments/fixed_point_floor_opus_43.json",
+      "value_expr": "d['summary']['floors_found']",
+      "expected": 0,
+      "tolerance": 0,
+      "compare_as": "int"
+    },
+    "claude_family_n_models": {
+      "claim_text_excerpt": "7 Claude family models analyzed (haiku-3 through opus-4.5)",
+      "paper_location_hint": "Frontier transfer paragraph: '7 models, haiku-opus'",
+      "source_file": "supplementary/experiments/fixed_point_claude_family.json",
+      "value_expr": "len(d['model_analyses'])",
+      "expected": 7,
+      "tolerance": 0,
+      "compare_as": "int"
+    },
+    "json_nl_tier_rho_high": {
+      "claim_text_excerpt": "JSON-NL high-tier rho = 0.70 (App H)",
+      "paper_location_hint": "Line 1083 'At rho=0.70'",
+      "source_file": "supplementary/experiments/json_nl_v4_results.json",
+      "value_expr": "d['summary']['high']['rho']",
+      "expected": 0.70,
+      "tolerance": 0.005,
+      "compare_as": "float"
+    },
+    "constitution_n_principles_via_conflict_detection": {
+      "claim_text_excerpt": "Cross-source verification: 190 pairs from C(20,2) = 20*19/2",
+      "paper_location_hint": "Implicit cross-check between constitution_analysis and conflict_detection",
+      "source_file": "supplementary/experiments/outputs/conflict_detection/results.json",
+      "value_expr": "d['n_total']",
+      "expected": 190,
+      "tolerance": 0,
+      "compare_as": "int"
     }
   }
 }

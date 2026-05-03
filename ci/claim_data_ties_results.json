@@ -1,7 +1,7 @@
 {
   "summary": {
-    "total": 55,
-    "passed": 55,
+    "total": 80,
+    "passed": 80,
     "failed": 0
   },
   "results": [
@@ -554,6 +554,256 @@
       "detail": "computed=10000 expected=10000.0 diff=0.0 tolerance=0.0",
       "excerpt": "n=10,000 Monte Carlo trials per k (charitable composition)",
       "source_file": "supplementary/experiments/outputs/charitable/charitable_feasibility.json"
+    },
+    {
+      "name": "high_k_opus_clustered_pass",
+      "passed": true,
+      "expected": 100.0,
+      "computed": 100.0,
+      "tolerance": 0.0,
+      "detail": "computed=100 expected=100.0 diff=0.0 tolerance=0.0",
+      "excerpt": "high_k_opus clustered regime: 100/100 (App high_k_opus, k=10 succeeds when constraints clustered)",
+      "source_file": "supplementary/experiments/outputs/high_k_opus/high_k_opus_results.json"
+    },
+    {
+      "name": "high_k_opus_conflicting_pass",
+      "passed": true,
+      "expected": 0.0,
+      "computed": 0.0,
+      "tolerance": 0.0,
+      "detail": "computed=0 expected=0.0 diff=0.0 tolerance=0.0",
+      "excerpt": "high_k_opus conflicting regime: 0/100 (k=8 conflicting fails completely)",
+      "source_file": "supplementary/experiments/outputs/high_k_opus/high_k_opus_results.json"
+    },
+    {
+      "name": "high_k_opus_hard_negative_pass",
+      "passed": true,
+      "expected": 100.0,
+      "computed": 100.0,
+      "tolerance": 0.0,
+      "detail": "computed=100 expected=100.0 diff=0.0 tolerance=0.0",
+      "excerpt": "high_k_opus hard_negative regime: 100/100 (high rho_hat but compatible -> still solvable)",
+      "source_file": "supplementary/experiments/outputs/high_k_opus/high_k_opus_results.json"
+    },
+    {
+      "name": "high_k_opus_n_per_regime",
+      "passed": true,
+      "expected": 100.0,
+      "computed": 100.0,
+      "tolerance": 0.0,
+      "detail": "computed=100 expected=100.0 diff=0.0 tolerance=0.0",
+      "excerpt": "n=100 per regime (high_k_opus; 4 regimes x 100 trials = 400 total)",
+      "source_file": "supplementary/experiments/outputs/high_k_opus/high_k_opus_results.json"
+    },
+    {
+      "name": "unconditional_pivot_high_total",
+      "passed": true,
+      "expected": 480.0,
+      "computed": 480.0,
+      "tolerance": 0.0,
+      "detail": "computed=480 expected=480.0 diff=0.0 tolerance=0.0",
+      "excerpt": "480 high-tier trials (4 models x 12 tasks x 2 protocols x N=5)",
+      "source_file": "rebuttal/figures/unconditional_pivot_results.json"
+    },
+    {
+      "name": "unconditional_pivot_high_pass",
+      "passed": true,
+      "expected": 8.0,
+      "computed": 8.0,
+      "tolerance": 0.0,
+      "detail": "computed=8 expected=8.0 diff=0.0 tolerance=0.0",
+      "excerpt": "8/480 unconditional high-tier success (1.7%)",
+      "source_file": "rebuttal/figures/unconditional_pivot_results.json"
+    },
+    {
+      "name": "unconditional_pivot_high_pct",
+      "passed": true,
+      "expected": 1.7,
+      "computed": 1.7,
+      "tolerance": 0.05,
+      "detail": "computed=1.7 expected=1.7 diff=0.0 tolerance=0.05",
+      "excerpt": "1.7% unconditional high-tier success rate",
+      "source_file": "rebuttal/figures/unconditional_pivot_results.json"
+    },
+    {
+      "name": "abstract_smooth_zero_successes",
+      "passed": true,
+      "expected": 0.0,
+      "computed": 0.0,
+      "tolerance": 0.0,
+      "detail": "computed=0 expected=0.0 diff=0.0 tolerance=0.0",
+      "excerpt": "0 smooth-regime successes in infeasible region (the '0' in '0/4,800')",
+      "source_file": "rebuttal/figures/unconditional_pivot_results.json"
+    },
+    {
+      "name": "abstract_total_infeasible",
+      "passed": true,
+      "expected": 4800.0,
+      "computed": 4800.0,
+      "tolerance": 0.0,
+      "detail": "computed=4800 expected=4800.0 diff=0.0 tolerance=0.0",
+      "excerpt": "4800 total infeasible-region trials (the '4,800' in '0/4,800')",
+      "source_file": "rebuttal/figures/unconditional_pivot_results.json"
+    },
+    {
+      "name": "regime_split_smooth_pct",
+      "passed": true,
+      "expected": 89.0,
+      "computed": 89.0,
+      "tolerance": 1.0,
+      "detail": "computed=89 expected=89.0 diff=0.0 tolerance=1.0",
+      "excerpt": "89% smooth regime fraction (C9)",
+      "source_file": "rebuttal/figures/unconditional_pivot_results.json"
+    },
+    {
+      "name": "regime_split_pivot_pct",
+      "passed": true,
+      "expected": 11.0,
+      "computed": 11.0,
+      "tolerance": 1.0,
+      "detail": "computed=11 expected=11.0 diff=0.0 tolerance=1.0",
+      "excerpt": "11% pivot regime fraction (C9)",
+      "source_file": "rebuttal/figures/unconditional_pivot_results.json"
+    },
+    {
+      "name": "conflict_detection_n_pairs",
+      "passed": true,
+      "expected": 190.0,
+      "computed": 190.0,
+      "tolerance": 0.0,
+      "detail": "computed=190 expected=190.0 diff=0.0 tolerance=0.0",
+      "excerpt": "190 constitution pairs analyzed for conflict detection",
+      "source_file": "supplementary/experiments/outputs/conflict_detection/results.json"
+    },
+    {
+      "name": "gram_n_negative_eigenvalues",
+      "passed": true,
+      "expected": 1.0,
+      "computed": 1.0,
+      "tolerance": 0.0,
+      "detail": "computed=1 expected=1.0 diff=0.0 tolerance=0.0",
+      "excerpt": "Constitution Gram matrix: 1 negative eigenvalue (lambda_min < 0 -> not positive definite)",
+      "source_file": "rebuttal/figures/gram_eigendecomposition_results.json"
+    },
+    {
+      "name": "gram_lambda_min",
+      "passed": true,
+      "expected": -4.31,
+      "computed": -4.31,
+      "tolerance": 0.005,
+      "detail": "computed=-4.31 expected=-4.31 diff=0.0 tolerance=0.005",
+      "excerpt": "Constitution Gram lambda_min = -4.31 (negative, indicates non-PSD)",
+      "source_file": "rebuttal/figures/gram_eigendecomposition_results.json"
+    },
+    {
+      "name": "gram_n_eigenvalues",
+      "passed": true,
+      "expected": 20.0,
+      "computed": 20.0,
+      "tolerance": 0.0,
+      "detail": "computed=20 expected=20.0 diff=0.0 tolerance=0.0",
+      "excerpt": "20 eigenvalues in Constitution Gram matrix (n=20 principles)",
+      "source_file": "rebuttal/figures/gram_eigendecomposition_results.json"
+    },
+    {
+      "name": "gram_empirical_cliff_high",
+      "passed": true,
+      "expected": 1.7,
+      "computed": 1.7,
+      "tolerance": 0.05,
+      "detail": "computed=1.7 expected=1.7 diff=0.0 tolerance=0.05",
+      "excerpt": "Empirical cliff at high tier: ~1.7% pass rate (matches calibration)",
+      "source_file": "rebuttal/figures/gram_eigendecomposition_results.json"
+    },
+    {
+      "name": "delta_capacity_n_token_budgets",
+      "passed": true,
+      "expected": 5.0,
+      "computed": 5.0,
+      "tolerance": 0.0,
+      "detail": "computed=5 expected=5.0 diff=0.0 tolerance=0.0",
+      "excerpt": "5 token budgets tested: 128, 192, 256, 384, 512 (I46)",
+      "source_file": "supplementary/experiments/delta_capacity_results.json"
+    },
+    {
+      "name": "delta_capacity_smallest_budget",
+      "passed": true,
+      "expected": 128.0,
+      "computed": 128.0,
+      "tolerance": 0.0,
+      "detail": "computed=128 expected=128.0 diff=0.0 tolerance=0.0",
+      "excerpt": "Smallest token budget = 128 (delta capacity I46 first value)",
+      "source_file": "supplementary/experiments/delta_capacity_results.json"
+    },
+    {
+      "name": "delta_capacity_largest_budget",
+      "passed": true,
+      "expected": 512.0,
+      "computed": 512.0,
+      "tolerance": 0.0,
+      "detail": "computed=512 expected=512.0 diff=0.0 tolerance=0.0",
+      "excerpt": "Largest token budget = 512 (delta capacity I46 last value)",
+      "source_file": "supplementary/experiments/delta_capacity_results.json"
+    },
+    {
+      "name": "delta_capacity_n_total_trials",
+      "passed": true,
+      "expected": 1200.0,
+      "computed": 1200.0,
+      "tolerance": 0.0,
+      "detail": "computed=1200 expected=1200.0 diff=0.0 tolerance=0.0",
+      "excerpt": "1200 trials in delta capacity experiment (4 models x 6 tasks x 5 budgets x 5 trials x 2 protocols)",
+      "source_file": "supplementary/experiments/delta_capacity_results.json"
+    },
+    {
+      "name": "fixed_point_floor_total_tasks",
+      "passed": true,
+      "expected": 6.0,
+      "computed": 6.0,
+      "tolerance": 0.0,
+      "detail": "computed=6 expected=6.0 diff=0.0 tolerance=0.0",
+      "excerpt": "6 tasks tested for opus-4.3 fixed-point floor",
+      "source_file": "supplementary/experiments/fixed_point_floor_opus_43.json"
+    },
+    {
+      "name": "fixed_point_floor_floors_found",
+      "passed": true,
+      "expected": 0.0,
+      "computed": 0.0,
+      "tolerance": 0.0,
+      "detail": "computed=0 expected=0.0 diff=0.0 tolerance=0.0",
+      "excerpt": "0 fixed-point floors found at opus-4.3 (all tasks staged successfully)",
+      "source_file": "supplementary/experiments/fixed_point_floor_opus_43.json"
+    },
+    {
+      "name": "claude_family_n_models",
+      "passed": true,
+      "expected": 7.0,
+      "computed": 7.0,
+      "tolerance": 0.0,
+      "detail": "computed=7 expected=7.0 diff=0.0 tolerance=0.0",
+      "excerpt": "7 Claude family models analyzed (haiku-3 through opus-4.5)",
+      "source_file": "supplementary/experiments/fixed_point_claude_family.json"
+    },
+    {
+      "name": "json_nl_tier_rho_high",
+      "passed": true,
+      "expected": 0.7,
+      "computed": 0.7,
+      "tolerance": 0.005,
+      "detail": "computed=0.7 expected=0.7 diff=0.0 tolerance=0.005",
+      "excerpt": "JSON-NL high-tier rho = 0.70 (App H)",
+      "source_file": "supplementary/experiments/json_nl_v4_results.json"
+    },
+    {
+      "name": "constitution_n_principles_via_conflict_detection",
+      "passed": true,
+      "expected": 190.0,
+      "computed": 190.0,
+      "tolerance": 0.0,
+      "detail": "computed=190 expected=190.0 diff=0.0 tolerance=0.0",
+      "excerpt": "Cross-source verification: 190 pairs from C(20,2) = 20*19/2",
+      "source_file": "supplementary/experiments/outputs/conflict_detection/results.json"
     }
   ]
 }

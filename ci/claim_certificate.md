@@ -1,7 +1,7 @@
 # Claim Certificate
 
 **Paper:** The Cost of Cacophony: Geometric Limits on Multi-Constraint Alignment
-**Generated:** 2026-05-03T11:07:35
+**Generated:** 2026-05-03T11:14:36
 **Verdict:** **PASS** — all structural checks clean (L1+L2+L4+L7+L8+L9+L10+L11+L12+L13+L14+L15); L3+L5+L16 coverage is advisory, see triage JSONs
 
 ## Provenance
@@ -11,7 +11,7 @@
 - main.pdf size: 1,080,476 bytes
 - main.pdf mtime: 2026-05-03T10:58:02
 - registry sha256: `a860cd02ec4eaf6b...`
-- certificate self-hash: `7422cc06223cb8ce...` (sha256 of this payload minus the hash field; recompute to verify integrity)
+- certificate self-hash: `7e86623decb8eacb...` (sha256 of this payload minus the hash field; recompute to verify integrity)
 
 ## Layer-by-layer Results
 
@@ -30,7 +30,7 @@
 | L12_build_equiv | `ci\build_equivalence_check.py` | PASS | --quick mode: ?/15 figures fresh; full mode optional |
 | L13_cross_tree | `ci\cross_tree_consistency_check.py` | PASS | 11/? cross-tree files match (incl. expected divergences) |
 | L14_illustrations | `ci\illustration_lineage_check.py` | PASS | 7/7 illustration provenance checks pass |
-| L15_data_ties | `ci\claim_data_ties_check.py` | PASS | 55/55 numerical claims tied to source data |
+| L15_data_ties | `ci\claim_data_ties_check.py` | PASS | 80/80 numerical claims tied to source data |
 | L16_author_claims | `ci\author_claims_check.py` | PASS | 22/22 judgment claims have data anchors (100%; advisory) |
 
 ### Per-figure coverage (L5)
