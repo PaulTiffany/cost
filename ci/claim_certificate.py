@@ -65,6 +65,7 @@ LAYER_SCRIPTS = {
     "L12_build_equiv": SCRIPT_DIR / "build_equivalence_check.py",
     "L13_cross_tree": SCRIPT_DIR / "cross_tree_consistency_check.py",
     "L14_illustrations": SCRIPT_DIR / "illustration_lineage_check.py",
+    "L15_data_ties": SCRIPT_DIR / "claim_data_ties_check.py",
 }
 
 # L12 in unified-cert mode runs --quick (mtime + asset-hash only) so
@@ -85,6 +86,7 @@ LAYER_RESULT_JSONS = {
     "L12_build_equiv": SCRIPT_DIR / "build_equivalence_results.json",
     "L13_cross_tree": SCRIPT_DIR / "cross_tree_consistency_results.json",
     "L14_illustrations": SCRIPT_DIR / "illustration_lineage_results.json",
+    "L15_data_ties": SCRIPT_DIR / "claim_data_ties_results.json",
 }
 
 
@@ -291,6 +293,15 @@ def attach_summary_l14(outcome: LayerOutcome) -> None:
     outcome.summary = payload.get("summary", {})
 
 
+def attach_summary_l15(outcome: LayerOutcome) -> None:
+    p = LAYER_RESULT_JSONS["L15_data_ties"]
+    if not p.exists():
+        outcome.notes = "no results JSON found"
+        return
+    payload = json.loads(p.read_text(encoding="utf-8"))
+    outcome.summary = payload.get("summary", {})
+
+
 # ---------------------------------------------------------------------------
 # Aggregate verdict
 # ---------------------------------------------------------------------------
@@ -305,12 +316,12 @@ def aggregate_verdict(outcomes: list[LayerOutcome]) -> tuple[str, str]:
     surface previously-hidden noise can drop below it). The triage
     JSONs are the actionable signal, not the percentage.
     """
-    structural = {"L1_audit", "L2_validator", "L4_lineage", "L7_citations", "L8_links", "L9_consistency", "L10_bib", "L11_scripts", "L12_build_equiv", "L13_cross_tree", "L14_illustrations"}
+    structural = {"L1_audit", "L2_validator", "L4_lineage", "L7_citations", "L8_links", "L9_consistency", "L10_bib", "L11_scripts", "L12_build_equiv", "L13_cross_tree", "L14_illustrations", "L15_data_ties"}
     structurally_failed = [o for o in outcomes if o.return_code != 0 and o.name in structural]
     if structurally_failed:
         names = ", ".join(o.name for o in structurally_failed)
         return ("FAIL", f"Structural layers failed: {names}")
-    return ("PASS", "all structural checks clean (L1+L2+L4+L7+L8+L9+L10+L11+L12+L13+L14); L3+L5 coverage is advisory, see triage JSONs")
+    return ("PASS", "all structural checks clean (L1+L2+L4+L7+L8+L9+L10+L11+L12+L13+L14+L15); L3+L5 coverage is advisory, see triage JSONs")
 
 
 # ---------------------------------------------------------------------------
@@ -373,6 +384,8 @@ def render_markdown(payload: dict) -> str:
             blurb = f"{s.get('match','?')}/{s.get('total','?')} cross-tree files match (incl. expected divergences)"
         elif layer["name"] == "L14_illustrations":
             blurb = f"{s.get('passed','?')}/{s.get('total','?')} illustration provenance checks pass"
+        elif layer["name"] == "L15_data_ties":
+            blurb = f"{s.get('passed','?')}/{s.get('total','?')} numerical claims tied to source data"
         else:
             blurb = "(no summary)"
         lines.append(f"| {layer['name']} | `{layer['script']}` | {status} | {blurb} |")
@@ -494,6 +507,11 @@ def main() -> int:
     if not args.quiet: print("  L14 illustration lineage...")
     o = run_layer("L14_illustrations", LAYER_SCRIPTS["L14_illustrations"])
     attach_summary_l14(o)
+    outcomes.append(o)
+
+    if not args.quiet: print("  L15 data-tied claims...")
+    o = run_layer("L15_data_ties", LAYER_SCRIPTS["L15_data_ties"])
+    attach_summary_l15(o)
     outcomes.append(o)
 
     verdict, rationale = aggregate_verdict(outcomes)

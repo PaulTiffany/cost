@@ -1,0 +1,91 @@
+{
+  "_meta": {
+    "version": 1,
+    "description": "L15: data-tied numerical claim check. Each entry binds a numerical claim that appears in paper/main.tex to a value derivable from a tracked source file (typically JSON). The check loads the source, evaluates the declared value expression against the loaded object (bound as `d`), and compares to the declared expected value within tolerance. If they diverge, either the paper text or the source data is stale; the cert fails until reconciled. This complements L9 (formula-vs-value math identity for curated relations) by handling arbitrary numerical claims grounded in repo data rather than in formulas.",
+    "value_expr_contract": "Python expression evaluated with restricted globals against the loaded source object bound as `d`. Allowed builtins: sum, len, min, max, abs, round, int, float. Allowed names: math (module). Expression must return a number.",
+    "tolerance_contract": "Absolute tolerance for numerical comparison. Use 0 for integer counts, 0.5 for percent-rounded-to-int, 1e-3 for ratios."
+  },
+  "claims": {
+    "runD_high_pass_b_pct": {
+      "claim_text_excerpt": "image medium at 33% Pass B (Run D high tier)",
+      "paper_location_hint": "App C Bound Transfer to Image Medium subsection",
+      "source_file": "supplementary/experiments_rebuttal/image_transfer/image_transfer_runD_passB.json",
+      "value_expr": "round(d['by_tier']['high']['pass_b_rate'] * 100)",
+      "expected": 33,
+      "tolerance": 0,
+      "compare_as": "int"
+    },
+    "runD_control_pass_b_pct": {
+      "claim_text_excerpt": "Run D control tier 100% Pass B (per-tier paragraph)",
+      "paper_location_hint": "App C Bound Transfer to Image Medium subsection",
+      "source_file": "supplementary/experiments_rebuttal/image_transfer/image_transfer_runD_passB.json",
+      "value_expr": "round(d['by_tier']['control']['pass_b_rate'] * 100)",
+      "expected": 100,
+      "tolerance": 0,
+      "compare_as": "int"
+    },
+    "runD_n_trials_total": {
+      "claim_text_excerpt": "N=24 trials total in Run D",
+      "paper_location_hint": "App C Bound Transfer to Image Medium subsection",
+      "source_file": "supplementary/experiments_rebuttal/image_transfer/image_transfer_runD_passB.json",
+      "value_expr": "sum(t['n_trials'] for t in d['by_tier'].values())",
+      "expected": 24,
+      "tolerance": 0,
+      "compare_as": "int"
+    },
+    "cross_model_n_total_blinded": {
+      "claim_text_excerpt": "N=1839 trials (4-model blinded benchmark)",
+      "paper_location_hint": "App C Bound Transfer to Image Medium subsection (Run D fig caption)",
+      "source_file": "rebuttal/figures/blinded_external/cross_model_results.json",
+      "value_expr": "d['total_results']",
+      "expected": 1839,
+      "tolerance": 0,
+      "compare_as": "int"
+    },
+    "cross_model_4model_avg_high_pct": {
+      "claim_text_excerpt": "text medium ~38% at high tier (4-model avg)",
+      "paper_location_hint": "App C Bound Transfer to Image Medium subsection",
+      "source_file": "rebuttal/figures/blinded_external/cross_model_results.json",
+      "value_expr": "round(100 * sum(1 for r in d['results'] if r['tier']=='high' and r.get('pass_both')) / sum(1 for r in d['results'] if r['tier']=='high'))",
+      "expected": 38,
+      "tolerance": 1,
+      "compare_as": "int"
+    },
+    "command_r_plus_control_pct": {
+      "claim_text_excerpt": "command-r-plus 100% at control",
+      "paper_location_hint": "App C Bound Transfer to Image Medium (screening-statistic call-out)",
+      "source_file": "rebuttal/figures/blinded_external/cross_model_results.json",
+      "value_expr": "round(100 * sum(1 for r in d['results'] if r['model']=='command-r-plus' and r['tier']=='control' and r.get('pass_both')) / sum(1 for r in d['results'] if r['model']=='command-r-plus' and r['tier']=='control'))",
+      "expected": 100,
+      "tolerance": 0,
+      "compare_as": "int"
+    },
+    "command_r_plus_low_pct": {
+      "claim_text_excerpt": "command-r-plus 99% at low",
+      "paper_location_hint": "App C Bound Transfer to Image Medium (screening-statistic call-out)",
+      "source_file": "rebuttal/figures/blinded_external/cross_model_results.json",
+      "value_expr": "round(100 * sum(1 for r in d['results'] if r['model']=='command-r-plus' and r['tier']=='low' and r.get('pass_both')) / sum(1 for r in d['results'] if r['model']=='command-r-plus' and r['tier']=='low'))",
+      "expected": 99,
+      "tolerance": 0,
+      "compare_as": "int"
+    },
+    "command_r_plus_moderate_pct": {
+      "claim_text_excerpt": "command-r-plus 100% at moderate",
+      "paper_location_hint": "App C Bound Transfer to Image Medium (screening-statistic call-out)",
+      "source_file": "rebuttal/figures/blinded_external/cross_model_results.json",
+      "value_expr": "round(100 * sum(1 for r in d['results'] if r['model']=='command-r-plus' and r['tier']=='moderate' and r.get('pass_both')) / sum(1 for r in d['results'] if r['model']=='command-r-plus' and r['tier']=='moderate'))",
+      "expected": 100,
+      "tolerance": 0,
+      "compare_as": "int"
+    },
+    "command_r_plus_high_pct": {
+      "claim_text_excerpt": "command-r-plus 31% at high",
+      "paper_location_hint": "App C Bound Transfer to Image Medium (screening-statistic call-out)",
+      "source_file": "rebuttal/figures/blinded_external/cross_model_results.json",
+      "value_expr": "round(100 * sum(1 for r in d['results'] if r['model']=='command-r-plus' and r['tier']=='high' and r.get('pass_both')) / sum(1 for r in d['results'] if r['model']=='command-r-plus' and r['tier']=='high'))",
+      "expected": 31,
+      "tolerance": 0,
+      "compare_as": "int"
+    }
+  }
+}
