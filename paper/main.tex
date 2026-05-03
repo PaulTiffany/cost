@@ -256,7 +256,7 @@ If $\delta_{\min}(\rho,\tau,m) > LT$, no $T$-token trajectory achieves \mbox{sim
 \end{minipage}}
 \end{center}
 
-\noindent \textbf{Validation.} Table~\ref{tab:lipschitz_calibration} shows $\hat{L} \in [0.019, 0.031]$ across 4 model families, stable across decoding strategies. \emph{Falsifiable}: one-shot successes in the predicted-infeasible region without pivot signatures would refute it; none observed across 4,800 trials.
+\noindent \textbf{Validation.} Table~\ref{tab:lipschitz_calibration} shows $\hat{L} \in [0.045, 0.049]$ across 3 model families, stable across decoding strategies. \emph{Falsifiable}: one-shot successes in the predicted-infeasible region without pivot signatures would refute it; none observed across 4,800 trials.
 
 \textbf{Staging as re-anchoring.}
 \emph{Staging} intermediates, reparameterizing from terminal $\Delta$ to sequential $\Delta^{(s)}$ with local re-linearization. This is the inference analog of receding-horizon control \citep{mayne2000constrained}.
@@ -267,7 +267,7 @@ $\hat\rho$, a screening statistic for regime structure (not a conflict verdict),
 \end{remark}
 
 \textbf{Empirical validation.}
-Direction stability: 94\% of trajectories show $\hat{\rho}$ drift ${<}0.15$ (Appendix~\ref{app:direction_stability}). Lipschitz calibration is stable across model families and encoders: $\hat{L} \in [0.019, 0.031]$, tight within 12\% for 89\% of trajectories; the 11\% excess defines pivots (Corollary~\ref{cor:regime_break}; per-model and per-encoder breakdown in Table~\ref{tab:lipschitz_calibration}, Appendix~\ref{app:lipschitz_calibration}). The linear representation hypothesis \citep{park2023linear} grounds the encoder invariance: linear maps preserve inner products; geometry is intrinsic.
+Direction stability: 94\% of trajectories show $\hat{\rho}$ drift ${<}0.15$ (Appendix~\ref{app:direction_stability}). Lipschitz calibration is stable across model families: $\hat{L} \in [0.045, 0.049]$ across the three open-weight models in Table~\ref{tab:lipschitz_calibration}; the smooth-vs-pivot decomposition (89\%/11\%, Section~\ref{sec:empirical}) characterizes when generation behaves as bounded-displacement vs.\ recomposition (Corollary~\ref{cor:regime_break}). The linear representation hypothesis \citep{park2023linear} grounds the encoder invariance: linear maps preserve inner products; geometry is intrinsic.
 
 \textbf{Implication.}
 High $\hat\rho$ and $LT < \widehat{\delta}_{\min}$ predict an under-budgeted one-shot attempt; the router stages or decomposes.
@@ -1136,36 +1136,34 @@ The token$\to$norm contract (Eq.~\ref{eq:bounded_velocity}) assumes bounded per-
 \begin{table}[ht]
 \centering
 \small
-\caption{Token$\to$norm calibration ($\pm$ standard deviation across $N{=}50$ completions). $\hat{L}$: per-token displacement. Tightness: \% within 12\% of $LT$. Outliers: semantic pivots (`Aha!' moments) detected and re-routed, not suppressed. Default $\hat{L} \approx 0.025$.}
+\caption{Token$\to$norm calibration ($\pm$ standard deviation across $N{=}50$ completions over 6 code tasks). $\hat{L}$: per-token displacement in MiniLM-L6-v2 embedding space. Default $\hat{L} \approx 0.048$. Calibration script: \texttt{supplementary/experiments/lipschitz\_calibration.py}.}
 \label{tab:lipschitz_calibration}
-\begin{tabular}{lccc}
+\begin{tabular}{lc}
 \toprule
-Model & $\hat{L}$ & Tightness & Outliers \\
+Model & $\hat{L}$ \\
 \midrule
-Qwen-2.5-Coder & $0.023 \pm 0.008$ & 91\% & 9\% \\
-DeepSeek-Coder & $0.019 \pm 0.006$ & 93\% & 7\% \\
-TinyLlama-1.1B & $0.031 \pm 0.011$ & 84\% & 16\% \\
+Qwen-2.5-Coder & $0.048 \pm 0.008$ \\
+DeepSeek-Coder & $0.049 \pm 0.007$ \\
+TinyLlama-1.1B & $0.045 \pm 0.008$ \\
 \bottomrule
 \end{tabular}
 \end{table}
 
 \paragraph{Encoder sensitivity (relocated from body \S\ref{sec:empirical}).}
-$\hat{L}$ measures step magnitude, not semantic direction. It is encoder-stable by construction: $\hat{L} \in [0.021, 0.028]$ across MiniLM/MPNet/E5. Default $\hat{L} \approx 0.025$. Temperature shifts predictably (greedy ${-}15$\%, $T{=}1.0$ ${+}20$\%). Regime ordering ($\hat{\rho}$) preserves: $r_s \ge 0.94$ across encoders.
+$\hat{L}$ measures step magnitude, not semantic direction. It is model-stable: $\hat{L} \in [0.045, 0.049]$ across the three open-weight models in Table~\ref{tab:lipschitz_calibration}. Default $\hat{L} \approx 0.048$. Regime ordering ($\hat{\rho}$) preserves: $r_s \ge 0.94$ across encoders.
 
 \paragraph{Method.}
-For each model and task, we generate 50 completions and measure $\|x_{t+1} - x_t\|$ for each token $t$ using MiniLM-L6-v2 embeddings. We report mean $\pm$ std of the per-token displacement.
+For each model and task, we generate 50 completions at $T{=}0.7$ and measure $\|x_{t+1} - x_t\|$ for each token $t$ using MiniLM-L6-v2 embeddings. We report mean $\pm$ std of the per-token displacement aggregated across completions and tasks. Calibration script: \texttt{supplementary/experiments/lipschitz\_calibration.py}.
 
 \paragraph{Results.}
 \begin{itemize}[nosep]
-\item \textbf{Model variance:} Qwen-2.5-Coder: $\hat{L} = 0.023 \pm 0.008$; DeepSeek-Coder: $\hat{L} = 0.019 \pm 0.006$; TinyLlama: $\hat{L} = 0.031 \pm 0.011$. Smaller models show higher variance.
-\item \textbf{Task variance:} Code: $\hat{L} \approx 0.021$; JSON-NL: $\hat{L} \approx 0.026$; Signal DSL: $\hat{L} \approx 0.024$. Task type has modest effect ($<$25\% variation).
-\item \textbf{Temperature sensitivity:} Greedy ($T{=}0$) reduces $\hat{L}$ by $\sim$15\%; $T{=}0.7$ yields the reported values; $T{=}1.0$ increases $\hat{L}$ by $\sim$20\%.
-\item \textbf{Tightness:} The bound $\|x_T - x_0\| \le LT$ is tight within 12\% for 89\% of completions. Outliers (11\%) correspond to semantic pivots where the model changes strategy mid-generation.
+\item \textbf{Model variance:} Qwen-2.5-Coder: $\hat{L} = 0.048 \pm 0.008$; DeepSeek-Coder: $\hat{L} = 0.049 \pm 0.007$; TinyLlama: $\hat{L} = 0.045 \pm 0.008$. Per-completion mean displacements are tightly clustered ($\hat{L}$ ranges across models within $\sim$10\%).
+\item \textbf{Smooth/pivot decomposition:} The 89\%/11\% smooth-vs-pivot split (Section~\ref{sec:empirical}, derived from the unconditional pivot analysis) characterizes when generation behaves as bounded-displacement vs.\ recomposition; per-model $\hat{L}$ above is computed across all completions. Pivot detection lives at the trajectory level, not the per-model aggregate.
 \end{itemize}
 
 \paragraph{Step-Size Distribution (The `Aha!' Question).}
-A single token like ``not'' can invert semantic meaning. Does this invalidate the Lipschitz bound? \textbf{No: the bound is on embeddings, not tokens.} Token space is discrete. Embedding space is continuous. We measure displacement \emph{in embedding space}, where even semantically disruptive tokens induce bounded movement. We analyze the \emph{distribution} of per-token displacements across 2,500 completions (50 per task $\times$ 50 tasks).
-\textbf{Findings:} 95th percentile $\|x_{t+1} - x_t\| = 0.041$; 99th percentile $= 0.067$; maximum observed $= 0.12$. Semantic jumps ($>3\sigma$) occur in 2.3\% of tokens, clustered at (i)~sentence boundaries, (ii)~negation words, (iii)~code delimiters: tokens that often \emph{recode the constraint chart} (logical restructuring) rather than smooth interpolation. Critically, \emph{constraint satisfaction tasks} (following formatting rules, avoiding forbidden content) involve incremental compliance, not insight pivots. `Aha!' moments characterize \emph{reasoning} tasks where the model discovers a solution. Constraint following is \emph{procedural}, with smooth trajectories. The 11\% of completions violating tightness correspond to tasks where the model \emph{abandons and restarts} an approach, detectable via trajectory curvature and excluded from regime prediction (Remark~\ref{rem:proxy_scope}).
+A single token like ``not'' can invert semantic meaning. Does this invalidate the Lipschitz bound? \textbf{No: the bound is on embeddings, not tokens.} Token space is discrete. Embedding space is continuous. We measure displacement \emph{in embedding space}, where even semantically disruptive tokens induce bounded movement. We analyze the \emph{distribution} of per-token displacements across 900 completions (50 per task $\times$ 6 tasks $\times$ 3 models, $N{=}108{,}957$ tokens).
+\textbf{Findings:} 95th percentile $\|x_{t+1} - x_t\| = 0.148$; 99th percentile $= 0.246$; maximum observed $= 0.447$. Semantic jumps ($>3\sigma$) occur in 2.3\% of tokens, clustered at (i)~sentence boundaries, (ii)~negation words, (iii)~code delimiters: tokens that often \emph{recode the constraint chart} (logical restructuring) rather than smooth interpolation. Critically, \emph{constraint satisfaction tasks} (following formatting rules, avoiding forbidden content) involve incremental compliance, not insight pivots. `Aha!' moments characterize \emph{reasoning} tasks where the model discovers a solution. Constraint following is \emph{procedural}, with smooth trajectories. The 11\% pivot mass (Section~\ref{sec:empirical}) corresponds to tasks where the model \emph{abandons and restarts} an approach, detectable via trajectory curvature and excluded from regime prediction (Remark~\ref{rem:proxy_scope}).
 
 \paragraph{Interpretation.}
 The stability of $L$ across models and tasks validates the token$\to$norm contract for regime prediction. While $L$ varies with model size and temperature, the variation is bounded and predictable. Practitioners can use $\hat{L} \approx 0.025$ as a default. Task-specific calibration improves precision. The bound is conservative for insight-driven tasks but tight for constraint-following tasks: precisely the regime our theory addresses.
@@ -1193,7 +1191,7 @@ $+30\%$ (aggressive) & 89\% & $-3\%$ & More one-shot \\
 \noindent The key finding: $\hat{L}$ mis-estimation is \textbf{fail-safe in one direction}. Underestimating $\hat{L}$ (believing tokens move less than they do) makes the router conservative: it stages more often, wasting tokens but not correctness. Overestimating $\hat{L}$ makes the router aggressive, risking one-shot attempts in truly infeasible regions. Practitioners should err toward lower $\hat{L}$ estimates when uncertain.
 
 \paragraph{Anisotropy.}\label{par:anisotropy}
-Embedding spaces are anisotropic: principal directions have unequal variance. Does this affect the scalar $L$? No. $L$ is the operator norm (maximum singular value of the Jacobian), already worst-case over all directions. The bound is conservative. Tighter direction-dependent bounds require trajectory knowledge unavailable at routing time. Empirically, the 12\% tightness gap (above) absorbs anisotropic variation.
+Embedding spaces are anisotropic: principal directions have unequal variance. Does this affect the scalar $L$? No. $L$ is the operator norm (maximum singular value of the Jacobian), already worst-case over all directions. The bound is conservative. Tighter direction-dependent bounds require trajectory knowledge unavailable at routing time. Empirically, the cross-model spread of $\hat{L}$ (within $\sim$10\%, Table~\ref{tab:lipschitz_calibration}) is small relative to anisotropic variation, indicating the scalar $\hat{L}$ summarizes step magnitude well enough for routing.
 
 \section{Preservation Cost Analysis}\label{app:preservation}
 

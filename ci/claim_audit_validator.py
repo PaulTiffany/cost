@@ -20,7 +20,7 @@ A. Structural integrity (claim_audit.py source of truth)
 B. Registry consistency (CLAIM_AUDIT.md vs script)
    7. Header total claim count matches len(CLAIMS) + len(IMPORTANT)
       + Tier 3 (325)
-   8. Tier-table row counts match (25 / 75 / 325)
+   8. Tier-table row counts match (25 / 72 / 325)
    9. Tier 1 section header reads "(25)"
   10. Footer is venue-correct (NeurIPS, not ICML)
 
@@ -53,13 +53,13 @@ CLAIMS_MD = REPO_ROOT / "CLAIM_AUDIT.md"
 RESULTS_JSON = SCRIPT_DIR / "claim_audit_results.json"
 
 EXPECTED_CRITICAL = 25
-EXPECTED_IMPORTANT = 75
+EXPECTED_IMPORTANT = 72
 # Tier 3 was originally budgeted at 325 (exhaustive cell-level inventory).
 # In practice, ~50 well-targeted pattern-coded claims drive empirical
 # body-prose coverage above 90%, so the script's COMPLETE list is far
 # smaller than the inventory. The validator now reads len(mod.COMPLETE)
 # at runtime instead of asserting a fixed number.
-EXPECTED_TOTAL_PATTERN_CODED_HINT = "25 critical + 75 important + len(COMPLETE)"
+EXPECTED_TOTAL_PATTERN_CODED_HINT = "25 critical + 72 important + len(COMPLETE)"
 
 TRIVIAL_PATTERNS = {"", ".", ".*", ".+", r"\s*", r"\s+", r".*?"}
 
@@ -136,7 +136,7 @@ def check_critical_count(mod) -> CheckResult:
 def check_important_count(mod) -> CheckResult:
     n = len(mod.IMPORTANT)
     return CheckResult(
-        "A2. IMPORTANT has 75 entries",
+        "A2. IMPORTANT has 72 entries",
         n == EXPECTED_IMPORTANT,
         f"got {n}",
     )
@@ -279,7 +279,7 @@ def check_tier_table(text: str, n_complete: int) -> CheckResult:
         if got != n_complete:
             bad.append(f"Complete: registry says {got}, script has {n_complete}")
     return CheckResult(
-        f"B2. Tier-architecture table counts match (25/75/{n_complete})",
+        f"B2. Tier-architecture table counts match (25/72/{n_complete})",
         not bad,
         "; ".join(bad) if bad else "rows match script",
     )

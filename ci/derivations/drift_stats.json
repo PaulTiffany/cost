@@ -12,8 +12,8 @@
   },
   "high_drift_pct": 6,
   "step_size": {
-    "p95": 0.041,
-    "p99": 0.067,
-    "max_observed": 0.12
+    "p95": 0.148,
+    "p99": 0.246,
+    "max_observed": 0.447
   }
 }

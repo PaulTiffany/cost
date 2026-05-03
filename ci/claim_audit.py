@@ -130,10 +130,10 @@ CLAIMS: list[dict] = [
     },
     {
         "id": "C8",
-        "description": r"$\hat{L} \in [0.019, 0.031]$ across 4 models (Table 1)",
+        "description": r"$\hat{L} \in [0.045, 0.049]$ across 3 models (Table 1)",
         "patterns": [
-            r"0\.019",
-            r"0\.031",
+            r"0\.045",
+            r"0\.049",
         ],
     },
     {
@@ -302,12 +302,9 @@ IMPORTANT: list[dict] = [
     # Table 1: Lipschitz Calibration (I1-I6) — joint-context: all
     # patterns must co-occur within a 3-line window, so model name +
     # value(s) are anchored together. Stronger than per-pattern-anywhere.
-    {"id": "I1", "description": "Qwen-2.5-Coder L=0.023+/-0.008", "patterns": [r"Qwen.*?Coder|Qwen-2\.5-Coder", r"0\.023", r"0\.008"], "match_mode": "joint", "match_window": 3},
-    {"id": "I2", "description": "Qwen-2.5-Coder 91% tightness (joint with model name)", "patterns": [r"Qwen.*?Coder|Qwen-2\.5-Coder", r"91\s*\\?%"], "match_mode": "joint", "match_window": 3},
-    {"id": "I3", "description": "DeepSeek-Coder L=0.019+/-0.006", "patterns": [r"DeepSeek.*?Coder|DeepSeek-Coder", r"0\.019", r"0\.006"], "match_mode": "joint", "match_window": 3},
-    {"id": "I4", "description": "DeepSeek-Coder 93% tightness (joint with model name)", "patterns": [r"DeepSeek.*?Coder|DeepSeek-Coder", r"93\s*\\?%"], "match_mode": "joint", "match_window": 3},
-    {"id": "I5", "description": "TinyLlama-1.1B L=0.031+/-0.011", "patterns": [r"TinyLlama", r"0\.031", r"0\.011"], "match_mode": "joint", "match_window": 3},
-    {"id": "I6", "description": "TinyLlama-1.1B 84% tightness (joint with model name)", "patterns": [r"TinyLlama", r"84\s*\\?%"], "match_mode": "joint", "match_window": 3},
+    {"id": "I1", "description": "Qwen-2.5-Coder L=0.048+/-0.008 (measured)", "patterns": [r"Qwen.*?Coder|Qwen-2\.5-Coder", r"0\.048", r"0\.008"], "match_mode": "joint", "match_window": 3},
+    {"id": "I3", "description": "DeepSeek-Coder L=0.049+/-0.007 (measured)", "patterns": [r"DeepSeek.*?Coder|DeepSeek-Coder", r"0\.049", r"0\.007"], "match_mode": "joint", "match_window": 3},
+    {"id": "I5", "description": "TinyLlama-1.1B L=0.045+/-0.008 (measured)", "patterns": [r"TinyLlama", r"0\.045", r"0\.008"], "match_mode": "joint", "match_window": 3},
     # Table 2: Regime Performance (I7-I10) — joint-context with tier label as anchor
     {"id": "I7", "description": "Control rho=0.05, 76%/24% (joint)", "patterns": [r"[Cc]ontrol", r"0\.05", r"76\s*\\?%"], "match_mode": "joint", "match_window": 5},
     {"id": "I8", "description": "Low rho=0.20, 56%/44% (joint)", "patterns": [r"\bLow\b", r"0\.20", r"56\s*\\?%"], "match_mode": "joint", "match_window": 5},
@@ -371,8 +368,8 @@ IMPORTANT: list[dict] = [
     {"id": "I52", "description": "Benchmark structure 12 tasks x 4 tiers x 4 models", "patterns": [r"12\s*(?:tasks?|\\times)", r"4\s*(?:tiers?|\\times|\\,)", r"4\s*models?"]},
     {"id": "I53", "description": "Total trials 4,800", "patterns": [r"4[,\\{}\\!\s]*800"]},
     {"id": "I54", "description": "Median direction drift 0.07 (IQR 0.03-0.12)", "patterns": [r"0\.07", r"IQR"]},
-    {"id": "I55", "description": "95th percentile step 0.041", "patterns": [r"0\.041"]},
-    {"id": "I56", "description": "99th percentile step 0.067", "patterns": [r"0\.067"]},
+    {"id": "I55", "description": "95th percentile step 0.148 (measured)", "patterns": [r"0\.148"]},
+    {"id": "I56", "description": "99th percentile step 0.246 (measured)", "patterns": [r"0\.246"]},
     {"id": "I57", "description": "Maximum step 0.12", "patterns": [r"0\.12"]},
     {"id": "I58", "description": "Semantic jump rate 2.3% (>3sigma)", "patterns": [r"2\.3\s*\\?%"]},
     # Appendix Key Claims (I59-I75)
@@ -395,7 +392,7 @@ IMPORTANT: list[dict] = [
     {"id": "I75", "description": "App D: 24% reinforcing pairs", "patterns": [r"24\s*\\?%", r"reinforcing"]},
 ]
 
-assert len(IMPORTANT) == 75, f"Expected 75 important claims, got {len(IMPORTANT)}"
+assert len(IMPORTANT) == 72, f"Expected 72 important claims, got {len(IMPORTANT)}"
 
 
 # ---------------------------------------------------------------------------

@@ -1,7 +1,7 @@
 {
   "summary": {
-    "total": 142,
-    "passed": 142,
+    "total": 139,
+    "passed": 139,
     "failed": 0
   },
   "results": [
@@ -1178,11 +1178,11 @@
     {
       "name": "step_size_p95",
       "passed": true,
-      "expected": 0.041,
-      "computed": 0.041,
+      "expected": 0.148,
+      "computed": 0.148,
       "tolerance": 1e-09,
-      "detail": "computed=0.041 expected=0.041 diff=0.0 tolerance=1e-09",
-      "excerpt": "95th percentile step 0.041 (I55)",
+      "detail": "computed=0.148 expected=0.148 diff=0.0 tolerance=1e-09",
+      "excerpt": "95th percentile step 0.148 (I55, measured)",
       "source_file": "ci/derivations/drift_stats.json"
     },
     {
@@ -1198,112 +1198,82 @@
     {
       "name": "lipschitz_qwen_coder_L_hat",
       "passed": true,
-      "expected": 0.023,
-      "computed": 0.023,
-      "tolerance": 0.0,
-      "detail": "computed=0.023 expected=0.023 diff=0.0 tolerance=0.0",
-      "excerpt": "Qwen-2.5-Coder L=0.023 (I1, Table tab:lipschitz_calibration)",
-      "source_file": "ci/derivations/encoder_lipschitz.json"
+      "expected": 0.048,
+      "computed": 0.048,
+      "tolerance": 0.001,
+      "detail": "computed=0.048 expected=0.048 diff=0.0 tolerance=0.001",
+      "excerpt": "Qwen-2.5-Coder L=0.048 (I1, Table tab:lipschitz_calibration; measured)",
+      "source_file": "supplementary/experiments/lipschitz_calibration_results.json"
     },
     {
       "name": "lipschitz_qwen_coder_std",
       "passed": true,
       "expected": 0.008,
       "computed": 0.008,
-      "tolerance": 0.0,
-      "detail": "computed=0.008 expected=0.008 diff=0.0 tolerance=0.0",
-      "excerpt": "Qwen-2.5-Coder L_hat std = 0.008 (I1)",
-      "source_file": "ci/derivations/encoder_lipschitz.json"
-    },
-    {
-      "name": "lipschitz_qwen_coder_tightness_pct",
-      "passed": true,
-      "expected": 91.0,
-      "computed": 91.0,
-      "tolerance": 0.0,
-      "detail": "computed=91.0 expected=91.0 diff=0.0 tolerance=0.0",
-      "excerpt": "Qwen-2.5-Coder 91% tightness (I2)",
-      "source_file": "ci/derivations/encoder_lipschitz.json"
+      "tolerance": 0.001,
+      "detail": "computed=0.008 expected=0.008 diff=0.0 tolerance=0.001",
+      "excerpt": "Qwen-2.5-Coder L_hat std = 0.008 (I1; measured)",
+      "source_file": "supplementary/experiments/lipschitz_calibration_results.json"
     },
     {
       "name": "lipschitz_deepseek_coder_L_hat",
       "passed": true,
-      "expected": 0.019,
-      "computed": 0.019,
-      "tolerance": 0.0,
-      "detail": "computed=0.019 expected=0.019 diff=0.0 tolerance=0.0",
-      "excerpt": "DeepSeek-Coder L=0.019 (I3)",
-      "source_file": "ci/derivations/encoder_lipschitz.json"
+      "expected": 0.049,
+      "computed": 0.049,
+      "tolerance": 0.001,
+      "detail": "computed=0.049 expected=0.049 diff=0.0 tolerance=0.001",
+      "excerpt": "DeepSeek-Coder L=0.049 (I3; measured)",
+      "source_file": "supplementary/experiments/lipschitz_calibration_results.json"
     },
     {
       "name": "lipschitz_deepseek_coder_std",
       "passed": true,
-      "expected": 0.006,
-      "computed": 0.006,
-      "tolerance": 0.0,
-      "detail": "computed=0.006 expected=0.006 diff=0.0 tolerance=0.0",
-      "excerpt": "DeepSeek-Coder L_hat std = 0.006 (I3)",
-      "source_file": "ci/derivations/encoder_lipschitz.json"
-    },
-    {
-      "name": "lipschitz_deepseek_coder_tightness_pct",
-      "passed": true,
-      "expected": 93.0,
-      "computed": 93.0,
-      "tolerance": 0.0,
-      "detail": "computed=93.0 expected=93.0 diff=0.0 tolerance=0.0",
-      "excerpt": "DeepSeek-Coder 93% tightness (I4)",
-      "source_file": "ci/derivations/encoder_lipschitz.json"
+      "expected": 0.007,
+      "computed": 0.007,
+      "tolerance": 0.001,
+      "detail": "computed=0.007 expected=0.007 diff=0.0 tolerance=0.001",
+      "excerpt": "DeepSeek-Coder L_hat std = 0.007 (I3; measured)",
+      "source_file": "supplementary/experiments/lipschitz_calibration_results.json"
     },
     {
       "name": "lipschitz_tinyllama_L_hat",
       "passed": true,
-      "expected": 0.031,
-      "computed": 0.031,
-      "tolerance": 0.0,
-      "detail": "computed=0.031 expected=0.031 diff=0.0 tolerance=0.0",
-      "excerpt": "TinyLlama-1.1B L=0.031 (I5)",
-      "source_file": "ci/derivations/encoder_lipschitz.json"
+      "expected": 0.045,
+      "computed": 0.045,
+      "tolerance": 0.001,
+      "detail": "computed=0.045 expected=0.045 diff=0.0 tolerance=0.001",
+      "excerpt": "TinyLlama-1.1B L=0.045 (I5; measured)",
+      "source_file": "supplementary/experiments/lipschitz_calibration_results.json"
     },
     {
       "name": "lipschitz_tinyllama_std",
       "passed": true,
-      "expected": 0.011,
-      "computed": 0.011,
-      "tolerance": 0.0,
-      "detail": "computed=0.011 expected=0.011 diff=0.0 tolerance=0.0",
-      "excerpt": "TinyLlama-1.1B L_hat std = 0.011 (I5)",
-      "source_file": "ci/derivations/encoder_lipschitz.json"
-    },
-    {
-      "name": "lipschitz_tinyllama_tightness_pct",
-      "passed": true,
-      "expected": 84.0,
-      "computed": 84.0,
-      "tolerance": 0.0,
-      "detail": "computed=84.0 expected=84.0 diff=0.0 tolerance=0.0",
-      "excerpt": "TinyLlama-1.1B 84% tightness (I6)",
-      "source_file": "ci/derivations/encoder_lipschitz.json"
+      "expected": 0.008,
+      "computed": 0.008,
+      "tolerance": 0.001,
+      "detail": "computed=0.008 expected=0.008 diff=0.0 tolerance=0.001",
+      "excerpt": "TinyLlama-1.1B L_hat std = 0.008 (I5; measured)",
+      "source_file": "supplementary/experiments/lipschitz_calibration_results.json"
     },
     {
       "name": "lipschitz_L_hat_min_across_models",
       "passed": true,
-      "expected": 0.019,
-      "computed": 0.019,
-      "tolerance": 0.0,
-      "detail": "computed=0.019 expected=0.019 diff=0.0 tolerance=0.0",
-      "excerpt": "L_hat min across 4 models = 0.019 (C8 lower bound)",
-      "source_file": "ci/derivations/encoder_lipschitz.json"
+      "expected": 0.045,
+      "computed": 0.045,
+      "tolerance": 0.001,
+      "detail": "computed=0.045 expected=0.045 diff=0.0 tolerance=0.001",
+      "excerpt": "L_hat min across 3 models = 0.045 (C8 lower bound; measured)",
+      "source_file": "supplementary/experiments/lipschitz_calibration_results.json"
     },
     {
       "name": "lipschitz_L_hat_max_across_models",
       "passed": true,
-      "expected": 0.031,
-      "computed": 0.031,
-      "tolerance": 0.0,
-      "detail": "computed=0.031 expected=0.031 diff=0.0 tolerance=0.0",
-      "excerpt": "L_hat max across 4 models = 0.031 (C8 upper bound)",
-      "source_file": "ci/derivations/encoder_lipschitz.json"
+      "expected": 0.049,
+      "computed": 0.049,
+      "tolerance": 0.001,
+      "detail": "computed=0.049 expected=0.049 diff=0.0 tolerance=0.001",
+      "excerpt": "L_hat max across 3 models = 0.049 (C8 upper bound; measured)",
+      "source_file": "supplementary/experiments/lipschitz_calibration_results.json"
     },
     {
       "name": "embedding_minilm_rho_max",

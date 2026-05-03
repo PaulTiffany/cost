@@ -25,8 +25,8 @@
       "details": {
         "checklist_page": 53,
         "references_page": 10,
-        "first_appendix_page": 11,
-        "reason": "checklist=53, references=10, first_appendix=11"
+        "first_appendix_page": 12,
+        "reason": "checklist=53, references=10, first_appendix=12"
       }
     },
     {
@@ -44,7 +44,7 @@
     "body_pages": 9,
     "references_page": 10,
     "checklist_page": 53,
-    "first_appendix_page": 11,
+    "first_appendix_page": 12,
     "layout_hack_count": 0,
     "all_pass": true
   }
