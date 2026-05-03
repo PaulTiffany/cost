@@ -133,7 +133,7 @@ MODELS = {
     "gemini-2.5-pro": "google/gemini-2.5-pro",
     # Blinded external benchmark additions (4 distinctively new providers)
     "mistral-large": "mistralai/mistral-large-2411",
-    "command-r-plus": "cohere/command-r-plus",
+    "command-r-plus": "cohere/command-r-plus-08-2024",
     "qwen-2.5-72b": "qwen/qwen-2.5-72b-instruct",
     "deepseek-r1": "deepseek/deepseek-r1",
 }
@@ -552,7 +552,13 @@ def main():
     print(f"Results saved: {json_path} ({len(clean_results)} results)")
 
     if not args.dry_run:
-        plot_cliff(results, args.output_dir)
+        # Plot from MERGED clean_results so re-runs of a single model
+        # don't lose the cross-model comparison. plot_cliff uses
+        # attribute access (.model/.tier/.pass_both); wrap dicts in
+        # SimpleNamespace to satisfy that interface without changing
+        # the plot function.
+        from types import SimpleNamespace
+        plot_cliff([SimpleNamespace(**r) for r in clean_results], args.output_dir)
 
 
 if __name__ == "__main__":
