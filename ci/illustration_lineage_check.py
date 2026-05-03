@@ -40,6 +40,13 @@ Checks
       (\\input or \\includegraphics)
   A7. claim_scope field is present and non-empty (no certifying
       illustrations as evidence)
+  A8. venue_constraints[]: each constraint file exists and its hash
+      matches the manifest. If a constraint file declares a
+      SOURCE_HASH header, the actual upstream source file must hash
+      to that value (detects venue-document drift).
+  A9. venue_constraints[].source_key references a venue listed in
+      _meta.venue_sources, and the bib_key for that venue is cited
+      somewhere in the paper.
 
 Exit codes
 ----------
@@ -65,6 +72,9 @@ RESULTS_JSON = SCRIPT_DIR / "illustration_lineage_results.json"
 
 INCLUDEGRAPHICS = re.compile(r"\\includegraphics(?:\[[^\]]*\])?\{([^}]+)\}")
 INPUT_FIGURES = re.compile(r"\\input\{(figures/[^}]+)\}")
+CITE_KEY = re.compile(r"\\cite[a-z]*\{([^}]+)\}")
+SOURCE_HASH_HEADER = re.compile(r"^#\s*SOURCE_HASH:\s*([0-9a-f]{64})\s*$", re.MULTILINE)
+SOURCE_FILE_HEADER = re.compile(r"^#\s*SOURCE_FILE:\s*(\S+)\s*$", re.MULTILINE)
 
 
 @dataclass
@@ -148,6 +158,17 @@ def extract_main_tex_figure_refs() -> set[str]:
     return refs
 
 
+def extract_main_tex_cite_keys() -> set[str]:
+    keys: set[str] = set()
+    text = MAIN_TEX.read_text(encoding="utf-8", errors="replace")
+    for m in CITE_KEY.finditer(text):
+        for k in m.group(1).split(","):
+            k = k.strip()
+            if k:
+                keys.add(k)
+    return keys
+
+
 def resolve(p: str) -> Path:
     return (REPO_ROOT / p).resolve()
 
@@ -158,28 +179,29 @@ def check_illustrations(manifest: dict) -> list[CheckResult]:
         return [CheckResult("manifest has illustrations", False, "no entries")]
 
     paper_refs = extract_main_tex_figure_refs()
+    cited_keys = extract_main_tex_cite_keys()
+    venue_sources = manifest.get("_meta", {}).get("venue_sources", {})
 
-    # A1-A7 collected per-illustration; aggregate at end
+    # A1-A9 collected per-illustration; aggregate at end
     a1_missing_input: list[str] = []
     a2_input_drift: list[str] = []
     a5_missing_asset: list[str] = []
     a5_asset_drift: list[str] = []
     a6_orphans: list[str] = []
     a7_no_scope: list[str] = []
+    a8_constraint_problems: list[str] = []
+    a9_venue_problems: list[str] = []
 
-    for name, entry in illus.items():
-        # A1 + A2: walk inputs[] uniformly. Each input is a dict with
-        # kind, file, and hash. For latex_block, also line_start/end.
-        # For text_file, just the whole-file content.
-        inputs = entry.get("inputs", [])
-        if not inputs:
-            a1_missing_input.append(f"{name}: no inputs[] in manifest")
-            continue
-        for idx, inp in enumerate(inputs):
+    def walk_inputs(name: str, label: str, inputs_list: list, *, allow_empty: bool) -> None:
+        if not inputs_list:
+            if not allow_empty:
+                a1_missing_input.append(f"{name}: no {label}[] in manifest")
+            return
+        for idx, inp in enumerate(inputs_list):
             file_str = inp.get("file", "")
             file_path = resolve(file_str)
             if not file_path.exists():
-                a1_missing_input.append(f"{name} input #{idx}: {file_str} not found")
+                a1_missing_input.append(f"{name} {label} #{idx}: {file_str} not found")
                 continue
             kind = inp.get("kind", "text_file")
             expected_hash = inp.get("hash", "")
@@ -188,16 +210,68 @@ def check_illustrations(manifest: dict) -> list[CheckResult]:
                 end = int(inp.get("line_end", 0))
                 content = extract_block_by_line_range(file_path, start, end)
                 if content is None:
-                    a2_input_drift.append(f"{name} input #{idx}: could not extract lines {start}-{end} from {file_str}")
+                    a2_input_drift.append(f"{name} {label} #{idx}: could not extract lines {start}-{end} from {file_str}")
                     continue
             else:  # text_file or unknown
                 content = file_path.read_text(encoding="utf-8")
             actual_hash = sha256_of_text(content)
             if actual_hash != expected_hash:
                 a2_input_drift.append(
-                    f"{name} input #{idx} ({kind}, {file_str}): hash mismatch "
+                    f"{name} {label} #{idx} ({kind}, {file_str}): hash mismatch "
                     f"(manifest={expected_hash[:12]}..., actual={actual_hash[:12]}...)"
                 )
+
+    for name, entry in illus.items():
+        # A1 + A2: walk inputs[] (image-model draft inputs).
+        walk_inputs(name, "input", entry.get("inputs", []), allow_empty=False)
+
+        # A1 + A2 + A8: walk venue_constraints[] (cert-bound venue rules).
+        venue_constraints = entry.get("venue_constraints", [])
+        walk_inputs(name, "venue_constraint", venue_constraints, allow_empty=True)
+
+        # A8: for each venue_constraint, if the file declares a
+        # SOURCE_HASH header, verify it matches the upstream source.
+        # A9: source_key must exist in _meta.venue_sources, and the
+        # declared bib_key must be cited in main.tex.
+        for idx, vc in enumerate(venue_constraints):
+            vc_path = resolve(vc.get("file", ""))
+            if not vc_path.exists():
+                continue  # already reported by walk_inputs A1
+            vc_text = vc_path.read_text(encoding="utf-8")
+            mh = SOURCE_HASH_HEADER.search(vc_text)
+            mf = SOURCE_FILE_HEADER.search(vc_text)
+            if mh and mf:
+                declared_hash = mh.group(1)
+                declared_src = mf.group(1)
+                src_path = resolve(declared_src)
+                if not src_path.exists():
+                    a8_constraint_problems.append(
+                        f"{name} venue_constraint #{idx}: declared SOURCE_FILE {declared_src} not found"
+                    )
+                else:
+                    actual_src_hash = sha256_of_file(src_path)
+                    if actual_src_hash != declared_hash:
+                        a8_constraint_problems.append(
+                            f"{name} venue_constraint #{idx}: upstream source drift "
+                            f"({declared_src}: header={declared_hash[:12]}..., "
+                            f"actual={actual_src_hash[:12]}...)"
+                        )
+
+            # A9: source_key registry + bib citation
+            source_key = vc.get("source_key")
+            if source_key:
+                src_meta = venue_sources.get(source_key)
+                if not src_meta:
+                    a9_venue_problems.append(
+                        f"{name} venue_constraint #{idx}: source_key='{source_key}' not in _meta.venue_sources"
+                    )
+                else:
+                    bib_key = src_meta.get("bib_key")
+                    if bib_key and bib_key not in cited_keys:
+                        a9_venue_problems.append(
+                            f"{name} venue_constraint #{idx}: bib_key '{bib_key}' "
+                            f"(for source_key='{source_key}') not cited in main.tex"
+                        )
 
         # A5: final asset
         asset_path = resolve(entry.get("final_asset", ""))
@@ -223,14 +297,14 @@ def check_illustrations(manifest: dict) -> list[CheckResult]:
 
     return [
         CheckResult(
-            f"A1. Every input file exists ({len(illus)} entries)",
+            f"A1. Every input/constraint file exists ({len(illus)} entries)",
             not a1_missing_input,
-            "\n         ".join(a1_missing_input) if a1_missing_input else "all input files resolved",
+            "\n         ".join(a1_missing_input) if a1_missing_input else "all input and constraint files resolved",
         ),
         CheckResult(
-            "A2. Every input hash matches its current file content",
+            "A2. Every input/constraint hash matches its current file content",
             not a2_input_drift,
-            "\n         ".join(a2_input_drift) if a2_input_drift else "all inputs unchanged since illustration was authored",
+            "\n         ".join(a2_input_drift) if a2_input_drift else "all inputs and constraints unchanged since illustration was authored",
         ),
         CheckResult(
             "A5. Final assets exist and hash-match",
@@ -246,6 +320,16 @@ def check_illustrations(manifest: dict) -> list[CheckResult]:
             "A7. claim_scope present (no certifying as evidence)",
             not a7_no_scope,
             "missing scope: " + ", ".join(a7_no_scope) if a7_no_scope else "every entry declares illustrative scope",
+        ),
+        CheckResult(
+            "A8. venue-source SOURCE_HASH headers match upstream files (drift detection)",
+            not a8_constraint_problems,
+            "\n         ".join(a8_constraint_problems) if a8_constraint_problems else "all upstream venue sources unchanged since constraint was authored",
+        ),
+        CheckResult(
+            "A9. venue source_keys registered + bib_keys cited in main.tex",
+            not a9_venue_problems,
+            "\n         ".join(a9_venue_problems) if a9_venue_problems else "all venue constraints registered and cited",
         ),
     ]
 

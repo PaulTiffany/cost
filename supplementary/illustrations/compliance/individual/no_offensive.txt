@@ -1,0 +1,17 @@
+# NeurIPS 2026 forbidden-content constraint (extracted).
+# SOURCE_FILE:    docs/neurips_official/MainTrackHandbook.txt
+# SOURCE_HASH:    a202a0afe6901e0863364460977c037093a4497bdee50ef3b10da8e1f1213450
+# SOURCE_VERSION: V202611
+# CITE:           \cite{neurips2026handbook}
+
+[Forbidden visual content]
+
+"Avoid text, examples or imagery that are of a sexual, racial, or
+otherwise offensive nature. Given that the boundary is often unclear,
+it's best to only use material you are completely confident is
+appropriate."
+
+[Inclusion]
+
+"Use examples that are understandable to a diverse, multicultural
+audience."

@@ -1,0 +1,13 @@
+# NeurIPS 2026 Code of Ethics: Safety (extracted).
+# SOURCE_FILE:    docs/neurips_official/MainTrackHandbook.txt
+# SOURCE_HASH:    a202a0afe6901e0863364460977c037093a4497bdee50ef3b10da8e1f1213450
+# SOURCE_VERSION: V202611
+# CITE:           \cite{neurips2026handbook}
+
+[Safety]
+
+"Safety: Contributors should consider whether there are foreseeable
+situations in which their technology can be used to harm, injure or kill
+people through its direct application, side effects, or potential
+misuse. We do not accept research whose primary goal is to increase the
+lethality of weapons systems."

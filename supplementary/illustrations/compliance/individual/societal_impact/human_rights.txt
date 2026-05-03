@@ -1,0 +1,13 @@
+# NeurIPS 2026 Code of Ethics: Human Rights (extracted).
+# SOURCE_FILE:    docs/neurips_official/MainTrackHandbook.txt
+# SOURCE_HASH:    a202a0afe6901e0863364460977c037093a4497bdee50ef3b10da8e1f1213450
+# SOURCE_VERSION: V202611
+# CITE:           \cite{neurips2026handbook}
+
+[Human Rights]
+
+"Human Rights: We prohibit circulation of any research work that builds
+upon or facilitates illegal activity, and we strongly discourage any
+work that could be used to deny people rights to privacy, speech,
+health, liberty, security, legal personhood, or freedom of conscience or
+religion."

@@ -1,0 +1,15 @@
+# NeurIPS 2026 Code of Ethics: Data Enrichment (Further Reading topic).
+# SOURCE_FILE:    docs/neurips_official/MainTrackHandbook.txt
+# SOURCE_HASH:    a202a0afe6901e0863364460977c037093a4497bdee50ef3b10da8e1f1213450
+# SOURCE_VERSION: V202611
+# CITE:           \cite{neurips2026handbook}
+
+[Data Enrichment]
+
+The NeurIPS 2026 handbook includes "Data Enrichment" as a Further
+Reading topic under SOCIETAL IMPACT, citing: "Responsible Sourcing for
+Data Enrichment."
+
+The image must reflect responsible data-labor practices: any depiction
+of data collection or annotation work should respect the dignity and
+fair compensation of human workers involved.

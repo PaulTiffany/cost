@@ -1,0 +1,13 @@
+# NeurIPS 2026 Code of Ethics: Bias and fairness (extracted).
+# SOURCE_FILE:    docs/neurips_official/MainTrackHandbook.txt
+# SOURCE_HASH:    a202a0afe6901e0863364460977c037093a4497bdee50ef3b10da8e1f1213450
+# SOURCE_VERSION: V202611
+# CITE:           \cite{neurips2026handbook}
+
+[Bias and fairness]
+
+"Bias and fairness: Contributors should consider any suspected biases or
+limitations to the scope of performance of models or the contents of
+datasets and inspect these to ascertain whether they encode, contain or
+exacerbate bias against people of a certain gender, race, sexuality, or
+other protected characteristics."

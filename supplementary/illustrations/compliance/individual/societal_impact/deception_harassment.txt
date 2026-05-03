@@ -1,0 +1,13 @@
+# NeurIPS 2026 Code of Ethics: Deception & Harassment (extracted).
+# SOURCE_FILE:    docs/neurips_official/MainTrackHandbook.txt
+# SOURCE_HASH:    a202a0afe6901e0863364460977c037093a4497bdee50ef3b10da8e1f1213450
+# SOURCE_VERSION: V202611
+# CITE:           \cite{neurips2026handbook}
+
+[Deception & Harassment]
+
+"Deception & Harassment: Researchers should communicate about whether
+their approach could be used to facilitate deceptive interactions that
+would cause harm such as theft, fraud, or harassment, and whether it
+could be used to influence or manipulate political processes, elections,
+or other public discourse."

@@ -3,13 +3,13 @@
   "provenance": {
     "paper_title": "The Cost of Cacophony: Geometric Limits on Multi-Constraint Alignment",
     "venue": "NeurIPS 2026",
-    "generated_at": "2026-05-02T20:25:45",
+    "generated_at": "2026-05-03T08:11:43",
     "main_tex_path": "paper\\main.tex",
-    "main_tex_sha256": "3660414add7b0104863dc35549c9c9dbdb8732b3d70d1c02443fb73a035d5848",
-    "main_tex_mtime": "2026-05-02T20:15:54",
+    "main_tex_sha256": "31f73bfb6b91b5fc13bb9d194735b31c4b270e4e7b1e67f10402d0c11154811d",
+    "main_tex_mtime": "2026-05-03T08:09:30",
     "main_pdf_path": "paper\\main.pdf",
-    "main_pdf_size": 1047120,
-    "main_pdf_mtime": "2026-05-02T20:16:49",
+    "main_pdf_size": 1763877,
+    "main_pdf_mtime": "2026-05-03T08:11:38",
     "claim_audit_md_path": "CLAIM_AUDIT.md",
     "claim_audit_md_sha256": "a860cd02ec4eaf6b8d1e794905e97799bf037b6ebd1b81c066b067b9d83f0a57"
   },
@@ -51,8 +51,8 @@
       "return_code": 0,
       "status": "PASS",
       "summary": {
-        "total_numeric_tokens": 1146,
-        "covered": 1077,
+        "total_numeric_tokens": 1157,
+        "covered": 1088,
         "uncovered_raw": 69,
         "uncovered_deduped": 66,
         "coverage_percent": 94.0
@@ -68,7 +68,7 @@
         "checks_total": 8,
         "checks_passed": 8,
         "checks_failed": 0,
-        "figures_in_use": 10,
+        "figures_in_use": 12,
         "first_failure": null
       },
       "notes": ""
@@ -79,11 +79,11 @@
       "return_code": 0,
       "status": "PASS",
       "summary": {
-        "figures_checked": 6,
-        "total_numerics": 200,
-        "total_covered": 156,
+        "figures_checked": 8,
+        "total_numerics": 216,
+        "total_covered": 172,
         "total_uncovered": 21,
-        "coverage_percent": 78.0,
+        "coverage_percent": 79.6,
         "per_figure": [
           {
             "name": "algorithm1_storyboard.pdf",
@@ -114,6 +114,16 @@
             "name": "soft_constraint_cliff.pdf",
             "coverage_percent": 100.0,
             "uncovered_count": 0
+          },
+          {
+            "name": "image_transfer.pdf",
+            "coverage_percent": 100.0,
+            "uncovered_count": 0
+          },
+          {
+            "name": "image_transfer_conflict.pdf",
+            "coverage_percent": 100.0,
+            "uncovered_count": 0
           }
         ]
       },
@@ -125,8 +135,8 @@
       "return_code": 0,
       "status": "PASS",
       "summary": {
-        "n_cites_in_paper": 25,
-        "n_bib_entries": 41,
+        "n_cites_in_paper": 26,
+        "n_bib_entries": 42,
         "n_unresolved": 0,
         "n_dead": 16,
         "unresolved": [],
@@ -160,8 +170,8 @@
         "n_urls": 2,
         "n_hyperref": 0,
         "n_hypertarget": 26,
-        "n_refs": 121,
-        "n_labels": 163,
+        "n_refs": 123,
+        "n_labels": 167,
         "urls": [
           "https://anonymous.4open.science/r/cacophony",
           "https://neurips.cc/Conferences/2026/CallForPapers"
@@ -171,7 +181,7 @@
         "venue_year_mismatches": [],
         "unresolved_hyperref": [],
         "unresolved_refs": [],
-        "dead_labels_count": 42,
+        "dead_labels_count": 44,
         "dead_labels_sample": [
           "app:additional",
           "app:algorithm",
@@ -184,15 +194,15 @@
           "app:estimation_protocol",
           "app:hetero",
           "app:illustrations",
+          "app:image_transfer",
+          "app:image_transfer_conflict",
           "app:inequality",
           "app:k_bound",
           "app:pareto",
           "app:perturbation",
           "app:prelim",
           "app:reproducibility",
-          "app:staging",
-          "app:staging_robustness",
-          "app:tightness"
+          "app:staging"
         ],
         "network_results": []
       },
@@ -216,8 +226,8 @@
       "return_code": 0,
       "status": "PASS",
       "summary": {
-        "total": 41,
-        "ok": 41,
+        "total": 42,
+        "ok": 42,
         "with_issues": 0
       },
       "notes": ""
@@ -228,8 +238,8 @@
       "return_code": 0,
       "status": "PASS",
       "summary": {
-        "total_scripts": 10,
-        "passed": 10,
+        "total_scripts": 12,
+        "passed": 12,
         "failed": 0
       },
       "notes": ""
@@ -244,8 +254,8 @@
         "strict": false,
         "timeout_sec": 60,
         "verdict": "PASS",
-        "total": 12,
-        "pass": 6,
+        "total": 14,
+        "pass": 8,
         "warn": 0,
         "fail": 0,
         "skip": 6
@@ -275,12 +285,12 @@
       "return_code": 0,
       "status": "PASS",
       "summary": {
-        "total": 5,
-        "passed": 5,
+        "total": 7,
+        "passed": 7,
         "failed": 0
       },
       "notes": ""
     }
   ],
-  "certificate_self_hash": "53aebe2e58ef9e09ef4a39b17a98f165cf2319119930a315e3a5427ebcdec4b6"
+  "certificate_self_hash": "a2090ebdb4c610f074ddcc707cb8e21fc428509aa3925c4f65c172d238c29a1e"
 }

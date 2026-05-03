@@ -1,0 +1,12 @@
+# NeurIPS 2026 Code of Ethics: Discrimination (extracted).
+# SOURCE_FILE:    docs/neurips_official/MainTrackHandbook.txt
+# SOURCE_HASH:    a202a0afe6901e0863364460977c037093a4497bdee50ef3b10da8e1f1213450
+# SOURCE_VERSION: V202611
+# CITE:           \cite{neurips2026handbook}
+
+[Discrimination]
+
+"Discrimination: Researchers should consider whether the technology they
+developed can be used to discriminate, exclude, or otherwise negatively
+impact people, including impacts on the provision of services such as
+healthcare, education or access to credit."

@@ -1,9 +1,20 @@
 {
   "_meta": {
-    "version": 3,
-    "description": "Illustration provenance manifest. Each entry binds a deterministic asset (TikZ / SVG / matplotlib redraw) to a list of inputs (each hashed) that the image model received during draft exploration. The certificate trusts only the deterministic redraw. Edits to any input invalidate the asset's certificate until re-authored.",
+    "version": 4,
+    "description": "Illustration provenance manifest. Each entry binds a deterministic asset (TikZ / SVG / matplotlib redraw) to (a) a list of inputs[] that the image model received during draft exploration, and (b) a list of venue_constraints[] mechanically sourced from venue documentation (e.g., NeurIPS handbook). All inputs and constraints are hashed; the certificate trusts only the deterministic redraw. Edits to any input or constraint invalidate the asset's certificate until re-authored.",
     "claim_scope_default": "schematic illustration only; not empirical evidence",
-    "schema": "Each entry has inputs[]: a list of {kind, file, [line_start, line_end], hash}. kind is 'latex_block' (extracted by line range from a paper file) or 'text_file' (whole-file content). The image model receives all inputs concatenated. Adding more inputs adds more constraints on the model's draft."
+    "schema": "Each entry has inputs[] and venue_constraints[]: lists of {kind, file, [line_start, line_end], hash}. kind is 'latex_block' (extracted by line range from a paper file) or 'text_file' (whole-file content). inputs[] = what fed the image model's draft. venue_constraints[] = additional hashed constraints bound to the cert (e.g., NeurIPS accessibility, ethics, anonymity rules). Compliance constraint files may declare a SOURCE_HASH header pointing at the original venue document; L14 verifies this header against the actual source file's hash to detect upstream drift.",
+    "venue_sources": {
+      "neurips2026handbook": {
+        "source_file": "docs/neurips_official/MainTrackHandbook.txt",
+        "source_hash": "a202a0afe6901e0863364460977c037093a4497bdee50ef3b10da8e1f1213450",
+        "source_version": "V202611",
+        "source_retrieved": "2026-04-30",
+        "source_url": "https://neurips.cc/Conferences/2026/MainTrackHandbook",
+        "bib_key": "neurips2026handbook",
+        "curated_constraint_file": "supplementary/illustrations/compliance/neurips2026_compliance.txt"
+      }
+    }
   },
   "illustrations": {
     "staging_vs_refine.tex": {
@@ -19,6 +30,14 @@
           "kind": "text_file",
           "file": "supplementary/illustrations/staging_vs_refine_direction.txt",
           "hash": "4353a119ef96cbffabd2c7119d2a917904c683518ccecfdf0cfb24bb7152cc84"
+        }
+      ],
+      "venue_constraints": [
+        {
+          "kind": "text_file",
+          "file": "supplementary/illustrations/compliance/neurips2026_compliance.txt",
+          "hash": "0d6c99a347c881542688b73efcc8ccd872d25aebf8a39ebe0ff5f9bc16399fc9",
+          "source_key": "neurips2026handbook"
         }
       ],
       "draft_model": "openai/gpt-5.4-image-2",
@@ -45,6 +64,14 @@
           "hash": "2ad3ffb8366ece5bbb99f23746d06a6dfe77ef183aa81d04e0afe400bcf0cc79"
         }
       ],
+      "venue_constraints": [
+        {
+          "kind": "text_file",
+          "file": "supplementary/illustrations/compliance/neurips2026_compliance.txt",
+          "hash": "0d6c99a347c881542688b73efcc8ccd872d25aebf8a39ebe0ff5f9bc16399fc9",
+          "source_key": "neurips2026handbook"
+        }
+      ],
       "draft_model": "openai/gpt-5.4-image-2",
       "draft_image": "supplementary/illustrations/algorithm1_routing_draft.png",
       "draft_image_hash": "bc58ec3ee3fb2007ede7e05aff27347f5318bd92ba6bd96c6ba10ea030607644",
@@ -67,6 +94,14 @@
           "kind": "text_file",
           "file": "supplementary/illustrations/interface_assumption_direction.txt",
           "hash": "426ce6a09ff9cb1312903c28ed59656c0642ae228504f1ebb69e353ae522fe81"
+        }
+      ],
+      "venue_constraints": [
+        {
+          "kind": "text_file",
+          "file": "supplementary/illustrations/compliance/neurips2026_compliance.txt",
+          "hash": "0d6c99a347c881542688b73efcc8ccd872d25aebf8a39ebe0ff5f9bc16399fc9",
+          "source_key": "neurips2026handbook"
         }
       ],
       "draft_model": "none",

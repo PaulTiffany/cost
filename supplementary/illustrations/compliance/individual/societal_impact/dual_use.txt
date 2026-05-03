@@ -1,0 +1,15 @@
+# NeurIPS 2026 Code of Ethics: Dual use problem (Further Reading topic).
+# SOURCE_FILE:    docs/neurips_official/MainTrackHandbook.txt
+# SOURCE_HASH:    a202a0afe6901e0863364460977c037093a4497bdee50ef3b10da8e1f1213450
+# SOURCE_VERSION: V202611
+# CITE:           \cite{neurips2026handbook}
+
+[Dual use problem]
+
+The NeurIPS 2026 handbook includes "Dual use problem" as a Further
+Reading topic under SOCIETAL IMPACT, citing: "Dual use of
+artificial-intelligence-powered drug discovery."
+
+The image must reflect awareness that AI techniques can be repurposed
+for harmful ends (e.g., drug discovery techniques applied to weapons),
+and the visualization should not enable or glamorize such repurposing.

@@ -1,0 +1,13 @@
+# NeurIPS 2026 Code of Ethics: Security (extracted).
+# SOURCE_FILE:    docs/neurips_official/MainTrackHandbook.txt
+# SOURCE_HASH:    a202a0afe6901e0863364460977c037093a4497bdee50ef3b10da8e1f1213450
+# SOURCE_VERSION: V202611
+# CITE:           \cite{neurips2026handbook}
+
+[Security]
+
+"Security: Researchers should consider whether there is a risk that
+applications could open security vulnerabilities or cause serious
+accidents when deployed in real world environments. If this is the case,
+they should take concrete steps to recommend or implement ways to
+protect against such security risks."

@@ -1,0 +1,19 @@
+# NeurIPS 2026 visual accessibility constraint (extracted).
+# SOURCE_FILE:    docs/neurips_official/MainTrackHandbook.txt
+# SOURCE_HASH:    a202a0afe6901e0863364460977c037093a4497bdee50ef3b10da8e1f1213450
+# SOURCE_VERSION: V202611
+# CITE:           \cite{neurips2026handbook}
+
+[Visual accessibility]
+
+"Choose color palettes that provide better color accessibility for
+color-blind viewers (see Usabilla for details) and do not rely on color
+to convey a message."
+
+"Choose high-contrast colors; dark text on a cream background works
+best."
+
+"Create slides with minimal text, use large fonts, use bold for
+emphasis, and avoid special text effects (e.g., shadows)."
+
+"Avoid flashing text or graphics."

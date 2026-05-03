@@ -1,0 +1,15 @@
+# NeurIPS 2026 Code of Ethics: Synthetic Media (Further Reading topic).
+# SOURCE_FILE:    docs/neurips_official/MainTrackHandbook.txt
+# SOURCE_HASH:    a202a0afe6901e0863364460977c037093a4497bdee50ef3b10da8e1f1213450
+# SOURCE_VERSION: V202611
+# CITE:           \cite{neurips2026handbook}
+
+[Synthetic Media]
+
+The NeurIPS 2026 handbook includes "Synthetic Media" as a Further
+Reading topic under SOCIETAL IMPACT, citing: "PAI's Responsible
+Practices for Synthetic Media."
+
+The image must clearly read as synthetic / AI-generated media; it
+should not pose as a photograph of real people or events. Provenance
+should be visually evident.

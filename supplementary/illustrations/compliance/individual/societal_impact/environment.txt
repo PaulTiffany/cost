@@ -1,0 +1,12 @@
+# NeurIPS 2026 Code of Ethics: Environment (extracted).
+# SOURCE_FILE:    docs/neurips_official/MainTrackHandbook.txt
+# SOURCE_HASH:    a202a0afe6901e0863364460977c037093a4497bdee50ef3b10da8e1f1213450
+# SOURCE_VERSION: V202611
+# CITE:           \cite{neurips2026handbook}
+
+[Environment]
+
+"Environment: Researchers should consider whether their research is
+going to negatively impact the environment by, e.g., promoting fossil
+fuel extraction, increasing societal consumption or producing
+substantial amounts of greenhouse gasses."

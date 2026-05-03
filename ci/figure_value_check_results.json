@@ -1,10 +1,10 @@
 {
   "summary": {
-    "figures_checked": 6,
-    "total_numerics": 200,
-    "total_covered": 156,
+    "figures_checked": 8,
+    "total_numerics": 216,
+    "total_covered": 172,
     "total_uncovered": 21,
-    "coverage_percent": 78.0
+    "coverage_percent": 79.6
   },
   "figures": [
     {
@@ -88,6 +88,26 @@
       "raw_numerics": 5,
       "filtered_numerics": 0,
       "covered": 5,
+      "uncovered_count": 0,
+      "uncovered_values": []
+    },
+    {
+      "name": "image_transfer.pdf",
+      "asset_path": "paper\\figures\\image_transfer.pdf",
+      "pdftotext_chars": 218,
+      "raw_numerics": 6,
+      "filtered_numerics": 0,
+      "covered": 6,
+      "uncovered_count": 0,
+      "uncovered_values": []
+    },
+    {
+      "name": "image_transfer_conflict.pdf",
+      "asset_path": "paper\\figures\\image_transfer_conflict.pdf",
+      "pdftotext_chars": 334,
+      "raw_numerics": 10,
+      "filtered_numerics": 5,
+      "covered": 10,
       "uncovered_count": 0,
       "uncovered_values": []
     }

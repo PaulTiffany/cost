@@ -1,7 +1,7 @@
 {
   "summary": {
-    "total_scripts": 10,
-    "passed": 10,
+    "total_scripts": 12,
+    "passed": 12,
     "failed": 0
   },
   "scripts": [
@@ -40,6 +40,22 @@
     {
       "name": "gram_eigendecomposition.pdf",
       "script_path": "supplementary\\experiments_rebuttal\\dct_analysis\\gram_eigendecomposition.py",
+      "syntax_ok": true,
+      "syntax_error": null,
+      "missing_imports": [],
+      "n_imports_checked": 2
+    },
+    {
+      "name": "image_transfer.pdf",
+      "script_path": "supplementary\\experiments_rebuttal\\image_transfer\\plot_image_transfer.py",
+      "syntax_ok": true,
+      "syntax_error": null,
+      "missing_imports": [],
+      "n_imports_checked": 2
+    },
+    {
+      "name": "image_transfer_conflict.pdf",
+      "script_path": "supplementary\\experiments_rebuttal\\image_transfer\\plot_image_transfer_conflict.py",
       "syntax_ok": true,
       "syntax_error": null,
       "missing_imports": [],

@@ -1,0 +1,721 @@
+{
+  "schema_version": 1,
+  "model": "openai/gpt-5.4-image-2",
+  "n_trials_per_cell": 3,
+  "target_block": {
+    "file": "paper/main.tex",
+    "line_start": 349,
+    "line_end": 350,
+    "hash": "c2404f05cfbe12a7246fbd0ba4a52b00e9f28d3b95a32fbf802d63078a00c722"
+  },
+  "constraint_hashes": {
+    "accessibility": "3b0b3376a520483cc496316cc1401f7bd1ca2700a1e16b57e3e979c12f40db9f",
+    "anonymity": "cc83df642dd7cfca9c4c09e7a438c862ef927ab02f8e80eb796362740a9524fc",
+    "no_offensive": "65488297304ef9f47fe8fe9262aefa7035f12d8fc84ddbcca438ae47a38974a2",
+    "ethics_scope": "8ef5837fb4c7f4ee41ef7762c282ba765409c4ecf388ea0a043748c07ca8eaba"
+  },
+  "bundle_hash": "0d6c99a347c881542688b73efcc8ccd872d25aebf8a39ebe0ff5f9bc16399fc9",
+  "neurips_source_hash": "a202a0afe6901e0863364460977c037093a4497bdee50ef3b10da8e1f1213450",
+  "neurips_source_file": "docs/neurips_official/MainTrackHandbook.txt",
+  "neurips_source_version": "V202611",
+  "cells": {
+    "S0": {
+      "k": 0,
+      "protocol": "staged",
+      "description": "Baseline: empty prompt, no constraints",
+      "n_trials": 3,
+      "n_successes": 2,
+      "calls_per_trial": 1,
+      "total_calls": 3
+    },
+    "S1": {
+      "k": 1,
+      "protocol": "staged",
+      "description": "k=1: LaTeX source block alone",
+      "n_trials": 3,
+      "n_successes": 0,
+      "calls_per_trial": 1,
+      "total_calls": 3
+    },
+    "S2": {
+      "k": 2,
+      "protocol": "staged",
+      "description": "k=2: + accessibility",
+      "n_trials": 3,
+      "n_successes": 0,
+      "calls_per_trial": 1,
+      "total_calls": 3
+    },
+    "S3": {
+      "k": 3,
+      "protocol": "staged",
+      "description": "k=3: + anonymity",
+      "n_trials": 3,
+      "n_successes": 0,
+      "calls_per_trial": 1,
+      "total_calls": 3
+    },
+    "S4": {
+      "k": 4,
+      "protocol": "staged",
+      "description": "k=4: + no_offensive",
+      "n_trials": 3,
+      "n_successes": 0,
+      "calls_per_trial": 1,
+      "total_calls": 3
+    },
+    "S5": {
+      "k": 5,
+      "protocol": "staged",
+      "description": "k=5: + ethics_scope",
+      "n_trials": 3,
+      "n_successes": 3,
+      "calls_per_trial": 1,
+      "total_calls": 3
+    },
+    "S-imp": {
+      "k": "implicit",
+      "protocol": "staged",
+      "description": "Implicit-k: NeurIPS bundle as single input (4 constraints compressed into 1 file)",
+      "n_trials": 3,
+      "n_successes": 0,
+      "calls_per_trial": 1,
+      "total_calls": 3
+    },
+    "R-exp": {
+      "k": "explicit",
+      "protocol": "self-refine",
+      "description": "Self-refine on same explicit constraint set (cost comparison vs S5)",
+      "n_trials": 3,
+      "n_successes": 0,
+      "calls_per_trial": 5,
+      "total_calls": 15
+    }
+  },
+  "trials": [
+    {
+      "cell_id": "S0",
+      "trial": 0,
+      "protocol": "staged",
+      "k": 0,
+      "n_calls": 1,
+      "steps": [
+        {
+          "step": 0,
+          "prompt_hash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "prompt_chars": 0,
+          "image_path": "supplementary/experiments_rebuttal/image_transfer/outputs/runA/S0_t0.png",
+          "image_hash": "008961b01b64a7bbe40df5592ce6ab9cd82902476f98112f96be3fc1e9e5e19f",
+          "image_bytes": 1000848,
+          "success": true,
+          "error": ""
+        }
+      ],
+      "final_image_path": "supplementary/experiments_rebuttal/image_transfer/outputs/runA/S0_t0.png",
+      "final_image_hash": "008961b01b64a7bbe40df5592ce6ab9cd82902476f98112f96be3fc1e9e5e19f"
+    },
+    {
+      "cell_id": "S0",
+      "trial": 1,
+      "protocol": "staged",
+      "k": 0,
+      "n_calls": 1,
+      "steps": [
+        {
+          "step": 0,
+          "prompt_hash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "prompt_chars": 0,
+          "image_path": null,
+          "image_hash": null,
+          "image_bytes": 0,
+          "success": false,
+          "error": "Hello! How can I help?"
+        }
+      ],
+      "final_image_path": null,
+      "final_image_hash": null
+    },
+    {
+      "cell_id": "S0",
+      "trial": 2,
+      "protocol": "staged",
+      "k": 0,
+      "n_calls": 1,
+      "steps": [
+        {
+          "step": 0,
+          "prompt_hash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "prompt_chars": 0,
+          "image_path": "supplementary/experiments_rebuttal/image_transfer/outputs/runA/S0_t2.png",
+          "image_hash": "435617f3f8fb63b973ec220459d15b62f1b4fbc1d497db309a55da6b5aed1bf1",
+          "image_bytes": 1386479,
+          "success": true,
+          "error": ""
+        }
+      ],
+      "final_image_path": "supplementary/experiments_rebuttal/image_transfer/outputs/runA/S0_t2.png",
+      "final_image_hash": "435617f3f8fb63b973ec220459d15b62f1b4fbc1d497db309a55da6b5aed1bf1"
+    },
+    {
+      "cell_id": "S1",
+      "trial": 0,
+      "protocol": "staged",
+      "k": 1,
+      "n_calls": 1,
+      "steps": [
+        {
+          "step": 0,
+          "prompt_hash": "f6a3bf2cd29245f0abdfa1c7a46ec1677521140d678ed0ca35d0a0dcf627d601",
+          "prompt_chars": 483,
+          "image_path": null,
+          "image_hash": null,
+          "image_bytes": 0,
+          "success": false,
+          "error": "```latex\n\\textbf{Constitutional AI.}\nCritique--revision \\citep{bai2022constitutional,anthropic2025constitution} provides a geometric solution: enforcing one principle per revision step avoids the diagonal cost. Our bound clarifies \\emph{why}: sequential satisfaction sidesteps the $\\sqrt{k/(1-\\rho(k-"
+        }
+      ],
+      "final_image_path": null,
+      "final_image_hash": null
+    },
+    {
+      "cell_id": "S1",
+      "trial": 1,
+      "protocol": "staged",
+      "k": 1,
+      "n_calls": 1,
+      "steps": [
+        {
+          "step": 0,
+          "prompt_hash": "f6a3bf2cd29245f0abdfa1c7a46ec1677521140d678ed0ca35d0a0dcf627d601",
+          "prompt_chars": 483,
+          "image_path": null,
+          "image_hash": null,
+          "image_bytes": 0,
+          "success": false,
+          "error": "```latex\n\\textbf{Constitutional AI.}\nCritique--revision \\citep{bai2022constitutional,anthropic2025constitution} is the geometric solution: one principle per revision avoids diagonal cost. Our bound explains \\emph{why}: sequential satisfaction sidesteps the $\\sqrt{k/(1-\\rho(k-1))}$ penalty. Table~\\re"
+        }
+      ],
+      "final_image_path": null,
+      "final_image_hash": null
+    },
+    {
+      "cell_id": "S1",
+      "trial": 2,
+      "protocol": "staged",
+      "k": 1,
+      "n_calls": 1,
+      "steps": [
+        {
+          "step": 0,
+          "prompt_hash": "f6a3bf2cd29245f0abdfa1c7a46ec1677521140d678ed0ca35d0a0dcf627d601",
+          "prompt_chars": 483,
+          "image_path": null,
+          "image_hash": null,
+          "image_bytes": 0,
+          "success": false,
+          "error": "```latex\n\\textbf{Constitutional AI.}\nCritique--revision \\citep{bai2022constitutional,anthropic2025constitution} is the geometric solution: enforcing one principle per revision avoids the diagonal cost. Our bound explains \\emph{why}: sequential satisfaction sidesteps the $\\sqrt{k/(1-\\rho(k-1))}$ pena"
+        }
+      ],
+      "final_image_path": null,
+      "final_image_hash": null
+    },
+    {
+      "cell_id": "S2",
+      "trial": 0,
+      "protocol": "staged",
+      "k": 2,
+      "n_calls": 1,
+      "steps": [
+        {
+          "step": 0,
+          "prompt_hash": "baab3cbc00d4870c227bf99bb1533b4340b043f91f5ea8cb39c83a4f88396a1a",
+          "prompt_chars": 1211,
+          "image_path": null,
+          "image_hash": null,
+          "image_bytes": 0,
+          "success": false,
+          "error": "Here is an accessibility-aware Beamer slide version of your block that follows the constraint by avoiding reliance on color, using minimal text, and emphasizing with bold only.\n\n```latex\n\\begin{frame}{Constitutional AI}\n\\Large\n\n\\begin{itemize}\n    \\item \\textbf{Critique--revision is the geometric so"
+        }
+      ],
+      "final_image_path": null,
+      "final_image_hash": null
+    },
+    {
+      "cell_id": "S2",
+      "trial": 1,
+      "protocol": "staged",
+      "k": 2,
+      "n_calls": 1,
+      "steps": [
+        {
+          "step": 0,
+          "prompt_hash": "baab3cbc00d4870c227bf99bb1533b4340b043f91f5ea8cb39c83a4f88396a1a",
+          "prompt_chars": 1211,
+          "image_path": null,
+          "image_hash": null,
+          "image_bytes": 0,
+          "success": false,
+          "error": "```latex\n\\textbf{Constitutional AI.}\nCritique--revision~\\citep{bai2022constitutional,anthropic2025constitution} is the geometric solution: one principle per revision avoids diagonal cost. Our bound explains \\emph{why}: sequential satisfaction sidesteps the $\\sqrt{k/(1{-}\\rho(k{-}1))}$ penalty. Table"
+        }
+      ],
+      "final_image_path": null,
+      "final_image_hash": null
+    },
+    {
+      "cell_id": "S2",
+      "trial": 2,
+      "protocol": "staged",
+      "k": 2,
+      "n_calls": 1,
+      "steps": [
+        {
+          "step": 0,
+          "prompt_hash": "baab3cbc00d4870c227bf99bb1533b4340b043f91f5ea8cb39c83a4f88396a1a",
+          "prompt_chars": 1211,
+          "image_path": null,
+          "image_hash": null,
+          "image_bytes": 0,
+          "success": false,
+          "error": "```latex\n\\textbf{Constitutional AI.}\nCritique--revision \\citep{bai2022constitutional,anthropic2025constitution} provides a geometric remedy: enforcing one principle per revision avoids the diagonal cost. Our bound explains \\emph{why}: sequential satisfaction sidesteps the $\\sqrt{k/(1{-}\\rho(k{-}1))}"
+        }
+      ],
+      "final_image_path": null,
+      "final_image_hash": null
+    },
+    {
+      "cell_id": "S3",
+      "trial": 0,
+      "protocol": "staged",
+      "k": 3,
+      "n_calls": 1,
+      "steps": [
+        {
+          "step": 0,
+          "prompt_hash": "d997f6ed329f4f2803102d18d0726fbb5789dacffce1b7096c56982a1b11e9a9",
+          "prompt_chars": 1778,
+          "image_path": null,
+          "image_hash": null,
+          "image_bytes": 0,
+          "success": false,
+          "error": "Here is an accessibility- and anonymity-compliant slide version of your LaTeX block:\n\n**Constitutional AI**\n\n- **Critique\u2013revision is the geometric solution.**\n  - One principle per revision avoids diagonal cost.\n\n- **Why this helps**\n  - Sequential satisfaction avoids the  \n    **\u221a(k / (1 \u2212 \u03c1(k \u2212 1"
+        }
+      ],
+      "final_image_path": null,
+      "final_image_hash": null
+    },
+    {
+      "cell_id": "S3",
+      "trial": 1,
+      "protocol": "staged",
+      "k": 3,
+      "n_calls": 1,
+      "steps": [
+        {
+          "step": 0,
+          "prompt_hash": "d997f6ed329f4f2803102d18d0726fbb5789dacffce1b7096c56982a1b11e9a9",
+          "prompt_chars": 1778,
+          "image_path": null,
+          "image_hash": null,
+          "image_bytes": 0,
+          "success": false,
+          "error": "Here is Beamer code for an accessible, anonymous slide based on your LaTeX block and constraints:\n\n```latex\n\\begin{frame}{Constitutional AI: Sequential Critique--Revision}\n\\Large\n\\begin{itemize}\n    \\item \\textbf{Geometric idea:} one principle per revision avoids diagonal cost.\n    \n    \\vspace{0.5e"
+        }
+      ],
+      "final_image_path": null,
+      "final_image_hash": null
+    },
+    {
+      "cell_id": "S3",
+      "trial": 2,
+      "protocol": "staged",
+      "k": 3,
+      "n_calls": 1,
+      "steps": [
+        {
+          "step": 0,
+          "prompt_hash": "d997f6ed329f4f2803102d18d0726fbb5789dacffce1b7096c56982a1b11e9a9",
+          "prompt_chars": 1778,
+          "image_path": null,
+          "image_hash": null,
+          "image_bytes": 0,
+          "success": false,
+          "error": "\\begin{block}{Constitutional AI}\n\\textbf{Critique--revision} is the geometric solution: revising one principle at a time avoids the diagonal cost.  \nOur bound explains \\emph{why}: sequential satisfaction sidesteps the\n\\[\n\\sqrt{\\frac{k}{1-\\rho(k-1)}}\n\\]\npenalty.\n\n\\vspace{0.4em}\n\\textbf{Frontier-scale"
+        }
+      ],
+      "final_image_path": null,
+      "final_image_hash": null
+    },
+    {
+      "cell_id": "S4",
+      "trial": 0,
+      "protocol": "staged",
+      "k": 4,
+      "n_calls": 1,
+      "steps": [
+        {
+          "step": 0,
+          "prompt_hash": "445c8d8db6d851311e3f0a14db57c2a77e879a98dcdcf8904a1db30309f6afa3",
+          "prompt_chars": 2413,
+          "image_path": null,
+          "image_hash": null,
+          "image_bytes": 0,
+          "success": false,
+          "error": "Here\u2019s an accessibility- and anonymity-compliant slide-ready rewrite of the block:\n\n**Constitutional AI**\n\n- **Critique\u2013revision** is the geometric solution: **one principle per revision** avoids diagonal cost.  \n- Our bound explains **why**: **sequential satisfaction** avoids the  \n  \\(\\sqrt{k/(1-\\"
+        }
+      ],
+      "final_image_path": null,
+      "final_image_hash": null
+    },
+    {
+      "cell_id": "S4",
+      "trial": 1,
+      "protocol": "staged",
+      "k": 4,
+      "n_calls": 1,
+      "steps": [
+        {
+          "step": 0,
+          "prompt_hash": "445c8d8db6d851311e3f0a14db57c2a77e879a98dcdcf8904a1db30309f6afa3",
+          "prompt_chars": 2413,
+          "image_path": null,
+          "image_hash": null,
+          "image_bytes": 0,
+          "success": false,
+          "error": "Here is concise slide text adapted from the LaTeX block, keeping it accessible, anonymous, and appropriate for a NeurIPS visual:\n\n**Constitutional AI**\n\n- **Critique\u2013revision is the geometric solution.**\n- Enforcing **one principle per revision** avoids the diagonal cost.\n- Our bound explains **why*"
+        }
+      ],
+      "final_image_path": null,
+      "final_image_hash": null
+    },
+    {
+      "cell_id": "S4",
+      "trial": 2,
+      "protocol": "staged",
+      "k": 4,
+      "n_calls": 1,
+      "steps": [
+        {
+          "step": 0,
+          "prompt_hash": "445c8d8db6d851311e3f0a14db57c2a77e879a98dcdcf8904a1db30309f6afa3",
+          "prompt_chars": 2413,
+          "image_path": null,
+          "image_hash": null,
+          "image_bytes": 0,
+          "success": false,
+          "error": "Here is accessible, anonymized slide copy based on your LaTeX block:\n\n**Constitutional AI**\n\n- **Critique\u2013revision is the geometric solution**\n  - One principle per revision avoids diagonal cost\n\n- **Why it helps**\n  - Sequential satisfaction avoids the penalty  \n    **\u221a(k / (1 \u2212 \u03c1(k \u2212 1)))**\n\n- **E"
+        }
+      ],
+      "final_image_path": null,
+      "final_image_hash": null
+    },
+    {
+      "cell_id": "S5",
+      "trial": 0,
+      "protocol": "staged",
+      "k": 5,
+      "n_calls": 1,
+      "steps": [
+        {
+          "step": 0,
+          "prompt_hash": "611749825e46d637d57b28e3155a297489a9b441b67932e568783020fca7d1cf",
+          "prompt_chars": 3214,
+          "image_path": "supplementary/experiments_rebuttal/image_transfer/outputs/runA/S5_t0.png",
+          "image_hash": "607cb7a7b6604bc146d7672f2e10a6ffc4aa4b4a3a98acc19532d8c9920abeeb",
+          "image_bytes": 1207181,
+          "success": true,
+          "error": ""
+        }
+      ],
+      "final_image_path": "supplementary/experiments_rebuttal/image_transfer/outputs/runA/S5_t0.png",
+      "final_image_hash": "607cb7a7b6604bc146d7672f2e10a6ffc4aa4b4a3a98acc19532d8c9920abeeb"
+    },
+    {
+      "cell_id": "S5",
+      "trial": 1,
+      "protocol": "staged",
+      "k": 5,
+      "n_calls": 1,
+      "steps": [
+        {
+          "step": 0,
+          "prompt_hash": "611749825e46d637d57b28e3155a297489a9b441b67932e568783020fca7d1cf",
+          "prompt_chars": 3214,
+          "image_path": "supplementary/experiments_rebuttal/image_transfer/outputs/runA/S5_t1.png",
+          "image_hash": "131fdf59f78b789c5aa3cc269c038856545b710f4c3183c1d59b30bd53c3efc2",
+          "image_bytes": 1132847,
+          "success": true,
+          "error": ""
+        }
+      ],
+      "final_image_path": "supplementary/experiments_rebuttal/image_transfer/outputs/runA/S5_t1.png",
+      "final_image_hash": "131fdf59f78b789c5aa3cc269c038856545b710f4c3183c1d59b30bd53c3efc2"
+    },
+    {
+      "cell_id": "S5",
+      "trial": 2,
+      "protocol": "staged",
+      "k": 5,
+      "n_calls": 1,
+      "steps": [
+        {
+          "step": 0,
+          "prompt_hash": "611749825e46d637d57b28e3155a297489a9b441b67932e568783020fca7d1cf",
+          "prompt_chars": 3214,
+          "image_path": "supplementary/experiments_rebuttal/image_transfer/outputs/runA/S5_t2.png",
+          "image_hash": "fcc2ed521fe848dadb512608e7269f88b131d13a9f4d5db0ea6a658ead4329ed",
+          "image_bytes": 1103861,
+          "success": true,
+          "error": ""
+        }
+      ],
+      "final_image_path": "supplementary/experiments_rebuttal/image_transfer/outputs/runA/S5_t2.png",
+      "final_image_hash": "fcc2ed521fe848dadb512608e7269f88b131d13a9f4d5db0ea6a658ead4329ed"
+    },
+    {
+      "cell_id": "S-imp",
+      "trial": 0,
+      "protocol": "staged",
+      "k": "implicit",
+      "n_calls": 1,
+      "steps": [
+        {
+          "step": 0,
+          "prompt_hash": "9b6919305bc750052c2ea12acce19b0da641f06ae121c1f46d1f82eb972f72fc",
+          "prompt_chars": 3568,
+          "image_path": null,
+          "image_hash": null,
+          "image_bytes": 0,
+          "success": false,
+          "error": "```latex\n\\textbf{Constitutional AI.}\nCritique--revision \\citep{bai2022constitutional,anthropic2025constitution} provides a geometric explanation for staged alignment: satisfying one principle per revision avoids the diagonal cost of joint optimization. Our bound explains \\emph{why}: sequential satis"
+        }
+      ],
+      "final_image_path": null,
+      "final_image_hash": null
+    },
+    {
+      "cell_id": "S-imp",
+      "trial": 1,
+      "protocol": "staged",
+      "k": "implicit",
+      "n_calls": 1,
+      "steps": [
+        {
+          "step": 0,
+          "prompt_hash": "9b6919305bc750052c2ea12acce19b0da641f06ae121c1f46d1f82eb972f72fc",
+          "prompt_chars": 3568,
+          "image_path": null,
+          "image_hash": null,
+          "image_bytes": 0,
+          "success": false,
+          "error": "Here is a NeurIPS-compliant rewrite of the block, tightened for clarity and presentation:\n\n```latex\n\\textbf{Constitutional AI.}\nCritique--revision \\citep{bai2022constitutional,anthropic2025constitution} provides a natural geometric interpretation: satisfying one principle per revision avoids the dia"
+        }
+      ],
+      "final_image_path": null,
+      "final_image_hash": null
+    },
+    {
+      "cell_id": "S-imp",
+      "trial": 2,
+      "protocol": "staged",
+      "k": "implicit",
+      "n_calls": 1,
+      "steps": [
+        {
+          "step": 0,
+          "prompt_hash": "9b6919305bc750052c2ea12acce19b0da641f06ae121c1f46d1f82eb972f72fc",
+          "prompt_chars": 3568,
+          "image_path": null,
+          "image_hash": null,
+          "image_bytes": 0,
+          "success": false,
+          "error": "\\textbf{Constitutional AI.}\nCritique--revision \\citep{bai2022constitutional,anthropic2025constitution} offers a geometric advantage: satisfying one principle per revision avoids the diagonal cost. Our bound explains \\emph{why}: sequential satisfaction sidesteps the $\\sqrt{k/(1-\\rho(k-1))}$ penalty. "
+        }
+      ],
+      "final_image_path": null,
+      "final_image_hash": null
+    },
+    {
+      "cell_id": "R-exp",
+      "trial": 0,
+      "protocol": "self-refine",
+      "k": "explicit",
+      "n_calls": 5,
+      "steps": [
+        {
+          "step": 0,
+          "prompt_hash": "f6a3bf2cd29245f0abdfa1c7a46ec1677521140d678ed0ca35d0a0dcf627d601",
+          "prompt_chars": 483,
+          "image_path": null,
+          "image_hash": null,
+          "image_bytes": 0,
+          "success": false,
+          "error": "```latex\n\\textbf{Constitutional AI.}\nCritique--revision \\citep{bai2022constitutional,anthropic2025constitution} provides the geometric solution: enforcing one principle per revision avoids the diagonal cost. Our bound explains \\emph{why}: sequential satisfaction sidesteps the $\\sqrt{k/(1-\\rho(k-1))}"
+        },
+        {
+          "step": 1,
+          "prompt_hash": "56b8c4e8efd2be022b7630f47760e88bab803d0290520e8cde1129a354fa47df",
+          "prompt_chars": 1287,
+          "image_path": null,
+          "image_hash": null,
+          "image_bytes": 0,
+          "success": false,
+          "error": "```latex\n\\textbf{Constitutional AI.}\nCritique-revision \\citep{bai2022constitutional,anthropic2025constitution} is the geometric solution: one principle per revision avoids diagonal cost. Our bound explains \\emph{why}: sequential satisfaction sidesteps the $\\sqrt{k/(1{-}\\rho(k{-}1))}$ penalty. Table~"
+        },
+        {
+          "step": 2,
+          "prompt_hash": "fb5083c7dca0557a463fb17995dac7af4bed1f9c515a4db10982b641191461a9",
+          "prompt_chars": 1930,
+          "image_path": null,
+          "image_hash": null,
+          "image_bytes": 0,
+          "success": false,
+          "error": "```latex\n\\textbf{Constitutional AI.}\nCritique--revision \\citep{bai2022constitutional,anthropic2025constitution} is the geometric solution: enforcing one principle per revision avoids diagonal cost. Our bound explains \\emph{why}: sequential satisfaction sidesteps the $\\sqrt{k/(1{-}\\rho(k{-}1))}$ pena"
+        },
+        {
+          "step": 3,
+          "prompt_hash": "20898d21b5fdaf594d0037406c21cab72b0f6d24c1e4bc74ff4d17c9bc1a8226",
+          "prompt_chars": 2641,
+          "image_path": null,
+          "image_hash": null,
+          "image_bytes": 0,
+          "success": false,
+          "error": "```latex\n\\textbf{Constitutional AI.}\nCritique--revision \\citep{bai2022constitutional,anthropic2025constitution} is the geometric solution: one principle per revision avoids diagonal cost. Our bound explains \\emph{why}: sequential satisfaction sidesteps the $\\sqrt{k/(1{-}\\rho(k{-}1))}$ penalty. Table"
+        },
+        {
+          "step": 4,
+          "prompt_hash": "23d5d835a963c4929a0fa29c93025f3ca75bdb0fb5c93f6e4b2526e11943851b",
+          "prompt_chars": 3518,
+          "image_path": null,
+          "image_hash": null,
+          "image_bytes": 0,
+          "success": false,
+          "error": "```latex\n\\textbf{Constitutional AI.}\nCritique--revision \\citep{bai2022constitutional,anthropic2025constitution} provides a geometric interpretation: enforcing one principle per revision avoids the diagonal cost. Our bound explains \\emph{why}: sequential satisfaction sidesteps the $\\sqrt{k/(1{-}\\rho("
+        }
+      ],
+      "final_image_path": null,
+      "final_image_hash": null
+    },
+    {
+      "cell_id": "R-exp",
+      "trial": 1,
+      "protocol": "self-refine",
+      "k": "explicit",
+      "n_calls": 5,
+      "steps": [
+        {
+          "step": 0,
+          "prompt_hash": "f6a3bf2cd29245f0abdfa1c7a46ec1677521140d678ed0ca35d0a0dcf627d601",
+          "prompt_chars": 483,
+          "image_path": null,
+          "image_hash": null,
+          "image_bytes": 0,
+          "success": false,
+          "error": "```latex\n\\textbf{Constitutional AI.}\nCritique--revision \\citep{bai2022constitutional,anthropic2025constitution} provides a geometric explanation for why constitutional methods can scale efficiently: enforcing one principle per revision step avoids the diagonal cost incurred by simultaneous satisfact"
+        },
+        {
+          "step": 1,
+          "prompt_hash": "56b8c4e8efd2be022b7630f47760e88bab803d0290520e8cde1129a354fa47df",
+          "prompt_chars": 1287,
+          "image_path": null,
+          "image_hash": null,
+          "image_bytes": 0,
+          "success": false,
+          "error": "```latex\n\\textbf{Constitutional AI.}\nCritique--revision \\citep{bai2022constitutional,anthropic2025constitution} is the geometric solution: one principle per revision avoids diagonal cost. Our bound explains \\emph{why}: sequential satisfaction sidesteps the $\\sqrt{k/(1{-}\\rho(k{-}1))}$ penalty. Table"
+        },
+        {
+          "step": 2,
+          "prompt_hash": "fb5083c7dca0557a463fb17995dac7af4bed1f9c515a4db10982b641191461a9",
+          "prompt_chars": 1930,
+          "image_path": null,
+          "image_hash": null,
+          "image_bytes": 0,
+          "success": false,
+          "error": "```latex\n\\textbf{Constitutional AI.}\nCritique--revision \\citep{bai2022constitutional,anthropic2025constitution} is the geometric solution: one principle per revision avoids diagonal cost. Our bound explains \\emph{why}: sequential satisfaction sidesteps the $\\sqrt{k/(1{-}\\rho(k{-}1))}$ penalty. Table"
+        },
+        {
+          "step": 3,
+          "prompt_hash": "20898d21b5fdaf594d0037406c21cab72b0f6d24c1e4bc74ff4d17c9bc1a8226",
+          "prompt_chars": 2641,
+          "image_path": null,
+          "image_hash": null,
+          "image_bytes": 0,
+          "success": false,
+          "error": "```latex\n\\textbf{Constitutional AI.}\nCritique--revision \\citep{bai2022constitutional,anthropic2025constitution} provides a geometric solution: assigning one principle to each revision step avoids diagonal cost. Our bound explains \\emph{why}: sequential satisfaction sidesteps the $\\sqrt{k/(1{-}\\rho(k"
+        },
+        {
+          "step": 4,
+          "prompt_hash": "23d5d835a963c4929a0fa29c93025f3ca75bdb0fb5c93f6e4b2526e11943851b",
+          "prompt_chars": 3518,
+          "image_path": null,
+          "image_hash": null,
+          "image_bytes": 0,
+          "success": false,
+          "error": "```latex\n\\textbf{Constitutional AI.}\nCritique--revision \\citep{bai2022constitutional,anthropic2025constitution} is the geometric solution: assigning one principle to each revision avoids diagonal cost. Our bound clarifies \\emph{why}: sequential satisfaction sidesteps the $\\sqrt{k/(1{-}\\rho(k{-}1))}$"
+        }
+      ],
+      "final_image_path": null,
+      "final_image_hash": null
+    },
+    {
+      "cell_id": "R-exp",
+      "trial": 2,
+      "protocol": "self-refine",
+      "k": "explicit",
+      "n_calls": 5,
+      "steps": [
+        {
+          "step": 0,
+          "prompt_hash": "f6a3bf2cd29245f0abdfa1c7a46ec1677521140d678ed0ca35d0a0dcf627d601",
+          "prompt_chars": 483,
+          "image_path": null,
+          "image_hash": null,
+          "image_bytes": 0,
+          "success": false,
+          "error": "```latex\n\\textbf{Constitutional AI.}\nCritique--revision \\citep{bai2022constitutional,anthropic2025constitution} provides the geometric solution: enforcing one principle per revision avoids the diagonal cost. Our bound explains \\emph{why}: sequential satisfaction sidesteps the $\\sqrt{k/(1-\\rho(k-1))}"
+        },
+        {
+          "step": 1,
+          "prompt_hash": "56b8c4e8efd2be022b7630f47760e88bab803d0290520e8cde1129a354fa47df",
+          "prompt_chars": 1287,
+          "image_path": null,
+          "image_hash": null,
+          "image_bytes": 0,
+          "success": false,
+          "error": "```latex\n\\textbf{Constitutional AI.}\nCritique-revision \\citep{bai2022constitutional,anthropic2025constitution} is the geometric solution: one principle per revision avoids diagonal cost. Our bound explains \\emph{why}: sequential satisfaction sidesteps the $\\sqrt{k/(1{-}\\rho(k{-}1))}$ penalty. Table~"
+        },
+        {
+          "step": 2,
+          "prompt_hash": "fb5083c7dca0557a463fb17995dac7af4bed1f9c515a4db10982b641191461a9",
+          "prompt_chars": 1930,
+          "image_path": null,
+          "image_hash": null,
+          "image_bytes": 0,
+          "success": false,
+          "error": "```latex\n\\textbf{Constitutional AI.}\nCritique--revision \\citep{bai2022constitutional,anthropic2025constitution} is the geometric solution: one principle per revision avoids diagonal cost. Our bound explains \\emph{why}: sequential satisfaction sidesteps the $\\sqrt{k/(1{-}\\rho(k{-}1))}$ penalty. Table"
+        },
+        {
+          "step": 3,
+          "prompt_hash": "20898d21b5fdaf594d0037406c21cab72b0f6d24c1e4bc74ff4d17c9bc1a8226",
+          "prompt_chars": 2641,
+          "image_path": null,
+          "image_hash": null,
+          "image_bytes": 0,
+          "success": false,
+          "error": "```latex\n\\textbf{Constitutional AI.}\nCritique--revision \\citep{bai2022constitutional,anthropic2025constitution} is the geometric solution: one principle per revision avoids diagonal cost. Our bound explains \\emph{why}: sequential satisfaction sidesteps the $\\sqrt{k/(1{-}\\rho(k{-}1))}$ penalty. Table"
+        },
+        {
+          "step": 4,
+          "prompt_hash": "23d5d835a963c4929a0fa29c93025f3ca75bdb0fb5c93f6e4b2526e11943851b",
+          "prompt_chars": 3518,
+          "image_path": null,
+          "image_hash": null,
+          "image_bytes": 0,
+          "success": false,
+          "error": "```latex\n\\textbf{Constitutional AI.}\nCritique--revision \\citep{bai2022constitutional,anthropic2025constitution} is the geometric solution: one principle per revision avoids diagonal cost. Our bound explains \\emph{why}: sequential satisfaction sidesteps the $\\sqrt{k/(1{-}\\rho(k{-}1))}$ penalty. Table"
+        }
+      ],
+      "final_image_path": null,
+      "final_image_hash": null
+    }
+  ]
+}

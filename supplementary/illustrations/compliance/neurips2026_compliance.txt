@@ -1,0 +1,75 @@
+# NeurIPS 2026 venue compliance constraints (verbatim quotes).
+#
+# SOURCE_FILE:     docs/neurips_official/MainTrackHandbook.txt
+# SOURCE_HASH:     a202a0afe6901e0863364460977c037093a4497bdee50ef3b10da8e1f1213450
+# SOURCE_VERSION:  V202611
+# SOURCE_RETRIEVED: 2026-04-30
+# SOURCE_URL:      https://neurips.cc/Conferences/2026/MainTrackHandbook
+# CITE:            \cite{neurips2026handbook}
+#
+# This file is hashed and bound to every L14-certified illustration's
+# venue_constraints[] array. The SOURCE_HASH above is verified against
+# the actual file contents on every certificate run; if NeurIPS updates
+# the handbook, the source hash diverges and the certificate fails until
+# a human re-curates the quotes below from the new source.
+#
+# All quoted text below is verbatim from the NeurIPS 2026 Main Track
+# Handbook (V202611). Comment lines (beginning with '#') are provenance
+# metadata; they nonetheless contribute to this file's hash.
+# ----------------------------------------------------------------------
+
+[Visual accessibility: color and contrast]
+
+"Choose color palettes that provide better color accessibility for
+color-blind viewers (see Usabilla for details) and do not rely on color
+to convey a message."
+
+"Choose high-contrast colors; dark text on a cream background works
+best."
+
+[Visual accessibility: text and motion]
+
+"Create slides with minimal text, use large fonts, use bold for
+emphasis, and avoid special text effects (e.g., shadows)."
+
+"Avoid flashing text or graphics."
+
+[Anonymity for visuals (double-blind)]
+
+"All submissions must be anonymized and may not contain any identifying
+information that may violate the double-blind reviewing policy. This
+policy applies to any supplementary or linked material as well,
+including code."
+
+[Forbidden visual content]
+
+"Avoid text, examples or imagery that are of a sexual, racial, or
+otherwise offensive nature. Given that the boundary is often unclear,
+it's best to only use material you are completely confident is
+appropriate."
+
+[Inclusion]
+
+"Use examples that are understandable to a diverse, multicultural
+audience."
+
+# ----------------------------------------------------------------------
+# Ethics-scoped constraints (informational; not directly actionable
+# by an image-generation model, but bound to the certificate so that
+# the artifact's provenance includes the venue's ethics expectations).
+# ----------------------------------------------------------------------
+
+[Code of Ethics: scope]
+
+"Safety: Contributors should consider whether there are foreseeable
+situations in which their technology can be used to harm, injure or
+kill people through its direct application, side effects, or potential
+misuse. We do not accept research whose primary goal is to increase the
+lethality of weapons systems."
+
+Code-of-Ethics areas covered (verbatim section names): "Security,
+Discrimination, Surveillance, Deception & Harassment, Environment,
+Human Rights, Bias and fairness."
+
+# ----------------------------------------------------------------------
+# End of verbatim constraints.
