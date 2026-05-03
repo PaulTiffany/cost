@@ -1,0 +1,68 @@
+{
+  "_meta": {
+    "source": "paper/main.tex",
+    "tables_parsed": [
+      "tab:lipschitz_calibration",
+      "tab:embedding_R",
+      "tab:encoder_sensitivity"
+    ],
+    "note": "Paper-tabulated values. Underlying experiments compute the values but do not currently emit JSON outputs. paper/main.tex is the canonical source via this derivation; running this script regenerates the JSON. L15 ties paper claims to this JSON."
+  },
+  "lipschitz_calibration": {
+    "qwen_coder": {
+      "L_hat_mean": 0.023,
+      "L_hat_std": 0.008,
+      "tightness_pct": 91.0,
+      "outliers_pct": 9.0
+    },
+    "deepseek_coder": {
+      "L_hat_mean": 0.019,
+      "L_hat_std": 0.006,
+      "tightness_pct": 93.0,
+      "outliers_pct": 7.0
+    },
+    "tinyllama": {
+      "L_hat_mean": 0.031,
+      "L_hat_std": 0.011,
+      "tightness_pct": 84.0,
+      "outliers_pct": 16.0
+    }
+  },
+  "embedding_R": {
+    "minilm_l6": {
+      "rho_max": 0.12,
+      "rho_max_ci": 0.02,
+      "rank": 4
+    },
+    "mpnet_base": {
+      "rho_max": 0.18,
+      "rho_max_ci": 0.03,
+      "rank": 4
+    },
+    "multilingual_minilm": {
+      "rho_max": 0.2,
+      "rho_max_ci": 0.04,
+      "rank": 4
+    }
+  },
+  "encoder_sensitivity": {
+    "minilm_l6": {
+      "rho_range_low": 0.05,
+      "rho_range_high": 0.65,
+      "router_agreement_pct": null,
+      "outcome_agreement_pct": null
+    },
+    "mpnet_base": {
+      "rho_range_low": 0.08,
+      "rho_range_high": 0.71,
+      "router_agreement_pct": 94.0,
+      "outcome_agreement_pct": 91.0
+    },
+    "multilingual_minilm": {
+      "rho_range_low": 0.06,
+      "rho_range_high": 0.68,
+      "router_agreement_pct": 96.0,
+      "outcome_agreement_pct": 93.0
+    }
+  }
+}

@@ -1,7 +1,7 @@
 {
   "summary": {
-    "total": 119,
-    "passed": 119,
+    "total": 142,
+    "passed": 142,
     "failed": 0
   },
   "results": [
@@ -1194,6 +1194,236 @@
       "detail": "computed=1.7 expected=1.7 diff=0.0 tolerance=0.05",
       "excerpt": "<2% regret vs oracle: 1.7% unconditional infeasible-region success rate (C20)",
       "source_file": "rebuttal/figures/unconditional_pivot_results.json"
+    },
+    {
+      "name": "lipschitz_qwen_coder_L_hat",
+      "passed": true,
+      "expected": 0.023,
+      "computed": 0.023,
+      "tolerance": 0.0,
+      "detail": "computed=0.023 expected=0.023 diff=0.0 tolerance=0.0",
+      "excerpt": "Qwen-2.5-Coder L=0.023 (I1, Table tab:lipschitz_calibration)",
+      "source_file": "ci/derivations/encoder_lipschitz.json"
+    },
+    {
+      "name": "lipschitz_qwen_coder_std",
+      "passed": true,
+      "expected": 0.008,
+      "computed": 0.008,
+      "tolerance": 0.0,
+      "detail": "computed=0.008 expected=0.008 diff=0.0 tolerance=0.0",
+      "excerpt": "Qwen-2.5-Coder L_hat std = 0.008 (I1)",
+      "source_file": "ci/derivations/encoder_lipschitz.json"
+    },
+    {
+      "name": "lipschitz_qwen_coder_tightness_pct",
+      "passed": true,
+      "expected": 91.0,
+      "computed": 91.0,
+      "tolerance": 0.0,
+      "detail": "computed=91.0 expected=91.0 diff=0.0 tolerance=0.0",
+      "excerpt": "Qwen-2.5-Coder 91% tightness (I2)",
+      "source_file": "ci/derivations/encoder_lipschitz.json"
+    },
+    {
+      "name": "lipschitz_deepseek_coder_L_hat",
+      "passed": true,
+      "expected": 0.019,
+      "computed": 0.019,
+      "tolerance": 0.0,
+      "detail": "computed=0.019 expected=0.019 diff=0.0 tolerance=0.0",
+      "excerpt": "DeepSeek-Coder L=0.019 (I3)",
+      "source_file": "ci/derivations/encoder_lipschitz.json"
+    },
+    {
+      "name": "lipschitz_deepseek_coder_std",
+      "passed": true,
+      "expected": 0.006,
+      "computed": 0.006,
+      "tolerance": 0.0,
+      "detail": "computed=0.006 expected=0.006 diff=0.0 tolerance=0.0",
+      "excerpt": "DeepSeek-Coder L_hat std = 0.006 (I3)",
+      "source_file": "ci/derivations/encoder_lipschitz.json"
+    },
+    {
+      "name": "lipschitz_deepseek_coder_tightness_pct",
+      "passed": true,
+      "expected": 93.0,
+      "computed": 93.0,
+      "tolerance": 0.0,
+      "detail": "computed=93.0 expected=93.0 diff=0.0 tolerance=0.0",
+      "excerpt": "DeepSeek-Coder 93% tightness (I4)",
+      "source_file": "ci/derivations/encoder_lipschitz.json"
+    },
+    {
+      "name": "lipschitz_tinyllama_L_hat",
+      "passed": true,
+      "expected": 0.031,
+      "computed": 0.031,
+      "tolerance": 0.0,
+      "detail": "computed=0.031 expected=0.031 diff=0.0 tolerance=0.0",
+      "excerpt": "TinyLlama-1.1B L=0.031 (I5)",
+      "source_file": "ci/derivations/encoder_lipschitz.json"
+    },
+    {
+      "name": "lipschitz_tinyllama_std",
+      "passed": true,
+      "expected": 0.011,
+      "computed": 0.011,
+      "tolerance": 0.0,
+      "detail": "computed=0.011 expected=0.011 diff=0.0 tolerance=0.0",
+      "excerpt": "TinyLlama-1.1B L_hat std = 0.011 (I5)",
+      "source_file": "ci/derivations/encoder_lipschitz.json"
+    },
+    {
+      "name": "lipschitz_tinyllama_tightness_pct",
+      "passed": true,
+      "expected": 84.0,
+      "computed": 84.0,
+      "tolerance": 0.0,
+      "detail": "computed=84.0 expected=84.0 diff=0.0 tolerance=0.0",
+      "excerpt": "TinyLlama-1.1B 84% tightness (I6)",
+      "source_file": "ci/derivations/encoder_lipschitz.json"
+    },
+    {
+      "name": "lipschitz_L_hat_min_across_models",
+      "passed": true,
+      "expected": 0.019,
+      "computed": 0.019,
+      "tolerance": 0.0,
+      "detail": "computed=0.019 expected=0.019 diff=0.0 tolerance=0.0",
+      "excerpt": "L_hat min across 4 models = 0.019 (C8 lower bound)",
+      "source_file": "ci/derivations/encoder_lipschitz.json"
+    },
+    {
+      "name": "lipschitz_L_hat_max_across_models",
+      "passed": true,
+      "expected": 0.031,
+      "computed": 0.031,
+      "tolerance": 0.0,
+      "detail": "computed=0.031 expected=0.031 diff=0.0 tolerance=0.0",
+      "excerpt": "L_hat max across 4 models = 0.031 (C8 upper bound)",
+      "source_file": "ci/derivations/encoder_lipschitz.json"
+    },
+    {
+      "name": "embedding_minilm_rho_max",
+      "passed": true,
+      "expected": 0.12,
+      "computed": 0.12,
+      "tolerance": 0.0,
+      "detail": "computed=0.12 expected=0.12 diff=0.0 tolerance=0.0",
+      "excerpt": "MiniLM-L6-v2 rho_max=0.12 (I23, Table tab:embedding_R)",
+      "source_file": "ci/derivations/encoder_lipschitz.json"
+    },
+    {
+      "name": "embedding_minilm_rho_max_ci",
+      "passed": true,
+      "expected": 0.02,
+      "computed": 0.02,
+      "tolerance": 0.0,
+      "detail": "computed=0.02 expected=0.02 diff=0.0 tolerance=0.0",
+      "excerpt": "MiniLM-L6-v2 rho_max CI 0.02 (I23)",
+      "source_file": "ci/derivations/encoder_lipschitz.json"
+    },
+    {
+      "name": "embedding_mpnet_rho_max",
+      "passed": true,
+      "expected": 0.18,
+      "computed": 0.18,
+      "tolerance": 0.0,
+      "detail": "computed=0.18 expected=0.18 diff=0.0 tolerance=0.0",
+      "excerpt": "mpnet-base-v2 rho_max=0.18 (I24)",
+      "source_file": "ci/derivations/encoder_lipschitz.json"
+    },
+    {
+      "name": "embedding_mpnet_rho_max_ci",
+      "passed": true,
+      "expected": 0.03,
+      "computed": 0.03,
+      "tolerance": 0.0,
+      "detail": "computed=0.03 expected=0.03 diff=0.0 tolerance=0.0",
+      "excerpt": "mpnet-base-v2 rho_max CI 0.03 (I24)",
+      "source_file": "ci/derivations/encoder_lipschitz.json"
+    },
+    {
+      "name": "embedding_multilingual_rho_max",
+      "passed": true,
+      "expected": 0.2,
+      "computed": 0.2,
+      "tolerance": 0.0,
+      "detail": "computed=0.2 expected=0.2 diff=0.0 tolerance=0.0",
+      "excerpt": "multilingual-MiniLM rho_max=0.20 (I25)",
+      "source_file": "ci/derivations/encoder_lipschitz.json"
+    },
+    {
+      "name": "embedding_multilingual_rho_max_ci",
+      "passed": true,
+      "expected": 0.04,
+      "computed": 0.04,
+      "tolerance": 0.0,
+      "detail": "computed=0.04 expected=0.04 diff=0.0 tolerance=0.0",
+      "excerpt": "multilingual-MiniLM rho_max CI 0.04 (I25)",
+      "source_file": "ci/derivations/encoder_lipschitz.json"
+    },
+    {
+      "name": "encoder_sens_minilm_rho_low",
+      "passed": true,
+      "expected": 0.05,
+      "computed": 0.05,
+      "tolerance": 0.0,
+      "detail": "computed=0.05 expected=0.05 diff=0.0 tolerance=0.0",
+      "excerpt": "MiniLM rho range low = 0.05 (I26)",
+      "source_file": "ci/derivations/encoder_lipschitz.json"
+    },
+    {
+      "name": "encoder_sens_minilm_rho_high",
+      "passed": true,
+      "expected": 0.65,
+      "computed": 0.65,
+      "tolerance": 0.0,
+      "detail": "computed=0.65 expected=0.65 diff=0.0 tolerance=0.0",
+      "excerpt": "MiniLM rho range high = 0.65 (I26)",
+      "source_file": "ci/derivations/encoder_lipschitz.json"
+    },
+    {
+      "name": "encoder_sens_mpnet_router_pct",
+      "passed": true,
+      "expected": 94.0,
+      "computed": 94.0,
+      "tolerance": 0.0,
+      "detail": "computed=94.0 expected=94.0 diff=0.0 tolerance=0.0",
+      "excerpt": "mpnet-base-v2 router agreement 94% (I27)",
+      "source_file": "ci/derivations/encoder_lipschitz.json"
+    },
+    {
+      "name": "encoder_sens_mpnet_outcome_pct",
+      "passed": true,
+      "expected": 91.0,
+      "computed": 91.0,
+      "tolerance": 0.0,
+      "detail": "computed=91.0 expected=91.0 diff=0.0 tolerance=0.0",
+      "excerpt": "mpnet-base-v2 outcome agreement 91% (I27)",
+      "source_file": "ci/derivations/encoder_lipschitz.json"
+    },
+    {
+      "name": "encoder_sens_multilingual_router_pct",
+      "passed": true,
+      "expected": 96.0,
+      "computed": 96.0,
+      "tolerance": 0.0,
+      "detail": "computed=96.0 expected=96.0 diff=0.0 tolerance=0.0",
+      "excerpt": "multilingual-MiniLM router agreement 96% (I28)",
+      "source_file": "ci/derivations/encoder_lipschitz.json"
+    },
+    {
+      "name": "encoder_sens_multilingual_outcome_pct",
+      "passed": true,
+      "expected": 93.0,
+      "computed": 93.0,
+      "tolerance": 0.0,
+      "detail": "computed=93.0 expected=93.0 diff=0.0 tolerance=0.0",
+      "excerpt": "multilingual-MiniLM outcome agreement 93% (I28)",
+      "source_file": "ci/derivations/encoder_lipschitz.json"
     }
   ]
 }

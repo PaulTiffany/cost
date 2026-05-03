@@ -1076,6 +1076,213 @@
       "expected": 1.7,
       "tolerance": 0.05,
       "compare_as": "float"
+    },
+    "lipschitz_qwen_coder_L_hat": {
+      "claim_text_excerpt": "Qwen-2.5-Coder L=0.023 (I1, Table tab:lipschitz_calibration)",
+      "paper_location_hint": "Per-model Lipschitz table; canonical-source = paper text via encoder_lipschitz_compute.py",
+      "source_file": "ci/derivations/encoder_lipschitz.json",
+      "value_expr": "d['lipschitz_calibration']['qwen_coder']['L_hat_mean']",
+      "expected": 0.023,
+      "tolerance": 0,
+      "compare_as": "float"
+    },
+    "lipschitz_qwen_coder_std": {
+      "claim_text_excerpt": "Qwen-2.5-Coder L_hat std = 0.008 (I1)",
+      "paper_location_hint": "Per-model Lipschitz table",
+      "source_file": "ci/derivations/encoder_lipschitz.json",
+      "value_expr": "d['lipschitz_calibration']['qwen_coder']['L_hat_std']",
+      "expected": 0.008,
+      "tolerance": 0,
+      "compare_as": "float"
+    },
+    "lipschitz_qwen_coder_tightness_pct": {
+      "claim_text_excerpt": "Qwen-2.5-Coder 91% tightness (I2)",
+      "paper_location_hint": "Per-model Lipschitz table",
+      "source_file": "ci/derivations/encoder_lipschitz.json",
+      "value_expr": "d['lipschitz_calibration']['qwen_coder']['tightness_pct']",
+      "expected": 91,
+      "tolerance": 0,
+      "compare_as": "int"
+    },
+    "lipschitz_deepseek_coder_L_hat": {
+      "claim_text_excerpt": "DeepSeek-Coder L=0.019 (I3)",
+      "paper_location_hint": "Per-model Lipschitz table",
+      "source_file": "ci/derivations/encoder_lipschitz.json",
+      "value_expr": "d['lipschitz_calibration']['deepseek_coder']['L_hat_mean']",
+      "expected": 0.019,
+      "tolerance": 0,
+      "compare_as": "float"
+    },
+    "lipschitz_deepseek_coder_std": {
+      "claim_text_excerpt": "DeepSeek-Coder L_hat std = 0.006 (I3)",
+      "paper_location_hint": "Per-model Lipschitz table",
+      "source_file": "ci/derivations/encoder_lipschitz.json",
+      "value_expr": "d['lipschitz_calibration']['deepseek_coder']['L_hat_std']",
+      "expected": 0.006,
+      "tolerance": 0,
+      "compare_as": "float"
+    },
+    "lipschitz_deepseek_coder_tightness_pct": {
+      "claim_text_excerpt": "DeepSeek-Coder 93% tightness (I4)",
+      "paper_location_hint": "Per-model Lipschitz table",
+      "source_file": "ci/derivations/encoder_lipschitz.json",
+      "value_expr": "d['lipschitz_calibration']['deepseek_coder']['tightness_pct']",
+      "expected": 93,
+      "tolerance": 0,
+      "compare_as": "int"
+    },
+    "lipschitz_tinyllama_L_hat": {
+      "claim_text_excerpt": "TinyLlama-1.1B L=0.031 (I5)",
+      "paper_location_hint": "Per-model Lipschitz table",
+      "source_file": "ci/derivations/encoder_lipschitz.json",
+      "value_expr": "d['lipschitz_calibration']['tinyllama']['L_hat_mean']",
+      "expected": 0.031,
+      "tolerance": 0,
+      "compare_as": "float"
+    },
+    "lipschitz_tinyllama_std": {
+      "claim_text_excerpt": "TinyLlama-1.1B L_hat std = 0.011 (I5)",
+      "paper_location_hint": "Per-model Lipschitz table",
+      "source_file": "ci/derivations/encoder_lipschitz.json",
+      "value_expr": "d['lipschitz_calibration']['tinyllama']['L_hat_std']",
+      "expected": 0.011,
+      "tolerance": 0,
+      "compare_as": "float"
+    },
+    "lipschitz_tinyllama_tightness_pct": {
+      "claim_text_excerpt": "TinyLlama-1.1B 84% tightness (I6)",
+      "paper_location_hint": "Per-model Lipschitz table",
+      "source_file": "ci/derivations/encoder_lipschitz.json",
+      "value_expr": "d['lipschitz_calibration']['tinyllama']['tightness_pct']",
+      "expected": 84,
+      "tolerance": 0,
+      "compare_as": "int"
+    },
+    "lipschitz_L_hat_min_across_models": {
+      "claim_text_excerpt": "L_hat min across 4 models = 0.019 (C8 lower bound)",
+      "paper_location_hint": "C8 'L_hat in [0.019, 0.031] across 4 models'",
+      "source_file": "ci/derivations/encoder_lipschitz.json",
+      "value_expr": "min(m['L_hat_mean'] for m in d['lipschitz_calibration'].values())",
+      "expected": 0.019,
+      "tolerance": 0,
+      "compare_as": "float"
+    },
+    "lipschitz_L_hat_max_across_models": {
+      "claim_text_excerpt": "L_hat max across 4 models = 0.031 (C8 upper bound)",
+      "paper_location_hint": "C8 'L_hat in [0.019, 0.031] across 4 models'",
+      "source_file": "ci/derivations/encoder_lipschitz.json",
+      "value_expr": "max(m['L_hat_mean'] for m in d['lipschitz_calibration'].values())",
+      "expected": 0.031,
+      "tolerance": 0,
+      "compare_as": "float"
+    },
+    "embedding_minilm_rho_max": {
+      "claim_text_excerpt": "MiniLM-L6-v2 rho_max=0.12 (I23, Table tab:embedding_R)",
+      "paper_location_hint": "Per-encoder rho_max table",
+      "source_file": "ci/derivations/encoder_lipschitz.json",
+      "value_expr": "d['embedding_R']['minilm_l6']['rho_max']",
+      "expected": 0.12,
+      "tolerance": 0,
+      "compare_as": "float"
+    },
+    "embedding_minilm_rho_max_ci": {
+      "claim_text_excerpt": "MiniLM-L6-v2 rho_max CI 0.02 (I23)",
+      "paper_location_hint": "Per-encoder rho_max table",
+      "source_file": "ci/derivations/encoder_lipschitz.json",
+      "value_expr": "d['embedding_R']['minilm_l6']['rho_max_ci']",
+      "expected": 0.02,
+      "tolerance": 0,
+      "compare_as": "float"
+    },
+    "embedding_mpnet_rho_max": {
+      "claim_text_excerpt": "mpnet-base-v2 rho_max=0.18 (I24)",
+      "paper_location_hint": "Per-encoder rho_max table",
+      "source_file": "ci/derivations/encoder_lipschitz.json",
+      "value_expr": "d['embedding_R']['mpnet_base']['rho_max']",
+      "expected": 0.18,
+      "tolerance": 0,
+      "compare_as": "float"
+    },
+    "embedding_mpnet_rho_max_ci": {
+      "claim_text_excerpt": "mpnet-base-v2 rho_max CI 0.03 (I24)",
+      "paper_location_hint": "Per-encoder rho_max table",
+      "source_file": "ci/derivations/encoder_lipschitz.json",
+      "value_expr": "d['embedding_R']['mpnet_base']['rho_max_ci']",
+      "expected": 0.03,
+      "tolerance": 0,
+      "compare_as": "float"
+    },
+    "embedding_multilingual_rho_max": {
+      "claim_text_excerpt": "multilingual-MiniLM rho_max=0.20 (I25)",
+      "paper_location_hint": "Per-encoder rho_max table",
+      "source_file": "ci/derivations/encoder_lipschitz.json",
+      "value_expr": "d['embedding_R']['multilingual_minilm']['rho_max']",
+      "expected": 0.20,
+      "tolerance": 0,
+      "compare_as": "float"
+    },
+    "embedding_multilingual_rho_max_ci": {
+      "claim_text_excerpt": "multilingual-MiniLM rho_max CI 0.04 (I25)",
+      "paper_location_hint": "Per-encoder rho_max table",
+      "source_file": "ci/derivations/encoder_lipschitz.json",
+      "value_expr": "d['embedding_R']['multilingual_minilm']['rho_max_ci']",
+      "expected": 0.04,
+      "tolerance": 0,
+      "compare_as": "float"
+    },
+    "encoder_sens_minilm_rho_low": {
+      "claim_text_excerpt": "MiniLM rho range low = 0.05 (I26)",
+      "paper_location_hint": "Encoder sensitivity table",
+      "source_file": "ci/derivations/encoder_lipschitz.json",
+      "value_expr": "d['encoder_sensitivity']['minilm_l6']['rho_range_low']",
+      "expected": 0.05,
+      "tolerance": 0,
+      "compare_as": "float"
+    },
+    "encoder_sens_minilm_rho_high": {
+      "claim_text_excerpt": "MiniLM rho range high = 0.65 (I26)",
+      "paper_location_hint": "Encoder sensitivity table",
+      "source_file": "ci/derivations/encoder_lipschitz.json",
+      "value_expr": "d['encoder_sensitivity']['minilm_l6']['rho_range_high']",
+      "expected": 0.65,
+      "tolerance": 0,
+      "compare_as": "float"
+    },
+    "encoder_sens_mpnet_router_pct": {
+      "claim_text_excerpt": "mpnet-base-v2 router agreement 94% (I27)",
+      "paper_location_hint": "Encoder sensitivity table",
+      "source_file": "ci/derivations/encoder_lipschitz.json",
+      "value_expr": "d['encoder_sensitivity']['mpnet_base']['router_agreement_pct']",
+      "expected": 94,
+      "tolerance": 0,
+      "compare_as": "int"
+    },
+    "encoder_sens_mpnet_outcome_pct": {
+      "claim_text_excerpt": "mpnet-base-v2 outcome agreement 91% (I27)",
+      "paper_location_hint": "Encoder sensitivity table",
+      "source_file": "ci/derivations/encoder_lipschitz.json",
+      "value_expr": "d['encoder_sensitivity']['mpnet_base']['outcome_agreement_pct']",
+      "expected": 91,
+      "tolerance": 0,
+      "compare_as": "int"
+    },
+    "encoder_sens_multilingual_router_pct": {
+      "claim_text_excerpt": "multilingual-MiniLM router agreement 96% (I28)",
+      "paper_location_hint": "Encoder sensitivity table",
+      "source_file": "ci/derivations/encoder_lipschitz.json",
+      "value_expr": "d['encoder_sensitivity']['multilingual_minilm']['router_agreement_pct']",
+      "expected": 96,
+      "tolerance": 0,
+      "compare_as": "int"
+    },
+    "encoder_sens_multilingual_outcome_pct": {
+      "claim_text_excerpt": "multilingual-MiniLM outcome agreement 93% (I28)",
+      "paper_location_hint": "Encoder sensitivity table",
+      "source_file": "ci/derivations/encoder_lipschitz.json",
+      "value_expr": "d['encoder_sensitivity']['multilingual_minilm']['outcome_agreement_pct']",
+      "expected": 93,
+      "tolerance": 0,
+      "compare_as": "int"
     }
   }
 }
