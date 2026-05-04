@@ -78,7 +78,7 @@
     {
       "path": "ci/cross_claim_consistency_results.json",
       "expected_sha256": "2a7ec675d9a51a45cdda6e513a53482ca3e2569f5a76257dee927dd171bbec0e",
-      "actual_sha256": "cf2381698e765d979c90af42856452896a852d65f96ee45725caea6b35ccce22",
+      "actual_sha256": "f30e3d36f2163a10d0397d224e61978fd18653de746f5176614693fd3a7fab27",
       "expected_size": 24413,
       "actual_size": 26732,
       "note": "size differs by 2319 bytes (possibly Windows CRLF vs LF line endings)"
@@ -118,10 +118,10 @@
     {
       "path": "paper/main.pdf",
       "expected_sha256": "08cf424723ec9bd1675901d33b32040b4a2a1e4153ffccd9d74e82be346cf119",
-      "actual_sha256": "84a5cfc4d668d550e37e88fe4c7221ed569b3adf018d60bb4319fb345a1cf979",
+      "actual_sha256": "5ec30d2ff2ee2af5aa09b5577326d679098403ad6e9fdeac5a62434933190f53",
       "expected_size": 1094188,
-      "actual_size": 1143871,
-      "note": "size differs by 49683 bytes (possibly Windows CRLF vs LF line endings)"
+      "actual_size": 1143966,
+      "note": "size differs by 49778 bytes (possibly Windows CRLF vs LF line endings)"
     },
     {
       "path": "supplementary/demos/sonification.py",

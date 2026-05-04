@@ -57,13 +57,18 @@ EXCLUDE_FILE_NAMES = {
     "main_arxiv.tex", "main_arxiv.pdf", "main_arxiv.aux", "main_arxiv.log",
     "main_arxiv.out", "main_arxiv.bbl", "main_arxiv.blg", "main_arxiv.fls",
     "main_arxiv.fdb_latexmk", "main_arxiv.synctex.gz", "main_arxiv.toc",
-    "build_arxiv.py", "build_4open_zip.py",
+    "build_arxiv.py", "build_4open_zip.py", "build_openreview_supplementary.py",
     "cacophony_arxiv_source.tar.gz",
     "cacophony_4open_anonymous.zip",
+    "cacophony_openreview_supplementary.zip",
     ".DS_Store", "Thumbs.db", "desktop.ini",
     # Sensitive collaborator handoff (matches user instruction):
     "notetoclaude.json", "note2claude2.json",
 }
+# Belt-and-suspenders: ANY file matching these patterns is excluded.
+# Catches accidental output zips not yet enumerated above.
+EXCLUDE_FILE_PATTERN_PREFIXES = ("cacophony_",)
+EXCLUDE_FILE_PATTERN_SUFFIXES = (".zip", ".tar.gz")
 
 # PII patterns: any text-like file containing these is a hard fail
 PII_PATTERNS = [
@@ -107,6 +112,11 @@ def is_excluded(path: Path) -> bool:
         return True
     if path.suffix.lower() in EXCLUDE_FILE_SUFFIXES:
         return True
+    # Pattern guard: prefix-and-suffix combo catches any future cacophony_*.zip
+    # without us having to enumerate it. Prevents recursive self-inclusion.
+    if any(path.name.startswith(p) for p in EXCLUDE_FILE_PATTERN_PREFIXES):
+        if any(path.name.endswith(s) for s in EXCLUDE_FILE_PATTERN_SUFFIXES):
+            return True
     return False
 
 

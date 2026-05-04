@@ -9,16 +9,16 @@
     "profile": "standard",
     "git": {
       "status": "ok",
-      "commit": "3d3fd847841a175f4f34db7eaad0e100f605bfb1",
-      "commit_short": "3d3fd847",
+      "commit": "c7bd19aa4d783d28a9dde2206afce83190fd382e",
+      "commit_short": "c7bd19aa",
       "branch": "master",
       "dirty": true,
-      "n_modified_unstaged": 41,
-      "n_staged": 5,
-      "n_untracked": 171
+      "n_modified_unstaged": 7,
+      "n_staged": 1,
+      "n_untracked": 0
     },
     "dependencies": {
-      "generated_at": "2026-05-04T10:17:02.473439+00:00",
+      "generated_at": "2026-05-04T12:07:36.223565+00:00",
       "python": {
         "version": "3.13.4 (tags/v3.13.4:8a526ec, Jun  3 2025, 17:46:04) [MSC v.1943 64 bit (AMD64)]",
         "version_short": "3.13.4",
@@ -57,13 +57,13 @@
         }
       }
     },
-    "generated_at": "2026-05-04T06:17:35",
+    "generated_at": "2026-05-04T08:08:08",
     "main_tex_path": "paper\\main.tex",
     "main_tex_sha256": "82e6af21ec8b91ecccb99e94af6495d124d2e89a0d8f81dfb53e4af1d1994525",
     "main_tex_mtime": "2026-05-04T05:48:57",
     "main_pdf_path": "paper\\main.pdf",
-    "main_pdf_size": 1143871,
-    "main_pdf_mtime": "2026-05-04T05:58:14",
+    "main_pdf_size": 1143966,
+    "main_pdf_mtime": "2026-05-04T08:07:17",
     "claim_audit_md_path": "CLAIM_AUDIT.md",
     "claim_audit_md_sha256": "61b08aec7166fa6604f38388a226493ac241ea704e539805438cfd56ede8a344"
   },
@@ -73,7 +73,7 @@
     "ci\\figure_value_check_results.json": "7d850709729d4fb4b9ece9aafe60cb4868e4bbc42f78fee06d7ae7b6673014c4",
     "ci\\citation_integrity_results.json": "ea34f3fbb412748e9cc7adfcadc2f2717621f02c45d9f7951aeddbb89a873605",
     "ci\\link_integrity_results.json": "8dd0e8e729a3d5269b536ba10f47dbd2a227abb2d355077bf197ac6411239320",
-    "ci\\cross_claim_consistency_results.json": "d86dc743a009ec9057ec62a87c8ca1a58598a0fbbf8c1a29527ad387566e8847",
+    "ci\\cross_claim_consistency_results.json": "f30e3d36f2163a10d0397d224e61978fd18653de746f5176614693fd3a7fab27",
     "ci\\bib_entry_check_results.json": "75311d32bed138ef02409dc4319e8cd73dfe35acf21530905c9addab798c0296",
     "ci\\script_integrity_results.json": "0cb95174ba62ef104a598de8b98a5512613a05c86f1569c87580bb628f9f37c8",
     "ci\\build_equivalence_results.json": "4cea7a13d9a7c65a12866636243b06790d11d5a9e1cbf738aab096cb6ecdae02",
@@ -725,5 +725,5 @@
       ]
     }
   ],
-  "certificate_self_hash": "7c0af9003d0c3397657e5d94d207dc6596304bb8e3991f29f328367603ad4908"
+  "certificate_self_hash": "3b48662839e44469f4fb6445e6f0300bec8bbb12182d2f750ceed01558b845b4"
 }
