@@ -1,8 +1,8 @@
 #!/usr/bin/env python3
 """NeurIPS 2026 page-budget compliance checker.
 
-Verifies the paper at C:/src/neurips/paper/main.tex meets the Main Track
-Handbook (page 7) single-PDF requirements:
+Verifies that paper/main.tex meets the Main Track Handbook (page 7)
+single-PDF requirements:
 
   1. Paper body  (<= 9 pages of body content)
   2. References
@@ -32,10 +32,12 @@ import sys
 from pathlib import Path
 from typing import Optional
 
-PAPER_DIR = Path(r"C:\src\neurips\paper")
+SCRIPT_DIR = Path(__file__).resolve().parent
+REPO_ROOT = SCRIPT_DIR.parent
+PAPER_DIR = REPO_ROOT / "paper"
 TEX_FILE = PAPER_DIR / "main.tex"
 PDF_FILE = PAPER_DIR / "main.pdf"
-CI_DIR = Path(r"C:\src\neurips\ci")
+CI_DIR = SCRIPT_DIR
 RESULTS_JSON = CI_DIR / "page_check_results.json"
 
 BODY_PAGE_LIMIT = 9

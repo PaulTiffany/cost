@@ -7,16 +7,19 @@ the NeurIPS 2026 submission's "Supplementary Material" field. The main
 PDF (paper/main.pdf) is uploaded SEPARATELY as the "Paper" field, so
 it is excluded from this archive.
 
-Reuses the exclusion + PII-scrubbing rules from build_4open_zip.py.
+Reuses the exclusion + PII-scrubbing rules from build_4open_zip.py, with
+OpenReview-specific additions so certificate-referenced reviewer evidence
+ships inside the archive without pulling in broad local-reference directories.
 Difference vs the 4open zip: prefix is `supplementary/` (vs `cacophony/`
-for the 4open URL slug), main.pdf is excluded, and a top-level
-REVIEWER_README.md is generated to orient reviewers.
+for the 4open URL slug), and a top-level REVIEWER_README.md is generated
+to orient reviewers.
 
 Usage:
     python paper/build_openreview_supplementary.py
     python paper/build_openreview_supplementary.py --dry-run
 """
 import argparse
+import json
 import sys
 import zipfile
 from pathlib import Path
@@ -24,16 +27,21 @@ from pathlib import Path
 REPO_ROOT = Path(__file__).resolve().parent.parent
 sys.path.insert(0, str(REPO_ROOT / "paper"))
 from build_4open_zip import (  # type: ignore
-    collect_files, scrub_text, EXCLUDE_FILE_NAMES,
+    collect_files,
+    is_text_like,
+    scan_pii,
+    scrub_text,
+    EXCLUDE_FILE_NAMES,
+    PII_ALLOWLIST,
+    PII_SCRUB_AT_ZIP,
 )
 
 OUT_ZIP = REPO_ROOT / "paper" / "cacophony_openreview_supplementary.zip"
+BUNDLE_MANIFEST = REPO_ROOT / "ci" / "bundle_manifest.json"
+SUPPLEMENTARY_MANIFEST = REPO_ROOT / "ci" / "supplementary_manifest.json"
+SUBMISSION_SURFACE_MANIFEST = REPO_ROOT / "ci" / "submission_surface_manifest.json"
 
-# Additional excludes specific to the OpenReview supplementary (PDF is
-# uploaded as a separate field).
-ADDITIONAL_EXCLUDES = {
-    "main.pdf",  # uploaded as the Paper field, not in supplementary
-}
+ADDITIONAL_EXCLUDES = set()
 
 
 REVIEWER_README = """# Supplementary Materials
@@ -93,6 +101,103 @@ zero PII findings in cert-shipped artifacts at every cert run.
 """
 
 
+def certificate_payload_paths() -> list[Path]:
+    """Return repo-relative paths that ci/bundle_manifest.json says must ship."""
+    if not BUNDLE_MANIFEST.exists():
+        return []
+
+    manifest = json.loads(BUNDLE_MANIFEST.read_text(encoding="utf-8"))
+    paths: list[Path] = []
+    for entry in manifest.get("files", []):
+        if entry.get("absent"):
+            continue
+        raw = entry.get("path")
+        if raw:
+            paths.append(Path(raw.replace("\\", "/")))
+    return paths
+
+
+def surface_manifest_paths() -> list[Path]:
+    """Return exact reviewer-surface paths from the supplementary manifests."""
+    paths: list[str] = []
+
+    if SUPPLEMENTARY_MANIFEST.exists():
+        manifest = json.loads(SUPPLEMENTARY_MANIFEST.read_text(encoding="utf-8"))
+        for artifact in manifest.get("artifacts", []):
+            checks_required = artifact.get("checks_required", []) or []
+            if not artifact.get("expected_in_bundle") and "exists" not in checks_required:
+                continue
+            paths.append(artifact.get("path", ""))
+            source_script = artifact.get("source_script")
+            if source_script:
+                paths.append(source_script)
+            paths.extend(artifact.get("source_data", []) or [])
+
+    if SUBMISSION_SURFACE_MANIFEST.exists():
+        manifest = json.loads(SUBMISSION_SURFACE_MANIFEST.read_text(encoding="utf-8"))
+        for entry in manifest.get("entries", []):
+            if not entry.get("expected_in_submission"):
+                continue
+            paths.append(entry.get("path", ""))
+            paths.extend(entry.get("source_scripts", []) or [])
+            paths.extend(entry.get("source_data_or_results", []) or [])
+
+    out: list[Path] = []
+    seen: set[str] = set()
+    for raw in paths:
+        if not raw or "[" in raw or "]" in raw:
+            continue
+        norm = raw.replace("\\", "/")
+        if norm in seen:
+            continue
+        seen.add(norm)
+        out.append(Path(norm))
+    return out
+
+
+def add_certificate_payload(
+    kept: list[Path],
+    violations: list[tuple[Path, list]],
+    to_scrub: list[Path],
+) -> int:
+    """
+    Add exact certificate-manifest paths that broad 4open exclusions omit.
+
+    This avoids re-including whole local-reference directories such as docs/ or
+    rebuttal/ while keeping reviewer verification self-contained.
+    """
+    kept_set = {str(path).replace("\\", "/") for path in kept}
+    scrub_set = {str(path).replace("\\", "/") for path in to_scrub}
+    added = 0
+
+    payload_paths = certificate_payload_paths() + surface_manifest_paths()
+    for rel in payload_paths:
+        rel_str = str(rel).replace("\\", "/")
+        if rel_str in kept_set:
+            continue
+
+        abs_path = REPO_ROOT / rel
+        if not abs_path.is_file():
+            continue
+
+        if is_text_like(rel) and rel_str not in PII_ALLOWLIST:
+            findings = scan_pii(abs_path)
+            if findings:
+                if rel_str in PII_SCRUB_AT_ZIP:
+                    if rel_str not in scrub_set:
+                        to_scrub.append(rel)
+                        scrub_set.add(rel_str)
+                else:
+                    violations.append((rel, findings))
+                    continue
+
+        kept.append(rel)
+        kept_set.add(rel_str)
+        added += 1
+
+    return added
+
+
 def main() -> int:
     parser = argparse.ArgumentParser()
     parser.add_argument("--dry-run", action="store_true",
@@ -104,8 +209,10 @@ def main() -> int:
     # for this build only.
     EXCLUDE_FILE_NAMES.update(ADDITIONAL_EXCLUDES)
     kept, violations, to_scrub = collect_files()
+    added_payload = add_certificate_payload(kept, violations, to_scrub)
     scrub_set = {str(p).replace("\\", "/") for p in to_scrub}
     print(f"  {len(kept)} files survived exclusion + PII scan")
+    print(f"  {added_payload} certificate payload files added explicitly")
     print(f"  {len(to_scrub)} files will be SCRUBBED at zip-time")
     print(f"  {len(violations)} files HALTED for PII (excluded)")
     if violations:

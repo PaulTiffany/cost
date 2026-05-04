@@ -9,16 +9,16 @@
     "profile": "standard",
     "git": {
       "status": "ok",
-      "commit": "c7bd19aa4d783d28a9dde2206afce83190fd382e",
-      "commit_short": "c7bd19aa",
+      "commit": "1e5c4a783709ee18abd5b621ddbfc776a6bf64c9",
+      "commit_short": "1e5c4a78",
       "branch": "master",
       "dirty": true,
-      "n_modified_unstaged": 7,
+      "n_modified_unstaged": 20,
       "n_staged": 1,
       "n_untracked": 0
     },
     "dependencies": {
-      "generated_at": "2026-05-04T12:07:36.223565+00:00",
+      "generated_at": "2026-05-04T23:47:58.963469+00:00",
       "python": {
         "version": "3.13.4 (tags/v3.13.4:8a526ec, Jun  3 2025, 17:46:04) [MSC v.1943 64 bit (AMD64)]",
         "version_short": "3.13.4",
@@ -57,7 +57,7 @@
         }
       }
     },
-    "generated_at": "2026-05-04T08:08:08",
+    "generated_at": "2026-05-04T19:48:31",
     "main_tex_path": "paper\\main.tex",
     "main_tex_sha256": "82e6af21ec8b91ecccb99e94af6495d124d2e89a0d8f81dfb53e4af1d1994525",
     "main_tex_mtime": "2026-05-04T05:48:57",
@@ -68,16 +68,16 @@
     "claim_audit_md_sha256": "61b08aec7166fa6604f38388a226493ac241ea704e539805438cfd56ede8a344"
   },
   "artifact_hashes": {
-    "ci\\claim_audit_results.json": "d46b50f2c9153e25f356f14d5463e4d232ef48e227be63cf48ff4c4fb8c368f6",
+    "ci\\claim_audit_results.json": "92b95949378029b36a14f831cb7643eb1c26c577691886baebaec5cb923361d6",
     "ci\\claim_coverage_uncovered.json": "63face19453dab5bb6074c7f63474f86379cae8d9424d245414a645b9cae39d3",
     "ci\\figure_value_check_results.json": "7d850709729d4fb4b9ece9aafe60cb4868e4bbc42f78fee06d7ae7b6673014c4",
     "ci\\citation_integrity_results.json": "ea34f3fbb412748e9cc7adfcadc2f2717621f02c45d9f7951aeddbb89a873605",
     "ci\\link_integrity_results.json": "8dd0e8e729a3d5269b536ba10f47dbd2a227abb2d355077bf197ac6411239320",
-    "ci\\cross_claim_consistency_results.json": "f30e3d36f2163a10d0397d224e61978fd18653de746f5176614693fd3a7fab27",
+    "ci\\cross_claim_consistency_results.json": "fe57e346b7b5ba1ba9a1656accb1be0b5b6ddaf9cb42996f109aaebc10b24206",
     "ci\\bib_entry_check_results.json": "75311d32bed138ef02409dc4319e8cd73dfe35acf21530905c9addab798c0296",
     "ci\\script_integrity_results.json": "0cb95174ba62ef104a598de8b98a5512613a05c86f1569c87580bb628f9f37c8",
     "ci\\build_equivalence_results.json": "4cea7a13d9a7c65a12866636243b06790d11d5a9e1cbf738aab096cb6ecdae02",
-    "ci\\cross_tree_consistency_results.json": "94a61f6202532154fb26c949a8782f7beb48cd8b78acd5a0a109d32d015d0692",
+    "ci\\cross_tree_consistency_results.json": "75909f4c90ace4f58530ada886179c56406c705a4b296af0d7cfb3893dc49316",
     "ci\\illustration_lineage_results.json": "fbfd251b81af96302bbc9f1d1076d41428f0e24f1a122eb39e7749198704677e",
     "ci\\claim_data_ties_results.json": "8a4fdcc24932e5f17f87aee333bc8e35a54b9072b158b0ab3ac926c03964ff92",
     "ci\\author_claims_results.json": "80127dd805b3eea3a07809cd293b7bbd1743f7852f146618262d41f54067bdc8",
@@ -339,14 +339,15 @@
       "name": "L13_cross_tree",
       "script": "ci\\cross_tree_consistency_check.py",
       "return_code": 0,
-      "status": "PASS",
+      "status": "SKIP",
       "summary": {
         "total_pairs": 12,
-        "match": 11,
-        "diverged_expected": 1,
+        "match": 0,
+        "diverged_expected": 0,
         "diverged_unexpected": 0,
-        "missing_neurips": 0,
-        "missing_icml": 0,
+        "missing_current": 0,
+        "missing_upstream": 0,
+        "skipped": 12,
         "ok": 12,
         "fail": 0
       },
@@ -602,9 +603,9 @@
       "suite": "provenance",
       "purpose": "Result JSONs, scripts, environment, and bundle contents are reconstructible enough for the stated threat model.",
       "status": "PASS",
-      "passed": 3,
+      "passed": 2,
       "failed": 0,
-      "skipped": 0,
+      "skipped": 1,
       "members": [
         {
           "check": "L11_scripts",
@@ -616,7 +617,7 @@
           "check": "L13_cross_tree",
           "script": "ci\\cross_tree_consistency_check.py",
           "severity": "blocker",
-          "status": "PASS"
+          "status": "SKIP"
         },
         {
           "check": "subproc__result_provenance",
@@ -725,5 +726,5 @@
       ]
     }
   ],
-  "certificate_self_hash": "3b48662839e44469f4fb6445e6f0300bec8bbb12182d2f750ceed01558b845b4"
+  "certificate_self_hash": "7f26e1eccac10903646d6dbb499102925d9a12f283d82b43b27dbe8839017ac6"
 }

@@ -6,8 +6,8 @@
     "drift": 0,
     "missing": 0
   },
-  "paper_path": "C:\\src\\NeurIPS\\paper\\main.tex",
-  "registry_path": "C:\\src\\NeurIPS\\CLAIM_AUDIT.md",
+  "paper_path": "paper\\main.tex",
+  "registry_path": "CLAIM_AUDIT.md",
   "lexicon_protected_terms": [
     "feasibility cliff",
     "$\\delta_{\\min} \\geq (\\tau/m)\\sqrt{k/(1-\\rho(k-1))}$",

@@ -1,7 +1,7 @@
 # Figure Audit — NeurIPS 2026 Submission `main.tex`
 
-Source paper: `C:\src\neurips\paper\main.tex` (2,581 lines)
-Build log: `C:\src\neurips\paper\main.log` (PDF builds clean — no Overfull \hbox)
+Source paper: `paper\main.tex` (2,581 lines)
+Build log: `paper\main.log` (PDF builds clean — no Overfull \hbox)
 Audit date: 2026-05-02
 
 ---
@@ -20,7 +20,7 @@ Audit date: 2026-05-02
 
 ### Figure 1 (`fig:pipeline`) — Algorithm 1 storyboard
 - Caption length: **49 words** (OK)
-- Source: `C:\src\ICML_2026_Template\rebuttal\experiments\algorithm1_storyboard\build_storyboard.py`
+- Source: `rebuttal\experiments\algorithm1_storyboard\build_storyboard.py`
 - Width: `\textwidth` (figure*, two-column span) — full utilization
 - Font sizes (matplotlib): panel titles 12 pt bold, body labels 10–11.5 pt, sub-captions 8.5 pt. Type-1 fonts (`pdf.fonttype=42`). **Acceptable** since rendered at full text width.
 - Build warnings: none specific
@@ -39,7 +39,7 @@ Audit date: 2026-05-02
 
 ### Figure 3 (`fig:gram_eigendecomp`) — Gram eigendecomposition
 - Caption length: **51 words** (OK)
-- Source: `C:\src\ICML_2026_Template\rebuttal\experiments\dct_analysis\gram_eigendecomposition.py`
+- Source: `rebuttal\experiments\dct_analysis\gram_eigendecomposition.py`
 - Width: `0.85\columnwidth` (single column)
 - Font sizes (matplotlib): `font.size=14, axes.titlesize=15, axes.labelsize=14, xtick=12, ytick=12, legend=12`. Source is 15×11 inches (6 panels). After scaling to ~338 pt (vs. 907 pt native), effective fontsize ≈ 5.2 pt for ticks. **Concern**: 6-panel layout in a single-column slot is a heavy down-scale — labels may be marginal.
 - Caption opening: `\textbf{Embedding-derived $\hat{\rho}$ ...}` — **PASS**
@@ -50,7 +50,7 @@ Audit date: 2026-05-02
 
 ### Figure 4 (`fig:per_task`) — Per-task correlation
 - Caption length: **59 words** (OK)
-- Source: `C:\src\ICML_2026_Template\rebuttal\experiments\per_task_correlation.py`
+- Source: `rebuttal\experiments\per_task_correlation.py`
 - Width: `0.85\columnwidth` (single column)
 - Font sizes (matplotlib): `font.size=14, axes.labelsize=14, xtick=12, ytick=12, legend=12`. Includes some inline `fontsize=10`/`fontsize=11` overrides for cell text. Source `figsize=(13, 5)` → requested 338 pt vs. native 923 pt = 2.7× downscale. Effective tick label size ~4.5 pt. **Concern.**
 - Type-1 fonts: forced (`pdf.fonttype=42`) — PASS
@@ -60,7 +60,7 @@ Audit date: 2026-05-02
 
 ### Figure 5 (`fig:constrained_decoding`) — Constrained decoding
 - Caption length: **53 words** (OK)
-- Source: `C:\src\ICML_2026_Template\rebuttal\experiments\constrained_decoding\plot_constrained_decoding.py`
+- Source: `rebuttal\experiments\constrained_decoding\plot_constrained_decoding.py`
 - Width: **`0.62\columnwidth`** — borderline; under-utilizes column space
 - Font sizes (matplotlib): `font.size=13, axes=13, xtick=12, ytick=12`, legend block uses `fontsize=15`. Source `figsize=(10, 2.7)` → log shows requested 246 pt vs. native 711 pt = **2.89× downscale**. Effective tick fontsize ≈ 4.2 pt. The legend "Standard"/"Constrained" labels at fontsize=15 will scale to ~5.2 pt.
 - Type-1 fonts: NOT forced in this script — same concern as Fig 3.
@@ -84,8 +84,8 @@ Audit date: 2026-05-02
 
 ### Figure 7 (`fig:cross_model` / `fig:soft_constraint_cliff`) — cross-model + soft constraints
 - Caption length: **92 words — OVER 80** ⚠
-- Source (a): `C:\src\ICML_2026_Template\rebuttal\experiments\cross_model\plot_cross_model.py`
-- Source (b): `C:\src\ICML_2026_Template\rebuttal\experiments\soft_constraints\soft_constraint_pilot.py`
+- Source (a): `rebuttal\experiments\cross_model\plot_cross_model.py`
+- Source (b): `rebuttal\experiments\soft_constraints\soft_constraint_pilot.py`
 - Width: minipages **`0.40\columnwidth`** (a) + **`0.56\columnwidth`** (b) — **both under 0.6** ⚠
 - Font sizes:
   - (a) `font.size=13, axes.titlesize=15, axes.labelsize=13, xtick=12, ytick=12`. Source `figsize=(12, 6)` → requested 159 pt vs. native 451 pt = **2.84× downscale**. Effective tick fontsize ≈ 4.2 pt; cell-text annotations at `fontsize=11` → ~3.9 pt. **Worst legibility risk in the paper.** Title at 14 pt → ~4.9 pt.
@@ -101,7 +101,7 @@ Audit date: 2026-05-02
 
 ### Figure 8 (`fig:rw_quadrant` / `fig:limitations_envelope`) — Combined related-work + limitations envelope
 - Caption length: **75 words** (OK, under 80 but close)
-- Source: `C:\src\neurips\paper\figures\related_envelope_combined.tex` (TikZ)
+- Source: `paper\figures\related_envelope_combined.tex` (TikZ)
 - Width: minipages `0.58\linewidth` (a) + `0.40\linewidth` (b)
 - Font sizes: `\scriptsize` body, `\tiny` for citations, corner labels, all 8 limitation cards, and band labels. Quadrant frame is 10×5.5 cm × 0.7cm scale = ~7×3.85cm rendered.
 - Caption opening: `\textbf{Where this work sits and where it stops.}` — **PASS**

@@ -77,6 +77,11 @@ PII_PATTERNS = [
     re.compile(r"Paul[\s_-]*Carver[\s_-]*Tiffany", re.IGNORECASE),
     re.compile(r"@gmail\.com", re.IGNORECASE),
     re.compile(r"C:\\Users\\paulc", re.IGNORECASE),
+    # Local-machine path roots (any C:\src\ or C:/src/ outside an allowlist
+    # is a fingerprint -- author machine layout disclosure).
+    re.compile(r"C:[\\/]+src[\\/]+", re.IGNORECASE),
+    # Prior-template directory name -- venue label + project layout fingerprint.
+    re.compile(r"ICML_2026_Template", re.IGNORECASE),
 ]
 
 # Files where PII patterns are EXPECTED (regex sources, allowlist, etc.)
@@ -96,6 +101,19 @@ PII_SCRUB_AT_ZIP = {
     "ci/dependency_fingerprint.py",
     "ci/supplementary_manifest.json",
     "ci/supplementary_surface_results.json",
+    # Cert result JSONs that record absolute author-machine paths in their
+    # _meta blocks. Useful for review (paths are reproducible-by-content via
+    # the relative-path companion fields), so scrub at zip-time rather than
+    # excluding outright.
+    "ci/bundle_verification_results.json",
+    "ci/cert_anonymity_results.json",
+    "ci/citation_integrity_results.json",
+    "ci/claim_audit_results.json",
+    "ci/claim_coverage_uncovered.json",
+    "ci/cross_claim_consistency_results.json",
+    "ci/license_clearance_results.json",
+    "ci/link_integrity_results.json",
+    "ci/pdf_camera_ready_results.json",
 }
 
 TEXT_LIKE_SUFFIXES = (".tex", ".bib", ".sty", ".cls", ".bst", ".md",
@@ -174,6 +192,16 @@ def scrub_text(text: str) -> str:
                   "<redacted_user_path>", text, flags=re.IGNORECASE)
     text = re.sub(r"C:\\Users\\paulc(\\[A-Za-z0-9_.\-]+)*",
                   "<redacted_user_path>", text, flags=re.IGNORECASE)
+    # Local repo paths: collapse C:\src\NeurIPS\foo or C:\src\ICML_2026_Template\foo
+    # to neutral relative form. Keeps trailing path segments readable.
+    text = re.sub(r"C:[\\/]+src[\\/]+(NeurIPS|neurips|ICML_2026_Template)[\\/]+",
+                  "", text, flags=re.IGNORECASE)
+    text = re.sub(r"C:[\\/]+src[\\/]+(NeurIPS|neurips|ICML_2026_Template)\b",
+                  "<repo>", text, flags=re.IGNORECASE)
+    # Catchall for any other C:\src\* roots
+    text = re.sub(r"C:[\\/]+src[\\/]+", "<repo>/", text, flags=re.IGNORECASE)
+    # Strip standalone prior-template name mentions
+    text = re.sub(r"\bICML_2026_Template\b", "<prior_template>", text)
     text = re.sub(r"paulctiffany@gmail\.com", "<redacted_email>",
                   text, flags=re.IGNORECASE)
     text = re.sub(r"Paul[\s_-]*Carver[\s_-]*Tiffany( III)?",

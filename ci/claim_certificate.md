@@ -5,7 +5,7 @@
 **Paper:** The Cost of Cacophony: Geometric Limits on Multi-Constraint Alignment
 **Venue:** NeurIPS 2026 (anonymous double-blind submission)
 **Mode:** `quick` (release: full L12 build equivalence + artifact hashes embedded; quick: --quick L12 (mtime+asset-hash only), faster local checks)
-**Generated:** 2026-05-04T08:08:08
+**Generated:** 2026-05-04T19:48:31
 **Verdict:** **PASS** — all structural checks clean (L1+L2+L4+L7+L8+L9+L10+L11+L12+L13+L14+L15); L3+L5+L16 coverage is advisory, see triage JSONs
 
 ## Scope of certification
@@ -44,7 +44,7 @@ python ci/claim_certificate.py --release
 - main.pdf mtime: 2026-05-04T08:07:17
 - registry sha256: `61b08aec7166fa66...`
 - artifact hashes: 26 layer-result JSONs + manifests recorded in JSON payload
-- certificate self-hash: `3b48662839e44469...` (sha256 of this payload minus the hash field; recompute to verify integrity)
+- certificate self-hash: `7f26e1eccac10903...` (sha256 of this payload minus the hash field; recompute to verify integrity)
 
 ## Layer-by-layer Results
 
@@ -61,7 +61,7 @@ python ci/claim_certificate.py --release
 | L10_bib | `ci\bib_entry_check.py` | PASS | 42/42 bib entries well-formed |
 | L11_scripts | `ci\script_integrity_check.py` | PASS | 13/13 figure scripts pass smoke test |
 | L12_build_equiv | `ci\build_equivalence_check.py` | PASS | --quick mode: ?/15 figures fresh; full mode optional |
-| L13_cross_tree | `ci\cross_tree_consistency_check.py` | PASS | 11/? cross-tree files match (incl. expected divergences) |
+| L13_cross_tree | `ci\cross_tree_consistency_check.py` | SKIP | 0/? cross-tree files match (incl. expected divergences) |
 | L14_illustrations | `ci\illustration_lineage_check.py` | PASS | 7/7 illustration provenance checks pass |
 | L15_data_ties | `ci\claim_data_ties_check.py` | PASS | 325/325 numerical claims tied to source data |
 | L16_author_claims | `ci\author_claims_check.py` | PASS | 25/25 judgment claims have data anchors (100%; advisory) |

@@ -12,7 +12,7 @@ Principle throughout: **never mechanical, always semantic**. The patterns are te
 
 ### 1a. AGI-26 inheritance (verbatim quotes from the in-flight follow-on paper)
 
-AGI-26 (`C:\src\cosmogenesis\agi2026\build\main.pdf`) explicitly cites cacophony as `[1]` and quotes these phrasings. Any drift here breaks the lineage.
+AGI-26 (the in-flight follow-on paper) explicitly cites cacophony as `[1]` and quotes these phrasings. Any drift here breaks the lineage.
 
 | Phrase | Why protected |
 |--------|---------------|

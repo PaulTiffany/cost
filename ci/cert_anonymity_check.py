@@ -141,6 +141,20 @@ _PATTERNS: list[tuple[str, re.Pattern[str], str]] = [
     ("agi26_hyphen",
      re.compile(r"\bAGI[\-]?26\b", re.IGNORECASE),
      "warn"),  # severity set per-file for cert payload -> blocker
+
+    # Local-machine roots and prior-template fingerprints. These leak the
+    # author's local directory layout and the prior submission venue.
+    # Surfaced because OpenReview supplementary #23404 shipped with these
+    # in README.md and ci/figure_audit_report.md; prior detector missed them.
+    # Warn-severity by default: build_4open_zip.py scrubs these at zip-time
+    # for files in PII_SCRUB_AT_ZIP. They become blocker only when found in
+    # cert payload (claim_certificate.json/.md), which must be hand-clean.
+    ("path_local_src_root",
+     re.compile(r"C:[\\/]+src[\\/]+", re.IGNORECASE),
+     "warn"),
+    ("project_prior_template",
+     re.compile(r"\bICML_2026_Template\b"),
+     "warn"),
 ]
 
 

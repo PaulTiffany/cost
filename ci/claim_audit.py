@@ -768,8 +768,8 @@ def write_json(results: list[ClaimResult], lexicon_terms: list[str], tier_label:
             "drift": n_drift,
             "missing": n_missing,
         },
-        "paper_path": str(MAIN_TEX),
-        "registry_path": str(CLAIMS_MD),
+        "paper_path": str(MAIN_TEX.relative_to(REPO_ROOT)),
+        "registry_path": str(CLAIMS_MD.relative_to(REPO_ROOT)),
         "lexicon_protected_terms": lexicon_terms,
         "claims": [r.to_dict() for r in results],
     }

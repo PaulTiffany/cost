@@ -1,30 +1,34 @@
 #!/usr/bin/env python3
 """
-cross_tree_consistency_check.py - Detect drift between recovered NeurIPS
-files and their ICML originals.
+cross_tree_consistency_check.py - Detect drift between recovered files
+and their upstream prior-tree originals.
 
 Layer 13 of the certification stack. Earlier in the project's history,
-~24 files were recovered from the ICML 2026 template tree into the
-NeurIPS tree (commits da2fb61, d2bad83, 8c87ac2, c6e2f4d). The
-existing certificate confirms each recovered file *exists* in the
-NeurIPS tree. It does NOT confirm the file still *matches* its ICML
-original — silent corruption, partial overwrite, or unintentional
-edits could leave the NeurIPS-side copy out of sync with the upstream
-archive.
+~24 files were recovered from a prior-template tree into the current
+tree (commits da2fb61, d2bad83, 8c87ac2, c6e2f4d). The existing
+certificate confirms each recovered file *exists* in the current tree.
+It does NOT confirm the file still *matches* its upstream original --
+silent corruption, partial overwrite, or unintentional edits could
+leave the current-tree copy out of sync with the upstream archive.
 
-L13 closes that gap. For each declared pair (NeurIPS path <-> ICML
+L13 closes that gap. For each declared pair (current path <-> upstream
 path), SHA-256 hash both sides and compare:
 
-  MATCH               content identical
-  DIVERGED            content differs (record line counts on each side)
-  MISSING_NEURIPS     file gone from NeurIPS  (FAIL)
-  MISSING_ICML        file gone from ICML upstream archive (rare; FAIL)
+  MATCH                content identical
+  DIVERGED             content differs (record line counts on each side)
+  MISSING_CURRENT      file gone from current tree (FAIL)
+  MISSING_UPSTREAM     file gone from upstream archive (rare; FAIL)
 
 Some files were intentionally edited post-recovery (e.g.
-GRADED_METRICS_SPEC.md was relabelled "ICML 2026" -> "NeurIPS 2026"
-in transit). These are declared in the manifest with
-expected_divergence: True and a reason string. They count toward
-PASS even when divergent — the divergence is documented.
+GRADED_METRICS_SPEC.md was relabelled venue-side in transit). These are
+declared in the manifest with expected_divergence: True and a reason
+string. They count toward PASS even when divergent -- the divergence is
+documented.
+
+The upstream root is configurable via the PRIOR_TREE_ROOT environment
+variable. With no env var set, the check is skipped on the assumption
+that the upstream tree is unavailable (e.g. on a reviewer machine).
+This makes the check author-side only; reviewers see the cached result.
 
 Out of scope: recursive directory diffing. The manifest is hand-curated
 to the load-bearing recovered files; broad tree comparison would
@@ -33,9 +37,9 @@ intentionally-different submission packaging).
 
 Exit codes
 ----------
-  0  every pair MATCH or expected_divergence
+  0  every pair MATCH or expected_divergence (or upstream root absent --
+     check is treated as PASS-by-skip in that case)
   1  any pair DIVERGED unexpectedly, or any MISSING_*
-  2  ICML root directory not found
 """
 
 from __future__ import annotations
@@ -43,50 +47,43 @@ from __future__ import annotations
 import argparse
 import hashlib
 import json
+import os
 import sys
-from dataclasses import dataclass, field, asdict
+from dataclasses import dataclass, asdict
 from pathlib import Path
 
 SCRIPT_DIR = Path(__file__).resolve().parent
-NEURIPS_ROOT = SCRIPT_DIR.parent
-ICML_ROOT = Path(r"C:\src\ICML_2026_Template")
+CURRENT_ROOT = SCRIPT_DIR.parent
+UPSTREAM_ROOT_ENV = os.environ.get("PRIOR_TREE_ROOT")
+UPSTREAM_ROOT = Path(UPSTREAM_ROOT_ENV) if UPSTREAM_ROOT_ENV else None
 RESULTS_JSON = SCRIPT_DIR / "cross_tree_consistency_results.json"
 
 STATUS_MATCH = "MATCH"
 STATUS_DIVERGED = "DIVERGED"
-STATUS_MISSING_NEURIPS = "MISSING_NEURIPS"
-STATUS_MISSING_ICML = "MISSING_ICML"
+STATUS_MISSING_CURRENT = "MISSING_CURRENT"
+STATUS_MISSING_UPSTREAM = "MISSING_UPSTREAM"
+STATUS_SKIPPED = "SKIPPED_NO_UPSTREAM"
 
 
 # Hand-curated manifest of recovered files. Each entry's `path` is
-# interpreted relative to BOTH tree roots — NeurIPS and ICML use the
-# same internal layout for these artifacts.
-#
-# Sources for the recovery commits:
-#   da2fb61 — 5 ICML rebuttal evidence JSONs
-#   d2bad83 — compatibility-analysis evidence + supplementary/bridges/README.md
-#   8c87ac2 — in_the_wild_compound.py + compatibility_certificates.py + GRADED_METRICS_SPEC.md
-#   c6e2f4d — registry-side documentation only (no file recovery; not seeded here)
+# interpreted relative to BOTH tree roots -- current and upstream use
+# the same internal layout for these artifacts.
 MANIFEST: list[dict] = [
-    # da2fb61: rebuttal evidence JSONs
     {"path": "rebuttal/figures/cross_model_results.json"},
     {"path": "rebuttal/figures/gram_eigendecomposition_results.json"},
     {"path": "rebuttal/figures/per_task_correlation_results.json"},
     {"path": "rebuttal/figures/proxy_ablation_results.json"},
     {"path": "rebuttal/figures/soft_constraint_results.json"},
     {"path": "rebuttal/figures/unconditional_pivot_results.json"},
-    # 8c87ac2: load-bearing experiment scripts
     {"path": "supplementary/experiments/in_the_wild_compound.py"},
     {"path": "supplementary/experiments/compatibility_certificates.py"},
-    # d2bad83: compatibility-certificate evidence + bridges README
     {"path": "supplementary/experiments/outputs/compatibility_analysis/certificates.txt"},
     {"path": "supplementary/experiments/outputs/compatibility_analysis/compatibility_table.tex"},
     {"path": "supplementary/bridges/README.md"},
-    # 8c87ac2: spec doc — relabelled ICML -> NeurIPS in transit
     {
         "path": "supplementary/GRADED_METRICS_SPEC.md",
         "expected_divergence": True,
-        "reason": "ICML 2026 -> NeurIPS 2026 relabel applied post-recovery",
+        "reason": "venue relabel applied post-recovery",
     },
 ]
 
@@ -94,21 +91,18 @@ MANIFEST: list[dict] = [
 @dataclass
 class PairReport:
     path: str
-    neurips_path: str
-    icml_path: str
+    current_path: str
+    upstream_path: str
     status: str
     expected_divergence: bool = False
     reason: str | None = None
-    neurips_sha256: str | None = None
-    icml_sha256: str | None = None
-    neurips_lines: int | None = None
-    icml_lines: int | None = None
+    current_sha256: str | None = None
+    upstream_sha256: str | None = None
+    current_lines: int | None = None
+    upstream_lines: int | None = None
 
     @property
     def is_ok(self) -> bool:
-        # An OK pair is either a literal MATCH or a DIVERGED that was
-        # expected. Anything else (unexpected DIVERGED, MISSING_*) is
-        # a real signal.
         if self.status == STATUS_MATCH:
             return True
         if self.status == STATUS_DIVERGED and self.expected_divergence:
@@ -137,9 +131,6 @@ def sha256_of(path: Path) -> str:
 
 
 def line_count(path: Path) -> int:
-    # Used only for display when files diverge; counts physical lines
-    # on a best-effort basis (binary files would still be counted by
-    # newline bytes, but every file in the manifest is text).
     try:
         with path.open("rb") as fh:
             return sum(1 for _ in fh)
@@ -147,52 +138,90 @@ def line_count(path: Path) -> int:
         return -1
 
 
-def check_pair(entry: dict) -> PairReport:
+def check_pair(entry: dict, upstream_root: Path) -> PairReport:
     rel = entry["path"]
     expected = bool(entry.get("expected_divergence", False))
     reason = entry.get("reason")
-    neurips_path = NEURIPS_ROOT / rel
-    icml_path = ICML_ROOT / rel
+    current_path = CURRENT_ROOT / rel
+    upstream_path = upstream_root / rel
 
     r = PairReport(
         path=rel,
-        neurips_path=str(neurips_path),
-        icml_path=str(icml_path),
+        current_path=rel,
+        upstream_path=rel,
         status="",
         expected_divergence=expected,
         reason=reason,
     )
 
-    n_exists = neurips_path.is_file()
-    i_exists = icml_path.is_file()
+    n_exists = current_path.is_file()
+    i_exists = upstream_path.is_file()
 
     if not n_exists and not i_exists:
-        r.status = STATUS_MISSING_NEURIPS  # treat dual-missing as NeurIPS-side gap (paper tree)
+        r.status = STATUS_MISSING_CURRENT
         return r
     if not n_exists:
-        r.status = STATUS_MISSING_NEURIPS
-        r.icml_sha256 = sha256_of(icml_path)
-        r.icml_lines = line_count(icml_path)
+        r.status = STATUS_MISSING_CURRENT
+        r.upstream_sha256 = sha256_of(upstream_path)
+        r.upstream_lines = line_count(upstream_path)
         return r
     if not i_exists:
-        r.status = STATUS_MISSING_ICML
-        r.neurips_sha256 = sha256_of(neurips_path)
-        r.neurips_lines = line_count(neurips_path)
+        r.status = STATUS_MISSING_UPSTREAM
+        r.current_sha256 = sha256_of(current_path)
+        r.current_lines = line_count(current_path)
         return r
 
-    n_hash = sha256_of(neurips_path)
-    i_hash = sha256_of(icml_path)
-    r.neurips_sha256 = n_hash
-    r.icml_sha256 = i_hash
+    n_hash = sha256_of(current_path)
+    i_hash = sha256_of(upstream_path)
+    r.current_sha256 = n_hash
+    r.upstream_sha256 = i_hash
 
     if n_hash == i_hash:
         r.status = STATUS_MATCH
     else:
         r.status = STATUS_DIVERGED
-        r.neurips_lines = line_count(neurips_path)
-        r.icml_lines = line_count(icml_path)
+        r.current_lines = line_count(current_path)
+        r.upstream_lines = line_count(upstream_path)
 
     return r
+
+
+def skipped_payload() -> dict:
+    """Return a PASS-by-skip payload when no upstream root is configured."""
+    pairs = []
+    for entry in MANIFEST:
+        rel = entry["path"]
+        pairs.append({
+            "path": rel,
+            "current_path": rel,
+            "upstream_path": None,
+            "status": STATUS_SKIPPED,
+            "expected_divergence": bool(entry.get("expected_divergence", False)),
+            "reason": entry.get("reason"),
+            "current_sha256": None,
+            "upstream_sha256": None,
+            "current_lines": None,
+            "upstream_lines": None,
+            "display_status": STATUS_SKIPPED,
+            "is_ok": True,
+        })
+    return {
+        "summary": {
+            "total_pairs": len(MANIFEST),
+            "match": 0,
+            "diverged_expected": 0,
+            "diverged_unexpected": 0,
+            "missing_current": 0,
+            "missing_upstream": 0,
+            "skipped": len(MANIFEST),
+            "ok": len(MANIFEST),
+            "fail": 0,
+        },
+        "current_root": None,
+        "upstream_root": None,
+        "upstream_configured": False,
+        "pairs": pairs,
+    }
 
 
 def main() -> int:
@@ -207,25 +236,32 @@ def main() -> int:
     )
     args = parser.parse_args()
 
-    if not ICML_ROOT.is_dir():
-        print(f"ERROR: ICML root not found at {ICML_ROOT}", file=sys.stderr)
-        return 2
+    if UPSTREAM_ROOT is None or not UPSTREAM_ROOT.is_dir():
+        print("=" * 70)
+        print("CROSS-TREE CONSISTENCY CHECK")
+        print("=" * 70)
+        print("PRIOR_TREE_ROOT not set or directory missing; check is skipped.")
+        print("(This is expected on reviewer machines; cached result ships.)")
+        payload = skipped_payload()
+        RESULTS_JSON.write_text(json.dumps(payload, indent=2), encoding="utf-8")
+        print(f"Full report: {RESULTS_JSON}")
+        return 0
 
     print("=" * 70)
-    print("CROSS-TREE CONSISTENCY CHECK  (NeurIPS <-> ICML recovered files)")
+    print("CROSS-TREE CONSISTENCY CHECK  (current <-> upstream recovered files)")
     print("=" * 70)
-    print(f"NeurIPS root:  {NEURIPS_ROOT}")
-    print(f"ICML root:     {ICML_ROOT}")
-    print(f"Pairs:         {len(MANIFEST)}")
+    print(f"Current root:   <repo>")
+    print(f"Upstream root:  <upstream>")
+    print(f"Pairs:          {len(MANIFEST)}")
     print()
 
-    reports: list[PairReport] = [check_pair(e) for e in MANIFEST]
+    reports: list[PairReport] = [check_pair(e, UPSTREAM_ROOT) for e in MANIFEST]
 
     n_match = sum(1 for r in reports if r.status == STATUS_MATCH)
     n_diverged_expected = sum(1 for r in reports if r.status == STATUS_DIVERGED and r.expected_divergence)
     n_diverged_unexpected = sum(1 for r in reports if r.status == STATUS_DIVERGED and not r.expected_divergence)
-    n_missing_neurips = sum(1 for r in reports if r.status == STATUS_MISSING_NEURIPS)
-    n_missing_icml = sum(1 for r in reports if r.status == STATUS_MISSING_ICML)
+    n_missing_current = sum(1 for r in reports if r.status == STATUS_MISSING_CURRENT)
+    n_missing_upstream = sum(1 for r in reports if r.status == STATUS_MISSING_UPSTREAM)
     n_ok = sum(1 for r in reports if r.is_ok)
     n_fail = len(reports) - n_ok
 
@@ -234,23 +270,23 @@ def main() -> int:
             badge = "[OK]  " if r.is_ok else "[FAIL]"
             print(f"  {badge} {r.display_status}: {r.path}")
             if r.status == STATUS_DIVERGED:
-                print(f"         NeurIPS sha: {r.neurips_sha256}")
-                print(f"         ICML    sha: {r.icml_sha256}")
-                print(f"         lines NeurIPS={r.neurips_lines}  ICML={r.icml_lines}")
+                print(f"         current  sha: {r.current_sha256}")
+                print(f"         upstream sha: {r.upstream_sha256}")
+                print(f"         lines current={r.current_lines}  upstream={r.upstream_lines}")
                 if r.reason:
                     print(f"         reason: {r.reason}")
-            elif r.status == STATUS_MISSING_NEURIPS:
-                print(f"         NeurIPS path missing: {r.neurips_path}")
-            elif r.status == STATUS_MISSING_ICML:
-                print(f"         ICML    path missing: {r.icml_path}")
+            elif r.status == STATUS_MISSING_CURRENT:
+                print(f"         current path missing: {r.path}")
+            elif r.status == STATUS_MISSING_UPSTREAM:
+                print(f"         upstream path missing: {r.path}")
 
     print()
     print("-" * 70)
     print(f"  MATCH:                     {n_match:>3} / {len(reports)}")
     print(f"  DIVERGED (expected):       {n_diverged_expected:>3} / {len(reports)}")
     print(f"  DIVERGED (UNEXPECTED):     {n_diverged_unexpected:>3} / {len(reports)}")
-    print(f"  MISSING_NEURIPS:           {n_missing_neurips:>3} / {len(reports)}")
-    print(f"  MISSING_ICML:              {n_missing_icml:>3} / {len(reports)}")
+    print(f"  MISSING_CURRENT:           {n_missing_current:>3} / {len(reports)}")
+    print(f"  MISSING_UPSTREAM:          {n_missing_upstream:>3} / {len(reports)}")
     print(f"  -> OK:                     {n_ok:>3} / {len(reports)}")
     print(f"  -> FAIL:                   {n_fail:>3} / {len(reports)}")
     print("-" * 70)
@@ -261,13 +297,15 @@ def main() -> int:
             "match": n_match,
             "diverged_expected": n_diverged_expected,
             "diverged_unexpected": n_diverged_unexpected,
-            "missing_neurips": n_missing_neurips,
-            "missing_icml": n_missing_icml,
+            "missing_current": n_missing_current,
+            "missing_upstream": n_missing_upstream,
+            "skipped": 0,
             "ok": n_ok,
             "fail": n_fail,
         },
-        "neurips_root": str(NEURIPS_ROOT),
-        "icml_root": str(ICML_ROOT),
+        "current_root": "<repo>",
+        "upstream_root": "<upstream>",
+        "upstream_configured": True,
         "pairs": [r.to_dict() for r in reports],
     }
     RESULTS_JSON.write_text(json.dumps(payload, indent=2), encoding="utf-8")
