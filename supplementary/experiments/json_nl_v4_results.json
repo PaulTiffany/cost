@@ -5519,5 +5519,27 @@
       ],
       "response_length": 200
     }
-  ]
+  ],
+  "_meta": {
+    "generator_script": "supplementary/bridges/json_nl_experiment_v4.py",
+    "generator_script_sha256": "fabd1d86931cb3c23ffc1da7e21bfd684b1f03a7228ee7580e6c0a5899cb6218",
+    "experiment": "json_nl_transfer_v4",
+    "n_trials": 320,
+    "parameters": {
+      "tiers": [
+        "control",
+        "low",
+        "moderate",
+        "high"
+      ],
+      "protocols": [
+        "one_shot",
+        "staged"
+      ],
+      "n_trials_per_cell": 40
+    },
+    "backfilled_at": "2026-05-03T23:37:10",
+    "backfill_note": "Provenance _meta backfilled by ci/backfill_meta.py to satisfy L20 result_provenance_check. Generator script and parameters reflect known invocation.",
+    "script_hash": "fabd1d86931cb3c23ffc1da7e21bfd684b1f03a7228ee7580e6c0a5899cb6218"
+  }
 }

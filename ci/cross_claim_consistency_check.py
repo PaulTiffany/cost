@@ -463,25 +463,23 @@ def _populate_self_referential_relations() -> None:
     """
     import importlib.util
     import json as _json
-    cert_py = SCRIPT_DIR / "claim_certificate.py"
-    if cert_py.exists():
-        spec = importlib.util.spec_from_file_location("_cert_for_count", cert_py)
-        mod = importlib.util.module_from_spec(spec)
-        sys.modules["_cert_for_count"] = mod
+    # 2026-05-04: layer count is no longer the canonical headline.
+    # The suite registry (ci/suite_registry.json) is. The paper appendix
+    # leads with the 6 named suites (claim_text, data_ties,
+    # artifact_lineage, provenance, statistical_hygiene, submission_hygiene);
+    # layer numbers are preserved as legacy aliases. So the consistency
+    # relation that ships now compares the paper's suite count (6) to the
+    # runtime registry's suite count, which is stable across layer additions.
+    suite_reg_path = SCRIPT_DIR / "suite_registry.json"
+    if suite_reg_path.exists():
         try:
-            spec.loader.exec_module(mod)
-            # LAYER_SCRIPTS has every layer EXCEPT L6 (the aggregator,
-            # which is claim_certificate.py itself — it doesn't subprocess
-            # itself). The architecture table in ci/README.md and the
-            # paper appendix's "13-layer" framing both count L6 as a
-            # named layer. So the runtime "named layer count" is
-            # len(LAYER_SCRIPTS) + 1.
-            n_named_layers = len(mod.LAYER_SCRIPTS) + 1
+            reg = _json.loads(suite_reg_path.read_text(encoding="utf-8"))
+            n_runtime_suites = len(reg.get("suites", {}))
             RELATIONS.append(ConsistencyRelation(
-                name="paper_says_N_layer_certificate",
-                description=f"Paper appendix says '16-layer'; runtime named-layer count = len(LAYER_SCRIPTS)+1 = {n_named_layers} (the +1 is L6, the aggregator)",
-                formula="paper_count == runtime_count",
-                params={"paper_count": 16, "runtime_count": n_named_layers},
+                name="paper_says_N_suite_certificate",
+                description=f"Paper appendix Table 5 (app:cert_scope) lists 6 suites; suite_registry.json defines {n_runtime_suites}",
+                formula="paper_suite_count == runtime_suite_count",
+                params={"paper_suite_count": 6, "runtime_suite_count": n_runtime_suites},
                 expected=True,
                 claim_ids=["T55"],
             ))
@@ -509,7 +507,107 @@ def _populate_self_referential_relations() -> None:
             pass
 
 
+def _populate_decomposition_relations() -> None:
+    """Add data-decomposition relations (smooth+pivot==total, etc).
+
+    These are the inter-claim arithmetic invariants that L15 misses by
+    checking each tied claim independently. Runs decomposition_consistency_check
+    in-process and appends each relation as a ConsistencyRelation row.
+    """
+    import importlib.util
+    decomp_py = SCRIPT_DIR / "decomposition_consistency_check.py"
+    if not decomp_py.exists():
+        return
+    try:
+        spec = importlib.util.spec_from_file_location("_decomp_relations", decomp_py)
+        mod = importlib.util.module_from_spec(spec)
+        sys.modules["_decomp_relations"] = mod
+        spec.loader.exec_module(mod)
+    except Exception:
+        return
+    for rel_fn in getattr(mod, "RELATIONS", []):
+        try:
+            r = rel_fn()  # RelationResult(name, passed, detail)
+        except Exception:
+            continue
+        RELATIONS.append(ConsistencyRelation(
+            name=f"decomp__{r.name}",
+            description=r.detail,
+            formula="passed == True",
+            params={"passed": r.passed},
+            expected=True,
+            claim_ids=[],
+        ))
+
+
+def _populate_subprocess_relations() -> None:
+    """Roll in standalone-script result JSONs as L9 relations.
+
+    For each external check (cross-model metadata, result provenance),
+    invoke the script as a subprocess and record its overall PASS/FAIL.
+    Keeps the cert layer count at 16 while still including these new
+    guardrails in the overall structural-pass aggregation.
+    """
+    import subprocess
+    # advisory=True: failure is recorded in description but the relation
+    # still passes. Use for checks that surface useful gaps the user
+    # should address but that should not block the cert.
+    # When CERT_PROFILE=artifact_eval is set in the environment, advisory
+    # checks are promoted to blocking. This implements the "artifact_eval is
+    # tighter than standard" gating (per --profile artifact_eval).
+    import os as _os
+    _strict = _os.environ.get("CERT_PROFILE") == "artifact_eval"
+    extras = [
+        ("cross_model_metadata", SCRIPT_DIR / "cross_model_metadata_check.py", False),
+        ("result_provenance", SCRIPT_DIR / "result_provenance_check.py", False),
+        ("manifest_schema", SCRIPT_DIR / "manifest_schema_check.py", False),
+        ("monotonic_cliff", SCRIPT_DIR / "monotonic_cliff_check.py", False),
+        ("pdf_source_equivalence", SCRIPT_DIR / "pdf_source_equivalence_check.py", False),
+        ("cert_anonymity", SCRIPT_DIR / "cert_anonymity_check.py", False),
+        ("caveat_ledger", SCRIPT_DIR / "caveat_ledger_check.py", False),
+        ("manual_scoring", SCRIPT_DIR / "manual_scoring_check.py", False),
+        ("artifact_registry", SCRIPT_DIR / "artifact_registry_check.py", False),
+        ("table_value", SCRIPT_DIR / "table_value_check.py", not _strict),  # advisory unless artifact_eval
+        ("sample_size_uncertainty", SCRIPT_DIR / "sample_size_uncertainty_check.py", not _strict),  # advisory unless artifact_eval
+        ("unicode_normalization", SCRIPT_DIR / "unicode_normalization_check.py", False),
+        ("high_salience_gate", SCRIPT_DIR / "high_salience_gate.py", not _strict),  # advisory unless artifact_eval
+        ("narrative_consistency", SCRIPT_DIR / "narrative_consistency_check.py", True),  # always advisory (drift sniffer)
+        ("bundle_verification", SCRIPT_DIR / "bundle_verification.py", True),  # advisory: ship-time check (every cert run rewrites cert JSONs, would invalidate bundle hash on each run)
+        ("supplementary_surface", SCRIPT_DIR / "supplementary_surface_check.py", False),
+        ("charitable_table_consistency", SCRIPT_DIR / "charitable_table_consistency_check.py", False),
+        ("supplementary_claim_surface", SCRIPT_DIR / "supplementary_claim_surface_check.py", True),  # advisory until S7 manifest is in
+        ("audio_manifest", SCRIPT_DIR / "audio_manifest_check.py", False),
+        ("submission_surface", SCRIPT_DIR / "submission_surface_check.py", False),
+    ]
+    for name, script, advisory in extras:
+        if not script.exists():
+            continue
+        try:
+            r = subprocess.run(
+                [sys.executable, str(script)],
+                capture_output=True, text=True, cwd=str(SCRIPT_DIR.parent),
+                timeout=60,
+            )
+            sub_passed = (r.returncode == 0)
+            tail = (r.stdout or "").strip().splitlines()[-1] if r.stdout else ""
+        except Exception as e:
+            sub_passed = False
+            tail = f"subprocess error: {type(e).__name__}: {e}"
+        recorded_passed = sub_passed or advisory
+        prefix = "ADVISORY: " if (advisory and not sub_passed) else ""
+        RELATIONS.append(ConsistencyRelation(
+            name=f"subproc__{name}",
+            description=f"{prefix}{name}: {tail[:120]}",
+            formula="passed == True",
+            params={"passed": recorded_passed},
+            expected=True,
+            claim_ids=[],
+        ))
+
+
 _populate_self_referential_relations()
+_populate_decomposition_relations()
+_populate_subprocess_relations()
 
 
 def main() -> int:

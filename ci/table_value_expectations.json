@@ -1,0 +1,93 @@
+{
+  "_meta": {
+    "description": "Manifest for table_value_check.py. Each entry binds a (label, row_key, col_key) -> expected_pattern. Patterns are Python re.search patterns; use lenient alternations to tolerate minor formatting variation.",
+    "usage": "Add entries freely. Patterns should be lenient (e.g. 76\\.9?% allows 76% or 76.9%). row_key must match the first cell of a data row after LaTeX stripping. For multi-header tables (tab:llm_bridge), col_key reflects the first (outer) header row cells.",
+    "col_key_note": "For resizebox tabular with multicolumn subheaders (tab:llm_bridge), the outer header row is treated as col keys. Use the stripped outer-header cell value (e.g. the model name span) as col_key. Inner sub-headers (1-shot, Delta) are absorbed into row parsing."
+  },
+  "expectations": [
+    {
+      "label": "tab:calibration",
+      "row_key": "Control",
+      "col_key": "1-shot",
+      "expected_pattern": "76[\\.]?[89]?%",
+      "note": "Control tier 1-shot pass rate ~76%; ties to calibration_pass_control_pct"
+    },
+    {
+      "label": "tab:calibration",
+      "row_key": "Control",
+      "col_key": "Failure",
+      "expected_pattern": "2[34]%",
+      "note": "Control failure rate 24%; ties to calibration_failure_control_pct"
+    },
+    {
+      "label": "tab:calibration",
+      "row_key": "Low",
+      "col_key": "Failure",
+      "expected_pattern": "4[34]%",
+      "note": "Low failure rate 44%; ties to calibration_failure_low_pct"
+    },
+    {
+      "label": "tab:calibration",
+      "row_key": "High",
+      "col_key": "1-shot",
+      "expected_pattern": "^2%$",
+      "note": "High tier 1-shot pass rate 2%; ties to calibration_pass_high_pct"
+    },
+    {
+      "label": "tab:calibration",
+      "row_key": "High",
+      "col_key": "Failure",
+      "expected_pattern": "9[78]%",
+      "note": "High failure rate 98%; ties to calibration_failure_high_pct"
+    },
+    {
+      "label": "tab:claude_family",
+      "row_key": "haiku-3",
+      "col_key": "Ratio",
+      "expected_pattern": "2\\.5",
+      "note": "haiku-3 staging ratio 2.5x; ties to claude_family_haiku3_ratio"
+    },
+    {
+      "label": "tab:claude_family",
+      "row_key": "opus-4.1",
+      "col_key": "Ratio",
+      "expected_pattern": "2[56]\\.[0-9]",
+      "note": "opus-4.1 staging ratio 26.4x (highest); ties to claude_family_opus41_ratio"
+    },
+    {
+      "label": "tab:claude_family",
+      "row_key": "opus-4.5",
+      "col_key": "Ratio",
+      "expected_pattern": "4\\.[78]",
+      "note": "opus-4.5 staging ratio 4.8x (frontier); ties to claude_family_opus45_ratio"
+    },
+    {
+      "label": "tab:claude_family",
+      "row_key": "sonnet-4",
+      "col_key": "Ratio",
+      "expected_pattern": "4\\.[34]",
+      "note": "sonnet-4 staging ratio 4.4x; ties to claude_family_sonnet4_ratio"
+    },
+    {
+      "label": "tab:json_nl",
+      "row_key": "control",
+      "col_key": "Failure",
+      "expected_pattern": "7[67]\\.?[05]?%",
+      "note": "JSON-NL control failure rate 77.5%; ties to json_nl_failure_control_pct"
+    },
+    {
+      "label": "tab:json_nl",
+      "row_key": "high",
+      "col_key": "Failure",
+      "expected_pattern": "100\\.?0?%",
+      "note": "JSON-NL high failure rate 100%; ties to json_nl_failure_high_pct"
+    },
+    {
+      "label": "tab:lipschitz_calibration",
+      "row_key": "Qwen-2.5-Coder",
+      "col_key": "L",
+      "expected_pattern": "0\\.04[78]",
+      "note": "Qwen-2.5-Coder Lipschitz L-hat ~0.048"
+    }
+  ]
+}

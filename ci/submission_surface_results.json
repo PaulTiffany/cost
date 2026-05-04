@@ -1,0 +1,42 @@
+{
+  "check": "submission_surface_check",
+  "status": "PASS",
+  "exit_code": 0,
+  "summary": {
+    "hard_failures": 0,
+    "soft_failures": 0,
+    "passed": 6,
+    "warnings": 0
+  },
+  "hard_failures": [],
+  "soft_failures": [],
+  "passed": [
+    {
+      "check": "manifest_parse",
+      "detail": "ci/submission_surface_manifest.json is valid JSON"
+    },
+    {
+      "check": "entries_present",
+      "detail": "87 entries found"
+    },
+    {
+      "check": "per_entry_schema",
+      "detail": "Checked 87 entries; hard failures above if any schema issues found"
+    },
+    {
+      "check": "draft_png_not_shipped",
+      "path": "supplementary/illustrations/algorithm1_routing_draft.png",
+      "detail": "Draft PNG correctly role=internal_or_excluded, expected_in_submission=False"
+    },
+    {
+      "check": "draft_png_not_shipped",
+      "path": "supplementary/illustrations/staging_vs_refine_draft.png",
+      "detail": "Draft PNG correctly role=internal_or_excluded, expected_in_submission=False"
+    },
+    {
+      "check": "role_counts",
+      "detail": "evidence_asset=25, reviewer_aid=3, raw_observation=1, provenance_source=46, internal_or_excluded=12; total entries=87, expected_in_submission=29"
+    }
+  ],
+  "warnings": []
+}

@@ -1,0 +1,298 @@
+{
+  "summary": {
+    "total": 32,
+    "ok": 13,
+    "warn": 5,
+    "unknown": 14
+  },
+  "per_claim": [
+    {
+      "name": "constitution_high_rho_fraction_pct",
+      "expected": 7.37,
+      "n_trials": 34,
+      "se_halfwidth_pct": 8.783,
+      "stated_precision_pct": 0.01,
+      "verdict": "OVERPRECISE",
+      "detail": "Stated precision 0.010% is finer than SE half-width 8.8% (N=34); trigger: finer than field-norm 0.1% (and finer than SE). N source: from _meta.n_trials (grand total)."
+    },
+    {
+      "name": "json_nl_failure_control_pct",
+      "expected": 77.5,
+      "n_trials": 40,
+      "se_halfwidth_pct": 12.941,
+      "stated_precision_pct": 0.1,
+      "verdict": "OK_FIELD_NORM",
+      "detail": "Stated precision 0.100% wider than field-norm floor; SE half-width 12.9% (N=40). Field-norm conventions accept 1-decimal precision when N>=30. N source: from _meta.parameters.n_trials_per_cell."
+    },
+    {
+      "name": "json_nl_failure_low_pct",
+      "expected": 90.0,
+      "n_trials": 40,
+      "se_halfwidth_pct": 9.297,
+      "stated_precision_pct": 0.1,
+      "verdict": "OK_FIELD_NORM",
+      "detail": "Stated precision 0.100% wider than field-norm floor; SE half-width 9.3% (N=40). Field-norm conventions accept 1-decimal precision when N>=30. N source: from _meta.parameters.n_trials_per_cell."
+    },
+    {
+      "name": "json_nl_failure_moderate_pct",
+      "expected": 97.5,
+      "n_trials": 40,
+      "se_halfwidth_pct": 4.838,
+      "stated_precision_pct": 0.1,
+      "verdict": "OK_FIELD_NORM",
+      "detail": "Stated precision 0.100% wider than field-norm floor; SE half-width 4.8% (N=40). Field-norm conventions accept 1-decimal precision when N>=30. N source: from _meta.parameters.n_trials_per_cell."
+    },
+    {
+      "name": "json_nl_failure_high_pct",
+      "expected": 100.0,
+      "n_trials": 40,
+      "se_halfwidth_pct": 0.031,
+      "stated_precision_pct": 0.1,
+      "verdict": "OK",
+      "detail": "Stated precision 0.100% is within SE half-width 0.0% (N=40). N source: from _meta.parameters.n_trials_per_cell."
+    },
+    {
+      "name": "charitable_feasibility_k4_pct",
+      "expected": 63.0,
+      "n_trials": 10000,
+      "se_halfwidth_pct": 0.946,
+      "stated_precision_pct": 0.1,
+      "verdict": "OK_FIELD_NORM",
+      "detail": "Stated precision 0.100% wider than field-norm floor; SE half-width 0.9% (N=10000). Field-norm conventions accept 1-decimal precision when N>=30. N source: from _meta.n_trials (grand total)."
+    },
+    {
+      "name": "unconditional_pivot_high_pct",
+      "expected": 1.7,
+      "n_trials": null,
+      "se_halfwidth_pct": null,
+      "stated_precision_pct": 0.1,
+      "verdict": "UNKNOWN",
+      "detail": "N not derivable (N not derivable); load_err=none"
+    },
+    {
+      "name": "gram_empirical_cliff_high",
+      "expected": 1.7,
+      "n_trials": null,
+      "se_halfwidth_pct": null,
+      "stated_precision_pct": 0.1,
+      "verdict": "UNKNOWN",
+      "detail": "N not derivable (N not derivable); load_err=none"
+    },
+    {
+      "name": "bytebeat_pitch_pair_max_rho",
+      "expected": 1.0,
+      "n_trials": null,
+      "se_halfwidth_pct": null,
+      "stated_precision_pct": 0.1,
+      "verdict": "UNKNOWN",
+      "detail": "N not derivable (N not derivable); load_err=none"
+    },
+    {
+      "name": "if_dsl_high_rho_pair_value",
+      "expected": 1.0,
+      "n_trials": null,
+      "se_halfwidth_pct": null,
+      "stated_precision_pct": 0.1,
+      "verdict": "UNKNOWN",
+      "detail": "N not derivable (N not derivable); load_err=none"
+    },
+    {
+      "name": "transfer_code_regret_pct",
+      "expected": 1.8,
+      "n_trials": null,
+      "se_halfwidth_pct": null,
+      "stated_precision_pct": 0.1,
+      "verdict": "UNKNOWN",
+      "detail": "N not derivable (N not derivable); load_err=none"
+    },
+    {
+      "name": "transfer_json_nl_regret_pct",
+      "expected": 2.1,
+      "n_trials": null,
+      "se_halfwidth_pct": null,
+      "stated_precision_pct": 0.1,
+      "verdict": "UNKNOWN",
+      "detail": "N not derivable (N not derivable); load_err=none"
+    },
+    {
+      "name": "transfer_if_dsl_regret_pct",
+      "expected": 2.4,
+      "n_trials": null,
+      "se_halfwidth_pct": null,
+      "stated_precision_pct": 0.1,
+      "verdict": "UNKNOWN",
+      "detail": "N not derivable (N not derivable); load_err=none"
+    },
+    {
+      "name": "transfer_bytebeat_regret_pct",
+      "expected": 3.1,
+      "n_trials": null,
+      "se_halfwidth_pct": null,
+      "stated_precision_pct": 0.1,
+      "verdict": "UNKNOWN",
+      "detail": "N not derivable (N not derivable); load_err=none"
+    },
+    {
+      "name": "step_size_p95",
+      "expected": 0.148,
+      "n_trials": null,
+      "se_halfwidth_pct": null,
+      "stated_precision_pct": 0.001,
+      "verdict": "UNKNOWN",
+      "detail": "N not derivable (N not derivable); load_err=none"
+    },
+    {
+      "name": "unconditional_infeasible_regret_pct",
+      "expected": 1.7,
+      "n_trials": null,
+      "se_halfwidth_pct": null,
+      "stated_precision_pct": 0.1,
+      "verdict": "UNKNOWN",
+      "detail": "N not derivable (N not derivable); load_err=none"
+    },
+    {
+      "name": "per_tier_control_pass_pct",
+      "expected": 76.9,
+      "n_trials": 1920,
+      "se_halfwidth_pct": 1.885,
+      "stated_precision_pct": 0.1,
+      "verdict": "OK_FIELD_NORM",
+      "detail": "Stated precision 0.100% wider than field-norm floor; SE half-width 1.9% (N=1920). Field-norm conventions accept 1-decimal precision when N>=30. N source: from top-level n_trials."
+    },
+    {
+      "name": "per_tier_low_pass_pct",
+      "expected": 58.1,
+      "n_trials": 1920,
+      "se_halfwidth_pct": 2.207,
+      "stated_precision_pct": 0.1,
+      "verdict": "OK_FIELD_NORM",
+      "detail": "Stated precision 0.100% wider than field-norm floor; SE half-width 2.2% (N=1920). Field-norm conventions accept 1-decimal precision when N>=30. N source: from top-level n_trials."
+    },
+    {
+      "name": "per_tier_moderate_pass_pct",
+      "expected": 23.1,
+      "n_trials": 1920,
+      "se_halfwidth_pct": 1.885,
+      "stated_precision_pct": 0.1,
+      "verdict": "OK_FIELD_NORM",
+      "detail": "Stated precision 0.100% wider than field-norm floor; SE half-width 1.9% (N=1920). Field-norm conventions accept 1-decimal precision when N>=30. N source: from top-level n_trials."
+    },
+    {
+      "name": "per_tier_high_pass_pct",
+      "expected": 1.7,
+      "n_trials": 1920,
+      "se_halfwidth_pct": 0.578,
+      "stated_precision_pct": 0.1,
+      "verdict": "OK_FIELD_NORM",
+      "detail": "Stated precision 0.100% wider than field-norm floor; SE half-width 0.6% (N=1920). Field-norm conventions accept 1-decimal precision when N>=30. N source: from top-level n_trials."
+    },
+    {
+      "name": "conflict_detection_overall_conflict_rate_pct",
+      "expected": 76.8,
+      "n_trials": null,
+      "se_halfwidth_pct": null,
+      "stated_precision_pct": 0.1,
+      "verdict": "UNKNOWN",
+      "detail": "N not derivable (N not derivable); load_err=none"
+    },
+    {
+      "name": "conflict_detection_low_bucket_rate_pct",
+      "expected": 68.6,
+      "n_trials": null,
+      "se_halfwidth_pct": null,
+      "stated_precision_pct": 0.1,
+      "verdict": "UNKNOWN",
+      "detail": "N not derivable (N not derivable); load_err=none"
+    },
+    {
+      "name": "conflict_detection_med_bucket_rate_pct",
+      "expected": 90.6,
+      "n_trials": null,
+      "se_halfwidth_pct": null,
+      "stated_precision_pct": 0.1,
+      "verdict": "UNKNOWN",
+      "detail": "N not derivable (N not derivable); load_err=none"
+    },
+    {
+      "name": "conflict_detection_high_bucket_rate_pct",
+      "expected": 76.2,
+      "n_trials": null,
+      "se_halfwidth_pct": null,
+      "stated_precision_pct": 0.1,
+      "verdict": "UNKNOWN",
+      "detail": "N not derivable (N not derivable); load_err=none"
+    },
+    {
+      "name": "json_nl_format_pct_control",
+      "expected": 50.0,
+      "n_trials": 40,
+      "se_halfwidth_pct": 15.495,
+      "stated_precision_pct": 0.1,
+      "verdict": "OK_FIELD_NORM",
+      "detail": "Stated precision 0.100% wider than field-norm floor; SE half-width 15.5% (N=40). Field-norm conventions accept 1-decimal precision when N>=30. N source: from _meta.parameters.n_trials_per_cell."
+    },
+    {
+      "name": "json_nl_one_shot_pass_control_pct",
+      "expected": 22.5,
+      "n_trials": 40,
+      "se_halfwidth_pct": 12.941,
+      "stated_precision_pct": 0.1,
+      "verdict": "OK_FIELD_NORM",
+      "detail": "Stated precision 0.100% wider than field-norm floor; SE half-width 12.9% (N=40). Field-norm conventions accept 1-decimal precision when N>=30. N source: from _meta.parameters.n_trials_per_cell."
+    },
+    {
+      "name": "delta_capacity_T128_oneshot_pct",
+      "expected": 33.3,
+      "n_trials": 60,
+      "se_halfwidth_pct": 11.925,
+      "stated_precision_pct": 0.1,
+      "verdict": "OK_FIELD_NORM",
+      "detail": "Stated precision 0.100% wider than field-norm floor; SE half-width 11.9% (N=60). Field-norm conventions accept 1-decimal precision when N>=30. N source: from _meta.parameters.n_trials_per_cell."
+    },
+    {
+      "name": "delta_capacity_T128_staged_pct",
+      "expected": 25.0,
+      "n_trials": 60,
+      "se_halfwidth_pct": 10.957,
+      "stated_precision_pct": 0.1,
+      "verdict": "OK_FIELD_NORM",
+      "detail": "Stated precision 0.100% wider than field-norm floor; SE half-width 11.0% (N=60). Field-norm conventions accept 1-decimal precision when N>=30. N source: from _meta.parameters.n_trials_per_cell."
+    },
+    {
+      "name": "openrouter_regression_test_pct_control",
+      "expected": 0.5,
+      "n_trials": 5,
+      "se_halfwidth_pct": 6.183,
+      "stated_precision_pct": 0.1,
+      "verdict": "OVERPRECISE",
+      "detail": "Stated precision 0.100% is finer than SE half-width 6.2% (N=5); trigger: small_N (<30). N source: from _meta.n_trials (grand total)."
+    },
+    {
+      "name": "openrouter_regression_test_pct_low",
+      "expected": 0.6,
+      "n_trials": 5,
+      "se_halfwidth_pct": 6.769,
+      "stated_precision_pct": 0.1,
+      "verdict": "OVERPRECISE",
+      "detail": "Stated precision 0.100% is finer than SE half-width 6.8% (N=5); trigger: small_N (<30). N source: from _meta.n_trials (grand total)."
+    },
+    {
+      "name": "openrouter_regression_test_pct_moderate",
+      "expected": 1.1,
+      "n_trials": 5,
+      "se_halfwidth_pct": 9.143,
+      "stated_precision_pct": 0.1,
+      "verdict": "OVERPRECISE",
+      "detail": "Stated precision 0.100% is finer than SE half-width 9.1% (N=5); trigger: small_N (<30). N source: from _meta.n_trials (grand total)."
+    },
+    {
+      "name": "openrouter_regression_test_pct_high",
+      "expected": 1.7,
+      "n_trials": 5,
+      "se_halfwidth_pct": 11.331,
+      "stated_precision_pct": 0.1,
+      "verdict": "OVERPRECISE",
+      "detail": "Stated precision 0.100% is finer than SE half-width 11.3% (N=5); trigger: small_N (<30). N source: from _meta.n_trials (grand total)."
+    }
+  ]
+}

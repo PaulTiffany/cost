@@ -1,0 +1,17 @@
+{
+  "status": "PASS",
+  "exit_code": 0,
+  "errors": [],
+  "warnings": [],
+  "summary": {
+    "total_caveats": 6,
+    "per_severity": {
+      "science": 3,
+      "reproducibility": 2,
+      "advisory": 1
+    },
+    "blocking_count": 0,
+    "error_count": 0,
+    "warning_count": 0
+  }
+}

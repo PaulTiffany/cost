@@ -201,8 +201,8 @@
 | ID | Appendix | Claim | Source |
 |----|----------|-------|--------|
 | I59 | B | 0.00% error for k=2,3,4,5,8 | Numerical |
-| I60 | V | k=2: 93%, k=3: 86%, k=4: 79%, k=5: 73% (supplementary granular) | `charitable_feasibility.json` |
-| I61 | V | k=6: 67%, k=8: 56%, k=10: 3% (supplementary granular) | `charitable_feasibility.json` |
+| I60 | V | k=2: 93%, k=3: 79%, k=4: 63%, k=5: 46% (current paper tab:charity_k row, half-up rounded from charitable_feasibility.json) | `charitable_feasibility.json` |
+| I61 | V | k=6: 31%, k=8: 12%, k=10: 3% (current paper tab:charity_k row) | `charitable_feasibility.json` |
 | I62 | W | 190 pairs, 7.37% high conflict | `constitution_analysis.json` |
 | I63 | W | Mean ρ = 0.267, max = 0.86 | `constitution_analysis.json` |
 | I64 | X | 15 compound tasks, ρ 0.15-0.75 | Section |

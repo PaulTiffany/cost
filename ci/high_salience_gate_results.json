@@ -1,0 +1,10 @@
+{
+  "summary": {
+    "total_uncovered": 93,
+    "high_salience": 0,
+    "low_salience": 82,
+    "exempted": 11,
+    "passed": true
+  },
+  "high_salience_findings": []
+}

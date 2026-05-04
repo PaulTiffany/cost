@@ -39,7 +39,7 @@ Requirements:
 Audio files are generated as WAV format, playable on any system.
 No API keys. No paywalls. Pure physics.
 
-Author: Anonymous (ICML 2026 Submission)
+Author: Anonymous (NeurIPS 2026 Submission)
 """
 
 import numpy as np

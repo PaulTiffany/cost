@@ -1,0 +1,170 @@
+{
+  "_meta": {
+    "pdf": "paper\\main.pdf",
+    "target_column_chars": 100,
+    "n_body_lines_analyzed": 252,
+    "n_findings_total": 22,
+    "page_range": [
+      1,
+      10
+    ],
+    "min_slack_threshold": 15,
+    "note": "Tool, not a cert layer. Each finding is a candidate spot for a tiny inline claim anchor (\\appref{} / \\secref{} / Tab.~/Fig.~/Thm)."
+  },
+  "findings": [
+    {
+      "page": 6,
+      "pdf_line": 34,
+      "slack_chars": 34,
+      "line_chars": 66,
+      "ending": "g helps. Data in Table A12, expanded per task in Appendix E."
+    },
+    {
+      "page": 3,
+      "pdf_line": 26,
+      "slack_chars": 33,
+      "line_chars": 67,
+      "ending": "f, smooth/pivot regimes) are summarized in Table A4, App. D."
+    },
+    {
+      "page": 9,
+      "pdf_line": 81,
+      "slack_chars": 32,
+      "line_chars": 68,
+      "ending": "t regime. Code: https://anonymous.4open.science/r/cacophony."
+    },
+    {
+      "page": 4,
+      "pdf_line": 81,
+      "slack_chars": 27,
+      "line_chars": 73,
+      "ending": "etected mid-generation and rerouted (App. J; Corollary N.7)."
+    },
+    {
+      "page": 5,
+      "pdf_line": 34,
+      "slack_chars": 27,
+      "line_chars": 73,
+      "ending": "s in the plane spanned by gi, gj. Full derivation in App. M."
+    },
+    {
+      "page": 6,
+      "pdf_line": 67,
+      "slack_chars": 25,
+      "line_chars": 75,
+      "ending": "rol terminates (Prop. 5.2) when per-step cost <1 (Tab. A21)."
+    },
+    {
+      "page": 5,
+      "pdf_line": 44,
+      "slack_chars": 24,
+      "line_chars": 76,
+      "ending": " bound diverges (feasibility boundary); see proof in App. M."
+    },
+    {
+      "page": 5,
+      "pdf_line": 11,
+      "slack_chars": 23,
+      "line_chars": 77,
+      "ending": " (Uniform Diagonal Bound). For -coupled constraints with m ="
+    },
+    {
+      "page": 7,
+      "pdf_line": 24,
+      "slack_chars": 23,
+      "line_chars": 77,
+      "ending": "hot attempts in infeasible regions; none observed (0/4,272)."
+    },
+    {
+      "page": 1,
+      "pdf_line": 25,
+      "slack_chars": 22,
+      "line_chars": 78,
+      "ending": "tegration. An empirical contract (89%) connects the geometry"
+    },
+    {
+      "page": 1,
+      "pdf_line": 11,
+      "slack_chars": 21,
+      "line_chars": 79,
+      "ending": "ng decisions before LLM generation: given a multi-constraint"
+    },
+    {
+      "page": 4,
+      "pdf_line": 85,
+      "slack_chars": 20,
+      "line_chars": 80,
+      "ending": " none observed across 4,272 smooth-regime trials (Tab. A12)."
+    },
+    {
+      "page": 1,
+      "pdf_line": 13,
+      "slack_chars": 19,
+      "line_chars": 81,
+      "ending": "ether to attempt one-shot, decompose into stages, or reject."
+    },
+    {
+      "page": 1,
+      "pdf_line": 31,
+      "slack_chars": 18,
+      "line_chars": 82,
+      "ending": " cost than simultaneous. Results: across four domains (code,"
+    },
+    {
+      "page": 4,
+      "pdf_line": 77,
+      "slack_chars": 18,
+      "line_chars": 82,
+      "ending": " per-token displacement xt+1 - xt2  L (frozen encoder space;"
+    },
+    {
+      "page": 7,
+      "pdf_line": 4,
+      "slack_chars": 18,
+      "line_chars": 82,
+      "ending": "25] (over-staging costly but safe; wrong abstention is not)."
+    },
+    {
+      "page": 1,
+      "pdf_line": 23,
+      "slack_chars": 17,
+      "line_chars": 83,
+      "ending": "t a geometric threshold. This lower bound is foundational to"
+    },
+    {
+      "page": 1,
+      "pdf_line": 19,
+      "slack_chars": 16,
+      "line_chars": 84,
+      "ending": "'), not gradual capability degradation. We prove the minimum"
+    },
+    {
+      "page": 7,
+      "pdf_line": 29,
+      "slack_chars": 16,
+      "line_chars": 84,
+      "ending": "nds on capability; all collapse at high tier (12%, Tab. A3)."
+    },
+    {
+      "page": 10,
+      "pdf_line": 25,
+      "slack_chars": 16,
+      "line_chars": 84,
+      "ending": " McCandlish, Tom Brown, and Jared Kaplan. Constitutional AI:"
+    },
+    {
+      "page": 1,
+      "pdf_line": 29,
+      "slack_chars": 15,
+      "line_chars": 85,
+      "ending": "the cliff a prompt lies on (rs=1.0). Sequential satisfaction"
+    },
+    {
+      "page": 1,
+      "pdf_line": 33,
+      "slack_chars": 15,
+      "line_chars": 85,
+      "ending": "ignal), when the bound predicts infeasibility, smooth-regime"
+    }
+  ]
+}

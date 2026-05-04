@@ -1,0 +1,202 @@
+{
+  "_meta": {
+    "purpose": "Maps each blocking layer and L9 sub-check into a named suite. The certificate orchestrator emits a per-suite roll-up alongside the legacy layers[] array. Layer numbers are preserved as legacy aliases for one transition release; new development should reference suite names instead.",
+    "schema_version": 2,
+    "introduced": "2026-05-04",
+    "rationale_source": "Gemini collaborator note (notetoclaude2.json, 'plan' section): standard test taxonomy makes it easier to add supplementary checks without renumbering or debating where they fit. Migration is additive: layers[] stays in the cert payload; suites[] is added.",
+    "policy": "A check is mapped to exactly one suite. The suite owns the question being asked. Sub-checks inherit their parent suite from this registry, not from the layer that wraps them.",
+    "last_expansion": "2026-05-04 second pass: BIS gap-fill from Gemini taxonomy review"
+  },
+  "suites": {
+    "claim_text": {
+      "purpose": "Paper text says the registered claims and does not use true values with wrong nouns.",
+      "members": [
+        {
+          "check": "L1_audit",
+          "script": "claim_audit.py",
+          "severity": "blocker"
+        },
+        {
+          "check": "L2_validator",
+          "script": "claim_audit_validator.py",
+          "severity": "blocker"
+        },
+        {
+          "check": "L3_sweep",
+          "script": "claim_coverage_sweep.py",
+          "severity": "advisory"
+        },
+        {
+          "check": "L16_author_claims",
+          "script": "author_claims_check.py",
+          "severity": "advisory"
+        },
+        {
+          "check": "subproc__cross_model_metadata",
+          "script": "cross_model_metadata_check.py",
+          "severity": "blocker"
+        },
+        {
+          "check": "L17_table_values",
+          "script": "table_value_check.py",
+          "severity": "blocker"
+        }
+      ]
+    },
+    "data_ties": {
+      "purpose": "Numerical claims recompute from source data and bind to local paper or supplementary surfaces.",
+      "members": [
+        {
+          "check": "L9_consistency",
+          "script": "cross_claim_consistency_check.py",
+          "severity": "blocker"
+        },
+        {
+          "check": "L15_data_ties",
+          "script": "claim_data_ties_check.py",
+          "severity": "blocker"
+        },
+        {
+          "check": "subproc__manifest_schema",
+          "script": "manifest_schema_check.py",
+          "severity": "blocker"
+        },
+        {
+          "check": "subproc__monotonic_cliff",
+          "script": "monotonic_cliff_check.py",
+          "severity": "blocker"
+        },
+        {
+          "check": "L20_cross_source_recompute",
+          "script": "cross_source_recomputation_check.py",
+          "severity": "blocker"
+        }
+      ]
+    },
+    "artifact_lineage": {
+      "purpose": "Figures, illustrations, generated assets, and the rendered PDF are fresh and traceable to scripts and data.",
+      "members": [
+        {
+          "check": "L4_lineage",
+          "script": "figure_lineage_check.py",
+          "severity": "blocker"
+        },
+        {
+          "check": "L5_figure_values",
+          "script": "figure_value_check.py",
+          "severity": "advisory"
+        },
+        {
+          "check": "L12_build_equiv",
+          "script": "build_equivalence_check.py",
+          "severity": "blocker"
+        },
+        {
+          "check": "L14_illustrations",
+          "script": "illustration_lineage_check.py",
+          "severity": "blocker"
+        },
+        {
+          "check": "L22_container_lineage",
+          "script": "container_lineage_check.py",
+          "severity": "advisory"
+        }
+      ]
+    },
+    "provenance": {
+      "purpose": "Result JSONs, scripts, environment, and bundle contents are reconstructible enough for the stated threat model.",
+      "members": [
+        {
+          "check": "L11_scripts",
+          "script": "script_integrity_check.py",
+          "severity": "blocker"
+        },
+        {
+          "check": "L13_cross_tree",
+          "script": "cross_tree_consistency_check.py",
+          "severity": "blocker"
+        },
+        {
+          "check": "subproc__result_provenance",
+          "script": "result_provenance_check.py",
+          "severity": "blocker"
+        },
+        {
+          "check": "subproc__pdf_source_equivalence",
+          "script": "pdf_source_equivalence_check.py",
+          "severity": "blocker"
+        },
+        {
+          "check": "L21_sbom",
+          "script": "sbom_check.py",
+          "severity": "blocker"
+        }
+      ]
+    },
+    "statistical_hygiene": {
+      "purpose": "Claims with small N or manual scoring surface uncertainty / caveats and avoid over-precision.",
+      "members": [
+        {
+          "check": "subproc__caveat_ledger",
+          "script": "caveat_ledger_check.py",
+          "severity": "blocker"
+        },
+        {
+          "check": "L18_sample_size_adequacy",
+          "script": "sample_size_adequacy_check.py",
+          "severity": "advisory"
+        },
+        {
+          "check": "L19_ci_coverage",
+          "script": "confidence_interval_coverage_check.py",
+          "severity": "advisory"
+        },
+        {
+          "check": "L25_multi_seed_drift",
+          "script": "multi_seed_drift_check.py",
+          "severity": "advisory"
+        }
+      ]
+    },
+    "submission_hygiene": {
+      "purpose": "Venue, anonymity, citation / link integrity, encoding, and supplementary surface hygiene.",
+      "members": [
+        {
+          "check": "L7_citations",
+          "script": "citation_integrity_check.py",
+          "severity": "blocker"
+        },
+        {
+          "check": "L8_links",
+          "script": "link_integrity_check.py",
+          "severity": "blocker"
+        },
+        {
+          "check": "L10_bib",
+          "script": "bib_entry_check.py",
+          "severity": "blocker"
+        },
+        {
+          "check": "subproc__cert_anonymity",
+          "script": "cert_anonymity_check.py",
+          "severity": "blocker"
+        },
+        {
+          "check": "L23_license_clearance",
+          "script": "license_clearance_check.py",
+          "severity": "blocker"
+        },
+        {
+          "check": "L24_pdf_camera_ready",
+          "script": "pdf_camera_ready_check.py",
+          "severity": "advisory"
+        },
+        {
+          "check": "L26_reference_convention",
+          "script": "reference_convention_check.py",
+          "severity": "blocker"
+        }
+      ]
+    }
+  }
+}

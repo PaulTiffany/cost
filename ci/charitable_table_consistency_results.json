@@ -1,0 +1,53 @@
+{
+  "summary": {
+    "passed": true,
+    "n_cells": 7
+  },
+  "rounding_policy": "half-up to nearest integer percent",
+  "k_values": [
+    2,
+    3,
+    4,
+    5,
+    6,
+    8,
+    10
+  ],
+  "computed_from_source": [
+    93,
+    79,
+    63,
+    46,
+    31,
+    12,
+    3
+  ],
+  "paper_row": [
+    93,
+    79,
+    63,
+    46,
+    31,
+    12,
+    3
+  ],
+  "supplementary_table_row": [
+    93,
+    79,
+    63,
+    46,
+    31,
+    12,
+    3
+  ],
+  "supplementary_compact_row": [
+    93,
+    79,
+    63,
+    46,
+    31,
+    12,
+    3
+  ],
+  "mismatches": []
+}

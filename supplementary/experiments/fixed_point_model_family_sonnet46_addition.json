@@ -1,0 +1,340 @@
+{
+  "_meta": {
+    "experiment": "fixed_point_model_family_sonnet46_addition",
+    "via": "Anthropic SDK (claude-sonnet-4-6)",
+    "generator_script": "supplementary/experiments/fixed_point_model_family_opus47_addition.py",
+    "script_hash": "fcdd2f9fb980e63511fe9e407ddcebbcec78b1255e6eb6db67db7d240e7b5bd0",
+    "models": [
+      "sonnet-4.6"
+    ],
+    "model_ids": {
+      "sonnet-4.6": "claude-sonnet-4-6"
+    },
+    "n_workers": 4,
+    "seed": 43,
+    "budget": 512,
+    "started_iso": "2026-05-04T06:16:38Z",
+    "finished_iso": "2026-05-04T06:17:12Z",
+    "elapsed_sec": 34.24541401863098,
+    "n_trials": 12,
+    "tasks": [
+      "digit_sum_42",
+      "digit_sum_66",
+      "vowel_count_31",
+      "vowel_count_43",
+      "word_digit_43",
+      "self_count_43"
+    ],
+    "max_stage_rounds": 3,
+    "merge_target": "supplementary\\experiments\\fixed_point_model_family.json",
+    "note": "Companion experiment: extends the canonical 7-model claude family with claude-sonnet-4-6. Uses the Anthropic SDK directly (matches the canonical script's transport).",
+    "methodology_deviation": "claude-sonnet-4-6 accepts the standard `temperature` request param. Run uses temperature=0.0 (deterministic), matching the canonical 7-model fixed_point_model_family.json. Direct apples-to-apples comparison.",
+    "sampling_default_source": "https://platform.claude.com/docs/en/about-claude/models/whats-new-claude-4-7"
+  },
+  "model_analyses": [
+    {
+      "model_name": "sonnet-4.6",
+      "tasks_analyzed": 6,
+      "staged_wins": 5,
+      "avg_improvement_ratio": 13.970083472949378,
+      "task_details": [
+        {
+          "task_id": "digit_sum_42",
+          "oneshot_delta": 655,
+          "staged_delta": 15,
+          "abs_oneshot": 655,
+          "abs_staged": 15,
+          "improvement_ratio": 43.666666666666664,
+          "winner": "staged"
+        },
+        {
+          "task_id": "vowel_count_31",
+          "oneshot_delta": 598,
+          "staged_delta": 156,
+          "abs_oneshot": 598,
+          "abs_staged": 156,
+          "improvement_ratio": 3.8333333333333335,
+          "winner": "staged"
+        },
+        {
+          "task_id": "digit_sum_66",
+          "oneshot_delta": 543,
+          "staged_delta": 28,
+          "abs_oneshot": 543,
+          "abs_staged": 28,
+          "improvement_ratio": 19.392857142857142,
+          "winner": "staged"
+        },
+        {
+          "task_id": "vowel_count_43",
+          "oneshot_delta": 638,
+          "staged_delta": 54,
+          "abs_oneshot": 638,
+          "abs_staged": 54,
+          "improvement_ratio": 11.814814814814815,
+          "winner": "staged"
+        },
+        {
+          "task_id": "self_count_43",
+          "oneshot_delta": 230,
+          "staged_delta": 359,
+          "abs_oneshot": 230,
+          "abs_staged": 359,
+          "improvement_ratio": 0.6406685236768802,
+          "winner": "oneshot"
+        },
+        {
+          "task_id": "word_digit_43",
+          "oneshot_delta": -2008,
+          "staged_delta": -449,
+          "abs_oneshot": 2008,
+          "abs_staged": 449,
+          "improvement_ratio": 4.472160356347438,
+          "winner": "staged"
+        }
+      ]
+    }
+  ],
+  "results": [
+    {
+      "model_name": "sonnet-4.6",
+      "model_id": "claude-sonnet-4-6",
+      "task_id": "digit_sum_42",
+      "protocol": "oneshot",
+      "response": "I need to find a response where the total character count equals 42 plus the sum of all digit characters in the response.\n\nLet me work through this carefully.\n\nLet's say my response has length N, and contains digits that sum to S. Then N = 42 + S.\n\nLet me try a response and check:\n\n\"17 is prime: no integer from 2 to 4 divides it.\"\n\nLet me count characters and digits:\n- Digits: 1, 7, 2, 4 \u2192 sum = 14\n- So N must = 42 + 14 = 56\n- Let me count: \"17 is prime: no integer from 2 to 4 divides it.\" = 49 chars\n\nToo short. I need 56 chars. Let me adjust:\n\n\"17 is prime: no integer from 2 to 4 divides 17 evenly.\"\n\nDigits: 1,7,2,4,1,7 \u2192 sum = 22, need N = 64\nCount: 55 chars. Still off.\n\n\"17 is prime since no integer between 2 and 16 divides it.\"\n\nDigits: 1,7,2,1,6 \u2192 sum = 17, need N = 59\nCount: \"17 is prime since no integer between 2 and 16 divides it.\" = 57. Off by 2.\n\n\"17 is prime since no integer between 2 and 16 divides it!!\"\n\nCount: 59. Digits: 1,7,2,1,6 \u2192 sum=17. Need 59. \u2713\n\n**17 is prime since no integer between 2 and 16 divides it!!**",
+      "target": 389,
+      "actual": 1044,
+      "delta": 655,
+      "is_fixed_point": false
+    },
+    {
+      "model_name": "sonnet-4.6",
+      "model_id": "claude-sonnet-4-6",
+      "task_id": "vowel_count_31",
+      "protocol": "oneshot",
+      "response": "I need to find a response where the length equals 31 + 2*(number of vowels in it).\n\nLet me think about this carefully. If my response has L characters and V vowels, I need:\nL = 31 + 2V\n\nLet me try to craft a response and check.\n\nLet's say I write a response and count. If V vowels exist, I need L = 31 + 2V.\n\nTypically in English text, roughly 38% of letters are vowels. But I need to be precise.\n\nLet me try a specific response and iterate:\n\n\"Pair up: k and n+1-k sum to n+1. There are n/2 such pairs, giving n(n+1)/2.\"\n\nLet me count this: \n\"Pair up: k and n+1-k sum to n+1. There are n/2 such pairs, giving n(n+1)/2.\"\n\nCharacters: P-a-i-r- -u-p-:- -k- -a-n-d- -n-+-1---k- -s-u-m- -t-o- -n-+-1-.- - -T-h-e-r-e- -a-r-e- -n-/-2- -s-u-c-h- -p-a-i-r-s-,- -g-i-v-i-n-g- -n-(-n-+-1-)-/-2-.\n\nLet me count length: \"Pair up: k and n+1-k sum to n+1. There are n/2 such pairs, giving n(n+1)/2.\"\n= 75 characters\n\nVowels: a,i,u,a,u,o,e,e,a,e,u,a,i,i,i = let me recount:\nP**a**ir **u**p: k **a**nd n+1-k s**u**m t**o** n+1. Th**e**r**e** **a**r**e** n/2 s**u**ch p**a**irs, g**i**v**i**ng n(n+1)/2.",
+      "target": 487,
+      "actual": 1085,
+      "delta": 598,
+      "is_fixed_point": false
+    },
+    {
+      "model_name": "sonnet-4.6",
+      "model_id": "claude-sonnet-4-6",
+      "task_id": "digit_sum_66",
+      "protocol": "oneshot",
+      "response": "I need to find a response where N = 66 + (sum of digits in response).\n\nLet me think about this carefully. If I write a response, the digits in it contribute to N.\n\nLet me try a response with no digit characters first:\nN = 66 + 0 = 66 characters needed.\n\nLet me craft a 66-character response with no digits:\n\n\"17 is prime: no whole number except one and itself divides it.\"\n\nLet me count: \"17 is prime: no whole number except one and itself divides it.\"\n1-1:1, 7-2, space-3, i-4, s-5, space-6, p-7, r-8, i-9, m-10, e-11, :-12, space-13, n-14, o-15, space-16, w-17, h-18, o-19, l-20, e-21, space-22, n-23, u-24, m-25, b-26, e-27, r-28, space-29, e-30, x-31, c-32, e-33, p-34, t-35, space-36, o-37, n-38, e-39, space-40, a-41, n-42, d-43, space-44, i-45, t-46, s-47, e-48, l-49, f-50, space-51, d-52, i-53, v-54, i-55, d-56, e-57, s-58, space-59, i-60, t-61, .-62\n\nThat's 62 characters. But it contains \"17\" so digits 1+7=8, meaning N=74. Doesn't work.\n\nLet me try with no digits in the response, exactly 66 chars:\n\n\"No integer from two to sixteen divides seventeen evenly. Prime!\"\n\nCount: N-o-space-i-n-t-e-g-e-r-space-f-r-o-m-space-t-w-o-space-t-o-space-s-i-x-t-e-e-n-space-d-i-v",
+      "target": 635,
+      "actual": 1178,
+      "delta": 543,
+      "is_fixed_point": false
+    },
+    {
+      "model_name": "sonnet-4.6",
+      "model_id": "claude-sonnet-4-6",
+      "task_id": "vowel_count_43",
+      "protocol": "oneshot",
+      "response": "I need to find a response where the length equals 43 + 2*(number of vowels in it).\n\nLet me set up the equation. Say my response has L characters and V vowels.\nI need: L = 43 + 2V\n\nLet me think about the ratio of vowels to characters in typical English text - roughly 38% vowels.\n\nIf V = 0.38L, then:\nL = 43 + 2(0.38L) = 43 + 0.76L\n0.24L = 43\nL \u2248 179\n\nSo I need about 179 characters with about 68 vowels. Let me try crafting a response and counting carefully.\n\nLet me try: \"Pair each k with n+1-k, giving sum n+1 per pair, with n/2 pairs total, so the sum equals n(n+1)/2.\"\n\nLet me count that: \"Pair each k with n+1-k, giving sum n+1 per pair, with n/2 pairs total, so the sum equals n(n+1)/2.\"\n\nCharacters: P-a-i-r- -e-a-c-h- -k- -w-i-t-h- -n-+-1---k-,- -g-i-v-i-n-g- -s-u-m- -n-+-1- -p-e-r- -p-a-i-r-,- -w-i-t-h- -n-/-2- -p-a-i-r-s- -t-o-t-a-l-,- -s-o- -t-h-e- -s-u-m- -e-q-u-a-l-s- -n-(-n-+-1-)-/-2-.\n\nThat's about 101 characters. Too short.\n\nLet me try a longer response and iterate. I'll aim for L=179, V=68.\n\n\"Pair each number k with its mirror n plus one minus k. Each pair sums to n plus one, and there are n over two such pairs, giving a total sum of n times n plus one, all divided by two.\"\n\nLet me count",
+      "target": 575,
+      "actual": 1213,
+      "delta": 638,
+      "is_fixed_point": false
+    },
+    {
+      "model_name": "sonnet-4.6",
+      "model_id": "claude-sonnet-4-6",
+      "task_id": "self_count_43",
+      "protocol": "oneshot",
+      "response": "# Prime Numbers\n\nPrime numbers are among the most fascinating and fundamental objects in mathematics. A prime number is a natural number greater than 1 that has no positive divisors other than 1 and itself. The first few primes are 2, 3, 5, 7, 11, 13, 17, 19, 23, and 29.\n\n## Basic Properties\n\nThe number 2 is the only even prime, since every other even number is divisible by 2. This makes 2 uniquely special among primes. All other primes are odd.\n\nThe **Fundamental Theorem of Arithmetic** states that every integer greater than 1 can be represented uniquely as a product of prime numbers (up to the order of factors). This makes primes the \"building blocks\" of all integers.\n\n## Distribution of Primes\n\nPrimes become less frequent as numbers grow larger, yet they never stop appearing. The **Prime Number Theorem** describes this distribution, stating that the number of primes less than or equal to n is approximately n/ln(n).\n\n**Euclid's proof** that there are infinitely many primes is one of mathematics' most elegant arguments: assume finitely many primes exist, multiply them all together and add 1, and the resulting number must have a prime factor not in your original list \u2014 a contradiction.\n\n## Famous Unsolved Problems\n\n- **Goldbach's Conjecture**: Every even integer greater than 2 is the sum of two primes.\n- **Twin Prime Conjecture**: There are infinitely many pairs of primes differing by 2 (like 11 and 13).\n- **Riemann Hypothesis**: Concerns the distribution of primes through complex analysis.\n\n## Applications\n\nPrimes are not merely theoretical curiosities. Modern cryptography relies heavily on the difficulty of factoring large numbers into their prime components. Encryption systems like RSA use products of two enormous primes to secure digital communications worldwide.\n\nPrime numbers continue to captivate mathematicians, representing both beautiful simplicity and profound mystery.\n\nLength: 1695",
+      "target": 1695,
+      "actual": 1925,
+      "delta": 230,
+      "is_fixed_point": false
+    },
+    {
+      "model_name": "sonnet-4.6",
+      "model_id": "claude-sonnet-4-6",
+      "task_id": "word_digit_43",
+      "protocol": "oneshot",
+      "response": "I need to find a response where: N = (word_count \u00d7 10) + (digit_count \u00d7 5), and N = total character count.\n\nLet me think carefully and try a response, then verify.\n\nLet me try a short explanation and count precisely.\n\nAttempt: \"Right triangles obey this rule.\"\n\nWords: 5, digits: 0, N = 50+0 = 50, characters: 31. Doesn't work.\n\nI need character_count = (words \u00d7 10) + (digits \u00d7 5).\n\nLet me set up algebra. Say W words, D digits, C characters.\nC = 10W + 5D\n\nEach word averages ~5 chars plus spaces. Roughly C \u2248 6W (including spaces). So 6W \u2248 10W + 5D \u2192 negative D. I need longer words or more digits.\n\nWith longer words, say average 8 chars: C \u2248 9W. Still 9W = 10W + 5D \u2192 -W = 5D. No.\n\nI need C > 10W, meaning average chars per word (with spaces) > 10. Very long words or many digits.\n\nLet me try with digits. If I use digits, they add 5 to N but only count as 1 character each, helping close the gap.\n\nLet me try: W words, D digits, C = 10W + 5D.\nSpaces \u2248 W-1. Letters + digits = C - (W-1) = 10W + 5D - W + 1 = 9W + 5D + 1.\nLetters = 9W + 5D + 1 - D = 9W + 4D + 1.\nAverage letters per word = (9W + 4D + 1)/W = 9 + (4D+1)/W.\n\nWith D=1, W=10: avg = 9 + 5/10 = 9.5. C = 100+5 = 105.\nLetters = 90+4+1 = 95. Total = 95 letters + 9 spaces + 1 digit = 105. \u2713",
+      "target": 3260,
+      "actual": 1252,
+      "delta": -2008,
+      "is_fixed_point": false
+    },
+    {
+      "model_name": "sonnet-4.6",
+      "model_id": "claude-sonnet-4-6",
+      "task_id": "digit_sum_66",
+      "protocol": "staged",
+      "response": "Here is the adjusted version:\n\n17 is prime: no number from 2 to 4 (\u221a17\u22484.1) divides it. 2? Odd. 3? 1+7=8, no. 4? No. So 17 has no factors but 1 and itself!",
+      "rounds": 3,
+      "history": [
+        {
+          "round": 0,
+          "target": 157,
+          "actual": 539
+        },
+        {
+          "round": 1,
+          "target": 127,
+          "actual": 124
+        },
+        {
+          "round": 2,
+          "target": 189,
+          "actual": 322
+        }
+      ],
+      "target": 127,
+      "actual": 155,
+      "delta": 28,
+      "is_fixed_point": false
+    },
+    {
+      "model_name": "sonnet-4.6",
+      "model_id": "claude-sonnet-4-6",
+      "task_id": "digit_sum_42",
+      "protocol": "staged",
+      "response": "\"17 is prime: no divisors between 1 and itself. Check up to \u221a17\u22484: 2,3 fail. Done.\"",
+      "rounds": 3,
+      "history": [
+        {
+          "round": 0,
+          "target": 143,
+          "actual": 666
+        },
+        {
+          "round": 1,
+          "target": 86,
+          "actual": 112
+        },
+        {
+          "round": 2,
+          "target": 146,
+          "actual": 354
+        }
+      ],
+      "target": 68,
+      "actual": 83,
+      "delta": 15,
+      "is_fixed_point": false
+    },
+    {
+      "model_name": "sonnet-4.6",
+      "model_id": "claude-sonnet-4-6",
+      "task_id": "vowel_count_31",
+      "protocol": "staged",
+      "response": "I need to remove exactly 45 characters from the 130-character text.\n\n\"The formula 1+2+...+n = n(n+1)/2 comes from pairing. Write the sum forward and backward. Each pair adds to (n+1), giving n(n+1)/2.\"\n\nFinal adjusted version (EXACTLY 85 chars):\n\n1+2+...+n = n(n+1)/2: write the sum forward and backward. Each pair adds to (n+1).",
+      "rounds": 3,
+      "history": [
+        {
+          "round": 0,
+          "target": 449,
+          "actual": 846
+        },
+        {
+          "round": 1,
+          "target": 135,
+          "actual": 212
+        },
+        {
+          "round": 2,
+          "target": 85,
+          "actual": 130
+        }
+      ],
+      "target": 173,
+      "actual": 329,
+      "delta": 156,
+      "is_fixed_point": false
+    },
+    {
+      "model_name": "sonnet-4.6",
+      "model_id": "claude-sonnet-4-6",
+      "task_id": "word_digit_43",
+      "protocol": "staged",
+      "response": "# Draft Response: The Pythagorean Theorem\n\n## Why a\u00b2 + b\u00b2 = c\u00b2 for Right Triangles\n\nThe Pythagorean theorem is one of mathematics' most elegant and fundamental relationships. Let me explain why it holds true using a geometric proof that anyone can follow and appreciate.\n\n**The Core Idea**\n\nConsider a right triangle with legs of length a and b, and hypotenuse of length c. The theorem states that the square built on the hypotenuse equals the combined area of squares built on the two legs. This simple relationship connects geometry and algebra beautifully.\n\n**A Visual Proof**\n\nTake a large square with side length (a + b).",
+      "rounds": 3,
+      "history": [
+        {
+          "round": 0,
+          "target": 1780,
+          "actual": 918
+        },
+        {
+          "round": 1,
+          "target": 1075,
+          "actual": 626
+        },
+        {
+          "round": 2,
+          "target": 1075,
+          "actual": 626
+        }
+      ],
+      "target": 1075,
+      "actual": 626,
+      "delta": -449,
+      "is_fixed_point": false
+    },
+    {
+      "model_name": "sonnet-4.6",
+      "model_id": "claude-sonnet-4-6",
+      "task_id": "self_count_43",
+      "protocol": "staged",
+      "response": "Here is the text reduced to exactly -1 characters... but that's impossible \u2014 a text cannot have negative length.\n\nCould you clarify what you mean? Perhaps you want the final text to be **0 characters** (completely empty), or maybe there's a target character count I should aim for? Please let me know the **desired final length** and I'll adjust accordingly.",
+      "rounds": 3,
+      "history": [
+        {
+          "round": 0,
+          "target": -1,
+          "actual": 1037
+        },
+        {
+          "round": 1,
+          "target": -1,
+          "actual": 563
+        },
+        {
+          "round": 2,
+          "target": -1,
+          "actual": 501
+        }
+      ],
+      "target": -1,
+      "actual": 358,
+      "delta": 359,
+      "is_fixed_point": false
+    },
+    {
+      "model_name": "sonnet-4.6",
+      "model_id": "claude-sonnet-4-6",
+      "task_id": "vowel_count_43",
+      "protocol": "staged",
+      "response": "Here is my response at exactly 127 characters:\n\nPair forward and backward: each pair adds to (n+1), n/2 pairs total, giving n(n+1)/2. Gauss saw this as a child: 50\u00d7101=5050.",
+      "rounds": 3,
+      "history": [
+        {
+          "round": 0,
+          "target": 405,
+          "actual": 753
+        },
+        {
+          "round": 1,
+          "target": 167,
+          "actual": 318
+        },
+        {
+          "round": 2,
+          "target": 127,
+          "actual": 190
+        }
+      ],
+      "target": 119,
+      "actual": 173,
+      "delta": 54,
+      "is_fixed_point": false
+    }
+  ]
+}

@@ -1,0 +1,44 @@
+{
+  "summary": {
+    "total": 7,
+    "passed": 7,
+    "failed": 0
+  },
+  "results": [
+    {
+      "name": "smooth_pivot_decomposition",
+      "passed": true,
+      "detail": "smooth_total=4272 + pivot_total=528 == total_infeasible=4800"
+    },
+    {
+      "name": "smooth_zero_refutations",
+      "passed": true,
+      "detail": "smooth_successes=0 (must be 0; this is the falsifiability claim)"
+    },
+    {
+      "name": "pivot_estimated_42",
+      "passed": true,
+      "detail": "pivot_successes_estimated=42 (must be 42)"
+    },
+    {
+      "name": "smooth_regime_pct_89",
+      "passed": true,
+      "detail": "smooth_total/total_infeasible = 89% (paper says 89%)"
+    },
+    {
+      "name": "pivot_regime_pct_11",
+      "passed": true,
+      "detail": "pivot_total/total_infeasible = 11% (paper says 11%)"
+    },
+    {
+      "name": "no_4800_smooth_regime_in_paper",
+      "passed": true,
+      "detail": "paper does not conflate 4,800 with smooth-regime"
+    },
+    {
+      "name": "claim_audit_C3_consistent",
+      "passed": true,
+      "detail": "C3 description: '0/4,272 smooth-regime refutations (Abstract); 4,800 = 4,272 smooth + 528 pivot'; mentions 4,272: True"
+    }
+  ]
+}

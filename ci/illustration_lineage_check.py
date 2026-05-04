@@ -108,6 +108,37 @@ def extract_block_by_line_range(source_file: Path, start: int, end: int) -> str 
     return "\n".join(lines[start - 1:end])
 
 
+def extract_block_by_anchor(source_file: Path, anchor: str) -> str | None:
+    """Extract content between LaTeX comment anchors.
+
+    Anchors have the form:
+        % cert:block:start <name>
+        ... content ...
+        % cert:block:end <name>
+
+    More edit-resilient than fixed line_start/line_end because the
+    anchors move with the content. Returns None if either anchor
+    is missing or they don't pair up.
+    """
+    if not source_file.exists():
+        return None
+    text = source_file.read_text(encoding="utf-8", errors="replace")
+    start_marker = f"% cert:block:start {anchor}"
+    end_marker = f"% cert:block:end {anchor}"
+    s = text.find(start_marker)
+    if s < 0:
+        return None
+    e = text.find(end_marker, s)
+    if e < 0:
+        return None
+    # Return the content BETWEEN anchors, exclusive of marker lines.
+    # Skip past the start-marker line (find next newline).
+    nl = text.find("\n", s)
+    if nl < 0 or nl >= e:
+        return None
+    return text[nl + 1:e].rstrip("\n")
+
+
 def extract_block_by_label(source_file: Path, label: str) -> str | None:
     """Find a labeled environment (theorem, lemma, algorithm, etc.) and
     return its source. Walks for \\label{label} then expands outward to
@@ -206,12 +237,27 @@ def check_illustrations(manifest: dict) -> list[CheckResult]:
             kind = inp.get("kind", "text_file")
             expected_hash = inp.get("hash", "")
             if kind == "latex_block":
-                start = int(inp.get("line_start", 0))
-                end = int(inp.get("line_end", 0))
-                content = extract_block_by_line_range(file_path, start, end)
-                if content is None:
-                    a2_input_drift.append(f"{name} {label} #{idx}: could not extract lines {start}-{end} from {file_str}")
-                    continue
+                # Three extraction modes (in priority order):
+                #   1. anchor (cert:block:start/end NAME) — edit-resilient
+                #   2. label (\label{...} env extraction) — semantic
+                #   3. line_start/line_end — brittle but exact, legacy
+                if "anchor" in inp:
+                    content = extract_block_by_anchor(file_path, inp["anchor"])
+                    if content is None:
+                        a2_input_drift.append(f"{name} {label} #{idx}: anchor '{inp['anchor']}' not found (or unpaired) in {file_str}")
+                        continue
+                elif "label" in inp:
+                    content = extract_block_by_label(file_path, inp["label"])
+                    if content is None:
+                        a2_input_drift.append(f"{name} {label} #{idx}: label '{inp['label']}' could not be extracted from {file_str}")
+                        continue
+                else:
+                    start = int(inp.get("line_start", 0))
+                    end = int(inp.get("line_end", 0))
+                    content = extract_block_by_line_range(file_path, start, end)
+                    if content is None:
+                        a2_input_drift.append(f"{name} {label} #{idx}: could not extract lines {start}-{end} from {file_str}")
+                        continue
             else:  # text_file or unknown
                 content = file_path.read_text(encoding="utf-8")
             actual_hash = sha256_of_text(content)

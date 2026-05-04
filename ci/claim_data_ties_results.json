@@ -1,7 +1,7 @@
 {
   "summary": {
-    "total": 166,
-    "passed": 166,
+    "total": 325,
+    "passed": 325,
     "failed": 0
   },
   "results": [
@@ -778,12 +778,72 @@
     {
       "name": "claude_family_n_models",
       "passed": true,
-      "expected": 7.0,
-      "computed": 7.0,
+      "expected": 10.0,
+      "computed": 10.0,
       "tolerance": 0.0,
-      "detail": "computed=7 expected=7.0 diff=0.0 tolerance=0.0",
-      "excerpt": "7 Claude family models analyzed (haiku-3 through opus-4.5)",
-      "source_file": "supplementary/experiments/fixed_point_claude_family.json"
+      "detail": "computed=10 expected=10.0 diff=0.0 tolerance=0.0",
+      "excerpt": "10 Claude models in Tab:claude_family (canonical 7 plus opus-4.6, sonnet-4.6, opus-4.7)",
+      "source_file": "supplementary/experiments/fixed_point_claude_family_full10.json"
+    },
+    {
+      "name": "claude_family_opus46_wins",
+      "passed": true,
+      "expected": 4.0,
+      "computed": 4.0,
+      "tolerance": 0.0,
+      "detail": "computed=4 expected=4.0 diff=0.0 tolerance=0.0",
+      "excerpt": "opus-4.6 4/6 wins (Tab:claude_family added 2026-05)",
+      "source_file": "supplementary/experiments/fixed_point_claude_family_opus46_addition.json"
+    },
+    {
+      "name": "claude_family_opus46_ratio",
+      "passed": true,
+      "expected": 7.7,
+      "computed": 7.7,
+      "tolerance": 0.05,
+      "detail": "computed=7.7 expected=7.7 diff=0.0 tolerance=0.05",
+      "excerpt": "opus-4.6 7.7x staging ratio (Tab:claude_family)",
+      "source_file": "supplementary/experiments/fixed_point_claude_family_opus46_addition.json"
+    },
+    {
+      "name": "claude_family_sonnet46_wins",
+      "passed": true,
+      "expected": 6.0,
+      "computed": 6.0,
+      "tolerance": 0.0,
+      "detail": "computed=6 expected=6.0 diff=0.0 tolerance=0.0",
+      "excerpt": "sonnet-4.6 6/6 wins (only model to sweep paired tasks; Tab:claude_family)",
+      "source_file": "supplementary/experiments/fixed_point_claude_family_sonnet46_addition.json"
+    },
+    {
+      "name": "claude_family_sonnet46_ratio",
+      "passed": true,
+      "expected": 10.9,
+      "computed": 10.9,
+      "tolerance": 0.05,
+      "detail": "computed=10.9 expected=10.9 diff=0.0 tolerance=0.05",
+      "excerpt": "sonnet-4.6 10.9x staging ratio (Tab:claude_family)",
+      "source_file": "supplementary/experiments/fixed_point_claude_family_sonnet46_addition.json"
+    },
+    {
+      "name": "claude_family_opus47_wins",
+      "passed": true,
+      "expected": 5.0,
+      "computed": 5.0,
+      "tolerance": 0.0,
+      "detail": "computed=5 expected=5.0 diff=0.0 tolerance=0.0",
+      "excerpt": "opus-4.7 5/6 wins (Tab:claude_family; sampling caveat)",
+      "source_file": "supplementary/experiments/fixed_point_claude_family_opus47_addition.json"
+    },
+    {
+      "name": "claude_family_opus47_ratio",
+      "passed": true,
+      "expected": 4.9,
+      "computed": 4.9,
+      "tolerance": 0.05,
+      "detail": "computed=4.9 expected=4.9 diff=0.0 tolerance=0.05",
+      "excerpt": "opus-4.7 4.9x staging ratio (Tab:claude_family; sampling caveat)",
+      "source_file": "supplementary/experiments/fixed_point_claude_family_opus47_addition.json"
     },
     {
       "name": "json_nl_tier_rho_high",
@@ -1582,18 +1642,18 @@
       "computed": 4.0,
       "tolerance": 0.0,
       "detail": "computed=4 expected=4.0 diff=0.0 tolerance=0.0",
-      "excerpt": "4-model blinded benchmark \u2014 exactly 4 distinct models in source",
+      "excerpt": "4-model blinded benchmark \u00e2\u20ac\u201d exactly 4 distinct models in source",
       "source_file": "rebuttal/figures/blinded_external/cross_model_results.json"
     },
     {
-      "name": "identifier_count_claude_family_7models",
+      "name": "identifier_count_claude_family_10models",
       "passed": true,
-      "expected": 7.0,
-      "computed": 7.0,
+      "expected": 10.0,
+      "computed": 10.0,
       "tolerance": 0.0,
-      "detail": "computed=7 expected=7.0 diff=0.0 tolerance=0.0",
-      "excerpt": "7 Claude family models in fixed_point analysis (matches body claim)",
-      "source_file": "supplementary/experiments/fixed_point_claude_family.json"
+      "detail": "computed=10 expected=10.0 diff=0.0 tolerance=0.0",
+      "excerpt": "10 Claude models in fixed_point analysis (matches Tab:claude_family caption)",
+      "source_file": "supplementary/experiments/fixed_point_claude_family_full10.json"
     },
     {
       "name": "identifier_count_cross_model_5models",
@@ -1664,6 +1724,1536 @@
       "detail": "computed=1 expected=1.0 diff=0.0 tolerance=0.0",
       "excerpt": "Named models in body == distinct models in source (consistency check)",
       "source_file": "rebuttal/figures/cross_model_results.json"
+    },
+    {
+      "name": "identifier_minilm_l6_in_encoder_table",
+      "passed": true,
+      "expected": 1.0,
+      "computed": 1.0,
+      "tolerance": 0.0,
+      "detail": "computed=1 expected=1.0 diff=0.0 tolerance=0.0",
+      "excerpt": "MiniLM-L6-v2 encoder in tab:embedding_R + tab:encoder_sensitivity",
+      "source_file": "ci/derivations/encoder_lipschitz.json"
+    },
+    {
+      "name": "identifier_mpnet_base_in_encoder_table",
+      "passed": true,
+      "expected": 1.0,
+      "computed": 1.0,
+      "tolerance": 0.0,
+      "detail": "computed=1 expected=1.0 diff=0.0 tolerance=0.0",
+      "excerpt": "mpnet-base-v2 encoder in tab:embedding_R + tab:encoder_sensitivity",
+      "source_file": "ci/derivations/encoder_lipschitz.json"
+    },
+    {
+      "name": "identifier_multilingual_minilm_in_encoder_table",
+      "passed": true,
+      "expected": 1.0,
+      "computed": 1.0,
+      "tolerance": 0.0,
+      "detail": "computed=1 expected=1.0 diff=0.0 tolerance=0.0",
+      "excerpt": "multilingual-MiniLM encoder in tab:embedding_R + tab:encoder_sensitivity (also line 384 after E5->multilingual-MiniLM fix)",
+      "source_file": "ci/derivations/encoder_lipschitz.json"
+    },
+    {
+      "name": "set_equality_encoders_3",
+      "passed": true,
+      "expected": 1.0,
+      "computed": 1.0,
+      "tolerance": 0.0,
+      "detail": "computed=1 expected=1.0 diff=0.0 tolerance=0.0",
+      "excerpt": "Exactly 3 encoders in tab:embedding_R and tab:encoder_sensitivity",
+      "source_file": "ci/derivations/encoder_lipschitz.json"
+    },
+    {
+      "name": "identifier_factorial_in_code_experiment",
+      "passed": true,
+      "expected": 1.0,
+      "computed": 1.0,
+      "tolerance": 0.0,
+      "detail": "computed=1 expected=1.0 diff=0.0 tolerance=0.0",
+      "excerpt": "factorial code task referenced (Table 4, multiple appendices)",
+      "source_file": "supplementary/experiments/code_constraint_results.json"
+    },
+    {
+      "name": "identifier_fibonacci_in_code_experiment",
+      "passed": true,
+      "expected": 1.0,
+      "computed": 1.0,
+      "tolerance": 0.0,
+      "detail": "computed=1 expected=1.0 diff=0.0 tolerance=0.0",
+      "excerpt": "fibonacci code task referenced",
+      "source_file": "supplementary/experiments/code_constraint_results.json"
+    },
+    {
+      "name": "identifier_count_code_experiment_tasks_12",
+      "passed": true,
+      "expected": 12.0,
+      "computed": 12.0,
+      "tolerance": 0.0,
+      "detail": "computed=12 expected=12.0 diff=0.0 tolerance=0.0",
+      "excerpt": "12 distinct code tasks in code_constraint experiment",
+      "source_file": "supplementary/experiments/code_constraint_results.json"
+    },
+    {
+      "name": "set_equality_code_experiment_4_models",
+      "passed": true,
+      "expected": 1.0,
+      "computed": 1.0,
+      "tolerance": 0.0,
+      "detail": "computed=1 expected=1.0 diff=0.0 tolerance=0.0",
+      "excerpt": "Tab:llm_bridge + tab:delta_capacity_model name 4 open-weight models",
+      "source_file": "supplementary/experiments/code_constraint_results.json"
+    },
+    {
+      "name": "set_equality_claude_family_10_models",
+      "passed": true,
+      "expected": 1.0,
+      "computed": 1.0,
+      "tolerance": 0.0,
+      "detail": "computed=1 expected=1.0 diff=0.0 tolerance=0.0",
+      "excerpt": "Exactly 10 specific Claude family models in Tab:claude_family",
+      "source_file": "supplementary/experiments/fixed_point_claude_family_full10.json"
+    },
+    {
+      "name": "set_equality_blinded_external_4_models",
+      "passed": true,
+      "expected": 1.0,
+      "computed": 1.0,
+      "tolerance": 0.0,
+      "detail": "computed=1 expected=1.0 diff=0.0 tolerance=0.0",
+      "excerpt": "Exactly 4 specific blinded external models",
+      "source_file": "rebuttal/figures/blinded_external/cross_model_results.json"
+    },
+    {
+      "name": "identifier_image_model_gpt5_4_image_2",
+      "passed": true,
+      "expected": 1.0,
+      "computed": 1.0,
+      "tolerance": 0.0,
+      "detail": "computed=1 expected=1.0 diff=0.0 tolerance=0.0",
+      "excerpt": "Image model openai/gpt-5.4-image-2 used for Run B/C/D",
+      "source_file": "supplementary/experiments_rebuttal/image_transfer/image_transfer_results_runA_no_medium_frame.json"
+    },
+    {
+      "name": "identifier_high_k_opus_api_model_id",
+      "passed": true,
+      "expected": 1.0,
+      "computed": 1.0,
+      "tolerance": 0.0,
+      "detail": "computed=1 expected=1.0 diff=0.0 tolerance=0.0",
+      "excerpt": "High-k Opus 4.5 ran with API id claude-opus-4-5-20251101",
+      "source_file": "supplementary/experiments/outputs/high_k_opus/high_k_opus_results.json"
+    },
+    {
+      "name": "code_constraint_n_per_cell_60",
+      "passed": true,
+      "expected": 60.0,
+      "computed": 60.0,
+      "tolerance": 0.0,
+      "detail": "computed=60 expected=60.0 diff=0.0 tolerance=0.0",
+      "excerpt": "Per (model, tier, protocol) cell: 60 trials (12 tasks x 5 trials)",
+      "source_file": "supplementary/experiments/code_constraint_results.json"
+    },
+    {
+      "name": "code_constraint_n_per_tier_per_protocol_240",
+      "passed": true,
+      "expected": 240.0,
+      "computed": 240.0,
+      "tolerance": 0.0,
+      "detail": "computed=240 expected=240.0 diff=0.0 tolerance=0.0",
+      "excerpt": "Per (tier, protocol) across 4 models: 240 trials",
+      "source_file": "supplementary/experiments/code_constraint_results.json"
+    },
+    {
+      "name": "lipschitz_n_completions_900",
+      "passed": true,
+      "expected": 900.0,
+      "computed": 900.0,
+      "tolerance": 0.0,
+      "detail": "computed=900 expected=900.0 diff=0.0 tolerance=0.0",
+      "excerpt": "900 completions (50 per task x 6 tasks x 3 models)",
+      "source_file": "supplementary/experiments/lipschitz_calibration_results.json"
+    },
+    {
+      "name": "lipschitz_n_per_task_50",
+      "passed": true,
+      "expected": 50.0,
+      "computed": 50.0,
+      "tolerance": 0.0,
+      "detail": "computed=50 expected=50.0 diff=0.0 tolerance=0.0",
+      "excerpt": "N=50 completions per task (lipschitz calibration)",
+      "source_file": "supplementary/experiments/lipschitz_calibration_results.json"
+    },
+    {
+      "name": "lipschitz_n_tokens_108957",
+      "passed": true,
+      "expected": 108957.0,
+      "computed": 108957.0,
+      "tolerance": 0.0,
+      "detail": "computed=108957 expected=108957.0 diff=0.0 tolerance=0.0",
+      "excerpt": "N=108,957 per-token displacements (Step-Size Distribution)",
+      "source_file": "supplementary/experiments/lipschitz_calibration_results.json"
+    },
+    {
+      "name": "lipschitz_n_tasks_6",
+      "passed": true,
+      "expected": 6.0,
+      "computed": 6.0,
+      "tolerance": 0.0,
+      "detail": "computed=6 expected=6.0 diff=0.0 tolerance=0.0",
+      "excerpt": "6 code tasks (lipschitz calibration)",
+      "source_file": "supplementary/experiments/lipschitz_calibration_results.json"
+    },
+    {
+      "name": "lipschitz_n_models_3",
+      "passed": true,
+      "expected": 3.0,
+      "computed": 3.0,
+      "tolerance": 0.0,
+      "detail": "computed=3 expected=3.0 diff=0.0 tolerance=0.0",
+      "excerpt": "3 models (lipschitz calibration)",
+      "source_file": "supplementary/experiments/lipschitz_calibration_results.json"
+    },
+    {
+      "name": "json_nl_n_per_tier_per_protocol_40",
+      "passed": true,
+      "expected": 40.0,
+      "computed": 40.0,
+      "tolerance": 0.0,
+      "detail": "computed=40 expected=40.0 diff=0.0 tolerance=0.0",
+      "excerpt": "JSON-NL Qwen-1.5B: n=40 per (tier, protocol) cell",
+      "source_file": "supplementary/experiments/json_nl_v4_results.json"
+    },
+    {
+      "name": "json_nl_n_total_320",
+      "passed": true,
+      "expected": 320.0,
+      "computed": 320.0,
+      "tolerance": 0.0,
+      "detail": "computed=320 expected=320.0 diff=0.0 tolerance=0.0",
+      "excerpt": "JSON-NL total: 4 tiers x 2 protocols x 40 = 320",
+      "source_file": "supplementary/experiments/json_nl_v4_results.json"
+    },
+    {
+      "name": "delta_capacity_n_per_budget_per_protocol_120",
+      "passed": true,
+      "expected": 120.0,
+      "computed": 120.0,
+      "tolerance": 0.0,
+      "detail": "computed=120 expected=120.0 diff=0.0 tolerance=0.0",
+      "excerpt": "Token budget sweep: 120 trials per (budget, protocol)",
+      "source_file": "supplementary/experiments/delta_capacity_results.json"
+    },
+    {
+      "name": "delta_capacity_n_per_budget_240",
+      "passed": true,
+      "expected": 240.0,
+      "computed": 240.0,
+      "tolerance": 0.0,
+      "detail": "computed=240 expected=240.0 diff=0.0 tolerance=0.0",
+      "excerpt": "240 trials per token budget (across protocols)",
+      "source_file": "supplementary/experiments/delta_capacity_results.json"
+    },
+    {
+      "name": "high_k_opus_n_total_400",
+      "passed": true,
+      "expected": 400.0,
+      "computed": 400.0,
+      "tolerance": 0.0,
+      "detail": "computed=400 expected=400.0 diff=0.0 tolerance=0.0",
+      "excerpt": "Opus 4.5 high-k: 4 regimes x 100 = 400 trials total",
+      "source_file": "supplementary/experiments/outputs/high_k_opus/high_k_opus_results.json"
+    },
+    {
+      "name": "cross_model_n_per_model_older_240",
+      "passed": true,
+      "expected": 240.0,
+      "computed": 240.0,
+      "tolerance": 0.0,
+      "detail": "computed=240 expected=240.0 diff=0.0 tolerance=0.0",
+      "excerpt": "5 models x 240 trials = 1,200 (older cross-model)",
+      "source_file": "rebuttal/figures/cross_model_results.json"
+    },
+    {
+      "name": "mutation_total_results_156",
+      "passed": true,
+      "expected": 156.0,
+      "computed": 156.0,
+      "tolerance": 0.0,
+      "detail": "computed=156 expected=156.0 diff=0.0 tolerance=0.0",
+      "excerpt": "156 mutation tests run total",
+      "source_file": "ci/tests/systematic_mutation_results.json"
+    },
+    {
+      "name": "calibration_staged_pass_control_pct",
+      "passed": true,
+      "expected": 78.0,
+      "computed": 78.0,
+      "tolerance": 0.0,
+      "detail": "computed=78 expected=78.0 diff=0.0 tolerance=0.0",
+      "excerpt": "Control 78% staged (Table tab:calibration column 'Staged')",
+      "source_file": "supplementary/experiments/calibration_results.json"
+    },
+    {
+      "name": "calibration_staged_pass_low_pct",
+      "passed": true,
+      "expected": 60.0,
+      "computed": 60.0,
+      "tolerance": 0.0,
+      "detail": "computed=60 expected=60.0 diff=0.0 tolerance=0.0",
+      "excerpt": "Low 60% staged (Table tab:calibration)",
+      "source_file": "supplementary/experiments/calibration_results.json"
+    },
+    {
+      "name": "calibration_staged_pass_moderate_pct",
+      "passed": true,
+      "expected": 23.0,
+      "computed": 23.0,
+      "tolerance": 0.0,
+      "detail": "computed=23 expected=23.0 diff=0.0 tolerance=0.0",
+      "excerpt": "Moderate 23% staged (Table tab:calibration)",
+      "source_file": "supplementary/experiments/calibration_results.json"
+    },
+    {
+      "name": "calibration_staged_pass_high_pct",
+      "passed": true,
+      "expected": 2.0,
+      "computed": 2.0,
+      "tolerance": 0.0,
+      "detail": "computed=2 expected=2.0 diff=0.0 tolerance=0.0",
+      "excerpt": "High 2% staged (Table tab:calibration)",
+      "source_file": "supplementary/experiments/calibration_results.json"
+    },
+    {
+      "name": "per_tier_control_pass_pct",
+      "passed": true,
+      "expected": 76.9,
+      "computed": 76.9,
+      "tolerance": 0.1,
+      "detail": "computed=76.9 expected=76.9 diff=0.0 tolerance=0.1",
+      "excerpt": "76.9% control-tier mean pass (Table tab:tier_pivot_decomposition)",
+      "source_file": "rebuttal/figures/per_task_correlation_results.json"
+    },
+    {
+      "name": "per_tier_low_pass_pct",
+      "passed": true,
+      "expected": 58.1,
+      "computed": 58.1,
+      "tolerance": 0.1,
+      "detail": "computed=58.1 expected=58.1 diff=0.0 tolerance=0.1",
+      "excerpt": "58.1% low-tier mean pass",
+      "source_file": "rebuttal/figures/per_task_correlation_results.json"
+    },
+    {
+      "name": "per_tier_moderate_pass_pct",
+      "passed": true,
+      "expected": 23.1,
+      "computed": 23.1,
+      "tolerance": 0.1,
+      "detail": "computed=23.1 expected=23.1 diff=0.0 tolerance=0.1",
+      "excerpt": "23.1% moderate-tier mean pass",
+      "source_file": "rebuttal/figures/per_task_correlation_results.json"
+    },
+    {
+      "name": "per_tier_high_pass_pct",
+      "passed": true,
+      "expected": 1.7,
+      "computed": 1.7,
+      "tolerance": 0.1,
+      "detail": "computed=1.7 expected=1.7 diff=0.0 tolerance=0.1",
+      "excerpt": "1.7% high-tier mean pass (Table tab:tier_pivot_decomposition)",
+      "source_file": "rebuttal/figures/per_task_correlation_results.json"
+    },
+    {
+      "name": "lipschitz_pooled_p99",
+      "passed": true,
+      "expected": 0.246,
+      "computed": 0.246,
+      "tolerance": 0.01,
+      "detail": "computed=0.246 expected=0.246 diff=0.0 tolerance=0.01",
+      "excerpt": "p99 per-token displacement = 0.246 (Step-Size Distribution)",
+      "source_file": "supplementary/experiments/lipschitz_calibration_results.json"
+    },
+    {
+      "name": "lipschitz_pooled_max",
+      "passed": true,
+      "expected": 0.447,
+      "computed": 0.447,
+      "tolerance": 0.01,
+      "detail": "computed=0.447 expected=0.447 diff=0.0 tolerance=0.01",
+      "excerpt": "Maximum observed per-token displacement = 0.447",
+      "source_file": "supplementary/experiments/lipschitz_calibration_results.json"
+    },
+    {
+      "name": "claude_family_haiku3_wins",
+      "passed": true,
+      "expected": 3.0,
+      "computed": 3.0,
+      "tolerance": 0.0,
+      "detail": "computed=3 expected=3.0 diff=0.0 tolerance=0.0",
+      "excerpt": "haiku-3 wins 3/6 tasks (Table tab:claude_family Wins column)",
+      "source_file": "supplementary/experiments/fixed_point_claude_family.json"
+    },
+    {
+      "name": "claude_family_sonnet4_wins",
+      "passed": true,
+      "expected": 5.0,
+      "computed": 5.0,
+      "tolerance": 0.0,
+      "detail": "computed=5 expected=5.0 diff=0.0 tolerance=0.0",
+      "excerpt": "sonnet-4 wins 5/6 tasks",
+      "source_file": "supplementary/experiments/fixed_point_claude_family.json"
+    },
+    {
+      "name": "claude_family_opus4_wins",
+      "passed": true,
+      "expected": 5.0,
+      "computed": 5.0,
+      "tolerance": 0.0,
+      "detail": "computed=5 expected=5.0 diff=0.0 tolerance=0.0",
+      "excerpt": "opus-4 wins 5/6 tasks",
+      "source_file": "supplementary/experiments/fixed_point_claude_family.json"
+    },
+    {
+      "name": "claude_family_opus41_wins",
+      "passed": true,
+      "expected": 5.0,
+      "computed": 5.0,
+      "tolerance": 0.0,
+      "detail": "computed=5 expected=5.0 diff=0.0 tolerance=0.0",
+      "excerpt": "opus-4.1 wins 5/6 tasks",
+      "source_file": "supplementary/experiments/fixed_point_claude_family.json"
+    },
+    {
+      "name": "claude_family_haiku45_wins",
+      "passed": true,
+      "expected": 5.0,
+      "computed": 5.0,
+      "tolerance": 0.0,
+      "detail": "computed=5 expected=5.0 diff=0.0 tolerance=0.0",
+      "excerpt": "haiku-4.5 wins 5/6 tasks",
+      "source_file": "supplementary/experiments/fixed_point_claude_family.json"
+    },
+    {
+      "name": "claude_family_sonnet45_wins",
+      "passed": true,
+      "expected": 5.0,
+      "computed": 5.0,
+      "tolerance": 0.0,
+      "detail": "computed=5 expected=5.0 diff=0.0 tolerance=0.0",
+      "excerpt": "sonnet-4.5 wins 5/6 tasks",
+      "source_file": "supplementary/experiments/fixed_point_claude_family.json"
+    },
+    {
+      "name": "claude_family_opus45_wins",
+      "passed": true,
+      "expected": 4.0,
+      "computed": 4.0,
+      "tolerance": 0.0,
+      "detail": "computed=4 expected=4.0 diff=0.0 tolerance=0.0",
+      "excerpt": "opus-4.5 wins 4/6 tasks (the scaling-paradox row)",
+      "source_file": "supplementary/experiments/fixed_point_claude_family.json"
+    },
+    {
+      "name": "claude_family_n_tasks_per_model_6",
+      "passed": true,
+      "expected": 6.0,
+      "computed": 6.0,
+      "tolerance": 0.0,
+      "detail": "computed=6 expected=6.0 diff=0.0 tolerance=0.0",
+      "excerpt": "6 tasks per model (Wins column denominator: 3/6, 5/6, 4/6)",
+      "source_file": "supplementary/experiments/fixed_point_claude_family.json"
+    },
+    {
+      "name": "constitution_top_pair_max_rho",
+      "passed": true,
+      "expected": 0.897,
+      "computed": 0.897,
+      "tolerance": 0.005,
+      "detail": "computed=0.897 expected=0.897 diff=0.0 tolerance=0.005",
+      "excerpt": "max rho = 0.897 (top high-rho pair, Table app:constitution)",
+      "source_file": "supplementary/experiments/outputs/constitution/constitution_analysis.json"
+    },
+    {
+      "name": "constitution_hierarchy_ratio",
+      "passed": true,
+      "expected": 1.3,
+      "computed": 1.3,
+      "tolerance": 0.01,
+      "detail": "computed=1.3 expected=1.3 diff=0.0 tolerance=0.01",
+      "excerpt": "Hierarchy ratio 1.30x (within > cross category)",
+      "source_file": "supplementary/experiments/outputs/constitution/constitution_analysis.json"
+    },
+    {
+      "name": "constitution_category_hardcoded_defaults_max_rho",
+      "passed": true,
+      "expected": 0.861,
+      "computed": 0.861,
+      "tolerance": 0.005,
+      "detail": "computed=0.861 expected=0.861 diff=0.0 tolerance=0.005",
+      "excerpt": "Hardcoded Defaults max rho 0.861 (constitution category stats)",
+      "source_file": "supplementary/experiments/outputs/constitution/constitution_analysis.json"
+    },
+    {
+      "name": "conflict_detection_overall_conflict_rate_pct",
+      "passed": true,
+      "expected": 76.8,
+      "computed": 76.8,
+      "tolerance": 0.1,
+      "detail": "computed=76.8 expected=76.8 diff=0.0 tolerance=0.1",
+      "excerpt": "Behavioral validation: 76.8% overall conflict rate (146/190)",
+      "source_file": "supplementary/experiments/outputs/conflict_detection/results.json"
+    },
+    {
+      "name": "conflict_detection_low_bucket_rate_pct",
+      "passed": true,
+      "expected": 68.6,
+      "computed": 68.6,
+      "tolerance": 0.1,
+      "detail": "computed=68.6 expected=68.6 diff=0.0 tolerance=0.1",
+      "excerpt": "Low-rho conflict rate 68.6% (105 pairs)",
+      "source_file": "supplementary/experiments/outputs/conflict_detection/results.json"
+    },
+    {
+      "name": "conflict_detection_med_bucket_rate_pct",
+      "passed": true,
+      "expected": 90.6,
+      "computed": 90.6,
+      "tolerance": 0.1,
+      "detail": "computed=90.6 expected=90.6 diff=0.0 tolerance=0.1",
+      "excerpt": "Medium-rho conflict rate 90.6% (highest, non-monotonic)",
+      "source_file": "supplementary/experiments/outputs/conflict_detection/results.json"
+    },
+    {
+      "name": "conflict_detection_high_bucket_rate_pct",
+      "passed": true,
+      "expected": 76.2,
+      "computed": 76.2,
+      "tolerance": 0.1,
+      "detail": "computed=76.2 expected=76.2 diff=0.0 tolerance=0.1",
+      "excerpt": "High-rho conflict rate 76.2% (21 pairs)",
+      "source_file": "supplementary/experiments/outputs/conflict_detection/results.json"
+    },
+    {
+      "name": "conflict_detection_point_biserial_r",
+      "passed": true,
+      "expected": 0.124,
+      "computed": 0.124,
+      "tolerance": 0.001,
+      "detail": "computed=0.124 expected=0.124 diff=0.0 tolerance=0.001",
+      "excerpt": "Point-biserial r=0.124 (constitution behavioral correlation)",
+      "source_file": "supplementary/experiments/outputs/conflict_detection/results.json"
+    },
+    {
+      "name": "baselines_token_savings_pct",
+      "passed": true,
+      "expected": 25.0,
+      "computed": 25.0,
+      "tolerance": 0.0,
+      "detail": "computed=25 expected=25.0 diff=0.0 tolerance=0.0",
+      "excerpt": "Geometric router uses 25% fewer tokens than staged",
+      "source_file": "ci/derivations/protocol_table11.json"
+    },
+    {
+      "name": "json_nl_format_pct_control",
+      "passed": true,
+      "expected": 50.0,
+      "computed": 50.0,
+      "tolerance": 0.5,
+      "detail": "computed=50.0 expected=50.0 diff=0.0 tolerance=0.5",
+      "excerpt": "JSON-NL control 50% format pass (Format% high end of drop)",
+      "source_file": "supplementary/experiments/json_nl_v4_results.json"
+    },
+    {
+      "name": "json_nl_format_pct_high",
+      "passed": true,
+      "expected": 0.0,
+      "computed": 0.0,
+      "tolerance": 0.5,
+      "detail": "computed=0.0 expected=0.0 diff=0.0 tolerance=0.5",
+      "excerpt": "JSON-NL high tier 0% format pass (Format% drops 50%->0%)",
+      "source_file": "supplementary/experiments/json_nl_v4_results.json"
+    },
+    {
+      "name": "json_nl_one_shot_pass_control_pct",
+      "passed": true,
+      "expected": 22.5,
+      "computed": 22.5,
+      "tolerance": 0.05,
+      "detail": "computed=22.5 expected=22.5 diff=0.0 tolerance=0.05",
+      "excerpt": "JSON-NL control one-shot 22.5% pass",
+      "source_file": "supplementary/experiments/json_nl_v4_results.json"
+    },
+    {
+      "name": "delta_capacity_T128_oneshot_pct",
+      "passed": true,
+      "expected": 33.3,
+      "computed": 33.3,
+      "tolerance": 0.5,
+      "detail": "computed=33.3 expected=33.3 diff=0.0 tolerance=0.5",
+      "excerpt": "T=128 one-shot 33.3% (Table tab:delta_capacity)",
+      "source_file": "supplementary/experiments/delta_capacity_results.json"
+    },
+    {
+      "name": "delta_capacity_T128_staged_pct",
+      "passed": true,
+      "expected": 25.0,
+      "computed": 25.0,
+      "tolerance": 0.5,
+      "detail": "computed=25.0 expected=25.0 diff=0.0 tolerance=0.5",
+      "excerpt": "T=128 staged 25.0% (paper headline 'staging starved at T=128')",
+      "source_file": "supplementary/experiments/delta_capacity_results.json"
+    },
+    {
+      "name": "qwen3b_one_shot_low_pct",
+      "passed": true,
+      "expected": 42.0,
+      "computed": 42.0,
+      "tolerance": 1.0,
+      "detail": "computed=42 expected=42.0 diff=0.0 tolerance=1.0",
+      "excerpt": "Qwen-3B one-shot 42% at low tier (Table tab:llm_bridge)",
+      "source_file": "supplementary/experiments/code_constraint_results.json"
+    },
+    {
+      "name": "deltacap_model_qwencoder_T128_delta",
+      "passed": true,
+      "expected": -63.0,
+      "computed": -63.0,
+      "tolerance": 1.0,
+      "detail": "computed=-63 expected=-63.0 diff=0.0 tolerance=1.0",
+      "excerpt": "Qwen-Coder-1.5B at T=128: staged delta = -63% (tab:delta_capacity_model)",
+      "source_file": "supplementary/experiments/delta_capacity_results.json"
+    },
+    {
+      "name": "deltacap_model_qwencoder_T192_delta",
+      "passed": true,
+      "expected": -37.0,
+      "computed": -37.0,
+      "tolerance": 1.0,
+      "detail": "computed=-37 expected=-37.0 diff=0.0 tolerance=1.0",
+      "excerpt": "Qwen-Coder-1.5B at T=192: staged delta = -37% (tab:delta_capacity_model)",
+      "source_file": "supplementary/experiments/delta_capacity_results.json"
+    },
+    {
+      "name": "deltacap_model_qwencoder_T256_delta",
+      "passed": true,
+      "expected": -30.0,
+      "computed": -30.0,
+      "tolerance": 1.0,
+      "detail": "computed=-30 expected=-30.0 diff=0.0 tolerance=1.0",
+      "excerpt": "Qwen-Coder-1.5B at T=256: staged delta = -30% (tab:delta_capacity_model)",
+      "source_file": "supplementary/experiments/delta_capacity_results.json"
+    },
+    {
+      "name": "deltacap_model_qwencoder_T384_delta",
+      "passed": true,
+      "expected": -33.0,
+      "computed": -33.0,
+      "tolerance": 1.0,
+      "detail": "computed=-33 expected=-33.0 diff=0.0 tolerance=1.0",
+      "excerpt": "Qwen-Coder-1.5B at T=384: staged delta = -33% (tab:delta_capacity_model)",
+      "source_file": "supplementary/experiments/delta_capacity_results.json"
+    },
+    {
+      "name": "deltacap_model_qwencoder_T512_delta",
+      "passed": true,
+      "expected": -30.0,
+      "computed": -30.0,
+      "tolerance": 1.0,
+      "detail": "computed=-30 expected=-30.0 diff=0.0 tolerance=1.0",
+      "excerpt": "Qwen-Coder-1.5B at T=512: staged delta = -30% (tab:delta_capacity_model)",
+      "source_file": "supplementary/experiments/delta_capacity_results.json"
+    },
+    {
+      "name": "deltacap_model_qwen3b_T128_delta",
+      "passed": true,
+      "expected": 23.0,
+      "computed": 23.0,
+      "tolerance": 1.0,
+      "detail": "computed=23 expected=23.0 diff=0.0 tolerance=1.0",
+      "excerpt": "Qwen-3B at T=128: staged delta = +23% (tab:delta_capacity_model)",
+      "source_file": "supplementary/experiments/delta_capacity_results.json"
+    },
+    {
+      "name": "deltacap_model_qwen3b_T192_delta",
+      "passed": true,
+      "expected": 20.0,
+      "computed": 20.0,
+      "tolerance": 1.0,
+      "detail": "computed=20 expected=20.0 diff=0.0 tolerance=1.0",
+      "excerpt": "Qwen-3B at T=192: staged delta = +20% (tab:delta_capacity_model)",
+      "source_file": "supplementary/experiments/delta_capacity_results.json"
+    },
+    {
+      "name": "deltacap_model_qwen3b_T256_delta",
+      "passed": true,
+      "expected": 27.0,
+      "computed": 27.0,
+      "tolerance": 1.0,
+      "detail": "computed=27 expected=27.0 diff=0.0 tolerance=1.0",
+      "excerpt": "Qwen-3B at T=256: staged delta = +27% (tab:delta_capacity_model)",
+      "source_file": "supplementary/experiments/delta_capacity_results.json"
+    },
+    {
+      "name": "deltacap_model_qwen3b_T384_delta",
+      "passed": true,
+      "expected": 23.0,
+      "computed": 23.0,
+      "tolerance": 1.0,
+      "detail": "computed=23 expected=23.0 diff=0.0 tolerance=1.0",
+      "excerpt": "Qwen-3B at T=384: staged delta = +23% (tab:delta_capacity_model)",
+      "source_file": "supplementary/experiments/delta_capacity_results.json"
+    },
+    {
+      "name": "deltacap_model_qwen3b_T512_delta",
+      "passed": true,
+      "expected": 27.0,
+      "computed": 27.0,
+      "tolerance": 1.0,
+      "detail": "computed=27 expected=27.0 diff=0.0 tolerance=1.0",
+      "excerpt": "Qwen-3B at T=512: staged delta = +27% (tab:delta_capacity_model)",
+      "source_file": "supplementary/experiments/delta_capacity_results.json"
+    },
+    {
+      "name": "deltacap_model_deepseek_T128_delta",
+      "passed": true,
+      "expected": 7.0,
+      "computed": 7.0,
+      "tolerance": 1.0,
+      "detail": "computed=7 expected=7.0 diff=0.0 tolerance=1.0",
+      "excerpt": "DeepSeek-Coder-1.3B at T=128: staged delta = +7% (tab:delta_capacity_model)",
+      "source_file": "supplementary/experiments/delta_capacity_results.json"
+    },
+    {
+      "name": "deltacap_model_deepseek_T192_delta",
+      "passed": true,
+      "expected": 17.0,
+      "computed": 17.0,
+      "tolerance": 1.0,
+      "detail": "computed=17 expected=17.0 diff=0.0 tolerance=1.0",
+      "excerpt": "DeepSeek-Coder-1.3B at T=192: staged delta = +17% (tab:delta_capacity_model)",
+      "source_file": "supplementary/experiments/delta_capacity_results.json"
+    },
+    {
+      "name": "deltacap_model_deepseek_T256_delta",
+      "passed": true,
+      "expected": 13.0,
+      "computed": 13.0,
+      "tolerance": 1.0,
+      "detail": "computed=13 expected=13.0 diff=0.0 tolerance=1.0",
+      "excerpt": "DeepSeek-Coder-1.3B at T=256: staged delta = +13% (tab:delta_capacity_model)",
+      "source_file": "supplementary/experiments/delta_capacity_results.json"
+    },
+    {
+      "name": "deltacap_model_deepseek_T384_delta",
+      "passed": true,
+      "expected": 0.0,
+      "computed": 0.0,
+      "tolerance": 1.0,
+      "detail": "computed=0 expected=0.0 diff=0.0 tolerance=1.0",
+      "excerpt": "DeepSeek-Coder-1.3B at T=384: staged delta = 0% (tab:delta_capacity_model)",
+      "source_file": "supplementary/experiments/delta_capacity_results.json"
+    },
+    {
+      "name": "deltacap_model_deepseek_T512_delta",
+      "passed": true,
+      "expected": 27.0,
+      "computed": 27.0,
+      "tolerance": 1.0,
+      "detail": "computed=27 expected=27.0 diff=0.0 tolerance=1.0",
+      "excerpt": "DeepSeek-Coder-1.3B at T=512: staged delta = +27% (tab:delta_capacity_model)",
+      "source_file": "supplementary/experiments/delta_capacity_results.json"
+    },
+    {
+      "name": "deltacap_model_tinyllama_T128_delta",
+      "passed": true,
+      "expected": 0.0,
+      "computed": 0.0,
+      "tolerance": 1.0,
+      "detail": "computed=0 expected=0.0 diff=0.0 tolerance=1.0",
+      "excerpt": "TinyLlama-1.1B at T=128: staged delta = 0% (tab:delta_capacity_model)",
+      "source_file": "supplementary/experiments/delta_capacity_results.json"
+    },
+    {
+      "name": "deltacap_model_tinyllama_T192_delta",
+      "passed": true,
+      "expected": 20.0,
+      "computed": 20.0,
+      "tolerance": 1.0,
+      "detail": "computed=20 expected=20.0 diff=0.0 tolerance=1.0",
+      "excerpt": "TinyLlama-1.1B at T=192: staged delta = +20% (tab:delta_capacity_model)",
+      "source_file": "supplementary/experiments/delta_capacity_results.json"
+    },
+    {
+      "name": "deltacap_model_tinyllama_T256_delta",
+      "passed": true,
+      "expected": 0.0,
+      "computed": 0.0,
+      "tolerance": 1.0,
+      "detail": "computed=0 expected=0.0 diff=0.0 tolerance=1.0",
+      "excerpt": "TinyLlama-1.1B at T=256: staged delta = 0% (tab:delta_capacity_model)",
+      "source_file": "supplementary/experiments/delta_capacity_results.json"
+    },
+    {
+      "name": "deltacap_model_tinyllama_T384_delta",
+      "passed": true,
+      "expected": 3.0,
+      "computed": 3.0,
+      "tolerance": 1.0,
+      "detail": "computed=3 expected=3.0 diff=0.0 tolerance=1.0",
+      "excerpt": "TinyLlama-1.1B at T=384: staged delta = +3% (tab:delta_capacity_model)",
+      "source_file": "supplementary/experiments/delta_capacity_results.json"
+    },
+    {
+      "name": "deltacap_model_tinyllama_T512_delta",
+      "passed": true,
+      "expected": -3.0,
+      "computed": -3.0,
+      "tolerance": 1.0,
+      "detail": "computed=-3 expected=-3.0 diff=0.0 tolerance=1.0",
+      "excerpt": "TinyLlama-1.1B at T=512: staged delta = -3% (tab:delta_capacity_model)",
+      "source_file": "supplementary/experiments/delta_capacity_results.json"
+    },
+    {
+      "name": "bridge_qwencoder_control_oneshot_pct",
+      "passed": true,
+      "expected": 100.0,
+      "computed": 100.0,
+      "tolerance": 0.0,
+      "detail": "computed=100 expected=100.0 diff=0.0 tolerance=0.0",
+      "excerpt": "Qwen-Coder-1.5B one-shot 100% at Control tier (tab:llm_bridge)",
+      "source_file": "supplementary/experiments/code_constraint_results.json"
+    },
+    {
+      "name": "bridge_qwencoder_control_delta_pct",
+      "passed": true,
+      "expected": -8.0,
+      "computed": -8.0,
+      "tolerance": 2.0,
+      "detail": "computed=-8 expected=-8.0 diff=0.0 tolerance=2.0",
+      "excerpt": "Qwen-Coder-1.5B at Control: staged delta = -8% (tab:llm_bridge)",
+      "source_file": "supplementary/experiments/code_constraint_results.json"
+    },
+    {
+      "name": "bridge_qwencoder_low_oneshot_pct",
+      "passed": true,
+      "expected": 95.0,
+      "computed": 95.0,
+      "tolerance": 0.0,
+      "detail": "computed=95 expected=95.0 diff=0.0 tolerance=0.0",
+      "excerpt": "Qwen-Coder-1.5B one-shot 95% at Low tier",
+      "source_file": "supplementary/experiments/code_constraint_results.json"
+    },
+    {
+      "name": "bridge_qwen3b_control_oneshot_pct",
+      "passed": true,
+      "expected": 95.0,
+      "computed": 95.0,
+      "tolerance": 0.0,
+      "detail": "computed=95 expected=95.0 diff=0.0 tolerance=0.0",
+      "excerpt": "Qwen-3B one-shot 95% at Control tier",
+      "source_file": "supplementary/experiments/code_constraint_results.json"
+    },
+    {
+      "name": "bridge_qwen3b_low_delta_pct",
+      "passed": true,
+      "expected": 20.0,
+      "computed": 20.0,
+      "tolerance": 1.0,
+      "detail": "computed=20 expected=20.0 diff=0.0 tolerance=1.0",
+      "excerpt": "Qwen-3B at Low: staged delta = +20%",
+      "source_file": "supplementary/experiments/code_constraint_results.json"
+    },
+    {
+      "name": "bridge_qwen3b_high_oneshot_pct",
+      "passed": true,
+      "expected": 2.0,
+      "computed": 2.0,
+      "tolerance": 1.0,
+      "detail": "computed=2 expected=2.0 diff=0.0 tolerance=1.0",
+      "excerpt": "Qwen-3B one-shot 2% at High tier",
+      "source_file": "supplementary/experiments/code_constraint_results.json"
+    },
+    {
+      "name": "bridge_tinyllama_high_oneshot_pct",
+      "passed": true,
+      "expected": 2.0,
+      "computed": 2.0,
+      "tolerance": 1.0,
+      "detail": "computed=2 expected=2.0 diff=0.0 tolerance=1.0",
+      "excerpt": "TinyLlama-1.1B one-shot 2% at High tier",
+      "source_file": "supplementary/experiments/code_constraint_results.json"
+    },
+    {
+      "name": "bridge_deepseek_high_delta_pct",
+      "passed": true,
+      "expected": 2.0,
+      "computed": 2.0,
+      "tolerance": 1.0,
+      "detail": "computed=2 expected=2.0 diff=0.0 tolerance=1.0",
+      "excerpt": "DeepSeek-Coder-1.3B at High: staged delta = +2%",
+      "source_file": "supplementary/experiments/code_constraint_results.json"
+    },
+    {
+      "name": "bridge_qwencoder_low_delta_pct",
+      "passed": true,
+      "expected": -23.0,
+      "computed": -23.0,
+      "tolerance": 2.0,
+      "detail": "computed=-23 expected=-23.0 diff=0.0 tolerance=2.0",
+      "excerpt": "Qwen-Coder-1.5B at Low: staged delta = -23% (tab:llm_bridge)",
+      "source_file": "supplementary/experiments/code_constraint_results.json"
+    },
+    {
+      "name": "bridge_qwencoder_moderate_oneshot_pct",
+      "passed": true,
+      "expected": 40.0,
+      "computed": 40.0,
+      "tolerance": 1.0,
+      "detail": "computed=40 expected=40.0 diff=0.0 tolerance=1.0",
+      "excerpt": "Qwen-Coder-1.5B one-shot 40% at Moderate tier (tab:llm_bridge)",
+      "source_file": "supplementary/experiments/code_constraint_results.json"
+    },
+    {
+      "name": "bridge_qwencoder_moderate_delta_pct",
+      "passed": true,
+      "expected": -22.0,
+      "computed": -22.0,
+      "tolerance": 2.0,
+      "detail": "computed=-22 expected=-22.0 diff=0.0 tolerance=2.0",
+      "excerpt": "Qwen-Coder-1.5B at Moderate: staged delta = -22% (tab:llm_bridge)",
+      "source_file": "supplementary/experiments/code_constraint_results.json"
+    },
+    {
+      "name": "bridge_qwencoder_high_oneshot_pct",
+      "passed": true,
+      "expected": 3.0,
+      "computed": 3.0,
+      "tolerance": 1.0,
+      "detail": "computed=3 expected=3.0 diff=0.0 tolerance=1.0",
+      "excerpt": "Qwen-Coder-1.5B one-shot 3% at High tier (tab:llm_bridge)",
+      "source_file": "supplementary/experiments/code_constraint_results.json"
+    },
+    {
+      "name": "bridge_qwencoder_high_delta_pct",
+      "passed": true,
+      "expected": -1.0,
+      "computed": -2.0,
+      "tolerance": 2.0,
+      "detail": "computed=-2 expected=-1.0 diff=1.0 tolerance=2.0",
+      "excerpt": "Qwen-Coder-1.5B at High: staged delta = -1% (tab:llm_bridge)",
+      "source_file": "supplementary/experiments/code_constraint_results.json"
+    },
+    {
+      "name": "bridge_qwen3b_control_delta_pct",
+      "passed": true,
+      "expected": 2.0,
+      "computed": 2.0,
+      "tolerance": 2.0,
+      "detail": "computed=2 expected=2.0 diff=0.0 tolerance=2.0",
+      "excerpt": "Qwen-3B at Control: staged delta = +2% (tab:llm_bridge)",
+      "source_file": "supplementary/experiments/code_constraint_results.json"
+    },
+    {
+      "name": "bridge_qwen3b_moderate_oneshot_pct",
+      "passed": true,
+      "expected": 25.0,
+      "computed": 25.0,
+      "tolerance": 1.0,
+      "detail": "computed=25 expected=25.0 diff=0.0 tolerance=1.0",
+      "excerpt": "Qwen-3B one-shot 25% at Moderate tier (tab:llm_bridge)",
+      "source_file": "supplementary/experiments/code_constraint_results.json"
+    },
+    {
+      "name": "bridge_qwen3b_moderate_delta_pct",
+      "passed": true,
+      "expected": 8.0,
+      "computed": 8.0,
+      "tolerance": 2.0,
+      "detail": "computed=8 expected=8.0 diff=0.0 tolerance=2.0",
+      "excerpt": "Qwen-3B at Moderate: staged delta = +8% (tab:llm_bridge)",
+      "source_file": "supplementary/experiments/code_constraint_results.json"
+    },
+    {
+      "name": "bridge_qwen3b_high_delta_pct",
+      "passed": true,
+      "expected": 1.0,
+      "computed": 2.0,
+      "tolerance": 2.0,
+      "detail": "computed=2 expected=1.0 diff=1.0 tolerance=2.0",
+      "excerpt": "Qwen-3B at High: staged delta = +1% (tab:llm_bridge)",
+      "source_file": "supplementary/experiments/code_constraint_results.json"
+    },
+    {
+      "name": "bridge_deepseek_control_oneshot_pct",
+      "passed": true,
+      "expected": 82.0,
+      "computed": 82.0,
+      "tolerance": 1.0,
+      "detail": "computed=82 expected=82.0 diff=0.0 tolerance=1.0",
+      "excerpt": "DeepSeek-1.3B one-shot 82% at Control tier (tab:llm_bridge)",
+      "source_file": "supplementary/experiments/code_constraint_results.json"
+    },
+    {
+      "name": "bridge_deepseek_control_delta_pct",
+      "passed": true,
+      "expected": 1.0,
+      "computed": 2.0,
+      "tolerance": 2.0,
+      "detail": "computed=2 expected=1.0 diff=1.0 tolerance=2.0",
+      "excerpt": "DeepSeek-1.3B at Control: staged delta = +1% (tab:llm_bridge)",
+      "source_file": "supplementary/experiments/code_constraint_results.json"
+    },
+    {
+      "name": "bridge_deepseek_low_oneshot_pct",
+      "passed": true,
+      "expected": 73.0,
+      "computed": 73.0,
+      "tolerance": 1.0,
+      "detail": "computed=73 expected=73.0 diff=0.0 tolerance=1.0",
+      "excerpt": "DeepSeek-1.3B one-shot 73% at Low tier (tab:llm_bridge)",
+      "source_file": "supplementary/experiments/code_constraint_results.json"
+    },
+    {
+      "name": "bridge_deepseek_low_delta_pct",
+      "passed": true,
+      "expected": 4.0,
+      "computed": 3.0,
+      "tolerance": 2.0,
+      "detail": "computed=3 expected=4.0 diff=1.0 tolerance=2.0",
+      "excerpt": "DeepSeek-1.3B at Low: staged delta = +4% (tab:llm_bridge)",
+      "source_file": "supplementary/experiments/code_constraint_results.json"
+    },
+    {
+      "name": "bridge_deepseek_moderate_oneshot_pct",
+      "passed": true,
+      "expected": 22.0,
+      "computed": 22.0,
+      "tolerance": 1.0,
+      "detail": "computed=22 expected=22.0 diff=0.0 tolerance=1.0",
+      "excerpt": "DeepSeek-1.3B one-shot 22% at Moderate tier (tab:llm_bridge)",
+      "source_file": "supplementary/experiments/code_constraint_results.json"
+    },
+    {
+      "name": "bridge_deepseek_moderate_delta_pct",
+      "passed": true,
+      "expected": 11.0,
+      "computed": 12.0,
+      "tolerance": 2.0,
+      "detail": "computed=12 expected=11.0 diff=1.0 tolerance=2.0",
+      "excerpt": "DeepSeek-1.3B at Moderate: staged delta = +11% (tab:llm_bridge)",
+      "source_file": "supplementary/experiments/code_constraint_results.json"
+    },
+    {
+      "name": "bridge_deepseek_high_oneshot_pct",
+      "passed": true,
+      "expected": 0.0,
+      "computed": 0.0,
+      "tolerance": 1.0,
+      "detail": "computed=0 expected=0.0 diff=0.0 tolerance=1.0",
+      "excerpt": "DeepSeek-1.3B one-shot 0% at High tier (tab:llm_bridge)",
+      "source_file": "supplementary/experiments/code_constraint_results.json"
+    },
+    {
+      "name": "bridge_tinyllama_control_oneshot_pct",
+      "passed": true,
+      "expected": 27.0,
+      "computed": 27.0,
+      "tolerance": 1.0,
+      "detail": "computed=27 expected=27.0 diff=0.0 tolerance=1.0",
+      "excerpt": "TinyLlama-1.1B one-shot 27% at Control tier (tab:llm_bridge)",
+      "source_file": "supplementary/experiments/code_constraint_results.json"
+    },
+    {
+      "name": "bridge_tinyllama_control_delta_pct",
+      "passed": true,
+      "expected": 13.0,
+      "computed": 13.0,
+      "tolerance": 2.0,
+      "detail": "computed=13 expected=13.0 diff=0.0 tolerance=2.0",
+      "excerpt": "TinyLlama-1.1B at Control: staged delta = +13% (tab:llm_bridge)",
+      "source_file": "supplementary/experiments/code_constraint_results.json"
+    },
+    {
+      "name": "bridge_tinyllama_low_oneshot_pct",
+      "passed": true,
+      "expected": 13.0,
+      "computed": 13.0,
+      "tolerance": 1.0,
+      "detail": "computed=13 expected=13.0 diff=0.0 tolerance=1.0",
+      "excerpt": "TinyLlama-1.1B one-shot 13% at Low tier (tab:llm_bridge)",
+      "source_file": "supplementary/experiments/code_constraint_results.json"
+    },
+    {
+      "name": "bridge_tinyllama_low_delta_pct",
+      "passed": true,
+      "expected": 19.0,
+      "computed": 18.0,
+      "tolerance": 2.0,
+      "detail": "computed=18 expected=19.0 diff=1.0 tolerance=2.0",
+      "excerpt": "TinyLlama-1.1B at Low: staged delta = +19% (tab:llm_bridge)",
+      "source_file": "supplementary/experiments/code_constraint_results.json"
+    },
+    {
+      "name": "bridge_tinyllama_moderate_oneshot_pct",
+      "passed": true,
+      "expected": 5.0,
+      "computed": 5.0,
+      "tolerance": 1.0,
+      "detail": "computed=5 expected=5.0 diff=0.0 tolerance=1.0",
+      "excerpt": "TinyLlama-1.1B one-shot 5% at Moderate tier (tab:llm_bridge)",
+      "source_file": "supplementary/experiments/code_constraint_results.json"
+    },
+    {
+      "name": "bridge_tinyllama_moderate_delta_pct",
+      "passed": true,
+      "expected": 3.0,
+      "computed": 3.0,
+      "tolerance": 2.0,
+      "detail": "computed=3 expected=3.0 diff=0.0 tolerance=2.0",
+      "excerpt": "TinyLlama-1.1B at Moderate: staged delta = +3% (tab:llm_bridge)",
+      "source_file": "supplementary/experiments/code_constraint_results.json"
+    },
+    {
+      "name": "bridge_tinyllama_high_delta_pct",
+      "passed": true,
+      "expected": -2.0,
+      "computed": -2.0,
+      "tolerance": 2.0,
+      "detail": "computed=-2 expected=-2.0 diff=0.0 tolerance=2.0",
+      "excerpt": "TinyLlama-1.1B at High: staged delta = -2% (tab:llm_bridge)",
+      "source_file": "supplementary/experiments/code_constraint_results.json"
+    },
+    {
+      "name": "axis_baseline_control_tests_only_pct",
+      "passed": true,
+      "expected": 76.0,
+      "computed": 76.0,
+      "tolerance": 1.0,
+      "detail": "computed=76 expected=76.0 diff=0.0 tolerance=1.0",
+      "excerpt": "Axis baseline at Control tier: tests only 76% (4-model aggregate, one_shot)",
+      "source_file": "supplementary/experiments/code_constraint_results.json"
+    },
+    {
+      "name": "axis_baseline_control_format_only_pct",
+      "passed": true,
+      "expected": 88.0,
+      "computed": 88.0,
+      "tolerance": 1.0,
+      "detail": "computed=88 expected=88.0 diff=0.0 tolerance=1.0",
+      "excerpt": "Axis baseline at Control tier: format only 88% (4-model aggregate, one_shot)",
+      "source_file": "supplementary/experiments/code_constraint_results.json"
+    },
+    {
+      "name": "axis_baseline_control_joint_pct",
+      "passed": true,
+      "expected": 76.0,
+      "computed": 76.0,
+      "tolerance": 1.0,
+      "detail": "computed=76 expected=76.0 diff=0.0 tolerance=1.0",
+      "excerpt": "Axis baseline at Control tier: joint 76% (4-model aggregate, one_shot)",
+      "source_file": "supplementary/experiments/code_constraint_results.json"
+    },
+    {
+      "name": "axis_baseline_high_tests_only_pct",
+      "passed": true,
+      "expected": 64.0,
+      "computed": 64.0,
+      "tolerance": 1.0,
+      "detail": "computed=64 expected=64.0 diff=0.0 tolerance=1.0",
+      "excerpt": "Axis baseline at High tier: tests only 64% (4-model aggregate, one_shot)",
+      "source_file": "supplementary/experiments/code_constraint_results.json"
+    },
+    {
+      "name": "axis_baseline_high_format_only_pct",
+      "passed": true,
+      "expected": 2.0,
+      "computed": 2.0,
+      "tolerance": 1.0,
+      "detail": "computed=2 expected=2.0 diff=0.0 tolerance=1.0",
+      "excerpt": "Axis baseline at High tier: format only 2% (4-model aggregate, one_shot)",
+      "source_file": "supplementary/experiments/code_constraint_results.json"
+    },
+    {
+      "name": "axis_baseline_high_joint_pct",
+      "passed": true,
+      "expected": 2.0,
+      "computed": 2.0,
+      "tolerance": 1.0,
+      "detail": "computed=2 expected=2.0 diff=0.0 tolerance=1.0",
+      "excerpt": "Axis baseline at High tier: joint 2% (4-model aggregate, one_shot)",
+      "source_file": "supplementary/experiments/code_constraint_results.json"
+    },
+    {
+      "name": "iso_fibonacci_high_joint_pct",
+      "passed": true,
+      "expected": 0.0,
+      "computed": 0.0,
+      "tolerance": 1.0,
+      "detail": "computed=0 expected=0.0 diff=0.0 tolerance=1.0",
+      "excerpt": "Iso-difficulty pair: fibonacci (high) both = 0% (4-model aggregate, one_shot)",
+      "source_file": "supplementary/experiments/code_constraint_results.json"
+    },
+    {
+      "name": "iso_fibonacci_high_tests_only_pct",
+      "passed": true,
+      "expected": 85.0,
+      "computed": 85.0,
+      "tolerance": 1.0,
+      "detail": "computed=85 expected=85.0 diff=0.0 tolerance=1.0",
+      "excerpt": "Iso-difficulty pair: fibonacci (high) a = 85% (4-model aggregate, one_shot)",
+      "source_file": "supplementary/experiments/code_constraint_results.json"
+    },
+    {
+      "name": "iso_power_control_joint_pct",
+      "passed": true,
+      "expected": 85.0,
+      "computed": 85.0,
+      "tolerance": 1.0,
+      "detail": "computed=85 expected=85.0 diff=0.0 tolerance=1.0",
+      "excerpt": "Iso-difficulty pair: power (control) both = 85% (4-model aggregate, one_shot)",
+      "source_file": "supplementary/experiments/code_constraint_results.json"
+    },
+    {
+      "name": "iso_power_control_tests_only_pct",
+      "passed": true,
+      "expected": 85.0,
+      "computed": 85.0,
+      "tolerance": 1.0,
+      "detail": "computed=85 expected=85.0 diff=0.0 tolerance=1.0",
+      "excerpt": "Iso-difficulty pair: power (control) a = 85% (4-model aggregate, one_shot)",
+      "source_file": "supplementary/experiments/code_constraint_results.json"
+    },
+    {
+      "name": "smooth_regime_total_4272",
+      "passed": true,
+      "expected": 4272.0,
+      "computed": 4272.0,
+      "tolerance": 0.0,
+      "detail": "computed=4272 expected=4272.0 diff=0.0 tolerance=0.0 | paper-locality OK",
+      "excerpt": "0/4,272 smooth-regime refutations (across 4 domains, predicted-infeasible region)",
+      "source_file": "rebuttal/figures/unconditional_pivot_results.json"
+    },
+    {
+      "name": "smooth_regime_successes_zero",
+      "passed": true,
+      "expected": 0.0,
+      "computed": 0.0,
+      "tolerance": 0.0,
+      "detail": "computed=0 expected=0.0 diff=0.0 tolerance=0.0 | paper-locality OK",
+      "excerpt": "0 smooth-regime successes (refutation count)",
+      "source_file": "rebuttal/figures/unconditional_pivot_results.json"
+    },
+    {
+      "name": "pivot_regime_total_528",
+      "passed": true,
+      "expected": 528.0,
+      "computed": 528.0,
+      "tolerance": 0.0,
+      "detail": "computed=528 expected=528.0 diff=0.0 tolerance=0.0 | paper-locality OK",
+      "excerpt": "528 pivot-regime trials (across 4 domains)",
+      "source_file": "rebuttal/figures/unconditional_pivot_results.json"
+    },
+    {
+      "name": "pivot_successes_42",
+      "passed": true,
+      "expected": 42.0,
+      "computed": 42.0,
+      "tolerance": 0.0,
+      "detail": "computed=42 expected=42.0 diff=0.0 tolerance=0.0 | paper-locality OK",
+      "excerpt": "42 detected-pivot successes (out of 528)",
+      "source_file": "rebuttal/figures/unconditional_pivot_results.json"
+    },
+    {
+      "name": "unconditional_pivot_high_tier_total_480",
+      "passed": true,
+      "expected": 480.0,
+      "computed": 480.0,
+      "tolerance": 0.0,
+      "detail": "computed=480 expected=480.0 diff=0.0 tolerance=0.0",
+      "excerpt": "High-tier total trials = 480 (code constraint, directly measured)",
+      "source_file": "rebuttal/figures/unconditional_pivot_results.json"
+    },
+    {
+      "name": "unconditional_pivot_smooth_decomp_427",
+      "passed": true,
+      "expected": 427.0,
+      "computed": 427.0,
+      "tolerance": 0.0,
+      "detail": "computed=427 expected=427.0 diff=0.0 tolerance=0.0",
+      "excerpt": "Code-domain smooth-regime estimate = 427 (89% of 480 high-tier)",
+      "source_file": "rebuttal/figures/unconditional_pivot_results.json"
+    },
+    {
+      "name": "openrouter_regression_test_pct_control",
+      "passed": true,
+      "expected": 0.5,
+      "computed": 0.5,
+      "tolerance": 0.1,
+      "detail": "computed=0.5 expected=0.5 diff=0.0 tolerance=0.1",
+      "excerpt": "Test-axis regression at control tier = 0.5% (pooled across 8 models, conditional on stage-1 pass_a)",
+      "source_file": "supplementary/experiments/openrouter_regression_results.json"
+    },
+    {
+      "name": "openrouter_regression_test_pct_low",
+      "passed": true,
+      "expected": 0.6,
+      "computed": 0.6,
+      "tolerance": 0.1,
+      "detail": "computed=0.6 expected=0.6 diff=0.0 tolerance=0.1",
+      "excerpt": "Test-axis regression at low tier = 0.6% (pooled across 8 models, conditional on stage-1 pass_a)",
+      "source_file": "supplementary/experiments/openrouter_regression_results.json"
+    },
+    {
+      "name": "openrouter_regression_test_pct_moderate",
+      "passed": true,
+      "expected": 1.1,
+      "computed": 1.1,
+      "tolerance": 0.1,
+      "detail": "computed=1.1 expected=1.1 diff=0.0 tolerance=0.1",
+      "excerpt": "Test-axis regression at moderate tier = 1.1% (pooled across 8 models, conditional on stage-1 pass_a)",
+      "source_file": "supplementary/experiments/openrouter_regression_results.json"
+    },
+    {
+      "name": "openrouter_regression_test_pct_high",
+      "passed": true,
+      "expected": 1.7,
+      "computed": 1.7,
+      "tolerance": 0.1,
+      "detail": "computed=1.7 expected=1.7 diff=0.0 tolerance=0.1",
+      "excerpt": "Test-axis regression at high tier = 1.7% (pooled across 8 models, conditional on stage-1 pass_a)",
+      "source_file": "supplementary/experiments/openrouter_regression_results.json"
+    },
+    {
+      "name": "openrouter_format_n_s1b_pooled_control",
+      "passed": true,
+      "expected": 239.0,
+      "computed": 239.0,
+      "tolerance": 0.0,
+      "detail": "computed=239 expected=239.0 diff=0.0 tolerance=0.0",
+      "excerpt": "Stage-1 format pass count at control tier = 239/240 (pooled across 8 models)",
+      "source_file": "supplementary/experiments/openrouter_regression_results.json"
+    },
+    {
+      "name": "openrouter_format_n_s1b_pooled_low",
+      "passed": true,
+      "expected": 56.0,
+      "computed": 56.0,
+      "tolerance": 0.0,
+      "detail": "computed=56 expected=56.0 diff=0.0 tolerance=0.0",
+      "excerpt": "Stage-1 format pass count at low tier = 56/240 (pooled across 8 models)",
+      "source_file": "supplementary/experiments/openrouter_regression_results.json"
+    },
+    {
+      "name": "openrouter_format_n_s1b_pooled_moderate",
+      "passed": true,
+      "expected": 23.0,
+      "computed": 23.0,
+      "tolerance": 0.0,
+      "detail": "computed=23 expected=23.0 diff=0.0 tolerance=0.0",
+      "excerpt": "Stage-1 format pass count at moderate tier = 23/240 (pooled across 8 models)",
+      "source_file": "supplementary/experiments/openrouter_regression_results.json"
+    },
+    {
+      "name": "openrouter_format_n_s1b_pooled_high",
+      "passed": true,
+      "expected": 0.0,
+      "computed": 0.0,
+      "tolerance": 0.0,
+      "detail": "computed=0 expected=0.0 diff=0.0 tolerance=0.0",
+      "excerpt": "Stage-1 format pass count at high tier = 0/240 (pooled across 8 models)",
+      "source_file": "supplementary/experiments/openrouter_regression_results.json"
+    },
+    {
+      "name": "openrouter_format_universal_collapse_high",
+      "passed": true,
+      "expected": 1.0,
+      "computed": 1.0,
+      "tolerance": 0.0,
+      "detail": "computed=1 expected=1.0 diff=0.0 tolerance=0.0",
+      "excerpt": "Universal: 0/240 stage-1 format passes at high tier (pooled across 8 models implies every model = 0)",
+      "source_file": "supplementary/experiments/openrouter_regression_results.json"
+    },
+    {
+      "name": "openrouter_regression_n_models_8",
+      "passed": true,
+      "expected": 8.0,
+      "computed": 8.0,
+      "tolerance": 0.0,
+      "detail": "computed=8 expected=8.0 diff=0.0 tolerance=0.0",
+      "excerpt": "8 OpenRouter models in regression experiment (gemini-flash, gpt-4o-mini, claude-haiku-3.5, llama-3.1-70b, deepseek-v3, mistral-large, gpt-4o, claude-sonnet-4.5)",
+      "source_file": "supplementary/experiments/openrouter_regression_results.json"
+    },
+    {
+      "name": "openrouter_regression_n_per_tier_240",
+      "passed": true,
+      "expected": 240.0,
+      "computed": 240.0,
+      "tolerance": 0.0,
+      "detail": "computed=240 expected=240.0 diff=0.0 tolerance=0.0",
+      "excerpt": "240 trials per tier in regression experiment (8 models x 6 tasks x 5 trials)",
+      "source_file": "supplementary/experiments/openrouter_regression_results.json"
+    },
+    {
+      "name": "openrouter_regression_n_tasks_6",
+      "passed": true,
+      "expected": 6.0,
+      "computed": 6.0,
+      "tolerance": 0.0,
+      "detail": "computed=6 expected=6.0 diff=0.0 tolerance=0.0",
+      "excerpt": "6 tasks (factorial, fibonacci, is_palindrome, sum_digits, count_vowels, fizzbuzz)",
+      "source_file": "supplementary/experiments/openrouter_regression_results.json"
+    },
+    {
+      "name": "high_k_opus46_conflicting_pass",
+      "passed": true,
+      "expected": 22.0,
+      "computed": 22.0,
+      "tolerance": 0.0,
+      "detail": "computed=22 expected=22.0 diff=0.0 tolerance=0.0",
+      "excerpt": "opus-4.6 conflicting regime 22/25 (88%) (app:claude_genome High-k paragraph)",
+      "source_file": "supplementary/experiments/outputs/high_k_opus46/high_k_opus46_results.json"
+    },
+    {
+      "name": "high_k_sonnet46_conflicting_pass",
+      "passed": true,
+      "expected": 16.0,
+      "computed": 16.0,
+      "tolerance": 0.0,
+      "detail": "computed=16 expected=16.0 diff=0.0 tolerance=0.0",
+      "excerpt": "sonnet-4.6 conflicting regime 16/25 (64%) (app:claude_genome High-k paragraph)",
+      "source_file": "supplementary/experiments/outputs/high_k_sonnet46/high_k_sonnet46_results.json"
+    },
+    {
+      "name": "high_k_opus47_conflicting_pass",
+      "passed": true,
+      "expected": 22.0,
+      "computed": 22.0,
+      "tolerance": 0.0,
+      "detail": "computed=22 expected=22.0 diff=0.0 tolerance=0.0",
+      "excerpt": "opus-4.7 conflicting regime 22/25 (88%) (app:claude_genome High-k paragraph)",
+      "source_file": "supplementary/experiments/outputs/high_k_opus47/high_k_opus47_results.json"
+    },
+    {
+      "name": "policy_density_n_models",
+      "passed": true,
+      "expected": 9.0,
+      "computed": 9.0,
+      "tolerance": 0.0,
+      "detail": "computed=9 expected=9.0 diff=0.0 tolerance=0.0",
+      "excerpt": "9 working Claude models in policy density harness (app:policy_density)",
+      "source_file": "supplementary/experiments/outputs/policy_density/policy_density_results.json"
+    },
+    {
+      "name": "policy_density_n_tiers",
+      "passed": true,
+      "expected": 8.0,
+      "computed": 8.0,
+      "tolerance": 0.0,
+      "detail": "computed=8 expected=8.0 diff=0.0 tolerance=0.0",
+      "excerpt": "8 cumulative tiers in policy density harness (k=2,5,8,12,16,22,28,34)",
+      "source_file": "supplementary/experiments/outputs/policy_density/policy_density_results.json"
+    },
+    {
+      "name": "policy_density_t8_k_value",
+      "passed": true,
+      "expected": 34.0,
+      "computed": 34.0,
+      "tolerance": 0.0,
+      "detail": "computed=34 expected=34.0 diff=0.0 tolerance=0.0",
+      "excerpt": "T8 = 34 atomic compliance rules (app:policy_density)",
+      "source_file": "supplementary/experiments/outputs/policy_density/policy_density_results.json"
+    },
+    {
+      "name": "policy_density_n_cells",
+      "passed": true,
+      "expected": 432.0,
+      "computed": 432.0,
+      "tolerance": 0.0,
+      "detail": "computed=432 expected=432.0 diff=0.0 tolerance=0.0",
+      "excerpt": "432 cells in policy density v3 run (3 trials per cell, 9 models x 8 tiers x 2 protocols)",
+      "source_file": "supplementary/experiments/outputs/policy_density/policy_density_results.json"
+    },
+    {
+      "name": "implicit_k_library_size_34",
+      "passed": true,
+      "expected": 34.0,
+      "computed": 34.0,
+      "tolerance": 0.0,
+      "detail": "computed=34 expected=34.0 diff=0.0 tolerance=0.0",
+      "excerpt": "34 atomic rules in the static library (app:implicit_k Four no-judge properties)",
+      "source_file": "supplementary/experiments/outputs/implicit_k/implicit_k_results.json"
+    },
+    {
+      "name": "implicit_k_n_prompts_8",
+      "passed": true,
+      "expected": 8.0,
+      "computed": 8.0,
+      "tolerance": 0.0,
+      "detail": "computed=8 expected=8.0 diff=0.0 tolerance=0.0",
+      "excerpt": "8 implicit prompts (app:implicit_k Run paragraph)",
+      "source_file": "supplementary/experiments/outputs/implicit_k/implicit_k_results.json"
+    },
+    {
+      "name": "implicit_k_n_models_9",
+      "passed": true,
+      "expected": 9.0,
+      "computed": 9.0,
+      "tolerance": 0.0,
+      "detail": "computed=9 expected=9.0 diff=0.0 tolerance=0.0",
+      "excerpt": "9 working Claude models in implicit-k pipeline run (app:implicit_k)",
+      "source_file": "supplementary/experiments/outputs/implicit_k/implicit_k_results.json"
+    },
+    {
+      "name": "implicit_k_opus41_pipeline_pass",
+      "passed": true,
+      "expected": 8.0,
+      "computed": 8.0,
+      "tolerance": 0.0,
+      "detail": "computed=8 expected=8.0 diff=0.0 tolerance=0.0",
+      "excerpt": "opus-4.1 8/8 pipeline pass with most conservative tagger (app:implicit_k Tagger calibration)",
+      "source_file": "supplementary/experiments/outputs/implicit_k/implicit_k_results.json"
+    },
+    {
+      "name": "implicit_k_haiku45_pipeline_pass",
+      "passed": true,
+      "expected": 2.0,
+      "computed": 2.0,
+      "tolerance": 0.0,
+      "detail": "computed=2 expected=2.0 diff=0.0 tolerance=0.0",
+      "excerpt": "haiku-4.5 2/8 pipeline pass with most aggressive tagger (app:implicit_k Tagger calibration)",
+      "source_file": "supplementary/experiments/outputs/implicit_k/implicit_k_results.json"
+    },
+    {
+      "name": "model_family_opus46_wins",
+      "passed": true,
+      "expected": 4.0,
+      "computed": 4.0,
+      "tolerance": 0.0,
+      "detail": "computed=4 expected=4.0 diff=0.0 tolerance=0.0",
+      "excerpt": "opus-4.6 4/6 wins in model_family sibling experiment (referenced from app:claude_genome)",
+      "source_file": "supplementary/experiments/fixed_point_model_family_opus46_addition.json"
+    },
+    {
+      "name": "model_family_sonnet46_wins",
+      "passed": true,
+      "expected": 5.0,
+      "computed": 5.0,
+      "tolerance": 0.0,
+      "detail": "computed=5 expected=5.0 diff=0.0 tolerance=0.0",
+      "excerpt": "sonnet-4.6 5/6 wins in model_family sibling experiment",
+      "source_file": "supplementary/experiments/fixed_point_model_family_sonnet46_addition.json"
+    },
+    {
+      "name": "model_family_opus47_wins",
+      "passed": true,
+      "expected": 5.0,
+      "computed": 5.0,
+      "tolerance": 0.0,
+      "detail": "computed=5 expected=5.0 diff=0.0 tolerance=0.0",
+      "excerpt": "opus-4.7 5/6 wins in model_family sibling experiment (sampling caveat)",
+      "source_file": "supplementary/experiments/fixed_point_model_family_opus47_addition.json"
     }
   ]
 }

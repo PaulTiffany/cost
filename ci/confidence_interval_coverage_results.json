@@ -1,0 +1,619 @@
+{
+  "status": "PASS",
+  "exit_code": 0,
+  "summary": {
+    "passed": 53,
+    "warned": 31,
+    "blocked": 0,
+    "skipped_non_float": 241,
+    "headline_blocks": 0,
+    "advisory": true
+  },
+  "findings": [
+    {
+      "name": "constitution_high_rho_fraction_pct",
+      "verdict": "PASS",
+      "reason": "dispersion field present in source: std_rho",
+      "headline": false
+    },
+    {
+      "name": "constitution_high_rho_fraction_decimal",
+      "verdict": "PASS",
+      "reason": "dispersion field present in source: std_rho",
+      "headline": false
+    },
+    {
+      "name": "constitution_mean_rho",
+      "verdict": "PASS",
+      "reason": "dispersion field present in source: std_rho",
+      "headline": false
+    },
+    {
+      "name": "calibration_spearman_r",
+      "verdict": "WARN",
+      "reason": "no dispersion field in source and no caveat ledger entry",
+      "expected": 1.0,
+      "headline": false,
+      "claim_text": "r_s = 1.0 rank correlation (Table 2 calibration)",
+      "source_file": "supplementary/experiments/calibration_results.json"
+    },
+    {
+      "name": "tier_rho_control",
+      "verdict": "WARN",
+      "reason": "no dispersion field in source and no caveat ledger entry",
+      "expected": 0.05,
+      "headline": false,
+      "claim_text": "Control rho = 0.05",
+      "source_file": "supplementary/experiments/calibration_results.json"
+    },
+    {
+      "name": "tier_rho_low",
+      "verdict": "WARN",
+      "reason": "no dispersion field in source and no caveat ledger entry",
+      "expected": 0.2,
+      "headline": false,
+      "claim_text": "Low rho = 0.20",
+      "source_file": "supplementary/experiments/calibration_results.json"
+    },
+    {
+      "name": "tier_rho_moderate",
+      "verdict": "WARN",
+      "reason": "no dispersion field in source and no caveat ledger entry",
+      "expected": 0.4,
+      "headline": false,
+      "claim_text": "Moderate rho = 0.40",
+      "source_file": "supplementary/experiments/calibration_results.json"
+    },
+    {
+      "name": "tier_rho_high",
+      "verdict": "WARN",
+      "reason": "no dispersion field in source and no caveat ledger entry",
+      "expected": 0.65,
+      "headline": false,
+      "claim_text": "High rho = 0.65",
+      "source_file": "supplementary/experiments/calibration_results.json"
+    },
+    {
+      "name": "claude_family_haiku3_ratio",
+      "verdict": "PASS_VIA_CAVEAT",
+      "reason": "covered by caveats: CAVEAT_FRONTIER_API_DRIFT",
+      "point_estimate_only_caveats": [],
+      "headline": false
+    },
+    {
+      "name": "claude_family_sonnet4_ratio",
+      "verdict": "PASS_VIA_CAVEAT",
+      "reason": "covered by caveats: CAVEAT_FRONTIER_API_DRIFT",
+      "point_estimate_only_caveats": [],
+      "headline": false
+    },
+    {
+      "name": "claude_family_opus4_ratio",
+      "verdict": "PASS_VIA_CAVEAT",
+      "reason": "covered by caveats: CAVEAT_FRONTIER_API_DRIFT",
+      "point_estimate_only_caveats": [],
+      "headline": false
+    },
+    {
+      "name": "claude_family_opus41_ratio",
+      "verdict": "PASS_VIA_CAVEAT",
+      "reason": "covered by caveats: CAVEAT_FRONTIER_API_DRIFT",
+      "point_estimate_only_caveats": [],
+      "headline": false
+    },
+    {
+      "name": "claude_family_haiku45_ratio",
+      "verdict": "WARN",
+      "reason": "no dispersion field in source and no caveat ledger entry",
+      "expected": 23.3,
+      "headline": false,
+      "claim_text": "haiku-4.5 23.3x staging ratio (I20, Table 4)",
+      "source_file": "supplementary/experiments/fixed_point_claude_family.json"
+    },
+    {
+      "name": "claude_family_sonnet45_ratio",
+      "verdict": "WARN",
+      "reason": "no dispersion field in source and no caveat ledger entry",
+      "expected": 23.8,
+      "headline": false,
+      "claim_text": "sonnet-4.5 23.8x staging ratio (I21, Table 4)",
+      "source_file": "supplementary/experiments/fixed_point_claude_family.json"
+    },
+    {
+      "name": "claude_family_opus45_ratio",
+      "verdict": "WARN",
+      "reason": "no dispersion field in source and no caveat ledger entry",
+      "expected": 4.8,
+      "headline": false,
+      "claim_text": "opus-4.5 4.8x staging ratio (I22, C5, frontier; Table 4)",
+      "source_file": "supplementary/experiments/fixed_point_claude_family.json"
+    },
+    {
+      "name": "json_nl_failure_control_pct",
+      "verdict": "PASS",
+      "reason": "dispersion field present in source: response_length",
+      "headline": false
+    },
+    {
+      "name": "json_nl_failure_low_pct",
+      "verdict": "PASS",
+      "reason": "dispersion field present in source: response_length",
+      "headline": false
+    },
+    {
+      "name": "json_nl_failure_moderate_pct",
+      "verdict": "PASS",
+      "reason": "dispersion field present in source: response_length",
+      "headline": false
+    },
+    {
+      "name": "json_nl_failure_high_pct",
+      "verdict": "PASS",
+      "reason": "dispersion field present in source: response_length",
+      "headline": false
+    },
+    {
+      "name": "per_task_spearman_r_s",
+      "verdict": "PASS",
+      "reason": "dispersion field present in source: reverse_words",
+      "headline": false
+    },
+    {
+      "name": "charitable_feasibility_k4_pct",
+      "verdict": "PASS",
+      "reason": "dispersion field present in source: std_error",
+      "headline": false
+    },
+    {
+      "name": "charitable_p_high_conflict",
+      "verdict": "PASS",
+      "reason": "dispersion field present in source: std_error",
+      "headline": false
+    },
+    {
+      "name": "unconditional_pivot_high_pct",
+      "verdict": "WARN",
+      "reason": "no dispersion field in source and no caveat ledger entry",
+      "expected": 1.7,
+      "headline": false,
+      "claim_text": "1.7% unconditional high-tier success rate",
+      "source_file": "rebuttal/figures/unconditional_pivot_results.json"
+    },
+    {
+      "name": "gram_lambda_min",
+      "verdict": "PASS",
+      "reason": "dispersion field present in source: std_lambda_min",
+      "headline": false
+    },
+    {
+      "name": "gram_empirical_cliff_high",
+      "verdict": "PASS",
+      "reason": "dispersion field present in source: std_lambda_min",
+      "headline": false
+    },
+    {
+      "name": "claude_family_opus46_ratio",
+      "verdict": "WARN",
+      "reason": "no dispersion field in source and no caveat ledger entry",
+      "expected": 7.7,
+      "headline": false,
+      "claim_text": "opus-4.6 7.7x staging ratio (Tab:claude_family)",
+      "source_file": "supplementary/experiments/fixed_point_claude_family_opus46_addition.json"
+    },
+    {
+      "name": "claude_family_sonnet46_ratio",
+      "verdict": "WARN",
+      "reason": "no dispersion field in source and no caveat ledger entry",
+      "expected": 10.9,
+      "headline": false,
+      "claim_text": "sonnet-4.6 10.9x staging ratio (Tab:claude_family)",
+      "source_file": "supplementary/experiments/fixed_point_claude_family_sonnet46_addition.json"
+    },
+    {
+      "name": "claude_family_opus47_ratio",
+      "verdict": "WARN",
+      "reason": "no dispersion field in source and no caveat ledger entry",
+      "expected": 4.9,
+      "headline": false,
+      "claim_text": "opus-4.7 4.9x staging ratio (Tab:claude_family; sampling caveat)",
+      "source_file": "supplementary/experiments/fixed_point_claude_family_opus47_addition.json"
+    },
+    {
+      "name": "json_nl_tier_rho_high",
+      "verdict": "PASS",
+      "reason": "dispersion field present in source: response_length",
+      "headline": false
+    },
+    {
+      "name": "bytebeat_pitch_pair_max_rho",
+      "verdict": "WARN",
+      "reason": "no dispersion field in source and no caveat ledger entry",
+      "expected": 1.0,
+      "headline": false,
+      "claim_text": "Bytebeat collapse to 0% at rho >= 0.8 (C22): pitch_A4 marginal is 0 in baseline grammar so any pair with pitch_A4 has rho=1.0, anchoring the high-rho infeasible regime",
+      "source_file": "ci/derivations/bridge_baselines_derived.json"
+    },
+    {
+      "name": "if_dsl_high_rho_pair_value",
+      "verdict": "WARN",
+      "reason": "no dispersion field in source and no caveat ledger entry",
+      "expected": 1.0,
+      "headline": false,
+      "claim_text": "0% IF-DSL at high rho (C23): one_bottleneck + pathlen_eq_5 yields rho=1.0, the maximally conflicting pair anchoring the 0% high-rho row in Table tab:if_dsl (Section 5.2)",
+      "source_file": "ci/derivations/bridge_baselines_derived.json"
+    },
+    {
+      "name": "alg1_rho_hat_stage",
+      "verdict": "WARN",
+      "reason": "no dispersion field in source and no caveat ledger entry",
+      "expected": 0.15,
+      "headline": false,
+      "claim_text": "rho_hat_stage = 0.15 (Algorithm 1 / pre-registered C13)",
+      "source_file": "ci/derivations/algorithm1_thresholds.json"
+    },
+    {
+      "name": "alg1_rho_hat_fail",
+      "verdict": "WARN",
+      "reason": "no dispersion field in source and no caveat ledger entry",
+      "expected": 0.5,
+      "headline": false,
+      "claim_text": "rho_hat_fail = 0.5 (Algorithm 1 / pre-registered C14)",
+      "source_file": "ci/derivations/algorithm1_thresholds.json"
+    },
+    {
+      "name": "alg1_pivot_step_mult",
+      "verdict": "WARN",
+      "reason": "no dispersion field in source and no caveat ledger entry",
+      "expected": 2.5,
+      "headline": false,
+      "claim_text": "Pivot step threshold = 2.5 x L_hat (I50)",
+      "source_file": "ci/derivations/algorithm1_thresholds.json"
+    },
+    {
+      "name": "alg1_default_l_hat",
+      "verdict": "WARN",
+      "reason": "no dispersion field in source and no caveat ledger entry",
+      "expected": 0.025,
+      "headline": false,
+      "claim_text": "Default L_hat ~ 0.025 (I49)",
+      "source_file": "ci/derivations/algorithm1_thresholds.json"
+    },
+    {
+      "name": "table11_geometric_router_speedup",
+      "verdict": "WARN",
+      "reason": "no dispersion field in source and no caveat ledger entry",
+      "expected": 0.67,
+      "headline": false,
+      "claim_text": "Geometric router 0.67x speedup (Table 11 / I40 / C15)",
+      "source_file": "ci/derivations/protocol_table11.json"
+    },
+    {
+      "name": "transfer_code_regret_pct",
+      "verdict": "WARN",
+      "reason": "no dispersion field in source and no caveat ledger entry",
+      "expected": 1.8,
+      "headline": false,
+      "claim_text": "Code: 1.8% regret vs domain-specific tuning (I42)",
+      "source_file": "ci/derivations/cross_domain_router.json"
+    },
+    {
+      "name": "transfer_json_nl_regret_pct",
+      "verdict": "WARN",
+      "reason": "no dispersion field in source and no caveat ledger entry",
+      "expected": 2.1,
+      "headline": false,
+      "claim_text": "JSON-NL: 2.1% regret (I43)",
+      "source_file": "ci/derivations/cross_domain_router.json"
+    },
+    {
+      "name": "transfer_if_dsl_regret_pct",
+      "verdict": "WARN",
+      "reason": "no dispersion field in source and no caveat ledger entry",
+      "expected": 2.4,
+      "headline": false,
+      "claim_text": "IF-DSL: 2.4% regret (I44)",
+      "source_file": "ci/derivations/cross_domain_router.json"
+    },
+    {
+      "name": "transfer_bytebeat_regret_pct",
+      "verdict": "WARN",
+      "reason": "no dispersion field in source and no caveat ledger entry",
+      "expected": 3.1,
+      "headline": false,
+      "claim_text": "Bytebeat: 3.1% regret (I45)",
+      "source_file": "ci/derivations/cross_domain_router.json"
+    },
+    {
+      "name": "drift_median",
+      "verdict": "PASS",
+      "reason": "dispersion field present in source: iqr_low",
+      "headline": false
+    },
+    {
+      "name": "drift_iqr_low",
+      "verdict": "PASS",
+      "reason": "dispersion field present in source: iqr_low",
+      "headline": false
+    },
+    {
+      "name": "drift_iqr_high",
+      "verdict": "PASS",
+      "reason": "dispersion field present in source: iqr_low",
+      "headline": false
+    },
+    {
+      "name": "step_size_p95",
+      "verdict": "PASS",
+      "reason": "dispersion field present in source: iqr_low",
+      "headline": false
+    },
+    {
+      "name": "unconditional_infeasible_regret_pct",
+      "verdict": "WARN",
+      "reason": "no dispersion field in source and no caveat ledger entry",
+      "expected": 1.7,
+      "headline": false,
+      "claim_text": "<2% regret vs oracle: 1.7% unconditional infeasible-region success rate (C20)",
+      "source_file": "rebuttal/figures/unconditional_pivot_results.json"
+    },
+    {
+      "name": "lipschitz_qwen_coder_L_hat",
+      "verdict": "PASS",
+      "reason": "dispersion field present in source: L_hat_std",
+      "headline": false
+    },
+    {
+      "name": "lipschitz_qwen_coder_std",
+      "verdict": "PASS",
+      "reason": "dispersion field present in source: L_hat_std",
+      "headline": false
+    },
+    {
+      "name": "lipschitz_deepseek_coder_L_hat",
+      "verdict": "PASS",
+      "reason": "dispersion field present in source: L_hat_std",
+      "headline": false
+    },
+    {
+      "name": "lipschitz_deepseek_coder_std",
+      "verdict": "PASS",
+      "reason": "dispersion field present in source: L_hat_std",
+      "headline": false
+    },
+    {
+      "name": "lipschitz_tinyllama_L_hat",
+      "verdict": "PASS",
+      "reason": "dispersion field present in source: L_hat_std",
+      "headline": false
+    },
+    {
+      "name": "lipschitz_tinyllama_std",
+      "verdict": "PASS",
+      "reason": "dispersion field present in source: L_hat_std",
+      "headline": false
+    },
+    {
+      "name": "lipschitz_L_hat_min_across_models",
+      "verdict": "PASS",
+      "reason": "dispersion field present in source: L_hat_std",
+      "headline": false
+    },
+    {
+      "name": "lipschitz_L_hat_max_across_models",
+      "verdict": "PASS",
+      "reason": "dispersion field present in source: L_hat_std",
+      "headline": false
+    },
+    {
+      "name": "embedding_minilm_rho_max",
+      "verdict": "PASS",
+      "reason": "dispersion field present in source: L_hat_std",
+      "headline": false
+    },
+    {
+      "name": "embedding_minilm_rho_max_ci",
+      "verdict": "PASS",
+      "reason": "dispersion field present in source: L_hat_std",
+      "headline": false
+    },
+    {
+      "name": "embedding_mpnet_rho_max",
+      "verdict": "PASS",
+      "reason": "dispersion field present in source: L_hat_std",
+      "headline": false
+    },
+    {
+      "name": "embedding_mpnet_rho_max_ci",
+      "verdict": "PASS",
+      "reason": "dispersion field present in source: L_hat_std",
+      "headline": false
+    },
+    {
+      "name": "embedding_multilingual_rho_max",
+      "verdict": "PASS",
+      "reason": "dispersion field present in source: L_hat_std",
+      "headline": false
+    },
+    {
+      "name": "embedding_multilingual_rho_max_ci",
+      "verdict": "PASS",
+      "reason": "dispersion field present in source: L_hat_std",
+      "headline": false
+    },
+    {
+      "name": "encoder_sens_minilm_rho_low",
+      "verdict": "PASS",
+      "reason": "dispersion field present in source: L_hat_std",
+      "headline": false
+    },
+    {
+      "name": "encoder_sens_minilm_rho_high",
+      "verdict": "PASS",
+      "reason": "dispersion field present in source: L_hat_std",
+      "headline": false
+    },
+    {
+      "name": "per_tier_control_pass_pct",
+      "verdict": "PASS",
+      "reason": "dispersion field present in source: reverse_words",
+      "headline": false
+    },
+    {
+      "name": "per_tier_low_pass_pct",
+      "verdict": "PASS",
+      "reason": "dispersion field present in source: reverse_words",
+      "headline": false
+    },
+    {
+      "name": "per_tier_moderate_pass_pct",
+      "verdict": "PASS",
+      "reason": "dispersion field present in source: reverse_words",
+      "headline": false
+    },
+    {
+      "name": "per_tier_high_pass_pct",
+      "verdict": "PASS",
+      "reason": "dispersion field present in source: reverse_words",
+      "headline": false
+    },
+    {
+      "name": "lipschitz_pooled_p99",
+      "verdict": "PASS",
+      "reason": "dispersion field present in source: L_hat_std",
+      "headline": false
+    },
+    {
+      "name": "lipschitz_pooled_max",
+      "verdict": "PASS",
+      "reason": "dispersion field present in source: L_hat_std",
+      "headline": false
+    },
+    {
+      "name": "constitution_top_pair_max_rho",
+      "verdict": "PASS",
+      "reason": "dispersion field present in source: std_rho",
+      "headline": false
+    },
+    {
+      "name": "constitution_hierarchy_ratio",
+      "verdict": "PASS",
+      "reason": "dispersion field present in source: std_rho",
+      "headline": false
+    },
+    {
+      "name": "constitution_category_hardcoded_defaults_max_rho",
+      "verdict": "PASS",
+      "reason": "dispersion field present in source: std_rho",
+      "headline": false
+    },
+    {
+      "name": "conflict_detection_overall_conflict_rate_pct",
+      "verdict": "WARN",
+      "reason": "no dispersion field in source and no caveat ledger entry",
+      "expected": 76.8,
+      "headline": false,
+      "claim_text": "Behavioral validation: 76.8% overall conflict rate (146/190)",
+      "source_file": "supplementary/experiments/outputs/conflict_detection/results.json"
+    },
+    {
+      "name": "conflict_detection_low_bucket_rate_pct",
+      "verdict": "WARN",
+      "reason": "no dispersion field in source and no caveat ledger entry",
+      "expected": 68.6,
+      "headline": false,
+      "claim_text": "Low-rho conflict rate 68.6% (105 pairs)",
+      "source_file": "supplementary/experiments/outputs/conflict_detection/results.json"
+    },
+    {
+      "name": "conflict_detection_med_bucket_rate_pct",
+      "verdict": "WARN",
+      "reason": "no dispersion field in source and no caveat ledger entry",
+      "expected": 90.6,
+      "headline": false,
+      "claim_text": "Medium-rho conflict rate 90.6% (highest, non-monotonic)",
+      "source_file": "supplementary/experiments/outputs/conflict_detection/results.json"
+    },
+    {
+      "name": "conflict_detection_high_bucket_rate_pct",
+      "verdict": "WARN",
+      "reason": "no dispersion field in source and no caveat ledger entry",
+      "expected": 76.2,
+      "headline": false,
+      "claim_text": "High-rho conflict rate 76.2% (21 pairs)",
+      "source_file": "supplementary/experiments/outputs/conflict_detection/results.json"
+    },
+    {
+      "name": "conflict_detection_point_biserial_r",
+      "verdict": "WARN",
+      "reason": "no dispersion field in source and no caveat ledger entry",
+      "expected": 0.124,
+      "headline": false,
+      "claim_text": "Point-biserial r=0.124 (constitution behavioral correlation)",
+      "source_file": "supplementary/experiments/outputs/conflict_detection/results.json"
+    },
+    {
+      "name": "json_nl_format_pct_control",
+      "verdict": "PASS",
+      "reason": "dispersion field present in source: response_length",
+      "headline": false
+    },
+    {
+      "name": "json_nl_format_pct_high",
+      "verdict": "PASS",
+      "reason": "dispersion field present in source: response_length",
+      "headline": false
+    },
+    {
+      "name": "json_nl_one_shot_pass_control_pct",
+      "verdict": "PASS",
+      "reason": "dispersion field present in source: response_length",
+      "headline": false
+    },
+    {
+      "name": "delta_capacity_T128_oneshot_pct",
+      "verdict": "WARN",
+      "reason": "no dispersion field in source and no caveat ledger entry",
+      "expected": 33.3,
+      "headline": false,
+      "claim_text": "T=128 one-shot 33.3% (Table tab:delta_capacity)",
+      "source_file": "supplementary/experiments/delta_capacity_results.json"
+    },
+    {
+      "name": "delta_capacity_T128_staged_pct",
+      "verdict": "WARN",
+      "reason": "no dispersion field in source and no caveat ledger entry",
+      "expected": 25.0,
+      "headline": false,
+      "claim_text": "T=128 staged 25.0% (paper headline 'staging starved at T=128')",
+      "source_file": "supplementary/experiments/delta_capacity_results.json"
+    },
+    {
+      "name": "openrouter_regression_test_pct_control",
+      "verdict": "PASS_VIA_CAVEAT",
+      "reason": "covered by caveats: CAVEAT_FRONTIER_API_DRIFT",
+      "point_estimate_only_caveats": [],
+      "headline": false
+    },
+    {
+      "name": "openrouter_regression_test_pct_low",
+      "verdict": "PASS_VIA_CAVEAT",
+      "reason": "covered by caveats: CAVEAT_FRONTIER_API_DRIFT",
+      "point_estimate_only_caveats": [],
+      "headline": false
+    },
+    {
+      "name": "openrouter_regression_test_pct_moderate",
+      "verdict": "PASS_VIA_CAVEAT",
+      "reason": "covered by caveats: CAVEAT_FRONTIER_API_DRIFT",
+      "point_estimate_only_caveats": [],
+      "headline": false
+    },
+    {
+      "name": "openrouter_regression_test_pct_high",
+      "verdict": "PASS_VIA_CAVEAT",
+      "reason": "covered by caveats: CAVEAT_FRONTIER_API_DRIFT",
+      "point_estimate_only_caveats": [],
+      "headline": false
+    }
+  ]
+}

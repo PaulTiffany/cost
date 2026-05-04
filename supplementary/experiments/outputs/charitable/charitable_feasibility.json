@@ -101,5 +101,30 @@
       "n_feasible": 303,
       "n_trials": 10000
     }
+  },
+  "_meta": {
+    "generator_script": "supplementary/bridges/charitable_feasibility_simulation.py",
+    "experiment": "charitable_feasibility",
+    "n_trials": 10000,
+    "parameters": {
+      "k_values": [
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10
+      ],
+      "n_trials": 10000,
+      "note": "Monte Carlo: n_trials simulations per k value, then feasibility = n_feasible / n_trials"
+    },
+    "backfilled_at": "2026-05-03T23:37:10",
+    "backfill_note": "Provenance _meta backfilled by ci/backfill_meta.py to satisfy L20 result_provenance_check. Generator script and parameters reflect known invocation.",
+    "script_hash": "9a467ce9ef8211d3e993bacc1a6400eec0d49de2b01803f98a5eb5e216e15f54",
+    "generator_script_sha256": "9a467ce9ef8211d3e993bacc1a6400eec0d49de2b01803f98a5eb5e216e15f54",
+    "backfill_correction_note": "Corrected generator_script path (was pointing at non-existent supplementary/experiments/charitable_feasibility_experiment.py); n_trials updated to match source parameters."
   }
 }

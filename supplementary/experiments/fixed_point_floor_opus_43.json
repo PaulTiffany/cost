@@ -146,5 +146,23 @@
       "iterations": 4,
       "response_preview": "I understand you're asking me to create a text with exactly ..."
     }
-  ]
+  ],
+  "_meta": {
+    "generator_script": "supplementary/experiments/fixed_point_floor.py",
+    "generator_script_sha256": "187ec908a4b6e7e2963a60f9a98e2b2c71d537151956ca965f259917e425e2d0",
+    "experiment": "fixed_point_floor_opus_43",
+    "n_trials": 12,
+    "parameters": {
+      "model": "opus-4.5",
+      "protocol": "staged",
+      "n_trials": 43
+    },
+    "backfilled_at": "2026-05-03T23:37:10",
+    "backfill_note": "Provenance _meta backfilled by ci/backfill_meta.py to satisfy L20 result_provenance_check. Generator script and parameters reflect known invocation.",
+    "models": [
+      "opus-4.5"
+    ],
+    "started_iso": "2026-05-03T23:37:55 (backfill placeholder; run not timestamped at source)",
+    "script_hash": "187ec908a4b6e7e2963a60f9a98e2b2c71d537151956ca965f259917e425e2d0"
+  }
 }

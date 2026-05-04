@@ -1,0 +1,47 @@
+{
+  "_meta": {
+    "purpose": "Single source of truth for per-million-token pricing of every model touched by an experiment in this repo. Read by ci/cost_report.py to compute per-experiment and per-model cost totals from recorded token usage.",
+    "schema_version": 1,
+    "last_refreshed_iso": "2026-05-04T00:00:00Z",
+    "refresh_policy": "Anthropic prices are hand-edited (no public pricing API). OpenRouter prices are auto-pulled by ci/refresh_pricing.py from https://openrouter.ai/api/v1/models. The check ci/cost_report.py warns if last_refreshed is older than 30 days.",
+    "units": "USD per million tokens"
+  },
+  "anthropic_direct": {
+    "_source": "https://www.anthropic.com/pricing (last verified 2026-05-04)",
+    "models": {
+      "claude-opus-4-7":              {"input": 15.00, "output": 75.00, "tier": "opus"},
+      "claude-opus-4-6":              {"input": 15.00, "output": 75.00, "tier": "opus"},
+      "claude-opus-4-5-20251101":     {"input": 15.00, "output": 75.00, "tier": "opus"},
+      "claude-opus-4-1-20250805":     {"input": 15.00, "output": 75.00, "tier": "opus"},
+      "claude-opus-4-20250514":       {"input": 15.00, "output": 75.00, "tier": "opus"},
+      "claude-sonnet-4-6":            {"input":  3.00, "output": 15.00, "tier": "sonnet"},
+      "claude-sonnet-4-5-20250929":   {"input":  3.00, "output": 15.00, "tier": "sonnet"},
+      "claude-sonnet-4-20250514":     {"input":  3.00, "output": 15.00, "tier": "sonnet"},
+      "claude-haiku-4-5-20251001":    {"input":  1.00, "output":  5.00, "tier": "haiku-4"},
+      "claude-3-haiku-20240307":      {"input":  0.25, "output":  1.25, "tier": "haiku-3-legacy", "note": "API returns 404 since 2026-05; pricing kept for historical cost reconstruction."}
+    }
+  },
+  "openrouter": {
+    "_source": "https://openrouter.ai/api/v1/models (refresh via ci/refresh_pricing.py)",
+    "_note": "OpenRouter publishes live per-token prices via API. The block below is a snapshot; refresh script overwrites this section in place.",
+    "models": {
+      "anthropic/claude-opus-4.7":          {"input": 15.00, "output": 75.00},
+      "anthropic/claude-opus-4.6":          {"input": 15.00, "output": 75.00},
+      "anthropic/claude-opus-4.5":          {"input": 15.00, "output": 75.00},
+      "openai/gpt-4o":                       {"input":  2.50, "output": 10.00},
+      "openai/gpt-5.4-image-2":              {"input": 10.00, "output": 30.00, "note": "image generation; per-image pricing differs"},
+      "google/gemini-2.5-pro":               {"input":  1.25, "output":  5.00},
+      "google/gemini-2.5-flash":             {"input":  0.30, "output":  1.20},
+      "deepseek/deepseek-v3":                {"input":  0.27, "output":  1.10},
+      "deepseek/deepseek-r1":                {"input":  0.55, "output":  2.19},
+      "meta-llama/llama-3.1-70b-instruct":   {"input":  0.30, "output":  0.40},
+      "qwen/qwen-2.5-72b-instruct":          {"input":  0.35, "output":  0.40},
+      "mistralai/mistral-large":             {"input":  2.00, "output":  6.00}
+    }
+  },
+  "fallback": {
+    "input": 5.00,
+    "output": 15.00,
+    "_note": "Used by cost_report.py when a model_id appears in result JSONs but is not in the pricing tables. Generates a 'fallback_used' warning."
+  }
+}

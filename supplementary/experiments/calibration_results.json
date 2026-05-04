@@ -182,5 +182,24 @@
   "correlation": {
     "pearson_r": 0.9903881385009142,
     "spearman_r": 1.0
+  },
+  "_meta": {
+    "generator_script": "supplementary/experiments/calibration_analysis.py",
+    "generator_script_sha256": "5623237ef884187e7b197ad707a8b924951fe5d5ea45f676ccee587544d624d0",
+    "experiment": "calibration_analysis",
+    "n_trials": 1920,
+    "parameters": {
+      "tiers": [
+        "control",
+        "low",
+        "moderate",
+        "high"
+      ],
+      "n_models": 4,
+      "n_trials_per_cell": 60
+    },
+    "backfilled_at": "2026-05-03T23:37:10",
+    "backfill_note": "Provenance _meta backfilled by ci/backfill_meta.py to satisfy L20 result_provenance_check. Generator script and parameters reflect known invocation.",
+    "script_hash": "5623237ef884187e7b197ad707a8b924951fe5d5ea45f676ccee587544d624d0"
   }
 }

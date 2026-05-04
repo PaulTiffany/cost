@@ -1,0 +1,172 @@
+{
+  "summary": {
+    "bundle_root": "C:\\src\\NeurIPS",
+    "manifest_files": 109,
+    "verified_present": 93,
+    "missing_from_bundle": 0,
+    "hash_mismatches": 16,
+    "cert_artifact_hashes_not_in_manifest": 10,
+    "data_ties_sources_not_in_manifest": 12,
+    "passed": false
+  },
+  "missing_from_bundle": [],
+  "hash_mismatches": [
+    {
+      "path": "CLAIM_AUDIT.md",
+      "expected_sha256": "1508d83d4326be917e125554ce0500e7ac75330584182f59469ec2e2cfced327",
+      "actual_sha256": "61b08aec7166fa6604f38388a226493ac241ea704e539805438cfd56ede8a344",
+      "expected_size": 18376,
+      "actual_size": 18444,
+      "note": "size differs by 68 bytes (possibly Windows CRLF vs LF line endings)"
+    },
+    {
+      "path": "ci/author_claims_results.json",
+      "expected_sha256": "7163afdc0d28bbc88b3dcd9a578e4ecc4d9170dc87dfe824547a8ce338f1c7eb",
+      "actual_sha256": "80127dd805b3eea3a07809cd293b7bbd1743f7852f146618262d41f54067bdc8",
+      "expected_size": 10168,
+      "actual_size": 11273,
+      "note": "size differs by 1105 bytes (possibly Windows CRLF vs LF line endings)"
+    },
+    {
+      "path": "ci/claim_audit_results.json",
+      "expected_sha256": "8e13783bc871f78633858884b6f3e796e2f5889145aeca284285d7c47e02dd16",
+      "actual_sha256": "d46b50f2c9153e25f356f14d5463e4d232ef48e227be63cf48ff4c4fb8c368f6",
+      "expected_size": 599484,
+      "actual_size": 634249,
+      "note": "size differs by 34765 bytes (possibly Windows CRLF vs LF line endings)"
+    },
+    {
+      "path": "ci/claim_certificate.json",
+      "expected_sha256": "79b14546a366143563e888e9cbcb2c85e18e55589b5ec3ccb519a697540659a4",
+      "actual_sha256": "76869e6003ebfe20047c48aaa91a0a7a64ed03f97157a9960fee1cebee17031d",
+      "expected_size": 12096,
+      "actual_size": 22803,
+      "note": "size differs by 10707 bytes (possibly Windows CRLF vs LF line endings)"
+    },
+    {
+      "path": "ci/claim_coverage_uncovered.json",
+      "expected_sha256": "795500d01d7961ccdf04f85640464a22503ceb321507aee43ada350b970b40e2",
+      "actual_sha256": "63face19453dab5bb6074c7f63474f86379cae8d9424d245414a645b9cae39d3",
+      "expected_size": 14075,
+      "actual_size": 15806,
+      "note": "size differs by 1731 bytes (possibly Windows CRLF vs LF line endings)"
+    },
+    {
+      "path": "ci/claim_data_ties.json",
+      "expected_sha256": "9ca032b76bb43ad3d249f2746d31f6cf38120d425e56a3b9906486a35ead9951",
+      "actual_sha256": "be2130c38f289df8be8d95c316303cbf0444ed3b81009083deb360219168c261",
+      "expected_size": 202696,
+      "actual_size": 213037,
+      "note": "size differs by 10341 bytes (possibly Windows CRLF vs LF line endings)"
+    },
+    {
+      "path": "ci/claim_data_ties_results.json",
+      "expected_sha256": "a1c304529f175537e11cabc203eda80582110d3ad4ca1bd5aa5e79ad709d8275",
+      "actual_sha256": "8a4fdcc24932e5f17f87aee333bc8e35a54b9072b158b0ab3ac926c03964ff92",
+      "expected_size": 117099,
+      "actual_size": 125864,
+      "note": "size differs by 8765 bytes (possibly Windows CRLF vs LF line endings)"
+    },
+    {
+      "path": "ci/cross_claim_consistency_check.py",
+      "expected_sha256": "dc18b774de6bca8361642045e00120b29566e3c9eed93252bb18a8943bcb8d9f",
+      "actual_sha256": "a2d6347ad898f4d6015b47f715aff550bc61c4ad6fcca66b23d692783c330a1a",
+      "expected_size": 26820,
+      "actual_size": 27391,
+      "note": "size differs by 571 bytes (possibly Windows CRLF vs LF line endings)"
+    },
+    {
+      "path": "ci/cross_claim_consistency_results.json",
+      "expected_sha256": "2a7ec675d9a51a45cdda6e513a53482ca3e2569f5a76257dee927dd171bbec0e",
+      "actual_sha256": "d86dc743a009ec9057ec62a87c8ca1a58598a0fbbf8c1a29527ad387566e8847",
+      "expected_size": 24413,
+      "actual_size": 26732,
+      "note": "size differs by 2319 bytes (possibly Windows CRLF vs LF line endings)"
+    },
+    {
+      "path": "ci/illustration_lineage.json",
+      "expected_sha256": "4b8d5c9d8368fd3ece4fac0e90d28a6d19bb4f398fb7f540826a9a72baf00615",
+      "actual_sha256": "a66f7bd19a9088fdbdf2a0433a058762c2f2cb1b0d7a250dcda0e528fef571fe",
+      "expected_size": 6161,
+      "actual_size": 6162,
+      "note": "size differs by 1 bytes (possibly Windows CRLF vs LF line endings)"
+    },
+    {
+      "path": "ci/link_integrity_check.py",
+      "expected_sha256": "154c7c9faa0bd63cd817763edf3fd41ab1438b7e6e8d087f1b86ebafdd1704f1",
+      "actual_sha256": "c74874648f3501931ca10ce54a4f08077377055312f4044bac2f9c5379fc95fc",
+      "expected_size": 20604,
+      "actual_size": 20938,
+      "note": "size differs by 334 bytes (possibly Windows CRLF vs LF line endings)"
+    },
+    {
+      "path": "ci/link_integrity_results.json",
+      "expected_sha256": "201186b27552935161ef1bf48105912b22056d23b7879a2906c652de5ad9ee29",
+      "actual_sha256": "8dd0e8e729a3d5269b536ba10f47dbd2a227abb2d355077bf197ac6411239320",
+      "expected_size": 1179,
+      "actual_size": 1168,
+      "note": "size differs by 11 bytes (possibly Windows CRLF vs LF line endings)"
+    },
+    {
+      "path": "paper/main.tex",
+      "expected_sha256": "9bb90d89bc644e7300bad06e01c1792f658740d322cc8c43d4a11b4d813ebd40",
+      "actual_sha256": "82e6af21ec8b91ecccb99e94af6495d124d2e89a0d8f81dfb53e4af1d1994525",
+      "expected_size": 192571,
+      "actual_size": 211422,
+      "note": "size differs by 18851 bytes (possibly Windows CRLF vs LF line endings)"
+    },
+    {
+      "path": "paper/main.pdf",
+      "expected_sha256": "08cf424723ec9bd1675901d33b32040b4a2a1e4153ffccd9d74e82be346cf119",
+      "actual_sha256": "84a5cfc4d668d550e37e88fe4c7221ed569b3adf018d60bb4319fb345a1cf979",
+      "expected_size": 1094188,
+      "actual_size": 1143871,
+      "note": "size differs by 49683 bytes (possibly Windows CRLF vs LF line endings)"
+    },
+    {
+      "path": "supplementary/demos/sonification.py",
+      "expected_sha256": "c175cea35b41bf2ec8965a04cbd735b0b4dddbd6d62a34fc208c1090776d871b",
+      "actual_sha256": "49e0c79ee589682c2e7b056dcad61d0d1b638e3cff4a6a2ac1929cad730a18c8",
+      "expected_size": 43399,
+      "actual_size": 43402,
+      "note": "size differs by 3 bytes (possibly Windows CRLF vs LF line endings)"
+    },
+    {
+      "path": "supplementary/experiments/outputs/charitable/charitable_feasibility.json",
+      "expected_sha256": "977a6ad5db6464ce2178e8c1b420622c4b5d56339fe7d0c6312b9926dd787320",
+      "actual_sha256": "6ae94a80d87d00390f17b6f3e3d1909787f5e5b82fc838efab2280d79bbb0708",
+      "expected_size": 3028,
+      "actual_size": 3497,
+      "note": "size differs by 469 bytes (possibly Windows CRLF vs LF line endings)"
+    }
+  ],
+  "cross_ref": {
+    "cert_artifact_hashes_not_in_manifest": [
+      "ci/confidence_interval_coverage_results.json",
+      "ci/container_lineage_results.json",
+      "ci/cross_source_recomputation_results.json",
+      "ci/license_clearance_results.json",
+      "ci/multi_seed_drift_results.json",
+      "ci/pdf_camera_ready_results.json",
+      "ci/reference_convention_results.json",
+      "ci/sample_size_adequacy_results.json",
+      "ci/sbom_check_results.json",
+      "ci/table_value_results.json"
+    ],
+    "data_ties_sources_not_in_manifest": [
+      "supplementary/experiments/fixed_point_claude_family_full10.json",
+      "supplementary/experiments/fixed_point_claude_family_opus46_addition.json",
+      "supplementary/experiments/fixed_point_claude_family_opus47_addition.json",
+      "supplementary/experiments/fixed_point_claude_family_sonnet46_addition.json",
+      "supplementary/experiments/fixed_point_model_family_opus46_addition.json",
+      "supplementary/experiments/fixed_point_model_family_opus47_addition.json",
+      "supplementary/experiments/fixed_point_model_family_sonnet46_addition.json",
+      "supplementary/experiments/outputs/high_k_opus46/high_k_opus46_results.json",
+      "supplementary/experiments/outputs/high_k_opus47/high_k_opus47_results.json",
+      "supplementary/experiments/outputs/high_k_sonnet46/high_k_sonnet46_results.json",
+      "supplementary/experiments/outputs/implicit_k/implicit_k_results.json",
+      "supplementary/experiments/outputs/policy_density/policy_density_results.json"
+    ]
+  },
+  "notes": []
+}

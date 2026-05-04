@@ -1,0 +1,3076 @@
+{
+  "_meta": {
+    "experiment": "openrouter_described_image_pivot",
+    "model_slots": {
+      "premier_1": "anthropic/claude-opus-4.5",
+      "premier_2": "openai/gpt-4o",
+      "cheap_current_1": "anthropic/claude-3.5-haiku",
+      "cheap_current_2": "openai/gpt-4o-mini",
+      "legacy_1": "openai/gpt-4o",
+      "legacy_2": "google/gemini-2.5-flash"
+    },
+    "tasks": [
+      "sunset",
+      "forest",
+      "city_grid"
+    ],
+    "conditions": [
+      "compatible_forbidden_words",
+      "conflicting_forbidden_words"
+    ],
+    "n_trials_per_cell": 3,
+    "temperature": 0.7,
+    "max_tokens": 600,
+    "started_iso": "2026-05-04T04:53:13Z",
+    "verification_note": "Deterministic regex word-boundary check on forbidden words; no LLM-judge.",
+    "generator_script": "supplementary/experiments/openrouter_described_image_pivot_harness.py",
+    "elapsed_sec": 53.22752666473389,
+    "finished_iso": "2026-05-04T04:54:07Z"
+  },
+  "results": [
+    {
+      "model_slot": "premier_1",
+      "model_id": "anthropic/claude-opus-4.5",
+      "task_id": "forest",
+      "condition": "compatible_forbidden_words",
+      "trial": 1,
+      "prompt_hash": "95ca0ec856bda508",
+      "response": "# Dawn in the Ancient Wood\n\nShafts of golden light pierce the canopy, falling in luminous columns through the mist that hangs between the towering oaks. The forest floor lies carpeted in moss the color of jade and emerald, soft as velvet beneath the scattered ferns that unfurl their delicate fronds toward the warmth above.\n\nDew clings to every surface\u2014each leaf, each blade of undergrowth\u2014transforming the woodland into a kingdom of tiny prisms. Where sunlight touches these droplets, they ignite into diamonds, scattering fragments of rainbow across bark darkened by centuries of rain and rot.\n\nThe trees themselves stand as silent sentinels, their trunks wrapped in lichen of silver and pale chartreuse, their branches reaching upward like the arms of supplicants greeting the dawn. Between them, spider silk catches the early rays, threads of spun glass stretched taut across the spaces between worlds.\n\nIn the distance, a clearing glows amber and rose where the sun pools unobstructed, while deeper in the wood, shadows still reign in shades of violet and deepest indigo, reluctant to surrender their hold on the night.",
+      "response_chars": 1125,
+      "forbidden_words": [
+        "green"
+      ],
+      "forbidden_check": {
+        "violation_count": 0,
+        "violations": [],
+        "passed": true
+      },
+      "pivot_signatures": {
+        "forbidden_in_first_quartile_only": false,
+        "forbidden_in_final_quartile": false,
+        "explicit_pivot_phrase": false
+      },
+      "joint_pass": true,
+      "_dt": 7.478551864624023
+    },
+    {
+      "model_slot": "premier_1",
+      "model_id": "anthropic/claude-opus-4.5",
+      "task_id": "sunset",
+      "condition": "conflicting_forbidden_words",
+      "trial": 2,
+      "prompt_hash": "5630b42d8f2de0a9",
+      "response": "The sun descends toward the horizon like a molten coin sinking into liquid mercury, casting its dying light across the vast expanse of water. The sky blazes in hues of ripe apricot and crushed raspberries, bleeding into deeper shades of plum and bruised violet where the heavens stretch eastward into approaching night.\n\nThe ocean mirrors this celestial fire, its surface transformed into hammered copper streaked with veins of burnished bronze. Each wave catches the light differently\u2014crests shimmering like polished pennies while troughs deepen into wine-dark shadows. The water seems almost alive, breathing with color.\n\nAlong the horizon, a band of fierce tangerine light clings stubbornly to the edge of the world, silhouetting distant clouds in shapes of smoke and ash. These clouds glow from within, their bellies lit like paper lanterns, edges rimmed with the pale luminescence of heated metal.\n\nSlowly, the brilliant disc flattens against the water's edge, appearing to melt into the sea itself. The last rays stretch across the surface like fingers reluctant to release their hold, painting one final streak of liquid fire before surrendering to the encroaching dusk.",
+      "response_chars": 1177,
+      "forbidden_words": [
+        "orange",
+        "yellow",
+        "red",
+        "pink",
+        "gold",
+        "amber"
+      ],
+      "forbidden_check": {
+        "violation_count": 0,
+        "violations": [],
+        "passed": true
+      },
+      "pivot_signatures": {
+        "forbidden_in_first_quartile_only": false,
+        "forbidden_in_final_quartile": false,
+        "explicit_pivot_phrase": false
+      },
+      "joint_pass": true,
+      "_dt": 7.586410760879517
+    },
+    {
+      "model_slot": "premier_1",
+      "model_id": "anthropic/claude-opus-4.5",
+      "task_id": "sunset",
+      "condition": "conflicting_forbidden_words",
+      "trial": 0,
+      "prompt_hash": "5630b42d8f2de0a9",
+      "response": "The sun descends toward the horizon like a molten coin sinking into mercury, casting its dying light across the water's endless expanse. The sky blazes in shades of ripe peach and burnished copper, streaked with ribbons of violet that deepen toward plum where they meet the encroaching darkness above. \n\nClouds hang suspended like torn silk, their undersides lit with the warm hue of embers\u2014that fierce, glowing tone between flame and rust. The ocean mirrors this spectacle, its surface transformed into hammered bronze that ripples and shifts with each gentle swell. Near the horizon, the water gleams like liquid fire, while closer to shore it softens to the color of aged wine mixed with shadow.\n\nA band of tangerine light hovers where sky meets sea, brilliant and defiant against the coming night. Seabirds cut dark silhouettes across this luminous stripe, their wings catching flashes of copper as they wheel and dive. The sun itself has become a perfect disc of molten light, too bright to observe directly, yet impossible to ignore\u2014a burning eye closing slowly upon the world, pulling all warmth and brilliance down with it into the deep.",
+      "response_chars": 1145,
+      "forbidden_words": [
+        "orange",
+        "yellow",
+        "red",
+        "pink",
+        "gold",
+        "amber"
+      ],
+      "forbidden_check": {
+        "violation_count": 0,
+        "violations": [],
+        "passed": true
+      },
+      "pivot_signatures": {
+        "forbidden_in_first_quartile_only": false,
+        "forbidden_in_final_quartile": false,
+        "explicit_pivot_phrase": false
+      },
+      "joint_pass": true,
+      "_dt": 7.917241096496582
+    },
+    {
+      "model_slot": "premier_1",
+      "model_id": "anthropic/claude-opus-4.5",
+      "task_id": "forest",
+      "condition": "compatible_forbidden_words",
+      "trial": 0,
+      "prompt_hash": "95ca0ec856bda508",
+      "response": "# Dawn Among the Ancients\n\nGolden shafts pierce the canopy, slanting through gaps where ancient oaks stretch their gnarled limbs toward heaven. The forest floor lies carpeted in emerald moss and ferns unfurling like delicate scrolls, their fronds still heavy with crystalline dewdrops that catch the early light and scatter it into tiny prisms.\n\nMist hangs low between the trunks\u2014pale, ghostly ribbons that drift and dissolve as warmth creeps through the understory. The bark of birches gleams silver-white against the darker sentinels of pine and cedar, their needles forming a dense tapestry overhead in shades of jade and forest shadow.\n\nA fallen log, soft with decay and crowned in shelf fungi the color of rust and cream, bridges a small brook. The water runs clear over stones worn smooth by centuries, its surface catching fragments of sky\u2014pale blue glimpsed through the lattice of branches above.\n\nSomewhere unseen, birdsong echoes, but here in this cathedral of wood and leaf, only the visual symphony matters: light and shadow dancing their eternal morning waltz across the verdant wilderness.",
+      "response_chars": 1103,
+      "forbidden_words": [
+        "green"
+      ],
+      "forbidden_check": {
+        "violation_count": 0,
+        "violations": [],
+        "passed": true
+      },
+      "pivot_signatures": {
+        "forbidden_in_first_quartile_only": false,
+        "forbidden_in_final_quartile": false,
+        "explicit_pivot_phrase": false
+      },
+      "joint_pass": true,
+      "_dt": 8.038453817367554
+    },
+    {
+      "model_slot": "premier_1",
+      "model_id": "anthropic/claude-opus-4.5",
+      "task_id": "sunset",
+      "condition": "compatible_forbidden_words",
+      "trial": 1,
+      "prompt_hash": "f5cc70983a433685",
+      "response": "The sun descends toward the horizon like a molten coin sinking into liquid glass. Ribbons of crimson and amber unfurl across the sky, bleeding into soft bands of coral and rose that fade to dusty violet near the zenith. The water mirrors this spectacle, its surface transformed into hammered copper streaked with veins of burgundy and gold.\n\nClouds hang suspended like torn silk, their underbellies ignited in shades of tangerine and scarlet, edges limned with brilliant saffron light. The sun itself blazes white-hot at its core, surrounded by halos of flame-colored radiance that hurt to witness directly.\n\nWhere sky meets sea, the boundary dissolves into a shimmering band of molten brass. Gentle swells catch fragments of the dying light, each wave crest crowned with fire before rolling into shadow. The water nearest the shore darkens to deep indigo, while the distant expanse glows like heated metal in a forge.\n\nA lone pelican crosses this canvas in silhouette, wings outstretched against the conflagration. Slowly, inevitably, the burning disc touches the water's edge and begins its final descent, painting the world in one last wash of impossible color.",
+      "response_chars": 1164,
+      "forbidden_words": [
+        "orange"
+      ],
+      "forbidden_check": {
+        "violation_count": 0,
+        "violations": [],
+        "passed": true
+      },
+      "pivot_signatures": {
+        "forbidden_in_first_quartile_only": false,
+        "forbidden_in_final_quartile": false,
+        "explicit_pivot_phrase": false
+      },
+      "joint_pass": true,
+      "_dt": 8.081029415130615
+    },
+    {
+      "model_slot": "premier_1",
+      "model_id": "anthropic/claude-opus-4.5",
+      "task_id": "sunset",
+      "condition": "compatible_forbidden_words",
+      "trial": 2,
+      "prompt_hash": "f5cc70983a433685",
+      "response": "The sun descends toward the horizon like a molten coin sinking into liquid glass. Ribbons of crimson and gold stretch across the sky, bleeding into soft bands of coral and rose that fade upward into deepening violet. The water mirrors this spectacle, its surface transformed into hammered copper where the light strikes directly, while shadows pool in the troughs between gentle swells like spilled ink.\n\nClouds hang suspended above the horizon, their undersides ignited in shades of amber and burnt sienna, edges rimmed with brilliant saffron. Where sea meets sky, the distinction blurs\u2014a seam of molten fire stitching two worlds together. The sun itself has lost its blinding intensity, now a perfect sphere of liquid gold one can almost bear to witness directly.\n\nSilhouettes of distant seabirds cut across this canvas, black shapes against the luminous display. The water nearest the shore catches the fading light differently, turning from deep teal to wine-dark purple as the brilliance retreats. Each ripple carries a fragment of color, the entire ocean becoming a shattered mirror reflecting heaven's slow combustion into night.",
+      "response_chars": 1136,
+      "forbidden_words": [
+        "orange"
+      ],
+      "forbidden_check": {
+        "violation_count": 0,
+        "violations": [],
+        "passed": true
+      },
+      "pivot_signatures": {
+        "forbidden_in_first_quartile_only": false,
+        "forbidden_in_final_quartile": false,
+        "explicit_pivot_phrase": false
+      },
+      "joint_pass": true,
+      "_dt": 8.130564451217651
+    },
+    {
+      "model_slot": "premier_1",
+      "model_id": "anthropic/claude-opus-4.5",
+      "task_id": "sunset",
+      "condition": "compatible_forbidden_words",
+      "trial": 0,
+      "prompt_hash": "f5cc70983a433685",
+      "response": "The sun descends toward the horizon like a molten coin sinking into liquid mercury, its face blazing with fierce amber and coral light. Streaks of crimson bleed across the sky, layering over bands of rose and soft peach that fade upward into deepening violet. The clouds catch fire\u2014their edges gilded, their bellies flushed with the warm hues of ripe apricots and burnished copper.\n\nBelow, the ocean transforms into a mirror of hammered bronze, each wave crest catching the dying light and scattering it into a thousand fractured diamonds. The water nearest the shore darkens to ink, while the distant swells glow with an almost supernatural radiance, as though the sea itself has swallowed the sun's essence.\n\nA thin line of gold traces the exact meeting point of sky and water, impossibly bright, impossibly sharp. Above it, the heavens shift through their final palette\u2014salmon surrendering to mauve, mauve yielding to the first whispers of indigo. Silhouetted birds drift across this canvas like scattered punctuation marks, their wings black against the conflagration.\n\nThe light softens. The fire dims. And slowly, inevitably, the stars begin their patient emergence.",
+      "response_chars": 1172,
+      "forbidden_words": [
+        "orange"
+      ],
+      "forbidden_check": {
+        "violation_count": 0,
+        "violations": [],
+        "passed": true
+      },
+      "pivot_signatures": {
+        "forbidden_in_first_quartile_only": false,
+        "forbidden_in_final_quartile": false,
+        "explicit_pivot_phrase": false
+      },
+      "joint_pass": true,
+      "_dt": 8.171234130859375
+    },
+    {
+      "model_slot": "premier_1",
+      "model_id": "anthropic/claude-opus-4.5",
+      "task_id": "sunset",
+      "condition": "conflicting_forbidden_words",
+      "trial": 1,
+      "prompt_hash": "5630b42d8f2de0a9",
+      "response": "The sun descends toward the horizon like a molten coin sinking into liquid mercury, casting its dying light across the endless expanse of water. The sky transforms into layered silk\u2014bands of deep coral bleeding into soft peach, then climbing toward a bruised violet that darkens to indigo at the dome's apex.\n\nThe ocean becomes a mirror of hammered copper, each wave crest catching fire while the troughs hold shadows of deepening plum. Near the horizon, the water shimmers with the intensity of burnished brass, rippling outward in concentric bands of warmth that fade to cooler slate as they approach the shore.\n\nClouds stretch across this canvas like torn cotton, their undersides glowing with the fierce warmth of embers, their edges rimmed in brilliant tangerine that slowly surrenders to lavender. The sun itself has become too bright to observe directly\u2014a blazing disc of pure incandescence that flattens against the water's edge, bleeding light like a wound.\n\nSilhouetted seabirds cut dark arcs across this spectacle, their wings catching momentary brilliance before disappearing into shadow. The entire scene pulses with transient glory, each second shifting the palette toward inevitable darkness.",
+      "response_chars": 1207,
+      "forbidden_words": [
+        "orange",
+        "yellow",
+        "red",
+        "pink",
+        "gold",
+        "amber"
+      ],
+      "forbidden_check": {
+        "violation_count": 0,
+        "violations": [],
+        "passed": true
+      },
+      "pivot_signatures": {
+        "forbidden_in_first_quartile_only": false,
+        "forbidden_in_final_quartile": false,
+        "explicit_pivot_phrase": false
+      },
+      "joint_pass": true,
+      "_dt": 8.588769912719727
+    },
+    {
+      "model_slot": "premier_1",
+      "model_id": "anthropic/claude-opus-4.5",
+      "task_id": "forest",
+      "condition": "conflicting_forbidden_words",
+      "trial": 0,
+      "prompt_hash": "2b36e3c303d11ce4",
+      "response": "# Dawn in the Woodland\n\nShafts of amber light pierce the canopy, slanting through the mist like molten honey poured from heaven. The forest floor lies carpeted in russet and ochre\u2014last autumn's fallen remnants decomposing into rich, dark earth. Ferns unfurl their delicate fronds, still beaded with crystalline droplets that catch the early glow and scatter it into tiny prisms.\n\nTowering columns of bark rise all around, their surfaces rough and fissured, wrapped in velvet moss that climbs toward the awakening sky. The understory breathes in soft grays and muted browns, while overhead, the interlocking crowns filter sunlight into dappled gold. A spider's web stretches between two saplings, its silken geometry illuminated like spun glass.\n\nSomewhere deeper within, shadows pool in violet darkness, untouched yet by morning's reach. Mushrooms cluster at the base of a fallen giant, their pale caps luminous against the decay. The air itself seems visible\u2014gauzy curtains of vapor drifting between the silent sentinels, slowly burning away as warmth spreads through this cathedral of wood and shadow.",
+      "response_chars": 1103,
+      "forbidden_words": [
+        "green",
+        "tree",
+        "leaf",
+        "leaves",
+        "branch",
+        "trunk"
+      ],
+      "forbidden_check": {
+        "violation_count": 0,
+        "violations": [],
+        "passed": true
+      },
+      "pivot_signatures": {
+        "forbidden_in_first_quartile_only": false,
+        "forbidden_in_final_quartile": false,
+        "explicit_pivot_phrase": false
+      },
+      "joint_pass": true,
+      "_dt": 7.347576856613159
+    },
+    {
+      "model_slot": "premier_1",
+      "model_id": "anthropic/claude-opus-4.5",
+      "task_id": "forest",
+      "condition": "conflicting_forbidden_words",
+      "trial": 2,
+      "prompt_hash": "2b36e3c303d11ce4",
+      "response": "# Dawn in the Woodland\n\nAmber shafts pierce the canopy, slanting through the mist like molten gold poured from heaven. The forest floor lies carpeted in russet and copper\u2014last autumn's remnants decomposing into rich, dark earth. Towering columns of oak and pine rise like the pillars of some ancient cathedral, their bark rough and furrowed, silvered with lichen.\n\nFerns unfurl their delicate fronds beneath the understory, still jeweled with dewdrops that catch the early light and scatter it into tiny prisms. A spider's web stretches between two saplings, its silk threads transformed into strands of spun crystal. The air hangs thick and cool, carrying the scent of moss and damp soil.\n\nWhere the canopy parts, a shaft of brilliance illuminates a clearing\u2014the grass there glows almost golden, and wildflowers lift their faces toward warmth. Shadows pool in the hollows, deep violet and charcoal, while the illuminated spaces seem to breathe with honeyed radiance.\n\nSomewhere distant, birdsong echoes through the stillness, and the whole woodland seems suspended in that sacred hour between darkness and full morning.",
+      "response_chars": 1120,
+      "forbidden_words": [
+        "green",
+        "tree",
+        "leaf",
+        "leaves",
+        "branch",
+        "trunk"
+      ],
+      "forbidden_check": {
+        "violation_count": 0,
+        "violations": [],
+        "passed": true
+      },
+      "pivot_signatures": {
+        "forbidden_in_first_quartile_only": false,
+        "forbidden_in_final_quartile": false,
+        "explicit_pivot_phrase": false
+      },
+      "joint_pass": true,
+      "_dt": 7.369058609008789
+    },
+    {
+      "model_slot": "premier_1",
+      "model_id": "anthropic/claude-opus-4.5",
+      "task_id": "city_grid",
+      "condition": "compatible_forbidden_words",
+      "trial": 1,
+      "prompt_hash": "16b80a9755ba921c",
+      "response": "# Neon Pulse\n\nThe intersection throbs with electric life as darkness settles over the metropolis. Taxi cabs streak past in blurs of yellow, their headlights cutting white ribbons through the humid air. A delivery truck idles at the crosswalk, its hazard lights blinking amber heartbeats against rain-slicked asphalt that mirrors everything twice.\n\nPedestrians surge between vehicles in waves\u2014umbrellas bobbing like black mushrooms, briefcases swinging, sneakers splashing through shallow puddles that fracture the reflected glow of towering billboards. A massive LED screen blazes overhead, cycling through advertisements in electric blue and screaming pink, washing faces in artificial color.\n\nSteam rises from a subway grate, ghostly and twisting, while a hot dog vendor's cart glows warm beneath its striped umbrella. Motorcycles weave through stalled traffic, their engines growling. Bus brakes hiss and sigh.\n\nAbove it all, office towers pierce the sky\u2014thousands of lit windows stacked like golden honeycombs, each one a small universe of overtime workers and cleaning crews. The traffic signals cycle endlessly: red, green, red again\u2014the city's mechanical pulse that never flatlines.",
+      "response_chars": 1189,
+      "forbidden_words": [
+        "car"
+      ],
+      "forbidden_check": {
+        "violation_count": 0,
+        "violations": [],
+        "passed": true
+      },
+      "pivot_signatures": {
+        "forbidden_in_first_quartile_only": false,
+        "forbidden_in_final_quartile": false,
+        "explicit_pivot_phrase": false
+      },
+      "joint_pass": true,
+      "_dt": 7.783798694610596
+    },
+    {
+      "model_slot": "premier_1",
+      "model_id": "anthropic/claude-opus-4.5",
+      "task_id": "city_grid",
+      "condition": "compatible_forbidden_words",
+      "trial": 0,
+      "prompt_hash": "16b80a9755ba921c",
+      "response": "# Nocturnal Crossroads\n\nThe intersection pulses with electric life beneath a canopy of violet-tinged darkness. Neon signs bleed crimson and azure across rain-slicked asphalt, their reflections fragmenting into liquid ribbons beneath countless tires. Taxis streak past in blurs of yellow, while sleek sedans and hulking SUVs jostle for position, their headlights cutting sharp white beams through the misty air.\n\nPedestrians surge across the crosswalk in a tide of wool coats and glowing phone screens, their faces illuminated in ghostly pallor. Steam rises from subway grates like the breath of some subterranean beast, curling around the legs of a hot dog vendor whose aluminum stand gleams under the amber streetlamps.\n\nAbove it all, digital billboards cycle through advertisements\u2014a perfume bottle the size of a building, a model's face dissolving into pixels, stock tickers scrolling their endless numerical prophecy. Traffic signals blink their eternal commands: red, green, amber. Horns punctuate the symphony of rumbling engines and distant sirens.\n\nA cyclist weaves between idling vehicles, messenger bag swinging, while the city's heartbeat thrums on, relentless and magnificent.",
+      "response_chars": 1188,
+      "forbidden_words": [
+        "car"
+      ],
+      "forbidden_check": {
+        "violation_count": 0,
+        "violations": [],
+        "passed": true
+      },
+      "pivot_signatures": {
+        "forbidden_in_first_quartile_only": false,
+        "forbidden_in_final_quartile": false,
+        "explicit_pivot_phrase": false
+      },
+      "joint_pass": true,
+      "_dt": 8.16839075088501
+    },
+    {
+      "model_slot": "premier_1",
+      "model_id": "anthropic/claude-opus-4.5",
+      "task_id": "forest",
+      "condition": "compatible_forbidden_words",
+      "trial": 2,
+      "prompt_hash": "95ca0ec856bda508",
+      "response": "# Dawn in the Ancient Wood\n\nShafts of golden light pierce the canopy, falling in luminous columns through the mist that clings to the forest floor like gossamer veils. The trees stand as silent sentinels, their bark rough and weathered to shades of charcoal and umber, while their leaves\u2014still wet with dew\u2014shimmer in hues of emerald and jade, catching the early sun like countless tiny mirrors.\n\nFerns unfurl beneath the towering oaks, their fronds a deep verdant cascade spilling across moss-covered stones. The moss itself appears almost phosphorescent where the light touches it, a carpet of living velvet in shades ranging from olive to the bright color of new spring growth.\n\nA fallen log, silvered by age and decay, stretches across a small clearing where mushrooms cluster in pale ivory colonies. Spider webs hang suspended between branches, transformed into crystalline masterpieces by morning moisture, each droplet a perfect sphere reflecting the amber and rose of the awakening sky.\n\nSomewhere beyond sight, a stream murmurs its eternal song, and the air tastes of earth, pine, and the sweet promise of a new day.",
+      "response_chars": 1125,
+      "forbidden_words": [
+        "green"
+      ],
+      "forbidden_check": {
+        "violation_count": 0,
+        "violations": [],
+        "passed": true
+      },
+      "pivot_signatures": {
+        "forbidden_in_first_quartile_only": false,
+        "forbidden_in_final_quartile": false,
+        "explicit_pivot_phrase": false
+      },
+      "joint_pass": true,
+      "_dt": 9.023123979568481
+    },
+    {
+      "model_slot": "premier_1",
+      "model_id": "anthropic/claude-opus-4.5",
+      "task_id": "city_grid",
+      "condition": "compatible_forbidden_words",
+      "trial": 2,
+      "prompt_hash": "16b80a9755ba921c",
+      "response": "# Neon Pulse\n\nThe intersection throbs with electric life as darkness settles over the urban canyon. Towering glass facades mirror a thousand points of light\u2014amber streetlamps, crimson brake lights, the cool blue glow of smartphone screens clutched by pedestrians waiting at crosswalks.\n\nTaxis streak past in blurs of yellow, their headlights cutting through wisps of steam rising from subway grates. A delivery truck idles at the corner, its hazards blinking orange rhythms against rain-slicked asphalt that shimmers like black mercury. Motorcycles weave between lanes, chrome catching fragments of neon from storefronts advertising late-night ramen and 24-hour pharmacies.\n\nAbove, digital billboards cycle through advertisements\u2014a woman's face thirty feet tall, lips impossibly red, dissolving into cascading stock tickers. Traffic signals orchestrate the chaos: green commands surge, red demands stillness, yellow warns of the eternal transition between.\n\nOn the corner, a hot dog vendor's cart glows warm beneath its umbrella, a small island of analog humanity. Silhouettes hurry past\u2014briefcases, umbrellas, earbuds sealing them into private worlds while the city roars its mechanical symphony around them, tireless and blazing against the night.",
+      "response_chars": 1249,
+      "forbidden_words": [
+        "car"
+      ],
+      "forbidden_check": {
+        "violation_count": 0,
+        "violations": [],
+        "passed": true
+      },
+      "pivot_signatures": {
+        "forbidden_in_first_quartile_only": false,
+        "forbidden_in_final_quartile": false,
+        "explicit_pivot_phrase": false
+      },
+      "joint_pass": true,
+      "_dt": 8.361879587173462
+    },
+    {
+      "model_slot": "premier_1",
+      "model_id": "anthropic/claude-opus-4.5",
+      "task_id": "forest",
+      "condition": "conflicting_forbidden_words",
+      "trial": 1,
+      "prompt_hash": "2b36e3c303d11ce4",
+      "response": "# Dawn in the Woodland\n\nShafts of amber pierce the canopy, falling in diagonal columns through the mist that hangs like gauze between the towering oaks and pines. The forest floor glows copper and rust where last autumn's fallen foliage catches the early light, each curled fragment edged in gold.\n\nSlender birches stand pale as bone against the darker masses of ancient evergreens, their papery bark peeling in delicate scrolls. Ferns unfurl in the understory, their fronds still beaded with dew that sparkles like scattered diamonds. A fallen giant lies moss-covered and rotting, its decomposing form now a nursery for mushrooms pushing through in clusters of cream and ochre.\n\nThe light shifts constantly\u2014one moment honeyed and warm, the next filtered to silver where clouds drift across the rising sun. Spider silk stretches between stems, each strand transformed into a glittering wire. Somewhere deeper in this cathedral of wood and shadow, a clearing opens where the full force of morning pours down in a single blazing column, illuminating the swirling particles of pollen and dust suspended in the still, cool air.",
+      "response_chars": 1123,
+      "forbidden_words": [
+        "green",
+        "tree",
+        "leaf",
+        "leaves",
+        "branch",
+        "trunk"
+      ],
+      "forbidden_check": {
+        "violation_count": 0,
+        "violations": [],
+        "passed": true
+      },
+      "pivot_signatures": {
+        "forbidden_in_first_quartile_only": false,
+        "forbidden_in_final_quartile": false,
+        "explicit_pivot_phrase": false
+      },
+      "joint_pass": true,
+      "_dt": 9.313784837722778
+    },
+    {
+      "model_slot": "premier_1",
+      "model_id": "anthropic/claude-opus-4.5",
+      "task_id": "city_grid",
+      "condition": "conflicting_forbidden_words",
+      "trial": 0,
+      "prompt_hash": "1742abd61dc6e444",
+      "response": "# Neon Pulse\n\nThe intersection throbs with electric life beneath a velvet sky. Taxis streak past in blurs of yellow, their headlamps cutting bright arcs through the mist while buses lumber forward like glowing leviathans. Pedestrians surge across the crosswalk\u2014a river of silhouettes clutching umbrellas and phones, their faces illuminated by the cold glow of screens.\n\nAbove, billboards blaze in hot pink and electric blue, advertisements flickering in endless rotation. Steam rises from grated vents, curling upward past fire escapes and darkened windows. A food cart vendor tends his station on the corner, the warm amber of his cooking flame dancing against stainless steel.\n\nBrake lamps flare crimson in sudden chorus as vehicles halt at the signal. Motorcycles weave between lanes, chrome catching the neon shimmer. Somewhere a horn bleats; another answers. The wet asphalt mirrors everything\u2014doubled towers, inverted signs, the scattered brilliance of a thousand sources bleeding together into liquid gold and silver rivers.\n\nA subway grate exhales warm breath. The city breathes, pulses, never sleeps\u2014this concrete heart pumping its endless circulation through arterial streets.",
+      "response_chars": 1186,
+      "forbidden_words": [
+        "car",
+        "person",
+        "people",
+        "light",
+        "lights",
+        "traffic"
+      ],
+      "forbidden_check": {
+        "violation_count": 0,
+        "violations": [],
+        "passed": true
+      },
+      "pivot_signatures": {
+        "forbidden_in_first_quartile_only": false,
+        "forbidden_in_final_quartile": false,
+        "explicit_pivot_phrase": false
+      },
+      "joint_pass": true,
+      "_dt": 8.662365436553955
+    },
+    {
+      "model_slot": "premier_2",
+      "model_id": "openai/gpt-4o",
+      "task_id": "sunset",
+      "condition": "compatible_forbidden_words",
+      "trial": 0,
+      "prompt_hash": "f5cc70983a433685",
+      "response": "The horizon lies ablaze with hues of tangerine and gold, casting a warm glow across the vast expanse of water. Streaks of vermilion and saffron dance among the clouds, their soft contours illuminated against the darkening sky. As the sun dips lower, its fiery orb becomes a molten medallion, dripping light that glimmers across the gentle waves.\n\nThe sea reflects this celestial spectacle, a shimmering canvas of liquid light, where shades of amber and copper intermingle with deep blues. Silhouettes of distant ships float like ghostly apparitions, their outlines softened by the fading light. Gradually, the day relinquishes its grasp, surrendering to the encroaching twilight that promises the cool embrace of night.\n\nAbove, the sky transitions into a tapestry of indigo and lavender, dotted with the first stars that timidly peek through the fading brilliance. The scene is a symphony of color and light, a fleeting masterpiece that leaves the heart yearning for its beauty long after the sun has slipped beneath the world\u2019s edge.",
+      "response_chars": 1034,
+      "forbidden_words": [
+        "orange"
+      ],
+      "forbidden_check": {
+        "violation_count": 0,
+        "violations": [],
+        "passed": true
+      },
+      "pivot_signatures": {
+        "forbidden_in_first_quartile_only": false,
+        "forbidden_in_final_quartile": false,
+        "explicit_pivot_phrase": false
+      },
+      "joint_pass": true,
+      "_dt": 2.2032103538513184
+    },
+    {
+      "model_slot": "premier_2",
+      "model_id": "openai/gpt-4o",
+      "task_id": "sunset",
+      "condition": "compatible_forbidden_words",
+      "trial": 2,
+      "prompt_hash": "f5cc70983a433685",
+      "response": "The horizon blazes with a palette of fiery hues, a molten expanse where the sun dips ever so slowly into the embrace of the vast sea. Streaks of crimson and amber waltz across the sky, painting the clouds with a lustrous glow that seems to shimmer with every passing moment. A gentle breeze carries the faint scent of salt, adding a whisper of coolness to the otherwise warm tableau. The waves catch the light, their crests adorned with golden highlights that ripple and dance, reflecting the celestial grandeur above. As the day draws to its close, the sun\u2019s descent creates a mirror of liquid gold upon the water, a pathway of light leading to the edge of the world. The sky deepens into a rich indigo, the first stars daring to twinkle into existence, heralding the transition from the vibrant spectacle of day to the serene embrace of night.",
+      "response_chars": 845,
+      "forbidden_words": [
+        "orange"
+      ],
+      "forbidden_check": {
+        "violation_count": 0,
+        "violations": [],
+        "passed": true
+      },
+      "pivot_signatures": {
+        "forbidden_in_first_quartile_only": false,
+        "forbidden_in_final_quartile": false,
+        "explicit_pivot_phrase": false
+      },
+      "joint_pass": true,
+      "_dt": 1.9613378047943115
+    },
+    {
+      "model_slot": "premier_2",
+      "model_id": "openai/gpt-4o",
+      "task_id": "sunset",
+      "condition": "compatible_forbidden_words",
+      "trial": 1,
+      "prompt_hash": "f5cc70983a433685",
+      "response": "The sun hangs low on the horizon, a glowing ember slipping into the embrace of the vast waters. Its light spills across the sky, painting it with hues of crimson and blush, as if the heavens themselves are ablaze. Wisps of cloud, delicate and ethereal, drift lazily, catching the fading light and shimmering with a soft, rosy glow. Below, the sea mirrors this celestial spectacle, its surface a tapestry of shifting colors, where deep blues mingle with molten gold. Gentle waves lap against the shore, their crests tipped with threads of gilded light, like liquid fire igniting the edges. As the day breathes its last, the sky deepens into a velvety indigo, stars beginning to wink into existence, while the dying light lingers as a whisper upon the tranquil water, a promise of tomorrow's dawn.",
+      "response_chars": 795,
+      "forbidden_words": [
+        "orange"
+      ],
+      "forbidden_check": {
+        "violation_count": 0,
+        "violations": [],
+        "passed": true
+      },
+      "pivot_signatures": {
+        "forbidden_in_first_quartile_only": false,
+        "forbidden_in_final_quartile": false,
+        "explicit_pivot_phrase": false
+      },
+      "joint_pass": true,
+      "_dt": 2.8411450386047363
+    },
+    {
+      "model_slot": "premier_2",
+      "model_id": "openai/gpt-4o",
+      "task_id": "sunset",
+      "condition": "conflicting_forbidden_words",
+      "trial": 0,
+      "prompt_hash": "5630b42d8f2de0a9",
+      "response": "The horizon blurs where the sea kisses the sky, a tapestry of hues unfolding as the day relinquishes its hold. A vibrant medley of tangerine and coral streaks across the heavens, painting the clouds in soft, ethereal tones. The sun, a molten sphere, descends slowly, cloaked in a halo of warm light that spills like liquid silk over the tranquil waters. Waves lap gently at the shore, their crests catching the last light, shimmering with a delicate iridescence. Silhouettes of distant ships punctuate the vast expanse, their forms mere whispers against the vast canvas above. As the celestial orb dips lower, its reflection spills across the ocean's surface, a shimmering path leading to the horizon, inviting the eye to wander. The scene is a serene symphony of color and light, a fleeting moment of beauty as day gives way to the embrace of twilight.",
+      "response_chars": 853,
+      "forbidden_words": [
+        "orange",
+        "yellow",
+        "red",
+        "pink",
+        "gold",
+        "amber"
+      ],
+      "forbidden_check": {
+        "violation_count": 0,
+        "violations": [],
+        "passed": true
+      },
+      "pivot_signatures": {
+        "forbidden_in_first_quartile_only": false,
+        "forbidden_in_final_quartile": false,
+        "explicit_pivot_phrase": false
+      },
+      "joint_pass": true,
+      "_dt": 2.7208707332611084
+    },
+    {
+      "model_slot": "premier_2",
+      "model_id": "openai/gpt-4o",
+      "task_id": "forest",
+      "condition": "compatible_forbidden_words",
+      "trial": 0,
+      "prompt_hash": "95ca0ec856bda508",
+      "response": "A delicate mist hovers low, weaving through the towering trunks like a ghostly veil. The morning light filters through the canopy, casting intricate patterns of light and shadow on the forest floor. Leaves shimmer with dew, each droplet catching the sun's rays and transforming them into tiny, dazzling jewels. The bark of the trees is rough and gnarled, etched with the history of countless seasons. Ferns unfurl their fronds, their tendrils reaching towards the sky, while wildflowers add splashes of vibrant color among the undergrowth. The air is crisp, filled with the earthy aroma of damp soil and fallen leaves. Sunbeams pierce through the branches, creating pools of warmth in the cool morning air. Birds flit from bough to bough, their songs a melodious tapestry that weaves through the silence. Nature awakens in this tranquil scene, a symphony of light and life in perfect harmony.",
+      "response_chars": 892,
+      "forbidden_words": [
+        "green"
+      ],
+      "forbidden_check": {
+        "violation_count": 0,
+        "violations": [],
+        "passed": true
+      },
+      "pivot_signatures": {
+        "forbidden_in_first_quartile_only": false,
+        "forbidden_in_final_quartile": false,
+        "explicit_pivot_phrase": false
+      },
+      "joint_pass": true,
+      "_dt": 2.2475082874298096
+    },
+    {
+      "model_slot": "premier_2",
+      "model_id": "openai/gpt-4o",
+      "task_id": "sunset",
+      "condition": "conflicting_forbidden_words",
+      "trial": 2,
+      "prompt_hash": "5630b42d8f2de0a9",
+      "response": "The sky transformed into a canvas of fiery hues, spilling warmth across the heavens. A brilliant tapestry unfolded, where lavender and coral bled seamlessly into deeper shades of indigo, creating a harmonious symphony of color. The horizon seemed to melt, dissolving into the vast expanse of the sea, where hues danced and shimmered across the water's surface. Waves caught the light, turning into liquid silk, their edges kissed by the fading glow of the day. Above, wispy clouds drifted lazily, brushed with a soft, muted blush that mirrored the tranquil whispers of the evening. As the sun descended, it left behind a gentle twilight, a quiet serenade to the day, before finally slipping beneath the endless azure, leaving a lingering trace of iridescence in its wake.",
+      "response_chars": 771,
+      "forbidden_words": [
+        "orange",
+        "yellow",
+        "red",
+        "pink",
+        "gold",
+        "amber"
+      ],
+      "forbidden_check": {
+        "violation_count": 0,
+        "violations": [],
+        "passed": true
+      },
+      "pivot_signatures": {
+        "forbidden_in_first_quartile_only": false,
+        "forbidden_in_final_quartile": false,
+        "explicit_pivot_phrase": false
+      },
+      "joint_pass": true,
+      "_dt": 3.3337948322296143
+    },
+    {
+      "model_slot": "premier_2",
+      "model_id": "openai/gpt-4o",
+      "task_id": "forest",
+      "condition": "compatible_forbidden_words",
+      "trial": 2,
+      "prompt_hash": "95ca0ec856bda508",
+      "response": "Dappled sunlight filters through a canopy of vibrant foliage, casting a mosaic of shimmering golds and deep shadows upon the forest floor. The morning light, gentle yet invigorating, dances across the leaves, igniting them with hues of jade and chartreuse. Tall trunks stand as silent sentinels, their bark etched with intricate patterns of age and wisdom. \n\nBeneath, a carpet of moss stretches out, its texture soft and inviting, interspersed with patches of periwinkle wildflowers swaying gently in the breeze. Ferns unfurl their fronds with a delicate grace, while the occasional ray of light catches on the delicate webbing of a spider\u2019s home, turning it into a fleeting tapestry of silver.\n\nThe air, crisp and fragrant with the scent of earth and pine, carries the distant melody of bird calls, a harmonious symphony that blends with the rustle of leaves. The scene is a serene ballet of light and shadow, a tranquil reminder of nature's timeless beauty.",
+      "response_chars": 959,
+      "forbidden_words": [
+        "green"
+      ],
+      "forbidden_check": {
+        "violation_count": 0,
+        "violations": [],
+        "passed": true
+      },
+      "pivot_signatures": {
+        "forbidden_in_first_quartile_only": false,
+        "forbidden_in_final_quartile": false,
+        "explicit_pivot_phrase": false
+      },
+      "joint_pass": true,
+      "_dt": 2.3637855052948
+    },
+    {
+      "model_slot": "premier_2",
+      "model_id": "openai/gpt-4o",
+      "task_id": "forest",
+      "condition": "conflicting_forbidden_words",
+      "trial": 0,
+      "prompt_hash": "2b36e3c303d11ce4",
+      "response": "The dawn light slips through the canopy, casting a golden glow upon the undergrowth. Sunbeams dance across the forest floor, illuminating a tapestry of ferns and mosses, their hues shifting from jade to emerald as they sway gently in the morning breeze. The air is alive with the soft rustle of foliage, a symphony of whispers that harmonizes with the distant call of a songbird. \n\nThe earthy scent of damp soil rises, mingling with the fresh aroma of dew-kissed flora. Shadows stretch long and slender, creating a patchwork of light and darkness, while the occasional glimmer of a spider's silk catches the eye, shimmering like strands of silver. In the distance, the silhouette of a stag stands motionless, its antlers crowning its noble head, surveying the serene beauty that surrounds it. The scene is a moment of tranquility, a breath held in the embrace of the waking world.",
+      "response_chars": 880,
+      "forbidden_words": [
+        "green",
+        "tree",
+        "leaf",
+        "leaves",
+        "branch",
+        "trunk"
+      ],
+      "forbidden_check": {
+        "violation_count": 0,
+        "violations": [],
+        "passed": true
+      },
+      "pivot_signatures": {
+        "forbidden_in_first_quartile_only": false,
+        "forbidden_in_final_quartile": false,
+        "explicit_pivot_phrase": false
+      },
+      "joint_pass": true,
+      "_dt": 2.214791774749756
+    },
+    {
+      "model_slot": "premier_2",
+      "model_id": "openai/gpt-4o",
+      "task_id": "forest",
+      "condition": "compatible_forbidden_words",
+      "trial": 1,
+      "prompt_hash": "95ca0ec856bda508",
+      "response": "The forest awakens under the delicate embrace of dawn's light. Sunbeams weave through the canopy, casting dappled patterns upon the forest floor, where a mosaic of leaves lies strewn like a painter's palette. Each leaf catches the morning's golden touch, their hues shifting from deep olive to sunlit chartreuse. Tall trunks, clad in mossy garments, stand as ancient sentinels. The air is crisp, carrying the earthy scent of damp soil and fallen foliage. Ferns unfurl, their fronds glistening with dew, while wildflowers peek shyly from the underbrush, their petals a vibrant tapestry of yellows and purples. A gentle breeze stirs the branches, creating a soft rustle that harmonizes with the distant call of a songbird, crafting a symphony of nature's awakening. The scene is a perfect blend of light and shadow, of stillness and life, where every element whispers the forest's timeless story.",
+      "response_chars": 894,
+      "forbidden_words": [
+        "green"
+      ],
+      "forbidden_check": {
+        "violation_count": 0,
+        "violations": [],
+        "passed": true
+      },
+      "pivot_signatures": {
+        "forbidden_in_first_quartile_only": false,
+        "forbidden_in_final_quartile": false,
+        "explicit_pivot_phrase": false
+      },
+      "joint_pass": true,
+      "_dt": 3.128041982650757
+    },
+    {
+      "model_slot": "premier_2",
+      "model_id": "openai/gpt-4o",
+      "task_id": "sunset",
+      "condition": "conflicting_forbidden_words",
+      "trial": 1,
+      "prompt_hash": "5630b42d8f2de0a9",
+      "response": "The horizon dances with hues of tangerine and coral, a symphony of color melting into the vast expanse of the sea. The sky, a painter's palette, transforms into a breathtaking tapestry, where hints of lavender and amethyst whisper secrets of the approaching dusk. As the celestial orb dips lower, its reflection tinges the waves with a subtle blush, each crest catching the light in a fleeting moment of brilliance. Wisps of cotton candy clouds drift lazily across the heavens, their edges kissed by the waning light. Below, the water mirrors the sky's ethereal show, a shimmering canvas that stretches infinitely, blending seamlessly with the horizon. The air is thick with the scent of salt and the promise of night, as shadows lengthen and the world prepares to slumber beneath the tranquil, glowing firmament.",
+      "response_chars": 813,
+      "forbidden_words": [
+        "orange",
+        "yellow",
+        "red",
+        "pink",
+        "gold",
+        "amber"
+      ],
+      "forbidden_check": {
+        "violation_count": 0,
+        "violations": [],
+        "passed": true
+      },
+      "pivot_signatures": {
+        "forbidden_in_first_quartile_only": false,
+        "forbidden_in_final_quartile": false,
+        "explicit_pivot_phrase": false
+      },
+      "joint_pass": true,
+      "_dt": 4.893065452575684
+    },
+    {
+      "model_slot": "premier_2",
+      "model_id": "openai/gpt-4o",
+      "task_id": "forest",
+      "condition": "conflicting_forbidden_words",
+      "trial": 1,
+      "prompt_hash": "2b36e3c303d11ce4",
+      "response": "In the early hours, the woods are bathed in a gentle luminosity that filters through the dense canopy above, casting a soft glow upon the forest floor. The undergrowth is a tapestry of rich, earthy hues, dotted with vibrant patches of color from wildflowers that sway lazily in the morning breeze. Dewdrops cling to the flora, sparkling like tiny gems in the slanting sunlight. Above, the silhouetted outlines of towering giants stretch upwards, their outlines etched sharply against the morning sky.\n\nThe light dances playfully, creating a mosaic of shadow and sunshine upon the ground, where small creatures dart, their movements a delicate ballet. A symphony of birdsong fills the air, harmonizing with the gentle rustling of foliage. The path through the woods is dappled with light, leading deeper into the heart of this serene sanctuary. The entire scene is tranquil, yet alive with the quiet energy of the day's awakening, a vivid panorama that celebrates the beauty and mystery of nature.",
+      "response_chars": 996,
+      "forbidden_words": [
+        "green",
+        "tree",
+        "leaf",
+        "leaves",
+        "branch",
+        "trunk"
+      ],
+      "forbidden_check": {
+        "violation_count": 0,
+        "violations": [],
+        "passed": true
+      },
+      "pivot_signatures": {
+        "forbidden_in_first_quartile_only": false,
+        "forbidden_in_final_quartile": false,
+        "explicit_pivot_phrase": false
+      },
+      "joint_pass": true,
+      "_dt": 1.9436087608337402
+    },
+    {
+      "model_slot": "premier_2",
+      "model_id": "openai/gpt-4o",
+      "task_id": "forest",
+      "condition": "conflicting_forbidden_words",
+      "trial": 2,
+      "prompt_hash": "2b36e3c303d11ce4",
+      "response": "The morning light filters through the towering sentinels of the woodland, casting a golden hue upon the undergrowth. The air is crisp, invigorated by the gentle stirrings of dawn. Wisps of fog cling to the earth, slowly unraveling as sunlight spills across the forest floor. Verdant ferns and clusters of brush paint an intricate tapestry, their textures vibrant and lush. Shadows stretch and shrink as the sun rises, playing a delicate dance across the landscape. Dewdrops cling to the tips of the foliage, shimmering like tiny jewels in the awakening light. The canopy above is a mosaic of interwoven silhouettes, each pattern shifting with the breeze, while the distant chorus of birds provides a melody to the visual symphony. A path winds through this sanctuary, inviting explorers to lose themselves in its beauty and tranquility. The essence of the woods in the early hour is a serene embrace, a reminder of nature\u2019s quiet majesty.",
+      "response_chars": 938,
+      "forbidden_words": [
+        "green",
+        "tree",
+        "leaf",
+        "leaves",
+        "branch",
+        "trunk"
+      ],
+      "forbidden_check": {
+        "violation_count": 0,
+        "violations": [],
+        "passed": true
+      },
+      "pivot_signatures": {
+        "forbidden_in_first_quartile_only": false,
+        "forbidden_in_final_quartile": false,
+        "explicit_pivot_phrase": false
+      },
+      "joint_pass": true,
+      "_dt": 2.313861131668091
+    },
+    {
+      "model_slot": "premier_1",
+      "model_id": "anthropic/claude-opus-4.5",
+      "task_id": "city_grid",
+      "condition": "conflicting_forbidden_words",
+      "trial": 1,
+      "prompt_hash": "1742abd61dc6e444",
+      "response": "# Neon Pulse\n\nThe intersection throbs with electric life as midnight approaches. Towering billboards splash crimson and violet across wet asphalt, their advertisements bleeding together in the recent rain's mirror. Taxis\u2014yellow beetles of steel\u2014jostle alongside sleek sedans and rumbling buses, their headlamps cutting white arcs through the humid air.\n\nPedestrians surge across the crosswalk in waves, umbrellas bobbing like dark mushrooms sprouting from the crowd. A woman in a scarlet coat pauses mid-stride, her phone's glow illuminating sharp cheekbones. Behind her, a businessman clutches his briefcase, steam rising from a street vendor's cart beside him\u2014the scent of roasting chestnuts invisible but implied.\n\nNeon kanji and English letters climb the buildings' faces, flickering advertisements for whiskey and electronics painting the scene in alternating washes of gold and electric blue. Steam billows from subway grates, ghostly columns rising toward the dark towers above. A motorcycle weaves between idling vehicles, chrome catching every available gleam.\n\nThe walk signal shifts to amber, then red. Motion pauses, restarts. The city breathes.",
+      "response_chars": 1157,
+      "forbidden_words": [
+        "car",
+        "person",
+        "people",
+        "light",
+        "lights",
+        "traffic"
+      ],
+      "forbidden_check": {
+        "violation_count": 0,
+        "violations": [],
+        "passed": true
+      },
+      "pivot_signatures": {
+        "forbidden_in_first_quartile_only": false,
+        "forbidden_in_final_quartile": false,
+        "explicit_pivot_phrase": false
+      },
+      "joint_pass": true,
+      "_dt": 8.057127714157104
+    },
+    {
+      "model_slot": "premier_1",
+      "model_id": "anthropic/claude-opus-4.5",
+      "task_id": "city_grid",
+      "condition": "conflicting_forbidden_words",
+      "trial": 2,
+      "prompt_hash": "1742abd61dc6e444",
+      "response": "# Neon Pulse\n\nThe intersection throbs with electric life as darkness settles over the urban canyon. Towering billboards cast their luminous glow across rain-slicked asphalt, transforming puddles into shimmering pools of crimson and gold. Taxis streak past in blurs of canary yellow, their headlamps cutting through wisps of steam rising from subway grates below.\n\nSilhouettes hurry along crosswalks\u2014umbrellas bobbing like black mushrooms against the chromatic backdrop of storefront displays. A food vendor's cart sends plumes of fragrant smoke spiraling upward, briefly catching the neon pink of a pharmacy sign before dissolving into the night.\n\nBuses lumber through the junction, their illuminated destination panels glowing amber, while motorcycles weave between lanes with predatory grace. The walk signal flashes its white figure, and a tide of pedestrians surges forward\u2014businessmen clutching briefcases, couples arm-in-arm, a cyclist threading through the momentary gap.\n\nAbove it all, glass towers pierce the indigo sky, their countless windows forming constellations of warm rectangles where late workers hunch over desks. The city breathes, pulses, never rests\u2014a symphony of motion painted in shadow and radiance.",
+      "response_chars": 1224,
+      "forbidden_words": [
+        "car",
+        "person",
+        "people",
+        "light",
+        "lights",
+        "traffic"
+      ],
+      "forbidden_check": {
+        "violation_count": 0,
+        "violations": [],
+        "passed": true
+      },
+      "pivot_signatures": {
+        "forbidden_in_first_quartile_only": false,
+        "forbidden_in_final_quartile": false,
+        "explicit_pivot_phrase": false
+      },
+      "joint_pass": true,
+      "_dt": 7.8903985023498535
+    },
+    {
+      "model_slot": "premier_2",
+      "model_id": "openai/gpt-4o",
+      "task_id": "city_grid",
+      "condition": "compatible_forbidden_words",
+      "trial": 1,
+      "prompt_hash": "16b80a9755ba921c",
+      "response": "Neon signs cast vibrant hues across the bustling crossroads, illuminating the urban scene with a kaleidoscope of colors. The slick pavement reflects these glowing advertisements, creating a shimmering mosaic that dances beneath the feet of hurried pedestrians. Streetlights stand like sentinels, their golden beams piercing through the night, while traffic signals blink a rhythmic pulse of red, yellow, and green. The hum of engines and the occasional blare of a horn contribute to a symphony of sound, underscoring the city's relentless heartbeat. Cyclists weave deftly through the throng, their wheels whispering against the asphalt. A sea of humanity ebbs and flows, each person a story in motion, wrapped in scarves and coats against the chill of evening air. Above, towering edifices rise like guardians, their windows aglow with life, and the sky, painted with deep indigo, offers a canvas for the twinkling stars that peek through the gaps. In this vibrant tableau, the city pulses with energy and promise, a tangible testament to modern life.",
+      "response_chars": 1051,
+      "forbidden_words": [
+        "car"
+      ],
+      "forbidden_check": {
+        "violation_count": 0,
+        "violations": [],
+        "passed": true
+      },
+      "pivot_signatures": {
+        "forbidden_in_first_quartile_only": false,
+        "forbidden_in_final_quartile": false,
+        "explicit_pivot_phrase": false
+      },
+      "joint_pass": true,
+      "_dt": 2.1319918632507324
+    },
+    {
+      "model_slot": "premier_2",
+      "model_id": "openai/gpt-4o",
+      "task_id": "city_grid",
+      "condition": "compatible_forbidden_words",
+      "trial": 2,
+      "prompt_hash": "16b80a9755ba921c",
+      "response": "Neon lights flicker, casting a kaleidoscope of colors onto the glistening asphalt, slick with recent rain. The hum of engines reverberates through the cool night air as a symphony of honks punctuates the rhythmic stop-and-go of metal beasts. Pedestrians, bundled in coats, weave through the chaos, their breath visible in the chilly glow of street lamps. Above, towering skyscrapers loom, their windows ablaze with life, twinkling like a thousand stars against the velvet sky. A crimson stoplight commands attention, its reflection shimmering in puddles like molten rubies. Vendors line the sidewalks, their stalls spilling over with vibrant wares and sizzling aromas, enticing passersby with promises of warmth and flavor. The intersection pulses with life, a tapestry of movement and sound, threading stories through the fabric of the night.",
+      "response_chars": 843,
+      "forbidden_words": [
+        "car"
+      ],
+      "forbidden_check": {
+        "violation_count": 0,
+        "violations": [],
+        "passed": true
+      },
+      "pivot_signatures": {
+        "forbidden_in_first_quartile_only": false,
+        "forbidden_in_final_quartile": false,
+        "explicit_pivot_phrase": false
+      },
+      "joint_pass": true,
+      "_dt": 2.886845350265503
+    },
+    {
+      "model_slot": "premier_2",
+      "model_id": "openai/gpt-4o",
+      "task_id": "city_grid",
+      "condition": "conflicting_forbidden_words",
+      "trial": 1,
+      "prompt_hash": "1742abd61dc6e444",
+      "response": "The intersection buzzes with a symphony of motion, a kaleidoscope of colors and sounds. Metallic beasts glide and roar, their polished exteriors reflecting the vibrant neon hues of towering billboards above. Pavement shimmers with a slick, glossy sheen, remnants of a recent drizzle that mirrors the dazzling advertisements flashing overhead. The cacophony of engines hums beneath the sharp staccato of blaring horns, while rhythmic beeps punctuate the air from crosswalk signals. On the sidewalks, a multitude of silhouettes ebb and flow, weaving a tapestry of shadow and movement beneath the flickering glow of storefront signs. The cool night air carries the scent of street food, mingling with the crisp aroma of rain-soaked concrete. Above, a canopy of electric wires crisscrosses like veins against the deep indigo sky, framing the chaotic beauty below.",
+      "response_chars": 859,
+      "forbidden_words": [
+        "car",
+        "person",
+        "people",
+        "light",
+        "lights",
+        "traffic"
+      ],
+      "forbidden_check": {
+        "violation_count": 0,
+        "violations": [],
+        "passed": true
+      },
+      "pivot_signatures": {
+        "forbidden_in_first_quartile_only": false,
+        "forbidden_in_final_quartile": false,
+        "explicit_pivot_phrase": false
+      },
+      "joint_pass": true,
+      "_dt": 2.372673511505127
+    },
+    {
+      "model_slot": "premier_2",
+      "model_id": "openai/gpt-4o",
+      "task_id": "city_grid",
+      "condition": "conflicting_forbidden_words",
+      "trial": 0,
+      "prompt_hash": "1742abd61dc6e444",
+      "response": "Neon signs flicker and hum in a kaleidoscope of colors, casting a vibrant glow over the bustling junction. The air is alive with a symphony of honking horns and the distant wail of a siren, blending into a unique urban melody. A river of metal and glass flows endlessly, weaving intricate patterns on the wet asphalt that glistens like a polished mirror. Pedestrians clad in overcoats and scarves hurry along the crosswalks, their breath visible in the crisp night air. Storefronts display their wares in grandiose fashion, windows reflecting the dance of illuminated billboards above. The scent of street food lingers, mingling with the exhaust and creating a distinctive aroma that defines the heart of the metropolis. Above, a distant moon peeks through the web of steel and concrete, casting a silver touch upon the chaos below. The scene is alive, a testament to the relentless pulse of city life under the cloak of night.",
+      "response_chars": 927,
+      "forbidden_words": [
+        "car",
+        "person",
+        "people",
+        "light",
+        "lights",
+        "traffic"
+      ],
+      "forbidden_check": {
+        "violation_count": 0,
+        "violations": [],
+        "passed": true
+      },
+      "pivot_signatures": {
+        "forbidden_in_first_quartile_only": false,
+        "forbidden_in_final_quartile": false,
+        "explicit_pivot_phrase": false
+      },
+      "joint_pass": true,
+      "_dt": 2.6005959510803223
+    },
+    {
+      "model_slot": "premier_2",
+      "model_id": "openai/gpt-4o",
+      "task_id": "city_grid",
+      "condition": "compatible_forbidden_words",
+      "trial": 0,
+      "prompt_hash": "16b80a9755ba921c",
+      "response": "Neon signs flicker and blaze, casting a kaleidoscope of hues onto the slick asphalt below. Streams of headlights weave through the bustling junction, their beams slicing through the cool night air, painting streaks of white and red light across the scene. The sidewalks overflow with a river of humanity, each face briefly illuminated by the glow of a nearby storefront or the flash of a passing vehicle. \n\nTowering skyscrapers loom overhead, their glass facades reflecting the vibrant chaos of the streets below. A cacophony of honking horns and the rhythmic hiss of brakes fills the air, mingling with snatches of music escaping from open windows. Street vendors hawk their wares, their voices rising above the din, while the aroma of street food wafts through the air, mingling with the scent of rain-soaked pavement.\n\nTraffic signals pulsate in their relentless cycle, casting an alternating glow of red, amber, and green. Pedestrians huddle at the corners, waiting for their moment to cross, their silhouettes momentarily blurred by the drizzle that begins to fall, turning the cityscape into a shimmering tapestry of light and movement.",
+      "response_chars": 1142,
+      "forbidden_words": [
+        "car"
+      ],
+      "forbidden_check": {
+        "violation_count": 0,
+        "violations": [],
+        "passed": true
+      },
+      "pivot_signatures": {
+        "forbidden_in_first_quartile_only": false,
+        "forbidden_in_final_quartile": false,
+        "explicit_pivot_phrase": false
+      },
+      "joint_pass": true,
+      "_dt": 4.049875259399414
+    },
+    {
+      "model_slot": "premier_2",
+      "model_id": "openai/gpt-4o",
+      "task_id": "city_grid",
+      "condition": "conflicting_forbidden_words",
+      "trial": 2,
+      "prompt_hash": "1742abd61dc6e444",
+      "response": "Neon signs buzz and flicker above the bustling urban crosswalk, casting vibrant blues, reds, and greens that dance along the wet pavement below. The reflections shimmer like fragmented rainbows, weaving between the glistening asphalt and the polished metal of vehicles rushing past. Umbrellas bob along the sidewalks, their colors bright against the darkened sky, creating a sea of moving hues. The rhythmic staccato of footsteps echoes against the towering buildings, blending with the distant hum of engines and the occasional honk. Storefronts glow with enticing warmth, their windows showcasing a kaleidoscope of goods that beckon the curious. Overhead, the occasional flash of a billboard screen adds a modern glow, painting the scene with fleeting moments of advertisement. Steam rises from street grates, swirling upwards in ghostly tendrils, merging with the distant, blinking constellations of the urban skyline.",
+      "response_chars": 921,
+      "forbidden_words": [
+        "car",
+        "person",
+        "people",
+        "light",
+        "lights",
+        "traffic"
+      ],
+      "forbidden_check": {
+        "violation_count": 0,
+        "violations": [],
+        "passed": true
+      },
+      "pivot_signatures": {
+        "forbidden_in_first_quartile_only": false,
+        "forbidden_in_final_quartile": false,
+        "explicit_pivot_phrase": false
+      },
+      "joint_pass": true,
+      "_dt": 2.881547451019287
+    },
+    {
+      "model_slot": "cheap_current_1",
+      "model_id": "anthropic/claude-3.5-haiku",
+      "task_id": "sunset",
+      "condition": "compatible_forbidden_words",
+      "trial": 1,
+      "prompt_hash": "f5cc70983a433685",
+      "response": "The horizon blazes with molten copper and crimson, its fiery gradient bleeding into deepening azure. Luminous bands of amber and rose stretch across the sky, their edges softening like watercolor paint dissolving into twilight. The sun\u2014a massive, burning disc\u2014descends toward the ocean's edge, its lower hemisphere already kissing the dark waters, casting long trembling reflections across undulating waves.\n\nClouds drift like burnished metal, their edges gilded with incandescent light, their undersides rich with deep burgundy and vermilion hues. The sea transforms from bright azure to deep indigo, absorbing the day's last radiance, each wave cresting with a momentary gleam of liquid gold. Distant seabirds wheel silently against this incandescent backdrop, their dark silhouettes etched sharply against the luminous sky.\n\nGradually, the celestial fire dims, cooling from brilliant warmth to soft lavender and deep slate, the ocean absorbing the day's final whispers of light.",
+      "response_chars": 981,
+      "forbidden_words": [
+        "orange"
+      ],
+      "forbidden_check": {
+        "violation_count": 0,
+        "violations": [],
+        "passed": true
+      },
+      "pivot_signatures": {
+        "forbidden_in_first_quartile_only": false,
+        "forbidden_in_final_quartile": false,
+        "explicit_pivot_phrase": false
+      },
+      "joint_pass": true,
+      "_dt": 5.2611706256866455
+    },
+    {
+      "model_slot": "cheap_current_1",
+      "model_id": "anthropic/claude-3.5-haiku",
+      "task_id": "sunset",
+      "condition": "compatible_forbidden_words",
+      "trial": 0,
+      "prompt_hash": "f5cc70983a433685",
+      "response": "The horizon blazes with molten amber and crimson, its luminous edge bleeding into deepening azure waters. Radiant golden light fractures across undulating waves, casting prismatic reflections that shimmer and dance like liquid fire. Clouds drift in soft-edged wisps, their undersides illuminated in rich copper and rose hues, transforming from luminous gold to deep burgundy as the celestial drama unfolds.\n\nSunlight fragments into countless glittering fragments, each wave crest catching and refracting light like a thousand trembling prisms. The sky gradually darkens from its brilliant center, transitioning through layers of warmth\u2014first blazing, then softening into muted copper, then deep vermilion, before surrendering to the deep indigo of approaching night.\n\nThe ocean receives this spectacle in rippling, undulating acceptance, its surface a canvas of shifting luminescence, reflecting and transforming the day's final brilliant proclamation before darkness claims its quiet domain.",
+      "response_chars": 992,
+      "forbidden_words": [
+        "orange"
+      ],
+      "forbidden_check": {
+        "violation_count": 0,
+        "violations": [],
+        "passed": true
+      },
+      "pivot_signatures": {
+        "forbidden_in_first_quartile_only": false,
+        "forbidden_in_final_quartile": false,
+        "explicit_pivot_phrase": false
+      },
+      "joint_pass": true,
+      "_dt": 5.612484931945801
+    },
+    {
+      "model_slot": "cheap_current_1",
+      "model_id": "anthropic/claude-3.5-haiku",
+      "task_id": "sunset",
+      "condition": "compatible_forbidden_words",
+      "trial": 2,
+      "prompt_hash": "f5cc70983a433685",
+      "response": "The sky dissolves into molten copper and vermilion, bleeding liquid gold across the horizon's trembling seam. Radiant bands of crimson and amber stretch like luminous fingers, caressing the darkening water's surface. Clouds drift like burnished metal, their edges gilded by the descending solar disc, which hangs massive and incandescent\u2014a burning sphere sinking into its own liquid reflection.\n\nWaves shimmer with reflected fire, each undulation catching and scattering light in prismatic fragments. The ocean transforms from deep azure to liquid bronze, then deepens toward rich indigo as twilight advances. Soft lavender shadows begin to pool between the cresting waves, while the sun's final brilliant moments paint everything in warm, saturated hues of rose and copper.\n\nSlowly, imperceptibly, the luminous boundary between sky and sea blurs, merging into a single, breathless canvas of molten color\u2014radiant, ephemeral, sublime.",
+      "response_chars": 933,
+      "forbidden_words": [
+        "orange"
+      ],
+      "forbidden_check": {
+        "violation_count": 0,
+        "violations": [],
+        "passed": true
+      },
+      "pivot_signatures": {
+        "forbidden_in_first_quartile_only": false,
+        "forbidden_in_final_quartile": false,
+        "explicit_pivot_phrase": false
+      },
+      "joint_pass": true,
+      "_dt": 5.296893835067749
+    },
+    {
+      "model_slot": "cheap_current_1",
+      "model_id": "anthropic/claude-3.5-haiku",
+      "task_id": "sunset",
+      "condition": "conflicting_forbidden_words",
+      "trial": 0,
+      "prompt_hash": "5630b42d8f2de0a9",
+      "response": "The horizon dissolves into a molten canvas, liquid light bleeding across the sky's expanse. Soft luminescence cascades over undulating waves, transforming the ocean's surface into a shimmering membrane of copper and burnished bronze. Gossamer clouds drift like translucent silk, their edges gilded by fading radiance, catching fire at their delicate margins. Deeper tones of indigo and slate begin to emerge from the western periphery, gradually consuming the brilliant warmth.\n\nSunlight fragments into crystalline splinters across the water's restless surface, each wavelet catching and refracting dying solar brilliance. The sky becomes a watercolor of soft lavender and deep vermilion, bleeding into rich plum and deepening azure. Distant horizons pulse with incandescent energy, a final defiant gleam before darkness claims its nightly domain. Shadows lengthen, stretching across rippling waters like ethereal fingers, while the last luminous breath of day slowly exhales into twilight's embrace.",
+      "response_chars": 1000,
+      "forbidden_words": [
+        "orange",
+        "yellow",
+        "red",
+        "pink",
+        "gold",
+        "amber"
+      ],
+      "forbidden_check": {
+        "violation_count": 0,
+        "violations": [],
+        "passed": true
+      },
+      "pivot_signatures": {
+        "forbidden_in_first_quartile_only": false,
+        "forbidden_in_final_quartile": false,
+        "explicit_pivot_phrase": false
+      },
+      "joint_pass": true,
+      "_dt": 5.065815687179565
+    },
+    {
+      "model_slot": "cheap_current_1",
+      "model_id": "anthropic/claude-3.5-haiku",
+      "task_id": "sunset",
+      "condition": "conflicting_forbidden_words",
+      "trial": 2,
+      "prompt_hash": "5630b42d8f2de0a9",
+      "response": "The horizon dissolves into a liquid canvas, where molten light bleeds across the sky's vast expanse. Soft luminescence cascades over undulating waves, transforming the ocean's surface into a shimmering membrane of copper and burnished bronze. Clouds drift like scattered embers, their edges gilded and translucent, catching the dying sun's final radiance. Deeper tones of indigo and plum begin to emerge from the eastern horizon, gradually consuming the brighter hues in a slow, elegant descent.\n\nSunlight fragments into liquid prisms, scattering across wavelets that pulse and glimmer with an almost metallic intensity. The ocean breathes\u2014expansive, rhythmic\u2014reflecting the sky's gradual transformation from brilliant incandescence to deep, velvet darkness. Soft shadows lengthen across the water's surface, creating intricate patterns of light and depth, while the sun's final sliver sinks beneath distant waters, leaving behind a luminous afterglow that whispers of twilight's imminent arrival.",
+      "response_chars": 997,
+      "forbidden_words": [
+        "orange",
+        "yellow",
+        "red",
+        "pink",
+        "gold",
+        "amber"
+      ],
+      "forbidden_check": {
+        "violation_count": 0,
+        "violations": [],
+        "passed": true
+      },
+      "pivot_signatures": {
+        "forbidden_in_first_quartile_only": false,
+        "forbidden_in_final_quartile": false,
+        "explicit_pivot_phrase": false
+      },
+      "joint_pass": true,
+      "_dt": 5.234398603439331
+    },
+    {
+      "model_slot": "cheap_current_1",
+      "model_id": "anthropic/claude-3.5-haiku",
+      "task_id": "sunset",
+      "condition": "conflicting_forbidden_words",
+      "trial": 1,
+      "prompt_hash": "5630b42d8f2de0a9",
+      "response": "The horizon dissolves into a liquid canvas, where molten light bleeds across the sky's vast expanse. Soft luminescence spills from the descending sun, transforming the ocean's surface into a shimmering mirror of radiant warmth. Clouds drift like burnished silk, their edges gilded with incandescent brilliance, catching fire at their gossamer margins. Deeper tones of lavender and deep bronze meld seamlessly, creating a gradient of ethereal intensity that cascades from zenith to sea-line.\n\nWaves beneath pulse with reflected luminosity, each crest catching the fading light and transforming into a gleaming, translucent plane. Soft shadows begin to emerge, deepening the azure and indigo tones at the water's distant edge. The sun\u2014a perfect, molten disc\u2014slowly sinks, its final rays stretching like liquid copper tendrils across the undulating surface, painting everything in a rich, saturated palette of dying light.\n\nTwilight approaches, soft and inevitable, consuming the day's final breath.",
+      "response_chars": 996,
+      "forbidden_words": [
+        "orange",
+        "yellow",
+        "red",
+        "pink",
+        "gold",
+        "amber"
+      ],
+      "forbidden_check": {
+        "violation_count": 0,
+        "violations": [],
+        "passed": true
+      },
+      "pivot_signatures": {
+        "forbidden_in_first_quartile_only": false,
+        "forbidden_in_final_quartile": false,
+        "explicit_pivot_phrase": false
+      },
+      "joint_pass": true,
+      "_dt": 5.664355516433716
+    },
+    {
+      "model_slot": "cheap_current_1",
+      "model_id": "anthropic/claude-3.5-haiku",
+      "task_id": "forest",
+      "condition": "compatible_forbidden_words",
+      "trial": 1,
+      "prompt_hash": "95ca0ec856bda508",
+      "response": "Pale golden rays filter through a canopy of intertwined branches, casting dappled shadows across a moss-laden forest floor. Slender birch trunks stand like ivory sentinels, their pale bark luminescent in the early dawn light. Soft emerald ferns unfurl delicate fronds between gnarled roots, catching droplets of moisture that glisten like scattered diamonds. Mist hovers just above the ground, a translucent veil that softens every edge and blurs the boundaries between earth and sky. Dew-laden leaves shimmer with crystalline brilliance, each needle and blade trembling imperceptibly in the gentle morning breath of wind. Shafts of sunlight pierce through the dense woodland, creating luminous corridors that illuminate patches of rich umber soil and silvery lichen-covered stones. The forest breathes\u2014a living, ambient tapestry of texture and light, where every surface gleams with the tender luminescence of nascent day, and silence speaks in whispers of bark, leaf, and shadow.",
+      "response_chars": 981,
+      "forbidden_words": [
+        "green"
+      ],
+      "forbidden_check": {
+        "violation_count": 0,
+        "violations": [],
+        "passed": true
+      },
+      "pivot_signatures": {
+        "forbidden_in_first_quartile_only": false,
+        "forbidden_in_final_quartile": false,
+        "explicit_pivot_phrase": false
+      },
+      "joint_pass": true,
+      "_dt": 5.344678163528442
+    },
+    {
+      "model_slot": "cheap_current_1",
+      "model_id": "anthropic/claude-3.5-haiku",
+      "task_id": "forest",
+      "condition": "compatible_forbidden_words",
+      "trial": 0,
+      "prompt_hash": "95ca0ec856bda508",
+      "response": "Pale golden rays filter through a dense canopy of oak and maple, casting dappled shadows across the forest floor. Mist hangs in delicate veils between tree trunks, their bark silvered and textured like ancient parchment. Moss-covered stones gleam with a soft emerald sheen, while ferns unfurl their delicate fronds in the gentle morning illumination. Slender birch trees stand like pale sentinels, their bark peeling in thin papery layers, catching the early sunlight in soft ivory and cream tones. Dew clings to every surface\u2014droplets trembling on needle-thin pine branches, beading along broad leaves, creating a crystalline landscape that sparkles with prismatic brilliance. Soft shadows shift and breathe as distant branches sway, creating a subtle choreography of light and darkness. In the quiet stillness, a single shaft of sunlight penetrates the woodland's dense fabric, illuminating dust motes and tiny insects dancing in its warm embrace, transforming the forest into a cathedral of luminous, breathing silence.",
+      "response_chars": 1022,
+      "forbidden_words": [
+        "green"
+      ],
+      "forbidden_check": {
+        "violation_count": 0,
+        "violations": [],
+        "passed": true
+      },
+      "pivot_signatures": {
+        "forbidden_in_first_quartile_only": false,
+        "forbidden_in_final_quartile": false,
+        "explicit_pivot_phrase": false
+      },
+      "joint_pass": true,
+      "_dt": 5.774576187133789
+    },
+    {
+      "model_slot": "cheap_current_1",
+      "model_id": "anthropic/claude-3.5-haiku",
+      "task_id": "forest",
+      "condition": "compatible_forbidden_words",
+      "trial": 2,
+      "prompt_hash": "95ca0ec856bda508",
+      "response": "Pale golden rays pierce through a canopy of trembling leaves, casting dappled shadows across the forest floor. Slender birch trunks gleam like ivory columns, their pale bark luminescent in the early dawn. Moss-covered stones emerge from a carpet of fallen needles and decaying branches, their surfaces rich with emerald and sage hues. Tendrils of mist curl between tree trunks, gossamer and translucent, softening the hard edges of bark and stone. Delicate ferns unfurl their intricate fronds, catching the first warm light and transforming it into a shimmering tapestry of amber and jade. Distant branches sway with a gentle whisper, creating a subtle choreography of light and shadow. Dew clings to every surface\u2014droplets like tiny prisms refracting the morning's soft illumination, transforming the woodland into a breathing, glistening landscape of subtle movement and quiet awakening.",
+      "response_chars": 889,
+      "forbidden_words": [
+        "green"
+      ],
+      "forbidden_check": {
+        "violation_count": 0,
+        "violations": [],
+        "passed": true
+      },
+      "pivot_signatures": {
+        "forbidden_in_first_quartile_only": false,
+        "forbidden_in_final_quartile": false,
+        "explicit_pivot_phrase": false
+      },
+      "joint_pass": true,
+      "_dt": 4.810807228088379
+    },
+    {
+      "model_slot": "cheap_current_1",
+      "model_id": "anthropic/claude-3.5-haiku",
+      "task_id": "forest",
+      "condition": "conflicting_forbidden_words",
+      "trial": 0,
+      "prompt_hash": "2b36e3c303d11ce4",
+      "response": "Dawn's first luminescence seeps through a cathedral of woody sentinels, casting long amber shadows across a moss-dappled floor. Slender wooden pillars rise like architectural columns, their bark mottled in silver-gray and umber, bark textured with ancient ridges and subtle curves. Soft golden light filters through a canopy of interlaced limbs, creating a delicate lacework of illumination and shadow. Thin wisps of morning mist curl around root systems and drift between vertical wooden structures, gossamer and ethereal. Ferns unfurl their delicate fronds beneath the towering vegetation, catching droplets of condensation that glimmer like tiny prisms. The forest breathes\u2014a quiet, humid exhalation of chlorophyll and damp earth, rich with the earthy perfume of decaying vegetation and nascent growth. Soft pine needles carpet the ground in russet and amber, cushioning each silent step. Distant birdsong begins\u2014a tentative, crystalline note that pierces the cathedral-like stillness, signaling the gradual awakening of this primordial landscape.",
+      "response_chars": 1050,
+      "forbidden_words": [
+        "green",
+        "tree",
+        "leaf",
+        "leaves",
+        "branch",
+        "trunk"
+      ],
+      "forbidden_check": {
+        "violation_count": 0,
+        "violations": [],
+        "passed": true
+      },
+      "pivot_signatures": {
+        "forbidden_in_first_quartile_only": false,
+        "forbidden_in_final_quartile": false,
+        "explicit_pivot_phrase": false
+      },
+      "joint_pass": true,
+      "_dt": 5.6864013671875
+    },
+    {
+      "model_slot": "cheap_current_1",
+      "model_id": "anthropic/claude-3.5-haiku",
+      "task_id": "forest",
+      "condition": "conflicting_forbidden_words",
+      "trial": 1,
+      "prompt_hash": "2b36e3c303d11ce4",
+      "response": "Dawn's first whispers pierce the woodland's dense cathedral, golden rays slicing through misty veils and emerald shadows. Vertical sentinels of bark and wood rise like ancient pillars, their rough surfaces etched with centuries of silent growth. Dew-laden needles and broad palmate surfaces glisten, catching prismatic light that transforms each surface into a trembling jewel. Soft moss carpets the forest floor, cushioning fallen timber and creating a velvet landscape of muted browns and sage-tinted textures. Sunlight cascades in liquid amber streams, filtering through interlaced canopies and creating dappled patterns that dance across the ground. Slender wooden spires reach upward, some straight as arrows, others twisting in elegant curves, their silhouettes creating a complex latticework against the brightening sky. Delicate ferns unfurl at the base of these massive wooden guardians, their tender fronds still heavy with night's moisture, waiting for warmth to release their intricate curls into full, vibrant display.",
+      "response_chars": 1031,
+      "forbidden_words": [
+        "green",
+        "tree",
+        "leaf",
+        "leaves",
+        "branch",
+        "trunk"
+      ],
+      "forbidden_check": {
+        "violation_count": 0,
+        "violations": [],
+        "passed": true
+      },
+      "pivot_signatures": {
+        "forbidden_in_first_quartile_only": false,
+        "forbidden_in_final_quartile": false,
+        "explicit_pivot_phrase": false
+      },
+      "joint_pass": true,
+      "_dt": 6.200758457183838
+    },
+    {
+      "model_slot": "cheap_current_1",
+      "model_id": "anthropic/claude-3.5-haiku",
+      "task_id": "forest",
+      "condition": "conflicting_forbidden_words",
+      "trial": 2,
+      "prompt_hash": "2b36e3c303d11ce4",
+      "response": "Dawn's first luminescence seeps through a cathedral of woody sentinels, soft amber light filtering between vertical columns of bark and timber. Slender shadows stretch across a carpet of moss and fallen needles, creating intricate lattices of darkness and radiance. Misty tendrils curl around massive wooden pillars rising from rich earth, their rough surfaces etched with centuries of silent growth. Distant canopies shimmer with dew-kissed surfaces, translucent and gleaming where sunlight pierces their dense fabric. Ferns unfurl delicate fronds along the forest floor, their pale stems emerging from rich humus and decaying organic matter. Soft pine-scented air hangs motionless, punctuated by the occasional whisper of an awakening breeze. Sunlight gradually intensifies, transforming the landscape from shadowy blue-gray to warm amber and umber, illuminating textures of lichen, bark, and fungal growth. Distant bird calls echo softly through this primordial sanctuary, heralding the gradual awakening of a living, breathing ecosystem suspended between night and full morning brilliance.",
+      "response_chars": 1093,
+      "forbidden_words": [
+        "green",
+        "tree",
+        "leaf",
+        "leaves",
+        "branch",
+        "trunk"
+      ],
+      "forbidden_check": {
+        "violation_count": 0,
+        "violations": [],
+        "passed": true
+      },
+      "pivot_signatures": {
+        "forbidden_in_first_quartile_only": false,
+        "forbidden_in_final_quartile": false,
+        "explicit_pivot_phrase": false
+      },
+      "joint_pass": true,
+      "_dt": 5.9205474853515625
+    },
+    {
+      "model_slot": "cheap_current_1",
+      "model_id": "anthropic/claude-3.5-haiku",
+      "task_id": "city_grid",
+      "condition": "compatible_forbidden_words",
+      "trial": 0,
+      "prompt_hash": "16b80a9755ba921c",
+      "response": "Streams of light cascade and pulse across wet asphalt, where headlamps slice through misty darkness and traffic signals bleed crimson, amber, and emerald into puddles. Chrome and steel reflect a kaleidoscope of neon\u2014billboard advertisements and storefront signs casting electric glimmers across sleek metallic surfaces. Vehicles surge and pause in intricate choreography, windshields gleaming like liquid mercury, tires whispering against rain-slicked pavement. Pedestrians dart between lanes, umbrellas bobbing like dark moths, their silhouettes fragmenting in the glossy street reflections. Taxi roofs glint yellow, delivery trucks rumble with heavy momentum, motorcycles weave like quicksilver between larger masses of moving metal. Crosswalks pulse with synchronized rhythms\u2014white lines strobing as signals change, crowds surging and receding like urban tides. The intersection breathes and shifts, a living organism of motion and luminescence, where mechanical motion and human currents intertwine beneath the electric sky.",
+      "response_chars": 1028,
+      "forbidden_words": [
+        "car"
+      ],
+      "forbidden_check": {
+        "violation_count": 0,
+        "violations": [],
+        "passed": true
+      },
+      "pivot_signatures": {
+        "forbidden_in_first_quartile_only": false,
+        "forbidden_in_final_quartile": false,
+        "explicit_pivot_phrase": false
+      },
+      "joint_pass": true,
+      "_dt": 5.742533206939697
+    },
+    {
+      "model_slot": "cheap_current_1",
+      "model_id": "anthropic/claude-3.5-haiku",
+      "task_id": "city_grid",
+      "condition": "compatible_forbidden_words",
+      "trial": 1,
+      "prompt_hash": "16b80a9755ba921c",
+      "response": "Here's a nocturnal urban scene:\n\nStreams of headlight-white and crimson brake-glow pulse through the intersection like luminescent blood vessels. Metallic chassis gleam under streetlamp halos, their windshields reflecting fractured light\u2014a kaleidoscope of motion and electricity. Crosswalks pulse with pedestrian shadows: silhouettes darting between rumbling metal frames, umbrellas bobbing like dark mushroom caps in the wet asphalt's reflection.\n\nTaxi yellows and rideshare whites weave between larger transit machines, their engines humming a low metropolitan chord. Traffic signals cascade green-amber-red, conducting this mechanical ballet with precise rhythm. Condensation steams from exhaust pipes, ghosting into the cool night air, while turn signals blink their urgent semaphore messages against the glistening street.\n\nChrome and steel flow like liquid mercury, each vehicle a discrete molecule in this pulsing urban organism. The intersection breathes\u2014inhaling, exhaling streams of transit, a living system of motion and mechanical precision.",
+      "response_chars": 1053,
+      "forbidden_words": [
+        "car"
+      ],
+      "forbidden_check": {
+        "violation_count": 0,
+        "violations": [],
+        "passed": true
+      },
+      "pivot_signatures": {
+        "forbidden_in_first_quartile_only": false,
+        "forbidden_in_final_quartile": false,
+        "explicit_pivot_phrase": false
+      },
+      "joint_pass": true,
+      "_dt": 6.442823171615601
+    },
+    {
+      "model_slot": "cheap_current_1",
+      "model_id": "anthropic/claude-3.5-haiku",
+      "task_id": "city_grid",
+      "condition": "compatible_forbidden_words",
+      "trial": 2,
+      "prompt_hash": "16b80a9755ba921c",
+      "response": "Streams of light pulse and weave across the urban canvas, headlamps carving golden arcs through the darkness. Metallic chassis gleam under streetlamp halos, their windshields reflecting a kaleidoscope of traffic signals\u2014crimson, amber, emerald\u2014bleeding into each other. Vehicles surge and pause, a mechanical tide regulated by the rhythmic blinking of crosswalk signals. Pedestrians dart between lanes, silhouettes threading through the mechanical choreography, their shadows stretching and contracting under the electric luminescence.\n\nTaxi roofs flicker with digital advertisements, neon signs from surrounding storefronts casting prismatic glares across polished chassis and rain-slicked asphalt. The intersection thrums with mechanical breath\u2014engines rumbling, brakes hissing, horns punctuating the urban symphony. Delivery trucks, sleek sedans, rumbling motorcycles, all pulse through the concrete nexus, a constant flow of motion and light, each vehicle a discrete molecule in the city's circulatory system.",
+      "response_chars": 1013,
+      "forbidden_words": [
+        "car"
+      ],
+      "forbidden_check": {
+        "violation_count": 0,
+        "violations": [],
+        "passed": true
+      },
+      "pivot_signatures": {
+        "forbidden_in_first_quartile_only": false,
+        "forbidden_in_final_quartile": false,
+        "explicit_pivot_phrase": false
+      },
+      "joint_pass": true,
+      "_dt": 5.819979906082153
+    },
+    {
+      "model_slot": "cheap_current_2",
+      "model_id": "openai/gpt-4o-mini",
+      "task_id": "sunset",
+      "condition": "compatible_forbidden_words",
+      "trial": 0,
+      "prompt_hash": "f5cc70983a433685",
+      "response": "As the day begins its gentle retreat, the horizon melts into a breathtaking palette of fiery hues, casting a warm glow across the tranquil waters. The vast expanse of the ocean mirrors the sky, a shimmering canvas of deep crimson and vibrant gold, each wave lapping against the shore like a soft whisper. Wisps of clouds, tinged with a delicate blush, drift lazily, their edges glowing with a radiant light that seems almost ethereal. \n\nThe sun, a molten sphere of brilliance, hovers just above the horizon, its light spilling forth in cascading beams that dance upon the surface of the sea. Silhouettes of distant boats glide gracefully, their sails catching the fading glow, while seagulls trace lazy arcs overhead, their cries echoing in the stillness. As dusk settles, the colors deepen, transforming into rich purples and soft pinks, creating an almost dreamlike atmosphere. The air, warm and fragrant, cradles the last remnants of daylight, promising the arrival of night, while the ocean, bathed in this fleeting beauty, seems to sigh in contentment.",
+      "response_chars": 1057,
+      "forbidden_words": [
+        "orange"
+      ],
+      "forbidden_check": {
+        "violation_count": 0,
+        "violations": [],
+        "passed": true
+      },
+      "pivot_signatures": {
+        "forbidden_in_first_quartile_only": false,
+        "forbidden_in_final_quartile": false,
+        "explicit_pivot_phrase": false
+      },
+      "joint_pass": true,
+      "_dt": 1.9298079013824463
+    },
+    {
+      "model_slot": "cheap_current_1",
+      "model_id": "anthropic/claude-3.5-haiku",
+      "task_id": "city_grid",
+      "condition": "conflicting_forbidden_words",
+      "trial": 0,
+      "prompt_hash": "1742abd61dc6e444",
+      "response": "Here's my attempt:\n\nMetallic streams pulse and weave through the intersection, headlamps blazing like electric eyes against rain-slick asphalt. Crosswalks pulse with moving silhouettes\u2014shoulders hunched, umbrellas tilting\u2014while signals flicker crimson, amber, emerald in rhythmic succession. Chrome and steel reflect kaleidoscopic fragments: neon signs, storefront windows, gleaming puddles spinning with chromatic fractals.\n\nEngines throb and rumble, a mechanical chorus punctuated by distant horns and the staccato tap of heels against wet concrete. Windshields stream with liquid silver, wipers sweeping arcs against the glistening darkness. Shadows dart between massive wheeled forms\u2014sedans, trucks, taxicabs\u2014their movements synchronized yet chaotic, a choreographed dance of motion and momentum.\n\nOverhead, streetlamps cast pools of tungsten brilliance, creating islands of illumination amid the urban night's deep indigo. Electrical wires crisscross the sky like nervous system tendrils, conducting the city's restless energy through steel and glass canyons.",
+      "response_chars": 1064,
+      "forbidden_words": [
+        "car",
+        "person",
+        "people",
+        "light",
+        "lights",
+        "traffic"
+      ],
+      "forbidden_check": {
+        "violation_count": 0,
+        "violations": [],
+        "passed": true
+      },
+      "pivot_signatures": {
+        "forbidden_in_first_quartile_only": false,
+        "forbidden_in_final_quartile": false,
+        "explicit_pivot_phrase": false
+      },
+      "joint_pass": true,
+      "_dt": 6.110359191894531
+    },
+    {
+      "model_slot": "cheap_current_2",
+      "model_id": "openai/gpt-4o-mini",
+      "task_id": "sunset",
+      "condition": "compatible_forbidden_words",
+      "trial": 1,
+      "prompt_hash": "f5cc70983a433685",
+      "response": "The sun hung low in the sky, a molten disk of gold, casting its radiant glow across the vast expanse of the ocean. The water shimmered like liquid glass, reflecting hues of crimson and deep vermilion as the day surrendered to twilight. Wispy clouds, tinged with soft lavender and delicate rose, drifted lazily, catching the dying light and transforming into a canvas of splendid color. \n\nWaves lapped gently at the shore, their crests catching the fading brilliance and sparkling like scattered jewels. As the sun dipped closer to the horizon, shadows deepened, and the sky became a symphony of vibrant tones, blending seamlessly into one another. A cool breeze whispered secrets of the approaching night, carrying the salty tang of the sea and rustling the palm fronds that framed the scene. \n\nIn the distance, a solitary sailboat glided across the water, silhouetted against the breathtaking backdrop, as if it were a brushstroke on a masterful painting. The air was thick with the promise of evening, as the last light of day surrendered to the encroaching darkness.",
+      "response_chars": 1069,
+      "forbidden_words": [
+        "orange"
+      ],
+      "forbidden_check": {
+        "violation_count": 0,
+        "violations": [],
+        "passed": true
+      },
+      "pivot_signatures": {
+        "forbidden_in_first_quartile_only": false,
+        "forbidden_in_final_quartile": false,
+        "explicit_pivot_phrase": false
+      },
+      "joint_pass": true,
+      "_dt": 2.275891065597534
+    },
+    {
+      "model_slot": "cheap_current_2",
+      "model_id": "openai/gpt-4o-mini",
+      "task_id": "sunset",
+      "condition": "compatible_forbidden_words",
+      "trial": 2,
+      "prompt_hash": "f5cc70983a433685",
+      "response": "The sun hung low on the horizon, casting a molten glow that spilled across the ocean's surface like liquid gold. Its fiery embrace ignited the sky, blending shades of crimson and deep magenta, swirling together in a breathtaking tapestry. Wisps of clouds, brushed with violet and the softest blush, floated lazily above, catching the last light of day as they transformed into a canvas of vibrant hues. \n\nThe water, a mirror to the spectacle above, shimmered with rippling reflections that danced and flickered, as if the waves themselves were celebrating the day\u2019s end. Silhouettes of distant sailboats dotted the scene, their sails catching the golden light, while the gentle lapping of the waves whispered secrets to the shore. \n\nAs the sun dipped further, a shimmering path of light stretched across the water, leading the eye toward the horizon, where the sky met the sea in a soft embrace. The world seemed to hold its breath, suspended in a moment of pure beauty, as day surrendered to night, and the first stars began to twinkle in the deepening indigo sky.",
+      "response_chars": 1065,
+      "forbidden_words": [
+        "orange"
+      ],
+      "forbidden_check": {
+        "violation_count": 0,
+        "violations": [],
+        "passed": true
+      },
+      "pivot_signatures": {
+        "forbidden_in_first_quartile_only": false,
+        "forbidden_in_final_quartile": false,
+        "explicit_pivot_phrase": false
+      },
+      "joint_pass": true,
+      "_dt": 2.3085927963256836
+    },
+    {
+      "model_slot": "cheap_current_2",
+      "model_id": "openai/gpt-4o-mini",
+      "task_id": "sunset",
+      "condition": "conflicting_forbidden_words",
+      "trial": 2,
+      "prompt_hash": "5630b42d8f2de0a9",
+      "response": "The sun hangs low on the horizon, a fiery sphere draped in layers of deep crimson and soft lavender, spilling its hues across the sky. Wispy clouds, like delicate brushstrokes, catch the light, transforming into a tapestry of warm tones that dance and swirl, creating a breathtaking backdrop. The ocean mirrors this spectacle, its surface shimmering with a kaleidoscope of colors, each wave catching the fading light and reflecting it like scattered jewels. \n\nAs the sun dips further, the water deepens into shades of twilight, a tranquil blue melding with hints of violet, while the gentle surf whispers secrets to the shore. Silhouettes of distant sailboats sway gently, their masts outlined against the glowing horizon, silhouetted against the vibrant canvas. The air is infused with the salty scent of the sea, mingling with the coolness of the approaching night. Each moment stretches, a fleeting eternity, as the day surrenders to the embrace of night, leaving a lingering, awe-inspiring glow that dances upon the waves.",
+      "response_chars": 1026,
+      "forbidden_words": [
+        "orange",
+        "yellow",
+        "red",
+        "pink",
+        "gold",
+        "amber"
+      ],
+      "forbidden_check": {
+        "violation_count": 0,
+        "violations": [],
+        "passed": true
+      },
+      "pivot_signatures": {
+        "forbidden_in_first_quartile_only": false,
+        "forbidden_in_final_quartile": false,
+        "explicit_pivot_phrase": false
+      },
+      "joint_pass": true,
+      "_dt": 1.8015649318695068
+    },
+    {
+      "model_slot": "cheap_current_1",
+      "model_id": "anthropic/claude-3.5-haiku",
+      "task_id": "city_grid",
+      "condition": "conflicting_forbidden_words",
+      "trial": 1,
+      "prompt_hash": "1742abd61dc6e444",
+      "response": "Neon streams pulse and weave across wet asphalt, electric blues and crimson reds reflecting in rain-slick surfaces. Towering glass facades shimmer with amber and white glows, their surfaces a kaleidoscope of illumination against the deep indigo night sky. Metallic vessels surge and pause, their headbeams cutting sharp angles through misting precipitation. Crosswalks pulse with moving silhouettes\u2014shadowed figures darting between gleaming machines, umbrellas bobbing like dark flowers in a mechanical current. Signals flicker: green, yellow, red\u2014commanding the intricate choreography of urban motion. Distant horns murmur and blare, a percussive language of impatience and momentum. Streetlamps cast pools of platinum radiance onto glistening concrete, where rivulets of rainwater trace sinuous paths between cobblestones and asphalt. The intersection breathes\u2014a living system of motion and energy, metal and flesh intertwining in a constant, rhythmic dance of urban complexity.",
+      "response_chars": 980,
+      "forbidden_words": [
+        "car",
+        "person",
+        "people",
+        "light",
+        "lights",
+        "traffic"
+      ],
+      "forbidden_check": {
+        "violation_count": 0,
+        "violations": [],
+        "passed": true
+      },
+      "pivot_signatures": {
+        "forbidden_in_first_quartile_only": false,
+        "forbidden_in_final_quartile": false,
+        "explicit_pivot_phrase": false
+      },
+      "joint_pass": true,
+      "_dt": 5.973876237869263
+    },
+    {
+      "model_slot": "cheap_current_1",
+      "model_id": "anthropic/claude-3.5-haiku",
+      "task_id": "city_grid",
+      "condition": "conflicting_forbidden_words",
+      "trial": 2,
+      "prompt_hash": "1742abd61dc6e444",
+      "response": "Neon pulses throb against wet asphalt, casting electric azure and crimson reflections across the gleaming street. Metallic chassis glide and pause, their windshields refracting kaleidoscopic signals from overhead stoplights. Silhouettes dart between crosswalks\u2014hurried shapes in rain-slick coats, umbrellas bobbing like dark flowers in a mechanical wind. Engines hum and growl, a metropolitan chorus punctuated by distant horn blasts and the rhythmic clicking of pedestrian crossing signals. Towering glass structures loom overhead, their illuminated windows creating a vertical constellation against the midnight sky. Streams of headbeams slice through misty air, casting long shadows that pulse and retreat with each signal change. Condensation steams from exhaust pipes, ephemeral ghosts rising into the electric atmosphere. Pedestrians cluster and disperse like schools of fish, weaving between rolling machines with practiced choreography, their movements synchronized by an invisible urban pulse that thrums beneath the intersection's restless surface.",
+      "response_chars": 1058,
+      "forbidden_words": [
+        "car",
+        "person",
+        "people",
+        "light",
+        "lights",
+        "traffic"
+      ],
+      "forbidden_check": {
+        "violation_count": 0,
+        "violations": [],
+        "passed": true
+      },
+      "pivot_signatures": {
+        "forbidden_in_first_quartile_only": false,
+        "forbidden_in_final_quartile": false,
+        "explicit_pivot_phrase": false
+      },
+      "joint_pass": true,
+      "_dt": 5.510143756866455
+    },
+    {
+      "model_slot": "cheap_current_2",
+      "model_id": "openai/gpt-4o-mini",
+      "task_id": "forest",
+      "condition": "compatible_forbidden_words",
+      "trial": 1,
+      "prompt_hash": "95ca0ec856bda508",
+      "response": "Morning light spills through the canopy, a golden cascade that dances upon the forest floor, illuminating the delicate tapestry of earthy browns and soft yellows. Sunbeams pierce through the branches, creating a mosaic of light and shadow, where ferns unfurl and wildflowers, vibrant in their hues, nod gently in the crisp morning air. Dewdrops cling to slender blades of grass, sparkling like tiny jewels, while the sweet scent of damp earth rises, mingling with the faint aroma of pine. \n\nTall trunks stand sentinel, their rugged bark etched with the stories of seasons past, as whispers of a gentle breeze rustle the leaves overhead. In the distance, a brook gurgles playfully, its clear water glinting in the soft light, weaving through smooth stones that are cool to the touch. A chorus of birds fills the air, their melodies weaving a symphony that celebrates the awakening of another day. Every element, bathed in the warmth of dawn, breathes life into the tranquil scene, inviting all who enter to pause and absorb the beauty of nature reborn.",
+      "response_chars": 1051,
+      "forbidden_words": [
+        "green"
+      ],
+      "forbidden_check": {
+        "violation_count": 0,
+        "violations": [],
+        "passed": true
+      },
+      "pivot_signatures": {
+        "forbidden_in_first_quartile_only": false,
+        "forbidden_in_final_quartile": false,
+        "explicit_pivot_phrase": false
+      },
+      "joint_pass": true,
+      "_dt": 2.185377836227417
+    },
+    {
+      "model_slot": "cheap_current_2",
+      "model_id": "openai/gpt-4o-mini",
+      "task_id": "sunset",
+      "condition": "conflicting_forbidden_words",
+      "trial": 0,
+      "prompt_hash": "5630b42d8f2de0a9",
+      "response": "As the day wanes, the horizon transforms into a canvas of vibrant hues, a breathtaking spectacle where the sun dips low, kissing the restless sea. Wisps of clouds drift lazily across the sky, catching the last light and igniting in a fiery dance. The waters below mirror this celestial display, shimmering with a kaleidoscope of warm tones that ripple gently with each wave. \n\nThe sun, a blazing orb, casts a molten glow across the surface, illuminating the crests of the waves with a glistening brilliance. Silhouettes of distant sailboats float serenely, their sails catching the fading brilliance, while gulls wheel above, their cries mingling with the soft lapping of water against the shore. \n\nAs twilight approaches, the colors deepen, blending into a rich tapestry of warmth that envelops the landscape. Shadows stretch along the sand, and the horizon blurs, where sky meets sea in a perfect embrace. A tranquil hush descends, wrapping the world in its quiet magic, as the final vestiges of light surrender to the impending night.",
+      "response_chars": 1037,
+      "forbidden_words": [
+        "orange",
+        "yellow",
+        "red",
+        "pink",
+        "gold",
+        "amber"
+      ],
+      "forbidden_check": {
+        "violation_count": 0,
+        "violations": [],
+        "passed": true
+      },
+      "pivot_signatures": {
+        "forbidden_in_first_quartile_only": false,
+        "forbidden_in_final_quartile": false,
+        "explicit_pivot_phrase": false
+      },
+      "joint_pass": true,
+      "_dt": 3.3835179805755615
+    },
+    {
+      "model_slot": "cheap_current_2",
+      "model_id": "openai/gpt-4o-mini",
+      "task_id": "sunset",
+      "condition": "conflicting_forbidden_words",
+      "trial": 1,
+      "prompt_hash": "5630b42d8f2de0a9",
+      "response": "As the day began to surrender to twilight, the horizon ignited in a blaze of warm hues, a vibrant tapestry woven from the last breaths of sunlight. The sky transformed into a canvas brushed with deep coral and soft lavender, each color melting into the next like molten wax. Wispy clouds floated lazily, their edges illuminated, catching the fading light and becoming ethereal silhouettes against the vast expanse.\n\nBelow, the ocean mirrored this celestial display, waves shimmering like liquid glass, reflecting the brilliance above. Each ripple captured fleeting glimmers, dancing joyfully as they lapped against the shore. The air was thick with the scent of salt and sea, a cool breeze whispering promises of night. \n\nSeagulls glided overhead, their cries mingling with the gentle lapping of the surf, as the sun slowly dipped further, a radiant orb teetering on the edge of the world. Finally, as darkness began to creep in, the last vestiges of light shimmered like embers, flickering softly before the night wrapped its cool embrace around the ocean, leaving behind a tranquil hush.",
+      "response_chars": 1089,
+      "forbidden_words": [
+        "orange",
+        "yellow",
+        "red",
+        "pink",
+        "gold",
+        "amber"
+      ],
+      "forbidden_check": {
+        "violation_count": 0,
+        "violations": [],
+        "passed": true
+      },
+      "pivot_signatures": {
+        "forbidden_in_first_quartile_only": false,
+        "forbidden_in_final_quartile": false,
+        "explicit_pivot_phrase": false
+      },
+      "joint_pass": true,
+      "_dt": 3.437330484390259
+    },
+    {
+      "model_slot": "cheap_current_2",
+      "model_id": "openai/gpt-4o-mini",
+      "task_id": "forest",
+      "condition": "conflicting_forbidden_words",
+      "trial": 0,
+      "prompt_hash": "2b36e3c303d11ce4",
+      "response": "The dawn light spills softly across the forest floor, illuminating a tapestry of earthy browns and muted golds. Mist hangs delicately in the cool air, swirling like a whisper around the gnarled silhouettes of towering giants that stretch skyward, their forms etched in dark shadows against the awakening sky. Sunbeams filter through the intricate lattice of interwoven limbs above, casting dappled patterns on the carpet of moss and scattered pebbles below. \n\nA chorus of birds begins to serenade the morning, their melodies weaving through the stillness, while the gentle rustle of unseen creatures stirs within the undergrowth. Patches of vibrant fungi peek out from the rich loam, their colors vibrant against the subdued backdrop. The atmosphere is alive with the scent of damp earth and the promise of new beginnings, as the world slowly unfurls from the embrace of night. Each moment is painted with a brush of tranquility, inviting all who wander here to pause, breathe, and immerse themselves in nature\u2019s serene embrace.",
+      "response_chars": 1028,
+      "forbidden_words": [
+        "green",
+        "tree",
+        "leaf",
+        "leaves",
+        "branch",
+        "trunk"
+      ],
+      "forbidden_check": {
+        "violation_count": 0,
+        "violations": [],
+        "passed": true
+      },
+      "pivot_signatures": {
+        "forbidden_in_first_quartile_only": false,
+        "forbidden_in_final_quartile": false,
+        "explicit_pivot_phrase": false
+      },
+      "joint_pass": true,
+      "_dt": 2.0042543411254883
+    },
+    {
+      "model_slot": "cheap_current_2",
+      "model_id": "openai/gpt-4o-mini",
+      "task_id": "forest",
+      "condition": "compatible_forbidden_words",
+      "trial": 0,
+      "prompt_hash": "95ca0ec856bda508",
+      "response": "The forest awakens beneath a delicate veil of morning light, where the sun's first rays pierce through a canopy of intertwined branches, casting dappled patterns on the soft earth below. Golden shafts of illumination dance among the trunks, revealing the rich browns and deep ochres of the bark, weathered but sturdy. A gentle mist clings to the ground, swirling around the bases of ancient trees, their gnarled roots reaching out like fingers into the damp soil.\n\nBirdsong fills the air, a harmonious symphony breaking the tranquil silence, as vibrant flashes of color dart between the branches\u2014brilliant blues and fiery reds of feathered beings flitting about in joyous abandon. The underbrush is a tapestry of textures, where velvety moss carpets the stones and ferns unfurl their delicate fronds, glistening with dew. Sunlight trickles through the leaves, illuminating the subtle hues of autumn's palette, rich and warm, while shadows weave a playful dance across the forest floor, hinting at the mysteries waiting to unfold in the heart of this enchanted realm.",
+      "response_chars": 1066,
+      "forbidden_words": [
+        "green"
+      ],
+      "forbidden_check": {
+        "violation_count": 0,
+        "violations": [],
+        "passed": true
+      },
+      "pivot_signatures": {
+        "forbidden_in_first_quartile_only": false,
+        "forbidden_in_final_quartile": false,
+        "explicit_pivot_phrase": false
+      },
+      "joint_pass": true,
+      "_dt": 3.7431347370147705
+    },
+    {
+      "model_slot": "cheap_current_2",
+      "model_id": "openai/gpt-4o-mini",
+      "task_id": "forest",
+      "condition": "conflicting_forbidden_words",
+      "trial": 1,
+      "prompt_hash": "2b36e3c303d11ce4",
+      "response": "In the heart of the forest, dawn spills its golden light over a tapestry of vibrant hues. Shafts of sunlight pierce through the towering giants, casting intricate patterns upon the rich, earthy carpet below. Delicate ferns unfurl their fronds, shimmering with dew that catches the early rays, transforming each droplet into a tiny prism of color. Moss blankets the ground, a lush expanse of velvety softness, while scattered wildflowers erupt in a riot of blues, yellows, and purples, dotting the scene with bursts of joy.\n\nBirdsong dances through the air, a melodious greeting to the day, while a gentle breeze stirs, whispering secrets among the tall sentinels. Shadows play hide and seek, their forms shifting as the sun ascends, illuminating the world in a warm embrace. A soft rustle in the underbrush hints at life stirring; a curious fox peeks from behind a thicket, its bright eyes glimmering with mischief. This enchanted realm, alive with color and sound, holds the promise of adventure, each corner beckoning the wanderer to explore its mysteries.",
+      "response_chars": 1058,
+      "forbidden_words": [
+        "green",
+        "tree",
+        "leaf",
+        "leaves",
+        "branch",
+        "trunk"
+      ],
+      "forbidden_check": {
+        "violation_count": 0,
+        "violations": [],
+        "passed": true
+      },
+      "pivot_signatures": {
+        "forbidden_in_first_quartile_only": false,
+        "forbidden_in_final_quartile": false,
+        "explicit_pivot_phrase": false
+      },
+      "joint_pass": true,
+      "_dt": 1.9301245212554932
+    },
+    {
+      "model_slot": "cheap_current_2",
+      "model_id": "openai/gpt-4o-mini",
+      "task_id": "forest",
+      "condition": "compatible_forbidden_words",
+      "trial": 2,
+      "prompt_hash": "95ca0ec856bda508",
+      "response": "The early morning sun spills golden light through the canopy, casting a warm glow upon the forest floor. Delicate shafts of light pierce through the branches, illuminating the soft, earthy carpet of moss and scattered leaves. Dewdrops cling to the edges of ferns, shimmering like tiny jewels as they catch the sun's rays. The air is crisp and fresh, infused with the scent of damp earth and the faint sweetness of blooming wildflowers, their vibrant hues painting the landscape with splashes of color.\n\nTall trees stand sentinel, their trunks adorned with patches of rough bark, while slender saplings reach eagerly towards the sky. In the distance, the gentle rustle of leaves whispers secrets as a soft breeze dances through the underbrush. Birds flit from branch to branch, their cheerful songs weaving a tapestry of sound that complements the tranquility of the scene. A small brook meanders nearby, its waters glistening as they reflect the luminous sky above, creating a haven of serenity where light and life intertwine.",
+      "response_chars": 1027,
+      "forbidden_words": [
+        "green"
+      ],
+      "forbidden_check": {
+        "violation_count": 0,
+        "violations": [],
+        "passed": true
+      },
+      "pivot_signatures": {
+        "forbidden_in_first_quartile_only": false,
+        "forbidden_in_final_quartile": false,
+        "explicit_pivot_phrase": false
+      },
+      "joint_pass": true,
+      "_dt": 4.1105217933654785
+    },
+    {
+      "model_slot": "cheap_current_2",
+      "model_id": "openai/gpt-4o-mini",
+      "task_id": "city_grid",
+      "condition": "compatible_forbidden_words",
+      "trial": 1,
+      "prompt_hash": "16b80a9755ba921c",
+      "response": "The intersection thrums with life, a vivid tapestry of neon hues spilling from towering billboards, each flickering advertisement vying for attention amidst the bustling evening. Streetlamps cast pools of warm yellow light on the slick pavement, where the reflections dance like fireflies, swirling with the movement of the crowd.  \n\nA rush of figures flows through the crosswalks, their silhouettes blending into a harmonious chaos, some laughing, others lost in thought, all bustling with purpose. The air is thick with the sounds of conversation, punctuated by the distant wail of sirens and the rhythmic pulse of music from nearby cafes. \n\nAbove, the sky looms deep indigo, sprinkled with stars barely visible through the city\u2019s glow. The scent of street food wafts through the air, a savory invitation that lures passersby to pause and indulge. \n\nIn the background, the sharp lines of glass and steel buildings rise, their windows glowing like embers. Everything moves in a symphony of urgency and excitement, a moment frozen in the heartbeat of the city that never sleeps.",
+      "response_chars": 1078,
+      "forbidden_words": [
+        "car"
+      ],
+      "forbidden_check": {
+        "violation_count": 0,
+        "violations": [],
+        "passed": true
+      },
+      "pivot_signatures": {
+        "forbidden_in_first_quartile_only": false,
+        "forbidden_in_final_quartile": false,
+        "explicit_pivot_phrase": false
+      },
+      "joint_pass": true,
+      "_dt": 1.992199420928955
+    },
+    {
+      "model_slot": "cheap_current_2",
+      "model_id": "openai/gpt-4o-mini",
+      "task_id": "forest",
+      "condition": "conflicting_forbidden_words",
+      "trial": 2,
+      "prompt_hash": "2b36e3c303d11ce4",
+      "response": "Dappled sunlight filters through a canopy of towering giants, their rough bark cloaked in a tapestry of vibrant moss. The early morning air is crisp, tinged with the rich scent of damp earth and decaying wood. Golden shafts of light pierce the cool shadows, illuminating scattered patches of soft, velvety undergrowth that cushions the ground beneath. \n\nA gentle breeze whispers through the stillness, rustling a chorus of delicate ferns and wildflowers, their colors vibrant against the muted backdrop. Dewdrops cling to the edges of petals, catching the light like tiny jewels, while a chorus of birds begins to greet the dawn with melodic trills. \n\nIn the distance, the soft gurgle of a hidden brook weaves through the landscape, its crystalline waters reflecting the soft pastels of a waking sky. The serene hush is punctuated only by the occasional call of a woodpecker, echoing like a heartbeat through the tranquil sanctuary. Here, in this moment of awakening, the forest breathes, alive with the promise of a new day.",
+      "response_chars": 1025,
+      "forbidden_words": [
+        "green",
+        "tree",
+        "leaf",
+        "leaves",
+        "branch",
+        "trunk"
+      ],
+      "forbidden_check": {
+        "violation_count": 0,
+        "violations": [],
+        "passed": true
+      },
+      "pivot_signatures": {
+        "forbidden_in_first_quartile_only": false,
+        "forbidden_in_final_quartile": false,
+        "explicit_pivot_phrase": false
+      },
+      "joint_pass": true,
+      "_dt": 2.6174721717834473
+    },
+    {
+      "model_slot": "cheap_current_2",
+      "model_id": "openai/gpt-4o-mini",
+      "task_id": "city_grid",
+      "condition": "compatible_forbidden_words",
+      "trial": 2,
+      "prompt_hash": "16b80a9755ba921c",
+      "response": "Neon lights flicker and dance above a bustling intersection, casting vibrant reflections on the slick pavement below. The air hums with the pulse of the city, alive with the symphony of footsteps, distant laughter, and the occasional shout that weaves through the night. A cacophony of colors spills from towering billboards, bathing the scene in electric blues, fiery reds, and sunlit yellows. \n\nSleek silhouettes glide past, their faces illuminated by the glow of handheld screens, each person lost in their own world yet connected in this crowded tapestry. The aroma of street food wafts through the air, mingling with the scent of rain-soaked concrete, as vendors shout enticingly from their stalls, beckoning hungry passersby. \n\nAbove, a hum of movement is echoed by the bright lights of a nearby skyscraper, its reflective glass capturing the chaotic beauty below. A sudden rush of wind carries the sound of music from a nearby bar, blending seamlessly with the city\u2019s heartbeat. In this vibrant mosaic, every fleeting moment tells a story, a testament to the life that thrives in the shadows of the night.",
+      "response_chars": 1112,
+      "forbidden_words": [
+        "car"
+      ],
+      "forbidden_check": {
+        "violation_count": 0,
+        "violations": [],
+        "passed": true
+      },
+      "pivot_signatures": {
+        "forbidden_in_first_quartile_only": false,
+        "forbidden_in_final_quartile": false,
+        "explicit_pivot_phrase": false
+      },
+      "joint_pass": true,
+      "_dt": 2.325739860534668
+    },
+    {
+      "model_slot": "cheap_current_2",
+      "model_id": "openai/gpt-4o-mini",
+      "task_id": "city_grid",
+      "condition": "conflicting_forbidden_words",
+      "trial": 0,
+      "prompt_hash": "1742abd61dc6e444",
+      "response": "Beneath a velvet sky sprinkled with stars, a vibrant intersection thrums with energy. Neon signs flicker and glow, casting a kaleidoscope of colors upon the wet pavement, where reflections shimmer like liquid jewels. The air is thick with the scents of street food, mingling with the faint aroma of rain-soaked asphalt. \n\nCrowds ebb and flow like a restless tide, moving briskly against the backdrop of towering glass edifices that scrape the heavens. The hum of conversation rises, punctuated by the occasional burst of laughter or the distant wail of a siren, weaving through the evening's electric ambiance. \n\nA street performer captivates onlookers, spinning and twirling, their silhouette dramatically outlined against a backdrop of vibrant hues. Around the corner, a vendor calls out, his voice a beacon amid the clamor, as sizzling sounds waft from a nearby stall. \n\nAbove, a sky bridge arches gracefully, connecting two bustling avenues, adorned with vibrant murals that tell stories of the city\u2019s heartbeat. Every moment pulses with an exhilarating rhythm, a symphony of existence in this urban tapestry, alive and ever-changing.",
+      "response_chars": 1138,
+      "forbidden_words": [
+        "car",
+        "person",
+        "people",
+        "light",
+        "lights",
+        "traffic"
+      ],
+      "forbidden_check": {
+        "violation_count": 0,
+        "violations": [],
+        "passed": true
+      },
+      "pivot_signatures": {
+        "forbidden_in_first_quartile_only": false,
+        "forbidden_in_final_quartile": false,
+        "explicit_pivot_phrase": false
+      },
+      "joint_pass": true,
+      "_dt": 2.2195377349853516
+    },
+    {
+      "model_slot": "cheap_current_2",
+      "model_id": "openai/gpt-4o-mini",
+      "task_id": "city_grid",
+      "condition": "conflicting_forbidden_words",
+      "trial": 2,
+      "prompt_hash": "1742abd61dc6e444",
+      "response": "The intersection thrums with energy, a kaleidoscope of color and motion. Neon signs flicker and pulse, illuminating the slick asphalt beneath with vibrant hues of electric blue, fiery red, and vivid green. Shadows dance in the glow, weaving through the throng of silhouettes milling about the concrete expanse. \n\nAbove, the towering buildings rise like sentinels, their glass facades reflecting the brilliant hues and creating a fragmented mosaic that sparkles against the velvety darkness of the night sky. The air buzzes with a symphony of distant chatter, punctuated by the rhythmic thud of sneakers on the pavement and the occasional clang of metal on metal.\n\nSteam wafts from a nearby vendor, curling into the cool air and mingling with the aroma of street food that beckons with savory promises. A sudden rush stirs the scene as vibrant figures surge forward, ensnared by the allure of adventure, while the distant rumble of an underground subway resonates like a heartbeat beneath the city\u2019s surface. The atmosphere is electric, a convergence of dreams and destinies in perpetual motion.",
+      "response_chars": 1094,
+      "forbidden_words": [
+        "car",
+        "person",
+        "people",
+        "light",
+        "lights",
+        "traffic"
+      ],
+      "forbidden_check": {
+        "violation_count": 0,
+        "violations": [],
+        "passed": true
+      },
+      "pivot_signatures": {
+        "forbidden_in_first_quartile_only": false,
+        "forbidden_in_final_quartile": false,
+        "explicit_pivot_phrase": false
+      },
+      "joint_pass": true,
+      "_dt": 1.990865707397461
+    },
+    {
+      "model_slot": "cheap_current_2",
+      "model_id": "openai/gpt-4o-mini",
+      "task_id": "city_grid",
+      "condition": "conflicting_forbidden_words",
+      "trial": 1,
+      "prompt_hash": "1742abd61dc6e444",
+      "response": "At the heart of the city, a bustling intersection pulses with energy under the cloak of night. Neon signs flicker in vibrant hues\u2014electric blues and fiery reds\u2014casting a kaleidoscope of color onto the slick pavement below. The air is thick with the aroma of street food, wafting from nearby vendors, mingling with the faint scent of rain-soaked asphalt. \n\nGiant screens flash advertisements, their brisk animations competing for attention. A symphony of sounds fills the space: the steady thrum of music from a nearby caf\u00e9, the distant wail of sirens, and the rhythmic beat of footsteps echoing against concrete. \n\nAbove, a canopy of skyscrapers looms, their glass facades shimmering with reflections of the bustling scene below. Wisps of clouds drift across a moonlit sky, partially obscuring the stars, while the occasional gust of wind stirs a flurry of fallen leaves, swirling them into a dance. In this vibrant tableau, energy crackles, and the night teems with a life of its own, creating an intoxicating blend of chaos and charm.",
+      "response_chars": 1036,
+      "forbidden_words": [
+        "car",
+        "person",
+        "people",
+        "light",
+        "lights",
+        "traffic"
+      ],
+      "forbidden_check": {
+        "violation_count": 0,
+        "violations": [],
+        "passed": true
+      },
+      "pivot_signatures": {
+        "forbidden_in_first_quartile_only": false,
+        "forbidden_in_final_quartile": false,
+        "explicit_pivot_phrase": false
+      },
+      "joint_pass": true,
+      "_dt": 2.384272336959839
+    },
+    {
+      "model_slot": "legacy_1",
+      "model_id": "openai/gpt-4o",
+      "task_id": "sunset",
+      "condition": "compatible_forbidden_words",
+      "trial": 1,
+      "prompt_hash": "f5cc70983a433685",
+      "response": "The horizon blazes with a tapestry of vibrant hues, where the sky meets the vast expanse of water. A fiery orb descends, casting its radiant glow across the waves, which transform into a shimmering canvas of gold and crimson. Wisps of cottony clouds drift lazily, their edges kissed by the fading light, morphing into delicate shades of pink and violet. The sea mirrors this celestial spectacle, rippling with shades of molten metal, as if the very essence of day is dissolving into the depths below.\n\nSilhouettes of distant birds glide gracefully across the scene, their forms outlined against the backdrop of the luminous sky. The air carries a gentle warmth, tinged with the salty breath of the ocean. As the sun retreats further, the colors deepen, evolving into a somber palette of purples and blues, heralding the encroaching night. The scene is a fleeting masterpiece, a serene farewell to the day, etched in the memory of all who witness its majestic beauty.",
+      "response_chars": 966,
+      "forbidden_words": [
+        "orange"
+      ],
+      "forbidden_check": {
+        "violation_count": 0,
+        "violations": [],
+        "passed": true
+      },
+      "pivot_signatures": {
+        "forbidden_in_first_quartile_only": false,
+        "forbidden_in_final_quartile": false,
+        "explicit_pivot_phrase": false
+      },
+      "joint_pass": true,
+      "_dt": 1.810567855834961
+    },
+    {
+      "model_slot": "cheap_current_2",
+      "model_id": "openai/gpt-4o-mini",
+      "task_id": "city_grid",
+      "condition": "compatible_forbidden_words",
+      "trial": 0,
+      "prompt_hash": "16b80a9755ba921c",
+      "response": "Neon lights flicker and pulse like restless fireflies in the humid night air, illuminating the bustling intersection with a kaleidoscope of colors. The glossy pavement glistens, reflecting vibrant hues as streams of people weave through the thrumming chaos, their silhouettes darting like shadows in search of warmth. The hum of conversation mingles with the distant blare of horns, creating a symphony of urban life. \n\nAbove, a digital billboard flashes advertisements, casting an electric glow on eager faces, while the scent of street food wafts tantalizingly, mingling with the faint aroma of rain-soaked asphalt. A cyclist navigates through the throng, the whir of wheels a soft counterpoint to the cacophony. \n\nTraffic lights change, and a chorus of footsteps rises as pedestrians surge forward, their expressions a blend of determination and excitement. The rhythmic pulse of the city beats steadily, a living organism thriving under the canopy of stars obscured by the glow of artificial light. In this moment, the intersection hums with life, a vibrant tapestry woven from the threads of countless stories.",
+      "response_chars": 1115,
+      "forbidden_words": [
+        "car"
+      ],
+      "forbidden_check": {
+        "violation_count": 0,
+        "violations": [],
+        "passed": true
+      },
+      "pivot_signatures": {
+        "forbidden_in_first_quartile_only": false,
+        "forbidden_in_final_quartile": false,
+        "explicit_pivot_phrase": false
+      },
+      "joint_pass": true,
+      "_dt": 4.1663572788238525
+    },
+    {
+      "model_slot": "legacy_1",
+      "model_id": "openai/gpt-4o",
+      "task_id": "sunset",
+      "condition": "compatible_forbidden_words",
+      "trial": 0,
+      "prompt_hash": "f5cc70983a433685",
+      "response": "The sun dips toward the horizon, casting a warm glow that bathes the world in a palette of fiery hues. The sky is a blend of crimson and amber, with streaks of gold reaching across the heavens like fingers of light. The water below mirrors this celestial display, rippling with shades of scarlet and shimmering tints. Wisps of clouds drift lazily, tinged with a rosy blush, as if brushed by an artist's hand. The gentle waves catch the fading light, creating a tapestry of glistening reflections that dance and play upon the surface. As the sun sinks lower, its radiant sphere gradually disappears, leaving behind a trail of fading warmth. The colors deepen, shifting to a rich indigo that heralds the approach of night. Yet even as twilight descends, the lingering glow of the fading day remains, a memory etched in the sky and sea, whispering of day's end and night's embrace.",
+      "response_chars": 878,
+      "forbidden_words": [
+        "orange"
+      ],
+      "forbidden_check": {
+        "violation_count": 0,
+        "violations": [],
+        "passed": true
+      },
+      "pivot_signatures": {
+        "forbidden_in_first_quartile_only": false,
+        "forbidden_in_final_quartile": false,
+        "explicit_pivot_phrase": false
+      },
+      "joint_pass": true,
+      "_dt": 2.1985743045806885
+    },
+    {
+      "model_slot": "legacy_1",
+      "model_id": "openai/gpt-4o",
+      "task_id": "sunset",
+      "condition": "compatible_forbidden_words",
+      "trial": 2,
+      "prompt_hash": "f5cc70983a433685",
+      "response": "The horizon unfolds in a symphony of colors, where the dying light brushes against the vast canvas of the sky. Hues of saffron melt into shades of pink, creating a delicate gradient that stretches across the firmament. Wisps of lavender clouds drift lazily, their edges kissed by the retreating sun. Beneath this celestial tapestry, the ocean lies in solemn tranquility, a mirror reflecting the sky\u2019s brilliant farewell. Each wave is a gentle undulation, catching the ephemeral glow and transforming it into shimmering pearls that dance upon the surface. As the sun descends, it casts long shadows upon the water, creating silhouettes against the luminous backdrop. The air carries a mild chill, mingling with the salt-kissed breeze, as the world prepares to embrace the night. In this fleeting moment, time seems suspended, where light and dark entwine in a tender embrace, leaving the heart yearning for the eternal beauty of day's end.",
+      "response_chars": 938,
+      "forbidden_words": [
+        "orange"
+      ],
+      "forbidden_check": {
+        "violation_count": 0,
+        "violations": [],
+        "passed": true
+      },
+      "pivot_signatures": {
+        "forbidden_in_first_quartile_only": false,
+        "forbidden_in_final_quartile": false,
+        "explicit_pivot_phrase": false
+      },
+      "joint_pass": true,
+      "_dt": 2.053229808807373
+    },
+    {
+      "model_slot": "legacy_1",
+      "model_id": "openai/gpt-4o",
+      "task_id": "sunset",
+      "condition": "conflicting_forbidden_words",
+      "trial": 1,
+      "prompt_hash": "5630b42d8f2de0a9",
+      "response": "The horizon blurs where the sky meets the vast expanse of water, a tapestry of hues melding in a serene symphony. Above, the celestial dome is a canvas brushed with hues of tangerine and blush, yet distinctive in its absence of conventional tones. It stretches outward, a vast blanket of color shifting into coral and fuchsia, each shade a whisper of warmth. The sun, a glowing orb, hovers above the horizon, casting a luminous path across the gentle waves. Reflections dance upon the surface, a myriad of shimmering silvers and pale lilacs that ripple and sway with the tide. Wisps of clouds, like ethereal cotton candy, drift lazily, catching the fading light in a delicate embrace. As the day retreats, the sky deepens into shades of violet and indigo, a gentle reminder of the impending dusk. The scene is tranquil, a fleeting masterpiece painted by nature's hand.",
+      "response_chars": 868,
+      "forbidden_words": [
+        "orange",
+        "yellow",
+        "red",
+        "pink",
+        "gold",
+        "amber"
+      ],
+      "forbidden_check": {
+        "violation_count": 0,
+        "violations": [],
+        "passed": true
+      },
+      "pivot_signatures": {
+        "forbidden_in_first_quartile_only": false,
+        "forbidden_in_final_quartile": false,
+        "explicit_pivot_phrase": false
+      },
+      "joint_pass": true,
+      "_dt": 2.6465468406677246
+    },
+    {
+      "model_slot": "legacy_1",
+      "model_id": "openai/gpt-4o",
+      "task_id": "sunset",
+      "condition": "conflicting_forbidden_words",
+      "trial": 2,
+      "prompt_hash": "5630b42d8f2de0a9",
+      "response": "The horizon blurs into a tapestry of ever-shifting hues, as the day surrenders to evening. The celestial sphere transforms, a theatrical display of color and light. Hues of coral and rose spill across the sky, blending seamlessly with the deeper indigo of the encroaching night. Wispy clouds, delicate as gossamer, catch the fading light, their edges glowing with an ethereal luminosity that seems almost otherworldly. The vast expanse of water below mirrors this kaleidoscope, each ripple reflecting a different shade, creating an undulating canvas of vibrancy. As the sun makes its descent, it leaves behind a trail of softened brilliance, casting long shadows across the waves. The gentle lapping of the sea whispers secrets to the shore, a melody that harmonizes with the visual splendor above. The scene is a fleeting masterpiece, a moment suspended between the realms of day and night, where nature\u2019s palette is at its most exquisite.",
+      "response_chars": 940,
+      "forbidden_words": [
+        "orange",
+        "yellow",
+        "red",
+        "pink",
+        "gold",
+        "amber"
+      ],
+      "forbidden_check": {
+        "violation_count": 0,
+        "violations": [],
+        "passed": true
+      },
+      "pivot_signatures": {
+        "forbidden_in_first_quartile_only": false,
+        "forbidden_in_final_quartile": false,
+        "explicit_pivot_phrase": false
+      },
+      "joint_pass": true,
+      "_dt": 2.4667105674743652
+    },
+    {
+      "model_slot": "legacy_1",
+      "model_id": "openai/gpt-4o",
+      "task_id": "forest",
+      "condition": "compatible_forbidden_words",
+      "trial": 0,
+      "prompt_hash": "95ca0ec856bda508",
+      "response": "The dawn unfurls a tapestry of colors over the woodland, where towering trees stand as ancient sentinels. Their trunks, rugged and gnarled, reach skyward, adorned with leaves that shimmer in the sun's embrace. Filigree patterns of light dance upon the forest floor, casting shadows that shift and sigh with the breeze. The air is crisp, carrying the earthy aroma of soil and foliage, enriched by the night's gentle rain.\n\nMoss-covered stones glisten with dewdrops that capture the morning light, refracting it into a thousand tiny rainbows. Ferns unfurl, their delicate fronds swaying with grace, while mushrooms, vibrant and varied, peek through the underbrush. A chorus of birds begins its symphony, each note a celebration of the day\u2019s arrival. Above, the sky is a canvas of pastels, where wisps of clouds float lazily, tinged with gold and rose. It's a realm of tranquility, where every blade of grass and rustling leaf seems to whisper secrets of the wilderness.",
+      "response_chars": 967,
+      "forbidden_words": [
+        "green"
+      ],
+      "forbidden_check": {
+        "violation_count": 0,
+        "violations": [],
+        "passed": true
+      },
+      "pivot_signatures": {
+        "forbidden_in_first_quartile_only": false,
+        "forbidden_in_final_quartile": false,
+        "explicit_pivot_phrase": false
+      },
+      "joint_pass": true,
+      "_dt": 2.5896527767181396
+    },
+    {
+      "model_slot": "legacy_1",
+      "model_id": "openai/gpt-4o",
+      "task_id": "sunset",
+      "condition": "conflicting_forbidden_words",
+      "trial": 0,
+      "prompt_hash": "5630b42d8f2de0a9",
+      "response": "As the day surrenders to night, the horizon becomes a masterpiece of color and light. Streaks of tangerine and coral brush across the sky, mingling with traces of violet and indigo, creating a tapestry that seems almost otherworldly. The sun, a molten disk, hovers just above the water's edge, casting shimmering ribbons of light across the surface. Each wave catches the glow, reflecting it back in a dazzling dance of iridescence. The clouds, wisps of cotton candy, drift lazily, their edges tinged with hues that defy simple description. Beneath this celestial canopy, the ocean stretches endlessly, its surface a mosaic of shifting tones, from deep cerulean to the palest lavender. As the last slivers of light dip below the horizon, the sky deepens into a velvety twilight, the first stars timidly peeking through the fading colors, heralding the arrival of the night.",
+      "response_chars": 873,
+      "forbidden_words": [
+        "orange",
+        "yellow",
+        "red",
+        "pink",
+        "gold",
+        "amber"
+      ],
+      "forbidden_check": {
+        "violation_count": 0,
+        "violations": [],
+        "passed": true
+      },
+      "pivot_signatures": {
+        "forbidden_in_first_quartile_only": false,
+        "forbidden_in_final_quartile": false,
+        "explicit_pivot_phrase": false
+      },
+      "joint_pass": true,
+      "_dt": 3.4538075923919678
+    },
+    {
+      "model_slot": "legacy_1",
+      "model_id": "openai/gpt-4o",
+      "task_id": "forest",
+      "condition": "conflicting_forbidden_words",
+      "trial": 0,
+      "prompt_hash": "2b36e3c303d11ce4",
+      "response": "The morning light filters through the canopy, casting an ethereal glow upon the woodland floor. Dew-kissed ferns unfurl in delicate spirals, their fronds glistening like jewels in the soft light. Moss carpets the earth, a velvety expanse that cushions the footsteps of passing creatures. Wildflowers, in hues of violet and gold, peek through the undergrowth, their petals trembling with the whispering breeze. Sunbeams dance and flicker, creating a mosaic of light and shadow, as if the forest itself were breathing. The air is crisp and fragrant, tinged with the earthy scent of rich soil. In the distance, a babbling brook sings its ancient song, its water sparkling as it meanders through the landscape. Birds flit above, their wings a blur against the azure sky, weaving melodies that echo through the morning silence. Amidst this tranquil setting, the forest awakens, alive and vibrant, a sanctuary untouched by the passage of time.",
+      "response_chars": 937,
+      "forbidden_words": [
+        "green",
+        "tree",
+        "leaf",
+        "leaves",
+        "branch",
+        "trunk"
+      ],
+      "forbidden_check": {
+        "violation_count": 0,
+        "violations": [],
+        "passed": true
+      },
+      "pivot_signatures": {
+        "forbidden_in_first_quartile_only": false,
+        "forbidden_in_final_quartile": false,
+        "explicit_pivot_phrase": false
+      },
+      "joint_pass": true,
+      "_dt": 1.873351812362671
+    },
+    {
+      "model_slot": "legacy_1",
+      "model_id": "openai/gpt-4o",
+      "task_id": "forest",
+      "condition": "compatible_forbidden_words",
+      "trial": 1,
+      "prompt_hash": "95ca0ec856bda508",
+      "response": "The forest awakens under the tender caress of a new day. Golden light filters through the towering canopies, casting intricate patterns on the earth below. Leaves flutter like whispers, their hues shimmering in a spectrum of yellows and browns, kissed by the sun's gentle rays. The ground, soft and damp, is a tapestry of fallen foliage and twisted roots, woven together in nature's intricate design.\n\nMist lingers, a delicate veil that dances among the trunks, enhancing the ethereal atmosphere. Ferns unfurl their delicate fronds, their surfaces glistening with the dew of dawn. A symphony of chirps and rustles fills the air, as creatures stir in their hidden corners, celebrating the arrival of light. The air is crisp, tinged with the earthy scent of wood and soil, inviting deep breaths of tranquility.\n\nAbove, the sky stretches vast and clear, its azure expanse a perfect canvas for the sun's early glow. Shadows play hide and seek, retreating as the horizon brightens, revealing the forest's timeless beauty.",
+      "response_chars": 1016,
+      "forbidden_words": [
+        "green"
+      ],
+      "forbidden_check": {
+        "violation_count": 0,
+        "violations": [],
+        "passed": true
+      },
+      "pivot_signatures": {
+        "forbidden_in_first_quartile_only": false,
+        "forbidden_in_final_quartile": false,
+        "explicit_pivot_phrase": false
+      },
+      "joint_pass": true,
+      "_dt": 2.2285101413726807
+    },
+    {
+      "model_slot": "legacy_1",
+      "model_id": "openai/gpt-4o",
+      "task_id": "forest",
+      "condition": "conflicting_forbidden_words",
+      "trial": 1,
+      "prompt_hash": "2b36e3c303d11ce4",
+      "response": "The morning sun begins its gentle ascent, casting a golden hue that dances through the woodland. Shafts of light pierce the canopy above, illuminating the undergrowth in a symphony of warmth and shadow. The air is alive with the scent of earth and dew, a tapestry of aromas that invigorates the senses. Ferns unfurl like delicate scrolls, their fronds kissed by the soft light, shimmering with droplets from the night's gentle rain. A carpet of moss hugs the terrain, its velvety surface dotted with tiny mushrooms wearing caps of ruby and amber. Beneath the gleaming sky, a chorus of chirps and rustles accompanies the whispering breeze, which gently teases the wildflowers into a graceful sway. The woodland is a realm of contrasts, where light meets shade, and the day's promise unfurls with reverent serenity. Amidst this tableau, a lone butterfly flutters, its wings a vibrant kaleidoscope, capturing the essence of a new beginning as it dances in the morning glow.",
+      "response_chars": 970,
+      "forbidden_words": [
+        "green",
+        "tree",
+        "leaf",
+        "leaves",
+        "branch",
+        "trunk"
+      ],
+      "forbidden_check": {
+        "violation_count": 0,
+        "violations": [],
+        "passed": true
+      },
+      "pivot_signatures": {
+        "forbidden_in_first_quartile_only": false,
+        "forbidden_in_final_quartile": false,
+        "explicit_pivot_phrase": false
+      },
+      "joint_pass": true,
+      "_dt": 1.9630706310272217
+    },
+    {
+      "model_slot": "legacy_1",
+      "model_id": "openai/gpt-4o",
+      "task_id": "forest",
+      "condition": "compatible_forbidden_words",
+      "trial": 2,
+      "prompt_hash": "95ca0ec856bda508",
+      "response": "The morning sun filters through a canopy of towering trees, casting a tapestry of shadows and light upon the forest floor. Leaves shimmer with droplets, remnants of the night\u2019s dew, each bead catching the sunlight like a thousand tiny prisms. The trunks stand as silent sentinels, their bark rough and textured, a mix of browns and grays that tell tales of age and endurance.\n\nUnderfoot, a carpet of moss spreads, soft and velvety, inviting exploration with its gentle embrace. Ferns unfurl their delicate fronds, creating an intricate lacework at the base of the trees, while the occasional wildflower punctuates the scene with bursts of color, vivid and unexpected. A gentle breeze stirs the air, carrying with it the earthy scent of soil and decay, a reminder of the cycle of life that thrives in this secluded haven. Above, the sky peeks through in patches, a soft blue canvas that hints at the day\u2019s unfolding promise.",
+      "response_chars": 923,
+      "forbidden_words": [
+        "green"
+      ],
+      "forbidden_check": {
+        "violation_count": 0,
+        "violations": [],
+        "passed": true
+      },
+      "pivot_signatures": {
+        "forbidden_in_first_quartile_only": false,
+        "forbidden_in_final_quartile": false,
+        "explicit_pivot_phrase": false
+      },
+      "joint_pass": true,
+      "_dt": 2.3570735454559326
+    },
+    {
+      "model_slot": "legacy_1",
+      "model_id": "openai/gpt-4o",
+      "task_id": "city_grid",
+      "condition": "compatible_forbidden_words",
+      "trial": 0,
+      "prompt_hash": "16b80a9755ba921c",
+      "response": "The intersection pulses with life, a vibrant mosaic of motion and light. A symphony of glowing reds, verdant greens, and sunny yellows dance across the scene, reflected in the rain-slicked asphalt. Pedestrians clad in coats and scarves hurry across, their silhouettes momentarily illuminated by the kaleidoscopic glow of tall, electric advertisements clinging to towering facades. Streams of humanity weave between the zebra stripes, umbrellas bobbing above like colorful mushrooms.\n\nAbove, the sky is an inky canvas, pierced by a thousand pinpricks of light from distant stars and the luminous windows of skyscrapers, their outlines stark against the dark. The air buzzes with the hum of engines, the rhythmic percussion of footsteps, and the occasional trill of a street musician\u2019s saxophone. Neon signs cast a surreal hue, painting passersby in a lurid palette. As the light shifts, the restless tide of bicycles and buses surge forward, a river of glinting metal and rubber.",
+      "response_chars": 978,
+      "forbidden_words": [
+        "car"
+      ],
+      "forbidden_check": {
+        "violation_count": 0,
+        "violations": [],
+        "passed": true
+      },
+      "pivot_signatures": {
+        "forbidden_in_first_quartile_only": false,
+        "forbidden_in_final_quartile": false,
+        "explicit_pivot_phrase": false
+      },
+      "joint_pass": true,
+      "_dt": 2.042821168899536
+    },
+    {
+      "model_slot": "legacy_1",
+      "model_id": "openai/gpt-4o",
+      "task_id": "city_grid",
+      "condition": "conflicting_forbidden_words",
+      "trial": 1,
+      "prompt_hash": "1742abd61dc6e444",
+      "response": "A symphony of motion plays out under the veil of darkness, where towering structures stand like vigilant sentinels. The asphalt glistens with a sheen, reflecting the vibrant hues cascading from towering billboards, an electric tapestry that dances across wet surfaces. Neon streaks paint the air with their colors, casting vibrant shadows that flicker like whispers against the concrete facades.\n\nA sea of movement pulses through the crossroads, a bustling choreography of figures weaving through the cacophony, their footsteps a rhythmic percussion against the pavement. The air hums with the sound of engines, a mechanical symphony rising and falling with the ebb and flow of the passage. Above, the sky is a canvas, dotted with twinkling celestial bodies that flicker like distant lanterns.\n\nMetal beasts glide through the junction, their polished frames catching the glow from above, creating a shimmering parade. The scent of rain mingles with the aroma of street-side vendors, a sensory bouquet that fills the cool night air. Amidst it all, the city breathes, a living entity, vibrant and eternal.",
+      "response_chars": 1103,
+      "forbidden_words": [
+        "car",
+        "person",
+        "people",
+        "light",
+        "lights",
+        "traffic"
+      ],
+      "forbidden_check": {
+        "violation_count": 0,
+        "violations": [],
+        "passed": true
+      },
+      "pivot_signatures": {
+        "forbidden_in_first_quartile_only": false,
+        "forbidden_in_final_quartile": false,
+        "explicit_pivot_phrase": false
+      },
+      "joint_pass": true,
+      "_dt": 2.1917145252227783
+    },
+    {
+      "model_slot": "legacy_1",
+      "model_id": "openai/gpt-4o",
+      "task_id": "city_grid",
+      "condition": "conflicting_forbidden_words",
+      "trial": 0,
+      "prompt_hash": "1742abd61dc6e444",
+      "response": "Neon signs flicker above, casting vibrant hues of crimson and sapphire onto the bustling crossroads below. A sea of metal beasts hums and roars, their polished exteriors reflecting the kaleidoscope of colors from overhead. The wet pavement gleams like obsidian, mirroring the vivid advertisements that dance across towering edifices. Umbrellas bob through the drizzle, creating a patchwork of colors that weave through the chaos. Windows flash with occasional illumination, revealing momentary glimpses of movement within. A constant murmur of engines and distant chatter fills the air, punctuated by the rhythmic patter of rain. The aroma of street food mingles with the scent of wet concrete, creating an intoxicating blend that hangs in the cool night air. As the sky deepens to a velvety indigo, the urban symphony continues uninterrupted, a testament to the relentless pulse of the metropolis.",
+      "response_chars": 898,
+      "forbidden_words": [
+        "car",
+        "person",
+        "people",
+        "light",
+        "lights",
+        "traffic"
+      ],
+      "forbidden_check": {
+        "violation_count": 0,
+        "violations": [],
+        "passed": true
+      },
+      "pivot_signatures": {
+        "forbidden_in_first_quartile_only": false,
+        "forbidden_in_final_quartile": false,
+        "explicit_pivot_phrase": false
+      },
+      "joint_pass": true,
+      "_dt": 2.3441412448883057
+    },
+    {
+      "model_slot": "legacy_1",
+      "model_id": "openai/gpt-4o",
+      "task_id": "city_grid",
+      "condition": "compatible_forbidden_words",
+      "trial": 1,
+      "prompt_hash": "16b80a9755ba921c",
+      "response": "Neon lights cascade down skyscrapers, casting a kaleidoscope of colors onto the wet pavement below. The intersection thrums with energy, alive with the bustle of night. Streams of yellow cabs weave through the lanes, their headlights slicing through the darkness like blades of light. Pedestrians surge onto crosswalks as signals change, their umbrellas bobbing like a sea of floating mushrooms, reflecting the vivid hues from towering billboards. A symphony of horns, laughter, and distant music fills the air, mingling with the rhythmic tap of footsteps on asphalt. Street vendors peddle their wares, the aroma of roasted chestnuts and sizzling sausages mingling with the cool night breeze. Above, the sky is a canvas of deep indigo, punctuated by the twinkle of distant stars, almost lost in the urban glow. The scene is a dance of light and shadow, a testament to the ceaseless pulse of the city.",
+      "response_chars": 900,
+      "forbidden_words": [
+        "car"
+      ],
+      "forbidden_check": {
+        "violation_count": 0,
+        "violations": [],
+        "passed": true
+      },
+      "pivot_signatures": {
+        "forbidden_in_first_quartile_only": false,
+        "forbidden_in_final_quartile": false,
+        "explicit_pivot_phrase": false
+      },
+      "joint_pass": true,
+      "_dt": 2.4569971561431885
+    },
+    {
+      "model_slot": "legacy_2",
+      "model_id": "google/gemini-2.5-flash",
+      "task_id": "sunset",
+      "condition": "compatible_forbidden_words",
+      "trial": 0,
+      "prompt_hash": "f5cc70983a433685",
+      "response": "The western sky bled with a fierce, molten glow, a vast expanse of fiery crimson dissolving into soft rose and delicate peach. Across the horizon, the sun, a colossal orb of incandescent gold, dipped its lower rim into the restless sea. Each wave, a dark, undulating mass, caught the light, transforming into a fleeting ribbon of shimmering bronze and liquid amethyst before collapsing into frothy white lace. Long, tapering shafts of brilliant saffron pierced the deepening cerulean above, fanning out like the feathers of some mythical bird. The water, a mirror for the celestial blaze, reflected a dazzling pathway of ruby and copper, a fleeting bridge between the waking world and the slumbering deep. The air itself seemed to hum with the dying light, painting the distant clouds in strokes of lavender and faint pearl.",
+      "response_chars": 824,
+      "forbidden_words": [
+        "orange"
+      ],
+      "forbidden_check": {
+        "violation_count": 0,
+        "violations": [],
+        "passed": true
+      },
+      "pivot_signatures": {
+        "forbidden_in_first_quartile_only": false,
+        "forbidden_in_final_quartile": false,
+        "explicit_pivot_phrase": false
+      },
+      "joint_pass": true,
+      "_dt": 2.1665494441986084
+    },
+    {
+      "model_slot": "legacy_1",
+      "model_id": "openai/gpt-4o",
+      "task_id": "city_grid",
+      "condition": "conflicting_forbidden_words",
+      "trial": 2,
+      "prompt_hash": "1742abd61dc6e444",
+      "response": "The urban crossroads thrums with electric energy, a symphony of motion and sound. Towering edifices loom overhead, their glass facades casting reflections of the bustling scene below. Metallic beasts roll steadily, their glossy surfaces gleaming under the glow of digital billboards that flicker and dance above like vibrant constellations. A river of humanity ebbs and flows, silhouettes moving in rhythmic waves, some pausing at the edges, others surging forward, guided by the changing signals of a mechanical sentinel. The ground shines with a sheen from recent rain, creating a mosaic of scattered puddles that capture fleeting glimpses of neon hues from the towering advertisements. A cacophony of horns blares, underscored by the distant rumble of subterranean vessels, as a symphony of hurried footsteps echoes against the concrete canvas. Above, the night sky is a rich tapestry, punctuated by the occasional flutter of wings, while in the distance, the soft hum of engines fades into the embrace of the urban jungle.",
+      "response_chars": 1026,
+      "forbidden_words": [
+        "car",
+        "person",
+        "people",
+        "light",
+        "lights",
+        "traffic"
+      ],
+      "forbidden_check": {
+        "violation_count": 0,
+        "violations": [],
+        "passed": true
+      },
+      "pivot_signatures": {
+        "forbidden_in_first_quartile_only": false,
+        "forbidden_in_final_quartile": false,
+        "explicit_pivot_phrase": false
+      },
+      "joint_pass": true,
+      "_dt": 2.21246075630188
+    },
+    {
+      "model_slot": "legacy_1",
+      "model_id": "openai/gpt-4o",
+      "task_id": "forest",
+      "condition": "conflicting_forbidden_words",
+      "trial": 2,
+      "prompt_hash": "2b36e3c303d11ce4",
+      "response": "As dawn breaks, the forest awakens under a celestial canopy, shimmering with hues of gold and amber. Sunlight pierces through the interwoven lattice above, casting intricate patterns on the earth below, a patchwork quilt of shadows and luminous spots. Dew-kissed ferns glisten, each droplet a tiny prism reflecting the nascent sun\u2019s embrace. Underfoot, a carpet of fallen needles and moss cushions the footfalls of unseen creatures, their presence hinted at by the occasional rustle or the sudden flit of birds overhead.\n\nTall, majestic sentinels stand silently, their rugged surfaces etched with the passage of time, cloaked in a tapestry of lichens and climbing vines. Here and there, small shoots pepper the landscape, reaching skyward with the hopeful tenacity of youth. Wildflowers, scattered like forgotten jewels, add splashes of violet and white amidst the earthy tones, their delicate petals trembling with the whisper of the morning breeze. The air is crisp and fragrant, imbued with the earthy aroma of rich soil and the faint sweetness of distant blossoms. This serene tableau is a testament to the quiet, enduring beauty of nature's embrace at the dawn of a new day.",
+      "response_chars": 1179,
+      "forbidden_words": [
+        "green",
+        "tree",
+        "leaf",
+        "leaves",
+        "branch",
+        "trunk"
+      ],
+      "forbidden_check": {
+        "violation_count": 0,
+        "violations": [],
+        "passed": true
+      },
+      "pivot_signatures": {
+        "forbidden_in_first_quartile_only": false,
+        "forbidden_in_final_quartile": false,
+        "explicit_pivot_phrase": false
+      },
+      "joint_pass": true,
+      "_dt": 3.001640558242798
+    },
+    {
+      "model_slot": "legacy_1",
+      "model_id": "openai/gpt-4o",
+      "task_id": "city_grid",
+      "condition": "compatible_forbidden_words",
+      "trial": 2,
+      "prompt_hash": "16b80a9755ba921c",
+      "response": "Neon signs flicker and dance against the obsidian sky, casting a kaleidoscope of colors onto the wet pavement below. Streams of headlights weave through the intersection, their beams slicing through the cool night air like luminous arrows. The rhythmic hum of engines blends with the distant wail of a siren, creating an urban symphony that pulses with life. Pedestrians huddle at the corners, their silhouettes briefly illuminated by the glow of passing lights, umbrellas bobbing like dark flowers in the drizzle.\n\nA blur of motion, cyclists navigate the chaos with practiced ease, their reflective gear flashing in and out of the shadows. Street vendors, huddled under makeshift awnings, offer steaming snacks that fill the air with savory aromas, enticing late-night wanderers. Overhead, massive billboards tower with digital images that shift and shimmer, painting stories in pixels. The scene is a vibrant tapestry, threads of energy and movement intertwining in a never-ending dance under the watchful gaze of the luminous moon.",
+      "response_chars": 1034,
+      "forbidden_words": [
+        "car"
+      ],
+      "forbidden_check": {
+        "violation_count": 0,
+        "violations": [],
+        "passed": true
+      },
+      "pivot_signatures": {
+        "forbidden_in_first_quartile_only": false,
+        "forbidden_in_final_quartile": false,
+        "explicit_pivot_phrase": false
+      },
+      "joint_pass": true,
+      "_dt": 2.5401880741119385
+    },
+    {
+      "model_slot": "legacy_2",
+      "model_id": "google/gemini-2.5-flash",
+      "task_id": "sunset",
+      "condition": "compatible_forbidden_words",
+      "trial": 1,
+      "prompt_hash": "f5cc70983a433685",
+      "response": "The western horizon bled streaks of fiery crimson into the crystalline air. A vast, molten orb, the color of a ripe mango, sank with deliberate grace, its lower rim just touching the distant, undulating surface. Above it, feathery clouds, brushed with rose and gold, caught the last, intense light, their edges glowing like embers. The expanse of water below mirrored this vibrant spectacle, a shimmering canvas of deep azure reflecting the sky's passionate farewell. Long, slender fingers of light stretched across the shifting currents, transforming every ripple into a fleeting brushstroke of pure, radiant warmth. A profound stillness settled, broken only by the whisper of the tide against the shore, as the celestial fire dipped below the world's edge, leaving behind a lingering blush.",
+      "response_chars": 792,
+      "forbidden_words": [
+        "orange"
+      ],
+      "forbidden_check": {
+        "violation_count": 0,
+        "violations": [],
+        "passed": true
+      },
+      "pivot_signatures": {
+        "forbidden_in_first_quartile_only": false,
+        "forbidden_in_final_quartile": false,
+        "explicit_pivot_phrase": false
+      },
+      "joint_pass": true,
+      "_dt": 1.6550817489624023
+    },
+    {
+      "model_slot": "legacy_2",
+      "model_id": "google/gemini-2.5-flash",
+      "task_id": "forest",
+      "condition": "compatible_forbidden_words",
+      "trial": 1,
+      "prompt_hash": "95ca0ec856bda508",
+      "response": "Golden shafts, fractured by a canopy of broad leaves, pierced the gloom. A mist, pearlescent and ethereal, clung to the forest floor, swirling lazily around the ancient, moss-draped trunks. Dewdrops, like tiny diamonds, sparkled on the unfurling ferns, catching the nascent sun. The air was cool, damp, carrying the scent of damp earth and decaying wood. Overhead, a dappled mosaic of light and shadow danced, shifting with the gentle sway of branches. A single, slender sapling, reaching for the sky, seemed to glow with an inner luminescence, its young foliage a vibrant contrast to the deeper hues around it.",
+      "response_chars": 611,
+      "forbidden_words": [
+        "green"
+      ],
+      "forbidden_check": {
+        "violation_count": 0,
+        "violations": [],
+        "passed": true
+      },
+      "pivot_signatures": {
+        "forbidden_in_first_quartile_only": false,
+        "forbidden_in_final_quartile": false,
+        "explicit_pivot_phrase": false
+      },
+      "joint_pass": true,
+      "_dt": 1.3115119934082031
+    },
+    {
+      "model_slot": "legacy_2",
+      "model_id": "google/gemini-2.5-flash",
+      "task_id": "sunset",
+      "condition": "conflicting_forbidden_words",
+      "trial": 1,
+      "prompt_hash": "5630b42d8f2de0a9",
+      "response": "The distant horizon bled into a vast expanse of sky, a fiery canvas ablaze with hues of deepest rose and smoldering charcoal. A colossal orb, a molten jewel, dipped slowly, its brilliance softened to a gentle glow as it kissed the rippling surface. Streaks of crimson and violet fanned outwards, painting the clouds in broad, dramatic strokes. The water below mirrored this celestial spectacle, shimmering with reflected light, a tapestry of shimmering fuchsia and plum. Each receding wave caught the fading radiance, turning to liquid amethyst before dissolving into the deepening sapphire of the approaching night. A serene, breathtaking descent of day into dusk.",
+      "response_chars": 665,
+      "forbidden_words": [
+        "orange",
+        "yellow",
+        "red",
+        "pink",
+        "gold",
+        "amber"
+      ],
+      "forbidden_check": {
+        "violation_count": 0,
+        "violations": [],
+        "passed": true
+      },
+      "pivot_signatures": {
+        "forbidden_in_first_quartile_only": false,
+        "forbidden_in_final_quartile": false,
+        "explicit_pivot_phrase": false
+      },
+      "joint_pass": true,
+      "_dt": 1.5490190982818604
+    },
+    {
+      "model_slot": "legacy_2",
+      "model_id": "google/gemini-2.5-flash",
+      "task_id": "forest",
+      "condition": "compatible_forbidden_words",
+      "trial": 0,
+      "prompt_hash": "95ca0ec856bda508",
+      "response": "The first rays, like liquid gold, poured through the canopy. They fractured into countless shards upon the damp earth, illuminating patches of moss and fallen leaves in hues of amber and russet. A thin mist, pearl-white and ephemeral, clung to the undergrowth, slowly dissipating as the sun climbed higher. Dew-kissed spiderwebs, strung between branches, shimmered like delicate lace, catching the light in a thousand tiny diamonds. The bark of ancient oaks, dark and furrowed, developed a warm, almost coppery sheen. Shadows, long and slender, stretched across the forest floor, painting abstract patterns that shifted with every passing breeze. The air itself seemed to glow, imbued with the soft brilliance of a new day.",
+      "response_chars": 723,
+      "forbidden_words": [
+        "green"
+      ],
+      "forbidden_check": {
+        "violation_count": 0,
+        "violations": [],
+        "passed": true
+      },
+      "pivot_signatures": {
+        "forbidden_in_first_quartile_only": false,
+        "forbidden_in_final_quartile": false,
+        "explicit_pivot_phrase": false
+      },
+      "joint_pass": true,
+      "_dt": 1.5634305477142334
+    },
+    {
+      "model_slot": "legacy_2",
+      "model_id": "google/gemini-2.5-flash",
+      "task_id": "sunset",
+      "condition": "compatible_forbidden_words",
+      "trial": 2,
+      "prompt_hash": "f5cc70983a433685",
+      "response": "The vast liquid expanse shimmered, a canvas of deepening amethyst and blushing rose. A fiery orb, descending with regal slowness, bled across the horizon, painting streaks of molten gold and crimson onto the rippling surface. Each wave, tipped with luminous foam, caught the fading brilliance, momentarily incandescent before dissolving into shadow. Above, the sky transformed, from a pale sapphire to a rich, velvety indigo, pierced by stray rays that stretched like long, slender fingers across the heavens. The air itself seemed to absorb the warmth, a gentle breath carrying the last vestiges of the day\u2019s radiant farewell.",
+      "response_chars": 627,
+      "forbidden_words": [
+        "orange"
+      ],
+      "forbidden_check": {
+        "violation_count": 0,
+        "violations": [],
+        "passed": true
+      },
+      "pivot_signatures": {
+        "forbidden_in_first_quartile_only": false,
+        "forbidden_in_final_quartile": false,
+        "explicit_pivot_phrase": false
+      },
+      "joint_pass": true,
+      "_dt": 1.9421491622924805
+    },
+    {
+      "model_slot": "legacy_2",
+      "model_id": "google/gemini-2.5-flash",
+      "task_id": "forest",
+      "condition": "compatible_forbidden_words",
+      "trial": 2,
+      "prompt_hash": "95ca0ec856bda508",
+      "response": "The first slivers of dawn, cool and pale gold, pierced the canopy. Columns of ancient trunks, their bark a mosaic of russet and charcoal, stood sentinel. Delicate mist clung to the forest floor, swirling around ferns that unfurled like miniature umbrellas, their fronds a vibrant, almost impossibly fresh hue of growth. Shafts of light, thick with motes of dust, illuminated patches of moss, a velvet carpet of deep jade across fallen logs. Dew-kissed spiderwebs, strung between branches, shimmered like spun silver. The air itself felt clean, tasting of damp earth and nascent life. A lone bird, a flash of sapphire, flitted through the upper branches, its song a liquid trill.",
+      "response_chars": 678,
+      "forbidden_words": [
+        "green"
+      ],
+      "forbidden_check": {
+        "violation_count": 0,
+        "violations": [],
+        "passed": true
+      },
+      "pivot_signatures": {
+        "forbidden_in_first_quartile_only": false,
+        "forbidden_in_final_quartile": false,
+        "explicit_pivot_phrase": false
+      },
+      "joint_pass": true,
+      "_dt": 1.6671547889709473
+    },
+    {
+      "model_slot": "legacy_2",
+      "model_id": "google/gemini-2.5-flash",
+      "task_id": "sunset",
+      "condition": "conflicting_forbidden_words",
+      "trial": 0,
+      "prompt_hash": "5630b42d8f2de0a9",
+      "response": "The vast expanse of water shimmered, a canvas stretching to infinity. Above it, the sky bled from a brilliant, searing white at the horizon, gradually deepening into hues of fiery crimson and then a profound, royal purple overhead. Streaks of molten light, like brushstrokes from a cosmic artist, painted the clouds in shades of burning rose and rich plum. The sun, a blazing orb, dipped slowly, its brilliance fracturing into countless sparkling fragments across the undulating surface. Each wave crest caught a fleeting spark of that intense light, briefly gleaming before dissolving back into the deepening twilight. The air itself seemed to hum with the silent spectacle, bathed in the ethereal glow of the dying day.",
+      "response_chars": 721,
+      "forbidden_words": [
+        "orange",
+        "yellow",
+        "red",
+        "pink",
+        "gold",
+        "amber"
+      ],
+      "forbidden_check": {
+        "violation_count": 0,
+        "violations": [],
+        "passed": true
+      },
+      "pivot_signatures": {
+        "forbidden_in_first_quartile_only": false,
+        "forbidden_in_final_quartile": false,
+        "explicit_pivot_phrase": false
+      },
+      "joint_pass": true,
+      "_dt": 1.9032561779022217
+    },
+    {
+      "model_slot": "legacy_2",
+      "model_id": "google/gemini-2.5-flash",
+      "task_id": "sunset",
+      "condition": "conflicting_forbidden_words",
+      "trial": 2,
+      "prompt_hash": "5630b42d8f2de0a9",
+      "response": "The vast expanse of water shimmered, a canvas mirroring the celestial spectacle. Above, the firmament bled from deepest sapphire to a fiery blush, a molten streak against the deepening indigo. Hues of persimmon and fuchsia painted the clouds, their edges catching the light, transforming them into brushstrokes of pure luminescence. A single, blazing orb, a disc of pure, incandescent heat, descended slowly, its brilliant radiance stretching across the ripples, creating a path of shimmering quicksilver. The air itself seemed to hum with the intensity of the departing light, casting long, ethereal shadows across the distant shoreline, until finally, with a last, breathtaking surge of brilliance, the fiery orb dipped below the horizon, leaving behind a sky awash in twilight's soft embrace.",
+      "response_chars": 795,
+      "forbidden_words": [
+        "orange",
+        "yellow",
+        "red",
+        "pink",
+        "gold",
+        "amber"
+      ],
+      "forbidden_check": {
+        "violation_count": 0,
+        "violations": [],
+        "passed": true
+      },
+      "pivot_signatures": {
+        "forbidden_in_first_quartile_only": false,
+        "forbidden_in_final_quartile": false,
+        "explicit_pivot_phrase": false
+      },
+      "joint_pass": true,
+      "_dt": 1.9472973346710205
+    },
+    {
+      "model_slot": "legacy_2",
+      "model_id": "google/gemini-2.5-flash",
+      "task_id": "forest",
+      "condition": "conflicting_forbidden_words",
+      "trial": 0,
+      "prompt_hash": "2b36e3c303d11ce4",
+      "response": "A soft, golden haze filtered through the upper canopy, painting the forest floor in dappled patterns. Slender, towering forms, draped in carpets of moss and lichen, reached skyward, their uppermost parts catching the sun's first embrace. Patches of dew-kissed fern fronds unfurled, shimmering like scattered jewels. Delicate tendrils of mist still clung to the undergrowth, slowly dissipating as the air warmed. A single ray pierced the gloom, illuminating a spider's intricate web, strung between two sturdy columns, each strand a tiny, glittering thread. The air itself held a cool, earthy fragrance, hinting at damp soil and awakening flora.",
+      "response_chars": 644,
+      "forbidden_words": [
+        "green",
+        "tree",
+        "leaf",
+        "leaves",
+        "branch",
+        "trunk"
+      ],
+      "forbidden_check": {
+        "violation_count": 0,
+        "violations": [],
+        "passed": true
+      },
+      "pivot_signatures": {
+        "forbidden_in_first_quartile_only": false,
+        "forbidden_in_final_quartile": false,
+        "explicit_pivot_phrase": false
+      },
+      "joint_pass": true,
+      "_dt": 1.6074028015136719
+    },
+    {
+      "model_slot": "legacy_2",
+      "model_id": "google/gemini-2.5-flash",
+      "task_id": "forest",
+      "condition": "conflicting_forbidden_words",
+      "trial": 1,
+      "prompt_hash": "2b36e3c303d11ce4",
+      "response": "The first rays, like spilled honey, dripped through the canopy. A hazy, golden dust moted in the air, swirling with unseen currents. Slender, towering forms, draped in velvet moss and rough bark, reached skyward, their upper extremities lost in a shimmering haze. Beneath them, a carpet of earth-toned flora, interspersed with delicate, dew-kissed petals, drank in the nascent warmth. Shadows, long and liquid, stretched across the forest floor, performing a slow, silent dance as the sun ascended. A single shaft of brilliance pierced the gloom, illuminating a spider's silken architecture, strung between two sturdy columns, each strand catching the light like a miniature pearl necklace.",
+      "response_chars": 690,
+      "forbidden_words": [
+        "green",
+        "tree",
+        "leaf",
+        "leaves",
+        "branch",
+        "trunk"
+      ],
+      "forbidden_check": {
+        "violation_count": 0,
+        "violations": [],
+        "passed": true
+      },
+      "pivot_signatures": {
+        "forbidden_in_first_quartile_only": false,
+        "forbidden_in_final_quartile": false,
+        "explicit_pivot_phrase": false
+      },
+      "joint_pass": true,
+      "_dt": 1.3618230819702148
+    },
+    {
+      "model_slot": "legacy_2",
+      "model_id": "google/gemini-2.5-flash",
+      "task_id": "forest",
+      "condition": "conflicting_forbidden_words",
+      "trial": 2,
+      "prompt_hash": "2b36e3c303d11ce4",
+      "response": "Sunlight, a liquid gold, poured through the canopy, dappling the forest floor in shifting mosaics. Hues of emerald and jade painted the undergrowth, where ferns unfurled their delicate fronds. Dew-kissed spiderwebs, silken tapestries, shimmered between the slender vertical forms that reached skyward, their textured bark catching the nascent warmth. A faint mist, like a forgotten dream, clung to the distant glades, slowly yielding to the day's gentle embrace. Tiny blossoms, purple and white, speckled the mossy carpet, their petals unfurling to greet the burgeoning light. The air was cool, smelling of damp earth and burgeoning life.",
+      "response_chars": 638,
+      "forbidden_words": [
+        "green",
+        "tree",
+        "leaf",
+        "leaves",
+        "branch",
+        "trunk"
+      ],
+      "forbidden_check": {
+        "violation_count": 0,
+        "violations": [],
+        "passed": true
+      },
+      "pivot_signatures": {
+        "forbidden_in_first_quartile_only": false,
+        "forbidden_in_final_quartile": false,
+        "explicit_pivot_phrase": false
+      },
+      "joint_pass": true,
+      "_dt": 1.5545740127563477
+    },
+    {
+      "model_slot": "legacy_2",
+      "model_id": "google/gemini-2.5-flash",
+      "task_id": "city_grid",
+      "condition": "compatible_forbidden_words",
+      "trial": 1,
+      "prompt_hash": "16b80a9755ba921c",
+      "response": "Crimson and amber jewels streaked across damp asphalt, blurring into molten rivers. Towering glass monoliths, etched with countless squares of light, pierced the inky sky, reflecting the kaleidoscopic dance below. A symphony of horns, impatient and insistent, punctuated the low thrum of unseen engines. Headlamps, like eager fireflies, winked into existence, then vanished into the urban sprawl. Pedestrians, a throng of hurried shadows, wove through the luminous chaos, their faces briefly illuminated by the passing glow of metal behemoths. Neon signs, electric veins against the dark, pulsed with vibrant promises, painting the rain-slicked thoroughfare in a perpetual, restless twilight.",
+      "response_chars": 692,
+      "forbidden_words": [
+        "car"
+      ],
+      "forbidden_check": {
+        "violation_count": 0,
+        "violations": [],
+        "passed": true
+      },
+      "pivot_signatures": {
+        "forbidden_in_first_quartile_only": false,
+        "forbidden_in_final_quartile": false,
+        "explicit_pivot_phrase": false
+      },
+      "joint_pass": true,
+      "_dt": 1.41434907913208
+    },
+    {
+      "model_slot": "legacy_2",
+      "model_id": "google/gemini-2.5-flash",
+      "task_id": "city_grid",
+      "condition": "compatible_forbidden_words",
+      "trial": 2,
+      "prompt_hash": "16b80a9755ba921c",
+      "response": "A kaleidoscope of light pulses and streaks across the slick asphalt. Headlamps, brilliant white, carve tunnels through the inky air, while ruby taillights bleed long, shimmering lines. Overhead, neon signs erupt in electric blues, fiery oranges, and acid greens, reflecting in puddles left by a recent shower. Silhouettes of pedestrians, brief and fleeting, dart between the metal behemoths that rumble past. The rhythmic whir of spinning wheels and the occasional blare of a horn punctuate the hum of the metropolis. Structures of glass and steel soar, their upper floors dissolving into the velvety blackness, dotted with countless pinpricks of interior illumination.",
+      "response_chars": 669,
+      "forbidden_words": [
+        "car"
+      ],
+      "forbidden_check": {
+        "violation_count": 0,
+        "violations": [],
+        "passed": true
+      },
+      "pivot_signatures": {
+        "forbidden_in_first_quartile_only": false,
+        "forbidden_in_final_quartile": false,
+        "explicit_pivot_phrase": false
+      },
+      "joint_pass": true,
+      "_dt": 1.4793097972869873
+    },
+    {
+      "model_slot": "legacy_2",
+      "model_id": "google/gemini-2.5-flash",
+      "task_id": "city_grid",
+      "condition": "conflicting_forbidden_words",
+      "trial": 0,
+      "prompt_hash": "1742abd61dc6e444",
+      "response": "Streaks of crimson and sapphire paint the wet asphalt, reflecting the hurried pulse of the metropolis. Gleaming metallic shells glide by, their polished surfaces catching the fragmented glow from towering structures. A relentless hum vibrates through the air, punctuated by the sharp hiss of pneumatic brakes and the distant wail of an urgent siren. Figures move like blurred specters across zebra stripes, their forms momentarily illuminated by the shifting kaleidoscope of hues. Overhead, a giant emerald eye blinks, then yields to a radiant scarlet, orchestrating the ceaseless ballet of motion. The aroma of exhaust fumes mingles with the faint sweetness of damp concrete.",
+      "response_chars": 676,
+      "forbidden_words": [
+        "car",
+        "person",
+        "people",
+        "light",
+        "lights",
+        "traffic"
+      ],
+      "forbidden_check": {
+        "violation_count": 0,
+        "violations": [],
+        "passed": true
+      },
+      "pivot_signatures": {
+        "forbidden_in_first_quartile_only": false,
+        "forbidden_in_final_quartile": false,
+        "explicit_pivot_phrase": false
+      },
+      "joint_pass": true,
+      "_dt": 1.4331085681915283
+    },
+    {
+      "model_slot": "legacy_2",
+      "model_id": "google/gemini-2.5-flash",
+      "task_id": "city_grid",
+      "condition": "conflicting_forbidden_words",
+      "trial": 1,
+      "prompt_hash": "1742abd61dc6e444",
+      "response": "Crimson and emerald gleam, painting the wet asphalt with fractured hues. Streaks of white and amber hurtle past, blurring into continuous ribbons. Towers of glass reflect the kaleidoscopic ballet, their upper floors fading into an inky expanse. Below, metallic forms hum and rumble, their polished surfaces catching the fleeting radiance. Shadows dance and stretch, distorted by the constant motion. A rhythmic pulse of distant engines vibrates through the concrete canyon, a symphony of urban vitality. The air itself shimmers with the residual warmth of countless journeys, a perpetual, dazzling kaleidoscope of activity.",
+      "response_chars": 623,
+      "forbidden_words": [
+        "car",
+        "person",
+        "people",
+        "light",
+        "lights",
+        "traffic"
+      ],
+      "forbidden_check": {
+        "violation_count": 0,
+        "violations": [],
+        "passed": true
+      },
+      "pivot_signatures": {
+        "forbidden_in_first_quartile_only": false,
+        "forbidden_in_final_quartile": false,
+        "explicit_pivot_phrase": false
+      },
+      "joint_pass": true,
+      "_dt": 1.4072673320770264
+    },
+    {
+      "model_slot": "legacy_2",
+      "model_id": "google/gemini-2.5-flash",
+      "task_id": "city_grid",
+      "condition": "compatible_forbidden_words",
+      "trial": 0,
+      "prompt_hash": "16b80a9755ba921c",
+      "response": "A symphony of light explodes from every direction. Headlamps carve brilliant paths through the inky gloom, their beams momentarily ensnaring figures on foot before releasing them back into the shadows. Rear lamps, ruby-red jewels, trace receding lines, leaving ghostly afterimages. Towering edifices, studded with countless glowing windows, cast long, distorted reflections onto the slick, obsidian pavement. The hum of countless engines vibrates through the very air, a low, persistent growl. Flashing billboards paint the sky with vibrant, ephemeral hues \u2013 cerulean, emerald, gold \u2013 illuminating the endless stream of metallic shapes that flow and weave, an intricate dance of motion and glare. It is a pulsating artery of urban existence, alive with an electric energy.",
+      "response_chars": 772,
+      "forbidden_words": [
+        "car"
+      ],
+      "forbidden_check": {
+        "violation_count": 0,
+        "violations": [],
+        "passed": true
+      },
+      "pivot_signatures": {
+        "forbidden_in_first_quartile_only": false,
+        "forbidden_in_final_quartile": false,
+        "explicit_pivot_phrase": false
+      },
+      "joint_pass": true,
+      "_dt": 1.833409070968628
+    },
+    {
+      "model_slot": "legacy_2",
+      "model_id": "google/gemini-2.5-flash",
+      "task_id": "city_grid",
+      "condition": "conflicting_forbidden_words",
+      "trial": 2,
+      "prompt_hash": "1742abd61dc6e444",
+      "response": "A symphony of crimson and emerald blazes, reflecting in slick asphalt. Headlamps carve brief, brilliant paths through the inky air, their beams blurring into streaks as they rush onwards. A chorus of mechanical hums and distant sirens weaves through the urban canyon. Metallic shells, adorned with glowing eyes, navigate the intricate dance, their polished surfaces mirroring the kaleidoscopic glow of storefronts. Neon signs bleed vibrant hues onto the damp pavement, painting fleeting masterpieces. Shadows stretch and shrink with each passing form, a ballet of transient silhouettes. The very air vibrates with the ceaseless motion, a palpable current of nocturnal energy.",
+      "response_chars": 675,
+      "forbidden_words": [
+        "car",
+        "person",
+        "people",
+        "light",
+        "lights",
+        "traffic"
+      ],
+      "forbidden_check": {
+        "violation_count": 0,
+        "violations": [],
+        "passed": true
+      },
+      "pivot_signatures": {
+        "forbidden_in_first_quartile_only": false,
+        "forbidden_in_final_quartile": false,
+        "explicit_pivot_phrase": false
+      },
+      "joint_pass": true,
+      "_dt": 2.171593189239502
+    }
+  ],
+  "summary": {
+    "premier_1/compatible_forbidden_words": {
+      "n": 9,
+      "joint_pass_rate": 1.0,
+      "pivot_signature_rate": 0.0,
+      "silent_compliance": 9
+    },
+    "premier_1/conflicting_forbidden_words": {
+      "n": 9,
+      "joint_pass_rate": 1.0,
+      "pivot_signature_rate": 0.0,
+      "silent_compliance": 9
+    },
+    "premier_2/compatible_forbidden_words": {
+      "n": 9,
+      "joint_pass_rate": 1.0,
+      "pivot_signature_rate": 0.0,
+      "silent_compliance": 9
+    },
+    "premier_2/conflicting_forbidden_words": {
+      "n": 9,
+      "joint_pass_rate": 1.0,
+      "pivot_signature_rate": 0.0,
+      "silent_compliance": 9
+    },
+    "cheap_current_1/compatible_forbidden_words": {
+      "n": 9,
+      "joint_pass_rate": 1.0,
+      "pivot_signature_rate": 0.0,
+      "silent_compliance": 9
+    },
+    "cheap_current_1/conflicting_forbidden_words": {
+      "n": 9,
+      "joint_pass_rate": 1.0,
+      "pivot_signature_rate": 0.0,
+      "silent_compliance": 9
+    },
+    "cheap_current_2/compatible_forbidden_words": {
+      "n": 9,
+      "joint_pass_rate": 1.0,
+      "pivot_signature_rate": 0.0,
+      "silent_compliance": 9
+    },
+    "cheap_current_2/conflicting_forbidden_words": {
+      "n": 9,
+      "joint_pass_rate": 1.0,
+      "pivot_signature_rate": 0.0,
+      "silent_compliance": 9
+    },
+    "legacy_1/compatible_forbidden_words": {
+      "n": 9,
+      "joint_pass_rate": 1.0,
+      "pivot_signature_rate": 0.0,
+      "silent_compliance": 9
+    },
+    "legacy_1/conflicting_forbidden_words": {
+      "n": 9,
+      "joint_pass_rate": 1.0,
+      "pivot_signature_rate": 0.0,
+      "silent_compliance": 9
+    },
+    "legacy_2/compatible_forbidden_words": {
+      "n": 9,
+      "joint_pass_rate": 1.0,
+      "pivot_signature_rate": 0.0,
+      "silent_compliance": 9
+    },
+    "legacy_2/conflicting_forbidden_words": {
+      "n": 9,
+      "joint_pass_rate": 1.0,
+      "pivot_signature_rate": 0.0,
+      "silent_compliance": 9
+    }
+  }
+}

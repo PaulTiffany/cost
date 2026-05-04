@@ -1,0 +1,338 @@
+{
+  "_meta": {
+    "experiment": "fixed_point_claude_family_opus47_addition",
+    "via": "Anthropic SDK (claude-opus-4-7)",
+    "generator_script": "supplementary/experiments/fixed_point_claude_family_opus47_addition.py",
+    "script_hash": "c92bd2be5d61be8f00e87432bd453e994114a3255ae0f0bcb47a0afcc5d5db43",
+    "models": [
+      "opus-4.7"
+    ],
+    "model_ids": {
+      "opus-4.7": "claude-opus-4-7"
+    },
+    "n_workers": 4,
+    "started_iso": "2026-05-04T05:22:25Z",
+    "finished_iso": "2026-05-04T05:23:07Z",
+    "elapsed_sec": 42.42267680168152,
+    "n_trials": 12,
+    "tasks": [
+      "digit_sum_80",
+      "digit_sum_44",
+      "vowel_count_30",
+      "vowel_count_31",
+      "word_digit_43",
+      "self_count_43"
+    ],
+    "max_stage_rounds": 3,
+    "merge_target": "supplementary\\experiments\\fixed_point_claude_family.json",
+    "note": "Companion experiment: extends the canonical 7-model claude family with claude-opus-4.7. Uses the Anthropic SDK directly (matches the canonical script's transport).",
+    "methodology_deviation": "claude-opus-4-7 rejects any non-default value of `temperature`, `top_p`, or `top_k` with a 400 error (Anthropic Messages API; per official Opus 4.7 release notes). The parameter is therefore omitted for opus-4.7 only. Anthropic does not publish the numeric server-side default sampling temperature for this model; the docs explicitly route users away from sampling tuning toward `effort` levels and prompting. Canonical comparison runs in this experiment used temperature=0.7, so the effective sampling regime here is unspecified and not directly comparable. Adaptive thinking is OFF by default on opus-4.7 (no `thinking` field set here, matching the canonical run); no `effort` level was set.",
+    "sampling_default_source": "https://platform.claude.com/docs/en/about-claude/models/whats-new-claude-4-7 (verified 2026-05-04): docs state non-default temperature/top_p/top_k return 400; no numeric server-side default published."
+  },
+  "model_analyses": [
+    {
+      "model_name": "opus-4.7",
+      "tasks_analyzed": 6,
+      "staged_wins": 5,
+      "avg_improvement_ratio": 4.851725744444569,
+      "task_details": [
+        {
+          "task_id": "vowel_count_30",
+          "oneshot_delta": 279,
+          "staged_delta": 107,
+          "abs_oneshot": 279,
+          "abs_staged": 107,
+          "improvement_ratio": 2.607476635514019,
+          "winner": "staged"
+        },
+        {
+          "task_id": "digit_sum_44",
+          "oneshot_delta": 452,
+          "staged_delta": 36,
+          "abs_oneshot": 452,
+          "abs_staged": 36,
+          "improvement_ratio": 12.555555555555555,
+          "winner": "staged"
+        },
+        {
+          "task_id": "digit_sum_80",
+          "oneshot_delta": 823,
+          "staged_delta": 0,
+          "abs_oneshot": 823,
+          "abs_staged": 0,
+          "improvement_ratio": Infinity,
+          "winner": "staged"
+        },
+        {
+          "task_id": "self_count_43",
+          "oneshot_delta": -16,
+          "staged_delta": 93,
+          "abs_oneshot": 16,
+          "abs_staged": 93,
+          "improvement_ratio": 0.17204301075268819,
+          "winner": "oneshot"
+        },
+        {
+          "task_id": "vowel_count_31",
+          "oneshot_delta": 796,
+          "staged_delta": 101,
+          "abs_oneshot": 796,
+          "abs_staged": 101,
+          "improvement_ratio": 7.881188118811881,
+          "winner": "staged"
+        },
+        {
+          "task_id": "word_digit_43",
+          "oneshot_delta": -1181,
+          "staged_delta": -1133,
+          "abs_oneshot": 1181,
+          "abs_staged": 1133,
+          "improvement_ratio": 1.0423654015887025,
+          "winner": "staged"
+        }
+      ]
+    }
+  ],
+  "results": [
+    {
+      "model_name": "opus-4.7",
+      "model_id": "claude-opus-4-7",
+      "task_id": "vowel_count_30",
+      "protocol": "oneshot",
+      "response": "I need to find a response of length N = 30 + 2V, where V is the number of vowels in the response.\n\nLet me try: \"Pair k with n+1-k; n pairs sum to n(n+1)/2.\"\n\nCount characters: P-a-i-r- -k- -w-i-t-h- -n-+-1---k-;- -n- -p-a-i-r-s- -s-u-m- -t-o- -n-(-n-+-1-)-/-2-.\nLet me count: \"Pair k with n+1-k; n pairs sum to n(n+1)/2.\" = 44 characters.\nVowels: a,i (Pair), i (with), a,i (pairs), u (sum), o (to) = a,i,i,a,i,u,o = 7 vowels.\nCheck: 30 + 2(7) = 44. \u2713\n\nPair k with n+1-k; n pairs sum to n(n+1)/2.",
+      "target": 216,
+      "actual": 495,
+      "delta": 279,
+      "is_fixed_point": false
+    },
+    {
+      "model_name": "opus-4.7",
+      "model_id": "claude-opus-4-7",
+      "task_id": "digit_sum_44",
+      "protocol": "oneshot",
+      "response": "Let me work this out carefully.\n\nLet me try a response with no digits at all. Then N = 44, and I need exactly 44 characters.\n\nAttempt: \"Seventeen has only itself and one as divisors.\"\n\nCount: S-e-v-e-n-t-e-e-n(9) -space(10)- h-a-s(13) -space(14)- o-n-l-y(18) -space(19)- i-t-s-e-l-f(25) -space(26)- a-n-d(29) -space(30)- o-n-e(33) -space(34)- a-s(36) -space(37)- d-i-v-i-s-o-r-s(45) -.(46)\n\nThat's 46. Need 44.\n\nTry: \"Seventeen's only divisors are it and one.\"\n\nS-e-v-e-n-t-e-e-n(9) -'(10)-s(11) -space(12)- o-n-l-y(16) -space(17)- d-i-v-i-s-o-r-s(25) -space(26)- a-r-e(29) -space(30)- i-t(32) -space(33)- a-n-d(36) -space(37)- o-n-e(40) -.(41)\n\n41 chars. Need 44.\n\nTry: \"Seventeen's sole divisors are it and one.\"\n\nS(1)e(2)v(3)e(4)n(5)t(6)e(7)e(8)n(9)'(10)s(11) (12)s(13)o(14)l(15)e(16) (17)d(18)i(19)v(20)i(21)s(22)o(23)r(24)s(25) (26)a(27)r(28)e(29) (30)i(31)t(32) (33)a(34)n(35)d(36) (37)o(38)n(39)e(40).(41)\n\n41. Need 44, no digits.\n\nTry: \"Seventeen's sole divisors here are it, one.\"\n\nS(1)e(2)v(3)e(4)n(5)t(6)e(7)e(8)n(9)'(10)s(11) (12)s(13)o(14)l(15)e(16) (17)d(18)i(19)v(20)i(21)s(22)o(23)r(24)s(25) (26)h(27)e(28)r(29)e(30) (31)a(32)r(33)e(34) (35)i(36)t(37),(38) (39)o(40)n(41)e(42).(43)\n\n43. Add one char: \"Seventeen's sole divisors here are it, one!!\"\n\nOr: \"Seventeen's only div",
+      "target": 838,
+      "actual": 1290,
+      "delta": 452,
+      "is_fixed_point": false
+    },
+    {
+      "model_name": "opus-4.7",
+      "model_id": "claude-opus-4-7",
+      "task_id": "digit_sum_80",
+      "protocol": "oneshot",
+      "response": "I need to find N where response length = 80 + sum of digits in response.\n\nLet me try a response mentioning \"17\" (digits sum 1+7=8). If those are the only digits, N = 80 + 8 = 88.\n\nLet me craft exactly 88 characters with digits summing to 8:\n\n\"17 is prime because it has no positive divisors other than itself and the number one.\"\n\nCount: \"17 is prime because it has no positive divisors other than itself and the number one.\"\n\nLet me count: \"17 is prime because it has no positive divisors other than itself and the number one.\"\n\n17(2)+space(1)+is(2)+space(1)+prime(5)+space(1)+because(7)+space(1)+it(2)+space(1)+has(3)+space(1)+no(2)+space(1)+positive(8)+space(1)+divisors(8)+space(1)+other(5)+space(1)+than(4)+space(1)+itself(6)+space(1)+and(3)+space(1)+the(3)+space(1)+number(6)+space(1)+one(3)+.(1)\n\n= 2+1+2+1+5+1+7+1+2+1+3+1+2+1+8+1+8+1+5+1+4+1+6+1+3+1+3+1+6+1+3+1 = 84\n\nNeed 88, add 4 chars. Digits only \"17\" sum=8, so N=88.\n\n\"The number 17 is prime because it has no positive divisors except itself and one.\"\n\nCount: 3+1+6+1+2+1+2+1+5+1+7+1+2+1+3+1+2+1+8+1+8+1+6+1+6+1+3+1+4+1+1 = let me recount character by character.\n\n\"The number 17 is prime because it has no positive divisors except itself and one.\"\n\nT-h-e(3) (1) n-u-m-b-e-r(6) (1) 1-7(2) (1) i-s(2) (1) p-r-i-m-e(5) (1) b-e-c-a-u-s-e(7) (1) i-t(2) (1) h-a-s(3) (1) n-o(2) (1) p-o-s-i-t-i-v-e(8) (1) d-i-v-i-s-o-r-s(8) (1) e-x-c-e-p-t(6) (1) i-t-s-e-l-f(6) (1) a-n-d(3) (1) o-n-e(3) .(1)\n\n=3+1+6+1+2+1+2+1+5+1+7+1",
+      "target": 653,
+      "actual": 1476,
+      "delta": 823,
+      "is_fixed_point": false
+    },
+    {
+      "model_name": "opus-4.7",
+      "model_id": "claude-opus-4-7",
+      "task_id": "self_count_43",
+      "protocol": "oneshot",
+      "response": "Prime numbers are integers greater than 1 divisible only by 1 and themselves. Examples include 2, 3, 5, 7, 11, and 13. They are infinite, as Euclid proved long ago, and form the building blocks of all integers through unique factorization.\n\nLength: 268",
+      "target": 268,
+      "actual": 252,
+      "delta": -16,
+      "is_fixed_point": false
+    },
+    {
+      "model_name": "opus-4.7",
+      "model_id": "claude-opus-4-7",
+      "task_id": "vowel_count_31",
+      "protocol": "oneshot",
+      "response": "I need a response of length N = 31 + 2v, where v = vowels in response.\n\nLet me try: \"Pair terms: sum is n(n+1)/2.\"\n\nCount: P-a-i-r- -t-e-r-m-s-:- -s-u-m- -i-s- -n-(-n-+-1-)-/-2-.\nLength: \"Pair terms: sum is n(n+1)/2.\" = 28 characters.\nVowels: a,i,e,u,i = 5 vowels. N = 31+10 = 41. Doesn't match.\n\nLet me try a longer one. I need length = 31 + 2v.\n\nTry: \"Pair first with last: each pair sums to n+1; with n/2 pairs total, sum equals n(n+1)/2.\"\n\nLet me count vowels: P-a-i-r f-i-r-s-t w-i-th l-a-s-t e-a-ch p-a-i-r s-u-m-s t-o n+1 w-i-th n/2 p-a-i-r-s t-o-t-a-l, s-u-m e-qu-a-l-s n(n+1)/2.\n\nVowels: a,i (pair)=2; i(first)=1; i(with)=1; a(last)=1; e,a(each)=2; a,i(pair)=2; u(sums)=1; o(to)=1; i(with)=1; a,i(pairs)=2; o,a(total)=2; u(sum)=1; e,u,a(equals)=3. \nTotal: 2+1+1+1+2+2+1+1+1+2+2+1+3 = 20 vowels.\nN = 31+40 = 71.\n\nLength of \"Pair first with last: each pair sums to n+1; with n/2 pairs total, sum equals n(n+1)/2.\"\nLet me count: \"Pair first with last:\"=20, \" each pair sums to n+1;\"=23, \" with n/2 pairs total,\"=22, \" sum equals n(n+1)/2.\"=21\nTotal: 20+23+22+21 = 86. Doesn't match 71.\n\nLet me think more systematically. I'll construct carefully.\n\nTry: \"Sum n+1 pairs, n/2 times: n(n+1)/2.\"\nCount chars: S-u-m- -n-+-1- -p-a-i-r-s-,- -n-/-2- -t-i-m-e-s-:- -n-(-n-+-1-)-/-2-.\n= 35 characters.\nVowels: u,",
+      "target": 511,
+      "actual": 1307,
+      "delta": 796,
+      "is_fixed_point": false
+    },
+    {
+      "model_name": "opus-4.7",
+      "model_id": "claude-opus-4-7",
+      "task_id": "word_digit_43",
+      "protocol": "oneshot",
+      "response": "I need to find a response where character count equals (words \u00d7 10) + (digits \u00d7 5).\n\nLet me try a candidate response and check it.\n\nAttempt: \"Squaring the legs and summing equals the hypotenuse squared because area pieces rearrange.\"\n\nWords: Squaring(1) the(2) legs(3) and(4) summing(5) equals(6) the(7) hypotenuse(8) squared(9) because(10) area(11) pieces(12) rearrange(13) = 13 words\nDigits: 0\nCharacters: Let me count: \"Squaring the legs and summing equals the hypotenuse squared because area pieces rearrange.\" \nS-q-u-a-r-i-n-g(8) space(9) t-h-e(12) space(13) l-e-g-s(17) space(18) a-n-d(21) space(22) s-u-m-m-i-n-g(29) space(30) e-q-u-a-l-s(36) space(37) t-h-e(40) space(41) h-y-p-o-t-e-n-u-s-e(51) space(52) s-q-u-a-r-e-d(59) space(60) b-e-c-a-u-s-e(67) space(68) a-r-e-a(72) space(73) p-i-e-c-e-s(79) space(80) r-e-a-r-r-a-n-g-e(89) period(90)\n\nNeed 130, have 90. Need 40 more chars without changing word count much... actually each added word adds 10 needed but ~6-8 chars typical, so I need longer words.\n\nLet me try: words=W, digits=D, chars=C, need C = 10W + 5D.\n\nTry 10 words averaging 13 characters (incl spaces) = 130. So 10 words with total letters ~120.\n\n\"Rearranging four congruent right triangles inside squares demonstrates the relationship beautifully.\"\n\nWords: 10. Digits: 0. Need 100 chars.\nCount: \"Rearranging four congruent right triangles inside squares demonstrates the relationship beautifully.\"\nRearranging(11)+1=12, four(4)+1=17, congruent(9)+1=27, right(5)+1=33, triangles(9)+1=43, inside(6)+1=50, squares(7)+1=58, demonstrates(12)+1=71, the(3)+1=75, relationship(12)+1=88, beautifully(11)=99, period=100. \u2713\n\nRearranging four congruent right triangles inside squares demonst",
+      "target": 2885,
+      "actual": 1704,
+      "delta": -1181,
+      "is_fixed_point": false
+    },
+    {
+      "model_name": "opus-4.7",
+      "model_id": "claude-opus-4-7",
+      "task_id": "digit_sum_80",
+      "protocol": "staged",
+      "response": "17 is prime: its only divisors are 1 and 17. Check primes up to \u221a17 \u2248 4.12, so test 2 and 3. Neither divides 17: 17/2 = 8.5, 17/3 \u2248 5.67. Since no prime \u2264 \u221a17 divides it, 17 is confirmed prime.",
+      "rounds": 3,
+      "history": [
+        {
+          "round": 0,
+          "target": 171,
+          "actual": 460
+        },
+        {
+          "round": 1,
+          "target": 307,
+          "actual": 997
+        },
+        {
+          "round": 2,
+          "target": 207,
+          "actual": 261
+        }
+      ],
+      "target": 193,
+      "actual": 193,
+      "delta": 0,
+      "is_fixed_point": true
+    },
+    {
+      "model_name": "opus-4.7",
+      "model_id": "claude-opus-4-7",
+      "task_id": "digit_sum_44",
+      "protocol": "staged",
+      "response": "17 is prime: divisors are only 1 and 17. Check primes up to \u221a17\u22484.12: not divisible by 2 (odd) or 3 (digit sum 8). It's the seventh prime: 2,3,5,7,11,13,17.",
+      "rounds": 3,
+      "history": [
+        {
+          "round": 0,
+          "target": 157,
+          "actual": 600
+        },
+        {
+          "round": 1,
+          "target": 465,
+          "actual": 845
+        },
+        {
+          "round": 2,
+          "target": 158,
+          "actual": 404
+        }
+      ],
+      "target": 120,
+      "actual": 156,
+      "delta": 36,
+      "is_fixed_point": false
+    },
+    {
+      "model_name": "opus-4.7",
+      "model_id": "claude-opus-4-7",
+      "task_id": "vowel_count_30",
+      "protocol": "staged",
+      "response": "Gauss's trick: to sum 1+2+...+n, write it forwards and backwards. Pair terms: 1+n, 2+(n-1), etc. Each pair equals n+1, with n pairs. So 2S = n(n+1), giving S = n(n+1)/2. For 1 to 100: 50 pairs of 101 = 5050.",
+      "rounds": 3,
+      "history": [
+        {
+          "round": 0,
+          "target": 454,
+          "actual": 937
+        },
+        {
+          "round": 1,
+          "target": 394,
+          "actual": 875
+        },
+        {
+          "round": 2,
+          "target": 216,
+          "actual": 401
+        }
+      ],
+      "target": 100,
+      "actual": 207,
+      "delta": 107,
+      "is_fixed_point": false
+    },
+    {
+      "model_name": "opus-4.7",
+      "model_id": "claude-opus-4-7",
+      "task_id": "vowel_count_31",
+      "protocol": "staged",
+      "response": "Gauss's trick proves 1+2+...+n = n(n+1)/2. Write the sum forwards, then backwards beneath. Each vertical pair adds to (n+1), with n pairs, giving 2S = n(n+1). Two staircases interlock into an n by (n+1) rectangle; half equals the sum.",
+      "rounds": 3,
+      "history": [
+        {
+          "round": 0,
+          "target": 515,
+          "actual": 1018
+        },
+        {
+          "round": 1,
+          "target": 487,
+          "actual": 983
+        },
+        {
+          "round": 2,
+          "target": 245,
+          "actual": 449
+        }
+      ],
+      "target": 133,
+      "actual": 234,
+      "delta": 101,
+      "is_fixed_point": false
+    },
+    {
+      "model_name": "opus-4.7",
+      "model_id": "claude-opus-4-7",
+      "task_id": "self_count_43",
+      "protocol": "staged",
+      "response": "I can't produce text of negative length. Zero is the minimum. Please give a positive target.",
+      "rounds": 3,
+      "history": [
+        {
+          "round": 0,
+          "target": -1,
+          "actual": 1247
+        },
+        {
+          "round": 1,
+          "target": -1,
+          "actual": 349
+        },
+        {
+          "round": 2,
+          "target": -1,
+          "actual": 121
+        }
+      ],
+      "target": -1,
+      "actual": 92,
+      "delta": 93,
+      "is_fixed_point": false
+    },
+    {
+      "model_name": "opus-4.7",
+      "model_id": "claude-opus-4-7",
+      "task_id": "word_digit_43",
+      "protocol": "staged",
+      "response": "# Draft Response\n\nThe equation a\u00b2 + b\u00b2 = c\u00b2 is known as the Pythagorean Theorem, where a and b represent the lengths of the two legs of a right triangle, and c represents the length of the hypotenuse (the side opposite the right angle). This relationship holds true for every single right triangle, regardless of its size or orientation in space.\n\nHere is an intuitive proof using areas:\n\nImagine a large square with side length (a + b). The total area of this square is (a + b)\u00b2. Now, inside this square, arrange four identical right triangles, each with legs a and b and hypotenuse c. Place them in the corners so that their hypotenuses form a tilted square in the middle with side length c.\n\nWe can calculate the area of the large square in two different ways:\n\nMethod 1: Using the side length directly, the area equals (a + b)\u00b2, which expands to a\u00b2 + 2ab + b\u00b2 when we apply the standard binomial expansion formula.\n\nMethod 2: Adding up the pieces inside, we get the area of the four triangles plus the area of the inner tilted square. Each triangle has area (1/2)ab, so four triangles total 2ab. The inner square has area c\u00b2. So the total area is 2ab + c\u00b2.\n\nSince both methods describe the very same square, the resulting areas must be exactly",
+      "rounds": 3,
+      "history": [
+        {
+          "round": 0,
+          "target": 2375,
+          "actual": 1153
+        },
+        {
+          "round": 1,
+          "target": 2380,
+          "actual": 1247
+        },
+        {
+          "round": 2,
+          "target": 2380,
+          "actual": 1247
+        }
+      ],
+      "target": 2380,
+      "actual": 1247,
+      "delta": -1133,
+      "is_fixed_point": false
+    }
+  ]
+}

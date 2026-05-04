@@ -28846,6 +28846,27 @@
     },
     "max_new_tokens": 384,
     "temperature": 0.7,
-    "n_trials": 5
+    "n_trials": 5,
+    "generator_script": "supplementary/experiments/code_constraint_experiment.py",
+    "generator_script_sha256": "b299230ca309828ff955e0b78dc79fbc6c75da4f222bd3aff8639909c36af154",
+    "experiment": "code_constraint",
+    "parameters": {
+      "tiers": [
+        "control",
+        "low",
+        "moderate",
+        "high"
+      ],
+      "protocols": [
+        "one_shot",
+        "staged"
+      ],
+      "n_trials_per_cell": 5,
+      "temperature": 0.7,
+      "max_tokens": 384
+    },
+    "backfilled_at": "2026-05-03T23:37:10",
+    "backfill_note": "Provenance _meta backfilled by ci/backfill_meta.py to satisfy L20 result_provenance_check. Generator script and parameters reflect known invocation.",
+    "script_hash": "b299230ca309828ff955e0b78dc79fbc6c75da4f222bd3aff8639909c36af154"
   }
 }

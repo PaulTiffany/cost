@@ -93,9 +93,9 @@ CLAIMS: list[dict] = [
     },
     {
         "id": "C3",
-        "description": r"0/4,800 smooth-regime refutations (Abstract)",
+        "description": r"0/4,272 smooth-regime refutations (Abstract); 4,800 = 4,272 smooth + 528 pivot",
         "patterns": [
-            r"0\s*/\s*4[,\\{}\\!\s]*800",
+            r"0\s*/\s*4[,\\{}\\!\s]*272",
         ],
     },
     {
@@ -366,7 +366,7 @@ IMPORTANT: list[dict] = [
     {"id": "I51", "description": "Direction drift threshold 15 deg", "patterns": [r"15\s*\\?(?:deg|circ|\\degree|\^)"]},
     # Derived Statistics (I52-I58)
     {"id": "I52", "description": "Benchmark structure 12 tasks x 4 tiers x 4 models", "patterns": [r"12\s*(?:tasks?|\\times)", r"4\s*(?:tiers?|\\times|\\,)", r"4\s*models?"]},
-    {"id": "I53", "description": "Total trials 4,800", "patterns": [r"4[,\\{}\\!\s]*800"]},
+    {"id": "I53", "description": "Smooth-regime trial count 4,272 (decomposition of 4,800 total: 4,272 smooth + 528 pivot)", "patterns": [r"4[,\\{}\\!\s]*272"]},
     {"id": "I54", "description": "Median direction drift 0.07 (IQR 0.03-0.12)", "patterns": [r"0\.07", r"IQR"]},
     {"id": "I55", "description": "95th percentile step 0.148 (measured)", "patterns": [r"0\.148"]},
     {"id": "I56", "description": "99th percentile step 0.246 (measured)", "patterns": [r"0\.246"]},
@@ -410,7 +410,7 @@ assert len(IMPORTANT) == 72, f"Expected 72 important claims, got {len(IMPORTANT)
 COMPLETE: list[dict] = [
     # Compound task per-rho granular values (App X / Section "Tasks") —
     # only the ones not in I64's umbrella patterns (0.15, 0.75)
-    {"id": "T1", "description": "Hard-negative task: k=8, rho_hat=0.50", "patterns": [r"[Hh]ard[-\s]?negative", r"\\hat\{\\rho\}\{?=\}?0\.50|rho_hat=0\.50"], "match_mode": "joint", "match_window": 3},
+    {"id": "T1", "description": "Hard-negative task: k=8, rho_hat=0.50", "patterns": [r"[Hh]ard[-\s]?negative", r"\\hat\{\\rho\}\{?=\}?0\.50|\\rhohat\{?=\}?0\.50|rho_hat=0\.50"], "match_mode": "joint", "match_window": 3},
     {"id": "T2", "description": "Medium task: k=10, rho_hat=0.53", "patterns": [r"[Mm]edium", r"0\.53"], "match_mode": "joint", "match_window": 3},
     {"id": "T3", "description": "Conflicting task: k=8, rho_hat=0.52", "patterns": [r"[Cc]onflicting", r"0\.52"], "match_mode": "joint", "match_window": 3},
     # Task names have LaTeX-escaped underscores (\_), so we match either raw _ or escaped \_
@@ -487,7 +487,7 @@ COMPLETE: list[dict] = [
     {"id": "T44", "description": "Worked example: rho=0.5 (Two-Constraint Bound)", "patterns": [r"[Ww]orked.*\\rho.*0\.5|rho\{?=\}?0\.5"], "match_mode": "any"},
 
     # Cross-model frontier paragraph (line 519)
-    {"id": "T45", "description": "Frontier transfer: 9 models, 4 providers, N=1,200", "patterns": [r"9\s+models", r"4\s+providers", r"N\{?=\}?1\{?,\}?200|1\{,\}200"], "match_mode": "joint", "match_window": 2},
+    {"id": "T45", "description": "Cross-model heatmap: 9 models, 6 providers, N=3,120 (plotted union)", "patterns": [r"9\s+models|nine models", r"6\s+providers", r"N\{?=\}?3\{?,\}?120|3\{,\}120"], "match_mode": "joint", "match_window": 8},
 
     # Sonification mapping (App Q, lines 2265-2279)
     {"id": "T46", "description": "Sonification: Helpful=C/0 (tonic), Harmless=G/1 (perfect fifth)", "patterns": [r"Helpful.*?C.*?0", r"Harmless.*?G.*?1"], "match_mode": "joint", "match_window": 3},
@@ -589,10 +589,20 @@ def stream_lines(path: Path) -> Iterable[tuple[int, str]]:
 
     This is the truncation-safe pathway: each line is processed once and
     discarded. No 51-page buffer, no stale snapshot.
+
+    Each line is run through latex macro normalization so claim regexes
+    written for canonical \\hat{\\rho} also match \\rhohat, etc.
     """
+    try:
+        from text_normalization import normalize_latex
+    except ImportError:
+        # Fallback when invoked from a different cwd
+        import sys as _sys
+        _sys.path.insert(0, str(Path(__file__).resolve().parent))
+        from text_normalization import normalize_latex
     with path.open("r", encoding="utf-8", errors="replace") as fh:
         for i, line in enumerate(fh, start=1):
-            yield i, line.rstrip("\n")
+            yield i, normalize_latex(line.rstrip("\n"))
 
 
 def _check_joint_window(patterns: list[re.Pattern], lines: list[str], window: int = 3) -> tuple[bool, int | None]:

@@ -1,0 +1,119 @@
+{
+  "_meta": {
+    "version": 1,
+    "description": "Machine-readable caveat ledger for the claim certificate. Each entry documents a known limitation, uncertainty, or methodological constraint that a reviewer should be aware of. Severity: science = affects interpretation of results; reproducibility = affects ability to independently replicate; advisory = presentational or minor scope issue. blocking=true means the cert will not issue PASS until the caveat is resolved."
+  },
+  "caveats": [
+    {
+      "id": "CAVEAT_SMOOTH_TOTAL_DENOMINATOR",
+      "severity": "science",
+      "applies_to_claims": [
+        "smooth_regime_total_4272",
+        "smooth_regime_successes_zero"
+      ],
+      "applies_to_files": [
+        "rebuttal/figures/unconditional_pivot_results.json",
+        "paper/main.tex"
+      ],
+      "summary": "Smooth-regime denominator corrected from 4,800 to 4,272 after excluding pivot-regime overlap.",
+      "why_it_matters": "Early paper drafts cited '0/4,800 smooth-regime refutations'. The correct denominator after removing the 528-trial pivot regime is 4,272. L9 consistency relations and L15 data ties now enforce this. The falsification claim (0 successes) is unchanged; only the denominator differs.",
+      "mitigation": "L9 relation smooth_plus_pivot_eq_total enforces smooth_total + pivot_total == total_infeasible (4272 + 528 = 4800). L15 claim smooth_regime_total_4272 ties the value directly to rebuttal/figures/unconditional_pivot_results.json. Paper text updated; cert verifies verbatim match.",
+      "remaining_risk": "If the source JSON is regenerated with different domain subsets, smooth_total could shift without triggering a git diff on paper text. L15 check would catch this.",
+      "blocking": false
+    },
+    {
+      "id": "CAVEAT_CLOSED_MODEL_RERUN",
+      "severity": "reproducibility",
+      "applies_to_claims": [
+        "openrouter_regression_n_models_8",
+        "claude_family_n_models",
+        "cross_model_n_total_blinded"
+      ],
+      "applies_to_files": [
+        "supplementary/experiments/openrouter_regression_results.json",
+        "supplementary/experiments/fixed_point_claude_family.json",
+        "rebuttal/figures/blinded_external/cross_model_results.json"
+      ],
+      "summary": "Experiments querying closed frontier models (Claude, GPT, Gemini, Command-R+) cannot be re-run by reviewers without API access and budget.",
+      "why_it_matters": "The full experiment suite costs non-trivial API credits and requires accounts with OpenRouter and Anthropic. Reviewers cannot independently rerun from scratch; they can only verify that the stored result JSONs match the paper claims.",
+      "mitigation": "All result JSONs are committed to the repo. The cert verifies that paper numbers match stored JSON (L15 with 304 ties). The pre-commit hook prevents stale-paper/fresh-data divergence from being committed. Blinded external cross-model results (N=1,839) are in rebuttal/figures/blinded_external/.",
+      "remaining_risk": "Stored JSONs could in principle be manually edited to match incorrect paper text. Coordinated fraud of this form is outside the cert's threat model.",
+      "blocking": false
+    },
+    {
+      "id": "CAVEAT_MANUAL_IMAGE_SCORING",
+      "severity": "science",
+      "applies_to_claims": [
+        "runD_high_pass_b_pct",
+        "runD_control_pass_b_pct",
+        "runD_n_trials_total"
+      ],
+      "applies_to_files": [
+        "supplementary/experiments_rebuttal/image_transfer/image_transfer_runD_passB.json"
+      ],
+      "summary": "Image-medium transfer (Run D) Pass-B scores were assigned by manual human rater review, not automated.",
+      "why_it_matters": "Pass-B criterion for image-medium prompts involves subjective judgment about whether the model's output 'transfers' the semantic structure to a new medium. This introduces inter-rater variability not captured by the automated cert. The cert verifies count arithmetic but not rubric quality.",
+      "mitigation": "Rubric is documented in supplementary/experiments_rebuttal/image_transfer/. Trial outputs are stored in the same directory. L15 ties the aggregate percentages to the JSON. Spot-check: open any trial's stored output and apply the rubric.",
+      "remaining_risk": "Rubric subjectivity means two careful raters could disagree on borderline cases. Effect sizes in the paper (33% at high tier) are large enough that modest rater disagreement would not reverse the qualitative conclusion, but exact percentages should be treated as approximate.",
+      "blocking": false
+    },
+    {
+      "id": "CAVEAT_SCHEMATIC_NOT_EVIDENCE",
+      "severity": "advisory",
+      "applies_to_claims": [],
+      "applies_to_files": [
+        "paper/figures/staging_vs_refine.tex",
+        "paper/figures/algorithm1_routing.tex",
+        "paper/figures/interface_assumption.tex"
+      ],
+      "summary": "Several figures are author-drawn schematics illustrating the geometric argument, not empirical data plots.",
+      "why_it_matters": "Figures staging_vs_refine, algorithm1_routing, and interface_assumption depict the theoretical framing (constraint geometry, staging strategy, interface assumption). They are pedagogical illustrations, not evidence figures. L4 lineage and L14 illustration provenance verify they are fresh and committed, but 'freshness' here means the .tex source is current, not that the picture depicts measured data.",
+      "mitigation": "L14 illustration lineage check (7/7 pass) verifies the illustration source is tracked. Captions in the paper explicitly describe these as illustrative diagrams.",
+      "remaining_risk": "A reviewer might mistake a schematic for a data figure. The cert cannot enforce caption clarity.",
+      "blocking": false
+    },
+    {
+      "id": "CAVEAT_SMALL_N_IMAGE_TRANSFER",
+      "severity": "science",
+      "applies_to_claims": [
+        "runD_n_trials_total",
+        "runD_high_pass_b_pct",
+        "cross_model_4model_avg_high_pct"
+      ],
+      "applies_to_files": [
+        "supplementary/experiments_rebuttal/image_transfer/image_transfer_runD_passB.json"
+      ],
+      "summary": "Image-transfer Run D uses N=24 trials total (8 per tier), which is small for statistical inference.",
+      "why_it_matters": "With N=8 per tier, a 95% confidence interval on the 33% high-tier rate spans roughly 10%-65%. The claim is directional (high tier is harder) and consistent with the larger cross-model benchmark (N=1,839), but the image-specific N is too small for precise percentage inference.",
+      "mitigation": "The paper presents image transfer as a cross-domain bound-transfer replication, not as a primary result. Primary results rely on the larger benchmarks (N=4,272 smooth, N=1,839 blinded cross-model). The cert documents this N transparently in claim runD_n_trials_total.",
+      "remaining_risk": "Readers who focus on the 33% figure without noting N=24 may over-interpret precision. The cert cannot enforce adequate hedging language in prose.",
+      "blocking": false
+    },
+    {
+      "id": "CAVEAT_FRONTIER_API_DRIFT",
+      "severity": "reproducibility",
+      "applies_to_claims": [
+        "openrouter_regression_n_models_8",
+        "openrouter_regression_test_pct_control",
+        "openrouter_regression_test_pct_low",
+        "openrouter_regression_test_pct_moderate",
+        "openrouter_regression_test_pct_high",
+        "claude_family_haiku3_ratio",
+        "claude_family_sonnet4_ratio",
+        "claude_family_opus4_ratio",
+        "claude_family_opus41_ratio",
+        "cross_model_n_total_blinded"
+      ],
+      "applies_to_files": [
+        "supplementary/experiments/openrouter_regression_results.json",
+        "supplementary/experiments/fixed_point_claude_family.json",
+        "rebuttal/figures/blinded_external/cross_model_results.json"
+      ],
+      "summary": "Model versions accessed via OpenRouter and Anthropic API can be silently updated by the provider; re-running scripts on a later date may query a different model weight than when results were recorded.",
+      "why_it_matters": "API providers (Anthropic, OpenRouter, Google) periodically update models behind the same API identifier. A re-run of any experiment script may yield a different model than the one that produced the stored JSON, even if the script and API key are identical. This means independent replication is model-version-contingent.",
+      "mitigation": "Model identifiers are recorded in each result JSON and tied via L15 identifier checks (e.g., identifier_haiku3_in_claude_family). The cert verifies that the paper's stated model names match the identifiers in the stored JSON. Reviewers should treat stored JSONs as the ground truth for the submitted version.",
+      "remaining_risk": "There is no cryptographic proof that the stored JSON was produced by the stated model version. Provider attestation would be needed for that level of assurance, which is not currently available.",
+      "blocking": false
+    }
+  ]
+}

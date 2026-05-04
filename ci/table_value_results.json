@@ -1,0 +1,124 @@
+{
+  "summary": {
+    "total": 12,
+    "passed": 12,
+    "failed": 0
+  },
+  "table_parse_status": {
+    "tab:calibration": "OK (16 cells)",
+    "tab:claude_family": "OK (40 cells)",
+    "tab:llm_bridge": "OK (40 cells)",
+    "tab:json_nl": "OK (24 cells)",
+    "tab:lipschitz_calibration": "OK (3 cells)"
+  },
+  "per_expectation": [
+    {
+      "label": "tab:calibration",
+      "row": "Control",
+      "col": "1-shot",
+      "extracted_cell": "76%",
+      "expected_pattern": "76[\\.]?[89]?%",
+      "passed": true,
+      "detail": "PASS: matched '76%'"
+    },
+    {
+      "label": "tab:calibration",
+      "row": "Control",
+      "col": "Failure",
+      "extracted_cell": "24%",
+      "expected_pattern": "2[34]%",
+      "passed": true,
+      "detail": "PASS: matched '24%'"
+    },
+    {
+      "label": "tab:calibration",
+      "row": "Low",
+      "col": "Failure",
+      "extracted_cell": "44%",
+      "expected_pattern": "4[34]%",
+      "passed": true,
+      "detail": "PASS: matched '44%'"
+    },
+    {
+      "label": "tab:calibration",
+      "row": "High",
+      "col": "1-shot",
+      "extracted_cell": "2%",
+      "expected_pattern": "^2%$",
+      "passed": true,
+      "detail": "PASS: matched '2%'"
+    },
+    {
+      "label": "tab:calibration",
+      "row": "High",
+      "col": "Failure",
+      "extracted_cell": "98%",
+      "expected_pattern": "9[78]%",
+      "passed": true,
+      "detail": "PASS: matched '98%'"
+    },
+    {
+      "label": "tab:claude_family",
+      "row": "haiku-3",
+      "col": "Ratio",
+      "extracted_cell": "2.5x",
+      "expected_pattern": "2\\.5",
+      "passed": true,
+      "detail": "PASS: matched '2.5'"
+    },
+    {
+      "label": "tab:claude_family",
+      "row": "opus-4.1",
+      "col": "Ratio",
+      "extracted_cell": "26.4x",
+      "expected_pattern": "2[56]\\.[0-9]",
+      "passed": true,
+      "detail": "PASS: matched '26.4'"
+    },
+    {
+      "label": "tab:claude_family",
+      "row": "opus-4.5",
+      "col": "Ratio",
+      "extracted_cell": "4.8x",
+      "expected_pattern": "4\\.[78]",
+      "passed": true,
+      "detail": "PASS: matched '4.8'"
+    },
+    {
+      "label": "tab:claude_family",
+      "row": "sonnet-4",
+      "col": "Ratio",
+      "extracted_cell": "4.4x",
+      "expected_pattern": "4\\.[34]",
+      "passed": true,
+      "detail": "PASS: matched '4.4'"
+    },
+    {
+      "label": "tab:json_nl",
+      "row": "control",
+      "col": "Failure",
+      "extracted_cell": "77.5%",
+      "expected_pattern": "7[67]\\.?[05]?%",
+      "passed": true,
+      "detail": "PASS: matched '77.5%'"
+    },
+    {
+      "label": "tab:json_nl",
+      "row": "high",
+      "col": "Failure",
+      "extracted_cell": "100.0%",
+      "expected_pattern": "100\\.?0?%",
+      "passed": true,
+      "detail": "PASS: matched '100.0%'"
+    },
+    {
+      "label": "tab:lipschitz_calibration",
+      "row": "Qwen-2.5-Coder",
+      "col": "L",
+      "extracted_cell": "0.048 0.008",
+      "expected_pattern": "0\\.04[78]",
+      "passed": true,
+      "detail": "PASS: matched '0.048'"
+    }
+  ]
+}

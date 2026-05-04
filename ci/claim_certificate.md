@@ -1,17 +1,50 @@
 # Claim Certificate
 
+> **For reviewers:** this certificate proves the paper says what it says without numerical, citation, or figure-asset drift. It does NOT prove the experiments are well-designed or the conclusions follow. See **Scope** below.
+
 **Paper:** The Cost of Cacophony: Geometric Limits on Multi-Constraint Alignment
-**Generated:** 2026-05-03T18:33:25
+**Venue:** NeurIPS 2026 (anonymous double-blind submission)
+**Mode:** `quick` (release: full L12 build equivalence + artifact hashes embedded; quick: --quick L12 (mtime+asset-hash only), faster local checks)
+**Generated:** 2026-05-04T06:17:35
 **Verdict:** **PASS** — all structural checks clean (L1+L2+L4+L7+L8+L9+L10+L11+L12+L13+L14+L15); L3+L5+L16 coverage is advisory, see triage JSONs
+
+## Scope of certification
+
+| Label | What this certificate guarantees |
+|---|---|
+| **Mechanically verified** | Every numeric/citation claim with a ✓ row in the layer table below has been recomputed from source data and matches the paper text. |
+| **Consistency-checked** | Cross-claim arithmetic relations hold (e.g., decompositions sum correctly, formulas evaluate to tabulated values). |
+| **Advisory** | Coverage scans (L3, L5, L16) report uncovered numerics for human review. They do not block. |
+| **NOT certified** | Theorem proofs (math correctness beyond the encoded relations), experimental design, scientific judgment, the underlying truth of the claims about the world. |
+
+## Spot-check recipes
+
+Verify any flagship claim with a single command. Examples:
+
+```
+# Verify 0/4,272 smooth-regime refutations:
+python ci/claim_data_ties_check.py     # find smooth_regime_total_4272
+# Source: rebuttal/figures/unconditional_pivot_results.json (full_paper_claim.smooth_total)
+
+# Verify cross-model figure counts (9 models, 6 providers, N=3,120):
+python ci/cross_model_metadata_check.py
+# Source: supplementary/experiments/code_constraint_results.json + rebuttal/figures/cross_model_results.json
+
+# Re-run full cert:
+python ci/claim_certificate.py
+# Re-run release-mode cert (full L12 build equivalence + artifact hashes):
+python ci/claim_certificate.py --release
+```
 
 ## Provenance
 
-- main.tex sha256: `8c12c733e078a265...` (full hash in JSON)
-- main.tex mtime: 2026-05-03T18:32:18
-- main.pdf size: 1,081,855 bytes
-- main.pdf mtime: 2026-05-03T18:33:20
-- registry sha256: `1508d83d4326be91...`
-- certificate self-hash: `40db3eb6ec2b55ad...` (sha256 of this payload minus the hash field; recompute to verify integrity)
+- main.tex sha256: `82e6af21ec8b91ec...` (full hash in JSON)
+- main.tex mtime: 2026-05-04T05:48:57
+- main.pdf size: 1,143,871 bytes
+- main.pdf mtime: 2026-05-04T05:58:14
+- registry sha256: `61b08aec7166fa66...`
+- artifact hashes: 26 layer-result JSONs + manifests recorded in JSON payload
+- certificate self-hash: `7c0af9003d0c3397...` (sha256 of this payload minus the hash field; recompute to verify integrity)
 
 ## Layer-by-layer Results
 
@@ -19,19 +52,29 @@
 |---|---|---|---|
 | L1_audit | `ci\claim_audit.py` | PASS | 149/149 verbatim |
 | L2_validator | `ci\claim_audit_validator.py` | PASS | 14/14 checks pass |
-| L3_sweep | `ci\claim_coverage_sweep.py` | PASS | 94.0% coverage, 66 uncovered |
+| L3_sweep | `ci\claim_coverage_sweep.py` | PASS | 93.0% coverage, 93 uncovered |
 | L4_lineage | `ci\figure_lineage_check.py` | PASS | 8/8 checks pass, 11 figures fresh |
 | L5_figure_values | `ci\figure_value_check.py` | PASS | 77.6% overall figure coverage, 23 uncovered |
-| L7_citations | `ci\citation_integrity_check.py` | PASS | 26 cites, 42 bib entries, 0 unresolved, 16 dead |
-| L8_links | `ci\link_integrity_check.py` | PASS | 2 URLs, 122 refs / 166 labels, 0 unresolved, 44 dead labels |
-| L9_consistency | `ci\cross_claim_consistency_check.py` | PASS | 33/33 consistency relations hold |
+| L7_citations | `ci\citation_integrity_check.py` | PASS | 30 cites, 42 bib entries, 0 unresolved, 12 dead |
+| L8_links | `ci\link_integrity_check.py` | PASS | 2 URLs, 118 refs / 170 labels, 0 unresolved, 53 dead labels |
+| L9_consistency | `ci\cross_claim_consistency_check.py` | PASS | 60/60 consistency relations hold |
 | L10_bib | `ci\bib_entry_check.py` | PASS | 42/42 bib entries well-formed |
 | L11_scripts | `ci\script_integrity_check.py` | PASS | 13/13 figure scripts pass smoke test |
 | L12_build_equiv | `ci\build_equivalence_check.py` | PASS | --quick mode: ?/15 figures fresh; full mode optional |
 | L13_cross_tree | `ci\cross_tree_consistency_check.py` | PASS | 11/? cross-tree files match (incl. expected divergences) |
 | L14_illustrations | `ci\illustration_lineage_check.py` | PASS | 7/7 illustration provenance checks pass |
-| L15_data_ties | `ci\claim_data_ties_check.py` | PASS | 166/166 numerical claims tied to source data |
-| L16_author_claims | `ci\author_claims_check.py` | PASS | 22/22 judgment claims have data anchors (100%; advisory) |
+| L15_data_ties | `ci\claim_data_ties_check.py` | PASS | 325/325 numerical claims tied to source data |
+| L16_author_claims | `ci\author_claims_check.py` | PASS | 25/25 judgment claims have data anchors (100%; advisory) |
+| L17_table_values | `ci\table_value_check.py` | PASS | (no summary) |
+| L18_sample_size_adequacy | `ci\sample_size_adequacy_check.py` | PASS | (no summary) |
+| L19_ci_coverage | `ci\confidence_interval_coverage_check.py` | PASS | (no summary) |
+| L20_cross_source_recompute | `ci\cross_source_recomputation_check.py` | PASS | (no summary) |
+| L21_sbom | `ci\sbom_check.py` | PASS | (no summary) |
+| L22_container_lineage | `ci\container_lineage_check.py` | PASS | (no summary) |
+| L23_license_clearance | `ci\license_clearance_check.py` | PASS | (no summary) |
+| L24_pdf_camera_ready | `ci\pdf_camera_ready_check.py` | PASS | (no summary) |
+| L25_multi_seed_drift | `ci\multi_seed_drift_check.py` | PASS | (no summary) |
+| L26_reference_convention | `ci\reference_convention_check.py` | PASS | (no summary) |
 
 ### Per-figure coverage (L5)
 
@@ -75,4 +118,14 @@ python ci\cross_tree_consistency_check.py    # L13_cross_tree
 python ci\illustration_lineage_check.py    # L14_illustrations
 python ci\claim_data_ties_check.py    # L15_data_ties
 python ci\author_claims_check.py    # L16_author_claims
+python ci\table_value_check.py    # L17_table_values
+python ci\sample_size_adequacy_check.py    # L18_sample_size_adequacy
+python ci\confidence_interval_coverage_check.py    # L19_ci_coverage
+python ci\cross_source_recomputation_check.py    # L20_cross_source_recompute
+python ci\sbom_check.py    # L21_sbom
+python ci\container_lineage_check.py    # L22_container_lineage
+python ci\license_clearance_check.py    # L23_license_clearance
+python ci\pdf_camera_ready_check.py    # L24_pdf_camera_ready
+python ci\multi_seed_drift_check.py    # L25_multi_seed_drift
+python ci\reference_convention_check.py    # L26_reference_convention
 ```

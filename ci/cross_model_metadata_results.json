@@ -1,0 +1,74 @@
+{
+  "summary": {
+    "total": 3,
+    "passed": 3,
+    "failed": 0,
+    "overall": "PASS",
+    "paper_window_lines": [
+      81,
+      550
+    ]
+  },
+  "computed": {
+    "n_models": 9,
+    "n_providers": 6,
+    "n_trials": 3120,
+    "model_list": [
+      "Qwen/Qwen2.5-Coder-1.5B-Instruct",
+      "deepseek-ai/deepseek-coder-1.3b-instruct",
+      "TinyLlama/TinyLlama-1.1B-Chat-v1.0",
+      "Qwen/Qwen2.5-3B-Instruct",
+      "google/gemini-2.5-flash",
+      "meta-llama/llama-3.1-70b-instruct",
+      "openai/gpt-4o",
+      "deepseek/deepseek-chat-v3-0324",
+      "google/gemini-2.5-pro"
+    ],
+    "provider_set": [
+      "Alibaba",
+      "DeepSeek",
+      "Google",
+      "Meta",
+      "OpenAI",
+      "TinyLlama"
+    ],
+    "data_files": [
+      "supplementary/experiments/code_constraint_results.json",
+      "rebuttal/figures/cross_model_results.json"
+    ],
+    "load_errors": []
+  },
+  "checks": [
+    {
+      "name": "n_models_in_paper_window",
+      "passed": true,
+      "expected_n_models": 9,
+      "found_at_lines": [
+        525,
+        532
+      ],
+      "detail": "Found phrase '9 models' at line(s) [525, 532]"
+    },
+    {
+      "name": "n_providers_in_paper_window",
+      "passed": true,
+      "expected_n_providers": 6,
+      "found_at_lines": [
+        525,
+        532,
+        539
+      ],
+      "detail": "Found phrase '6 providers' at line(s) [525, 532, 539]"
+    },
+    {
+      "name": "n_trials_in_paper_window",
+      "passed": true,
+      "expected_n_trials": 3120,
+      "found_at_lines": [
+        525,
+        532
+      ],
+      "detail": "Found '3120' at line(s) [525, 532]"
+    }
+  ]
+}

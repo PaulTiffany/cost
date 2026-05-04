@@ -1,0 +1,59 @@
+{
+  "sbom_path": "C:\\src\\NeurIPS\\ci\\sbom_manifest.json",
+  "n_packages": 8,
+  "counts": {
+    "allowed": 8,
+    "warned": 0,
+    "blocked": 0
+  },
+  "packages": [
+    {
+      "name": "numpy",
+      "version": "2.1.3",
+      "license": "BSD-3-Clause (NumPy Developers)",
+      "classification": "allowed"
+    },
+    {
+      "name": "scipy",
+      "version": "1.15.1",
+      "license": "BSD-3-Clause (SciPy Developers)",
+      "classification": "allowed"
+    },
+    {
+      "name": "pylatexenc",
+      "version": "2.10",
+      "license": "MIT",
+      "classification": "allowed"
+    },
+    {
+      "name": "pandas",
+      "version": "2.2.3",
+      "license": "BSD-3-Clause",
+      "classification": "allowed"
+    },
+    {
+      "name": "matplotlib",
+      "version": "3.10.1",
+      "license": "Matplotlib License (BSD-style, PSF-based)",
+      "classification": "allowed"
+    },
+    {
+      "name": "transformers",
+      "version": "4.57.3",
+      "license": "Apache-2.0",
+      "classification": "allowed"
+    },
+    {
+      "name": "sentence-transformers",
+      "version": "5.1.2",
+      "license": "Apache-2.0",
+      "classification": "allowed"
+    },
+    {
+      "name": "openai",
+      "version": "1.60.2",
+      "license": "Apache-2.0",
+      "classification": "allowed"
+    }
+  ]
+}

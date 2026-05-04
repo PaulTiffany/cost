@@ -1,0 +1,15 @@
+{
+  "summary": {
+    "total_artifacts": 28,
+    "status_counts": {
+      "current": 23,
+      "supplementary_only": 4,
+      "superseded": 1
+    },
+    "deprecated_bindings": 0,
+    "orphan_current": 0,
+    "passed": true
+  },
+  "deprecated_bindings": [],
+  "orphans": []
+}

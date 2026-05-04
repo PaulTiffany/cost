@@ -1,7 +1,7 @@
 {
   "summary": {
-    "total": 33,
-    "passed": 33,
+    "total": 60,
+    "passed": 60,
     "failed": 0
   },
   "relations": [
@@ -514,12 +514,12 @@
       "detail": "computed=1.666667, expected=1.7, abs_diff=3.33e-02, rel_diff=1.96e-02"
     },
     {
-      "name": "paper_says_N_layer_certificate",
-      "description": "Paper appendix says '16-layer'; runtime named-layer count = len(LAYER_SCRIPTS)+1 = 16 (the +1 is L6, the aggregator)",
-      "formula": "paper_count == runtime_count",
+      "name": "paper_says_N_suite_certificate",
+      "description": "Paper appendix Table 5 (app:cert_scope) lists 6 suites; suite_registry.json defines 6",
+      "formula": "paper_suite_count == runtime_suite_count",
       "params": {
-        "paper_count": 16,
-        "runtime_count": 16
+        "paper_suite_count": 6,
+        "runtime_suite_count": 6
       },
       "expected": true,
       "computed": 1.0,
@@ -542,6 +542,357 @@
       "claim_ids": [
         "T56"
       ],
+      "ok": true,
+      "detail": "computed=1.000000, expected=True, abs_diff=0.00e+00, rel_diff=0.00e+00"
+    },
+    {
+      "name": "decomp__smooth_pivot_decomposition",
+      "description": "smooth_total=4272 + pivot_total=528 == total_infeasible=4800",
+      "formula": "passed == True",
+      "params": {
+        "passed": true
+      },
+      "expected": true,
+      "computed": 1.0,
+      "claim_ids": [],
+      "ok": true,
+      "detail": "computed=1.000000, expected=True, abs_diff=0.00e+00, rel_diff=0.00e+00"
+    },
+    {
+      "name": "decomp__smooth_zero_refutations",
+      "description": "smooth_successes=0 (must be 0; this is the falsifiability claim)",
+      "formula": "passed == True",
+      "params": {
+        "passed": true
+      },
+      "expected": true,
+      "computed": 1.0,
+      "claim_ids": [],
+      "ok": true,
+      "detail": "computed=1.000000, expected=True, abs_diff=0.00e+00, rel_diff=0.00e+00"
+    },
+    {
+      "name": "decomp__pivot_estimated_42",
+      "description": "pivot_successes_estimated=42 (must be 42)",
+      "formula": "passed == True",
+      "params": {
+        "passed": true
+      },
+      "expected": true,
+      "computed": 1.0,
+      "claim_ids": [],
+      "ok": true,
+      "detail": "computed=1.000000, expected=True, abs_diff=0.00e+00, rel_diff=0.00e+00"
+    },
+    {
+      "name": "decomp__smooth_regime_pct_89",
+      "description": "smooth_total/total_infeasible = 89% (paper says 89%)",
+      "formula": "passed == True",
+      "params": {
+        "passed": true
+      },
+      "expected": true,
+      "computed": 1.0,
+      "claim_ids": [],
+      "ok": true,
+      "detail": "computed=1.000000, expected=True, abs_diff=0.00e+00, rel_diff=0.00e+00"
+    },
+    {
+      "name": "decomp__pivot_regime_pct_11",
+      "description": "pivot_total/total_infeasible = 11% (paper says 11%)",
+      "formula": "passed == True",
+      "params": {
+        "passed": true
+      },
+      "expected": true,
+      "computed": 1.0,
+      "claim_ids": [],
+      "ok": true,
+      "detail": "computed=1.000000, expected=True, abs_diff=0.00e+00, rel_diff=0.00e+00"
+    },
+    {
+      "name": "decomp__no_4800_smooth_regime_in_paper",
+      "description": "paper does not conflate 4,800 with smooth-regime",
+      "formula": "passed == True",
+      "params": {
+        "passed": true
+      },
+      "expected": true,
+      "computed": 1.0,
+      "claim_ids": [],
+      "ok": true,
+      "detail": "computed=1.000000, expected=True, abs_diff=0.00e+00, rel_diff=0.00e+00"
+    },
+    {
+      "name": "decomp__claim_audit_C3_consistent",
+      "description": "C3 description: '0/4,272 smooth-regime refutations (Abstract); 4,800 = 4,272 smooth + 528 pivot'; mentions 4,272: True",
+      "formula": "passed == True",
+      "params": {
+        "passed": true
+      },
+      "expected": true,
+      "computed": 1.0,
+      "claim_ids": [],
+      "ok": true,
+      "detail": "computed=1.000000, expected=True, abs_diff=0.00e+00, rel_diff=0.00e+00"
+    },
+    {
+      "name": "subproc__cross_model_metadata",
+      "description": "cross_model_metadata: Results written to: ci\\cross_model_metadata_results.json",
+      "formula": "passed == True",
+      "params": {
+        "passed": true
+      },
+      "expected": true,
+      "computed": 1.0,
+      "claim_ids": [],
+      "ok": true,
+      "detail": "computed=1.000000, expected=True, abs_diff=0.00e+00, rel_diff=0.00e+00"
+    },
+    {
+      "name": "subproc__result_provenance",
+      "description": "result_provenance: Results written to: C:\\src\\NeurIPS\\ci\\result_provenance_results.json",
+      "formula": "passed == True",
+      "params": {
+        "passed": true
+      },
+      "expected": true,
+      "computed": 1.0,
+      "claim_ids": [],
+      "ok": true,
+      "detail": "computed=1.000000, expected=True, abs_diff=0.00e+00, rel_diff=0.00e+00"
+    },
+    {
+      "name": "subproc__manifest_schema",
+      "description": "manifest_schema:   PASS     ci\\illustration_lineage.json",
+      "formula": "passed == True",
+      "params": {
+        "passed": true
+      },
+      "expected": true,
+      "computed": 1.0,
+      "claim_ids": [],
+      "ok": true,
+      "detail": "computed=1.000000, expected=True, abs_diff=0.00e+00, rel_diff=0.00e+00"
+    },
+    {
+      "name": "subproc__monotonic_cliff",
+      "description": "monotonic_cliff:   PASS          openrouter_regression_stage1_pass_count  [239 -> 56 -> 23 -> 0]",
+      "formula": "passed == True",
+      "params": {
+        "passed": true
+      },
+      "expected": true,
+      "computed": 1.0,
+      "claim_ids": [],
+      "ok": true,
+      "detail": "computed=1.000000, expected=True, abs_diff=0.00e+00, rel_diff=0.00e+00"
+    },
+    {
+      "name": "subproc__pdf_source_equivalence",
+      "description": "pdf_source_equivalence:   Results -> C:\\src\\NeurIPS\\ci\\pdf_source_equivalence_results.json",
+      "formula": "passed == True",
+      "params": {
+        "passed": true
+      },
+      "expected": true,
+      "computed": 1.0,
+      "claim_ids": [],
+      "ok": true,
+      "detail": "computed=1.000000, expected=True, abs_diff=0.00e+00, rel_diff=0.00e+00"
+    },
+    {
+      "name": "subproc__cert_anonymity",
+      "description": "cert_anonymity:   Results -> C:\\src\\NeurIPS\\ci\\cert_anonymity_results.json",
+      "formula": "passed == True",
+      "params": {
+        "passed": true
+      },
+      "expected": true,
+      "computed": 1.0,
+      "claim_ids": [],
+      "ok": true,
+      "detail": "computed=1.000000, expected=True, abs_diff=0.00e+00, rel_diff=0.00e+00"
+    },
+    {
+      "name": "subproc__caveat_ledger",
+      "description": "caveat_ledger: Results written to: ci\\caveat_ledger_results.json",
+      "formula": "passed == True",
+      "params": {
+        "passed": true
+      },
+      "expected": true,
+      "computed": 1.0,
+      "claim_ids": [],
+      "ok": true,
+      "detail": "computed=1.000000, expected=True, abs_diff=0.00e+00, rel_diff=0.00e+00"
+    },
+    {
+      "name": "subproc__manual_scoring",
+      "description": "manual_scoring: Overall: PASS",
+      "formula": "passed == True",
+      "params": {
+        "passed": true
+      },
+      "expected": true,
+      "computed": 1.0,
+      "claim_ids": [],
+      "ok": true,
+      "detail": "computed=1.000000, expected=True, abs_diff=0.00e+00, rel_diff=0.00e+00"
+    },
+    {
+      "name": "subproc__artifact_registry",
+      "description": "artifact_registry: Results written to C:\\src\\NeurIPS\\ci\\artifact_registry_results.json",
+      "formula": "passed == True",
+      "params": {
+        "passed": true
+      },
+      "expected": true,
+      "computed": 1.0,
+      "claim_ids": [],
+      "ok": true,
+      "detail": "computed=1.000000, expected=True, abs_diff=0.00e+00, rel_diff=0.00e+00"
+    },
+    {
+      "name": "subproc__table_value",
+      "description": "table_value: Results written to C:\\src\\NeurIPS\\ci\\table_value_results.json",
+      "formula": "passed == True",
+      "params": {
+        "passed": true
+      },
+      "expected": true,
+      "computed": 1.0,
+      "claim_ids": [],
+      "ok": true,
+      "detail": "computed=1.000000, expected=True, abs_diff=0.00e+00, rel_diff=0.00e+00"
+    },
+    {
+      "name": "subproc__sample_size_uncertainty",
+      "description": "sample_size_uncertainty: Results written to C:\\src\\NeurIPS\\ci\\sample_size_uncertainty_results.json",
+      "formula": "passed == True",
+      "params": {
+        "passed": true
+      },
+      "expected": true,
+      "computed": 1.0,
+      "claim_ids": [],
+      "ok": true,
+      "detail": "computed=1.000000, expected=True, abs_diff=0.00e+00, rel_diff=0.00e+00"
+    },
+    {
+      "name": "subproc__unicode_normalization",
+      "description": "unicode_normalization:   Results written to C:\\src\\NeurIPS\\ci\\unicode_normalization_results.json",
+      "formula": "passed == True",
+      "params": {
+        "passed": true
+      },
+      "expected": true,
+      "computed": 1.0,
+      "claim_ids": [],
+      "ok": true,
+      "detail": "computed=1.000000, expected=True, abs_diff=0.00e+00, rel_diff=0.00e+00"
+    },
+    {
+      "name": "subproc__high_salience_gate",
+      "description": "high_salience_gate: PASS",
+      "formula": "passed == True",
+      "params": {
+        "passed": true
+      },
+      "expected": true,
+      "computed": 1.0,
+      "claim_ids": [],
+      "ok": true,
+      "detail": "computed=1.000000, expected=True, abs_diff=0.00e+00, rel_diff=0.00e+00"
+    },
+    {
+      "name": "subproc__narrative_consistency",
+      "description": "narrative_consistency:     absent  : ['abstract', 'approach', 'conclusion_summary']",
+      "formula": "passed == True",
+      "params": {
+        "passed": true
+      },
+      "expected": true,
+      "computed": 1.0,
+      "claim_ids": [],
+      "ok": true,
+      "detail": "computed=1.000000, expected=True, abs_diff=0.00e+00, rel_diff=0.00e+00"
+    },
+    {
+      "name": "subproc__bundle_verification",
+      "description": "ADVISORY: bundle_verification: Wrote ci\\bundle_verification_results.json",
+      "formula": "passed == True",
+      "params": {
+        "passed": true
+      },
+      "expected": true,
+      "computed": 1.0,
+      "claim_ids": [],
+      "ok": true,
+      "detail": "computed=1.000000, expected=True, abs_diff=0.00e+00, rel_diff=0.00e+00"
+    },
+    {
+      "name": "subproc__supplementary_surface",
+      "description": "supplementary_surface:   results written to: C:\\src\\NeurIPS\\ci\\supplementary_surface_results.json",
+      "formula": "passed == True",
+      "params": {
+        "passed": true
+      },
+      "expected": true,
+      "computed": 1.0,
+      "claim_ids": [],
+      "ok": true,
+      "detail": "computed=1.000000, expected=True, abs_diff=0.00e+00, rel_diff=0.00e+00"
+    },
+    {
+      "name": "subproc__charitable_table_consistency",
+      "description": "charitable_table_consistency: Results written to: C:\\src\\NeurIPS\\ci\\charitable_table_consistency_results.json",
+      "formula": "passed == True",
+      "params": {
+        "passed": true
+      },
+      "expected": true,
+      "computed": 1.0,
+      "claim_ids": [],
+      "ok": true,
+      "detail": "computed=1.000000, expected=True, abs_diff=0.00e+00, rel_diff=0.00e+00"
+    },
+    {
+      "name": "subproc__supplementary_claim_surface",
+      "description": "ADVISORY: supplementary_claim_surface: Manifest loaded: 2 entries from C:\\src\\NeurIPS\\ci\\supplementary_manifest.json",
+      "formula": "passed == True",
+      "params": {
+        "passed": true
+      },
+      "expected": true,
+      "computed": 1.0,
+      "claim_ids": [],
+      "ok": true,
+      "detail": "computed=1.000000, expected=True, abs_diff=0.00e+00, rel_diff=0.00e+00"
+    },
+    {
+      "name": "subproc__audio_manifest",
+      "description": "audio_manifest: Results written to: C:\\src\\NeurIPS\\ci\\audio_manifest_results.json",
+      "formula": "passed == True",
+      "params": {
+        "passed": true
+      },
+      "expected": true,
+      "computed": 1.0,
+      "claim_ids": [],
+      "ok": true,
+      "detail": "computed=1.000000, expected=True, abs_diff=0.00e+00, rel_diff=0.00e+00"
+    },
+    {
+      "name": "subproc__submission_surface",
+      "description": "submission_surface: Results written to: C:\\src\\NeurIPS\\ci\\submission_surface_results.json",
+      "formula": "passed == True",
+      "params": {
+        "passed": true
+      },
+      "expected": true,
+      "computed": 1.0,
+      "claim_ids": [],
       "ok": true,
       "detail": "computed=1.000000, expected=True, abs_diff=0.00e+00, rel_diff=0.00e+00"
     }

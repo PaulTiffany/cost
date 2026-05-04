@@ -35,3 +35,17 @@ desktop.ini
 # Local working files (not for review)
 ocr_remaining.sh
 *.tmp
+
+# Local reference / collaborator handoff (do NOT commit)
+docs/
+notetoclaude.json
+note2claude2.json
+note*claude*.json
+
+# Post-rebuttal experiments (not part of initial submission)
+supplementary/experiments_rebuttal/
+rebuttal/
+
+# Build outputs of the variant builders
+paper/cacophony_arxiv_source.tar.gz
+paper/cacophony_4open_anonymous.zip

@@ -47,8 +47,63 @@ _ALLOWED_BUILTINS = {
     "abs": abs, "round": round, "int": int, "float": float,
     "any": any, "all": all, "next": next, "iter": iter,
     "list": list, "tuple": tuple, "dict": dict, "set": set,
+    "sorted": sorted, "range": range, "enumerate": enumerate, "zip": zip,
     "True": True, "False": False, "None": None,
 }
+
+
+# ---------------------------------------------------------------------------
+# Paper-locality verification
+#
+# Optional fields on an L15 entry:
+#   paper_render_pattern : regex that MUST match somewhere in main.tex
+#   paper_render_negate  : regex that MUST NOT match anywhere in main.tex
+#                          (for catching "wrong denominator in right window"
+#                          drift like "4,800 smooth-regime" when smooth_total
+#                          is actually 4,272)
+#
+# If neither field is present, behavior is the legacy data-only check.
+# ---------------------------------------------------------------------------
+PAPER_TEX = REPO_ROOT / "paper" / "main.tex"
+_paper_text_cache: str | None = None
+
+
+def get_paper_text() -> str:
+    """Load paper/main.tex once, with macro normalization."""
+    global _paper_text_cache
+    if _paper_text_cache is None:
+        try:
+            from text_normalization import normalize_latex
+        except ImportError:
+            import sys as _sys
+            _sys.path.insert(0, str(SCRIPT_DIR))
+            from text_normalization import normalize_latex
+        raw = PAPER_TEX.read_text(encoding="utf-8")
+        _paper_text_cache = normalize_latex(raw)
+    return _paper_text_cache
+
+
+def check_paper_locality(entry: dict) -> tuple[bool, str]:
+    """Check paper_render_pattern + paper_render_negate constraints.
+
+    Returns (ok, detail). ok=True if no locality fields OR all constraints
+    satisfied. detail is empty on success, descriptive on failure.
+    """
+    import re as _re
+    pat = entry.get("paper_render_pattern")
+    neg = entry.get("paper_render_negate")
+    if not pat and not neg:
+        return True, ""
+    text = get_paper_text()
+    if pat:
+        if not _re.search(pat, text):
+            return False, f"LOCALITY: pattern not found in main.tex: {pat!r}"
+    if neg:
+        m = _re.search(neg, text)
+        if m:
+            ctx = text[max(0, m.start()-40):min(len(text), m.end()+40)]
+            return False, f"LOCALITY: forbidden pattern matched in main.tex: {neg!r} at ...{ctx!r}..."
+    return True, ""
 
 
 @dataclass
@@ -127,12 +182,20 @@ def evaluate_claim(name: str, entry: dict) -> CheckResult:
     expected = float(entry.get("expected"))
     tol = float(entry.get("tolerance", 0))
     diff = abs(float(computed) - expected)
-    passed = diff <= tol
-    detail = (
-        f"computed={computed} expected={expected} diff={diff} tolerance={tol}"
-        if passed else
-        f"DRIFT: computed={computed} but paper says expected={expected} (diff={diff} > tolerance={tol})"
-    )
+    data_ok = diff <= tol
+
+    # Paper-locality check (optional)
+    loc_ok, loc_detail = check_paper_locality(entry)
+
+    passed = data_ok and loc_ok
+    if not data_ok:
+        detail = f"DRIFT: computed={computed} but paper says expected={expected} (diff={diff} > tolerance={tol})"
+    elif not loc_ok:
+        detail = f"data_ok (computed={computed}); {loc_detail}"
+    else:
+        detail = f"computed={computed} expected={expected} diff={diff} tolerance={tol}"
+        if entry.get("paper_render_pattern") or entry.get("paper_render_negate"):
+            detail += " | paper-locality OK"
     return CheckResult(
         name=name, passed=passed, expected=expected, computed=float(computed),
         tolerance=tol, detail=detail,

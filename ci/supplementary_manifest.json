@@ -1,0 +1,679 @@
+{
+  "_meta": {
+    "version": 1,
+    "description": "Supplementary surface manifest for The Cost of Cacophony (NeurIPS 2026). Classifies every supplementary artifact by role, links to claims and paper locations, and specifies integrity checks. Consumed by ci/supplementary_surface_check.py.",
+    "roles": {
+      "evidence": "Harness or experiment script that directly generates data backing a numbered claim or theorem.",
+      "generated_table": "LaTeX table produced by a known source script from logged data; must match paper.",
+      "reviewer_aid": "Interactive notebook or demo shown to reviewers; must be anonymity-clean and runnable.",
+      "demo": "Perceptual or illustrative demo that supplements but does not constitute empirical evidence.",
+      "internal_draft": "Working document never intended for the reviewer bundle; must not enter the bundle.",
+      "excluded": "Stale or policy-violating artifact; must not enter the bundle and may contain forbidden tokens."
+    }
+  },
+  "artifacts": [
+    {
+      "path": "supplementary/demos/mobile_theorem34_demo.ipynb",
+      "role": "excluded",
+      "claim_ids": [],
+      "paper_locations": [],
+      "source_script": null,
+      "source_data": [],
+      "expected_in_bundle": false,
+      "checks_required": [
+        "forbidden_tokens"
+      ],
+      "scope_note": "Stale notebook referencing ICML submission and a Policy B framing that is no longer appropriate for NeurIPS. Must not appear in any reviewer-facing bundle. Forbidden-token check skipped because file is not shipped."
+    },
+    {
+      "path": "supplementary/demos/interactive_demo.ipynb",
+      "role": "reviewer_aid",
+      "claim_ids": [
+        "C4",
+        "C12",
+        "C22",
+        "C23",
+        "C24"
+      ],
+      "paper_locations": [
+        "app:interactive_demo"
+      ],
+      "source_script": null,
+      "source_data": [],
+      "expected_in_bundle": true,
+      "checks_required": [
+        "exists",
+        "notebook_static",
+        "forbidden_tokens",
+        "scope_note_present"
+      ],
+      "forbidden_tokens": [
+        "ICML",
+        "Policy B",
+        "paulc",
+        "Tiffany"
+      ],
+      "scope_note": "Interactive reviewer aid demonstrating the diagonal cost bound across domains. Not a replication harness; illustrative only. Must be anonymity-clean."
+    },
+    {
+      "path": "supplementary/demos/sonification.py",
+      "role": "demo",
+      "claim_ids": [],
+      "paper_locations": [
+        "app:sonification"
+      ],
+      "source_script": null,
+      "source_data": [],
+      "expected_in_bundle": true,
+      "checks_required": [
+        "exists",
+        "forbidden_tokens",
+        "scope_note_present"
+      ],
+      "forbidden_tokens": [
+        "ICML",
+        "paulc",
+        "Tiffany"
+      ],
+      "scope_note": "Perceptual sonification of constraint conflict data. Provides intuitive illustration of rho; not primary empirical evidence. Audio outputs are generated on demand."
+    },
+    {
+      "path": "supplementary/demos/constitution_deep_dive.py",
+      "role": "demo",
+      "claim_ids": [],
+      "paper_locations": [],
+      "source_script": null,
+      "source_data": [],
+      "expected_in_bundle": false,
+      "checks_required": [
+        "exists",
+        "forbidden_tokens"
+      ],
+      "forbidden_tokens": [
+        "ICML",
+        "paulc",
+        "Tiffany"
+      ],
+      "scope_note": "Exploratory constitution analysis script. Not referenced in the paper; kept for reproducibility audit trail only."
+    },
+    {
+      "path": "supplementary/bridges/bytebeat_harness.py",
+      "role": "evidence",
+      "claim_ids": [
+        "C22"
+      ],
+      "paper_locations": [
+        "app:bytebeat_bridge"
+      ],
+      "source_script": "supplementary/bridges/bytebeat_harness.py",
+      "source_data": [
+        "supplementary/experiments/outputs/bytebeat_baseline.json/baseline.json"
+      ],
+      "expected_in_bundle": true,
+      "checks_required": [
+        "exists",
+        "forbidden_tokens",
+        "scope_note_present"
+      ],
+      "forbidden_tokens": [
+        "paulc",
+        "Tiffany"
+      ],
+      "scope_note": "Bytebeat domain transfer harness. Verifies Claim C22: 59% to 0% feasibility cliff at rho >= 0.8. Verification uses FFT analysis of generated audio against spectral and rhythmic constraints."
+    },
+    {
+      "path": "supplementary/bridges/if_dsl_harness.py",
+      "role": "evidence",
+      "claim_ids": [
+        "C23"
+      ],
+      "paper_locations": [
+        "app:if_dsl_bridge"
+      ],
+      "source_script": "supplementary/bridges/if_dsl_harness.py",
+      "source_data": [
+        "supplementary/experiments/outputs/if_dsl_baseline.json/baseline.json"
+      ],
+      "expected_in_bundle": true,
+      "checks_required": [
+        "exists",
+        "forbidden_tokens",
+        "scope_note_present"
+      ],
+      "forbidden_tokens": [
+        "paulc",
+        "Tiffany"
+      ],
+      "scope_note": "Interactive Fiction DSL harness. Verifies Claim C23: 0% satisfaction at rho >= 1.0. BFS interpreter enforces connectivity, solvability, path length, and bottleneck constraints simultaneously."
+    },
+    {
+      "path": "supplementary/bridges/json_nl_experiment_v4.py",
+      "role": "evidence",
+      "claim_ids": [
+        "C24"
+      ],
+      "paper_locations": [
+        "app:json_harness"
+      ],
+      "source_script": "supplementary/bridges/json_nl_experiment_v4.py",
+      "source_data": [],
+      "expected_in_bundle": true,
+      "checks_required": [
+        "exists",
+        "forbidden_tokens",
+        "scope_note_present"
+      ],
+      "forbidden_tokens": [
+        "paulc",
+        "Tiffany"
+      ],
+      "scope_note": "JSON-NL transfer experiment v4 (substantive content framing). Verifies Claim C24: 77.5% to 100% failure scaling with constraint tightness. Domain: structured natural language with JSON schema constraints."
+    },
+    {
+      "path": "supplementary/bridges/gradient_r_sanity_v2.py",
+      "role": "evidence",
+      "claim_ids": [
+        "C4"
+      ],
+      "paper_locations": [
+        "app:grad_r"
+      ],
+      "source_script": "supplementary/bridges/gradient_r_sanity_v2.py",
+      "source_data": [
+        "supplementary/bridges/gradient_rho_v2_results.json"
+      ],
+      "expected_in_bundle": true,
+      "checks_required": [
+        "exists",
+        "forbidden_tokens",
+        "scope_note_present"
+      ],
+      "forbidden_tokens": [
+        "paulc",
+        "Tiffany"
+      ],
+      "scope_note": "Gradient-rho sanity check v2. Verifies Claim C4: r_s = 1.0 rank correlation between rho-hat and failure rate. Provides empirical validation that the conflict estimator is monotone."
+    },
+    {
+      "path": "supplementary/bridges/gram_matrix_verification.py",
+      "role": "evidence",
+      "claim_ids": [
+        "C1",
+        "C2"
+      ],
+      "paper_locations": [
+        "thm:main",
+        "thm:gram"
+      ],
+      "source_script": "supplementary/bridges/gram_matrix_verification.py",
+      "source_data": [],
+      "expected_in_bundle": true,
+      "checks_required": [
+        "exists",
+        "forbidden_tokens",
+        "scope_note_present"
+      ],
+      "forbidden_tokens": [
+        "paulc",
+        "Tiffany"
+      ],
+      "scope_note": "Symbolic verification of Gram matrix theorems. Verifies Theorem 3.1 (two-constraint diagonal cost bound) and Theorem 3.4 (general k-constraint bound via Gram matrix). Runs with sympy; no API calls required."
+    },
+    {
+      "path": "supplementary/bridges/charitable_feasibility_simulation.py",
+      "role": "evidence",
+      "claim_ids": [
+        "C12",
+        "I60",
+        "I61"
+      ],
+      "paper_locations": [
+        "app:charity"
+      ],
+      "source_script": "supplementary/bridges/charitable_feasibility_simulation.py",
+      "source_data": [
+        "supplementary/experiments/outputs/charitable/charitable_feasibility.json"
+      ],
+      "expected_in_bundle": true,
+      "checks_required": [
+        "exists",
+        "forbidden_tokens",
+        "scope_note_present"
+      ],
+      "forbidden_tokens": [
+        "paulc",
+        "Tiffany"
+      ],
+      "scope_note": "Charitable k-feasibility simulation. Verifies Claim C12: 93% to 3% feasibility decay from k=2 to k=10 under maximally charitable constraint composition (all pairwise rho = 0)."
+    },
+    {
+      "path": "supplementary/experiments/outputs/charitable/charitable_table.tex",
+      "role": "generated_table",
+      "claim_ids": [
+        "C12",
+        "I60",
+        "I61"
+      ],
+      "paper_locations": [
+        "tab:charity_k"
+      ],
+      "source_script": "supplementary/bridges/charitable_feasibility_simulation.py",
+      "source_data": [
+        "supplementary/experiments/outputs/charitable/charitable_feasibility.json"
+      ],
+      "expected_in_bundle": true,
+      "checks_required": [
+        "exists",
+        "table_display_match"
+      ],
+      "forbidden_tokens": [],
+      "scope_note": "Generated LaTeX table for charitable feasibility by k. Values must match claim C12 and charitable_feasibility.json source data."
+    },
+    {
+      "path": "supplementary/experiments/outputs/charitable/charitable_table_compact.tex",
+      "role": "generated_table",
+      "claim_ids": [
+        "C12",
+        "I60",
+        "I61"
+      ],
+      "paper_locations": [
+        "tab:charity_k"
+      ],
+      "source_script": "supplementary/bridges/charitable_feasibility_simulation.py",
+      "source_data": [
+        "supplementary/experiments/outputs/charitable/charitable_feasibility.json"
+      ],
+      "expected_in_bundle": true,
+      "checks_required": [
+        "exists",
+        "table_display_match"
+      ],
+      "forbidden_tokens": [],
+      "scope_note": "Compact variant of the charitable feasibility table for paper inclusion. Same source data as charitable_table.tex."
+    },
+    {
+      "path": "supplementary/experiments/outputs/conflict_detection/conflict_table.tex",
+      "role": "generated_table",
+      "claim_ids": [
+        "C4",
+        "C5"
+      ],
+      "paper_locations": [
+        "tab:conflict_detection"
+      ],
+      "source_script": "supplementary/experiments/constitution_conflict_detection.py",
+      "source_data": [
+        "supplementary/experiments/outputs/conflict_detection/results.json"
+      ],
+      "expected_in_bundle": true,
+      "checks_required": [
+        "exists",
+        "table_display_match"
+      ],
+      "forbidden_tokens": [],
+      "scope_note": "Conflict detection results table. Generated from constitution conflict detection experiment outputs."
+    },
+    {
+      "path": "supplementary/experiments/outputs/constitution/constitution_table.tex",
+      "role": "generated_table",
+      "claim_ids": [
+        "C5"
+      ],
+      "paper_locations": [
+        "tab:constitution"
+      ],
+      "source_script": "supplementary/experiments/constitution_rho_analysis.py",
+      "source_data": [
+        "supplementary/experiments/outputs/constitution/constitution_analysis.json"
+      ],
+      "expected_in_bundle": true,
+      "checks_required": [
+        "exists",
+        "table_display_match"
+      ],
+      "forbidden_tokens": [],
+      "scope_note": "Constitution rho analysis results table. Summarises pairwise conflict rates across constitutional principles."
+    },
+    {
+      "path": "supplementary/experiments/outputs/compatibility_analysis/compatibility_table.tex",
+      "role": "generated_table",
+      "claim_ids": [
+        "C6",
+        "C7"
+      ],
+      "paper_locations": [
+        "tab:compatibility"
+      ],
+      "source_script": "supplementary/experiments/compatibility_certificates.py",
+      "source_data": [
+        "supplementary/experiments/outputs/compatibility_analysis/analysis_results.json"
+      ],
+      "expected_in_bundle": true,
+      "checks_required": [
+        "exists",
+        "table_display_match"
+      ],
+      "forbidden_tokens": [],
+      "scope_note": "Compatibility certificates table. Documents which constraint pairs are simultaneously satisfiable and which are not."
+    },
+    {
+      "path": "supplementary/GRADED_METRICS_SPEC.md",
+      "role": "internal_draft",
+      "claim_ids": [],
+      "paper_locations": [],
+      "source_script": null,
+      "source_data": [],
+      "expected_in_bundle": false,
+      "checks_required": [
+        "forbidden_tokens"
+      ],
+      "scope_note": "Internal working document specifying graded evaluation metrics for the NeurIPS rebuttal. Contains draft markers (ICML-safe, LATEX ADDITIONS) that must not enter reviewer-facing materials. Forbidden-token check skipped because file is not shipped."
+    },
+    {
+      "path": "supplementary/experiments/openrouter_regression_run.log",
+      "role": "internal_draft",
+      "claim_ids": [],
+      "paper_locations": [],
+      "source_script": null,
+      "source_data": [],
+      "expected_in_bundle": false,
+      "checks_required": [
+        "exists"
+      ],
+      "scope_note": "Raw API regression run log from OpenRouter experiments. Contains model response traces; never reviewed-facing. Kept for audit trail only. Forbidden-token check skipped because file is not shipped."
+    },
+    {
+      "path": "supplementary/illustrations/algorithm1_routing_draft.png",
+      "role": "internal_draft",
+      "claim_ids": [],
+      "paper_locations": [],
+      "source_script": null,
+      "source_data": [],
+      "expected_in_bundle": false,
+      "checks_required": [
+        "exists"
+      ],
+      "scope_note": "Draft PNG of Algorithm 1 routing illustration. The certified asset is the deterministic redraw produced by illustration_draft_loop.py from the spec. Draft files must not enter the bundle. Forbidden-token check skipped because file is not shipped."
+    },
+    {
+      "path": "supplementary/illustrations/staging_vs_refine_draft.png",
+      "role": "internal_draft",
+      "claim_ids": [],
+      "paper_locations": [],
+      "source_script": null,
+      "source_data": [],
+      "expected_in_bundle": false,
+      "checks_required": [
+        "exists"
+      ],
+      "scope_note": "Draft PNG of staging-vs-refine illustration. The certified asset is the deterministic redraw. Draft files must not enter the bundle. Forbidden-token check skipped because file is not shipped."
+    },
+    {
+      "path": "supplementary/illustrations/algorithm1_routing_spec.md",
+      "role": "internal_draft",
+      "claim_ids": [],
+      "paper_locations": [],
+      "source_script": null,
+      "source_data": [],
+      "expected_in_bundle": false,
+      "checks_required": [
+        "exists"
+      ],
+      "scope_note": "Spec file driving the Algorithm 1 routing illustration redraw. Internal authoring artifact, not reviewer-facing. Forbidden-token check skipped because file is not shipped."
+    },
+    {
+      "path": "supplementary/illustrations/staging_vs_refine_spec.md",
+      "role": "internal_draft",
+      "claim_ids": [],
+      "paper_locations": [],
+      "source_script": null,
+      "source_data": [],
+      "expected_in_bundle": false,
+      "checks_required": [
+        "exists"
+      ],
+      "scope_note": "Spec file driving the staging-vs-refine illustration redraw. Internal authoring artifact, not reviewer-facing. Forbidden-token check skipped because file is not shipped."
+    },
+    {
+      "path": "supplementary/bridges/gradient_rho_v2_results.json",
+      "role": "evidence",
+      "claim_ids": [
+        "C4"
+      ],
+      "paper_locations": [
+        "app:grad_r"
+      ],
+      "source_script": "supplementary/bridges/gradient_r_sanity_v2.py",
+      "source_data": [],
+      "expected_in_bundle": true,
+      "checks_required": [
+        "exists",
+        "json_parse"
+      ],
+      "forbidden_tokens": [],
+      "scope_note": "Logged results from gradient-rho sanity check v2. Serialised output of gradient_r_sanity_v2.py; provides the actual r_s value used in Claim C4."
+    },
+    {
+      "path": "supplementary/experiments/outputs/charitable/charitable_feasibility.json",
+      "role": "evidence",
+      "claim_ids": [
+        "C12",
+        "I60",
+        "I61"
+      ],
+      "paper_locations": [
+        "tab:charity_k"
+      ],
+      "source_script": "supplementary/bridges/charitable_feasibility_simulation.py",
+      "source_data": [],
+      "expected_in_bundle": true,
+      "checks_required": [
+        "exists",
+        "json_parse"
+      ],
+      "forbidden_tokens": [],
+      "scope_note": "Logged feasibility simulation results by k. Primary data source for charitable_table.tex and Claim C12."
+    },
+    {
+      "path": "supplementary/experiments/outputs/high_k_opus/high_k_opus_results.json",
+      "role": "evidence",
+      "claim_ids": [
+        "C13"
+      ],
+      "paper_locations": [
+        "app:high_k_opus"
+      ],
+      "source_script": "supplementary/experiments/high_k_opus_experiment.py",
+      "source_data": [],
+      "expected_in_bundle": true,
+      "checks_required": [
+        "exists",
+        "json_parse"
+      ],
+      "forbidden_tokens": [],
+      "scope_note": "High-k Opus experiment results. Documents feasibility at large constraint counts using Claude Opus as the solver."
+    },
+    {
+      "path": "supplementary/experiments/outputs/conflict_detection/results.json",
+      "role": "evidence",
+      "claim_ids": [
+        "C4",
+        "C5"
+      ],
+      "paper_locations": [
+        "tab:conflict_detection"
+      ],
+      "source_script": "supplementary/experiments/constitution_conflict_detection.py",
+      "source_data": [],
+      "expected_in_bundle": true,
+      "checks_required": [
+        "exists",
+        "json_parse"
+      ],
+      "forbidden_tokens": [],
+      "scope_note": "Conflict detection experiment results. Backing data for conflict_table.tex."
+    },
+    {
+      "path": "supplementary/experiments/outputs/compatibility_analysis/analysis_results.json",
+      "role": "evidence",
+      "claim_ids": [
+        "C6",
+        "C7"
+      ],
+      "paper_locations": [
+        "tab:compatibility"
+      ],
+      "source_script": "supplementary/experiments/compatibility_certificates.py",
+      "source_data": [],
+      "expected_in_bundle": true,
+      "checks_required": [
+        "exists",
+        "json_parse"
+      ],
+      "forbidden_tokens": [],
+      "scope_note": "Compatibility analysis results backing compatibility_table.tex."
+    },
+    {
+      "path": "supplementary/experiments_rebuttal/constrained_decoding/constrained_decoding_results.json",
+      "role": "evidence",
+      "claim_ids": [
+        "C30"
+      ],
+      "paper_locations": [
+        "app:constrained_decoding"
+      ],
+      "source_script": "supplementary/experiments_rebuttal/constrained_decoding/run_experiment.py",
+      "source_data": [],
+      "expected_in_bundle": true,
+      "checks_required": [
+        "exists",
+        "json_parse"
+      ],
+      "forbidden_tokens": [],
+      "scope_note": "Constrained decoding experiment results. Rebuttal-phase evidence for the constrained decoding ablation."
+    },
+    {
+      "path": "supplementary/experiments_rebuttal/image_transfer/image_transfer_results_runA_no_medium_frame.json",
+      "role": "evidence",
+      "claim_ids": [
+        "C31"
+      ],
+      "paper_locations": [
+        "fig:image_format_cliff"
+      ],
+      "source_script": "supplementary/experiments_rebuttal/image_transfer/run_image_transfer.py",
+      "source_data": [],
+      "expected_in_bundle": true,
+      "checks_required": [
+        "exists",
+        "json_parse"
+      ],
+      "forbidden_tokens": [],
+      "scope_note": "Image-format transfer experiment run A (no medium frame). Evidence for format-cliff figure."
+    },
+    {
+      "path": "supplementary/experiments_rebuttal/prompt_length_sweep/prompt_length_sweep_results.json",
+      "role": "evidence",
+      "claim_ids": [
+        "C32"
+      ],
+      "paper_locations": [
+        "app:prompt_length"
+      ],
+      "source_script": "supplementary/experiments_rebuttal/prompt_length_sweep/prompt_length_sweep.py",
+      "source_data": [],
+      "expected_in_bundle": true,
+      "checks_required": [
+        "exists",
+        "json_parse"
+      ],
+      "forbidden_tokens": [],
+      "scope_note": "Prompt length sweep results. Tests sensitivity of rho estimates to prompt verbosity as a confound."
+    },
+    {
+      "path": "supplementary/experiments_rebuttal/sonification_defense/chromatic_vision.py",
+      "role": "evidence",
+      "claim_ids": [],
+      "paper_locations": [
+        "app:sonification"
+      ],
+      "source_script": "supplementary/experiments_rebuttal/sonification_defense/chromatic_vision.py",
+      "source_data": [],
+      "expected_in_bundle": true,
+      "checks_required": [
+        "exists",
+        "forbidden_tokens",
+        "scope_note_present"
+      ],
+      "forbidden_tokens": [
+        "paulc",
+        "Tiffany"
+      ],
+      "scope_note": "Chromatic vision experiment supporting the sonification defense in the rebuttal. Demonstrates cross-modal constraint transfer beyond the original audio domain."
+    },
+    {
+      "path": "supplementary/experiments_rebuttal/cross_model/cross_model_harness.py",
+      "role": "evidence",
+      "claim_ids": [
+        "C33"
+      ],
+      "paper_locations": [
+        "app:cross_model"
+      ],
+      "source_script": "supplementary/experiments_rebuttal/cross_model/cross_model_harness.py",
+      "source_data": [],
+      "expected_in_bundle": true,
+      "checks_required": [
+        "exists",
+        "forbidden_tokens",
+        "scope_note_present"
+      ],
+      "forbidden_tokens": [
+        "paulc",
+        "Tiffany"
+      ],
+      "scope_note": "Cross-model replication harness. Verifies that rho-failure correlation holds across model families, addressing reviewer concern about single-model dependence."
+    },
+    {
+      "path": "supplementary/experiments_rebuttal/dct_analysis/gram_eigendecomposition.py",
+      "role": "evidence",
+      "claim_ids": [
+        "C2"
+      ],
+      "paper_locations": [
+        "thm:gram"
+      ],
+      "source_script": "supplementary/experiments_rebuttal/dct_analysis/gram_eigendecomposition.py",
+      "source_data": [],
+      "expected_in_bundle": true,
+      "checks_required": [
+        "exists",
+        "forbidden_tokens",
+        "scope_note_present"
+      ],
+      "forbidden_tokens": [
+        "paulc",
+        "Tiffany"
+      ],
+      "scope_note": "DCT/Gram eigendecomposition analysis. Verifies spectral properties of the constraint Gram matrix, providing geometric backing for Theorem 3.4."
+    },
+    {
+      "path": "supplementary/experiments/calibration_table.tex",
+      "role": "generated_table",
+      "claim_ids": [],
+      "paper_locations": [
+        "tab:calibration"
+      ],
+      "source_script": "supplementary/experiments/calibration_analysis.py",
+      "source_data": [],
+      "expected_in_bundle": true,
+      "checks_required": [
+        "exists",
+        "table_display_match"
+      ],
+      "forbidden_tokens": [],
+      "scope_note": "Calibration analysis table generated by calibration_analysis.py. Documents rho-hat estimator bias and variance across experimental conditions."
+    }
+  ]
+}

@@ -1,0 +1,11 @@
+{
+  "dockerfile_path": "Dockerfile",
+  "dockerfile_exists": true,
+  "references_lockfile": true,
+  "dockerfile_python_version": "3.13.4",
+  "cert_python_version": "3.13.4",
+  "cert_python_source": "provenance.dependencies.python.version_short",
+  "version_check": "match",
+  "failures": [],
+  "verdict": "PASS"
+}

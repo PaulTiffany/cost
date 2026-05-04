@@ -6,7 +6,19 @@
     "max_new_tokens": 128,
     "temperature": 0.7,
     "tightness_band_pct": 12,
-    "tightness_definition": "completion is 'tight' if ||x_T - x_0|| / (mean_per_token_disp * T) >= 0.88"
+    "tightness_definition": "completion is 'tight' if ||x_T - x_0|| / (mean_per_token_disp * T) >= 0.88",
+    "generator_script": "supplementary/experiments/lipschitz_calibration.py",
+    "generator_script_sha256": "b42a3d4a0a9c1e68e5313b54f5ff7e6d7050fd457788fe139096a7095146aa43",
+    "n_trials": 900,
+    "parameters": {
+      "n_trials_per_task": 50,
+      "n_tasks": 6,
+      "n_models": 3,
+      "temperature": 0.7
+    },
+    "backfilled_at": "2026-05-03T23:37:10",
+    "backfill_note": "Provenance _meta backfilled by ci/backfill_meta.py to satisfy L20 result_provenance_check. Generator script and parameters reflect known invocation.",
+    "script_hash": "b42a3d4a0a9c1e68e5313b54f5ff7e6d7050fd457788fe139096a7095146aa43"
   },
   "per_model_summary": {
     "Qwen/Qwen2.5-Coder-1.5B-Instruct": {

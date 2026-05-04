@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Cost of Cacophony: Sonification Demos</title>
+<meta name="description" content="Browser-playable index of 31 generated audio clips that sonify the geometric constraint-conflict framework from The Cost of Cacophony. Each clip has a written description so the page is usable without audio.">
+<style>
+  body { font-family: ui-sans-serif, system-ui, sans-serif; max-width: 880px; margin: 2em auto; padding: 0 1em; line-height: 1.55; color: #1a1a1a; background: #ffffff; }
+  h1 { border-bottom: 2px solid #333; padding-bottom: .3em; }
+  h2 { margin-top: 2em; padding-top: .8em; border-top: 1px solid #ccc; }
+  h3 { margin-top: 1.4em; color: #1a1a1a; }
+  .clip { margin: 1em 0; padding: .8em 1em; background: #f3f3f3; border-left: 3px solid #444; border-radius: 4px; }
+  .clip-title { font-weight: 600; color: #111; }
+  .clip-meta { color: #333; font-size: 0.92em; margin: .15em 0 .35em; }
+  .clip-listen { color: #1a1a1a; font-size: 0.96em; margin: .15em 0 .5em; }
+  audio { width: 100%; max-width: 480px; }
+  code { background: #e6e6e6; padding: 1px 5px; border-radius: 3px; font-size: 0.92em; color: #111; }
+  .key { font-style: italic; color: #222; }
+  .preface { background: #fff5cc; padding: .8em 1em; border-radius: 4px; margin: 1em 0; color: #1a1a1a; }
+  /* Visible keyboard focus, larger than browser default */
+  a:focus, audio:focus, button:focus { outline: 3px solid #0050aa; outline-offset: 2px; }
+  /* Skip-to-content link, hidden until focused */
+  .skip-link { position: absolute; left: -10000px; top: auto; width: 1px; height: 1px; overflow: hidden; }
+  .skip-link:focus { position: static; width: auto; height: auto; padding: .4em .7em; background: #ffd400; color: #111; text-decoration: underline; border-radius: 4px; }
+  nav.toc { background: #f0f0f0; padding: .6em 1em; border-radius: 4px; margin: 1em 0; }
+  nav.toc ul { margin: 0; padding-left: 1.4em; }
+  nav.toc li { margin: .2em 0; }
+  /* Print-friendly */
+  @media print {
+    audio { display: none; }
+    .clip { break-inside: avoid; }
+    .skip-link { display: none; }
+  }
+</style>
+</head>
+<body>
+
+<a class="skip-link" href="#main">Skip to main content</a>
+
+<header>
+<h1 id="top">Sonification Demos: The Cost of Cacophony</h1>
+
+<p class="preface">
+This page is usable both with and without audio. Every clip has a written
+description that names what to listen for and what conflict value it
+demonstrates. If you cannot or do not want to play the audio, the
+descriptions alone convey the geometric story.
+</p>
+
+<p>
+The audio is generated deterministically from the framework in the paper
+(<code>supplementary/demos/sonification.py</code>). The interference
+amplitude <span class="key">A(&theta;) = |cos(&theta;/2)|</span> that
+governs constraint conflict is mathematically identical to two-wave
+superposition; when you hear dissonance you are hearing the diagonal
+cost.
+</p>
+
+<p>
+Files are 128&nbsp;kbps MP3 (2.3&nbsp;MB total). Original WAV files ship in the
+same directory. Regenerate with
+<code>cd supplementary/demos &amp;&amp; python sonification.py</code>.
+</p>
+
+<nav class="toc" aria-label="Table of contents">
+<strong>Sections:</strong>
+<ul>
+  <li><a href="#sec-conflict">1. Conflict at increasing &rho;</a></li>
+  <li><a href="#sec-staged">2. Simultaneous vs staged satisfaction</a></li>
+  <li><a href="#sec-wheel">3. Constitution Wheel (Circle of Fifths mapping)</a></li>
+  <li><a href="#sec-anchor">4. Empirical anchor</a></li>
+</ul>
+</nav>
+</header>
+
+<main id="main">
+<h2 id="sec-conflict">1. Conflict at increasing &rho;</h2>
+
+<p>
+File regeneration: <code>cd supplementary/demos &amp;&amp; python sonification.py</code>.
+WAV originals live alongside the MP3s; the MP3s are 128&nbsp;kbps re-encodes for
+browser-friendly size (2.3&nbsp;MB total vs 12.5&nbsp;MB WAV). All audio is reproducible
+from the script.
+</p>
+
+<p>Six clips at fixed conflict coupling values. Each clip plays two pure tones
+whose interference produces the audible structure. As &rho; rises from 0 toward 1,
+beating becomes faster, then merges into pitched roughness, then into hard
+dissonance.</p>
+
+<div class="clip">
+  <div class="clip-title">&rho; = 0.00 (orthogonal)</div>
+  <div class="clip-meta">Independent tones, no interference. Reference baseline.</div>
+  <div class="clip-listen">Listen for: clean, separable tones with no beating.</div>
+  <audio aria-label="Audio: &rho; = 0.00 (orthogonal)" controls preload="none" src="conflict_rho_0.00.mp3"></audio>
+</div>
+
+<div class="clip">
+  <div class="clip-title">&rho; = 0.15 (low coupling; safety + helpfulness empirical)</div>
+  <div class="clip-meta">Approximately the measured value for safety + helpfulness in the
+  in-the-wild constitution analysis.</div>
+  <div class="clip-listen">Listen for: very slow beating, near-consonant.</div>
+  <audio aria-label="Audio: &rho; = 0.15 (low coupling; safety + helpfulness empirical)" controls preload="none" src="conflict_rho_0.15.mp3"></audio>
+</div>
+
+<div class="clip">
+  <div class="clip-title">&rho; = 0.30 (moderate coupling)</div>
+  <div class="clip-meta">Routing recipe boundary: above this value the staging branch
+  starts to dominate.</div>
+  <div class="clip-listen">Listen for: noticeable beating, still musical.</div>
+  <audio aria-label="Audio: &rho; = 0.30 (moderate coupling)" controls preload="none" src="conflict_rho_0.30.mp3"></audio>
+</div>
+
+<div class="clip">
+  <div class="clip-title">&rho; = 0.50 (cliff approach)</div>
+  <div class="clip-meta">Phase transition region.</div>
+  <div class="clip-listen">Listen for: rapid beating, audible roughness.</div>
+  <audio aria-label="Audio: &rho; = 0.50 (cliff approach)" controls preload="none" src="conflict_rho_0.50.mp3"></audio>
+</div>
+
+<div class="clip">
+  <div class="clip-title">&rho; = 0.70 (post-cliff)</div>
+  <div class="clip-meta">Predicted-infeasible regime in the high-tier code experiment.</div>
+  <div class="clip-listen">Listen for: dissonance dominating; no clean tone left.</div>
+  <audio aria-label="Audio: &rho; = 0.70 (post-cliff)" controls preload="none" src="conflict_rho_0.70.mp3"></audio>
+</div>
+
+<div class="clip">
+  <div class="clip-title">&rho; = 0.90 (deep infeasible)</div>
+  <div class="clip-meta">The bound diverges as &rho; approaches 1.</div>
+  <div class="clip-listen">Listen for: harsh, tense, resolution refused.</div>
+  <audio aria-label="Audio: &rho; = 0.90 (deep infeasible)" controls preload="none" src="conflict_rho_0.90.mp3"></audio>
+</div>
+
+<h3>The sweep</h3>
+
+<div class="clip">
+  <div class="clip-title">Sweep &rho; from 0 to 0.9 over 12 seconds</div>
+  <div class="clip-meta">A continuous traversal of the phase transition.</div>
+  <div class="clip-listen">Listen for: the moment the texture stops being musical and
+  starts being noise. That moment is the cliff.</div>
+  <audio aria-label="Audio: Sweep &rho; from 0 to 0.9 over 12 seconds" controls preload="none" src="conflict_sweep_0_to_0.9.mp3"></audio>
+</div>
+
+<div class="clip">
+  <div class="clip-title">Phase transition: 0.4 then 0.6 with a half-second gap</div>
+  <div class="clip-meta">A/B test across the cliff. The gap is silence so your ear can compare.</div>
+  <audio aria-label="Audio: Phase transition: 0.4 then 0.6 with a half-second gap" controls preload="none" src="phase_transition_0.4_to_0.6.mp3"></audio>
+</div>
+
+<h2 id="sec-staged">2. Simultaneous vs staged satisfaction</h2>
+
+<p>The same constraint pair, satisfied two ways. Simultaneous attempts both at
+once and pays the diagonal cost. Staged satisfies them sequentially and stays
+on-axis.</p>
+
+<div class="clip">
+  <div class="clip-title">&rho; = 0.5: simultaneous attempt</div>
+  <div class="clip-listen">Listen for: rapid beating; the conflict is audible.</div>
+  <audio aria-label="Audio: &rho; = 0.5: simultaneous attempt" controls preload="none" src="simultaneous_rho_0.5.mp3"></audio>
+</div>
+
+<div class="clip">
+  <div class="clip-title">&rho; = 0.5: staged resolution</div>
+  <div class="clip-listen">Listen for: clean tones in sequence; the same constraints
+  but the geometry is on-axis instead of diagonal.</div>
+  <audio aria-label="Audio: &rho; = 0.5: staged resolution" controls preload="none" src="staged_rho_0.5.mp3"></audio>
+</div>
+
+<div class="clip">
+  <div class="clip-title">&rho; = 0.8: simultaneous attempt</div>
+  <div class="clip-listen">Listen for: harshness as the cliff dominates.</div>
+  <audio aria-label="Audio: &rho; = 0.8: simultaneous attempt" controls preload="none" src="simultaneous_rho_0.8.mp3"></audio>
+</div>
+
+<div class="clip">
+  <div class="clip-title">&rho; = 0.8: staged resolution</div>
+  <div class="clip-listen">Listen for: even at high &rho;, sequential satisfaction stays
+  consonant. This is the staging benefit theorem made audible.</div>
+  <audio aria-label="Audio: &rho; = 0.8: staged resolution" controls preload="none" src="staged_rho_0.8.mp3"></audio>
+</div>
+
+<div class="clip">
+  <div class="clip-title">All four constitutional principles, simultaneous vs staged</div>
+  <div class="clip-meta">The headline comparison.</div>
+  <div class="clip-listen">Listen for: the simultaneous chord is unstable; the staged
+  arpeggio resolves cleanly through the same notes.</div>
+  <audio aria-label="Audio: All four constitutional principles, simultaneous vs staged" controls preload="none" src="comparison_simultaneous_vs_staged_all_four.mp3"></audio>
+</div>
+
+<h2 id="sec-wheel">3. Constitution Wheel (Circle of Fifths mapping)</h2>
+
+<p>The four constitutional principles are mapped to four notes on the Circle of
+Fifths: Helpful (C), Harmless (G), Honest (D), Autonomy (A). Adjacent notes
+on the circle are a perfect fifth apart and are maximally consonant; notes
+opposite on the circle form the tritone (maximally dissonant). Constraint
+geometry IS harmonic geometry.</p>
+
+<h3>Individual principles</h3>
+
+<div class="clip"><div class="clip-title">Helpful (C)</div>
+<audio aria-label="Audio: Helpful (C)" controls preload="none" src="principle_helpful.mp3"></audio></div>
+<div class="clip"><div class="clip-title">Harmless (G)</div>
+<audio aria-label="Audio: Harmless (G)" controls preload="none" src="principle_harmless.mp3"></audio></div>
+<div class="clip"><div class="clip-title">Honest (D)</div>
+<audio aria-label="Audio: Honest (D)" controls preload="none" src="principle_honest.mp3"></audio></div>
+<div class="clip"><div class="clip-title">Autonomy (A)</div>
+<audio aria-label="Audio: Autonomy (A)" controls preload="none" src="principle_autonomy.mp3"></audio></div>
+
+<h3>Pairs</h3>
+
+<div class="clip">
+  <div class="clip-title">Helpful + Harmless (perfect fifth, consonant)</div>
+  <audio aria-label="Audio: Helpful + Harmless (perfect fifth, consonant)" controls preload="none" src="pair_helpful_harmless.mp3"></audio>
+</div>
+<div class="clip">
+  <div class="clip-title">Helpful + Honest (major second, mild tension)</div>
+  <audio aria-label="Audio: Helpful + Honest (major second, mild tension)" controls preload="none" src="pair_helpful_honest.mp3"></audio>
+</div>
+<div class="clip">
+  <div class="clip-title">Helpful + Autonomy (major sixth, moderate)</div>
+  <audio aria-label="Audio: Helpful + Autonomy (major sixth, moderate)" controls preload="none" src="pair_helpful_autonomy.mp3"></audio>
+</div>
+<div class="clip">
+  <div class="clip-title">Harmless + Honest (perfect fifth, consonant)</div>
+  <audio aria-label="Audio: Harmless + Honest (perfect fifth, consonant)" controls preload="none" src="pair_harmless_honest.mp3"></audio>
+</div>
+<div class="clip">
+  <div class="clip-title">Harmless + Autonomy (major second, tension)</div>
+  <audio aria-label="Audio: Harmless + Autonomy (major second, tension)" controls preload="none" src="pair_harmless_autonomy.mp3"></audio>
+</div>
+<div class="clip">
+  <div class="clip-title">Honest + Autonomy (perfect fifth, consonant)</div>
+  <audio aria-label="Audio: Honest + Autonomy (perfect fifth, consonant)" controls preload="none" src="pair_honest_autonomy.mp3"></audio>
+</div>
+
+<h3>The full wheel</h3>
+
+<div class="clip">
+  <div class="clip-title">Constitution Wheel journey</div>
+  <div class="clip-meta">A traversal of all four principles together.</div>
+  <audio aria-label="Audio: Constitution Wheel journey" controls preload="none" src="constitution_wheel_full.mp3"></audio>
+</div>
+
+<h3>Diagonal vs resolution</h3>
+
+<div class="clip">
+  <div class="clip-title">Diagonal: Helpful + Harmless attempted at once</div>
+  <audio aria-label="Audio: Diagonal: Helpful + Harmless attempted at once" controls preload="none" src="diagonal_helpful_harmless.mp3"></audio>
+</div>
+<div class="clip">
+  <div class="clip-title">Diagonal: three principles at once</div>
+  <audio aria-label="Audio: Diagonal: three principles at once" controls preload="none" src="diagonal_three_principles.mp3"></audio>
+</div>
+<div class="clip">
+  <div class="clip-title">Diagonal: all four at once</div>
+  <audio aria-label="Audio: Diagonal: all four at once" controls preload="none" src="diagonal_all_four.mp3"></audio>
+</div>
+<div class="clip">
+  <div class="clip-title">Staged resolution of all four</div>
+  <audio aria-label="Audio: Staged resolution of all four" controls preload="none" src="staged_all_four_resolution.mp3"></audio>
+</div>
+<div class="clip">
+  <div class="clip-title">Conflict resolution: Helpful + Honest</div>
+  <audio aria-label="Audio: Conflict resolution: Helpful + Honest" controls preload="none" src="conflict_resolution_helpful_honest.mp3"></audio>
+</div>
+<div class="clip">
+  <div class="clip-title">Conflict resolution: Harmless + Autonomy</div>
+  <audio aria-label="Audio: Conflict resolution: Harmless + Autonomy" controls preload="none" src="conflict_resolution_harmless_autonomy.mp3"></audio>
+</div>
+
+<h2 id="sec-anchor">4. Empirical anchor</h2>
+
+<div class="clip">
+  <div class="clip-title">Safety + Helpfulness at &rho; = 0.15 (measured)</div>
+  <div class="clip-meta">The constitution analysis (Appendix in-the-wild) reports this
+  as the empirical pairwise &rho; for safety and helpfulness.</div>
+  <div class="clip-listen">Listen for: barely-perceptible beating. This is what a
+  well-aligned constitution sounds like in the framework.</div>
+  <audio aria-label="Audio: Safety + Helpfulness at &rho; = 0.15 (measured)" controls preload="none" src="safety_helpfulness_rho_0.15.mp3"></audio>
+</div>
+
+<hr>
+<p style="color: #666; font-size: 0.9em;">
+Generated by <code>supplementary/demos/sonification.py</code>.
+For a written walkthrough of the Plomp &amp; Levelt critical-bandwidth grounding,
+see Appendix Sonification in the paper. To regenerate from scratch:
+<code>cd supplementary/demos &amp;&amp; python sonification.py</code>.
+</p>
+
+</main>
+
+</body>
+</html>

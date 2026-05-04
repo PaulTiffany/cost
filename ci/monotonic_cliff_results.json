@@ -1,0 +1,87 @@
+{
+  "summary": {
+    "total": 4,
+    "passed": 4,
+    "failed": 0,
+    "missing": 0
+  },
+  "registered_exceptions": [],
+  "per_check": [
+    {
+      "name": "calibration_pass_rate_oneshot",
+      "source": "supplementary\\experiments\\calibration_results.json",
+      "tiers": [
+        "control",
+        "low",
+        "moderate",
+        "high"
+      ],
+      "values": [
+        0.7583333333333333,
+        0.5583333333333333,
+        0.22916666666666666,
+        0.016666666666666666
+      ],
+      "passed": true,
+      "status": "PASS",
+      "inversions": []
+    },
+    {
+      "name": "per_task_correlation_tier_mean",
+      "source": "rebuttal\\figures\\per_task_correlation_results.json",
+      "tiers": [
+        "control",
+        "low",
+        "moderate",
+        "high"
+      ],
+      "values": [
+        0.76875,
+        0.58125,
+        0.23125,
+        0.016666666666666666
+      ],
+      "passed": true,
+      "status": "PASS",
+      "inversions": []
+    },
+    {
+      "name": "json_nl_v4_failure_rate",
+      "source": "supplementary\\experiments\\json_nl_v4_results.json",
+      "tiers": [
+        "control",
+        "low",
+        "moderate",
+        "high"
+      ],
+      "values": [
+        77.5,
+        90.0,
+        97.5,
+        100.0
+      ],
+      "passed": true,
+      "status": "PASS",
+      "inversions": []
+    },
+    {
+      "name": "openrouter_regression_stage1_pass_count",
+      "source": "supplementary\\experiments\\openrouter_regression_results.json",
+      "tiers": [
+        "control",
+        "low",
+        "moderate",
+        "high"
+      ],
+      "values": [
+        239,
+        56,
+        23,
+        0
+      ],
+      "passed": true,
+      "status": "PASS",
+      "inversions": []
+    }
+  ]
+}

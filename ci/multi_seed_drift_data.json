@@ -1,0 +1,213 @@
+{
+  "_meta": {
+    "experiment": "multi_seed_drift_runner",
+    "task_id": "digit_sum_80",
+    "protocol": "oneshot",
+    "temperature": 0.7,
+    "n_reruns_per_cell": 5,
+    "n_models": 3,
+    "n_total_calls": 15,
+    "started_iso": "2026-05-04T07:47:36Z",
+    "finished_iso": "2026-05-04T07:48:11Z",
+    "elapsed_sec": 34.78662991523743,
+    "note": "Drift baseline: same prompt and same temperature, repeated N_RERUNS times per model. The check L25 reads this data and verifies that the per-cell actual_stdev is below a threshold (default 200 chars). This is the API-side BIS gap-fill identified by Gemini's taxonomy review.",
+    "purpose": "Capture per-model variance under repeated identical sampling so that future reruns can detect distributional drift."
+  },
+  "per_model": {
+    "sonnet-4.5": {
+      "model_id": "claude-sonnet-4-5-20250929",
+      "n_runs": 5,
+      "deltas": [
+        298,
+        678,
+        333,
+        406,
+        576
+      ],
+      "actuals": [
+        1083,
+        1283,
+        627,
+        848,
+        1150
+      ],
+      "delta_mean": 458.2,
+      "delta_stdev": 162.98220761788693,
+      "actual_mean": 998.2,
+      "actual_stdev": 260.62175657454236,
+      "fixed_point_hit_rate": 0.0,
+      "runs": [
+        {
+          "run_idx": 0,
+          "actual": 1083,
+          "target": 785,
+          "delta": 298,
+          "is_fixed_point": false,
+          "elapsed_sec": 8.65982723236084
+        },
+        {
+          "run_idx": 1,
+          "actual": 1283,
+          "target": 605,
+          "delta": 678,
+          "is_fixed_point": false,
+          "elapsed_sec": 8.57211446762085
+        },
+        {
+          "run_idx": 2,
+          "actual": 627,
+          "target": 294,
+          "delta": 333,
+          "is_fixed_point": false,
+          "elapsed_sec": 4.91094708442688
+        },
+        {
+          "run_idx": 3,
+          "actual": 848,
+          "target": 442,
+          "delta": 406,
+          "is_fixed_point": false,
+          "elapsed_sec": 6.432276725769043
+        },
+        {
+          "run_idx": 4,
+          "actual": 1150,
+          "target": 574,
+          "delta": 576,
+          "is_fixed_point": false,
+          "elapsed_sec": 6.7392942905426025
+        }
+      ]
+    },
+    "opus-4.6": {
+      "model_id": "claude-opus-4-6",
+      "n_runs": 5,
+      "deltas": [
+        3,
+        3,
+        3,
+        3,
+        3
+      ],
+      "actuals": [
+        106,
+        106,
+        106,
+        106,
+        106
+      ],
+      "delta_mean": 3,
+      "delta_stdev": 0.0,
+      "actual_mean": 106,
+      "actual_stdev": 0.0,
+      "fixed_point_hit_rate": 0.0,
+      "runs": [
+        {
+          "run_idx": 0,
+          "actual": 106,
+          "target": 103,
+          "delta": 3,
+          "is_fixed_point": false,
+          "elapsed_sec": 2.4745874404907227
+        },
+        {
+          "run_idx": 1,
+          "actual": 106,
+          "target": 103,
+          "delta": 3,
+          "is_fixed_point": false,
+          "elapsed_sec": 1.9479811191558838
+        },
+        {
+          "run_idx": 2,
+          "actual": 106,
+          "target": 103,
+          "delta": 3,
+          "is_fixed_point": false,
+          "elapsed_sec": 2.4259488582611084
+        },
+        {
+          "run_idx": 3,
+          "actual": 106,
+          "target": 103,
+          "delta": 3,
+          "is_fixed_point": false,
+          "elapsed_sec": 2.382840871810913
+        },
+        {
+          "run_idx": 4,
+          "actual": 106,
+          "target": 103,
+          "delta": 3,
+          "is_fixed_point": false,
+          "elapsed_sec": 2.4795119762420654
+        }
+      ]
+    },
+    "sonnet-4.6": {
+      "model_id": "claude-sonnet-4-6",
+      "n_runs": 5,
+      "deltas": [
+        898,
+        978,
+        1006,
+        916,
+        859
+      ],
+      "actuals": [
+        1230,
+        1690,
+        2073,
+        1740,
+        1988
+      ],
+      "delta_mean": 931.4,
+      "delta_stdev": 59.85649505275096,
+      "actual_mean": 1744.2,
+      "actual_stdev": 329.73656151540126,
+      "fixed_point_hit_rate": 0.0,
+      "runs": [
+        {
+          "run_idx": 0,
+          "actual": 1230,
+          "target": 332,
+          "delta": 898,
+          "is_fixed_point": false,
+          "elapsed_sec": 7.900747537612915
+        },
+        {
+          "run_idx": 1,
+          "actual": 1690,
+          "target": 712,
+          "delta": 978,
+          "is_fixed_point": false,
+          "elapsed_sec": 12.93455195426941
+        },
+        {
+          "run_idx": 2,
+          "actual": 2073,
+          "target": 1067,
+          "delta": 1006,
+          "is_fixed_point": false,
+          "elapsed_sec": 11.68294644355774
+        },
+        {
+          "run_idx": 3,
+          "actual": 1740,
+          "target": 824,
+          "delta": 916,
+          "is_fixed_point": false,
+          "elapsed_sec": 11.45114779472351
+        },
+        {
+          "run_idx": 4,
+          "actual": 1988,
+          "target": 1129,
+          "delta": 859,
+          "is_fixed_point": false,
+          "elapsed_sec": 15.798843622207642
+        }
+      ]
+    }
+  }
+}

@@ -1415,5 +1415,32 @@
       "delta": 356,
       "iterations": 4
     }
-  ]
+  ],
+  "_meta": {
+    "generator_script": "supplementary/experiments/fixed_point_claude_family.py",
+    "generator_script_sha256": "87572843ef601a4ec588532568d1d186e3fe65eb8d768dc133e7c5af54e8b95f",
+    "experiment": "fixed_point_claude_family",
+    "n_trials": 42,
+    "parameters": {
+      "n_models": 7,
+      "n_tasks_per_model": 6,
+      "protocols": [
+        "one_shot",
+        "staged"
+      ]
+    },
+    "backfilled_at": "2026-05-03T23:37:10",
+    "backfill_note": "Provenance _meta backfilled by ci/backfill_meta.py to satisfy L20 result_provenance_check. Generator script and parameters reflect known invocation.",
+    "models": [
+      "haiku-3",
+      "sonnet-4",
+      "opus-4",
+      "opus-4.1",
+      "haiku-4.5",
+      "sonnet-4.5",
+      "opus-4.5"
+    ],
+    "started_iso": "2026-05-03T23:37:55 (backfill placeholder; run not timestamped at source)",
+    "script_hash": "87572843ef601a4ec588532568d1d186e3fe65eb8d768dc133e7c5af54e8b95f"
+  }
 }

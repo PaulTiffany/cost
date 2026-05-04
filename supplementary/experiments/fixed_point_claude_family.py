@@ -47,6 +47,8 @@ import random
 # =============================================================================
 
 CLAUDE_FAMILY = {
+    # Current generation (4.7)
+    "opus-4.7": "claude-opus-4-7",
     # Current generation (4.5)
     "haiku-4.5": "claude-haiku-4-5-20251001",
     "sonnet-4.5": "claude-sonnet-4-5-20250929",
@@ -61,6 +63,7 @@ CLAUDE_FAMILY = {
 
 # Cost per 1M tokens (input, output)
 MODEL_COSTS = {
+    "opus-4.7": (15.0, 75.0),
     "haiku-4.5": (1.0, 5.0),
     "sonnet-4.5": (3.0, 15.0),
     "opus-4.5": (5.0, 25.0),

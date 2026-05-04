@@ -1,0 +1,27 @@
+{
+  "summary": {
+    "total": 3,
+    "passed": 3,
+    "failed": 0
+  },
+  "per_manifest": [
+    {
+      "path": "ci\\claim_data_ties.json",
+      "passed": true,
+      "status": "PASS",
+      "errors": []
+    },
+    {
+      "path": "ci\\figure_lineage.json",
+      "passed": true,
+      "status": "PASS",
+      "errors": []
+    },
+    {
+      "path": "ci\\illustration_lineage.json",
+      "passed": true,
+      "status": "PASS",
+      "errors": []
+    }
+  ]
+}

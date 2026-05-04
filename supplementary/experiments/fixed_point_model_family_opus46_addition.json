@@ -1,0 +1,340 @@
+{
+  "_meta": {
+    "experiment": "fixed_point_model_family_opus46_addition",
+    "via": "Anthropic SDK (claude-opus-4-6)",
+    "generator_script": "supplementary/experiments/fixed_point_model_family_opus47_addition.py",
+    "script_hash": "fcdd2f9fb980e63511fe9e407ddcebbcec78b1255e6eb6db67db7d240e7b5bd0",
+    "models": [
+      "opus-4.6"
+    ],
+    "model_ids": {
+      "opus-4.6": "claude-opus-4-6"
+    },
+    "n_workers": 4,
+    "seed": 43,
+    "budget": 512,
+    "started_iso": "2026-05-04T06:16:37Z",
+    "finished_iso": "2026-05-04T06:17:16Z",
+    "elapsed_sec": 38.41716289520264,
+    "n_trials": 12,
+    "tasks": [
+      "digit_sum_42",
+      "digit_sum_66",
+      "vowel_count_31",
+      "vowel_count_43",
+      "word_digit_43",
+      "self_count_43"
+    ],
+    "max_stage_rounds": 3,
+    "merge_target": "supplementary\\experiments\\fixed_point_model_family.json",
+    "note": "Companion experiment: extends the canonical 7-model claude family with claude-opus-4-6. Uses the Anthropic SDK directly (matches the canonical script's transport).",
+    "methodology_deviation": "claude-opus-4-6 accepts the standard `temperature` request param. Run uses temperature=0.0 (deterministic), matching the canonical 7-model fixed_point_model_family.json. Direct apples-to-apples comparison.",
+    "sampling_default_source": "https://platform.claude.com/docs/en/about-claude/models/whats-new-claude-4-7"
+  },
+  "model_analyses": [
+    {
+      "model_name": "opus-4.6",
+      "tasks_analyzed": 6,
+      "staged_wins": 4,
+      "avg_improvement_ratio": 9.911497119667581,
+      "task_details": [
+        {
+          "task_id": "digit_sum_42",
+          "oneshot_delta": -22,
+          "staged_delta": 141,
+          "abs_oneshot": 22,
+          "abs_staged": 141,
+          "improvement_ratio": 0.15602836879432624,
+          "winner": "oneshot"
+        },
+        {
+          "task_id": "digit_sum_66",
+          "oneshot_delta": 9,
+          "staged_delta": 279,
+          "abs_oneshot": 9,
+          "abs_staged": 279,
+          "improvement_ratio": 0.03225806451612903,
+          "winner": "oneshot"
+        },
+        {
+          "task_id": "vowel_count_31",
+          "oneshot_delta": 678,
+          "staged_delta": 29,
+          "abs_oneshot": 678,
+          "abs_staged": 29,
+          "improvement_ratio": 23.379310344827587,
+          "winner": "staged"
+        },
+        {
+          "task_id": "vowel_count_43",
+          "oneshot_delta": 730,
+          "staged_delta": 34,
+          "abs_oneshot": 730,
+          "abs_staged": 34,
+          "improvement_ratio": 21.470588235294116,
+          "winner": "staged"
+        },
+        {
+          "task_id": "self_count_43",
+          "oneshot_delta": 2063,
+          "staged_delta": 208,
+          "abs_oneshot": 2063,
+          "abs_staged": 208,
+          "improvement_ratio": 9.91826923076923,
+          "winner": "staged"
+        },
+        {
+          "task_id": "word_digit_43",
+          "oneshot_delta": -1981,
+          "staged_delta": -439,
+          "abs_oneshot": 1981,
+          "abs_staged": 439,
+          "improvement_ratio": 4.5125284738041005,
+          "winner": "staged"
+        }
+      ]
+    }
+  ],
+  "results": [
+    {
+      "model_name": "opus-4.6",
+      "model_id": "claude-opus-4-6",
+      "task_id": "digit_sum_42",
+      "protocol": "oneshot",
+      "response": "17 is prime: only 1 and 17 divide it.",
+      "target": 59,
+      "actual": 37,
+      "delta": -22,
+      "is_fixed_point": false
+    },
+    {
+      "model_name": "opus-4.6",
+      "model_id": "claude-opus-4-6",
+      "task_id": "digit_sum_66",
+      "protocol": "oneshot",
+      "response": "17 is prime because no integer from 2 to 4 divides it evenly. So it has only two factors.",
+      "target": 80,
+      "actual": 89,
+      "delta": 9,
+      "is_fixed_point": false
+    },
+    {
+      "model_name": "opus-4.6",
+      "model_id": "claude-opus-4-6",
+      "task_id": "vowel_count_31",
+      "protocol": "oneshot",
+      "response": "I need to find a response where the total character count equals 31 + 2*(number of vowels in the response).\n\nLet me denote:\n- N = total characters\n- V = number of vowels\n\nThe constraint: N = 31 + 2V\n\nThis means the non-vowel characters (consonants, spaces, digits, punctuation) = N - V = 31 + 2V - V = 31 + V.\n\nSo I need: total chars = 31 + 2V, or equivalently, (non-vowel chars) = 31 + V.\n\nLet me try to craft a response and iterate.\n\nLet me try a response and count carefully:\n\n\"The sum 1+2+...+n = n(n+1)/2 is proven by pairing terms. Match 1 with n, 2 with n-1, 3 with n-2, etc. Each pair totals n+1. There are n/2 such pairs, giving n(n+1)/2.\"\n\nLet me count vowels and total characters in this.\n\nActually, let me try a more systematic approach. Let me write something and adjust.\n\nAttempt: \"The sum 1+2+...+n = n(n+1)/2 works by pairing: 1+n, 2+(n-1), 3+(n-2)... Each pair sums to n+1 and there are n/2 pairs, so the total is n(n+1)/2.\"\n\nCounting characters: T-h-e- -s-u-m- -1-+-2-+-.-.-.-+-n- -=- -n-(-n-+-1-)-/-2- -w-o-r-k-s- -b-y- -p-a-i-r-i-n-g-:- -1-+-n-,- -2-+-(n---1-)-,- -3-+-(n---2-)-.-.-.- -E-a-c-h- -p-a-i-r- -s-u-m-s- -t-o- -n-+-1- -a-n-d- -t-h-e-r",
+      "target": 487,
+      "actual": 1165,
+      "delta": 678,
+      "is_fixed_point": false
+    },
+    {
+      "model_name": "opus-4.6",
+      "model_id": "claude-opus-4-6",
+      "task_id": "vowel_count_43",
+      "protocol": "oneshot",
+      "response": "I need to find a response where the total character count equals 43 + 2*(number of vowels in the response).\n\nLet me denote:\n- N = total characters\n- V = number of vowels\n\nThe constraint: N = 43 + 2V\n\nThis means N - 2V = 43, or equivalently, the number of non-vowel characters (consonants, spaces, digits, punctuation) plus vowels equals 43 + 2V, so non-vowel characters = 43 + 2V - V = 43 + V.\n\nLet me try drafting a response and iterating.\n\nLet me try targeting around V = 80, so N = 203.\n\nDraft: \"The sum 1+2+...+n equals n(n+1)/2. To see why, pair up terms from opposite ends. The first and last sum to n+1, the second and second to last sum to n+1, and so on. There are n/2 such pairs, giving n/2 times n+1, or n(n+1)/2.\"\n\nLet me count this carefully:\n\n\"The sum 1+2+...+n equals n(n+1)/2. To see why, pair up terms from opposite ends. The first and last sum to n+1, the second and second to last sum to n+1, and so on. There are n/2 such pairs, giving n/2 times n+1, or n(n+1)/2.\"\n\nCharacters: Let me count... This is getting complex. Let me try a more systematic approach.\n\nLet me write it out and count:\n\n\"The sum 1+2+...+n equals n(n+1)/2. Pair terms from both ends: 1+n, 2+(n-1), etc. Each pair totals n+1 and there are n/2 such pairs, so the total is n(n+1)/2.\"\n\nCounting characters: T-h-e- -s-u-m- -1-+-2-+-.-.-.-+-n- -e-q-u-a-l-s- -n-(-n-+-1-)-/-2-.- - -P-a-i-r- -t-",
+      "target": 647,
+      "actual": 1377,
+      "delta": 730,
+      "is_fixed_point": false
+    },
+    {
+      "model_name": "opus-4.6",
+      "model_id": "claude-opus-4-6",
+      "task_id": "self_count_43",
+      "protocol": "oneshot",
+      "response": "# Prime Numbers: The Building Blocks of Mathematics\n\nPrime numbers are among the most fascinating objects in all of mathematics. A prime number is a natural number greater than 1 that has no positive divisors other than 1 and itself. The first few primes are 2, 3, 5, 7, 11, 13, 17, 19, 23, and 29.\n\n## Fundamental Importance\n\nThe **Fundamental Theorem of Arithmetic** states that every integer greater than 1 can be represented uniquely as a product of prime numbers (up to the order of the factors). This is why primes are often called the \"atoms\" or \"building blocks\" of the natural numbers. Just as molecules are composed of atoms, every whole number is composed of primes.\n\n## Key Properties\n\n- **2 is the only even prime.** Every other even number is divisible by 2, making 2 unique among primes.\n- **There are infinitely many primes.** Euclid proved this around 300 BCE with an elegant proof by contradiction.\n- **Primes become less frequent** as numbers grow larger, but they never stop appearing.\n\n## The Prime Number Theorem\n\nOne of the crowning achievements of analytic number theory, the Prime Number Theorem (proved independently by Hadamard and de la Vall\u00e9e-Poussin in 1896), states that the number of primes less than or equal to n is approximately n/ln(n). This gives us a precise sense of how primes thin out among larger numbers.\n\n## Unsolved Problems\n\nMany deep mysteries about primes remain unsolved:\n\n- **The Riemann Hypothesis** concerns the distribution of primes and is perhaps the most famous unsolved problem in mathematics.\n- **Goldbach's Conjecture** proposes that every even integer greater than 2 is the sum of two primes.\n- **The Twin Prime Conjecture** suggests there are infinitely many pairs of primes that differ by 2 (like 11 and 13).\n\n## Applications\n\nPrimes are not merely theoretical curiosities. They are essential in **cryptography**, particularly in the RSA algorithm, which relies on the difficulty of factoring large numbers into their prime components. Modern internet security depends heavily on prime numbers.\n\n## A",
+      "target": -1,
+      "actual": 2062,
+      "delta": 2063,
+      "is_fixed_point": false
+    },
+    {
+      "model_name": "opus-4.6",
+      "model_id": "claude-opus-4-6",
+      "task_id": "word_digit_43",
+      "protocol": "oneshot",
+      "response": "I need to find a response where the total character count equals (word_count * 10) + (digit_count * 5).\n\nLet me think about this carefully. The constraint is self-referential, so I need to craft a response where the math works out.\n\nLet me try a response with no digits first. Then N = word_count * 10.\n\nSo I need: character_count = word_count * 10\n\nLet me think about the average word length. If average word length is W, and there are K words, then characters \u2248 K*W + (K-1) spaces = K*W + K - 1 = K(W+1) - 1.\n\nSetting K(W+1) - 1 = 10K gives K(W+1) - 1 = 10K, so K(W+1-10) = 1, meaning K(W-9) = 1.\n\nThis means W must be slightly above 9, which is impractical for normal text.\n\nLet me try including digits. Say I have D digits in the text. Then N = 10W_count + 5D.\n\nLet me try a different approach - just write something and iterate.\n\nLet me try a response with specific properties. Suppose I use 30 words, 0 digits. Then N = 300. Average characters per word including spaces: 300/30 = 10, meaning average word length about 9 letters. That's long but possible.\n\nLet me try 40 words, 0 digits \u2192 N = 400. That means 400 characters across 40 words. 40 words have 39 spaces, so 361 letters in 40 words = ~9 letters per word. Still long.\n\nLet me try with digits. 35 words, 2 digits \u2192 N = 360. 35 words, 39 spaces (wait, digits are part of words or standalone). This is complex.\n\nLet me try: 50 words, 0 digits \u2192 N = 500. 49 spaces, 451 letters, ~9 per word. Still hard.\n\nLet me try 60 words, 0 digits \u2192 600 chars. 59 spaces, 541 letters, ~",
+      "target": 3515,
+      "actual": 1534,
+      "delta": -1981,
+      "is_fixed_point": false
+    },
+    {
+      "model_name": "opus-4.6",
+      "model_id": "claude-opus-4-6",
+      "task_id": "digit_sum_66",
+      "protocol": "staged",
+      "response": "I need to count the current text and remove exactly 16 characters.\n\nCurrent (106 chars):\n`17 is prime: no divisors but 1 and itself. Not divisible by 2 (odd) or 3 (remainder 2). Thus, 17 is prime.`\n\nLet me craft a 90-character version:\n\n`17 is prime: no divisors but 1 and itself. Not divisible by 2 (odd) or 3. Thus, prime.`\n\nLet me count: `17 is prime: no divisors but 1 and itself. Not divisible by 2 (odd) or 3. Thus",
+      "rounds": 3,
+      "history": [
+        {
+          "round": 0,
+          "target": 214,
+          "actual": 796
+        },
+        {
+          "round": 1,
+          "target": 113,
+          "actual": 188
+        },
+        {
+          "round": 2,
+          "target": 90,
+          "actual": 106
+        }
+      ],
+      "target": 141,
+      "actual": 420,
+      "delta": 279,
+      "is_fixed_point": false
+    },
+    {
+      "model_name": "opus-4.6",
+      "model_id": "claude-opus-4-6",
+      "task_id": "digit_sum_42",
+      "protocol": "staged",
+      "response": "I need to count the current text and remove exactly 280 characters to reach 118.\n\nHere's my 118-character version:\n\n```\n17 is prime: not divisible by 2 (odd) or 3 (remainder 2). Thus prime! That confirms 17 is indeed a prime number.\n```",
+      "rounds": 3,
+      "history": [
+        {
+          "round": 0,
+          "target": 190,
+          "actual": 796
+        },
+        {
+          "round": 1,
+          "target": 81,
+          "actual": 185
+        },
+        {
+          "round": 2,
+          "target": 118,
+          "actual": 398
+        }
+      ],
+      "target": 95,
+      "actual": 236,
+      "delta": 141,
+      "is_fixed_point": false
+    },
+    {
+      "model_name": "opus-4.6",
+      "model_id": "claude-opus-4-6",
+      "task_id": "vowel_count_31",
+      "protocol": "staged",
+      "response": "Sum 1+2+...+n=n(n+1)/2. Pair ends: 1+n,2+(n-1)=n+1. n/2 pairs. Gauss got 5050.",
+      "rounds": 3,
+      "history": [
+        {
+          "round": 0,
+          "target": 347,
+          "actual": 715
+        },
+        {
+          "round": 1,
+          "target": 151,
+          "actual": 296
+        },
+        {
+          "round": 2,
+          "target": 83,
+          "actual": 148
+        }
+      ],
+      "target": 49,
+      "actual": 78,
+      "delta": 29,
+      "is_fixed_point": false
+    },
+    {
+      "model_name": "opus-4.6",
+      "model_id": "claude-opus-4-6",
+      "task_id": "vowel_count_43",
+      "protocol": "staged",
+      "response": "Sum 1+2+...+n equals n(n+1)/2. Pair from ends: 1+n, 2+(n-1). Each sums to n+1. With n/2 pairs, total is n(n+1)/2.",
+      "rounds": 3,
+      "history": [
+        {
+          "round": 0,
+          "target": 361,
+          "actual": 717
+        },
+        {
+          "round": 1,
+          "target": 171,
+          "actual": 312
+        },
+        {
+          "round": 2,
+          "target": 115,
+          "actual": 172
+        }
+      ],
+      "target": 79,
+      "actual": 113,
+      "delta": 34,
+      "is_fixed_point": false
+    },
+    {
+      "model_name": "opus-4.6",
+      "model_id": "claude-opus-4-6",
+      "task_id": "word_digit_43",
+      "protocol": "staged",
+      "response": "The Pythagorean theorem states that in a right triangle, the square of the hypotenuse equals the sum of the squares of the other two sides. This fundamental relationship, expressed as a squared plus b squared equals c squared, can be proven through several elegant geometric arguments that have fascinated mathematicians for thousands of years across many different civilizations and cultures around the entire world.\n\nOne of the most intuitive proofs uses area rearrangement. Consider a square with side length equal to a plus b. Inside this square, arrange four identical right triangles, each with legs a and b and hypotenuse c. These four triangles can be positioned so that their hypotenuses form a smaller square in",
+      "rounds": 3,
+      "history": [
+        {
+          "round": 0,
+          "target": 1995,
+          "actual": 1102
+        },
+        {
+          "round": 1,
+          "target": 1160,
+          "actual": 721
+        },
+        {
+          "round": 2,
+          "target": 1160,
+          "actual": 721
+        }
+      ],
+      "target": 1160,
+      "actual": 721,
+      "delta": -439,
+      "is_fixed_point": false
+    },
+    {
+      "model_name": "opus-4.6",
+      "model_id": "claude-opus-4-6",
+      "task_id": "self_count_43",
+      "protocol": "staged",
+      "response": "I cannot create a text with exactly -1 characters, as that is a physically impossible length.\n\nWait \u2014 I need to step back here.\n\nIt is **impossible** to produce a text that is exactly **-1 characters** long.",
+      "rounds": 3,
+      "history": [
+        {
+          "round": 0,
+          "target": -1,
+          "actual": 1072
+        },
+        {
+          "round": 1,
+          "target": -1,
+          "actual": 147
+        },
+        {
+          "round": 2,
+          "target": -1,
+          "actual": 325
+        }
+      ],
+      "target": -1,
+      "actual": 207,
+      "delta": 208,
+      "is_fixed_point": false
+    }
+  ]
+}

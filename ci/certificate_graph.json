@@ -1,0 +1,4447 @@
+{
+  "_meta": {
+    "generated_at": "2026-05-04T04:00:38.149061+00:00",
+    "n_nodes": 424,
+    "n_edges": 375,
+    "n_orphans": 36
+  },
+  "nodes": [
+    {
+      "id": "claim:runD_high_pass_b_pct",
+      "type": "claim",
+      "label": "runD_high_pass_b_pct",
+      "excerpt": "image medium at 33% Pass B (Run D high tier)"
+    },
+    {
+      "id": "supplementary/experiments_rebuttal/image_transfer/image_transfer_runD_passB.json",
+      "type": "data_file",
+      "label": "image_transfer_runD_passB.json"
+    },
+    {
+      "id": "claim:runD_control_pass_b_pct",
+      "type": "claim",
+      "label": "runD_control_pass_b_pct",
+      "excerpt": "Run D control tier 100% Pass B (per-tier paragraph)"
+    },
+    {
+      "id": "claim:runD_n_trials_total",
+      "type": "claim",
+      "label": "runD_n_trials_total",
+      "excerpt": "N=24 trials total in Run D"
+    },
+    {
+      "id": "claim:cross_model_n_total_blinded",
+      "type": "claim",
+      "label": "cross_model_n_total_blinded",
+      "excerpt": "N=1839 trials (4-model blinded benchmark)"
+    },
+    {
+      "id": "rebuttal/figures/blinded_external/cross_model_results.json",
+      "type": "data_file",
+      "label": "cross_model_results.json"
+    },
+    {
+      "id": "claim:cross_model_4model_avg_high_pct",
+      "type": "claim",
+      "label": "cross_model_4model_avg_high_pct",
+      "excerpt": "text medium ~38% at high tier (4-model avg)"
+    },
+    {
+      "id": "claim:command_r_plus_control_pct",
+      "type": "claim",
+      "label": "command_r_plus_control_pct",
+      "excerpt": "command-r-plus 100% at control"
+    },
+    {
+      "id": "claim:command_r_plus_low_pct",
+      "type": "claim",
+      "label": "command_r_plus_low_pct",
+      "excerpt": "command-r-plus 99% at low"
+    },
+    {
+      "id": "claim:command_r_plus_moderate_pct",
+      "type": "claim",
+      "label": "command_r_plus_moderate_pct",
+      "excerpt": "command-r-plus 100% at moderate"
+    },
+    {
+      "id": "claim:command_r_plus_high_pct",
+      "type": "claim",
+      "label": "command_r_plus_high_pct",
+      "excerpt": "command-r-plus 31% at high"
+    },
+    {
+      "id": "claim:cross_model_n_total_older",
+      "type": "claim",
+      "label": "cross_model_n_total_older",
+      "excerpt": "N=1,200 cross-model (5-model body text)"
+    },
+    {
+      "id": "rebuttal/figures/cross_model_results.json",
+      "type": "data_file",
+      "label": "cross_model_results.json"
+    },
+    {
+      "id": "claim:constitution_n_principles",
+      "type": "claim",
+      "label": "constitution_n_principles",
+      "excerpt": "20 principles (Claude Constitution analysis)"
+    },
+    {
+      "id": "supplementary/experiments/outputs/constitution/constitution_analysis.json",
+      "type": "data_file",
+      "label": "constitution_analysis.json"
+    },
+    {
+      "id": "claim:constitution_n_pairs",
+      "type": "claim",
+      "label": "constitution_n_pairs",
+      "excerpt": "190 pairs (Claude Constitution analysis)"
+    },
+    {
+      "id": "claim:constitution_high_rho_fraction_pct",
+      "type": "claim",
+      "label": "constitution_high_rho_fraction_pct",
+      "excerpt": "7.37% pairs exceed rho >= 0.5 (Claude Constitution)"
+    },
+    {
+      "id": "claim:constitution_high_rho_fraction_decimal",
+      "type": "claim",
+      "label": "constitution_high_rho_fraction_decimal",
+      "excerpt": "0.0737 (used in formula (1 - 0.0737)^k(k-1)/2)"
+    },
+    {
+      "id": "claim:constitution_mean_rho",
+      "type": "claim",
+      "label": "constitution_mean_rho",
+      "excerpt": "mean rho = 0.267 (Claude Constitution Gram analysis)"
+    },
+    {
+      "id": "claim:mutation_caught",
+      "type": "claim",
+      "label": "mutation_caught",
+      "excerpt": "147 of 147 single-digit substitutions caught"
+    },
+    {
+      "id": "ci/tests/systematic_mutation_results.json",
+      "type": "data_file",
+      "label": "systematic_mutation_results.json"
+    },
+    {
+      "id": "claim:mutation_total_testable",
+      "type": "claim",
+      "label": "mutation_total_testable",
+      "excerpt": "147 testable mutations (total - skipped)"
+    },
+    {
+      "id": "claim:calibration_spearman_r",
+      "type": "claim",
+      "label": "calibration_spearman_r",
+      "excerpt": "r_s = 1.0 rank correlation (Table 2 calibration)"
+    },
+    {
+      "id": "supplementary/experiments/calibration_results.json",
+      "type": "data_file",
+      "label": "calibration_results.json"
+    },
+    {
+      "id": "claim:tier_rho_control",
+      "type": "claim",
+      "label": "tier_rho_control",
+      "excerpt": "Control rho = 0.05"
+    },
+    {
+      "id": "claim:tier_rho_low",
+      "type": "claim",
+      "label": "tier_rho_low",
+      "excerpt": "Low rho = 0.20"
+    },
+    {
+      "id": "claim:tier_rho_moderate",
+      "type": "claim",
+      "label": "tier_rho_moderate",
+      "excerpt": "Moderate rho = 0.40"
+    },
+    {
+      "id": "claim:tier_rho_high",
+      "type": "claim",
+      "label": "tier_rho_high",
+      "excerpt": "High rho = 0.65"
+    },
+    {
+      "id": "claim:calibration_failure_control_pct",
+      "type": "claim",
+      "label": "calibration_failure_control_pct",
+      "excerpt": "Control failure 24% (one-shot)"
+    },
+    {
+      "id": "claim:calibration_failure_low_pct",
+      "type": "claim",
+      "label": "calibration_failure_low_pct",
+      "excerpt": "Low failure 44% (one-shot)"
+    },
+    {
+      "id": "claim:calibration_failure_moderate_pct",
+      "type": "claim",
+      "label": "calibration_failure_moderate_pct",
+      "excerpt": "Moderate failure 77% (one-shot)"
+    },
+    {
+      "id": "claim:calibration_failure_high_pct",
+      "type": "claim",
+      "label": "calibration_failure_high_pct",
+      "excerpt": "High failure 98% (one-shot)"
+    },
+    {
+      "id": "claim:calibration_pass_control_pct",
+      "type": "claim",
+      "label": "calibration_pass_control_pct",
+      "excerpt": "Control pass 76% (one-shot, I7 first number)"
+    },
+    {
+      "id": "claim:calibration_pass_low_pct",
+      "type": "claim",
+      "label": "calibration_pass_low_pct",
+      "excerpt": "Low pass 56% (one-shot, I8 first number)"
+    },
+    {
+      "id": "claim:calibration_pass_moderate_pct",
+      "type": "claim",
+      "label": "calibration_pass_moderate_pct",
+      "excerpt": "Moderate pass 23% (one-shot, I9 first number)"
+    },
+    {
+      "id": "claim:calibration_pass_high_pct",
+      "type": "claim",
+      "label": "calibration_pass_high_pct",
+      "excerpt": "High pass 2% (one-shot, I10 first number)"
+    },
+    {
+      "id": "claim:calibration_n_per_tier",
+      "type": "claim",
+      "label": "calibration_n_per_tier",
+      "excerpt": "N=480 per tier (calibration; 4 models x 12 tasks x 5 trials x 2 protocols)"
+    },
+    {
+      "id": "claim:claude_family_haiku3_ratio",
+      "type": "claim",
+      "label": "claude_family_haiku3_ratio",
+      "excerpt": "haiku-3 2.5x staging ratio (I16, Table 4)"
+    },
+    {
+      "id": "supplementary/experiments/fixed_point_claude_family.json",
+      "type": "data_file",
+      "label": "fixed_point_claude_family.json"
+    },
+    {
+      "id": "claim:claude_family_sonnet4_ratio",
+      "type": "claim",
+      "label": "claude_family_sonnet4_ratio",
+      "excerpt": "sonnet-4 4.4x staging ratio (I17, Table 4)"
+    },
+    {
+      "id": "claim:claude_family_opus4_ratio",
+      "type": "claim",
+      "label": "claude_family_opus4_ratio",
+      "excerpt": "opus-4 22.7x staging ratio (I18, Table 4)"
+    },
+    {
+      "id": "claim:claude_family_opus41_ratio",
+      "type": "claim",
+      "label": "claude_family_opus41_ratio",
+      "excerpt": "opus-4.1 26.4x staging ratio (I19, C6, highest in Table 4)"
+    },
+    {
+      "id": "claim:claude_family_haiku45_ratio",
+      "type": "claim",
+      "label": "claude_family_haiku45_ratio",
+      "excerpt": "haiku-4.5 23.3x staging ratio (I20, Table 4)"
+    },
+    {
+      "id": "claim:claude_family_sonnet45_ratio",
+      "type": "claim",
+      "label": "claude_family_sonnet45_ratio",
+      "excerpt": "sonnet-4.5 23.8x staging ratio (I21, Table 4)"
+    },
+    {
+      "id": "claim:claude_family_opus45_ratio",
+      "type": "claim",
+      "label": "claude_family_opus45_ratio",
+      "excerpt": "opus-4.5 4.8x staging ratio (I22, C5, frontier; Table 4)"
+    },
+    {
+      "id": "claim:json_nl_failure_control_pct",
+      "type": "claim",
+      "label": "json_nl_failure_control_pct",
+      "excerpt": "77.5% JSON-NL failure at control (C24 first number)"
+    },
+    {
+      "id": "supplementary/experiments/json_nl_v4_results.json",
+      "type": "data_file",
+      "label": "json_nl_v4_results.json"
+    },
+    {
+      "id": "claim:json_nl_failure_low_pct",
+      "type": "claim",
+      "label": "json_nl_failure_low_pct",
+      "excerpt": "90.0% JSON-NL failure at low (C24 progression)"
+    },
+    {
+      "id": "claim:json_nl_failure_moderate_pct",
+      "type": "claim",
+      "label": "json_nl_failure_moderate_pct",
+      "excerpt": "97.5% JSON-NL failure at moderate (C24 progression)"
+    },
+    {
+      "id": "claim:json_nl_failure_high_pct",
+      "type": "claim",
+      "label": "json_nl_failure_high_pct",
+      "excerpt": "100% JSON-NL failure at high (C24 endpoint)"
+    },
+    {
+      "id": "claim:per_task_spearman_r_s",
+      "type": "claim",
+      "label": "per_task_spearman_r_s",
+      "excerpt": "r_s = -0.942 (48-point per-task correlation, Section 5.1)"
+    },
+    {
+      "id": "rebuttal/figures/per_task_correlation_results.json",
+      "type": "data_file",
+      "label": "per_task_correlation_results.json"
+    },
+    {
+      "id": "claim:per_task_n_tasks",
+      "type": "claim",
+      "label": "per_task_n_tasks",
+      "excerpt": "12 tasks (per-task correlation)"
+    },
+    {
+      "id": "claim:per_task_n_trials_total",
+      "type": "claim",
+      "label": "per_task_n_trials_total",
+      "excerpt": "1920 trials (per-task correlation; 12 tasks x 4 tiers x 4 models x 5 trials x 2 protocols)"
+    },
+    {
+      "id": "claim:per_task_monotone_count",
+      "type": "claim",
+      "label": "per_task_monotone_count",
+      "excerpt": "11 of 12 tasks monotone in pass rate vs tier"
+    },
+    {
+      "id": "claim:charitable_feasibility_k2_pct",
+      "type": "claim",
+      "label": "charitable_feasibility_k2_pct",
+      "excerpt": "93% feasible at k=2 (charitable composition table)"
+    },
+    {
+      "id": "supplementary/experiments/outputs/charitable/charitable_feasibility.json",
+      "type": "data_file",
+      "label": "charitable_feasibility.json"
+    },
+    {
+      "id": "claim:charitable_feasibility_k3_pct",
+      "type": "claim",
+      "label": "charitable_feasibility_k3_pct",
+      "excerpt": "79% feasible at k=3"
+    },
+    {
+      "id": "claim:charitable_feasibility_k4_pct",
+      "type": "claim",
+      "label": "charitable_feasibility_k4_pct",
+      "excerpt": "63% feasible at k=4 (paper rounds 62.5 -> 63)"
+    },
+    {
+      "id": "claim:charitable_feasibility_k5_pct",
+      "type": "claim",
+      "label": "charitable_feasibility_k5_pct",
+      "excerpt": "46% feasible at k=5"
+    },
+    {
+      "id": "claim:charitable_feasibility_k6_pct",
+      "type": "claim",
+      "label": "charitable_feasibility_k6_pct",
+      "excerpt": "31% feasible at k=6"
+    },
+    {
+      "id": "claim:charitable_feasibility_k8_pct",
+      "type": "claim",
+      "label": "charitable_feasibility_k8_pct",
+      "excerpt": "12% feasible at k=8"
+    },
+    {
+      "id": "claim:charitable_feasibility_k10_pct",
+      "type": "claim",
+      "label": "charitable_feasibility_k10_pct",
+      "excerpt": "3% feasible at k=10"
+    },
+    {
+      "id": "claim:charitable_p_high_conflict",
+      "type": "claim",
+      "label": "charitable_p_high_conflict",
+      "excerpt": "p_high_conflict = 0.0737 (charitable model parameter from Constitution)"
+    },
+    {
+      "id": "claim:charitable_n_trials",
+      "type": "claim",
+      "label": "charitable_n_trials",
+      "excerpt": "n=10,000 Monte Carlo trials per k (charitable composition)"
+    },
+    {
+      "id": "claim:high_k_opus_clustered_pass",
+      "type": "claim",
+      "label": "high_k_opus_clustered_pass",
+      "excerpt": "high_k_opus clustered regime: 100/100 (App high_k_opus, k=10 succeeds when constraints clustered)"
+    },
+    {
+      "id": "supplementary/experiments/outputs/high_k_opus/high_k_opus_results.json",
+      "type": "data_file",
+      "label": "high_k_opus_results.json"
+    },
+    {
+      "id": "claim:high_k_opus_conflicting_pass",
+      "type": "claim",
+      "label": "high_k_opus_conflicting_pass",
+      "excerpt": "high_k_opus conflicting regime: 0/100 (k=8 conflicting fails completely)"
+    },
+    {
+      "id": "claim:high_k_opus_hard_negative_pass",
+      "type": "claim",
+      "label": "high_k_opus_hard_negative_pass",
+      "excerpt": "high_k_opus hard_negative regime: 100/100 (high rho_hat but compatible -> still solvable)"
+    },
+    {
+      "id": "claim:high_k_opus_n_per_regime",
+      "type": "claim",
+      "label": "high_k_opus_n_per_regime",
+      "excerpt": "n=100 per regime (high_k_opus; 4 regimes x 100 trials = 400 total)"
+    },
+    {
+      "id": "claim:unconditional_pivot_high_total",
+      "type": "claim",
+      "label": "unconditional_pivot_high_total",
+      "excerpt": "480 high-tier trials (4 models x 12 tasks x 2 protocols x N=5)"
+    },
+    {
+      "id": "rebuttal/figures/unconditional_pivot_results.json",
+      "type": "data_file",
+      "label": "unconditional_pivot_results.json"
+    },
+    {
+      "id": "claim:unconditional_pivot_high_pass",
+      "type": "claim",
+      "label": "unconditional_pivot_high_pass",
+      "excerpt": "8/480 unconditional high-tier success (1.7%)"
+    },
+    {
+      "id": "claim:unconditional_pivot_high_pct",
+      "type": "claim",
+      "label": "unconditional_pivot_high_pct",
+      "excerpt": "1.7% unconditional high-tier success rate"
+    },
+    {
+      "id": "claim:abstract_smooth_zero_successes",
+      "type": "claim",
+      "label": "abstract_smooth_zero_successes",
+      "excerpt": "0 smooth-regime successes in infeasible region (the '0' in '0/4,800')"
+    },
+    {
+      "id": "claim:abstract_total_infeasible",
+      "type": "claim",
+      "label": "abstract_total_infeasible",
+      "excerpt": "4800 total infeasible-region trials (the '4,800' in '0/4,800')"
+    },
+    {
+      "id": "claim:regime_split_smooth_pct",
+      "type": "claim",
+      "label": "regime_split_smooth_pct",
+      "excerpt": "89% smooth regime fraction (C9)"
+    },
+    {
+      "id": "claim:regime_split_pivot_pct",
+      "type": "claim",
+      "label": "regime_split_pivot_pct",
+      "excerpt": "11% pivot regime fraction (C9)"
+    },
+    {
+      "id": "claim:conflict_detection_n_pairs",
+      "type": "claim",
+      "label": "conflict_detection_n_pairs",
+      "excerpt": "190 constitution pairs analyzed for conflict detection"
+    },
+    {
+      "id": "supplementary/experiments/outputs/conflict_detection/results.json",
+      "type": "data_file",
+      "label": "results.json"
+    },
+    {
+      "id": "claim:gram_n_negative_eigenvalues",
+      "type": "claim",
+      "label": "gram_n_negative_eigenvalues",
+      "excerpt": "Constitution Gram matrix: 1 negative eigenvalue (lambda_min < 0 -> not positive definite)"
+    },
+    {
+      "id": "rebuttal/figures/gram_eigendecomposition_results.json",
+      "type": "data_file",
+      "label": "gram_eigendecomposition_results.json"
+    },
+    {
+      "id": "claim:gram_lambda_min",
+      "type": "claim",
+      "label": "gram_lambda_min",
+      "excerpt": "Constitution Gram lambda_min = -4.31 (negative, indicates non-PSD)"
+    },
+    {
+      "id": "claim:gram_n_eigenvalues",
+      "type": "claim",
+      "label": "gram_n_eigenvalues",
+      "excerpt": "20 eigenvalues in Constitution Gram matrix (n=20 principles)"
+    },
+    {
+      "id": "claim:gram_empirical_cliff_high",
+      "type": "claim",
+      "label": "gram_empirical_cliff_high",
+      "excerpt": "Empirical cliff at high tier: ~1.7% pass rate (matches calibration)"
+    },
+    {
+      "id": "claim:delta_capacity_n_token_budgets",
+      "type": "claim",
+      "label": "delta_capacity_n_token_budgets",
+      "excerpt": "5 token budgets tested: 128, 192, 256, 384, 512 (I46)"
+    },
+    {
+      "id": "supplementary/experiments/delta_capacity_results.json",
+      "type": "data_file",
+      "label": "delta_capacity_results.json"
+    },
+    {
+      "id": "claim:delta_capacity_smallest_budget",
+      "type": "claim",
+      "label": "delta_capacity_smallest_budget",
+      "excerpt": "Smallest token budget = 128 (delta capacity I46 first value)"
+    },
+    {
+      "id": "claim:delta_capacity_largest_budget",
+      "type": "claim",
+      "label": "delta_capacity_largest_budget",
+      "excerpt": "Largest token budget = 512 (delta capacity I46 last value)"
+    },
+    {
+      "id": "claim:delta_capacity_n_total_trials",
+      "type": "claim",
+      "label": "delta_capacity_n_total_trials",
+      "excerpt": "1200 trials in delta capacity experiment (4 models x 6 tasks x 5 budgets x 5 trials x 2 protocols)"
+    },
+    {
+      "id": "claim:fixed_point_floor_total_tasks",
+      "type": "claim",
+      "label": "fixed_point_floor_total_tasks",
+      "excerpt": "6 tasks tested for opus-4.3 fixed-point floor"
+    },
+    {
+      "id": "supplementary/experiments/fixed_point_floor_opus_43.json",
+      "type": "data_file",
+      "label": "fixed_point_floor_opus_43.json"
+    },
+    {
+      "id": "claim:fixed_point_floor_floors_found",
+      "type": "claim",
+      "label": "fixed_point_floor_floors_found",
+      "excerpt": "0 fixed-point floors found at opus-4.3 (all tasks staged successfully)"
+    },
+    {
+      "id": "claim:claude_family_n_models",
+      "type": "claim",
+      "label": "claude_family_n_models",
+      "excerpt": "7 Claude family models analyzed (haiku-3 through opus-4.5)"
+    },
+    {
+      "id": "claim:json_nl_tier_rho_high",
+      "type": "claim",
+      "label": "json_nl_tier_rho_high",
+      "excerpt": "JSON-NL high-tier rho = 0.70 (App H)"
+    },
+    {
+      "id": "claim:constitution_n_principles_via_conflict_detection",
+      "type": "claim",
+      "label": "constitution_n_principles_via_conflict_detection",
+      "excerpt": "Cross-source verification: 190 pairs from C(20,2) = 20*19/2"
+    },
+    {
+      "id": "claim:bytebeat_n_constraints",
+      "type": "claim",
+      "label": "bytebeat_n_constraints",
+      "excerpt": "Bytebeat bridge has 4 constraints (pitch_A4, rhythm_120bpm, high_flatness, high_roughness); k=4 row in Table tab:bytebea"
+    },
+    {
+      "id": "ci/derivations/bridge_baselines_derived.json",
+      "type": "data_file",
+      "label": "bridge_baselines_derived.json"
+    },
+    {
+      "id": "claim:bytebeat_baseline_valid_samples",
+      "type": "claim",
+      "label": "bytebeat_baseline_valid_samples",
+      "excerpt": "Bytebeat baseline grammar yields 62 valid samples used for empirical rho estimation"
+    },
+    {
+      "id": "claim:bytebeat_pitch_pair_max_rho",
+      "type": "claim",
+      "label": "bytebeat_pitch_pair_max_rho",
+      "excerpt": "Bytebeat collapse to 0% at rho >= 0.8 (C22): pitch_A4 marginal is 0 in baseline grammar so any pair with pitch_A4 has rh"
+    },
+    {
+      "id": "claim:if_dsl_n_constraints",
+      "type": "claim",
+      "label": "if_dsl_n_constraints",
+      "excerpt": "IF-DSL bridge uses 6 constraints (connected, solvable, two_routes, one_bottleneck, rooms_eq_6, pathlen_eq_5)"
+    },
+    {
+      "id": "claim:if_dsl_baseline_samples",
+      "type": "claim",
+      "label": "if_dsl_baseline_samples",
+      "excerpt": "IF-DSL baseline samples (n=100) used for empirical rho estimation"
+    },
+    {
+      "id": "claim:if_dsl_high_rho_pair_value",
+      "type": "claim",
+      "label": "if_dsl_high_rho_pair_value",
+      "excerpt": "0% IF-DSL at high rho (C23): one_bottleneck + pathlen_eq_5 yields rho=1.0, the maximally conflicting pair anchoring the "
+    },
+    {
+      "id": "claim:alg1_rho_hat_stage",
+      "type": "claim",
+      "label": "alg1_rho_hat_stage",
+      "excerpt": "rho_hat_stage = 0.15 (Algorithm 1 / pre-registered C13)"
+    },
+    {
+      "id": "ci/derivations/algorithm1_thresholds.json",
+      "type": "data_file",
+      "label": "algorithm1_thresholds.json"
+    },
+    {
+      "id": "claim:alg1_rho_hat_fail",
+      "type": "claim",
+      "label": "alg1_rho_hat_fail",
+      "excerpt": "rho_hat_fail = 0.5 (Algorithm 1 / pre-registered C14)"
+    },
+    {
+      "id": "claim:alg1_pivot_step_mult",
+      "type": "claim",
+      "label": "alg1_pivot_step_mult",
+      "excerpt": "Pivot step threshold = 2.5 x L_hat (I50)"
+    },
+    {
+      "id": "claim:alg1_drift_threshold_deg",
+      "type": "claim",
+      "label": "alg1_drift_threshold_deg",
+      "excerpt": "Direction drift threshold 15 deg (I51)"
+    },
+    {
+      "id": "claim:alg1_default_l_hat",
+      "type": "claim",
+      "label": "alg1_default_l_hat",
+      "excerpt": "Default L_hat ~ 0.025 (I49)"
+    },
+    {
+      "id": "claim:table11_one_shot_pass_pct",
+      "type": "claim",
+      "label": "table11_one_shot_pass_pct",
+      "excerpt": "One-shot 5% pass (Table 11 / I36)"
+    },
+    {
+      "id": "ci/derivations/protocol_table11.json",
+      "type": "data_file",
+      "label": "protocol_table11.json"
+    },
+    {
+      "id": "claim:table11_one_shot_tokens",
+      "type": "claim",
+      "label": "table11_one_shot_tokens",
+      "excerpt": "One-shot 256 tokens (Table 11 / I36)"
+    },
+    {
+      "id": "claim:table11_staged_pass_pct",
+      "type": "claim",
+      "label": "table11_staged_pass_pct",
+      "excerpt": "Staged 18% pass (Table 11 / I37)"
+    },
+    {
+      "id": "claim:table11_staged_tokens",
+      "type": "claim",
+      "label": "table11_staged_tokens",
+      "excerpt": "Staged 512 tokens (Table 11 / I37)"
+    },
+    {
+      "id": "claim:table11_best_of_4_pass_pct",
+      "type": "claim",
+      "label": "table11_best_of_4_pass_pct",
+      "excerpt": "Best-of-4 12% pass (Table 11 / I38)"
+    },
+    {
+      "id": "claim:table11_best_of_4_tokens",
+      "type": "claim",
+      "label": "table11_best_of_4_tokens",
+      "excerpt": "Best-of-4 1024 tokens (Table 11 / I38)"
+    },
+    {
+      "id": "claim:table11_self_refine_pass_pct",
+      "type": "claim",
+      "label": "table11_self_refine_pass_pct",
+      "excerpt": "Self-refine 15% pass (Table 11 / I39)"
+    },
+    {
+      "id": "claim:table11_self_refine_tokens",
+      "type": "claim",
+      "label": "table11_self_refine_tokens",
+      "excerpt": "Self-refine 640 tokens (Table 11 / I39)"
+    },
+    {
+      "id": "claim:table11_geometric_router_pass_pct",
+      "type": "claim",
+      "label": "table11_geometric_router_pass_pct",
+      "excerpt": "Geometric router 18% pass (Table 11 / I40 / C15)"
+    },
+    {
+      "id": "claim:table11_geometric_router_tokens",
+      "type": "claim",
+      "label": "table11_geometric_router_tokens",
+      "excerpt": "Geometric router 384 tokens (Table 11 / I40 / C15)"
+    },
+    {
+      "id": "claim:table11_geometric_router_speedup",
+      "type": "claim",
+      "label": "table11_geometric_router_speedup",
+      "excerpt": "Geometric router 0.67x speedup (Table 11 / I40 / C15)"
+    },
+    {
+      "id": "claim:table11_oracle_pass_pct",
+      "type": "claim",
+      "label": "table11_oracle_pass_pct",
+      "excerpt": "Oracle 21% pass (Table 11 / I41)"
+    },
+    {
+      "id": "claim:table11_oracle_tokens",
+      "type": "claim",
+      "label": "table11_oracle_tokens",
+      "excerpt": "Oracle 320 tokens (Table 11 / I41)"
+    },
+    {
+      "id": "claim:transfer_code_router_agree_pct",
+      "type": "claim",
+      "label": "transfer_code_router_agree_pct",
+      "excerpt": "Code: 100% router agreement (I42)"
+    },
+    {
+      "id": "ci/derivations/cross_domain_router.json",
+      "type": "data_file",
+      "label": "cross_domain_router.json"
+    },
+    {
+      "id": "claim:transfer_code_regret_pct",
+      "type": "claim",
+      "label": "transfer_code_regret_pct",
+      "excerpt": "Code: 1.8% regret vs domain-specific tuning (I42)"
+    },
+    {
+      "id": "claim:transfer_json_nl_router_agree_pct",
+      "type": "claim",
+      "label": "transfer_json_nl_router_agree_pct",
+      "excerpt": "JSON-NL: 94% router agreement (I43)"
+    },
+    {
+      "id": "claim:transfer_json_nl_regret_pct",
+      "type": "claim",
+      "label": "transfer_json_nl_regret_pct",
+      "excerpt": "JSON-NL: 2.1% regret (I43)"
+    },
+    {
+      "id": "claim:transfer_if_dsl_router_agree_pct",
+      "type": "claim",
+      "label": "transfer_if_dsl_router_agree_pct",
+      "excerpt": "IF-DSL: 91% router agreement (I44)"
+    },
+    {
+      "id": "claim:transfer_if_dsl_regret_pct",
+      "type": "claim",
+      "label": "transfer_if_dsl_regret_pct",
+      "excerpt": "IF-DSL: 2.4% regret (I44)"
+    },
+    {
+      "id": "claim:transfer_bytebeat_router_agree_pct",
+      "type": "claim",
+      "label": "transfer_bytebeat_router_agree_pct",
+      "excerpt": "Bytebeat: 88% router agreement (I45)"
+    },
+    {
+      "id": "claim:transfer_bytebeat_regret_pct",
+      "type": "claim",
+      "label": "transfer_bytebeat_regret_pct",
+      "excerpt": "Bytebeat: 3.1% regret (I45)"
+    },
+    {
+      "id": "claim:drift_median",
+      "type": "claim",
+      "label": "drift_median",
+      "excerpt": "Median direction drift 0.07 (I54)"
+    },
+    {
+      "id": "ci/derivations/drift_stats.json",
+      "type": "data_file",
+      "label": "drift_stats.json"
+    },
+    {
+      "id": "claim:drift_iqr_low",
+      "type": "claim",
+      "label": "drift_iqr_low",
+      "excerpt": "IQR low 0.03 (I54)"
+    },
+    {
+      "id": "claim:drift_iqr_high",
+      "type": "claim",
+      "label": "drift_iqr_high",
+      "excerpt": "IQR high 0.12 (I54)"
+    },
+    {
+      "id": "claim:drift_pct_below_015",
+      "type": "claim",
+      "label": "drift_pct_below_015",
+      "excerpt": "94% trajectories with drift <0.15 (C18)"
+    },
+    {
+      "id": "claim:high_drift_pct",
+      "type": "claim",
+      "label": "high_drift_pct",
+      "excerpt": "6% high-drift = pivot completions (C19)"
+    },
+    {
+      "id": "claim:step_size_p95",
+      "type": "claim",
+      "label": "step_size_p95",
+      "excerpt": "95th percentile step 0.148 (I55, measured)"
+    },
+    {
+      "id": "claim:unconditional_infeasible_regret_pct",
+      "type": "claim",
+      "label": "unconditional_infeasible_regret_pct",
+      "excerpt": "<2% regret vs oracle: 1.7% unconditional infeasible-region success rate (C20)"
+    },
+    {
+      "id": "claim:lipschitz_qwen_coder_L_hat",
+      "type": "claim",
+      "label": "lipschitz_qwen_coder_L_hat",
+      "excerpt": "Qwen-2.5-Coder L=0.048 (I1, Table tab:lipschitz_calibration; measured)"
+    },
+    {
+      "id": "supplementary/experiments/lipschitz_calibration_results.json",
+      "type": "data_file",
+      "label": "lipschitz_calibration_results.json"
+    },
+    {
+      "id": "claim:lipschitz_qwen_coder_std",
+      "type": "claim",
+      "label": "lipschitz_qwen_coder_std",
+      "excerpt": "Qwen-2.5-Coder L_hat std = 0.008 (I1; measured)"
+    },
+    {
+      "id": "claim:lipschitz_deepseek_coder_L_hat",
+      "type": "claim",
+      "label": "lipschitz_deepseek_coder_L_hat",
+      "excerpt": "DeepSeek-Coder L=0.049 (I3; measured)"
+    },
+    {
+      "id": "claim:lipschitz_deepseek_coder_std",
+      "type": "claim",
+      "label": "lipschitz_deepseek_coder_std",
+      "excerpt": "DeepSeek-Coder L_hat std = 0.007 (I3; measured)"
+    },
+    {
+      "id": "claim:lipschitz_tinyllama_L_hat",
+      "type": "claim",
+      "label": "lipschitz_tinyllama_L_hat",
+      "excerpt": "TinyLlama-1.1B L=0.045 (I5; measured)"
+    },
+    {
+      "id": "claim:lipschitz_tinyllama_std",
+      "type": "claim",
+      "label": "lipschitz_tinyllama_std",
+      "excerpt": "TinyLlama-1.1B L_hat std = 0.008 (I5; measured)"
+    },
+    {
+      "id": "claim:lipschitz_L_hat_min_across_models",
+      "type": "claim",
+      "label": "lipschitz_L_hat_min_across_models",
+      "excerpt": "L_hat min across 3 models = 0.045 (C8 lower bound; measured)"
+    },
+    {
+      "id": "claim:lipschitz_L_hat_max_across_models",
+      "type": "claim",
+      "label": "lipschitz_L_hat_max_across_models",
+      "excerpt": "L_hat max across 3 models = 0.049 (C8 upper bound; measured)"
+    },
+    {
+      "id": "claim:embedding_minilm_rho_max",
+      "type": "claim",
+      "label": "embedding_minilm_rho_max",
+      "excerpt": "MiniLM-L6-v2 rho_max=0.12 (I23, Table tab:embedding_R)"
+    },
+    {
+      "id": "ci/derivations/encoder_lipschitz.json",
+      "type": "data_file",
+      "label": "encoder_lipschitz.json"
+    },
+    {
+      "id": "claim:embedding_minilm_rho_max_ci",
+      "type": "claim",
+      "label": "embedding_minilm_rho_max_ci",
+      "excerpt": "MiniLM-L6-v2 rho_max CI 0.02 (I23)"
+    },
+    {
+      "id": "claim:embedding_mpnet_rho_max",
+      "type": "claim",
+      "label": "embedding_mpnet_rho_max",
+      "excerpt": "mpnet-base-v2 rho_max=0.18 (I24)"
+    },
+    {
+      "id": "claim:embedding_mpnet_rho_max_ci",
+      "type": "claim",
+      "label": "embedding_mpnet_rho_max_ci",
+      "excerpt": "mpnet-base-v2 rho_max CI 0.03 (I24)"
+    },
+    {
+      "id": "claim:embedding_multilingual_rho_max",
+      "type": "claim",
+      "label": "embedding_multilingual_rho_max",
+      "excerpt": "multilingual-MiniLM rho_max=0.20 (I25)"
+    },
+    {
+      "id": "claim:embedding_multilingual_rho_max_ci",
+      "type": "claim",
+      "label": "embedding_multilingual_rho_max_ci",
+      "excerpt": "multilingual-MiniLM rho_max CI 0.04 (I25)"
+    },
+    {
+      "id": "claim:encoder_sens_minilm_rho_low",
+      "type": "claim",
+      "label": "encoder_sens_minilm_rho_low",
+      "excerpt": "MiniLM rho range low = 0.05 (I26)"
+    },
+    {
+      "id": "claim:encoder_sens_minilm_rho_high",
+      "type": "claim",
+      "label": "encoder_sens_minilm_rho_high",
+      "excerpt": "MiniLM rho range high = 0.65 (I26)"
+    },
+    {
+      "id": "claim:encoder_sens_mpnet_router_pct",
+      "type": "claim",
+      "label": "encoder_sens_mpnet_router_pct",
+      "excerpt": "mpnet-base-v2 router agreement 94% (I27)"
+    },
+    {
+      "id": "claim:encoder_sens_mpnet_outcome_pct",
+      "type": "claim",
+      "label": "encoder_sens_mpnet_outcome_pct",
+      "excerpt": "mpnet-base-v2 outcome agreement 91% (I27)"
+    },
+    {
+      "id": "claim:encoder_sens_multilingual_router_pct",
+      "type": "claim",
+      "label": "encoder_sens_multilingual_router_pct",
+      "excerpt": "multilingual-MiniLM router agreement 96% (I28)"
+    },
+    {
+      "id": "claim:encoder_sens_multilingual_outcome_pct",
+      "type": "claim",
+      "label": "encoder_sens_multilingual_outcome_pct",
+      "excerpt": "multilingual-MiniLM outcome agreement 93% (I28)"
+    },
+    {
+      "id": "claim:identifier_qwen_coder_in_lipschitz",
+      "type": "claim",
+      "label": "identifier_qwen_coder_in_lipschitz",
+      "excerpt": "Qwen-2.5-Coder-1.5B-Instruct present in Lipschitz calibration source"
+    },
+    {
+      "id": "claim:identifier_deepseek_coder_in_lipschitz",
+      "type": "claim",
+      "label": "identifier_deepseek_coder_in_lipschitz",
+      "excerpt": "deepseek-coder-1.3b-instruct present in Lipschitz calibration source"
+    },
+    {
+      "id": "claim:identifier_tinyllama_in_lipschitz",
+      "type": "claim",
+      "label": "identifier_tinyllama_in_lipschitz",
+      "excerpt": "TinyLlama-1.1B-Chat-v1.0 present in Lipschitz calibration source"
+    },
+    {
+      "id": "claim:identifier_qwen_coder_in_code_experiment",
+      "type": "claim",
+      "label": "identifier_qwen_coder_in_code_experiment",
+      "excerpt": "Qwen-2.5-Coder-1.5B-Instruct present in code_constraint source (cross-file consistency)"
+    },
+    {
+      "id": "supplementary/experiments/code_constraint_results.json",
+      "type": "data_file",
+      "label": "code_constraint_results.json"
+    },
+    {
+      "id": "claim:identifier_deepseek_coder_in_code_experiment",
+      "type": "claim",
+      "label": "identifier_deepseek_coder_in_code_experiment",
+      "excerpt": "deepseek-coder-1.3b-instruct present in code_constraint source"
+    },
+    {
+      "id": "claim:identifier_tinyllama_in_code_experiment",
+      "type": "claim",
+      "label": "identifier_tinyllama_in_code_experiment",
+      "excerpt": "TinyLlama-1.1B-Chat-v1.0 present in code_constraint source"
+    },
+    {
+      "id": "claim:identifier_qwen_3b_in_code_experiment",
+      "type": "claim",
+      "label": "identifier_qwen_3b_in_code_experiment",
+      "excerpt": "Qwen-2.5-3B-Instruct present in code_constraint source (4th open-weight model)"
+    },
+    {
+      "id": "claim:identifier_haiku3_in_claude_family",
+      "type": "claim",
+      "label": "identifier_haiku3_in_claude_family",
+      "excerpt": "haiku-3 present in Claude family source"
+    },
+    {
+      "id": "claim:identifier_sonnet4_in_claude_family",
+      "type": "claim",
+      "label": "identifier_sonnet4_in_claude_family",
+      "excerpt": "sonnet-4 present in Claude family source"
+    },
+    {
+      "id": "claim:identifier_opus4_in_claude_family",
+      "type": "claim",
+      "label": "identifier_opus4_in_claude_family",
+      "excerpt": "opus-4 present in Claude family source"
+    },
+    {
+      "id": "claim:identifier_opus41_in_claude_family",
+      "type": "claim",
+      "label": "identifier_opus41_in_claude_family",
+      "excerpt": "opus-4.1 present in Claude family source"
+    },
+    {
+      "id": "claim:identifier_haiku45_in_claude_family",
+      "type": "claim",
+      "label": "identifier_haiku45_in_claude_family",
+      "excerpt": "haiku-4.5 present in Claude family source"
+    },
+    {
+      "id": "claim:identifier_sonnet45_in_claude_family",
+      "type": "claim",
+      "label": "identifier_sonnet45_in_claude_family",
+      "excerpt": "sonnet-4.5 present in Claude family source"
+    },
+    {
+      "id": "claim:identifier_opus45_in_claude_family",
+      "type": "claim",
+      "label": "identifier_opus45_in_claude_family",
+      "excerpt": "opus-4.5 present in Claude family source (frontier model)"
+    },
+    {
+      "id": "claim:identifier_command_r_plus_in_blinded",
+      "type": "claim",
+      "label": "identifier_command_r_plus_in_blinded",
+      "excerpt": "command-r-plus present in blinded external benchmark"
+    },
+    {
+      "id": "claim:identifier_deepseek_r1_in_blinded",
+      "type": "claim",
+      "label": "identifier_deepseek_r1_in_blinded",
+      "excerpt": "deepseek-r1 present in blinded external benchmark"
+    },
+    {
+      "id": "claim:identifier_qwen_72b_in_blinded",
+      "type": "claim",
+      "label": "identifier_qwen_72b_in_blinded",
+      "excerpt": "qwen-2.5-72b present in blinded external benchmark"
+    },
+    {
+      "id": "claim:identifier_mistral_large_in_blinded",
+      "type": "claim",
+      "label": "identifier_mistral_large_in_blinded",
+      "excerpt": "mistral-large present in blinded external benchmark"
+    },
+    {
+      "id": "claim:identifier_count_blinded_external_4models",
+      "type": "claim",
+      "label": "identifier_count_blinded_external_4models",
+      "excerpt": "4-model blinded benchmark \u00e2\u20ac\u201d exactly 4 distinct models in source"
+    },
+    {
+      "id": "claim:identifier_count_claude_family_7models",
+      "type": "claim",
+      "label": "identifier_count_claude_family_7models",
+      "excerpt": "7 Claude family models in fixed_point analysis (matches body claim)"
+    },
+    {
+      "id": "claim:identifier_count_cross_model_5models",
+      "type": "claim",
+      "label": "identifier_count_cross_model_5models",
+      "excerpt": "5-model cross-provider benchmark (would have caught: paper said 4 named, source had 5)"
+    },
+    {
+      "id": "claim:identifier_gpt4o_in_cross_model",
+      "type": "claim",
+      "label": "identifier_gpt4o_in_cross_model",
+      "excerpt": "GPT-4o present in cross-provider source"
+    },
+    {
+      "id": "claim:identifier_deepseek_v3_in_cross_model",
+      "type": "claim",
+      "label": "identifier_deepseek_v3_in_cross_model",
+      "excerpt": "DeepSeek-v3 present in cross-provider source"
+    },
+    {
+      "id": "claim:identifier_llama_31_70b_in_cross_model",
+      "type": "claim",
+      "label": "identifier_llama_31_70b_in_cross_model",
+      "excerpt": "Llama-3.1-70B present in cross-provider source"
+    },
+    {
+      "id": "claim:identifier_gemini_25_flash_in_cross_model",
+      "type": "claim",
+      "label": "identifier_gemini_25_flash_in_cross_model",
+      "excerpt": "Gemini 2.5 Flash present in cross-provider source"
+    },
+    {
+      "id": "claim:identifier_gemini_25_pro_in_cross_model",
+      "type": "claim",
+      "label": "identifier_gemini_25_pro_in_cross_model",
+      "excerpt": "Gemini 2.5 Pro present in cross-provider source (the one that was silently dropped from prose)"
+    },
+    {
+      "id": "claim:identifier_named_models_match_total_n_cross_model",
+      "type": "claim",
+      "label": "identifier_named_models_match_total_n_cross_model",
+      "excerpt": "Named models in body == distinct models in source (consistency check)"
+    },
+    {
+      "id": "claim:identifier_minilm_l6_in_encoder_table",
+      "type": "claim",
+      "label": "identifier_minilm_l6_in_encoder_table",
+      "excerpt": "MiniLM-L6-v2 encoder in tab:embedding_R + tab:encoder_sensitivity"
+    },
+    {
+      "id": "claim:identifier_mpnet_base_in_encoder_table",
+      "type": "claim",
+      "label": "identifier_mpnet_base_in_encoder_table",
+      "excerpt": "mpnet-base-v2 encoder in tab:embedding_R + tab:encoder_sensitivity"
+    },
+    {
+      "id": "claim:identifier_multilingual_minilm_in_encoder_table",
+      "type": "claim",
+      "label": "identifier_multilingual_minilm_in_encoder_table",
+      "excerpt": "multilingual-MiniLM encoder in tab:embedding_R + tab:encoder_sensitivity (also line 384 after E5->multilingual-MiniLM fi"
+    },
+    {
+      "id": "claim:set_equality_encoders_3",
+      "type": "claim",
+      "label": "set_equality_encoders_3",
+      "excerpt": "Exactly 3 encoders in tab:embedding_R and tab:encoder_sensitivity"
+    },
+    {
+      "id": "claim:identifier_factorial_in_code_experiment",
+      "type": "claim",
+      "label": "identifier_factorial_in_code_experiment",
+      "excerpt": "factorial code task referenced (Table 4, multiple appendices)"
+    },
+    {
+      "id": "claim:identifier_fibonacci_in_code_experiment",
+      "type": "claim",
+      "label": "identifier_fibonacci_in_code_experiment",
+      "excerpt": "fibonacci code task referenced"
+    },
+    {
+      "id": "claim:identifier_count_code_experiment_tasks_12",
+      "type": "claim",
+      "label": "identifier_count_code_experiment_tasks_12",
+      "excerpt": "12 distinct code tasks in code_constraint experiment"
+    },
+    {
+      "id": "claim:set_equality_code_experiment_4_models",
+      "type": "claim",
+      "label": "set_equality_code_experiment_4_models",
+      "excerpt": "Tab:llm_bridge + tab:delta_capacity_model name 4 open-weight models"
+    },
+    {
+      "id": "claim:set_equality_claude_family_7_models",
+      "type": "claim",
+      "label": "set_equality_claude_family_7_models",
+      "excerpt": "Exactly 7 specific Claude family models"
+    },
+    {
+      "id": "claim:set_equality_blinded_external_4_models",
+      "type": "claim",
+      "label": "set_equality_blinded_external_4_models",
+      "excerpt": "Exactly 4 specific blinded external models"
+    },
+    {
+      "id": "claim:identifier_image_model_gpt5_4_image_2",
+      "type": "claim",
+      "label": "identifier_image_model_gpt5_4_image_2",
+      "excerpt": "Image model openai/gpt-5.4-image-2 used for Run B/C/D"
+    },
+    {
+      "id": "supplementary/experiments_rebuttal/image_transfer/image_transfer_results_runA_no_medium_frame.json",
+      "type": "data_file",
+      "label": "image_transfer_results_runA_no_medium_frame.json"
+    },
+    {
+      "id": "claim:identifier_high_k_opus_api_model_id",
+      "type": "claim",
+      "label": "identifier_high_k_opus_api_model_id",
+      "excerpt": "High-k Opus 4.5 ran with API id claude-opus-4-5-20251101"
+    },
+    {
+      "id": "claim:code_constraint_n_per_cell_60",
+      "type": "claim",
+      "label": "code_constraint_n_per_cell_60",
+      "excerpt": "Per (model, tier, protocol) cell: 60 trials (12 tasks x 5 trials)"
+    },
+    {
+      "id": "claim:code_constraint_n_per_tier_per_protocol_240",
+      "type": "claim",
+      "label": "code_constraint_n_per_tier_per_protocol_240",
+      "excerpt": "Per (tier, protocol) across 4 models: 240 trials"
+    },
+    {
+      "id": "claim:lipschitz_n_completions_900",
+      "type": "claim",
+      "label": "lipschitz_n_completions_900",
+      "excerpt": "900 completions (50 per task x 6 tasks x 3 models)"
+    },
+    {
+      "id": "claim:lipschitz_n_per_task_50",
+      "type": "claim",
+      "label": "lipschitz_n_per_task_50",
+      "excerpt": "N=50 completions per task (lipschitz calibration)"
+    },
+    {
+      "id": "claim:lipschitz_n_tokens_108957",
+      "type": "claim",
+      "label": "lipschitz_n_tokens_108957",
+      "excerpt": "N=108,957 per-token displacements (Step-Size Distribution)"
+    },
+    {
+      "id": "claim:lipschitz_n_tasks_6",
+      "type": "claim",
+      "label": "lipschitz_n_tasks_6",
+      "excerpt": "6 code tasks (lipschitz calibration)"
+    },
+    {
+      "id": "claim:lipschitz_n_models_3",
+      "type": "claim",
+      "label": "lipschitz_n_models_3",
+      "excerpt": "3 models (lipschitz calibration)"
+    },
+    {
+      "id": "claim:json_nl_n_per_tier_per_protocol_40",
+      "type": "claim",
+      "label": "json_nl_n_per_tier_per_protocol_40",
+      "excerpt": "JSON-NL Qwen-1.5B: n=40 per (tier, protocol) cell"
+    },
+    {
+      "id": "claim:json_nl_n_total_320",
+      "type": "claim",
+      "label": "json_nl_n_total_320",
+      "excerpt": "JSON-NL total: 4 tiers x 2 protocols x 40 = 320"
+    },
+    {
+      "id": "claim:delta_capacity_n_per_budget_per_protocol_120",
+      "type": "claim",
+      "label": "delta_capacity_n_per_budget_per_protocol_120",
+      "excerpt": "Token budget sweep: 120 trials per (budget, protocol)"
+    },
+    {
+      "id": "claim:delta_capacity_n_per_budget_240",
+      "type": "claim",
+      "label": "delta_capacity_n_per_budget_240",
+      "excerpt": "240 trials per token budget (across protocols)"
+    },
+    {
+      "id": "claim:high_k_opus_n_total_400",
+      "type": "claim",
+      "label": "high_k_opus_n_total_400",
+      "excerpt": "Opus 4.5 high-k: 4 regimes x 100 = 400 trials total"
+    },
+    {
+      "id": "claim:cross_model_n_per_model_older_240",
+      "type": "claim",
+      "label": "cross_model_n_per_model_older_240",
+      "excerpt": "5 models x 240 trials = 1,200 (older cross-model)"
+    },
+    {
+      "id": "claim:mutation_total_results_156",
+      "type": "claim",
+      "label": "mutation_total_results_156",
+      "excerpt": "156 mutation tests run total"
+    },
+    {
+      "id": "claim:calibration_staged_pass_control_pct",
+      "type": "claim",
+      "label": "calibration_staged_pass_control_pct",
+      "excerpt": "Control 78% staged (Table tab:calibration column 'Staged')"
+    },
+    {
+      "id": "claim:calibration_staged_pass_low_pct",
+      "type": "claim",
+      "label": "calibration_staged_pass_low_pct",
+      "excerpt": "Low 60% staged (Table tab:calibration)"
+    },
+    {
+      "id": "claim:calibration_staged_pass_moderate_pct",
+      "type": "claim",
+      "label": "calibration_staged_pass_moderate_pct",
+      "excerpt": "Moderate 23% staged (Table tab:calibration)"
+    },
+    {
+      "id": "claim:calibration_staged_pass_high_pct",
+      "type": "claim",
+      "label": "calibration_staged_pass_high_pct",
+      "excerpt": "High 2% staged (Table tab:calibration)"
+    },
+    {
+      "id": "claim:per_tier_control_pass_pct",
+      "type": "claim",
+      "label": "per_tier_control_pass_pct",
+      "excerpt": "76.9% control-tier mean pass (Table tab:tier_pivot_decomposition)"
+    },
+    {
+      "id": "claim:per_tier_low_pass_pct",
+      "type": "claim",
+      "label": "per_tier_low_pass_pct",
+      "excerpt": "58.1% low-tier mean pass"
+    },
+    {
+      "id": "claim:per_tier_moderate_pass_pct",
+      "type": "claim",
+      "label": "per_tier_moderate_pass_pct",
+      "excerpt": "23.1% moderate-tier mean pass"
+    },
+    {
+      "id": "claim:per_tier_high_pass_pct",
+      "type": "claim",
+      "label": "per_tier_high_pass_pct",
+      "excerpt": "1.7% high-tier mean pass (Table tab:tier_pivot_decomposition)"
+    },
+    {
+      "id": "claim:lipschitz_pooled_p99",
+      "type": "claim",
+      "label": "lipschitz_pooled_p99",
+      "excerpt": "p99 per-token displacement = 0.246 (Step-Size Distribution)"
+    },
+    {
+      "id": "claim:lipschitz_pooled_max",
+      "type": "claim",
+      "label": "lipschitz_pooled_max",
+      "excerpt": "Maximum observed per-token displacement = 0.447"
+    },
+    {
+      "id": "claim:claude_family_haiku3_wins",
+      "type": "claim",
+      "label": "claude_family_haiku3_wins",
+      "excerpt": "haiku-3 wins 3/6 tasks (Table tab:claude_family Wins column)"
+    },
+    {
+      "id": "claim:claude_family_sonnet4_wins",
+      "type": "claim",
+      "label": "claude_family_sonnet4_wins",
+      "excerpt": "sonnet-4 wins 5/6 tasks"
+    },
+    {
+      "id": "claim:claude_family_opus4_wins",
+      "type": "claim",
+      "label": "claude_family_opus4_wins",
+      "excerpt": "opus-4 wins 5/6 tasks"
+    },
+    {
+      "id": "claim:claude_family_opus41_wins",
+      "type": "claim",
+      "label": "claude_family_opus41_wins",
+      "excerpt": "opus-4.1 wins 5/6 tasks"
+    },
+    {
+      "id": "claim:claude_family_haiku45_wins",
+      "type": "claim",
+      "label": "claude_family_haiku45_wins",
+      "excerpt": "haiku-4.5 wins 5/6 tasks"
+    },
+    {
+      "id": "claim:claude_family_sonnet45_wins",
+      "type": "claim",
+      "label": "claude_family_sonnet45_wins",
+      "excerpt": "sonnet-4.5 wins 5/6 tasks"
+    },
+    {
+      "id": "claim:claude_family_opus45_wins",
+      "type": "claim",
+      "label": "claude_family_opus45_wins",
+      "excerpt": "opus-4.5 wins 4/6 tasks (the scaling-paradox row)"
+    },
+    {
+      "id": "claim:claude_family_n_tasks_per_model_6",
+      "type": "claim",
+      "label": "claude_family_n_tasks_per_model_6",
+      "excerpt": "6 tasks per model (Wins column denominator: 3/6, 5/6, 4/6)"
+    },
+    {
+      "id": "claim:constitution_top_pair_max_rho",
+      "type": "claim",
+      "label": "constitution_top_pair_max_rho",
+      "excerpt": "max rho = 0.897 (top high-rho pair, Table app:constitution)"
+    },
+    {
+      "id": "claim:constitution_hierarchy_ratio",
+      "type": "claim",
+      "label": "constitution_hierarchy_ratio",
+      "excerpt": "Hierarchy ratio 1.30x (within > cross category)"
+    },
+    {
+      "id": "claim:constitution_category_hardcoded_defaults_max_rho",
+      "type": "claim",
+      "label": "constitution_category_hardcoded_defaults_max_rho",
+      "excerpt": "Hardcoded Defaults max rho 0.861 (constitution category stats)"
+    },
+    {
+      "id": "claim:conflict_detection_overall_conflict_rate_pct",
+      "type": "claim",
+      "label": "conflict_detection_overall_conflict_rate_pct",
+      "excerpt": "Behavioral validation: 76.8% overall conflict rate (146/190)"
+    },
+    {
+      "id": "claim:conflict_detection_low_bucket_rate_pct",
+      "type": "claim",
+      "label": "conflict_detection_low_bucket_rate_pct",
+      "excerpt": "Low-rho conflict rate 68.6% (105 pairs)"
+    },
+    {
+      "id": "claim:conflict_detection_med_bucket_rate_pct",
+      "type": "claim",
+      "label": "conflict_detection_med_bucket_rate_pct",
+      "excerpt": "Medium-rho conflict rate 90.6% (highest, non-monotonic)"
+    },
+    {
+      "id": "claim:conflict_detection_high_bucket_rate_pct",
+      "type": "claim",
+      "label": "conflict_detection_high_bucket_rate_pct",
+      "excerpt": "High-rho conflict rate 76.2% (21 pairs)"
+    },
+    {
+      "id": "claim:conflict_detection_point_biserial_r",
+      "type": "claim",
+      "label": "conflict_detection_point_biserial_r",
+      "excerpt": "Point-biserial r=0.124 (constitution behavioral correlation)"
+    },
+    {
+      "id": "claim:baselines_token_savings_pct",
+      "type": "claim",
+      "label": "baselines_token_savings_pct",
+      "excerpt": "Geometric router uses 25% fewer tokens than staged"
+    },
+    {
+      "id": "claim:json_nl_format_pct_control",
+      "type": "claim",
+      "label": "json_nl_format_pct_control",
+      "excerpt": "JSON-NL control 50% format pass (Format% high end of drop)"
+    },
+    {
+      "id": "claim:json_nl_format_pct_high",
+      "type": "claim",
+      "label": "json_nl_format_pct_high",
+      "excerpt": "JSON-NL high tier 0% format pass (Format% drops 50%->0%)"
+    },
+    {
+      "id": "claim:json_nl_one_shot_pass_control_pct",
+      "type": "claim",
+      "label": "json_nl_one_shot_pass_control_pct",
+      "excerpt": "JSON-NL control one-shot 22.5% pass"
+    },
+    {
+      "id": "claim:delta_capacity_T128_oneshot_pct",
+      "type": "claim",
+      "label": "delta_capacity_T128_oneshot_pct",
+      "excerpt": "T=128 one-shot 33.3% (Table tab:delta_capacity)"
+    },
+    {
+      "id": "claim:delta_capacity_T128_staged_pct",
+      "type": "claim",
+      "label": "delta_capacity_T128_staged_pct",
+      "excerpt": "T=128 staged 25.0% (paper headline 'staging starved at T=128')"
+    },
+    {
+      "id": "claim:qwen3b_one_shot_low_pct",
+      "type": "claim",
+      "label": "qwen3b_one_shot_low_pct",
+      "excerpt": "Qwen-3B one-shot 42% at low tier (Table tab:llm_bridge)"
+    },
+    {
+      "id": "claim:deltacap_model_qwencoder_T128_delta",
+      "type": "claim",
+      "label": "deltacap_model_qwencoder_T128_delta",
+      "excerpt": "Qwen-Coder-1.5B at T=128: staged delta = -63% (tab:delta_capacity_model)"
+    },
+    {
+      "id": "claim:deltacap_model_qwencoder_T192_delta",
+      "type": "claim",
+      "label": "deltacap_model_qwencoder_T192_delta",
+      "excerpt": "Qwen-Coder-1.5B at T=192: staged delta = -37% (tab:delta_capacity_model)"
+    },
+    {
+      "id": "claim:deltacap_model_qwencoder_T256_delta",
+      "type": "claim",
+      "label": "deltacap_model_qwencoder_T256_delta",
+      "excerpt": "Qwen-Coder-1.5B at T=256: staged delta = -30% (tab:delta_capacity_model)"
+    },
+    {
+      "id": "claim:deltacap_model_qwencoder_T384_delta",
+      "type": "claim",
+      "label": "deltacap_model_qwencoder_T384_delta",
+      "excerpt": "Qwen-Coder-1.5B at T=384: staged delta = -33% (tab:delta_capacity_model)"
+    },
+    {
+      "id": "claim:deltacap_model_qwencoder_T512_delta",
+      "type": "claim",
+      "label": "deltacap_model_qwencoder_T512_delta",
+      "excerpt": "Qwen-Coder-1.5B at T=512: staged delta = -30% (tab:delta_capacity_model)"
+    },
+    {
+      "id": "claim:deltacap_model_qwen3b_T128_delta",
+      "type": "claim",
+      "label": "deltacap_model_qwen3b_T128_delta",
+      "excerpt": "Qwen-3B at T=128: staged delta = +23% (tab:delta_capacity_model)"
+    },
+    {
+      "id": "claim:deltacap_model_qwen3b_T192_delta",
+      "type": "claim",
+      "label": "deltacap_model_qwen3b_T192_delta",
+      "excerpt": "Qwen-3B at T=192: staged delta = +20% (tab:delta_capacity_model)"
+    },
+    {
+      "id": "claim:deltacap_model_qwen3b_T256_delta",
+      "type": "claim",
+      "label": "deltacap_model_qwen3b_T256_delta",
+      "excerpt": "Qwen-3B at T=256: staged delta = +27% (tab:delta_capacity_model)"
+    },
+    {
+      "id": "claim:deltacap_model_qwen3b_T384_delta",
+      "type": "claim",
+      "label": "deltacap_model_qwen3b_T384_delta",
+      "excerpt": "Qwen-3B at T=384: staged delta = +23% (tab:delta_capacity_model)"
+    },
+    {
+      "id": "claim:deltacap_model_qwen3b_T512_delta",
+      "type": "claim",
+      "label": "deltacap_model_qwen3b_T512_delta",
+      "excerpt": "Qwen-3B at T=512: staged delta = +27% (tab:delta_capacity_model)"
+    },
+    {
+      "id": "claim:deltacap_model_deepseek_T128_delta",
+      "type": "claim",
+      "label": "deltacap_model_deepseek_T128_delta",
+      "excerpt": "DeepSeek-Coder-1.3B at T=128: staged delta = +7% (tab:delta_capacity_model)"
+    },
+    {
+      "id": "claim:deltacap_model_deepseek_T192_delta",
+      "type": "claim",
+      "label": "deltacap_model_deepseek_T192_delta",
+      "excerpt": "DeepSeek-Coder-1.3B at T=192: staged delta = +17% (tab:delta_capacity_model)"
+    },
+    {
+      "id": "claim:deltacap_model_deepseek_T256_delta",
+      "type": "claim",
+      "label": "deltacap_model_deepseek_T256_delta",
+      "excerpt": "DeepSeek-Coder-1.3B at T=256: staged delta = +13% (tab:delta_capacity_model)"
+    },
+    {
+      "id": "claim:deltacap_model_deepseek_T384_delta",
+      "type": "claim",
+      "label": "deltacap_model_deepseek_T384_delta",
+      "excerpt": "DeepSeek-Coder-1.3B at T=384: staged delta = 0% (tab:delta_capacity_model)"
+    },
+    {
+      "id": "claim:deltacap_model_deepseek_T512_delta",
+      "type": "claim",
+      "label": "deltacap_model_deepseek_T512_delta",
+      "excerpt": "DeepSeek-Coder-1.3B at T=512: staged delta = +27% (tab:delta_capacity_model)"
+    },
+    {
+      "id": "claim:deltacap_model_tinyllama_T128_delta",
+      "type": "claim",
+      "label": "deltacap_model_tinyllama_T128_delta",
+      "excerpt": "TinyLlama-1.1B at T=128: staged delta = 0% (tab:delta_capacity_model)"
+    },
+    {
+      "id": "claim:deltacap_model_tinyllama_T192_delta",
+      "type": "claim",
+      "label": "deltacap_model_tinyllama_T192_delta",
+      "excerpt": "TinyLlama-1.1B at T=192: staged delta = +20% (tab:delta_capacity_model)"
+    },
+    {
+      "id": "claim:deltacap_model_tinyllama_T256_delta",
+      "type": "claim",
+      "label": "deltacap_model_tinyllama_T256_delta",
+      "excerpt": "TinyLlama-1.1B at T=256: staged delta = 0% (tab:delta_capacity_model)"
+    },
+    {
+      "id": "claim:deltacap_model_tinyllama_T384_delta",
+      "type": "claim",
+      "label": "deltacap_model_tinyllama_T384_delta",
+      "excerpt": "TinyLlama-1.1B at T=384: staged delta = +3% (tab:delta_capacity_model)"
+    },
+    {
+      "id": "claim:deltacap_model_tinyllama_T512_delta",
+      "type": "claim",
+      "label": "deltacap_model_tinyllama_T512_delta",
+      "excerpt": "TinyLlama-1.1B at T=512: staged delta = -3% (tab:delta_capacity_model)"
+    },
+    {
+      "id": "claim:bridge_qwencoder_control_oneshot_pct",
+      "type": "claim",
+      "label": "bridge_qwencoder_control_oneshot_pct",
+      "excerpt": "Qwen-Coder-1.5B one-shot 100% at Control tier (tab:llm_bridge)"
+    },
+    {
+      "id": "claim:bridge_qwencoder_control_delta_pct",
+      "type": "claim",
+      "label": "bridge_qwencoder_control_delta_pct",
+      "excerpt": "Qwen-Coder-1.5B at Control: staged delta = -8% (tab:llm_bridge)"
+    },
+    {
+      "id": "claim:bridge_qwencoder_low_oneshot_pct",
+      "type": "claim",
+      "label": "bridge_qwencoder_low_oneshot_pct",
+      "excerpt": "Qwen-Coder-1.5B one-shot 95% at Low tier"
+    },
+    {
+      "id": "claim:bridge_qwen3b_control_oneshot_pct",
+      "type": "claim",
+      "label": "bridge_qwen3b_control_oneshot_pct",
+      "excerpt": "Qwen-3B one-shot 95% at Control tier"
+    },
+    {
+      "id": "claim:bridge_qwen3b_low_delta_pct",
+      "type": "claim",
+      "label": "bridge_qwen3b_low_delta_pct",
+      "excerpt": "Qwen-3B at Low: staged delta = +20%"
+    },
+    {
+      "id": "claim:bridge_qwen3b_high_oneshot_pct",
+      "type": "claim",
+      "label": "bridge_qwen3b_high_oneshot_pct",
+      "excerpt": "Qwen-3B one-shot 2% at High tier"
+    },
+    {
+      "id": "claim:bridge_tinyllama_high_oneshot_pct",
+      "type": "claim",
+      "label": "bridge_tinyllama_high_oneshot_pct",
+      "excerpt": "TinyLlama-1.1B one-shot 2% at High tier"
+    },
+    {
+      "id": "claim:bridge_deepseek_high_delta_pct",
+      "type": "claim",
+      "label": "bridge_deepseek_high_delta_pct",
+      "excerpt": "DeepSeek-Coder-1.3B at High: staged delta = +2%"
+    },
+    {
+      "id": "claim:bridge_qwencoder_low_delta_pct",
+      "type": "claim",
+      "label": "bridge_qwencoder_low_delta_pct",
+      "excerpt": "Qwen-Coder-1.5B at Low: staged delta = -23% (tab:llm_bridge)"
+    },
+    {
+      "id": "claim:bridge_qwencoder_moderate_oneshot_pct",
+      "type": "claim",
+      "label": "bridge_qwencoder_moderate_oneshot_pct",
+      "excerpt": "Qwen-Coder-1.5B one-shot 40% at Moderate tier (tab:llm_bridge)"
+    },
+    {
+      "id": "claim:bridge_qwencoder_moderate_delta_pct",
+      "type": "claim",
+      "label": "bridge_qwencoder_moderate_delta_pct",
+      "excerpt": "Qwen-Coder-1.5B at Moderate: staged delta = -22% (tab:llm_bridge)"
+    },
+    {
+      "id": "claim:bridge_qwencoder_high_oneshot_pct",
+      "type": "claim",
+      "label": "bridge_qwencoder_high_oneshot_pct",
+      "excerpt": "Qwen-Coder-1.5B one-shot 3% at High tier (tab:llm_bridge)"
+    },
+    {
+      "id": "claim:bridge_qwencoder_high_delta_pct",
+      "type": "claim",
+      "label": "bridge_qwencoder_high_delta_pct",
+      "excerpt": "Qwen-Coder-1.5B at High: staged delta = -1% (tab:llm_bridge)"
+    },
+    {
+      "id": "claim:bridge_qwen3b_control_delta_pct",
+      "type": "claim",
+      "label": "bridge_qwen3b_control_delta_pct",
+      "excerpt": "Qwen-3B at Control: staged delta = +2% (tab:llm_bridge)"
+    },
+    {
+      "id": "claim:bridge_qwen3b_moderate_oneshot_pct",
+      "type": "claim",
+      "label": "bridge_qwen3b_moderate_oneshot_pct",
+      "excerpt": "Qwen-3B one-shot 25% at Moderate tier (tab:llm_bridge)"
+    },
+    {
+      "id": "claim:bridge_qwen3b_moderate_delta_pct",
+      "type": "claim",
+      "label": "bridge_qwen3b_moderate_delta_pct",
+      "excerpt": "Qwen-3B at Moderate: staged delta = +8% (tab:llm_bridge)"
+    },
+    {
+      "id": "claim:bridge_qwen3b_high_delta_pct",
+      "type": "claim",
+      "label": "bridge_qwen3b_high_delta_pct",
+      "excerpt": "Qwen-3B at High: staged delta = +1% (tab:llm_bridge)"
+    },
+    {
+      "id": "claim:bridge_deepseek_control_oneshot_pct",
+      "type": "claim",
+      "label": "bridge_deepseek_control_oneshot_pct",
+      "excerpt": "DeepSeek-1.3B one-shot 82% at Control tier (tab:llm_bridge)"
+    },
+    {
+      "id": "claim:bridge_deepseek_control_delta_pct",
+      "type": "claim",
+      "label": "bridge_deepseek_control_delta_pct",
+      "excerpt": "DeepSeek-1.3B at Control: staged delta = +1% (tab:llm_bridge)"
+    },
+    {
+      "id": "claim:bridge_deepseek_low_oneshot_pct",
+      "type": "claim",
+      "label": "bridge_deepseek_low_oneshot_pct",
+      "excerpt": "DeepSeek-1.3B one-shot 73% at Low tier (tab:llm_bridge)"
+    },
+    {
+      "id": "claim:bridge_deepseek_low_delta_pct",
+      "type": "claim",
+      "label": "bridge_deepseek_low_delta_pct",
+      "excerpt": "DeepSeek-1.3B at Low: staged delta = +4% (tab:llm_bridge)"
+    },
+    {
+      "id": "claim:bridge_deepseek_moderate_oneshot_pct",
+      "type": "claim",
+      "label": "bridge_deepseek_moderate_oneshot_pct",
+      "excerpt": "DeepSeek-1.3B one-shot 22% at Moderate tier (tab:llm_bridge)"
+    },
+    {
+      "id": "claim:bridge_deepseek_moderate_delta_pct",
+      "type": "claim",
+      "label": "bridge_deepseek_moderate_delta_pct",
+      "excerpt": "DeepSeek-1.3B at Moderate: staged delta = +11% (tab:llm_bridge)"
+    },
+    {
+      "id": "claim:bridge_deepseek_high_oneshot_pct",
+      "type": "claim",
+      "label": "bridge_deepseek_high_oneshot_pct",
+      "excerpt": "DeepSeek-1.3B one-shot 0% at High tier (tab:llm_bridge)"
+    },
+    {
+      "id": "claim:bridge_tinyllama_control_oneshot_pct",
+      "type": "claim",
+      "label": "bridge_tinyllama_control_oneshot_pct",
+      "excerpt": "TinyLlama-1.1B one-shot 27% at Control tier (tab:llm_bridge)"
+    },
+    {
+      "id": "claim:bridge_tinyllama_control_delta_pct",
+      "type": "claim",
+      "label": "bridge_tinyllama_control_delta_pct",
+      "excerpt": "TinyLlama-1.1B at Control: staged delta = +13% (tab:llm_bridge)"
+    },
+    {
+      "id": "claim:bridge_tinyllama_low_oneshot_pct",
+      "type": "claim",
+      "label": "bridge_tinyllama_low_oneshot_pct",
+      "excerpt": "TinyLlama-1.1B one-shot 13% at Low tier (tab:llm_bridge)"
+    },
+    {
+      "id": "claim:bridge_tinyllama_low_delta_pct",
+      "type": "claim",
+      "label": "bridge_tinyllama_low_delta_pct",
+      "excerpt": "TinyLlama-1.1B at Low: staged delta = +19% (tab:llm_bridge)"
+    },
+    {
+      "id": "claim:bridge_tinyllama_moderate_oneshot_pct",
+      "type": "claim",
+      "label": "bridge_tinyllama_moderate_oneshot_pct",
+      "excerpt": "TinyLlama-1.1B one-shot 5% at Moderate tier (tab:llm_bridge)"
+    },
+    {
+      "id": "claim:bridge_tinyllama_moderate_delta_pct",
+      "type": "claim",
+      "label": "bridge_tinyllama_moderate_delta_pct",
+      "excerpt": "TinyLlama-1.1B at Moderate: staged delta = +3% (tab:llm_bridge)"
+    },
+    {
+      "id": "claim:bridge_tinyllama_high_delta_pct",
+      "type": "claim",
+      "label": "bridge_tinyllama_high_delta_pct",
+      "excerpt": "TinyLlama-1.1B at High: staged delta = -2% (tab:llm_bridge)"
+    },
+    {
+      "id": "claim:axis_baseline_control_tests_only_pct",
+      "type": "claim",
+      "label": "axis_baseline_control_tests_only_pct",
+      "excerpt": "Axis baseline at Control tier: tests only 76% (4-model aggregate, one_shot)"
+    },
+    {
+      "id": "claim:axis_baseline_control_format_only_pct",
+      "type": "claim",
+      "label": "axis_baseline_control_format_only_pct",
+      "excerpt": "Axis baseline at Control tier: format only 88% (4-model aggregate, one_shot)"
+    },
+    {
+      "id": "claim:axis_baseline_control_joint_pct",
+      "type": "claim",
+      "label": "axis_baseline_control_joint_pct",
+      "excerpt": "Axis baseline at Control tier: joint 76% (4-model aggregate, one_shot)"
+    },
+    {
+      "id": "claim:axis_baseline_high_tests_only_pct",
+      "type": "claim",
+      "label": "axis_baseline_high_tests_only_pct",
+      "excerpt": "Axis baseline at High tier: tests only 64% (4-model aggregate, one_shot)"
+    },
+    {
+      "id": "claim:axis_baseline_high_format_only_pct",
+      "type": "claim",
+      "label": "axis_baseline_high_format_only_pct",
+      "excerpt": "Axis baseline at High tier: format only 2% (4-model aggregate, one_shot)"
+    },
+    {
+      "id": "claim:axis_baseline_high_joint_pct",
+      "type": "claim",
+      "label": "axis_baseline_high_joint_pct",
+      "excerpt": "Axis baseline at High tier: joint 2% (4-model aggregate, one_shot)"
+    },
+    {
+      "id": "claim:iso_fibonacci_high_joint_pct",
+      "type": "claim",
+      "label": "iso_fibonacci_high_joint_pct",
+      "excerpt": "Iso-difficulty pair: fibonacci (high) both = 0% (4-model aggregate, one_shot)"
+    },
+    {
+      "id": "claim:iso_fibonacci_high_tests_only_pct",
+      "type": "claim",
+      "label": "iso_fibonacci_high_tests_only_pct",
+      "excerpt": "Iso-difficulty pair: fibonacci (high) a = 85% (4-model aggregate, one_shot)"
+    },
+    {
+      "id": "claim:iso_power_control_joint_pct",
+      "type": "claim",
+      "label": "iso_power_control_joint_pct",
+      "excerpt": "Iso-difficulty pair: power (control) both = 85% (4-model aggregate, one_shot)"
+    },
+    {
+      "id": "claim:iso_power_control_tests_only_pct",
+      "type": "claim",
+      "label": "iso_power_control_tests_only_pct",
+      "excerpt": "Iso-difficulty pair: power (control) a = 85% (4-model aggregate, one_shot)"
+    },
+    {
+      "id": "claim:smooth_regime_total_4272",
+      "type": "claim",
+      "label": "smooth_regime_total_4272",
+      "excerpt": "0/4,272 smooth-regime refutations (across 4 domains, predicted-infeasible region)"
+    },
+    {
+      "id": "claim:smooth_regime_successes_zero",
+      "type": "claim",
+      "label": "smooth_regime_successes_zero",
+      "excerpt": "0 smooth-regime successes (refutation count)"
+    },
+    {
+      "id": "claim:pivot_regime_total_528",
+      "type": "claim",
+      "label": "pivot_regime_total_528",
+      "excerpt": "528 pivot-regime trials (across 4 domains)"
+    },
+    {
+      "id": "claim:pivot_successes_42",
+      "type": "claim",
+      "label": "pivot_successes_42",
+      "excerpt": "42 detected-pivot successes (out of 528)"
+    },
+    {
+      "id": "claim:unconditional_pivot_high_tier_total_480",
+      "type": "claim",
+      "label": "unconditional_pivot_high_tier_total_480",
+      "excerpt": "High-tier total trials = 480 (code constraint, directly measured)"
+    },
+    {
+      "id": "claim:unconditional_pivot_smooth_decomp_427",
+      "type": "claim",
+      "label": "unconditional_pivot_smooth_decomp_427",
+      "excerpt": "Code-domain smooth-regime estimate = 427 (89% of 480 high-tier)"
+    },
+    {
+      "id": "claim:openrouter_regression_test_pct_control",
+      "type": "claim",
+      "label": "openrouter_regression_test_pct_control",
+      "excerpt": "Test-axis regression at control tier = 0.5% (pooled across 8 models, conditional on stage-1 pass_a)"
+    },
+    {
+      "id": "supplementary/experiments/openrouter_regression_results.json",
+      "type": "data_file",
+      "label": "openrouter_regression_results.json"
+    },
+    {
+      "id": "claim:openrouter_regression_test_pct_low",
+      "type": "claim",
+      "label": "openrouter_regression_test_pct_low",
+      "excerpt": "Test-axis regression at low tier = 0.6% (pooled across 8 models, conditional on stage-1 pass_a)"
+    },
+    {
+      "id": "claim:openrouter_regression_test_pct_moderate",
+      "type": "claim",
+      "label": "openrouter_regression_test_pct_moderate",
+      "excerpt": "Test-axis regression at moderate tier = 1.1% (pooled across 8 models, conditional on stage-1 pass_a)"
+    },
+    {
+      "id": "claim:openrouter_regression_test_pct_high",
+      "type": "claim",
+      "label": "openrouter_regression_test_pct_high",
+      "excerpt": "Test-axis regression at high tier = 1.7% (pooled across 8 models, conditional on stage-1 pass_a)"
+    },
+    {
+      "id": "claim:openrouter_format_n_s1b_pooled_control",
+      "type": "claim",
+      "label": "openrouter_format_n_s1b_pooled_control",
+      "excerpt": "Stage-1 format pass count at control tier = 239/240 (pooled across 8 models)"
+    },
+    {
+      "id": "claim:openrouter_format_n_s1b_pooled_low",
+      "type": "claim",
+      "label": "openrouter_format_n_s1b_pooled_low",
+      "excerpt": "Stage-1 format pass count at low tier = 56/240 (pooled across 8 models)"
+    },
+    {
+      "id": "claim:openrouter_format_n_s1b_pooled_moderate",
+      "type": "claim",
+      "label": "openrouter_format_n_s1b_pooled_moderate",
+      "excerpt": "Stage-1 format pass count at moderate tier = 23/240 (pooled across 8 models)"
+    },
+    {
+      "id": "claim:openrouter_format_n_s1b_pooled_high",
+      "type": "claim",
+      "label": "openrouter_format_n_s1b_pooled_high",
+      "excerpt": "Stage-1 format pass count at high tier = 0/240 (pooled across 8 models)"
+    },
+    {
+      "id": "claim:openrouter_format_universal_collapse_high",
+      "type": "claim",
+      "label": "openrouter_format_universal_collapse_high",
+      "excerpt": "Universal: 0/240 stage-1 format passes at high tier (pooled across 8 models implies every model = 0)"
+    },
+    {
+      "id": "claim:openrouter_regression_n_models_8",
+      "type": "claim",
+      "label": "openrouter_regression_n_models_8",
+      "excerpt": "8 OpenRouter models in regression experiment (gemini-flash, gpt-4o-mini, claude-haiku-3.5, llama-3.1-70b, deepseek-v3, m"
+    },
+    {
+      "id": "claim:openrouter_regression_n_per_tier_240",
+      "type": "claim",
+      "label": "openrouter_regression_n_per_tier_240",
+      "excerpt": "240 trials per tier in regression experiment (8 models x 6 tasks x 5 trials)"
+    },
+    {
+      "id": "claim:openrouter_regression_n_tasks_6",
+      "type": "claim",
+      "label": "openrouter_regression_n_tasks_6",
+      "excerpt": "6 tasks (factorial, fibonacci, is_palindrome, sum_digits, count_vowels, fizzbuzz)"
+    },
+    {
+      "id": "paper/figures/algorithm1_storyboard.pdf",
+      "type": "figure",
+      "label": "algorithm1_storyboard.pdf",
+      "in_use": true,
+      "tikz_source": false
+    },
+    {
+      "id": "supplementary/experiments_rebuttal/algorithm1_storyboard/build_storyboard.py",
+      "type": "script",
+      "label": "build_storyboard.py"
+    },
+    {
+      "id": "supplementary/experiments_rebuttal/algorithm1_storyboard/storyboard_spec.json",
+      "type": "data_file",
+      "label": "storyboard_spec.json"
+    },
+    {
+      "id": "paper/figures/gram_eigendecomposition.pdf",
+      "type": "figure",
+      "label": "gram_eigendecomposition.pdf",
+      "in_use": true,
+      "tikz_source": false
+    },
+    {
+      "id": "supplementary/experiments_rebuttal/dct_analysis/gram_eigendecomposition.py",
+      "type": "script",
+      "label": "gram_eigendecomposition.py"
+    },
+    {
+      "id": "supplementary/experiments/outputs/constitution/constitution_rho_matrix.npy",
+      "type": "data_file",
+      "label": "constitution_rho_matrix.npy"
+    },
+    {
+      "id": "paper/figures/per_task_correlation.pdf",
+      "type": "figure",
+      "label": "per_task_correlation.pdf",
+      "in_use": true,
+      "tikz_source": false
+    },
+    {
+      "id": "supplementary/experiments_rebuttal/per_task_correlation.py",
+      "type": "script",
+      "label": "per_task_correlation.py"
+    },
+    {
+      "id": "paper/figures/constrained_decoding.pdf",
+      "type": "figure",
+      "label": "constrained_decoding.pdf",
+      "in_use": true,
+      "tikz_source": false
+    },
+    {
+      "id": "supplementary/experiments_rebuttal/constrained_decoding/plot_constrained_decoding.py",
+      "type": "script",
+      "label": "plot_constrained_decoding.py"
+    },
+    {
+      "id": "supplementary/experiments_rebuttal/constrained_decoding/constrained_decoding_results.json",
+      "type": "data_file",
+      "label": "constrained_decoding_results.json"
+    },
+    {
+      "id": "paper/figures/cross_model_cliff.pdf",
+      "type": "figure",
+      "label": "cross_model_cliff.pdf",
+      "in_use": true,
+      "tikz_source": false
+    },
+    {
+      "id": "supplementary/experiments_rebuttal/cross_model/plot_cross_model.py",
+      "type": "script",
+      "label": "plot_cross_model.py"
+    },
+    {
+      "id": "paper/figures/soft_constraint_cliff.pdf",
+      "type": "figure",
+      "label": "soft_constraint_cliff.pdf",
+      "in_use": true,
+      "tikz_source": false
+    },
+    {
+      "id": "supplementary/experiments_rebuttal/soft_constraints/soft_constraint_pilot.py",
+      "type": "script",
+      "label": "soft_constraint_pilot.py"
+    },
+    {
+      "id": "rebuttal/figures/soft_constraint_results.json",
+      "type": "data_file",
+      "label": "soft_constraint_results.json"
+    },
+    {
+      "id": "paper/figures/related_envelope_combined.tex",
+      "type": "figure",
+      "label": "related_envelope_combined.tex",
+      "in_use": true,
+      "tikz_source": true
+    },
+    {
+      "id": "paper/figures/limitations_envelope.tex",
+      "type": "figure",
+      "label": "limitations_envelope.tex",
+      "in_use": false,
+      "tikz_source": true
+    },
+    {
+      "id": "paper/figures/related_work_quadrant.tex",
+      "type": "figure",
+      "label": "related_work_quadrant.tex",
+      "in_use": false,
+      "tikz_source": true
+    },
+    {
+      "id": "paper/figures/interface_assumption.tex",
+      "type": "figure",
+      "label": "interface_assumption.tex",
+      "in_use": true,
+      "tikz_source": true
+    },
+    {
+      "id": "paper/figures/algorithm1_routing.tex",
+      "type": "figure",
+      "label": "algorithm1_routing.tex",
+      "in_use": true,
+      "tikz_source": true
+    },
+    {
+      "id": "paper/figures/staging_vs_refine.tex",
+      "type": "figure",
+      "label": "staging_vs_refine.tex",
+      "in_use": true,
+      "tikz_source": true
+    },
+    {
+      "id": "paper/figures/image_transfer.pdf",
+      "type": "figure",
+      "label": "image_transfer.pdf",
+      "in_use": false,
+      "tikz_source": false
+    },
+    {
+      "id": "supplementary/experiments_rebuttal/image_transfer/plot_image_transfer.py",
+      "type": "script",
+      "label": "plot_image_transfer.py"
+    },
+    {
+      "id": "supplementary/experiments_rebuttal/image_transfer/image_transfer_results_runB.json",
+      "type": "data_file",
+      "label": "image_transfer_results_runB.json"
+    },
+    {
+      "id": "paper/figures/image_transfer_conflict.pdf",
+      "type": "figure",
+      "label": "image_transfer_conflict.pdf",
+      "in_use": false,
+      "tikz_source": false
+    },
+    {
+      "id": "supplementary/experiments_rebuttal/image_transfer/plot_image_transfer_conflict.py",
+      "type": "script",
+      "label": "plot_image_transfer_conflict.py"
+    },
+    {
+      "id": "supplementary/experiments_rebuttal/image_transfer/image_transfer_results_runC.json",
+      "type": "data_file",
+      "label": "image_transfer_results_runC.json"
+    },
+    {
+      "id": "paper/figures/image_format_cliff.pdf",
+      "type": "figure",
+      "label": "image_format_cliff.pdf",
+      "in_use": true,
+      "tikz_source": false
+    },
+    {
+      "id": "supplementary/experiments_rebuttal/image_transfer/plot_image_format_cliff.py",
+      "type": "script",
+      "label": "plot_image_format_cliff.py"
+    },
+    {
+      "id": "rebuttal/figures/proxy_ablation.pdf",
+      "type": "figure",
+      "label": "proxy_ablation.pdf",
+      "in_use": false,
+      "tikz_source": false
+    },
+    {
+      "id": "supplementary/experiments_rebuttal/proxy_ablation/proxy_ablation.py",
+      "type": "script",
+      "label": "proxy_ablation.py"
+    },
+    {
+      "id": "rebuttal/figures/proxy_ablation_results.json",
+      "type": "data_file",
+      "label": "proxy_ablation_results.json"
+    },
+    {
+      "id": "rebuttal/figures/sonification_defense.pdf",
+      "type": "figure",
+      "label": "sonification_defense.pdf",
+      "in_use": false,
+      "tikz_source": false
+    },
+    {
+      "id": "supplementary/experiments_rebuttal/sonification_defense/chromatic_vision.py",
+      "type": "script",
+      "label": "chromatic_vision.py"
+    },
+    {
+      "id": "rebuttal/figures/sonification_defense_rho_sweep.pdf",
+      "type": "figure",
+      "label": "sonification_defense_rho_sweep.pdf",
+      "in_use": false,
+      "tikz_source": false
+    },
+    {
+      "id": "rebuttal/figures/prompt_length_sweep.png",
+      "type": "figure",
+      "label": "prompt_length_sweep.png",
+      "in_use": false,
+      "tikz_source": false
+    },
+    {
+      "id": "supplementary/experiments_rebuttal/prompt_length_sweep/prompt_length_sweep.py",
+      "type": "script",
+      "label": "prompt_length_sweep.py"
+    },
+    {
+      "id": "supplementary/demos/audio_demos/constitution_wheel_full.wav",
+      "type": "figure",
+      "label": "constitution_wheel_full.wav",
+      "in_use": false,
+      "tikz_source": false
+    },
+    {
+      "id": "supplementary/demos/sonification.py",
+      "type": "script",
+      "label": "sonification.py"
+    },
+    {
+      "id": "supplementary/demos/audio_demos/diagonal_all_four.wav",
+      "type": "figure",
+      "label": "diagonal_all_four.wav",
+      "in_use": false,
+      "tikz_source": false
+    },
+    {
+      "id": "paper/main.tex",
+      "type": "paper_span",
+      "label": "main.tex",
+      "line_start": 349,
+      "line_end": 350
+    },
+    {
+      "id": "supplementary/illustrations/staging_vs_refine_direction.txt",
+      "type": "data_file",
+      "label": "staging_vs_refine_direction.txt"
+    },
+    {
+      "id": "supplementary/illustrations/compliance/neurips2026_compliance.txt",
+      "type": "venue_doc",
+      "label": "neurips2026_compliance.txt"
+    },
+    {
+      "id": "supplementary/illustrations/algorithm1_routing_direction.txt",
+      "type": "data_file",
+      "label": "algorithm1_routing_direction.txt"
+    },
+    {
+      "id": "supplementary/illustrations/interface_assumption_direction.txt",
+      "type": "data_file",
+      "label": "interface_assumption_direction.txt"
+    },
+    {
+      "id": "layer:L1_audit",
+      "type": "layer",
+      "label": "L1_audit",
+      "status": "PASS",
+      "return_code": 0
+    },
+    {
+      "id": "ci/claim_audit.py",
+      "type": "script",
+      "label": "claim_audit.py"
+    },
+    {
+      "id": "layer:L2_validator",
+      "type": "layer",
+      "label": "L2_validator",
+      "status": "PASS",
+      "return_code": 0
+    },
+    {
+      "id": "ci/claim_audit_validator.py",
+      "type": "script",
+      "label": "claim_audit_validator.py"
+    },
+    {
+      "id": "layer:L3_sweep",
+      "type": "layer",
+      "label": "L3_sweep",
+      "status": "PASS",
+      "return_code": 0
+    },
+    {
+      "id": "ci/claim_coverage_sweep.py",
+      "type": "script",
+      "label": "claim_coverage_sweep.py"
+    },
+    {
+      "id": "layer:L4_lineage",
+      "type": "layer",
+      "label": "L4_lineage",
+      "status": "PASS",
+      "return_code": 0
+    },
+    {
+      "id": "ci/figure_lineage_check.py",
+      "type": "script",
+      "label": "figure_lineage_check.py"
+    },
+    {
+      "id": "layer:L5_figure_values",
+      "type": "layer",
+      "label": "L5_figure_values",
+      "status": "PASS",
+      "return_code": 0
+    },
+    {
+      "id": "ci/figure_value_check.py",
+      "type": "script",
+      "label": "figure_value_check.py"
+    },
+    {
+      "id": "layer:L7_citations",
+      "type": "layer",
+      "label": "L7_citations",
+      "status": "PASS",
+      "return_code": 0
+    },
+    {
+      "id": "ci/citation_integrity_check.py",
+      "type": "script",
+      "label": "citation_integrity_check.py"
+    },
+    {
+      "id": "layer:L8_links",
+      "type": "layer",
+      "label": "L8_links",
+      "status": "PASS",
+      "return_code": 0
+    },
+    {
+      "id": "ci/link_integrity_check.py",
+      "type": "script",
+      "label": "link_integrity_check.py"
+    },
+    {
+      "id": "layer:L9_consistency",
+      "type": "layer",
+      "label": "L9_consistency",
+      "status": "PASS",
+      "return_code": 0
+    },
+    {
+      "id": "ci/cross_claim_consistency_check.py",
+      "type": "script",
+      "label": "cross_claim_consistency_check.py"
+    },
+    {
+      "id": "layer:L10_bib",
+      "type": "layer",
+      "label": "L10_bib",
+      "status": "PASS",
+      "return_code": 0
+    },
+    {
+      "id": "ci/bib_entry_check.py",
+      "type": "script",
+      "label": "bib_entry_check.py"
+    },
+    {
+      "id": "layer:L11_scripts",
+      "type": "layer",
+      "label": "L11_scripts",
+      "status": "PASS",
+      "return_code": 0
+    },
+    {
+      "id": "ci/script_integrity_check.py",
+      "type": "script",
+      "label": "script_integrity_check.py"
+    },
+    {
+      "id": "layer:L12_build_equiv",
+      "type": "layer",
+      "label": "L12_build_equiv",
+      "status": "PASS",
+      "return_code": 0
+    },
+    {
+      "id": "ci/build_equivalence_check.py",
+      "type": "script",
+      "label": "build_equivalence_check.py"
+    },
+    {
+      "id": "layer:L13_cross_tree",
+      "type": "layer",
+      "label": "L13_cross_tree",
+      "status": "PASS",
+      "return_code": 0
+    },
+    {
+      "id": "ci/cross_tree_consistency_check.py",
+      "type": "script",
+      "label": "cross_tree_consistency_check.py"
+    },
+    {
+      "id": "layer:L14_illustrations",
+      "type": "layer",
+      "label": "L14_illustrations",
+      "status": "PASS",
+      "return_code": 0
+    },
+    {
+      "id": "ci/illustration_lineage_check.py",
+      "type": "script",
+      "label": "illustration_lineage_check.py"
+    },
+    {
+      "id": "layer:L15_data_ties",
+      "type": "layer",
+      "label": "L15_data_ties",
+      "status": "PASS",
+      "return_code": 0
+    },
+    {
+      "id": "ci/claim_data_ties_check.py",
+      "type": "script",
+      "label": "claim_data_ties_check.py"
+    },
+    {
+      "id": "layer:L16_author_claims",
+      "type": "layer",
+      "label": "L16_author_claims",
+      "status": "PASS",
+      "return_code": 0
+    },
+    {
+      "id": "ci/author_claims_check.py",
+      "type": "script",
+      "label": "author_claims_check.py"
+    },
+    {
+      "id": "ci/claim_audit_results.json",
+      "type": "data_file",
+      "label": "claim_audit_results.json"
+    },
+    {
+      "id": "cert:claim_certificate.json",
+      "type": "manifest",
+      "label": "claim_certificate.json"
+    },
+    {
+      "id": "ci/claim_coverage_uncovered.json",
+      "type": "data_file",
+      "label": "claim_coverage_uncovered.json"
+    },
+    {
+      "id": "ci/figure_value_check_results.json",
+      "type": "data_file",
+      "label": "figure_value_check_results.json"
+    },
+    {
+      "id": "ci/citation_integrity_results.json",
+      "type": "data_file",
+      "label": "citation_integrity_results.json"
+    },
+    {
+      "id": "ci/link_integrity_results.json",
+      "type": "data_file",
+      "label": "link_integrity_results.json"
+    },
+    {
+      "id": "ci/cross_claim_consistency_results.json",
+      "type": "data_file",
+      "label": "cross_claim_consistency_results.json"
+    },
+    {
+      "id": "ci/bib_entry_check_results.json",
+      "type": "data_file",
+      "label": "bib_entry_check_results.json"
+    },
+    {
+      "id": "ci/script_integrity_results.json",
+      "type": "data_file",
+      "label": "script_integrity_results.json"
+    },
+    {
+      "id": "ci/build_equivalence_results.json",
+      "type": "data_file",
+      "label": "build_equivalence_results.json"
+    },
+    {
+      "id": "ci/cross_tree_consistency_results.json",
+      "type": "data_file",
+      "label": "cross_tree_consistency_results.json"
+    },
+    {
+      "id": "ci/illustration_lineage_results.json",
+      "type": "data_file",
+      "label": "illustration_lineage_results.json"
+    },
+    {
+      "id": "ci/claim_data_ties_results.json",
+      "type": "data_file",
+      "label": "claim_data_ties_results.json"
+    },
+    {
+      "id": "ci/author_claims_results.json",
+      "type": "data_file",
+      "label": "author_claims_results.json"
+    },
+    {
+      "id": "ci/claim_data_ties.json",
+      "type": "data_file",
+      "label": "claim_data_ties.json"
+    },
+    {
+      "id": "ci/figure_lineage.json",
+      "type": "data_file",
+      "label": "figure_lineage.json"
+    },
+    {
+      "id": "ci/illustration_lineage.json",
+      "type": "data_file",
+      "label": "illustration_lineage.json"
+    },
+    {
+      "id": "paper/main.pdf",
+      "type": "paper",
+      "label": "main.pdf"
+    }
+  ],
+  "edges": [
+    {
+      "src": "claim:runD_high_pass_b_pct",
+      "dst": "supplementary/experiments_rebuttal/image_transfer/image_transfer_runD_passB.json",
+      "rel": "derives_from"
+    },
+    {
+      "src": "claim:runD_control_pass_b_pct",
+      "dst": "supplementary/experiments_rebuttal/image_transfer/image_transfer_runD_passB.json",
+      "rel": "derives_from"
+    },
+    {
+      "src": "claim:runD_n_trials_total",
+      "dst": "supplementary/experiments_rebuttal/image_transfer/image_transfer_runD_passB.json",
+      "rel": "derives_from"
+    },
+    {
+      "src": "claim:cross_model_n_total_blinded",
+      "dst": "rebuttal/figures/blinded_external/cross_model_results.json",
+      "rel": "derives_from"
+    },
+    {
+      "src": "claim:cross_model_4model_avg_high_pct",
+      "dst": "rebuttal/figures/blinded_external/cross_model_results.json",
+      "rel": "derives_from"
+    },
+    {
+      "src": "claim:command_r_plus_control_pct",
+      "dst": "rebuttal/figures/blinded_external/cross_model_results.json",
+      "rel": "derives_from"
+    },
+    {
+      "src": "claim:command_r_plus_low_pct",
+      "dst": "rebuttal/figures/blinded_external/cross_model_results.json",
+      "rel": "derives_from"
+    },
+    {
+      "src": "claim:command_r_plus_moderate_pct",
+      "dst": "rebuttal/figures/blinded_external/cross_model_results.json",
+      "rel": "derives_from"
+    },
+    {
+      "src": "claim:command_r_plus_high_pct",
+      "dst": "rebuttal/figures/blinded_external/cross_model_results.json",
+      "rel": "derives_from"
+    },
+    {
+      "src": "claim:cross_model_n_total_older",
+      "dst": "rebuttal/figures/cross_model_results.json",
+      "rel": "derives_from"
+    },
+    {
+      "src": "claim:constitution_n_principles",
+      "dst": "supplementary/experiments/outputs/constitution/constitution_analysis.json",
+      "rel": "derives_from"
+    },
+    {
+      "src": "claim:constitution_n_pairs",
+      "dst": "supplementary/experiments/outputs/constitution/constitution_analysis.json",
+      "rel": "derives_from"
+    },
+    {
+      "src": "claim:constitution_high_rho_fraction_pct",
+      "dst": "supplementary/experiments/outputs/constitution/constitution_analysis.json",
+      "rel": "derives_from"
+    },
+    {
+      "src": "claim:constitution_high_rho_fraction_decimal",
+      "dst": "supplementary/experiments/outputs/constitution/constitution_analysis.json",
+      "rel": "derives_from"
+    },
+    {
+      "src": "claim:constitution_mean_rho",
+      "dst": "supplementary/experiments/outputs/constitution/constitution_analysis.json",
+      "rel": "derives_from"
+    },
+    {
+      "src": "claim:mutation_caught",
+      "dst": "ci/tests/systematic_mutation_results.json",
+      "rel": "derives_from"
+    },
+    {
+      "src": "claim:mutation_total_testable",
+      "dst": "ci/tests/systematic_mutation_results.json",
+      "rel": "derives_from"
+    },
+    {
+      "src": "claim:calibration_spearman_r",
+      "dst": "supplementary/experiments/calibration_results.json",
+      "rel": "derives_from"
+    },
+    {
+      "src": "claim:tier_rho_control",
+      "dst": "supplementary/experiments/calibration_results.json",
+      "rel": "derives_from"
+    },
+    {
+      "src": "claim:tier_rho_low",
+      "dst": "supplementary/experiments/calibration_results.json",
+      "rel": "derives_from"
+    },
+    {
+      "src": "claim:tier_rho_moderate",
+      "dst": "supplementary/experiments/calibration_results.json",
+      "rel": "derives_from"
+    },
+    {
+      "src": "claim:tier_rho_high",
+      "dst": "supplementary/experiments/calibration_results.json",
+      "rel": "derives_from"
+    },
+    {
+      "src": "claim:calibration_failure_control_pct",
+      "dst": "supplementary/experiments/calibration_results.json",
+      "rel": "derives_from"
+    },
+    {
+      "src": "claim:calibration_failure_low_pct",
+      "dst": "supplementary/experiments/calibration_results.json",
+      "rel": "derives_from"
+    },
+    {
+      "src": "claim:calibration_failure_moderate_pct",
+      "dst": "supplementary/experiments/calibration_results.json",
+      "rel": "derives_from"
+    },
+    {
+      "src": "claim:calibration_failure_high_pct",
+      "dst": "supplementary/experiments/calibration_results.json",
+      "rel": "derives_from"
+    },
+    {
+      "src": "claim:calibration_pass_control_pct",
+      "dst": "supplementary/experiments/calibration_results.json",
+      "rel": "derives_from"
+    },
+    {
+      "src": "claim:calibration_pass_low_pct",
+      "dst": "supplementary/experiments/calibration_results.json",
+      "rel": "derives_from"
+    },
+    {
+      "src": "claim:calibration_pass_moderate_pct",
+      "dst": "supplementary/experiments/calibration_results.json",
+      "rel": "derives_from"
+    },
+    {
+      "src": "claim:calibration_pass_high_pct",
+      "dst": "supplementary/experiments/calibration_results.json",
+      "rel": "derives_from"
+    },
+    {
+      "src": "claim:calibration_n_per_tier",
+      "dst": "supplementary/experiments/calibration_results.json",
+      "rel": "derives_from"
+    },
+    {
+      "src": "claim:claude_family_haiku3_ratio",
+      "dst": "supplementary/experiments/fixed_point_claude_family.json",
+      "rel": "derives_from"
+    },
+    {
+      "src": "claim:claude_family_sonnet4_ratio",
+      "dst": "supplementary/experiments/fixed_point_claude_family.json",
+      "rel": "derives_from"
+    },
+    {
+      "src": "claim:claude_family_opus4_ratio",
+      "dst": "supplementary/experiments/fixed_point_claude_family.json",
+      "rel": "derives_from"
+    },
+    {
+      "src": "claim:claude_family_opus41_ratio",
+      "dst": "supplementary/experiments/fixed_point_claude_family.json",
+      "rel": "derives_from"
+    },
+    {
+      "src": "claim:claude_family_haiku45_ratio",
+      "dst": "supplementary/experiments/fixed_point_claude_family.json",
+      "rel": "derives_from"
+    },
+    {
+      "src": "claim:claude_family_sonnet45_ratio",
+      "dst": "supplementary/experiments/fixed_point_claude_family.json",
+      "rel": "derives_from"
+    },
+    {
+      "src": "claim:claude_family_opus45_ratio",
+      "dst": "supplementary/experiments/fixed_point_claude_family.json",
+      "rel": "derives_from"
+    },
+    {
+      "src": "claim:json_nl_failure_control_pct",
+      "dst": "supplementary/experiments/json_nl_v4_results.json",
+      "rel": "derives_from"
+    },
+    {
+      "src": "claim:json_nl_failure_low_pct",
+      "dst": "supplementary/experiments/json_nl_v4_results.json",
+      "rel": "derives_from"
+    },
+    {
+      "src": "claim:json_nl_failure_moderate_pct",
+      "dst": "supplementary/experiments/json_nl_v4_results.json",
+      "rel": "derives_from"
+    },
+    {
+      "src": "claim:json_nl_failure_high_pct",
+      "dst": "supplementary/experiments/json_nl_v4_results.json",
+      "rel": "derives_from"
+    },
+    {
+      "src": "claim:per_task_spearman_r_s",
+      "dst": "rebuttal/figures/per_task_correlation_results.json",
+      "rel": "derives_from"
+    },
+    {
+      "src": "claim:per_task_n_tasks",
+      "dst": "rebuttal/figures/per_task_correlation_results.json",
+      "rel": "derives_from"
+    },
+    {
+      "src": "claim:per_task_n_trials_total",
+      "dst": "rebuttal/figures/per_task_correlation_results.json",
+      "rel": "derives_from"
+    },
+    {
+      "src": "claim:per_task_monotone_count",
+      "dst": "rebuttal/figures/per_task_correlation_results.json",
+      "rel": "derives_from"
+    },
+    {
+      "src": "claim:charitable_feasibility_k2_pct",
+      "dst": "supplementary/experiments/outputs/charitable/charitable_feasibility.json",
+      "rel": "derives_from"
+    },
+    {
+      "src": "claim:charitable_feasibility_k3_pct",
+      "dst": "supplementary/experiments/outputs/charitable/charitable_feasibility.json",
+      "rel": "derives_from"
+    },
+    {
+      "src": "claim:charitable_feasibility_k4_pct",
+      "dst": "supplementary/experiments/outputs/charitable/charitable_feasibility.json",
+      "rel": "derives_from"
+    },
+    {
+      "src": "claim:charitable_feasibility_k5_pct",
+      "dst": "supplementary/experiments/outputs/charitable/charitable_feasibility.json",
+      "rel": "derives_from"
+    },
+    {
+      "src": "claim:charitable_feasibility_k6_pct",
+      "dst": "supplementary/experiments/outputs/charitable/charitable_feasibility.json",
+      "rel": "derives_from"
+    },
+    {
+      "src": "claim:charitable_feasibility_k8_pct",
+      "dst": "supplementary/experiments/outputs/charitable/charitable_feasibility.json",
+      "rel": "derives_from"
+    },
+    {
+      "src": "claim:charitable_feasibility_k10_pct",
+      "dst": "supplementary/experiments/outputs/charitable/charitable_feasibility.json",
+      "rel": "derives_from"
+    },
+    {
+      "src": "claim:charitable_p_high_conflict",
+      "dst": "supplementary/experiments/outputs/charitable/charitable_feasibility.json",
+      "rel": "derives_from"
+    },
+    {
+      "src": "claim:charitable_n_trials",
+      "dst": "supplementary/experiments/outputs/charitable/charitable_feasibility.json",
+      "rel": "derives_from"
+    },
+    {
+      "src": "claim:high_k_opus_clustered_pass",
+      "dst": "supplementary/experiments/outputs/high_k_opus/high_k_opus_results.json",
+      "rel": "derives_from"
+    },
+    {
+      "src": "claim:high_k_opus_conflicting_pass",
+      "dst": "supplementary/experiments/outputs/high_k_opus/high_k_opus_results.json",
+      "rel": "derives_from"
+    },
+    {
+      "src": "claim:high_k_opus_hard_negative_pass",
+      "dst": "supplementary/experiments/outputs/high_k_opus/high_k_opus_results.json",
+      "rel": "derives_from"
+    },
+    {
+      "src": "claim:high_k_opus_n_per_regime",
+      "dst": "supplementary/experiments/outputs/high_k_opus/high_k_opus_results.json",
+      "rel": "derives_from"
+    },
+    {
+      "src": "claim:unconditional_pivot_high_total",
+      "dst": "rebuttal/figures/unconditional_pivot_results.json",
+      "rel": "derives_from"
+    },
+    {
+      "src": "claim:unconditional_pivot_high_pass",
+      "dst": "rebuttal/figures/unconditional_pivot_results.json",
+      "rel": "derives_from"
+    },
+    {
+      "src": "claim:unconditional_pivot_high_pct",
+      "dst": "rebuttal/figures/unconditional_pivot_results.json",
+      "rel": "derives_from"
+    },
+    {
+      "src": "claim:abstract_smooth_zero_successes",
+      "dst": "rebuttal/figures/unconditional_pivot_results.json",
+      "rel": "derives_from"
+    },
+    {
+      "src": "claim:abstract_total_infeasible",
+      "dst": "rebuttal/figures/unconditional_pivot_results.json",
+      "rel": "derives_from"
+    },
+    {
+      "src": "claim:regime_split_smooth_pct",
+      "dst": "rebuttal/figures/unconditional_pivot_results.json",
+      "rel": "derives_from"
+    },
+    {
+      "src": "claim:regime_split_pivot_pct",
+      "dst": "rebuttal/figures/unconditional_pivot_results.json",
+      "rel": "derives_from"
+    },
+    {
+      "src": "claim:conflict_detection_n_pairs",
+      "dst": "supplementary/experiments/outputs/conflict_detection/results.json",
+      "rel": "derives_from"
+    },
+    {
+      "src": "claim:gram_n_negative_eigenvalues",
+      "dst": "rebuttal/figures/gram_eigendecomposition_results.json",
+      "rel": "derives_from"
+    },
+    {
+      "src": "claim:gram_lambda_min",
+      "dst": "rebuttal/figures/gram_eigendecomposition_results.json",
+      "rel": "derives_from"
+    },
+    {
+      "src": "claim:gram_n_eigenvalues",
+      "dst": "rebuttal/figures/gram_eigendecomposition_results.json",
+      "rel": "derives_from"
+    },
+    {
+      "src": "claim:gram_empirical_cliff_high",
+      "dst": "rebuttal/figures/gram_eigendecomposition_results.json",
+      "rel": "derives_from"
+    },
+    {
+      "src": "claim:delta_capacity_n_token_budgets",
+      "dst": "supplementary/experiments/delta_capacity_results.json",
+      "rel": "derives_from"
+    },
+    {
+      "src": "claim:delta_capacity_smallest_budget",
+      "dst": "supplementary/experiments/delta_capacity_results.json",
+      "rel": "derives_from"
+    },
+    {
+      "src": "claim:delta_capacity_largest_budget",
+      "dst": "supplementary/experiments/delta_capacity_results.json",
+      "rel": "derives_from"
+    },
+    {
+      "src": "claim:delta_capacity_n_total_trials",
+      "dst": "supplementary/experiments/delta_capacity_results.json",
+      "rel": "derives_from"
+    },
+    {
+      "src": "claim:fixed_point_floor_total_tasks",
+      "dst": "supplementary/experiments/fixed_point_floor_opus_43.json",
+      "rel": "derives_from"
+    },
+    {
+      "src": "claim:fixed_point_floor_floors_found",
+      "dst": "supplementary/experiments/fixed_point_floor_opus_43.json",
+      "rel": "derives_from"
+    },
+    {
+      "src": "claim:claude_family_n_models",
+      "dst": "supplementary/experiments/fixed_point_claude_family.json",
+      "rel": "derives_from"
+    },
+    {
+      "src": "claim:json_nl_tier_rho_high",
+      "dst": "supplementary/experiments/json_nl_v4_results.json",
+      "rel": "derives_from"
+    },
+    {
+      "src": "claim:constitution_n_principles_via_conflict_detection",
+      "dst": "supplementary/experiments/outputs/conflict_detection/results.json",
+      "rel": "derives_from"
+    },
+    {
+      "src": "claim:bytebeat_n_constraints",
+      "dst": "ci/derivations/bridge_baselines_derived.json",
+      "rel": "derives_from"
+    },
+    {
+      "src": "claim:bytebeat_baseline_valid_samples",
+      "dst": "ci/derivations/bridge_baselines_derived.json",
+      "rel": "derives_from"
+    },
+    {
+      "src": "claim:bytebeat_pitch_pair_max_rho",
+      "dst": "ci/derivations/bridge_baselines_derived.json",
+      "rel": "derives_from"
+    },
+    {
+      "src": "claim:if_dsl_n_constraints",
+      "dst": "ci/derivations/bridge_baselines_derived.json",
+      "rel": "derives_from"
+    },
+    {
+      "src": "claim:if_dsl_baseline_samples",
+      "dst": "ci/derivations/bridge_baselines_derived.json",
+      "rel": "derives_from"
+    },
+    {
+      "src": "claim:if_dsl_high_rho_pair_value",
+      "dst": "ci/derivations/bridge_baselines_derived.json",
+      "rel": "derives_from"
+    },
+    {
+      "src": "claim:alg1_rho_hat_stage",
+      "dst": "ci/derivations/algorithm1_thresholds.json",
+      "rel": "derives_from"
+    },
+    {
+      "src": "claim:alg1_rho_hat_fail",
+      "dst": "ci/derivations/algorithm1_thresholds.json",
+      "rel": "derives_from"
+    },
+    {
+      "src": "claim:alg1_pivot_step_mult",
+      "dst": "ci/derivations/algorithm1_thresholds.json",
+      "rel": "derives_from"
+    },
+    {
+      "src": "claim:alg1_drift_threshold_deg",
+      "dst": "ci/derivations/algorithm1_thresholds.json",
+      "rel": "derives_from"
+    },
+    {
+      "src": "claim:alg1_default_l_hat",
+      "dst": "ci/derivations/algorithm1_thresholds.json",
+      "rel": "derives_from"
+    },
+    {
+      "src": "claim:table11_one_shot_pass_pct",
+      "dst": "ci/derivations/protocol_table11.json",
+      "rel": "derives_from"
+    },
+    {
+      "src": "claim:table11_one_shot_tokens",
+      "dst": "ci/derivations/protocol_table11.json",
+      "rel": "derives_from"
+    },
+    {
+      "src": "claim:table11_staged_pass_pct",
+      "dst": "ci/derivations/protocol_table11.json",
+      "rel": "derives_from"
+    },
+    {
+      "src": "claim:table11_staged_tokens",
+      "dst": "ci/derivations/protocol_table11.json",
+      "rel": "derives_from"
+    },
+    {
+      "src": "claim:table11_best_of_4_pass_pct",
+      "dst": "ci/derivations/protocol_table11.json",
+      "rel": "derives_from"
+    },
+    {
+      "src": "claim:table11_best_of_4_tokens",
+      "dst": "ci/derivations/protocol_table11.json",
+      "rel": "derives_from"
+    },
+    {
+      "src": "claim:table11_self_refine_pass_pct",
+      "dst": "ci/derivations/protocol_table11.json",
+      "rel": "derives_from"
+    },
+    {
+      "src": "claim:table11_self_refine_tokens",
+      "dst": "ci/derivations/protocol_table11.json",
+      "rel": "derives_from"
+    },
+    {
+      "src": "claim:table11_geometric_router_pass_pct",
+      "dst": "ci/derivations/protocol_table11.json",
+      "rel": "derives_from"
+    },
+    {
+      "src": "claim:table11_geometric_router_tokens",
+      "dst": "ci/derivations/protocol_table11.json",
+      "rel": "derives_from"
+    },
+    {
+      "src": "claim:table11_geometric_router_speedup",
+      "dst": "ci/derivations/protocol_table11.json",
+      "rel": "derives_from"
+    },
+    {
+      "src": "claim:table11_oracle_pass_pct",
+      "dst": "ci/derivations/protocol_table11.json",
+      "rel": "derives_from"
+    },
+    {
+      "src": "claim:table11_oracle_tokens",
+      "dst": "ci/derivations/protocol_table11.json",
+      "rel": "derives_from"
+    },
+    {
+      "src": "claim:transfer_code_router_agree_pct",
+      "dst": "ci/derivations/cross_domain_router.json",
+      "rel": "derives_from"
+    },
+    {
+      "src": "claim:transfer_code_regret_pct",
+      "dst": "ci/derivations/cross_domain_router.json",
+      "rel": "derives_from"
+    },
+    {
+      "src": "claim:transfer_json_nl_router_agree_pct",
+      "dst": "ci/derivations/cross_domain_router.json",
+      "rel": "derives_from"
+    },
+    {
+      "src": "claim:transfer_json_nl_regret_pct",
+      "dst": "ci/derivations/cross_domain_router.json",
+      "rel": "derives_from"
+    },
+    {
+      "src": "claim:transfer_if_dsl_router_agree_pct",
+      "dst": "ci/derivations/cross_domain_router.json",
+      "rel": "derives_from"
+    },
+    {
+      "src": "claim:transfer_if_dsl_regret_pct",
+      "dst": "ci/derivations/cross_domain_router.json",
+      "rel": "derives_from"
+    },
+    {
+      "src": "claim:transfer_bytebeat_router_agree_pct",
+      "dst": "ci/derivations/cross_domain_router.json",
+      "rel": "derives_from"
+    },
+    {
+      "src": "claim:transfer_bytebeat_regret_pct",
+      "dst": "ci/derivations/cross_domain_router.json",
+      "rel": "derives_from"
+    },
+    {
+      "src": "claim:drift_median",
+      "dst": "ci/derivations/drift_stats.json",
+      "rel": "derives_from"
+    },
+    {
+      "src": "claim:drift_iqr_low",
+      "dst": "ci/derivations/drift_stats.json",
+      "rel": "derives_from"
+    },
+    {
+      "src": "claim:drift_iqr_high",
+      "dst": "ci/derivations/drift_stats.json",
+      "rel": "derives_from"
+    },
+    {
+      "src": "claim:drift_pct_below_015",
+      "dst": "ci/derivations/drift_stats.json",
+      "rel": "derives_from"
+    },
+    {
+      "src": "claim:high_drift_pct",
+      "dst": "ci/derivations/drift_stats.json",
+      "rel": "derives_from"
+    },
+    {
+      "src": "claim:step_size_p95",
+      "dst": "ci/derivations/drift_stats.json",
+      "rel": "derives_from"
+    },
+    {
+      "src": "claim:unconditional_infeasible_regret_pct",
+      "dst": "rebuttal/figures/unconditional_pivot_results.json",
+      "rel": "derives_from"
+    },
+    {
+      "src": "claim:lipschitz_qwen_coder_L_hat",
+      "dst": "supplementary/experiments/lipschitz_calibration_results.json",
+      "rel": "derives_from"
+    },
+    {
+      "src": "claim:lipschitz_qwen_coder_std",
+      "dst": "supplementary/experiments/lipschitz_calibration_results.json",
+      "rel": "derives_from"
+    },
+    {
+      "src": "claim:lipschitz_deepseek_coder_L_hat",
+      "dst": "supplementary/experiments/lipschitz_calibration_results.json",
+      "rel": "derives_from"
+    },
+    {
+      "src": "claim:lipschitz_deepseek_coder_std",
+      "dst": "supplementary/experiments/lipschitz_calibration_results.json",
+      "rel": "derives_from"
+    },
+    {
+      "src": "claim:lipschitz_tinyllama_L_hat",
+      "dst": "supplementary/experiments/lipschitz_calibration_results.json",
+      "rel": "derives_from"
+    },
+    {
+      "src": "claim:lipschitz_tinyllama_std",
+      "dst": "supplementary/experiments/lipschitz_calibration_results.json",
+      "rel": "derives_from"
+    },
+    {
+      "src": "claim:lipschitz_L_hat_min_across_models",
+      "dst": "supplementary/experiments/lipschitz_calibration_results.json",
+      "rel": "derives_from"
+    },
+    {
+      "src": "claim:lipschitz_L_hat_max_across_models",
+      "dst": "supplementary/experiments/lipschitz_calibration_results.json",
+      "rel": "derives_from"
+    },
+    {
+      "src": "claim:embedding_minilm_rho_max",
+      "dst": "ci/derivations/encoder_lipschitz.json",
+      "rel": "derives_from"
+    },
+    {
+      "src": "claim:embedding_minilm_rho_max_ci",
+      "dst": "ci/derivations/encoder_lipschitz.json",
+      "rel": "derives_from"
+    },
+    {
+      "src": "claim:embedding_mpnet_rho_max",
+      "dst": "ci/derivations/encoder_lipschitz.json",
+      "rel": "derives_from"
+    },
+    {
+      "src": "claim:embedding_mpnet_rho_max_ci",
+      "dst": "ci/derivations/encoder_lipschitz.json",
+      "rel": "derives_from"
+    },
+    {
+      "src": "claim:embedding_multilingual_rho_max",
+      "dst": "ci/derivations/encoder_lipschitz.json",
+      "rel": "derives_from"
+    },
+    {
+      "src": "claim:embedding_multilingual_rho_max_ci",
+      "dst": "ci/derivations/encoder_lipschitz.json",
+      "rel": "derives_from"
+    },
+    {
+      "src": "claim:encoder_sens_minilm_rho_low",
+      "dst": "ci/derivations/encoder_lipschitz.json",
+      "rel": "derives_from"
+    },
+    {
+      "src": "claim:encoder_sens_minilm_rho_high",
+      "dst": "ci/derivations/encoder_lipschitz.json",
+      "rel": "derives_from"
+    },
+    {
+      "src": "claim:encoder_sens_mpnet_router_pct",
+      "dst": "ci/derivations/encoder_lipschitz.json",
+      "rel": "derives_from"
+    },
+    {
+      "src": "claim:encoder_sens_mpnet_outcome_pct",
+      "dst": "ci/derivations/encoder_lipschitz.json",
+      "rel": "derives_from"
+    },
+    {
+      "src": "claim:encoder_sens_multilingual_router_pct",
+      "dst": "ci/derivations/encoder_lipschitz.json",
+      "rel": "derives_from"
+    },
+    {
+      "src": "claim:encoder_sens_multilingual_outcome_pct",
+      "dst": "ci/derivations/encoder_lipschitz.json",
+      "rel": "derives_from"
+    },
+    {
+      "src": "claim:identifier_qwen_coder_in_lipschitz",
+      "dst": "supplementary/experiments/lipschitz_calibration_results.json",
+      "rel": "derives_from"
+    },
+    {
+      "src": "claim:identifier_deepseek_coder_in_lipschitz",
+      "dst": "supplementary/experiments/lipschitz_calibration_results.json",
+      "rel": "derives_from"
+    },
+    {
+      "src": "claim:identifier_tinyllama_in_lipschitz",
+      "dst": "supplementary/experiments/lipschitz_calibration_results.json",
+      "rel": "derives_from"
+    },
+    {
+      "src": "claim:identifier_qwen_coder_in_code_experiment",
+      "dst": "supplementary/experiments/code_constraint_results.json",
+      "rel": "derives_from"
+    },
+    {
+      "src": "claim:identifier_deepseek_coder_in_code_experiment",
+      "dst": "supplementary/experiments/code_constraint_results.json",
+      "rel": "derives_from"
+    },
+    {
+      "src": "claim:identifier_tinyllama_in_code_experiment",
+      "dst": "supplementary/experiments/code_constraint_results.json",
+      "rel": "derives_from"
+    },
+    {
+      "src": "claim:identifier_qwen_3b_in_code_experiment",
+      "dst": "supplementary/experiments/code_constraint_results.json",
+      "rel": "derives_from"
+    },
+    {
+      "src": "claim:identifier_haiku3_in_claude_family",
+      "dst": "supplementary/experiments/fixed_point_claude_family.json",
+      "rel": "derives_from"
+    },
+    {
+      "src": "claim:identifier_sonnet4_in_claude_family",
+      "dst": "supplementary/experiments/fixed_point_claude_family.json",
+      "rel": "derives_from"
+    },
+    {
+      "src": "claim:identifier_opus4_in_claude_family",
+      "dst": "supplementary/experiments/fixed_point_claude_family.json",
+      "rel": "derives_from"
+    },
+    {
+      "src": "claim:identifier_opus41_in_claude_family",
+      "dst": "supplementary/experiments/fixed_point_claude_family.json",
+      "rel": "derives_from"
+    },
+    {
+      "src": "claim:identifier_haiku45_in_claude_family",
+      "dst": "supplementary/experiments/fixed_point_claude_family.json",
+      "rel": "derives_from"
+    },
+    {
+      "src": "claim:identifier_sonnet45_in_claude_family",
+      "dst": "supplementary/experiments/fixed_point_claude_family.json",
+      "rel": "derives_from"
+    },
+    {
+      "src": "claim:identifier_opus45_in_claude_family",
+      "dst": "supplementary/experiments/fixed_point_claude_family.json",
+      "rel": "derives_from"
+    },
+    {
+      "src": "claim:identifier_command_r_plus_in_blinded",
+      "dst": "rebuttal/figures/blinded_external/cross_model_results.json",
+      "rel": "derives_from"
+    },
+    {
+      "src": "claim:identifier_deepseek_r1_in_blinded",
+      "dst": "rebuttal/figures/blinded_external/cross_model_results.json",
+      "rel": "derives_from"
+    },
+    {
+      "src": "claim:identifier_qwen_72b_in_blinded",
+      "dst": "rebuttal/figures/blinded_external/cross_model_results.json",
+      "rel": "derives_from"
+    },
+    {
+      "src": "claim:identifier_mistral_large_in_blinded",
+      "dst": "rebuttal/figures/blinded_external/cross_model_results.json",
+      "rel": "derives_from"
+    },
+    {
+      "src": "claim:identifier_count_blinded_external_4models",
+      "dst": "rebuttal/figures/blinded_external/cross_model_results.json",
+      "rel": "derives_from"
+    },
+    {
+      "src": "claim:identifier_count_claude_family_7models",
+      "dst": "supplementary/experiments/fixed_point_claude_family.json",
+      "rel": "derives_from"
+    },
+    {
+      "src": "claim:identifier_count_cross_model_5models",
+      "dst": "rebuttal/figures/cross_model_results.json",
+      "rel": "derives_from"
+    },
+    {
+      "src": "claim:identifier_gpt4o_in_cross_model",
+      "dst": "rebuttal/figures/cross_model_results.json",
+      "rel": "derives_from"
+    },
+    {
+      "src": "claim:identifier_deepseek_v3_in_cross_model",
+      "dst": "rebuttal/figures/cross_model_results.json",
+      "rel": "derives_from"
+    },
+    {
+      "src": "claim:identifier_llama_31_70b_in_cross_model",
+      "dst": "rebuttal/figures/cross_model_results.json",
+      "rel": "derives_from"
+    },
+    {
+      "src": "claim:identifier_gemini_25_flash_in_cross_model",
+      "dst": "rebuttal/figures/cross_model_results.json",
+      "rel": "derives_from"
+    },
+    {
+      "src": "claim:identifier_gemini_25_pro_in_cross_model",
+      "dst": "rebuttal/figures/cross_model_results.json",
+      "rel": "derives_from"
+    },
+    {
+      "src": "claim:identifier_named_models_match_total_n_cross_model",
+      "dst": "rebuttal/figures/cross_model_results.json",
+      "rel": "derives_from"
+    },
+    {
+      "src": "claim:identifier_minilm_l6_in_encoder_table",
+      "dst": "ci/derivations/encoder_lipschitz.json",
+      "rel": "derives_from"
+    },
+    {
+      "src": "claim:identifier_mpnet_base_in_encoder_table",
+      "dst": "ci/derivations/encoder_lipschitz.json",
+      "rel": "derives_from"
+    },
+    {
+      "src": "claim:identifier_multilingual_minilm_in_encoder_table",
+      "dst": "ci/derivations/encoder_lipschitz.json",
+      "rel": "derives_from"
+    },
+    {
+      "src": "claim:set_equality_encoders_3",
+      "dst": "ci/derivations/encoder_lipschitz.json",
+      "rel": "derives_from"
+    },
+    {
+      "src": "claim:identifier_factorial_in_code_experiment",
+      "dst": "supplementary/experiments/code_constraint_results.json",
+      "rel": "derives_from"
+    },
+    {
+      "src": "claim:identifier_fibonacci_in_code_experiment",
+      "dst": "supplementary/experiments/code_constraint_results.json",
+      "rel": "derives_from"
+    },
+    {
+      "src": "claim:identifier_count_code_experiment_tasks_12",
+      "dst": "supplementary/experiments/code_constraint_results.json",
+      "rel": "derives_from"
+    },
+    {
+      "src": "claim:set_equality_code_experiment_4_models",
+      "dst": "supplementary/experiments/code_constraint_results.json",
+      "rel": "derives_from"
+    },
+    {
+      "src": "claim:set_equality_claude_family_7_models",
+      "dst": "supplementary/experiments/fixed_point_claude_family.json",
+      "rel": "derives_from"
+    },
+    {
+      "src": "claim:set_equality_blinded_external_4_models",
+      "dst": "rebuttal/figures/blinded_external/cross_model_results.json",
+      "rel": "derives_from"
+    },
+    {
+      "src": "claim:identifier_image_model_gpt5_4_image_2",
+      "dst": "supplementary/experiments_rebuttal/image_transfer/image_transfer_results_runA_no_medium_frame.json",
+      "rel": "derives_from"
+    },
+    {
+      "src": "claim:identifier_high_k_opus_api_model_id",
+      "dst": "supplementary/experiments/outputs/high_k_opus/high_k_opus_results.json",
+      "rel": "derives_from"
+    },
+    {
+      "src": "claim:code_constraint_n_per_cell_60",
+      "dst": "supplementary/experiments/code_constraint_results.json",
+      "rel": "derives_from"
+    },
+    {
+      "src": "claim:code_constraint_n_per_tier_per_protocol_240",
+      "dst": "supplementary/experiments/code_constraint_results.json",
+      "rel": "derives_from"
+    },
+    {
+      "src": "claim:lipschitz_n_completions_900",
+      "dst": "supplementary/experiments/lipschitz_calibration_results.json",
+      "rel": "derives_from"
+    },
+    {
+      "src": "claim:lipschitz_n_per_task_50",
+      "dst": "supplementary/experiments/lipschitz_calibration_results.json",
+      "rel": "derives_from"
+    },
+    {
+      "src": "claim:lipschitz_n_tokens_108957",
+      "dst": "supplementary/experiments/lipschitz_calibration_results.json",
+      "rel": "derives_from"
+    },
+    {
+      "src": "claim:lipschitz_n_tasks_6",
+      "dst": "supplementary/experiments/lipschitz_calibration_results.json",
+      "rel": "derives_from"
+    },
+    {
+      "src": "claim:lipschitz_n_models_3",
+      "dst": "supplementary/experiments/lipschitz_calibration_results.json",
+      "rel": "derives_from"
+    },
+    {
+      "src": "claim:json_nl_n_per_tier_per_protocol_40",
+      "dst": "supplementary/experiments/json_nl_v4_results.json",
+      "rel": "derives_from"
+    },
+    {
+      "src": "claim:json_nl_n_total_320",
+      "dst": "supplementary/experiments/json_nl_v4_results.json",
+      "rel": "derives_from"
+    },
+    {
+      "src": "claim:delta_capacity_n_per_budget_per_protocol_120",
+      "dst": "supplementary/experiments/delta_capacity_results.json",
+      "rel": "derives_from"
+    },
+    {
+      "src": "claim:delta_capacity_n_per_budget_240",
+      "dst": "supplementary/experiments/delta_capacity_results.json",
+      "rel": "derives_from"
+    },
+    {
+      "src": "claim:high_k_opus_n_total_400",
+      "dst": "supplementary/experiments/outputs/high_k_opus/high_k_opus_results.json",
+      "rel": "derives_from"
+    },
+    {
+      "src": "claim:cross_model_n_per_model_older_240",
+      "dst": "rebuttal/figures/cross_model_results.json",
+      "rel": "derives_from"
+    },
+    {
+      "src": "claim:mutation_total_results_156",
+      "dst": "ci/tests/systematic_mutation_results.json",
+      "rel": "derives_from"
+    },
+    {
+      "src": "claim:calibration_staged_pass_control_pct",
+      "dst": "supplementary/experiments/calibration_results.json",
+      "rel": "derives_from"
+    },
+    {
+      "src": "claim:calibration_staged_pass_low_pct",
+      "dst": "supplementary/experiments/calibration_results.json",
+      "rel": "derives_from"
+    },
+    {
+      "src": "claim:calibration_staged_pass_moderate_pct",
+      "dst": "supplementary/experiments/calibration_results.json",
+      "rel": "derives_from"
+    },
+    {
+      "src": "claim:calibration_staged_pass_high_pct",
+      "dst": "supplementary/experiments/calibration_results.json",
+      "rel": "derives_from"
+    },
+    {
+      "src": "claim:per_tier_control_pass_pct",
+      "dst": "rebuttal/figures/per_task_correlation_results.json",
+      "rel": "derives_from"
+    },
+    {
+      "src": "claim:per_tier_low_pass_pct",
+      "dst": "rebuttal/figures/per_task_correlation_results.json",
+      "rel": "derives_from"
+    },
+    {
+      "src": "claim:per_tier_moderate_pass_pct",
+      "dst": "rebuttal/figures/per_task_correlation_results.json",
+      "rel": "derives_from"
+    },
+    {
+      "src": "claim:per_tier_high_pass_pct",
+      "dst": "rebuttal/figures/per_task_correlation_results.json",
+      "rel": "derives_from"
+    },
+    {
+      "src": "claim:lipschitz_pooled_p99",
+      "dst": "supplementary/experiments/lipschitz_calibration_results.json",
+      "rel": "derives_from"
+    },
+    {
+      "src": "claim:lipschitz_pooled_max",
+      "dst": "supplementary/experiments/lipschitz_calibration_results.json",
+      "rel": "derives_from"
+    },
+    {
+      "src": "claim:claude_family_haiku3_wins",
+      "dst": "supplementary/experiments/fixed_point_claude_family.json",
+      "rel": "derives_from"
+    },
+    {
+      "src": "claim:claude_family_sonnet4_wins",
+      "dst": "supplementary/experiments/fixed_point_claude_family.json",
+      "rel": "derives_from"
+    },
+    {
+      "src": "claim:claude_family_opus4_wins",
+      "dst": "supplementary/experiments/fixed_point_claude_family.json",
+      "rel": "derives_from"
+    },
+    {
+      "src": "claim:claude_family_opus41_wins",
+      "dst": "supplementary/experiments/fixed_point_claude_family.json",
+      "rel": "derives_from"
+    },
+    {
+      "src": "claim:claude_family_haiku45_wins",
+      "dst": "supplementary/experiments/fixed_point_claude_family.json",
+      "rel": "derives_from"
+    },
+    {
+      "src": "claim:claude_family_sonnet45_wins",
+      "dst": "supplementary/experiments/fixed_point_claude_family.json",
+      "rel": "derives_from"
+    },
+    {
+      "src": "claim:claude_family_opus45_wins",
+      "dst": "supplementary/experiments/fixed_point_claude_family.json",
+      "rel": "derives_from"
+    },
+    {
+      "src": "claim:claude_family_n_tasks_per_model_6",
+      "dst": "supplementary/experiments/fixed_point_claude_family.json",
+      "rel": "derives_from"
+    },
+    {
+      "src": "claim:constitution_top_pair_max_rho",
+      "dst": "supplementary/experiments/outputs/constitution/constitution_analysis.json",
+      "rel": "derives_from"
+    },
+    {
+      "src": "claim:constitution_hierarchy_ratio",
+      "dst": "supplementary/experiments/outputs/constitution/constitution_analysis.json",
+      "rel": "derives_from"
+    },
+    {
+      "src": "claim:constitution_category_hardcoded_defaults_max_rho",
+      "dst": "supplementary/experiments/outputs/constitution/constitution_analysis.json",
+      "rel": "derives_from"
+    },
+    {
+      "src": "claim:conflict_detection_overall_conflict_rate_pct",
+      "dst": "supplementary/experiments/outputs/conflict_detection/results.json",
+      "rel": "derives_from"
+    },
+    {
+      "src": "claim:conflict_detection_low_bucket_rate_pct",
+      "dst": "supplementary/experiments/outputs/conflict_detection/results.json",
+      "rel": "derives_from"
+    },
+    {
+      "src": "claim:conflict_detection_med_bucket_rate_pct",
+      "dst": "supplementary/experiments/outputs/conflict_detection/results.json",
+      "rel": "derives_from"
+    },
+    {
+      "src": "claim:conflict_detection_high_bucket_rate_pct",
+      "dst": "supplementary/experiments/outputs/conflict_detection/results.json",
+      "rel": "derives_from"
+    },
+    {
+      "src": "claim:conflict_detection_point_biserial_r",
+      "dst": "supplementary/experiments/outputs/conflict_detection/results.json",
+      "rel": "derives_from"
+    },
+    {
+      "src": "claim:baselines_token_savings_pct",
+      "dst": "ci/derivations/protocol_table11.json",
+      "rel": "derives_from"
+    },
+    {
+      "src": "claim:json_nl_format_pct_control",
+      "dst": "supplementary/experiments/json_nl_v4_results.json",
+      "rel": "derives_from"
+    },
+    {
+      "src": "claim:json_nl_format_pct_high",
+      "dst": "supplementary/experiments/json_nl_v4_results.json",
+      "rel": "derives_from"
+    },
+    {
+      "src": "claim:json_nl_one_shot_pass_control_pct",
+      "dst": "supplementary/experiments/json_nl_v4_results.json",
+      "rel": "derives_from"
+    },
+    {
+      "src": "claim:delta_capacity_T128_oneshot_pct",
+      "dst": "supplementary/experiments/delta_capacity_results.json",
+      "rel": "derives_from"
+    },
+    {
+      "src": "claim:delta_capacity_T128_staged_pct",
+      "dst": "supplementary/experiments/delta_capacity_results.json",
+      "rel": "derives_from"
+    },
+    {
+      "src": "claim:qwen3b_one_shot_low_pct",
+      "dst": "supplementary/experiments/code_constraint_results.json",
+      "rel": "derives_from"
+    },
+    {
+      "src": "claim:deltacap_model_qwencoder_T128_delta",
+      "dst": "supplementary/experiments/delta_capacity_results.json",
+      "rel": "derives_from"
+    },
+    {
+      "src": "claim:deltacap_model_qwencoder_T192_delta",
+      "dst": "supplementary/experiments/delta_capacity_results.json",
+      "rel": "derives_from"
+    },
+    {
+      "src": "claim:deltacap_model_qwencoder_T256_delta",
+      "dst": "supplementary/experiments/delta_capacity_results.json",
+      "rel": "derives_from"
+    },
+    {
+      "src": "claim:deltacap_model_qwencoder_T384_delta",
+      "dst": "supplementary/experiments/delta_capacity_results.json",
+      "rel": "derives_from"
+    },
+    {
+      "src": "claim:deltacap_model_qwencoder_T512_delta",
+      "dst": "supplementary/experiments/delta_capacity_results.json",
+      "rel": "derives_from"
+    },
+    {
+      "src": "claim:deltacap_model_qwen3b_T128_delta",
+      "dst": "supplementary/experiments/delta_capacity_results.json",
+      "rel": "derives_from"
+    },
+    {
+      "src": "claim:deltacap_model_qwen3b_T192_delta",
+      "dst": "supplementary/experiments/delta_capacity_results.json",
+      "rel": "derives_from"
+    },
+    {
+      "src": "claim:deltacap_model_qwen3b_T256_delta",
+      "dst": "supplementary/experiments/delta_capacity_results.json",
+      "rel": "derives_from"
+    },
+    {
+      "src": "claim:deltacap_model_qwen3b_T384_delta",
+      "dst": "supplementary/experiments/delta_capacity_results.json",
+      "rel": "derives_from"
+    },
+    {
+      "src": "claim:deltacap_model_qwen3b_T512_delta",
+      "dst": "supplementary/experiments/delta_capacity_results.json",
+      "rel": "derives_from"
+    },
+    {
+      "src": "claim:deltacap_model_deepseek_T128_delta",
+      "dst": "supplementary/experiments/delta_capacity_results.json",
+      "rel": "derives_from"
+    },
+    {
+      "src": "claim:deltacap_model_deepseek_T192_delta",
+      "dst": "supplementary/experiments/delta_capacity_results.json",
+      "rel": "derives_from"
+    },
+    {
+      "src": "claim:deltacap_model_deepseek_T256_delta",
+      "dst": "supplementary/experiments/delta_capacity_results.json",
+      "rel": "derives_from"
+    },
+    {
+      "src": "claim:deltacap_model_deepseek_T384_delta",
+      "dst": "supplementary/experiments/delta_capacity_results.json",
+      "rel": "derives_from"
+    },
+    {
+      "src": "claim:deltacap_model_deepseek_T512_delta",
+      "dst": "supplementary/experiments/delta_capacity_results.json",
+      "rel": "derives_from"
+    },
+    {
+      "src": "claim:deltacap_model_tinyllama_T128_delta",
+      "dst": "supplementary/experiments/delta_capacity_results.json",
+      "rel": "derives_from"
+    },
+    {
+      "src": "claim:deltacap_model_tinyllama_T192_delta",
+      "dst": "supplementary/experiments/delta_capacity_results.json",
+      "rel": "derives_from"
+    },
+    {
+      "src": "claim:deltacap_model_tinyllama_T256_delta",
+      "dst": "supplementary/experiments/delta_capacity_results.json",
+      "rel": "derives_from"
+    },
+    {
+      "src": "claim:deltacap_model_tinyllama_T384_delta",
+      "dst": "supplementary/experiments/delta_capacity_results.json",
+      "rel": "derives_from"
+    },
+    {
+      "src": "claim:deltacap_model_tinyllama_T512_delta",
+      "dst": "supplementary/experiments/delta_capacity_results.json",
+      "rel": "derives_from"
+    },
+    {
+      "src": "claim:bridge_qwencoder_control_oneshot_pct",
+      "dst": "supplementary/experiments/code_constraint_results.json",
+      "rel": "derives_from"
+    },
+    {
+      "src": "claim:bridge_qwencoder_control_delta_pct",
+      "dst": "supplementary/experiments/code_constraint_results.json",
+      "rel": "derives_from"
+    },
+    {
+      "src": "claim:bridge_qwencoder_low_oneshot_pct",
+      "dst": "supplementary/experiments/code_constraint_results.json",
+      "rel": "derives_from"
+    },
+    {
+      "src": "claim:bridge_qwen3b_control_oneshot_pct",
+      "dst": "supplementary/experiments/code_constraint_results.json",
+      "rel": "derives_from"
+    },
+    {
+      "src": "claim:bridge_qwen3b_low_delta_pct",
+      "dst": "supplementary/experiments/code_constraint_results.json",
+      "rel": "derives_from"
+    },
+    {
+      "src": "claim:bridge_qwen3b_high_oneshot_pct",
+      "dst": "supplementary/experiments/code_constraint_results.json",
+      "rel": "derives_from"
+    },
+    {
+      "src": "claim:bridge_tinyllama_high_oneshot_pct",
+      "dst": "supplementary/experiments/code_constraint_results.json",
+      "rel": "derives_from"
+    },
+    {
+      "src": "claim:bridge_deepseek_high_delta_pct",
+      "dst": "supplementary/experiments/code_constraint_results.json",
+      "rel": "derives_from"
+    },
+    {
+      "src": "claim:bridge_qwencoder_low_delta_pct",
+      "dst": "supplementary/experiments/code_constraint_results.json",
+      "rel": "derives_from"
+    },
+    {
+      "src": "claim:bridge_qwencoder_moderate_oneshot_pct",
+      "dst": "supplementary/experiments/code_constraint_results.json",
+      "rel": "derives_from"
+    },
+    {
+      "src": "claim:bridge_qwencoder_moderate_delta_pct",
+      "dst": "supplementary/experiments/code_constraint_results.json",
+      "rel": "derives_from"
+    },
+    {
+      "src": "claim:bridge_qwencoder_high_oneshot_pct",
+      "dst": "supplementary/experiments/code_constraint_results.json",
+      "rel": "derives_from"
+    },
+    {
+      "src": "claim:bridge_qwencoder_high_delta_pct",
+      "dst": "supplementary/experiments/code_constraint_results.json",
+      "rel": "derives_from"
+    },
+    {
+      "src": "claim:bridge_qwen3b_control_delta_pct",
+      "dst": "supplementary/experiments/code_constraint_results.json",
+      "rel": "derives_from"
+    },
+    {
+      "src": "claim:bridge_qwen3b_moderate_oneshot_pct",
+      "dst": "supplementary/experiments/code_constraint_results.json",
+      "rel": "derives_from"
+    },
+    {
+      "src": "claim:bridge_qwen3b_moderate_delta_pct",
+      "dst": "supplementary/experiments/code_constraint_results.json",
+      "rel": "derives_from"
+    },
+    {
+      "src": "claim:bridge_qwen3b_high_delta_pct",
+      "dst": "supplementary/experiments/code_constraint_results.json",
+      "rel": "derives_from"
+    },
+    {
+      "src": "claim:bridge_deepseek_control_oneshot_pct",
+      "dst": "supplementary/experiments/code_constraint_results.json",
+      "rel": "derives_from"
+    },
+    {
+      "src": "claim:bridge_deepseek_control_delta_pct",
+      "dst": "supplementary/experiments/code_constraint_results.json",
+      "rel": "derives_from"
+    },
+    {
+      "src": "claim:bridge_deepseek_low_oneshot_pct",
+      "dst": "supplementary/experiments/code_constraint_results.json",
+      "rel": "derives_from"
+    },
+    {
+      "src": "claim:bridge_deepseek_low_delta_pct",
+      "dst": "supplementary/experiments/code_constraint_results.json",
+      "rel": "derives_from"
+    },
+    {
+      "src": "claim:bridge_deepseek_moderate_oneshot_pct",
+      "dst": "supplementary/experiments/code_constraint_results.json",
+      "rel": "derives_from"
+    },
+    {
+      "src": "claim:bridge_deepseek_moderate_delta_pct",
+      "dst": "supplementary/experiments/code_constraint_results.json",
+      "rel": "derives_from"
+    },
+    {
+      "src": "claim:bridge_deepseek_high_oneshot_pct",
+      "dst": "supplementary/experiments/code_constraint_results.json",
+      "rel": "derives_from"
+    },
+    {
+      "src": "claim:bridge_tinyllama_control_oneshot_pct",
+      "dst": "supplementary/experiments/code_constraint_results.json",
+      "rel": "derives_from"
+    },
+    {
+      "src": "claim:bridge_tinyllama_control_delta_pct",
+      "dst": "supplementary/experiments/code_constraint_results.json",
+      "rel": "derives_from"
+    },
+    {
+      "src": "claim:bridge_tinyllama_low_oneshot_pct",
+      "dst": "supplementary/experiments/code_constraint_results.json",
+      "rel": "derives_from"
+    },
+    {
+      "src": "claim:bridge_tinyllama_low_delta_pct",
+      "dst": "supplementary/experiments/code_constraint_results.json",
+      "rel": "derives_from"
+    },
+    {
+      "src": "claim:bridge_tinyllama_moderate_oneshot_pct",
+      "dst": "supplementary/experiments/code_constraint_results.json",
+      "rel": "derives_from"
+    },
+    {
+      "src": "claim:bridge_tinyllama_moderate_delta_pct",
+      "dst": "supplementary/experiments/code_constraint_results.json",
+      "rel": "derives_from"
+    },
+    {
+      "src": "claim:bridge_tinyllama_high_delta_pct",
+      "dst": "supplementary/experiments/code_constraint_results.json",
+      "rel": "derives_from"
+    },
+    {
+      "src": "claim:axis_baseline_control_tests_only_pct",
+      "dst": "supplementary/experiments/code_constraint_results.json",
+      "rel": "derives_from"
+    },
+    {
+      "src": "claim:axis_baseline_control_format_only_pct",
+      "dst": "supplementary/experiments/code_constraint_results.json",
+      "rel": "derives_from"
+    },
+    {
+      "src": "claim:axis_baseline_control_joint_pct",
+      "dst": "supplementary/experiments/code_constraint_results.json",
+      "rel": "derives_from"
+    },
+    {
+      "src": "claim:axis_baseline_high_tests_only_pct",
+      "dst": "supplementary/experiments/code_constraint_results.json",
+      "rel": "derives_from"
+    },
+    {
+      "src": "claim:axis_baseline_high_format_only_pct",
+      "dst": "supplementary/experiments/code_constraint_results.json",
+      "rel": "derives_from"
+    },
+    {
+      "src": "claim:axis_baseline_high_joint_pct",
+      "dst": "supplementary/experiments/code_constraint_results.json",
+      "rel": "derives_from"
+    },
+    {
+      "src": "claim:iso_fibonacci_high_joint_pct",
+      "dst": "supplementary/experiments/code_constraint_results.json",
+      "rel": "derives_from"
+    },
+    {
+      "src": "claim:iso_fibonacci_high_tests_only_pct",
+      "dst": "supplementary/experiments/code_constraint_results.json",
+      "rel": "derives_from"
+    },
+    {
+      "src": "claim:iso_power_control_joint_pct",
+      "dst": "supplementary/experiments/code_constraint_results.json",
+      "rel": "derives_from"
+    },
+    {
+      "src": "claim:iso_power_control_tests_only_pct",
+      "dst": "supplementary/experiments/code_constraint_results.json",
+      "rel": "derives_from"
+    },
+    {
+      "src": "claim:smooth_regime_total_4272",
+      "dst": "rebuttal/figures/unconditional_pivot_results.json",
+      "rel": "derives_from"
+    },
+    {
+      "src": "claim:smooth_regime_successes_zero",
+      "dst": "rebuttal/figures/unconditional_pivot_results.json",
+      "rel": "derives_from"
+    },
+    {
+      "src": "claim:pivot_regime_total_528",
+      "dst": "rebuttal/figures/unconditional_pivot_results.json",
+      "rel": "derives_from"
+    },
+    {
+      "src": "claim:pivot_successes_42",
+      "dst": "rebuttal/figures/unconditional_pivot_results.json",
+      "rel": "derives_from"
+    },
+    {
+      "src": "claim:unconditional_pivot_high_tier_total_480",
+      "dst": "rebuttal/figures/unconditional_pivot_results.json",
+      "rel": "derives_from"
+    },
+    {
+      "src": "claim:unconditional_pivot_smooth_decomp_427",
+      "dst": "rebuttal/figures/unconditional_pivot_results.json",
+      "rel": "derives_from"
+    },
+    {
+      "src": "claim:openrouter_regression_test_pct_control",
+      "dst": "supplementary/experiments/openrouter_regression_results.json",
+      "rel": "derives_from"
+    },
+    {
+      "src": "claim:openrouter_regression_test_pct_low",
+      "dst": "supplementary/experiments/openrouter_regression_results.json",
+      "rel": "derives_from"
+    },
+    {
+      "src": "claim:openrouter_regression_test_pct_moderate",
+      "dst": "supplementary/experiments/openrouter_regression_results.json",
+      "rel": "derives_from"
+    },
+    {
+      "src": "claim:openrouter_regression_test_pct_high",
+      "dst": "supplementary/experiments/openrouter_regression_results.json",
+      "rel": "derives_from"
+    },
+    {
+      "src": "claim:openrouter_format_n_s1b_pooled_control",
+      "dst": "supplementary/experiments/openrouter_regression_results.json",
+      "rel": "derives_from"
+    },
+    {
+      "src": "claim:openrouter_format_n_s1b_pooled_low",
+      "dst": "supplementary/experiments/openrouter_regression_results.json",
+      "rel": "derives_from"
+    },
+    {
+      "src": "claim:openrouter_format_n_s1b_pooled_moderate",
+      "dst": "supplementary/experiments/openrouter_regression_results.json",
+      "rel": "derives_from"
+    },
+    {
+      "src": "claim:openrouter_format_n_s1b_pooled_high",
+      "dst": "supplementary/experiments/openrouter_regression_results.json",
+      "rel": "derives_from"
+    },
+    {
+      "src": "claim:openrouter_format_universal_collapse_high",
+      "dst": "supplementary/experiments/openrouter_regression_results.json",
+      "rel": "derives_from"
+    },
+    {
+      "src": "claim:openrouter_regression_n_models_8",
+      "dst": "supplementary/experiments/openrouter_regression_results.json",
+      "rel": "derives_from"
+    },
+    {
+      "src": "claim:openrouter_regression_n_per_tier_240",
+      "dst": "supplementary/experiments/openrouter_regression_results.json",
+      "rel": "derives_from"
+    },
+    {
+      "src": "claim:openrouter_regression_n_tasks_6",
+      "dst": "supplementary/experiments/openrouter_regression_results.json",
+      "rel": "derives_from"
+    },
+    {
+      "src": "paper/figures/algorithm1_storyboard.pdf",
+      "dst": "supplementary/experiments_rebuttal/algorithm1_storyboard/build_storyboard.py",
+      "rel": "rendered_by"
+    },
+    {
+      "src": "paper/figures/algorithm1_storyboard.pdf",
+      "dst": "supplementary/experiments_rebuttal/algorithm1_storyboard/storyboard_spec.json",
+      "rel": "derives_from"
+    },
+    {
+      "src": "paper/figures/gram_eigendecomposition.pdf",
+      "dst": "supplementary/experiments_rebuttal/dct_analysis/gram_eigendecomposition.py",
+      "rel": "rendered_by"
+    },
+    {
+      "src": "paper/figures/gram_eigendecomposition.pdf",
+      "dst": "supplementary/experiments/outputs/constitution/constitution_rho_matrix.npy",
+      "rel": "derives_from"
+    },
+    {
+      "src": "paper/figures/gram_eigendecomposition.pdf",
+      "dst": "supplementary/experiments/outputs/constitution/constitution_analysis.json",
+      "rel": "derives_from"
+    },
+    {
+      "src": "paper/figures/gram_eigendecomposition.pdf",
+      "dst": "supplementary/experiments/code_constraint_results.json",
+      "rel": "derives_from"
+    },
+    {
+      "src": "supplementary/experiments_rebuttal/dct_analysis/gram_eigendecomposition.py",
+      "dst": "rebuttal/figures/gram_eigendecomposition_results.json",
+      "rel": "writes_to"
+    },
+    {
+      "src": "paper/figures/per_task_correlation.pdf",
+      "dst": "supplementary/experiments_rebuttal/per_task_correlation.py",
+      "rel": "rendered_by"
+    },
+    {
+      "src": "paper/figures/per_task_correlation.pdf",
+      "dst": "supplementary/experiments/code_constraint_results.json",
+      "rel": "derives_from"
+    },
+    {
+      "src": "supplementary/experiments_rebuttal/per_task_correlation.py",
+      "dst": "rebuttal/figures/per_task_correlation_results.json",
+      "rel": "writes_to"
+    },
+    {
+      "src": "paper/figures/constrained_decoding.pdf",
+      "dst": "supplementary/experiments_rebuttal/constrained_decoding/plot_constrained_decoding.py",
+      "rel": "rendered_by"
+    },
+    {
+      "src": "paper/figures/constrained_decoding.pdf",
+      "dst": "supplementary/experiments_rebuttal/constrained_decoding/constrained_decoding_results.json",
+      "rel": "derives_from"
+    },
+    {
+      "src": "paper/figures/cross_model_cliff.pdf",
+      "dst": "supplementary/experiments_rebuttal/cross_model/plot_cross_model.py",
+      "rel": "rendered_by"
+    },
+    {
+      "src": "paper/figures/cross_model_cliff.pdf",
+      "dst": "supplementary/experiments/code_constraint_results.json",
+      "rel": "derives_from"
+    },
+    {
+      "src": "paper/figures/cross_model_cliff.pdf",
+      "dst": "rebuttal/figures/cross_model_results.json",
+      "rel": "derives_from"
+    },
+    {
+      "src": "paper/figures/soft_constraint_cliff.pdf",
+      "dst": "supplementary/experiments_rebuttal/soft_constraints/soft_constraint_pilot.py",
+      "rel": "rendered_by"
+    },
+    {
+      "src": "supplementary/experiments_rebuttal/soft_constraints/soft_constraint_pilot.py",
+      "dst": "rebuttal/figures/soft_constraint_results.json",
+      "rel": "writes_to"
+    },
+    {
+      "src": "paper/figures/image_transfer.pdf",
+      "dst": "supplementary/experiments_rebuttal/image_transfer/plot_image_transfer.py",
+      "rel": "rendered_by"
+    },
+    {
+      "src": "paper/figures/image_transfer.pdf",
+      "dst": "supplementary/experiments_rebuttal/image_transfer/image_transfer_results_runB.json",
+      "rel": "derives_from"
+    },
+    {
+      "src": "paper/figures/image_transfer_conflict.pdf",
+      "dst": "supplementary/experiments_rebuttal/image_transfer/plot_image_transfer_conflict.py",
+      "rel": "rendered_by"
+    },
+    {
+      "src": "paper/figures/image_transfer_conflict.pdf",
+      "dst": "supplementary/experiments_rebuttal/image_transfer/image_transfer_results_runC.json",
+      "rel": "derives_from"
+    },
+    {
+      "src": "paper/figures/image_format_cliff.pdf",
+      "dst": "supplementary/experiments_rebuttal/image_transfer/plot_image_format_cliff.py",
+      "rel": "rendered_by"
+    },
+    {
+      "src": "paper/figures/image_format_cliff.pdf",
+      "dst": "supplementary/experiments_rebuttal/image_transfer/image_transfer_runD_passB.json",
+      "rel": "derives_from"
+    },
+    {
+      "src": "paper/figures/image_format_cliff.pdf",
+      "dst": "rebuttal/figures/blinded_external/cross_model_results.json",
+      "rel": "derives_from"
+    },
+    {
+      "src": "rebuttal/figures/proxy_ablation.pdf",
+      "dst": "supplementary/experiments_rebuttal/proxy_ablation/proxy_ablation.py",
+      "rel": "rendered_by"
+    },
+    {
+      "src": "supplementary/experiments_rebuttal/proxy_ablation/proxy_ablation.py",
+      "dst": "rebuttal/figures/proxy_ablation_results.json",
+      "rel": "writes_to"
+    },
+    {
+      "src": "rebuttal/figures/sonification_defense.pdf",
+      "dst": "supplementary/experiments_rebuttal/sonification_defense/chromatic_vision.py",
+      "rel": "rendered_by"
+    },
+    {
+      "src": "rebuttal/figures/sonification_defense_rho_sweep.pdf",
+      "dst": "supplementary/experiments_rebuttal/sonification_defense/chromatic_vision.py",
+      "rel": "rendered_by"
+    },
+    {
+      "src": "rebuttal/figures/prompt_length_sweep.png",
+      "dst": "supplementary/experiments_rebuttal/prompt_length_sweep/prompt_length_sweep.py",
+      "rel": "rendered_by"
+    },
+    {
+      "src": "supplementary/demos/audio_demos/constitution_wheel_full.wav",
+      "dst": "supplementary/demos/sonification.py",
+      "rel": "rendered_by"
+    },
+    {
+      "src": "supplementary/demos/audio_demos/diagonal_all_four.wav",
+      "dst": "supplementary/demos/sonification.py",
+      "rel": "rendered_by"
+    },
+    {
+      "src": "paper/figures/staging_vs_refine.tex",
+      "dst": "paper/main.tex",
+      "rel": "binds_to"
+    },
+    {
+      "src": "paper/figures/staging_vs_refine.tex",
+      "dst": "supplementary/illustrations/staging_vs_refine_direction.txt",
+      "rel": "binds_to"
+    },
+    {
+      "src": "paper/figures/staging_vs_refine.tex",
+      "dst": "supplementary/illustrations/compliance/neurips2026_compliance.txt",
+      "rel": "binds_to",
+      "constraint_kind": "venue"
+    },
+    {
+      "src": "paper/figures/algorithm1_routing.tex",
+      "dst": "paper/main.tex",
+      "rel": "binds_to"
+    },
+    {
+      "src": "paper/figures/algorithm1_routing.tex",
+      "dst": "supplementary/illustrations/algorithm1_routing_direction.txt",
+      "rel": "binds_to"
+    },
+    {
+      "src": "paper/figures/algorithm1_routing.tex",
+      "dst": "supplementary/illustrations/compliance/neurips2026_compliance.txt",
+      "rel": "binds_to",
+      "constraint_kind": "venue"
+    },
+    {
+      "src": "paper/figures/interface_assumption.tex",
+      "dst": "paper/main.tex",
+      "rel": "binds_to"
+    },
+    {
+      "src": "paper/figures/interface_assumption.tex",
+      "dst": "supplementary/illustrations/interface_assumption_direction.txt",
+      "rel": "binds_to"
+    },
+    {
+      "src": "paper/figures/interface_assumption.tex",
+      "dst": "supplementary/illustrations/compliance/neurips2026_compliance.txt",
+      "rel": "binds_to",
+      "constraint_kind": "venue"
+    },
+    {
+      "src": "layer:L1_audit",
+      "dst": "ci/claim_audit.py",
+      "rel": "checked_by"
+    },
+    {
+      "src": "layer:L2_validator",
+      "dst": "ci/claim_audit_validator.py",
+      "rel": "checked_by"
+    },
+    {
+      "src": "layer:L3_sweep",
+      "dst": "ci/claim_coverage_sweep.py",
+      "rel": "checked_by"
+    },
+    {
+      "src": "layer:L4_lineage",
+      "dst": "ci/figure_lineage_check.py",
+      "rel": "checked_by"
+    },
+    {
+      "src": "layer:L5_figure_values",
+      "dst": "ci/figure_value_check.py",
+      "rel": "checked_by"
+    },
+    {
+      "src": "layer:L7_citations",
+      "dst": "ci/citation_integrity_check.py",
+      "rel": "checked_by"
+    },
+    {
+      "src": "layer:L8_links",
+      "dst": "ci/link_integrity_check.py",
+      "rel": "checked_by"
+    },
+    {
+      "src": "layer:L9_consistency",
+      "dst": "ci/cross_claim_consistency_check.py",
+      "rel": "checked_by"
+    },
+    {
+      "src": "layer:L10_bib",
+      "dst": "ci/bib_entry_check.py",
+      "rel": "checked_by"
+    },
+    {
+      "src": "layer:L11_scripts",
+      "dst": "ci/script_integrity_check.py",
+      "rel": "checked_by"
+    },
+    {
+      "src": "layer:L12_build_equiv",
+      "dst": "ci/build_equivalence_check.py",
+      "rel": "checked_by"
+    },
+    {
+      "src": "layer:L13_cross_tree",
+      "dst": "ci/cross_tree_consistency_check.py",
+      "rel": "checked_by"
+    },
+    {
+      "src": "layer:L14_illustrations",
+      "dst": "ci/illustration_lineage_check.py",
+      "rel": "checked_by"
+    },
+    {
+      "src": "layer:L15_data_ties",
+      "dst": "ci/claim_data_ties_check.py",
+      "rel": "checked_by"
+    },
+    {
+      "src": "layer:L16_author_claims",
+      "dst": "ci/author_claims_check.py",
+      "rel": "checked_by"
+    },
+    {
+      "src": "cert:claim_certificate.json",
+      "dst": "ci/claim_audit_results.json",
+      "rel": "hashes_to",
+      "sha256": "8e13783bc871f786..."
+    },
+    {
+      "src": "cert:claim_certificate.json",
+      "dst": "ci/claim_coverage_uncovered.json",
+      "rel": "hashes_to",
+      "sha256": "795500d01d7961cc..."
+    },
+    {
+      "src": "cert:claim_certificate.json",
+      "dst": "ci/figure_value_check_results.json",
+      "rel": "hashes_to",
+      "sha256": "7d850709729d4fb4..."
+    },
+    {
+      "src": "cert:claim_certificate.json",
+      "dst": "ci/citation_integrity_results.json",
+      "rel": "hashes_to",
+      "sha256": "ea34f3fbb412748e..."
+    },
+    {
+      "src": "cert:claim_certificate.json",
+      "dst": "ci/link_integrity_results.json",
+      "rel": "hashes_to",
+      "sha256": "201186b275529351..."
+    },
+    {
+      "src": "cert:claim_certificate.json",
+      "dst": "ci/cross_claim_consistency_results.json",
+      "rel": "hashes_to",
+      "sha256": "ea9924ad17e3300a..."
+    },
+    {
+      "src": "cert:claim_certificate.json",
+      "dst": "ci/bib_entry_check_results.json",
+      "rel": "hashes_to",
+      "sha256": "75311d32bed138ef..."
+    },
+    {
+      "src": "cert:claim_certificate.json",
+      "dst": "ci/script_integrity_results.json",
+      "rel": "hashes_to",
+      "sha256": "0cb95174ba62ef10..."
+    },
+    {
+      "src": "cert:claim_certificate.json",
+      "dst": "ci/build_equivalence_results.json",
+      "rel": "hashes_to",
+      "sha256": "4cea7a13d9a7c65a..."
+    },
+    {
+      "src": "cert:claim_certificate.json",
+      "dst": "ci/cross_tree_consistency_results.json",
+      "rel": "hashes_to",
+      "sha256": "94a61f6202532154..."
+    },
+    {
+      "src": "cert:claim_certificate.json",
+      "dst": "ci/illustration_lineage_results.json",
+      "rel": "hashes_to",
+      "sha256": "fbfd251b81af9630..."
+    },
+    {
+      "src": "cert:claim_certificate.json",
+      "dst": "ci/claim_data_ties_results.json",
+      "rel": "hashes_to",
+      "sha256": "a1c304529f175537..."
+    },
+    {
+      "src": "cert:claim_certificate.json",
+      "dst": "ci/author_claims_results.json",
+      "rel": "hashes_to",
+      "sha256": "7163afdc0d28bbc8..."
+    },
+    {
+      "src": "cert:claim_certificate.json",
+      "dst": "ci/claim_data_ties.json",
+      "rel": "hashes_to",
+      "sha256": "9ca032b76bb43ad3..."
+    },
+    {
+      "src": "cert:claim_certificate.json",
+      "dst": "ci/figure_lineage.json",
+      "rel": "hashes_to",
+      "sha256": "d69541bb36893ac0..."
+    },
+    {
+      "src": "cert:claim_certificate.json",
+      "dst": "ci/illustration_lineage.json",
+      "rel": "hashes_to",
+      "sha256": "4b8d5c9d8368fd3e..."
+    }
+  ],
+  "orphans": {
+    "data_files": [
+      "ci/author_claims_results.json",
+      "ci/bib_entry_check_results.json",
+      "ci/build_equivalence_results.json",
+      "ci/citation_integrity_results.json",
+      "ci/claim_audit_results.json",
+      "ci/claim_coverage_uncovered.json",
+      "ci/claim_data_ties.json",
+      "ci/claim_data_ties_results.json",
+      "ci/cross_claim_consistency_results.json",
+      "ci/cross_tree_consistency_results.json",
+      "ci/figure_lineage.json",
+      "ci/figure_value_check_results.json",
+      "ci/illustration_lineage.json",
+      "ci/illustration_lineage_results.json",
+      "ci/link_integrity_results.json",
+      "ci/script_integrity_results.json",
+      "rebuttal/figures/proxy_ablation_results.json",
+      "rebuttal/figures/soft_constraint_results.json",
+      "supplementary/experiments/outputs/constitution/constitution_rho_matrix.npy",
+      "supplementary/experiments_rebuttal/algorithm1_storyboard/storyboard_spec.json",
+      "supplementary/experiments_rebuttal/constrained_decoding/constrained_decoding_results.json",
+      "supplementary/experiments_rebuttal/image_transfer/image_transfer_results_runB.json",
+      "supplementary/experiments_rebuttal/image_transfer/image_transfer_results_runC.json",
+      "supplementary/illustrations/algorithm1_routing_direction.txt",
+      "supplementary/illustrations/interface_assumption_direction.txt",
+      "supplementary/illustrations/staging_vs_refine_direction.txt"
+    ],
+    "claims": [],
+    "figures": [
+      "paper/figures/image_transfer.pdf",
+      "paper/figures/image_transfer_conflict.pdf",
+      "paper/figures/limitations_envelope.tex",
+      "paper/figures/related_work_quadrant.tex",
+      "rebuttal/figures/prompt_length_sweep.png",
+      "rebuttal/figures/proxy_ablation.pdf",
+      "rebuttal/figures/sonification_defense.pdf",
+      "rebuttal/figures/sonification_defense_rho_sweep.pdf",
+      "supplementary/demos/audio_demos/constitution_wheel_full.wav",
+      "supplementary/demos/audio_demos/diagonal_all_four.wav"
+    ]
+  }
+}

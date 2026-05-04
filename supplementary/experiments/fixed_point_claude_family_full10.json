@@ -1,0 +1,2354 @@
+{
+  "meta": {
+    "experiment": "fixed_point_claude_family",
+    "models": [
+      "haiku-3",
+      "sonnet-4",
+      "sonnet-4.5",
+      "opus-4",
+      "opus-4.1",
+      "opus-4.5",
+      "haiku-4.5"
+    ],
+    "seed": 43,
+    "budget": 512,
+    "timestamp": "2026-01-13T03:46:36.291231+00:00",
+    "api_calls": 210,
+    "input_tokens": 31107,
+    "output_tokens": 32812,
+    "per_model_tokens": {
+      "claude-3-haiku-20240307": {
+        "input": 3708,
+        "output": 2172,
+        "calls": 30
+      },
+      "claude-sonnet-4-20250514": {
+        "input": 4661,
+        "output": 5465,
+        "calls": 30
+      },
+      "claude-sonnet-4-5-20250929": {
+        "input": 4553,
+        "output": 5081,
+        "calls": 30
+      },
+      "claude-opus-4-20250514": {
+        "input": 4417,
+        "output": 5316,
+        "calls": 30
+      },
+      "claude-opus-4-1-20250805": {
+        "input": 4665,
+        "output": 5667,
+        "calls": 30
+      },
+      "claude-opus-4-5-20251101": {
+        "input": 4432,
+        "output": 3375,
+        "calls": 30
+      },
+      "claude-haiku-4-5-20251001": {
+        "input": 4671,
+        "output": 5736,
+        "calls": 30
+      }
+    }
+  },
+  "model_analyses": [
+    {
+      "model_name": "haiku-3",
+      "tasks_analyzed": 6,
+      "staged_wins": 3,
+      "avg_improvement_ratio": 2.5194296676909143,
+      "task_details": [
+        {
+          "task_id": "digit_sum_42",
+          "oneshot_delta": 50,
+          "staged_delta": 8,
+          "abs_oneshot": 50,
+          "abs_staged": 8,
+          "improvement_ratio": 6.25,
+          "winner": "staged"
+        },
+        {
+          "task_id": "digit_sum_66",
+          "oneshot_delta": 6,
+          "staged_delta": 1,
+          "abs_oneshot": 6,
+          "abs_staged": 1,
+          "improvement_ratio": 6.0,
+          "winner": "staged"
+        },
+        {
+          "task_id": "vowel_count_31",
+          "oneshot_delta": 25,
+          "staged_delta": 89,
+          "abs_oneshot": 25,
+          "abs_staged": 89,
+          "improvement_ratio": 0.2808988764044944,
+          "winner": "oneshot"
+        },
+        {
+          "task_id": "vowel_count_43",
+          "oneshot_delta": 96,
+          "staged_delta": 88,
+          "abs_oneshot": 96,
+          "abs_staged": 88,
+          "improvement_ratio": 1.0909090909090908,
+          "winner": "staged"
+        },
+        {
+          "task_id": "word_digit_43",
+          "oneshot_delta": -167,
+          "staged_delta": -299,
+          "abs_oneshot": 167,
+          "abs_staged": 299,
+          "improvement_ratio": 0.5585284280936454,
+          "winner": "oneshot"
+        },
+        {
+          "task_id": "self_count_43",
+          "oneshot_delta": 279,
+          "staged_delta": 298,
+          "abs_oneshot": 279,
+          "abs_staged": 298,
+          "improvement_ratio": 0.9362416107382551,
+          "winner": "oneshot"
+        }
+      ]
+    },
+    {
+      "model_name": "sonnet-4",
+      "tasks_analyzed": 6,
+      "staged_wins": 5,
+      "avg_improvement_ratio": 4.419597491127238,
+      "task_details": [
+        {
+          "task_id": "digit_sum_42",
+          "oneshot_delta": 703,
+          "staged_delta": 158,
+          "abs_oneshot": 703,
+          "abs_staged": 158,
+          "improvement_ratio": 4.449367088607595,
+          "winner": "staged"
+        },
+        {
+          "task_id": "digit_sum_66",
+          "oneshot_delta": 981,
+          "staged_delta": 131,
+          "abs_oneshot": 981,
+          "abs_staged": 131,
+          "improvement_ratio": 7.488549618320611,
+          "winner": "staged"
+        },
+        {
+          "task_id": "vowel_count_31",
+          "oneshot_delta": 587,
+          "staged_delta": 125,
+          "abs_oneshot": 587,
+          "abs_staged": 125,
+          "improvement_ratio": 4.696,
+          "winner": "staged"
+        },
+        {
+          "task_id": "vowel_count_43",
+          "oneshot_delta": 569,
+          "staged_delta": 85,
+          "abs_oneshot": 569,
+          "abs_staged": 85,
+          "improvement_ratio": 6.694117647058824,
+          "winner": "staged"
+        },
+        {
+          "task_id": "word_digit_43",
+          "oneshot_delta": -935,
+          "staged_delta": -306,
+          "abs_oneshot": 935,
+          "abs_staged": 306,
+          "improvement_ratio": 3.0555555555555554,
+          "winner": "staged"
+        },
+        {
+          "task_id": "self_count_43",
+          "oneshot_delta": 54,
+          "staged_delta": 403,
+          "abs_oneshot": 54,
+          "abs_staged": 403,
+          "improvement_ratio": 0.13399503722084366,
+          "winner": "oneshot"
+        }
+      ]
+    },
+    {
+      "model_name": "sonnet-4.5",
+      "tasks_analyzed": 6,
+      "staged_wins": 5,
+      "avg_improvement_ratio": 23.820237281808108,
+      "task_details": [
+        {
+          "task_id": "digit_sum_42",
+          "oneshot_delta": 439,
+          "staged_delta": 0,
+          "abs_oneshot": 439,
+          "abs_staged": 0,
+          "improvement_ratio": Infinity,
+          "winner": "staged"
+        },
+        {
+          "task_id": "digit_sum_66",
+          "oneshot_delta": 640,
+          "staged_delta": 32,
+          "abs_oneshot": 640,
+          "abs_staged": 32,
+          "improvement_ratio": 20.0,
+          "winner": "staged"
+        },
+        {
+          "task_id": "vowel_count_31",
+          "oneshot_delta": 662,
+          "staged_delta": 13,
+          "abs_oneshot": 662,
+          "abs_staged": 13,
+          "improvement_ratio": 50.92307692307692,
+          "winner": "staged"
+        },
+        {
+          "task_id": "vowel_count_43",
+          "oneshot_delta": 340,
+          "staged_delta": 8,
+          "abs_oneshot": 340,
+          "abs_staged": 8,
+          "improvement_ratio": 42.5,
+          "winner": "staged"
+        },
+        {
+          "task_id": "word_digit_43",
+          "oneshot_delta": -1553,
+          "staged_delta": -279,
+          "abs_oneshot": 1553,
+          "abs_staged": 279,
+          "improvement_ratio": 5.566308243727598,
+          "winner": "staged"
+        },
+        {
+          "task_id": "self_count_43",
+          "oneshot_delta": 36,
+          "staged_delta": 322,
+          "abs_oneshot": 36,
+          "abs_staged": 322,
+          "improvement_ratio": 0.11180124223602485,
+          "winner": "oneshot"
+        }
+      ]
+    },
+    {
+      "model_name": "opus-4",
+      "tasks_analyzed": 6,
+      "staged_wins": 5,
+      "avg_improvement_ratio": 22.686549940200475,
+      "task_details": [
+        {
+          "task_id": "digit_sum_42",
+          "oneshot_delta": 611,
+          "staged_delta": 7,
+          "abs_oneshot": 611,
+          "abs_staged": 7,
+          "improvement_ratio": 87.28571428571429,
+          "winner": "staged"
+        },
+        {
+          "task_id": "digit_sum_66",
+          "oneshot_delta": 888,
+          "staged_delta": 90,
+          "abs_oneshot": 888,
+          "abs_staged": 90,
+          "improvement_ratio": 9.866666666666667,
+          "winner": "staged"
+        },
+        {
+          "task_id": "vowel_count_31",
+          "oneshot_delta": 547,
+          "staged_delta": 21,
+          "abs_oneshot": 547,
+          "abs_staged": 21,
+          "improvement_ratio": 26.047619047619047,
+          "winner": "staged"
+        },
+        {
+          "task_id": "vowel_count_43",
+          "oneshot_delta": 596,
+          "staged_delta": 99,
+          "abs_oneshot": 596,
+          "abs_staged": 99,
+          "improvement_ratio": 6.02020202020202,
+          "winner": "staged"
+        },
+        {
+          "task_id": "word_digit_43",
+          "oneshot_delta": -1690,
+          "staged_delta": -265,
+          "abs_oneshot": 1690,
+          "abs_staged": 265,
+          "improvement_ratio": 6.377358490566038,
+          "winner": "staged"
+        },
+        {
+          "task_id": "self_count_43",
+          "oneshot_delta": 84,
+          "staged_delta": 161,
+          "abs_oneshot": 84,
+          "abs_staged": 161,
+          "improvement_ratio": 0.5217391304347826,
+          "winner": "oneshot"
+        }
+      ]
+    },
+    {
+      "model_name": "opus-4.1",
+      "tasks_analyzed": 6,
+      "staged_wins": 5,
+      "avg_improvement_ratio": 26.401666682289406,
+      "task_details": [
+        {
+          "task_id": "digit_sum_42",
+          "oneshot_delta": 696,
+          "staged_delta": 10,
+          "abs_oneshot": 696,
+          "abs_staged": 10,
+          "improvement_ratio": 69.6,
+          "winner": "staged"
+        },
+        {
+          "task_id": "digit_sum_66",
+          "oneshot_delta": 825,
+          "staged_delta": 12,
+          "abs_oneshot": 825,
+          "abs_staged": 12,
+          "improvement_ratio": 68.75,
+          "winner": "staged"
+        },
+        {
+          "task_id": "vowel_count_31",
+          "oneshot_delta": 593,
+          "staged_delta": 89,
+          "abs_oneshot": 593,
+          "abs_staged": 89,
+          "improvement_ratio": 6.662921348314606,
+          "winner": "staged"
+        },
+        {
+          "task_id": "vowel_count_43",
+          "oneshot_delta": 585,
+          "staged_delta": 86,
+          "abs_oneshot": 585,
+          "abs_staged": 86,
+          "improvement_ratio": 6.8023255813953485,
+          "winner": "staged"
+        },
+        {
+          "task_id": "word_digit_43",
+          "oneshot_delta": -1841,
+          "staged_delta": -291,
+          "abs_oneshot": 1841,
+          "abs_staged": 291,
+          "improvement_ratio": 6.326460481099656,
+          "winner": "staged"
+        },
+        {
+          "task_id": "self_count_43",
+          "oneshot_delta": 44,
+          "staged_delta": 164,
+          "abs_oneshot": 44,
+          "abs_staged": 164,
+          "improvement_ratio": 0.2682926829268293,
+          "winner": "oneshot"
+        }
+      ]
+    },
+    {
+      "model_name": "opus-4.5",
+      "tasks_analyzed": 6,
+      "staged_wins": 4,
+      "avg_improvement_ratio": 4.80379154230837,
+      "task_details": [
+        {
+          "task_id": "digit_sum_42",
+          "oneshot_delta": -10,
+          "staged_delta": 75,
+          "abs_oneshot": 10,
+          "abs_staged": 75,
+          "improvement_ratio": 0.13333333333333333,
+          "winner": "oneshot"
+        },
+        {
+          "task_id": "digit_sum_66",
+          "oneshot_delta": -19,
+          "staged_delta": -1,
+          "abs_oneshot": 19,
+          "abs_staged": 1,
+          "improvement_ratio": 19.0,
+          "winner": "staged"
+        },
+        {
+          "task_id": "vowel_count_31",
+          "oneshot_delta": 66,
+          "staged_delta": 15,
+          "abs_oneshot": 66,
+          "abs_staged": 15,
+          "improvement_ratio": 4.4,
+          "winner": "staged"
+        },
+        {
+          "task_id": "vowel_count_43",
+          "oneshot_delta": 54,
+          "staged_delta": 35,
+          "abs_oneshot": 54,
+          "abs_staged": 35,
+          "improvement_ratio": 1.542857142857143,
+          "winner": "staged"
+        },
+        {
+          "task_id": "word_digit_43",
+          "oneshot_delta": -894,
+          "staged_delta": -293,
+          "abs_oneshot": 894,
+          "abs_staged": 293,
+          "improvement_ratio": 3.051194539249147,
+          "winner": "staged"
+        },
+        {
+          "task_id": "self_count_43",
+          "oneshot_delta": 105,
+          "staged_delta": 151,
+          "abs_oneshot": 105,
+          "abs_staged": 151,
+          "improvement_ratio": 0.695364238410596,
+          "winner": "oneshot"
+        }
+      ]
+    },
+    {
+      "model_name": "haiku-4.5",
+      "tasks_analyzed": 6,
+      "staged_wins": 5,
+      "avg_improvement_ratio": 23.34670715988986,
+      "task_details": [
+        {
+          "task_id": "digit_sum_42",
+          "oneshot_delta": 743,
+          "staged_delta": 17,
+          "abs_oneshot": 743,
+          "abs_staged": 17,
+          "improvement_ratio": 43.705882352941174,
+          "winner": "staged"
+        },
+        {
+          "task_id": "digit_sum_66",
+          "oneshot_delta": 883,
+          "staged_delta": -12,
+          "abs_oneshot": 883,
+          "abs_staged": 12,
+          "improvement_ratio": 73.58333333333333,
+          "winner": "staged"
+        },
+        {
+          "task_id": "vowel_count_31",
+          "oneshot_delta": 580,
+          "staged_delta": 85,
+          "abs_oneshot": 580,
+          "abs_staged": 85,
+          "improvement_ratio": 6.823529411764706,
+          "winner": "staged"
+        },
+        {
+          "task_id": "vowel_count_43",
+          "oneshot_delta": 627,
+          "staged_delta": 62,
+          "abs_oneshot": 627,
+          "abs_staged": 62,
+          "improvement_ratio": 10.112903225806452,
+          "winner": "staged"
+        },
+        {
+          "task_id": "word_digit_43",
+          "oneshot_delta": -1607,
+          "staged_delta": -297,
+          "abs_oneshot": 1607,
+          "abs_staged": 297,
+          "improvement_ratio": 5.410774410774411,
+          "winner": "staged"
+        },
+        {
+          "task_id": "self_count_43",
+          "oneshot_delta": 158,
+          "staged_delta": 356,
+          "abs_oneshot": 158,
+          "abs_staged": 356,
+          "improvement_ratio": 0.4438202247191011,
+          "winner": "oneshot"
+        }
+      ]
+    },
+    {
+      "model_name": "opus-4.7",
+      "tasks_analyzed": 6,
+      "staged_wins": 5,
+      "avg_improvement_ratio": 4.851725744444569,
+      "task_details": [
+        {
+          "task_id": "vowel_count_30",
+          "oneshot_delta": 279,
+          "staged_delta": 107,
+          "abs_oneshot": 279,
+          "abs_staged": 107,
+          "improvement_ratio": 2.607476635514019,
+          "winner": "staged"
+        },
+        {
+          "task_id": "digit_sum_44",
+          "oneshot_delta": 452,
+          "staged_delta": 36,
+          "abs_oneshot": 452,
+          "abs_staged": 36,
+          "improvement_ratio": 12.555555555555555,
+          "winner": "staged"
+        },
+        {
+          "task_id": "digit_sum_80",
+          "oneshot_delta": 823,
+          "staged_delta": 0,
+          "abs_oneshot": 823,
+          "abs_staged": 0,
+          "improvement_ratio": Infinity,
+          "winner": "staged"
+        },
+        {
+          "task_id": "self_count_43",
+          "oneshot_delta": -16,
+          "staged_delta": 93,
+          "abs_oneshot": 16,
+          "abs_staged": 93,
+          "improvement_ratio": 0.17204301075268819,
+          "winner": "oneshot"
+        },
+        {
+          "task_id": "vowel_count_31",
+          "oneshot_delta": 796,
+          "staged_delta": 101,
+          "abs_oneshot": 796,
+          "abs_staged": 101,
+          "improvement_ratio": 7.881188118811881,
+          "winner": "staged"
+        },
+        {
+          "task_id": "word_digit_43",
+          "oneshot_delta": -1181,
+          "staged_delta": -1133,
+          "abs_oneshot": 1181,
+          "abs_staged": 1133,
+          "improvement_ratio": 1.0423654015887025,
+          "winner": "staged"
+        }
+      ]
+    },
+    {
+      "model_name": "opus-4.6",
+      "tasks_analyzed": 6,
+      "staged_wins": 4,
+      "avg_improvement_ratio": 7.680066095426835,
+      "task_details": [
+        {
+          "task_id": "digit_sum_80",
+          "oneshot_delta": 3,
+          "staged_delta": 14,
+          "abs_oneshot": 3,
+          "abs_staged": 14,
+          "improvement_ratio": 0.21428571428571427,
+          "winner": "oneshot"
+        },
+        {
+          "task_id": "digit_sum_44",
+          "oneshot_delta": -17,
+          "staged_delta": 258,
+          "abs_oneshot": 17,
+          "abs_staged": 258,
+          "improvement_ratio": 0.06589147286821706,
+          "winner": "oneshot"
+        },
+        {
+          "task_id": "self_count_43",
+          "oneshot_delta": 483,
+          "staged_delta": 111,
+          "abs_oneshot": 483,
+          "abs_staged": 111,
+          "improvement_ratio": 4.351351351351352,
+          "winner": "staged"
+        },
+        {
+          "task_id": "vowel_count_31",
+          "oneshot_delta": 860,
+          "staged_delta": 38,
+          "abs_oneshot": 860,
+          "abs_staged": 38,
+          "improvement_ratio": 22.63157894736842,
+          "winner": "staged"
+        },
+        {
+          "task_id": "word_digit_43",
+          "oneshot_delta": -1727,
+          "staged_delta": -1216,
+          "abs_oneshot": 1727,
+          "abs_staged": 1216,
+          "improvement_ratio": 1.4202302631578947,
+          "winner": "staged"
+        },
+        {
+          "task_id": "vowel_count_30",
+          "oneshot_delta": 1183,
+          "staged_delta": 68,
+          "abs_oneshot": 1183,
+          "abs_staged": 68,
+          "improvement_ratio": 17.397058823529413,
+          "winner": "staged"
+        }
+      ]
+    },
+    {
+      "model_name": "sonnet-4.6",
+      "tasks_analyzed": 6,
+      "staged_wins": 6,
+      "avg_improvement_ratio": 10.87325248246377,
+      "task_details": [
+        {
+          "task_id": "digit_sum_80",
+          "oneshot_delta": 702,
+          "staged_delta": 535,
+          "abs_oneshot": 702,
+          "abs_staged": 535,
+          "improvement_ratio": 1.3121495327102803,
+          "winner": "staged"
+        },
+        {
+          "task_id": "vowel_count_31",
+          "oneshot_delta": 972,
+          "staged_delta": 291,
+          "abs_oneshot": 972,
+          "abs_staged": 291,
+          "improvement_ratio": 3.3402061855670104,
+          "winner": "staged"
+        },
+        {
+          "task_id": "digit_sum_44",
+          "oneshot_delta": 1205,
+          "staged_delta": 41,
+          "abs_oneshot": 1205,
+          "abs_staged": 41,
+          "improvement_ratio": 29.390243902439025,
+          "winner": "staged"
+        },
+        {
+          "task_id": "vowel_count_30",
+          "oneshot_delta": 905,
+          "staged_delta": 34,
+          "abs_oneshot": 905,
+          "abs_staged": 34,
+          "improvement_ratio": 26.61764705882353,
+          "winner": "staged"
+        },
+        {
+          "task_id": "self_count_43",
+          "oneshot_delta": 183,
+          "staged_delta": 71,
+          "abs_oneshot": 183,
+          "abs_staged": 71,
+          "improvement_ratio": 2.5774647887323945,
+          "winner": "staged"
+        },
+        {
+          "task_id": "word_digit_43",
+          "oneshot_delta": -2220,
+          "staged_delta": -1109,
+          "abs_oneshot": 2220,
+          "abs_staged": 1109,
+          "improvement_ratio": 2.00180342651037,
+          "winner": "staged"
+        }
+      ]
+    }
+  ],
+  "results": [
+    {
+      "task_id": "digit_sum_42",
+      "model_id": "claude-3-haiku-20240307",
+      "model_name": "haiku-3",
+      "protocol": "oneshot",
+      "is_fixed_point": false,
+      "target": 51,
+      "actual": 101,
+      "delta": 50,
+      "iterations": 1
+    },
+    {
+      "task_id": "digit_sum_42",
+      "model_id": "claude-3-haiku-20240307",
+      "model_name": "haiku-3",
+      "protocol": "staged",
+      "is_fixed_point": false,
+      "target": 50,
+      "actual": 58,
+      "delta": 8,
+      "iterations": 4
+    },
+    {
+      "task_id": "digit_sum_66",
+      "model_id": "claude-3-haiku-20240307",
+      "model_name": "haiku-3",
+      "protocol": "oneshot",
+      "is_fixed_point": false,
+      "target": 75,
+      "actual": 81,
+      "delta": 6,
+      "iterations": 1
+    },
+    {
+      "task_id": "digit_sum_66",
+      "model_id": "claude-3-haiku-20240307",
+      "model_name": "haiku-3",
+      "protocol": "staged",
+      "is_fixed_point": false,
+      "target": 75,
+      "actual": 76,
+      "delta": 1,
+      "iterations": 4
+    },
+    {
+      "task_id": "vowel_count_31",
+      "model_id": "claude-3-haiku-20240307",
+      "model_name": "haiku-3",
+      "protocol": "oneshot",
+      "is_fixed_point": false,
+      "target": 125,
+      "actual": 150,
+      "delta": 25,
+      "iterations": 1
+    },
+    {
+      "task_id": "vowel_count_31",
+      "model_id": "claude-3-haiku-20240307",
+      "model_name": "haiku-3",
+      "protocol": "staged",
+      "is_fixed_point": false,
+      "target": 145,
+      "actual": 234,
+      "delta": 89,
+      "iterations": 4
+    },
+    {
+      "task_id": "vowel_count_43",
+      "model_id": "claude-3-haiku-20240307",
+      "model_name": "haiku-3",
+      "protocol": "oneshot",
+      "is_fixed_point": false,
+      "target": 225,
+      "actual": 321,
+      "delta": 96,
+      "iterations": 1
+    },
+    {
+      "task_id": "vowel_count_43",
+      "model_id": "claude-3-haiku-20240307",
+      "model_name": "haiku-3",
+      "protocol": "staged",
+      "is_fixed_point": false,
+      "target": 185,
+      "actual": 273,
+      "delta": 88,
+      "iterations": 4
+    },
+    {
+      "task_id": "word_digit_43",
+      "model_id": "claude-3-haiku-20240307",
+      "model_name": "haiku-3",
+      "protocol": "oneshot",
+      "is_fixed_point": false,
+      "target": 360,
+      "actual": 193,
+      "delta": -167,
+      "iterations": 1
+    },
+    {
+      "task_id": "word_digit_43",
+      "model_id": "claude-3-haiku-20240307",
+      "model_name": "haiku-3",
+      "protocol": "staged",
+      "is_fixed_point": false,
+      "target": 625,
+      "actual": 326,
+      "delta": -299,
+      "iterations": 4
+    },
+    {
+      "task_id": "self_count_43",
+      "model_id": "claude-3-haiku-20240307",
+      "model_name": "haiku-3",
+      "protocol": "oneshot",
+      "is_fixed_point": false,
+      "target": 201,
+      "actual": 480,
+      "delta": 279,
+      "iterations": 1
+    },
+    {
+      "task_id": "self_count_43",
+      "model_id": "claude-3-haiku-20240307",
+      "model_name": "haiku-3",
+      "protocol": "staged",
+      "is_fixed_point": false,
+      "target": -1,
+      "actual": 297,
+      "delta": 298,
+      "iterations": 4
+    },
+    {
+      "task_id": "digit_sum_42",
+      "model_id": "claude-sonnet-4-20250514",
+      "model_name": "sonnet-4",
+      "protocol": "oneshot",
+      "is_fixed_point": false,
+      "target": 353,
+      "actual": 1056,
+      "delta": 703,
+      "iterations": 1
+    },
+    {
+      "task_id": "digit_sum_42",
+      "model_id": "claude-sonnet-4-20250514",
+      "model_name": "sonnet-4",
+      "protocol": "staged",
+      "is_fixed_point": false,
+      "target": 123,
+      "actual": 281,
+      "delta": 158,
+      "iterations": 4
+    },
+    {
+      "task_id": "digit_sum_66",
+      "model_id": "claude-sonnet-4-20250514",
+      "model_name": "sonnet-4",
+      "protocol": "oneshot",
+      "is_fixed_point": false,
+      "target": 521,
+      "actual": 1502,
+      "delta": 981,
+      "iterations": 1
+    },
+    {
+      "task_id": "digit_sum_66",
+      "model_id": "claude-sonnet-4-20250514",
+      "model_name": "sonnet-4",
+      "protocol": "staged",
+      "is_fixed_point": false,
+      "target": 135,
+      "actual": 266,
+      "delta": 131,
+      "iterations": 4
+    },
+    {
+      "task_id": "vowel_count_31",
+      "model_id": "claude-sonnet-4-20250514",
+      "model_name": "sonnet-4",
+      "protocol": "oneshot",
+      "is_fixed_point": false,
+      "target": 439,
+      "actual": 1026,
+      "delta": 587,
+      "iterations": 1
+    },
+    {
+      "task_id": "vowel_count_31",
+      "model_id": "claude-sonnet-4-20250514",
+      "model_name": "sonnet-4",
+      "protocol": "staged",
+      "is_fixed_point": false,
+      "target": 201,
+      "actual": 326,
+      "delta": 125,
+      "iterations": 4
+    },
+    {
+      "task_id": "vowel_count_43",
+      "model_id": "claude-sonnet-4-20250514",
+      "model_name": "sonnet-4",
+      "protocol": "oneshot",
+      "is_fixed_point": false,
+      "target": 477,
+      "actual": 1046,
+      "delta": 569,
+      "iterations": 1
+    },
+    {
+      "task_id": "vowel_count_43",
+      "model_id": "claude-sonnet-4-20250514",
+      "model_name": "sonnet-4",
+      "protocol": "staged",
+      "is_fixed_point": false,
+      "target": 169,
+      "actual": 254,
+      "delta": 85,
+      "iterations": 4
+    },
+    {
+      "task_id": "word_digit_43",
+      "model_id": "claude-sonnet-4-20250514",
+      "model_name": "sonnet-4",
+      "protocol": "oneshot",
+      "is_fixed_point": false,
+      "target": 2070,
+      "actual": 1135,
+      "delta": -935,
+      "iterations": 1
+    },
+    {
+      "task_id": "word_digit_43",
+      "model_id": "claude-sonnet-4-20250514",
+      "model_name": "sonnet-4",
+      "protocol": "staged",
+      "is_fixed_point": false,
+      "target": 645,
+      "actual": 339,
+      "delta": -306,
+      "iterations": 4
+    },
+    {
+      "task_id": "self_count_43",
+      "model_id": "claude-sonnet-4-20250514",
+      "model_name": "sonnet-4",
+      "protocol": "oneshot",
+      "is_fixed_point": false,
+      "target": 1048,
+      "actual": 1102,
+      "delta": 54,
+      "iterations": 1
+    },
+    {
+      "task_id": "self_count_43",
+      "model_id": "claude-sonnet-4-20250514",
+      "model_name": "sonnet-4",
+      "protocol": "staged",
+      "is_fixed_point": false,
+      "target": -1,
+      "actual": 402,
+      "delta": 403,
+      "iterations": 4
+    },
+    {
+      "task_id": "digit_sum_42",
+      "model_id": "claude-sonnet-4-5-20250929",
+      "model_name": "sonnet-4.5",
+      "protocol": "oneshot",
+      "is_fixed_point": false,
+      "target": 324,
+      "actual": 763,
+      "delta": 439,
+      "iterations": 1
+    },
+    {
+      "task_id": "digit_sum_42",
+      "model_id": "claude-sonnet-4-5-20250929",
+      "model_name": "sonnet-4.5",
+      "protocol": "staged",
+      "is_fixed_point": true,
+      "target": 59,
+      "actual": 59,
+      "delta": 0,
+      "iterations": 4
+    },
+    {
+      "task_id": "digit_sum_66",
+      "model_id": "claude-sonnet-4-5-20250929",
+      "model_name": "sonnet-4.5",
+      "protocol": "oneshot",
+      "is_fixed_point": false,
+      "target": 542,
+      "actual": 1182,
+      "delta": 640,
+      "iterations": 1
+    },
+    {
+      "task_id": "digit_sum_66",
+      "model_id": "claude-sonnet-4-5-20250929",
+      "model_name": "sonnet-4.5",
+      "protocol": "staged",
+      "is_fixed_point": false,
+      "target": 96,
+      "actual": 128,
+      "delta": 32,
+      "iterations": 4
+    },
+    {
+      "task_id": "vowel_count_31",
+      "model_id": "claude-sonnet-4-5-20250929",
+      "model_name": "sonnet-4.5",
+      "protocol": "oneshot",
+      "is_fixed_point": false,
+      "target": 505,
+      "actual": 1167,
+      "delta": 662,
+      "iterations": 1
+    },
+    {
+      "task_id": "vowel_count_31",
+      "model_id": "claude-sonnet-4-5-20250929",
+      "model_name": "sonnet-4.5",
+      "protocol": "staged",
+      "is_fixed_point": false,
+      "target": 65,
+      "actual": 78,
+      "delta": 13,
+      "iterations": 4
+    },
+    {
+      "task_id": "vowel_count_43",
+      "model_id": "claude-sonnet-4-5-20250929",
+      "model_name": "sonnet-4.5",
+      "protocol": "oneshot",
+      "is_fixed_point": false,
+      "target": 327,
+      "actual": 667,
+      "delta": 340,
+      "iterations": 1
+    },
+    {
+      "task_id": "vowel_count_43",
+      "model_id": "claude-sonnet-4-5-20250929",
+      "model_name": "sonnet-4.5",
+      "protocol": "staged",
+      "is_fixed_point": false,
+      "target": 67,
+      "actual": 75,
+      "delta": 8,
+      "iterations": 4
+    },
+    {
+      "task_id": "word_digit_43",
+      "model_id": "claude-sonnet-4-5-20250929",
+      "model_name": "sonnet-4.5",
+      "protocol": "oneshot",
+      "is_fixed_point": false,
+      "target": 2995,
+      "actual": 1442,
+      "delta": -1553,
+      "iterations": 1
+    },
+    {
+      "task_id": "word_digit_43",
+      "model_id": "claude-sonnet-4-5-20250929",
+      "model_name": "sonnet-4.5",
+      "protocol": "staged",
+      "is_fixed_point": false,
+      "target": 680,
+      "actual": 401,
+      "delta": -279,
+      "iterations": 4
+    },
+    {
+      "task_id": "self_count_43",
+      "model_id": "claude-sonnet-4-5-20250929",
+      "model_name": "sonnet-4.5",
+      "protocol": "oneshot",
+      "is_fixed_point": false,
+      "target": 1007,
+      "actual": 1043,
+      "delta": 36,
+      "iterations": 1
+    },
+    {
+      "task_id": "self_count_43",
+      "model_id": "claude-sonnet-4-5-20250929",
+      "model_name": "sonnet-4.5",
+      "protocol": "staged",
+      "is_fixed_point": false,
+      "target": -1,
+      "actual": 321,
+      "delta": 322,
+      "iterations": 4
+    },
+    {
+      "task_id": "digit_sum_42",
+      "model_id": "claude-opus-4-20250514",
+      "model_name": "opus-4",
+      "protocol": "oneshot",
+      "is_fixed_point": false,
+      "target": 163,
+      "actual": 774,
+      "delta": 611,
+      "iterations": 1
+    },
+    {
+      "task_id": "digit_sum_42",
+      "model_id": "claude-opus-4-20250514",
+      "model_name": "opus-4",
+      "protocol": "staged",
+      "is_fixed_point": false,
+      "target": 164,
+      "actual": 171,
+      "delta": 7,
+      "iterations": 4
+    },
+    {
+      "task_id": "digit_sum_66",
+      "model_id": "claude-opus-4-20250514",
+      "model_name": "opus-4",
+      "protocol": "oneshot",
+      "is_fixed_point": false,
+      "target": 412,
+      "actual": 1300,
+      "delta": 888,
+      "iterations": 1
+    },
+    {
+      "task_id": "digit_sum_66",
+      "model_id": "claude-opus-4-20250514",
+      "model_name": "opus-4",
+      "protocol": "staged",
+      "is_fixed_point": false,
+      "target": 125,
+      "actual": 215,
+      "delta": 90,
+      "iterations": 4
+    },
+    {
+      "task_id": "vowel_count_31",
+      "model_id": "claude-opus-4-20250514",
+      "model_name": "opus-4",
+      "protocol": "oneshot",
+      "is_fixed_point": false,
+      "target": 565,
+      "actual": 1112,
+      "delta": 547,
+      "iterations": 1
+    },
+    {
+      "task_id": "vowel_count_31",
+      "model_id": "claude-opus-4-20250514",
+      "model_name": "opus-4",
+      "protocol": "staged",
+      "is_fixed_point": false,
+      "target": 77,
+      "actual": 98,
+      "delta": 21,
+      "iterations": 4
+    },
+    {
+      "task_id": "vowel_count_43",
+      "model_id": "claude-opus-4-20250514",
+      "model_name": "opus-4",
+      "protocol": "oneshot",
+      "is_fixed_point": false,
+      "target": 513,
+      "actual": 1109,
+      "delta": 596,
+      "iterations": 1
+    },
+    {
+      "task_id": "vowel_count_43",
+      "model_id": "claude-opus-4-20250514",
+      "model_name": "opus-4",
+      "protocol": "staged",
+      "is_fixed_point": false,
+      "target": 143,
+      "actual": 242,
+      "delta": 99,
+      "iterations": 4
+    },
+    {
+      "task_id": "word_digit_43",
+      "model_id": "claude-opus-4-20250514",
+      "model_name": "opus-4",
+      "protocol": "oneshot",
+      "is_fixed_point": false,
+      "target": 3785,
+      "actual": 2095,
+      "delta": -1690,
+      "iterations": 1
+    },
+    {
+      "task_id": "word_digit_43",
+      "model_id": "claude-opus-4-20250514",
+      "model_name": "opus-4",
+      "protocol": "staged",
+      "is_fixed_point": false,
+      "target": 635,
+      "actual": 370,
+      "delta": -265,
+      "iterations": 4
+    },
+    {
+      "task_id": "self_count_43",
+      "model_id": "claude-opus-4-20250514",
+      "model_name": "opus-4",
+      "protocol": "oneshot",
+      "is_fixed_point": false,
+      "target": 1327,
+      "actual": 1411,
+      "delta": 84,
+      "iterations": 1
+    },
+    {
+      "task_id": "self_count_43",
+      "model_id": "claude-opus-4-20250514",
+      "model_name": "opus-4",
+      "protocol": "staged",
+      "is_fixed_point": false,
+      "target": -1,
+      "actual": 160,
+      "delta": 161,
+      "iterations": 4
+    },
+    {
+      "task_id": "digit_sum_42",
+      "model_id": "claude-opus-4-1-20250805",
+      "model_name": "opus-4.1",
+      "protocol": "oneshot",
+      "is_fixed_point": false,
+      "target": 491,
+      "actual": 1187,
+      "delta": 696,
+      "iterations": 1
+    },
+    {
+      "task_id": "digit_sum_42",
+      "model_id": "claude-opus-4-1-20250805",
+      "model_name": "opus-4.1",
+      "protocol": "staged",
+      "is_fixed_point": false,
+      "target": 167,
+      "actual": 177,
+      "delta": 10,
+      "iterations": 4
+    },
+    {
+      "task_id": "digit_sum_66",
+      "model_id": "claude-opus-4-1-20250805",
+      "model_name": "opus-4.1",
+      "protocol": "oneshot",
+      "is_fixed_point": false,
+      "target": 561,
+      "actual": 1386,
+      "delta": 825,
+      "iterations": 1
+    },
+    {
+      "task_id": "digit_sum_66",
+      "model_id": "claude-opus-4-1-20250805",
+      "model_name": "opus-4.1",
+      "protocol": "staged",
+      "is_fixed_point": false,
+      "target": 151,
+      "actual": 163,
+      "delta": 12,
+      "iterations": 4
+    },
+    {
+      "task_id": "vowel_count_31",
+      "model_id": "claude-opus-4-1-20250805",
+      "model_name": "opus-4.1",
+      "protocol": "oneshot",
+      "is_fixed_point": false,
+      "target": 593,
+      "actual": 1186,
+      "delta": 593,
+      "iterations": 1
+    },
+    {
+      "task_id": "vowel_count_31",
+      "model_id": "claude-opus-4-1-20250805",
+      "model_name": "opus-4.1",
+      "protocol": "staged",
+      "is_fixed_point": false,
+      "target": 115,
+      "actual": 204,
+      "delta": 89,
+      "iterations": 4
+    },
+    {
+      "task_id": "vowel_count_43",
+      "model_id": "claude-opus-4-1-20250805",
+      "model_name": "opus-4.1",
+      "protocol": "oneshot",
+      "is_fixed_point": false,
+      "target": 545,
+      "actual": 1130,
+      "delta": 585,
+      "iterations": 1
+    },
+    {
+      "task_id": "vowel_count_43",
+      "model_id": "claude-opus-4-1-20250805",
+      "model_name": "opus-4.1",
+      "protocol": "staged",
+      "is_fixed_point": false,
+      "target": 145,
+      "actual": 231,
+      "delta": 86,
+      "iterations": 4
+    },
+    {
+      "task_id": "word_digit_43",
+      "model_id": "claude-opus-4-1-20250805",
+      "model_name": "opus-4.1",
+      "protocol": "oneshot",
+      "is_fixed_point": false,
+      "target": 3665,
+      "actual": 1824,
+      "delta": -1841,
+      "iterations": 1
+    },
+    {
+      "task_id": "word_digit_43",
+      "model_id": "claude-opus-4-1-20250805",
+      "model_name": "opus-4.1",
+      "protocol": "staged",
+      "is_fixed_point": false,
+      "target": 635,
+      "actual": 344,
+      "delta": -291,
+      "iterations": 4
+    },
+    {
+      "task_id": "self_count_43",
+      "model_id": "claude-opus-4-1-20250805",
+      "model_name": "opus-4.1",
+      "protocol": "oneshot",
+      "is_fixed_point": false,
+      "target": 1354,
+      "actual": 1398,
+      "delta": 44,
+      "iterations": 1
+    },
+    {
+      "task_id": "self_count_43",
+      "model_id": "claude-opus-4-1-20250805",
+      "model_name": "opus-4.1",
+      "protocol": "staged",
+      "is_fixed_point": false,
+      "target": -1,
+      "actual": 163,
+      "delta": 164,
+      "iterations": 4
+    },
+    {
+      "task_id": "digit_sum_42",
+      "model_id": "claude-opus-4-5-20251101",
+      "model_name": "opus-4.5",
+      "protocol": "oneshot",
+      "is_fixed_point": false,
+      "target": 50,
+      "actual": 40,
+      "delta": -10,
+      "iterations": 1
+    },
+    {
+      "task_id": "digit_sum_42",
+      "model_id": "claude-opus-4-5-20251101",
+      "model_name": "opus-4.5",
+      "protocol": "staged",
+      "is_fixed_point": false,
+      "target": 137,
+      "actual": 212,
+      "delta": 75,
+      "iterations": 4
+    },
+    {
+      "task_id": "digit_sum_66",
+      "model_id": "claude-opus-4-5-20251101",
+      "model_name": "opus-4.5",
+      "protocol": "oneshot",
+      "is_fixed_point": false,
+      "target": 80,
+      "actual": 61,
+      "delta": -19,
+      "iterations": 1
+    },
+    {
+      "task_id": "digit_sum_66",
+      "model_id": "claude-opus-4-5-20251101",
+      "model_name": "opus-4.5",
+      "protocol": "staged",
+      "is_fixed_point": false,
+      "target": 92,
+      "actual": 91,
+      "delta": -1,
+      "iterations": 4
+    },
+    {
+      "task_id": "vowel_count_31",
+      "model_id": "claude-opus-4-5-20251101",
+      "model_name": "opus-4.5",
+      "protocol": "oneshot",
+      "is_fixed_point": false,
+      "target": 91,
+      "actual": 157,
+      "delta": 66,
+      "iterations": 1
+    },
+    {
+      "task_id": "vowel_count_31",
+      "model_id": "claude-opus-4-5-20251101",
+      "model_name": "opus-4.5",
+      "protocol": "staged",
+      "is_fixed_point": false,
+      "target": 57,
+      "actual": 72,
+      "delta": 15,
+      "iterations": 4
+    },
+    {
+      "task_id": "vowel_count_43",
+      "model_id": "claude-opus-4-5-20251101",
+      "model_name": "opus-4.5",
+      "protocol": "oneshot",
+      "is_fixed_point": false,
+      "target": 103,
+      "actual": 157,
+      "delta": 54,
+      "iterations": 1
+    },
+    {
+      "task_id": "vowel_count_43",
+      "model_id": "claude-opus-4-5-20251101",
+      "model_name": "opus-4.5",
+      "protocol": "staged",
+      "is_fixed_point": false,
+      "target": 81,
+      "actual": 116,
+      "delta": 35,
+      "iterations": 4
+    },
+    {
+      "task_id": "word_digit_43",
+      "model_id": "claude-opus-4-5-20251101",
+      "model_name": "opus-4.5",
+      "protocol": "oneshot",
+      "is_fixed_point": false,
+      "target": 2000,
+      "actual": 1106,
+      "delta": -894,
+      "iterations": 1
+    },
+    {
+      "task_id": "word_digit_43",
+      "model_id": "claude-opus-4-5-20251101",
+      "model_name": "opus-4.5",
+      "protocol": "staged",
+      "is_fixed_point": false,
+      "target": 605,
+      "actual": 312,
+      "delta": -293,
+      "iterations": 4
+    },
+    {
+      "task_id": "self_count_43",
+      "model_id": "claude-opus-4-5-20251101",
+      "model_name": "opus-4.5",
+      "protocol": "oneshot",
+      "is_fixed_point": false,
+      "target": 1290,
+      "actual": 1395,
+      "delta": 105,
+      "iterations": 1
+    },
+    {
+      "task_id": "self_count_43",
+      "model_id": "claude-opus-4-5-20251101",
+      "model_name": "opus-4.5",
+      "protocol": "staged",
+      "is_fixed_point": false,
+      "target": -1,
+      "actual": 150,
+      "delta": 151,
+      "iterations": 4
+    },
+    {
+      "task_id": "digit_sum_42",
+      "model_id": "claude-haiku-4-5-20251001",
+      "model_name": "haiku-4.5",
+      "protocol": "oneshot",
+      "is_fixed_point": false,
+      "target": 375,
+      "actual": 1118,
+      "delta": 743,
+      "iterations": 1
+    },
+    {
+      "task_id": "digit_sum_42",
+      "model_id": "claude-haiku-4-5-20251001",
+      "model_name": "haiku-4.5",
+      "protocol": "staged",
+      "is_fixed_point": false,
+      "target": 66,
+      "actual": 83,
+      "delta": 17,
+      "iterations": 4
+    },
+    {
+      "task_id": "digit_sum_66",
+      "model_id": "claude-haiku-4-5-20251001",
+      "model_name": "haiku-4.5",
+      "protocol": "oneshot",
+      "is_fixed_point": false,
+      "target": 483,
+      "actual": 1366,
+      "delta": 883,
+      "iterations": 1
+    },
+    {
+      "task_id": "digit_sum_66",
+      "model_id": "claude-haiku-4-5-20251001",
+      "model_name": "haiku-4.5",
+      "protocol": "staged",
+      "is_fixed_point": false,
+      "target": 95,
+      "actual": 83,
+      "delta": -12,
+      "iterations": 4
+    },
+    {
+      "task_id": "vowel_count_31",
+      "model_id": "claude-haiku-4-5-20251001",
+      "model_name": "haiku-4.5",
+      "protocol": "oneshot",
+      "is_fixed_point": false,
+      "target": 373,
+      "actual": 953,
+      "delta": 580,
+      "iterations": 1
+    },
+    {
+      "task_id": "vowel_count_31",
+      "model_id": "claude-haiku-4-5-20251001",
+      "model_name": "haiku-4.5",
+      "protocol": "staged",
+      "is_fixed_point": false,
+      "target": 101,
+      "actual": 186,
+      "delta": 85,
+      "iterations": 4
+    },
+    {
+      "task_id": "vowel_count_43",
+      "model_id": "claude-haiku-4-5-20251001",
+      "model_name": "haiku-4.5",
+      "protocol": "oneshot",
+      "is_fixed_point": false,
+      "target": 381,
+      "actual": 1008,
+      "delta": 627,
+      "iterations": 1
+    },
+    {
+      "task_id": "vowel_count_43",
+      "model_id": "claude-haiku-4-5-20251001",
+      "model_name": "haiku-4.5",
+      "protocol": "staged",
+      "is_fixed_point": false,
+      "target": 103,
+      "actual": 165,
+      "delta": 62,
+      "iterations": 4
+    },
+    {
+      "task_id": "word_digit_43",
+      "model_id": "claude-haiku-4-5-20251001",
+      "model_name": "haiku-4.5",
+      "protocol": "oneshot",
+      "is_fixed_point": false,
+      "target": 2965,
+      "actual": 1358,
+      "delta": -1607,
+      "iterations": 1
+    },
+    {
+      "task_id": "word_digit_43",
+      "model_id": "claude-haiku-4-5-20251001",
+      "model_name": "haiku-4.5",
+      "protocol": "staged",
+      "is_fixed_point": false,
+      "target": 645,
+      "actual": 348,
+      "delta": -297,
+      "iterations": 4
+    },
+    {
+      "task_id": "self_count_43",
+      "model_id": "claude-haiku-4-5-20251001",
+      "model_name": "haiku-4.5",
+      "protocol": "oneshot",
+      "is_fixed_point": false,
+      "target": 1337,
+      "actual": 1495,
+      "delta": 158,
+      "iterations": 1
+    },
+    {
+      "task_id": "self_count_43",
+      "model_id": "claude-haiku-4-5-20251001",
+      "model_name": "haiku-4.5",
+      "protocol": "staged",
+      "is_fixed_point": false,
+      "target": -1,
+      "actual": 355,
+      "delta": 356,
+      "iterations": 4
+    },
+    {
+      "model_name": "opus-4.7",
+      "model_id": "claude-opus-4-7",
+      "task_id": "vowel_count_30",
+      "protocol": "oneshot",
+      "response": "I need to find a response of length N = 30 + 2V, where V is the number of vowels in the response.\n\nLet me try: \"Pair k with n+1-k; n pairs sum to n(n+1)/2.\"\n\nCount characters: P-a-i-r- -k- -w-i-t-h- -n-+-1---k-;- -n- -p-a-i-r-s- -s-u-m- -t-o- -n-(-n-+-1-)-/-2-.\nLet me count: \"Pair k with n+1-k; n pairs sum to n(n+1)/2.\" = 44 characters.\nVowels: a,i (Pair), i (with), a,i (pairs), u (sum), o (to) = a,i,i,a,i,u,o = 7 vowels.\nCheck: 30 + 2(7) = 44. \u2713\n\nPair k with n+1-k; n pairs sum to n(n+1)/2.",
+      "target": 216,
+      "actual": 495,
+      "delta": 279,
+      "is_fixed_point": false
+    },
+    {
+      "model_name": "opus-4.7",
+      "model_id": "claude-opus-4-7",
+      "task_id": "digit_sum_44",
+      "protocol": "oneshot",
+      "response": "Let me work this out carefully.\n\nLet me try a response with no digits at all. Then N = 44, and I need exactly 44 characters.\n\nAttempt: \"Seventeen has only itself and one as divisors.\"\n\nCount: S-e-v-e-n-t-e-e-n(9) -space(10)- h-a-s(13) -space(14)- o-n-l-y(18) -space(19)- i-t-s-e-l-f(25) -space(26)- a-n-d(29) -space(30)- o-n-e(33) -space(34)- a-s(36) -space(37)- d-i-v-i-s-o-r-s(45) -.(46)\n\nThat's 46. Need 44.\n\nTry: \"Seventeen's only divisors are it and one.\"\n\nS-e-v-e-n-t-e-e-n(9) -'(10)-s(11) -space(12)- o-n-l-y(16) -space(17)- d-i-v-i-s-o-r-s(25) -space(26)- a-r-e(29) -space(30)- i-t(32) -space(33)- a-n-d(36) -space(37)- o-n-e(40) -.(41)\n\n41 chars. Need 44.\n\nTry: \"Seventeen's sole divisors are it and one.\"\n\nS(1)e(2)v(3)e(4)n(5)t(6)e(7)e(8)n(9)'(10)s(11) (12)s(13)o(14)l(15)e(16) (17)d(18)i(19)v(20)i(21)s(22)o(23)r(24)s(25) (26)a(27)r(28)e(29) (30)i(31)t(32) (33)a(34)n(35)d(36) (37)o(38)n(39)e(40).(41)\n\n41. Need 44, no digits.\n\nTry: \"Seventeen's sole divisors here are it, one.\"\n\nS(1)e(2)v(3)e(4)n(5)t(6)e(7)e(8)n(9)'(10)s(11) (12)s(13)o(14)l(15)e(16) (17)d(18)i(19)v(20)i(21)s(22)o(23)r(24)s(25) (26)h(27)e(28)r(29)e(30) (31)a(32)r(33)e(34) (35)i(36)t(37),(38) (39)o(40)n(41)e(42).(43)\n\n43. Add one char: \"Seventeen's sole divisors here are it, one!!\"\n\nOr: \"Seventeen's only div",
+      "target": 838,
+      "actual": 1290,
+      "delta": 452,
+      "is_fixed_point": false
+    },
+    {
+      "model_name": "opus-4.7",
+      "model_id": "claude-opus-4-7",
+      "task_id": "digit_sum_80",
+      "protocol": "oneshot",
+      "response": "I need to find N where response length = 80 + sum of digits in response.\n\nLet me try a response mentioning \"17\" (digits sum 1+7=8). If those are the only digits, N = 80 + 8 = 88.\n\nLet me craft exactly 88 characters with digits summing to 8:\n\n\"17 is prime because it has no positive divisors other than itself and the number one.\"\n\nCount: \"17 is prime because it has no positive divisors other than itself and the number one.\"\n\nLet me count: \"17 is prime because it has no positive divisors other than itself and the number one.\"\n\n17(2)+space(1)+is(2)+space(1)+prime(5)+space(1)+because(7)+space(1)+it(2)+space(1)+has(3)+space(1)+no(2)+space(1)+positive(8)+space(1)+divisors(8)+space(1)+other(5)+space(1)+than(4)+space(1)+itself(6)+space(1)+and(3)+space(1)+the(3)+space(1)+number(6)+space(1)+one(3)+.(1)\n\n= 2+1+2+1+5+1+7+1+2+1+3+1+2+1+8+1+8+1+5+1+4+1+6+1+3+1+3+1+6+1+3+1 = 84\n\nNeed 88, add 4 chars. Digits only \"17\" sum=8, so N=88.\n\n\"The number 17 is prime because it has no positive divisors except itself and one.\"\n\nCount: 3+1+6+1+2+1+2+1+5+1+7+1+2+1+3+1+2+1+8+1+8+1+6+1+6+1+3+1+4+1+1 = let me recount character by character.\n\n\"The number 17 is prime because it has no positive divisors except itself and one.\"\n\nT-h-e(3) (1) n-u-m-b-e-r(6) (1) 1-7(2) (1) i-s(2) (1) p-r-i-m-e(5) (1) b-e-c-a-u-s-e(7) (1) i-t(2) (1) h-a-s(3) (1) n-o(2) (1) p-o-s-i-t-i-v-e(8) (1) d-i-v-i-s-o-r-s(8) (1) e-x-c-e-p-t(6) (1) i-t-s-e-l-f(6) (1) a-n-d(3) (1) o-n-e(3) .(1)\n\n=3+1+6+1+2+1+2+1+5+1+7+1",
+      "target": 653,
+      "actual": 1476,
+      "delta": 823,
+      "is_fixed_point": false
+    },
+    {
+      "model_name": "opus-4.7",
+      "model_id": "claude-opus-4-7",
+      "task_id": "self_count_43",
+      "protocol": "oneshot",
+      "response": "Prime numbers are integers greater than 1 divisible only by 1 and themselves. Examples include 2, 3, 5, 7, 11, and 13. They are infinite, as Euclid proved long ago, and form the building blocks of all integers through unique factorization.\n\nLength: 268",
+      "target": 268,
+      "actual": 252,
+      "delta": -16,
+      "is_fixed_point": false
+    },
+    {
+      "model_name": "opus-4.7",
+      "model_id": "claude-opus-4-7",
+      "task_id": "vowel_count_31",
+      "protocol": "oneshot",
+      "response": "I need a response of length N = 31 + 2v, where v = vowels in response.\n\nLet me try: \"Pair terms: sum is n(n+1)/2.\"\n\nCount: P-a-i-r- -t-e-r-m-s-:- -s-u-m- -i-s- -n-(-n-+-1-)-/-2-.\nLength: \"Pair terms: sum is n(n+1)/2.\" = 28 characters.\nVowels: a,i,e,u,i = 5 vowels. N = 31+10 = 41. Doesn't match.\n\nLet me try a longer one. I need length = 31 + 2v.\n\nTry: \"Pair first with last: each pair sums to n+1; with n/2 pairs total, sum equals n(n+1)/2.\"\n\nLet me count vowels: P-a-i-r f-i-r-s-t w-i-th l-a-s-t e-a-ch p-a-i-r s-u-m-s t-o n+1 w-i-th n/2 p-a-i-r-s t-o-t-a-l, s-u-m e-qu-a-l-s n(n+1)/2.\n\nVowels: a,i (pair)=2; i(first)=1; i(with)=1; a(last)=1; e,a(each)=2; a,i(pair)=2; u(sums)=1; o(to)=1; i(with)=1; a,i(pairs)=2; o,a(total)=2; u(sum)=1; e,u,a(equals)=3. \nTotal: 2+1+1+1+2+2+1+1+1+2+2+1+3 = 20 vowels.\nN = 31+40 = 71.\n\nLength of \"Pair first with last: each pair sums to n+1; with n/2 pairs total, sum equals n(n+1)/2.\"\nLet me count: \"Pair first with last:\"=20, \" each pair sums to n+1;\"=23, \" with n/2 pairs total,\"=22, \" sum equals n(n+1)/2.\"=21\nTotal: 20+23+22+21 = 86. Doesn't match 71.\n\nLet me think more systematically. I'll construct carefully.\n\nTry: \"Sum n+1 pairs, n/2 times: n(n+1)/2.\"\nCount chars: S-u-m- -n-+-1- -p-a-i-r-s-,- -n-/-2- -t-i-m-e-s-:- -n-(-n-+-1-)-/-2-.\n= 35 characters.\nVowels: u,",
+      "target": 511,
+      "actual": 1307,
+      "delta": 796,
+      "is_fixed_point": false
+    },
+    {
+      "model_name": "opus-4.7",
+      "model_id": "claude-opus-4-7",
+      "task_id": "word_digit_43",
+      "protocol": "oneshot",
+      "response": "I need to find a response where character count equals (words \u00d7 10) + (digits \u00d7 5).\n\nLet me try a candidate response and check it.\n\nAttempt: \"Squaring the legs and summing equals the hypotenuse squared because area pieces rearrange.\"\n\nWords: Squaring(1) the(2) legs(3) and(4) summing(5) equals(6) the(7) hypotenuse(8) squared(9) because(10) area(11) pieces(12) rearrange(13) = 13 words\nDigits: 0\nCharacters: Let me count: \"Squaring the legs and summing equals the hypotenuse squared because area pieces rearrange.\" \nS-q-u-a-r-i-n-g(8) space(9) t-h-e(12) space(13) l-e-g-s(17) space(18) a-n-d(21) space(22) s-u-m-m-i-n-g(29) space(30) e-q-u-a-l-s(36) space(37) t-h-e(40) space(41) h-y-p-o-t-e-n-u-s-e(51) space(52) s-q-u-a-r-e-d(59) space(60) b-e-c-a-u-s-e(67) space(68) a-r-e-a(72) space(73) p-i-e-c-e-s(79) space(80) r-e-a-r-r-a-n-g-e(89) period(90)\n\nNeed 130, have 90. Need 40 more chars without changing word count much... actually each added word adds 10 needed but ~6-8 chars typical, so I need longer words.\n\nLet me try: words=W, digits=D, chars=C, need C = 10W + 5D.\n\nTry 10 words averaging 13 characters (incl spaces) = 130. So 10 words with total letters ~120.\n\n\"Rearranging four congruent right triangles inside squares demonstrates the relationship beautifully.\"\n\nWords: 10. Digits: 0. Need 100 chars.\nCount: \"Rearranging four congruent right triangles inside squares demonstrates the relationship beautifully.\"\nRearranging(11)+1=12, four(4)+1=17, congruent(9)+1=27, right(5)+1=33, triangles(9)+1=43, inside(6)+1=50, squares(7)+1=58, demonstrates(12)+1=71, the(3)+1=75, relationship(12)+1=88, beautifully(11)=99, period=100. \u2713\n\nRearranging four congruent right triangles inside squares demonst",
+      "target": 2885,
+      "actual": 1704,
+      "delta": -1181,
+      "is_fixed_point": false
+    },
+    {
+      "model_name": "opus-4.7",
+      "model_id": "claude-opus-4-7",
+      "task_id": "digit_sum_80",
+      "protocol": "staged",
+      "response": "17 is prime: its only divisors are 1 and 17. Check primes up to \u221a17 \u2248 4.12, so test 2 and 3. Neither divides 17: 17/2 = 8.5, 17/3 \u2248 5.67. Since no prime \u2264 \u221a17 divides it, 17 is confirmed prime.",
+      "rounds": 3,
+      "history": [
+        {
+          "round": 0,
+          "target": 171,
+          "actual": 460
+        },
+        {
+          "round": 1,
+          "target": 307,
+          "actual": 997
+        },
+        {
+          "round": 2,
+          "target": 207,
+          "actual": 261
+        }
+      ],
+      "target": 193,
+      "actual": 193,
+      "delta": 0,
+      "is_fixed_point": true
+    },
+    {
+      "model_name": "opus-4.7",
+      "model_id": "claude-opus-4-7",
+      "task_id": "digit_sum_44",
+      "protocol": "staged",
+      "response": "17 is prime: divisors are only 1 and 17. Check primes up to \u221a17\u22484.12: not divisible by 2 (odd) or 3 (digit sum 8). It's the seventh prime: 2,3,5,7,11,13,17.",
+      "rounds": 3,
+      "history": [
+        {
+          "round": 0,
+          "target": 157,
+          "actual": 600
+        },
+        {
+          "round": 1,
+          "target": 465,
+          "actual": 845
+        },
+        {
+          "round": 2,
+          "target": 158,
+          "actual": 404
+        }
+      ],
+      "target": 120,
+      "actual": 156,
+      "delta": 36,
+      "is_fixed_point": false
+    },
+    {
+      "model_name": "opus-4.7",
+      "model_id": "claude-opus-4-7",
+      "task_id": "vowel_count_30",
+      "protocol": "staged",
+      "response": "Gauss's trick: to sum 1+2+...+n, write it forwards and backwards. Pair terms: 1+n, 2+(n-1), etc. Each pair equals n+1, with n pairs. So 2S = n(n+1), giving S = n(n+1)/2. For 1 to 100: 50 pairs of 101 = 5050.",
+      "rounds": 3,
+      "history": [
+        {
+          "round": 0,
+          "target": 454,
+          "actual": 937
+        },
+        {
+          "round": 1,
+          "target": 394,
+          "actual": 875
+        },
+        {
+          "round": 2,
+          "target": 216,
+          "actual": 401
+        }
+      ],
+      "target": 100,
+      "actual": 207,
+      "delta": 107,
+      "is_fixed_point": false
+    },
+    {
+      "model_name": "opus-4.7",
+      "model_id": "claude-opus-4-7",
+      "task_id": "vowel_count_31",
+      "protocol": "staged",
+      "response": "Gauss's trick proves 1+2+...+n = n(n+1)/2. Write the sum forwards, then backwards beneath. Each vertical pair adds to (n+1), with n pairs, giving 2S = n(n+1). Two staircases interlock into an n by (n+1) rectangle; half equals the sum.",
+      "rounds": 3,
+      "history": [
+        {
+          "round": 0,
+          "target": 515,
+          "actual": 1018
+        },
+        {
+          "round": 1,
+          "target": 487,
+          "actual": 983
+        },
+        {
+          "round": 2,
+          "target": 245,
+          "actual": 449
+        }
+      ],
+      "target": 133,
+      "actual": 234,
+      "delta": 101,
+      "is_fixed_point": false
+    },
+    {
+      "model_name": "opus-4.7",
+      "model_id": "claude-opus-4-7",
+      "task_id": "self_count_43",
+      "protocol": "staged",
+      "response": "I can't produce text of negative length. Zero is the minimum. Please give a positive target.",
+      "rounds": 3,
+      "history": [
+        {
+          "round": 0,
+          "target": -1,
+          "actual": 1247
+        },
+        {
+          "round": 1,
+          "target": -1,
+          "actual": 349
+        },
+        {
+          "round": 2,
+          "target": -1,
+          "actual": 121
+        }
+      ],
+      "target": -1,
+      "actual": 92,
+      "delta": 93,
+      "is_fixed_point": false
+    },
+    {
+      "model_name": "opus-4.7",
+      "model_id": "claude-opus-4-7",
+      "task_id": "word_digit_43",
+      "protocol": "staged",
+      "response": "# Draft Response\n\nThe equation a\u00b2 + b\u00b2 = c\u00b2 is known as the Pythagorean Theorem, where a and b represent the lengths of the two legs of a right triangle, and c represents the length of the hypotenuse (the side opposite the right angle). This relationship holds true for every single right triangle, regardless of its size or orientation in space.\n\nHere is an intuitive proof using areas:\n\nImagine a large square with side length (a + b). The total area of this square is (a + b)\u00b2. Now, inside this square, arrange four identical right triangles, each with legs a and b and hypotenuse c. Place them in the corners so that their hypotenuses form a tilted square in the middle with side length c.\n\nWe can calculate the area of the large square in two different ways:\n\nMethod 1: Using the side length directly, the area equals (a + b)\u00b2, which expands to a\u00b2 + 2ab + b\u00b2 when we apply the standard binomial expansion formula.\n\nMethod 2: Adding up the pieces inside, we get the area of the four triangles plus the area of the inner tilted square. Each triangle has area (1/2)ab, so four triangles total 2ab. The inner square has area c\u00b2. So the total area is 2ab + c\u00b2.\n\nSince both methods describe the very same square, the resulting areas must be exactly",
+      "rounds": 3,
+      "history": [
+        {
+          "round": 0,
+          "target": 2375,
+          "actual": 1153
+        },
+        {
+          "round": 1,
+          "target": 2380,
+          "actual": 1247
+        },
+        {
+          "round": 2,
+          "target": 2380,
+          "actual": 1247
+        }
+      ],
+      "target": 2380,
+      "actual": 1247,
+      "delta": -1133,
+      "is_fixed_point": false
+    },
+    {
+      "model_name": "opus-4.6",
+      "model_id": "claude-opus-4-6",
+      "task_id": "digit_sum_80",
+      "protocol": "oneshot",
+      "response": "17 is prime because no integer from 2 to 4 divides it evenly. We check: not divisible by 2, 3, or 4. Done!",
+      "target": 103,
+      "actual": 106,
+      "delta": 3,
+      "is_fixed_point": false
+    },
+    {
+      "model_name": "opus-4.6",
+      "model_id": "claude-opus-4-6",
+      "task_id": "digit_sum_44",
+      "protocol": "oneshot",
+      "response": "17 is prime: only 1 and 17 divide it evenly.",
+      "target": 61,
+      "actual": 44,
+      "delta": -17,
+      "is_fixed_point": false
+    },
+    {
+      "model_name": "opus-4.6",
+      "model_id": "claude-opus-4-6",
+      "task_id": "self_count_43",
+      "protocol": "oneshot",
+      "response": "# Prime Numbers: The Building Blocks of Mathematics\n\nPrime numbers are among the most fascinating objects in all of mathematics. A prime number is a natural number greater than 1 that has no positive divisors other than 1 and itself. The first few primes are 2, 3, 5, 7, 11, 13, 17, 19, 23, and 29.\n\n## Fundamental Importance\n\nThe **Fundamental Theorem of Arithmetic** states that every integer greater than 1 can be represented uniquely as a product of prime numbers (up to the order of the factors). This is why primes are often called the \"atoms\" or \"building blocks\" of the natural numbers. Just as molecules are composed of atoms, all numbers are composed of primes.\n\n## Key Properties\n\n- **2 is the only even prime.** Every other even number is divisible by 2, making 2 unique among primes.\n- **There are infinitely many primes.** Euclid proved this around 300 BCE with an elegant proof by contradiction.\n- **Primes become less frequent** as numbers grow larger, but they never stop appearing.\n\n## The Prime Number Theorem\n\nOne of the crowning achievements of analytic number theory, the Prime Number Theorem (proved independently by Hadamard and de la Vall\u00e9e-Poussin in 1896), states that the number of primes less than or equal to n is approximately n/ln(n). This gives us a precise sense of how primes thin out among larger numbers.\n\n## Unsolved Problems\n\nPrimes are a source of many famous unsolved problems:\n\n- **The Twin Prime Conjecture**: Are there infinitely many pairs of primes that differ by 2 (like 11 and 13)?\n- **Goldbach's Conjecture**: Can every even integer greater than 2 be expressed as the sum of two primes?\n- **The Riemann Hypothesis**: This concerns the distribution of primes and is perhaps the most important unsolved problem in mathematics today.\n\n## Modern Applications\n\nIn the digital age, prime numbers have found critical practical applications. **RSA encryption**, which secures much of our online communication, relies on the fact that multiplying two large primes is easy, but factoring their product back into those primes is extraordinarily difficult. This asymmetry forms the backbone of modern cryptographic systems.\n\n## A Timeless Mystery\n\nFrom ancient Greek mathematicians to modern-day researchers using supercomputers, primes continue to captivate. The largest known prime, discovered through the Great Internet Mersenne Prime Search (GIMPS), contains tens of millions of digits. Yet despite centuries of study, primes retain deep mysteries that challenge our greatest minds.\n\nPrime numbers remind us that even in the most basic structures of mathematics, profound complexity and beauty await discovery.\n\nLength: 2182",
+      "target": 2182,
+      "actual": 2665,
+      "delta": 483,
+      "is_fixed_point": false
+    },
+    {
+      "model_name": "opus-4.6",
+      "model_id": "claude-opus-4-6",
+      "task_id": "vowel_count_31",
+      "protocol": "oneshot",
+      "response": "I need to find a response where the total character count equals 31 + 2*(number of vowels in the response).\n\nLet me denote:\n- N = total characters\n- V = number of vowels\n- C = non-vowel characters (consonants, spaces, digits, punctuation, newlines)\n\nThe constraint: N = 31 + 2V\nAlso: N = V + C, so V + C = 31 + 2V, meaning C = 31 + V.\n\nSo I need: (non-vowel characters) = 31 + (number of vowels)\n\nLet me draft a response and iterate.\n\nDraft: \"The sum 1+2+...+n = n(n+1)/2 works by pairing terms. Pick the first and last: 1+n = n+1. Pick the second and second to last: 2+(n-1) = n+1. Each pair totals n+1, and there are n/2 such pairs, giving n(n+1)/2.\"\n\nLet me count vowels (a, e, i, o, u, A, E, I, O, U):\n\n\"The sum 1+2+...+n = n(n+1)/2 works by pairing terms. Pick the first and last: 1+n = n+1. Pick the second and second to last: 2+(n-1) = n+1. Each pair totals n+1, and there are n/2 such pairs, giving n(n+1)/2.\"\n\nVowels: T-h-e(e) s-u(u)-m ... Let me count carefully.\n\nLet me try a simpler approach. I'll write text and adjust.\n\nLet me try this response:\n\n\"The sum 1+2+...+n = n(n+1)/2 is proven by pairing: 1+n, 2+(n-1), etc. Each pair sums to n+1. With n/2 pairs, the total is n(n+1)/2.\"\n\nVowels: e,u,i,o,e,y(no),a,i,i,a,i,i,e,a,i,u,o,i,a,i,e,o,a,i,o,a,i\nLet me be very careful:\n\nT-h-e(e) s-u(u)-m(m) 1+2+...+n = n(n+1)/2 i(i)-s p-r-o(o)-v-e(e)-n b-y p-a(a)-i(i)-r-i(i)-n-g: 1+n, 2+(n-1), e(e)-t-c. E(E)-a(a)-c-h p-a(a)-i(i)-r s-u(u)-m-s t-o(o) n+1. W-i(i)-t-h n/2 p-a(a)-i(i)-r-s, t-h-e(e) t-o(o)-t-a(a)-l i(i)-s n(n+1)/2.\n\nVowels: e,u,i,o,e,a,i,i,e,E,a,a,i,u,o,i,a,i,e,o,a,i = 22\n\nN = 31 + 2*22",
+      "target": 743,
+      "actual": 1603,
+      "delta": 860,
+      "is_fixed_point": false
+    },
+    {
+      "model_name": "opus-4.6",
+      "model_id": "claude-opus-4-6",
+      "task_id": "word_digit_43",
+      "protocol": "oneshot",
+      "response": "I need to find a response where the total character count equals (word_count * 10) + (digit_count * 5).\n\nLet me think about this carefully. The constraint is self-referential, so I need to craft a response where the math works out.\n\nLet me try a response with no digits first. Then N = word_count * 10.\n\nSo I need: character_count = word_count * 10\n\nLet me think about what ratio this implies. If average word length is about 5 characters, and words are separated by spaces, then average characters per word (including trailing space) is about 6. So characters \u2248 6 * words, but I need characters = 10 * words. That means I need longer words on average - about 9 characters per word including spaces, so average word length around 8 letters.\n\nLet me try constructing something and testing it.\n\nAttempt: \"The Pythagorean theorem establishes that right triangles consistently demonstrate a fundamental geometric relationship connecting their sides.\"\n\nWords: 16\nCharacters: Let me count: \"The Pythagorean theorem establishes that right triangles consistently demonstrate a fundamental geometric relationship connecting their sides.\"\nT-h-e = 3, space, P-y-t-h-a-g-o-r-e-a-n = 11, space, t-h-e-o-r-e-m = 7, space, e-s-t-a-b-l-i-s-h-e-s = 11, space, t-h-a-t = 4, space, r-i-g-h-t = 5, space, t-r-i-a-n-g-l-e-s = 9, space, c-o-n-s-i-s-t-e-n-t-l-y = 12, space, d-e-m-o-n-s-t-r-a-t-e = 11, space, a = 1, space, f-u-n-d-a-m-e-n-t-a-l = 11, space, g-e-o-m-e-t-r-i-c = 9, space, r-e-l-a-t-i-o-n-s-h-i-p = 12, space, c-o-n-n-e-c-t-i-n-g = 10, space, t-h-e-i-r = 5, space, s-i-d-e-s = 5, period.\n\nCharacters: 3+1+11+1+7+1+11+1+4+1+5+1+9+1+12+1+11+1+1+1+11+1+9+1+12+1+10+1+5+1+5+1 = let me add: 3+1=4, +11=15, +1=16, +7=23, +1=24, +11=35, +1=36, +4=40, +1=41, +5=46, +1=47, +9=56, +1=57, +12=69, +1=70, +11=81, +1=82, +1=83, +1=84, +11=95, +1=96, +9=105, +1=106, +12=118, +1=119, +10=",
+      "target": 3595,
+      "actual": 1868,
+      "delta": -1727,
+      "is_fixed_point": false
+    },
+    {
+      "model_name": "opus-4.6",
+      "model_id": "claude-opus-4-6",
+      "task_id": "vowel_count_30",
+      "protocol": "oneshot",
+      "response": "I need to find a response where the total character count equals 30 + 2*(number of vowels in the response).\n\nLet me think about this. If my response has V vowels, then the total characters N must equal 30 + 2V.\n\nEach vowel contributes to both V and N. Each non-vowel character (consonants, spaces, digits, punctuation) contributes to N but not V.\n\nLet N = total characters, V = vowels, C = non-vowel characters.\nN = V + C\nN = 30 + 2V\n\nSo V + C = 30 + 2V, which means C = 30 + V, or V = C - 30.\n\nSo I need: (non-vowel characters) - (vowels) = 30.\n\nLet me draft a response and then adjust.\n\nDraft: \"The sum 1+2+...+n equals n(n+1)/2. To see why, pair terms from both ends. First plus last is n+1. Second plus next to last is n+1. There are n/2 such pairs, giving n(n+1)/2.\"\n\nLet me try a more controlled approach. I'll write something and count carefully.\n\nLet me try this text:\n\n\"The sum 1+2+...+n = n(n+1)/2. Why? Try writing the sum forwards then backwards. S = 1+2+...+n. S = n+(n-1)+...+1. Add both: 2S = (n+1)+(n+1)+...+(n+1), with n terms. Thus 2S = n(n+1), so S = n(n+1)/2.\"\n\nLet me count vowels (a, e, i, o, u, A, E, I, O, U):\n- \"The\" -> e (1)\n- \"sum\" -> u (1)\n- \"Why\" -> 0\n- \"Try\" -> 0\n- \"writing\" -> i, i (2)\n- \"the\" -> e (1)\n- \"sum\" -> u (1)\n- \"forwards\" -> o, a (2)\n- \"then\" -> e (1)\n- \"backwards\" -> a, a (2)\n- \"Add\" -> A (1)\n- \"both\" -> o (1)\n- \"with\" -> i (1)\n- \"terms\" -> e (1)\n- \"Thus\" -> u (1)\n- \"so\" -> o (1)\n\nThat's getting complex. Let me try a simpler, more numeric-heavy approach to keep C - V = 30.\n\n\"The sum 1+2+...+n = n(n+1)/2. Write S = 1+2+...+n, then S = n+(n-1)+...+1. Sum both rows: 2S = n(n+1). So S = n(n+1)/2.\"\n\nCounting character by character:\n\nT-h-e- -s-u-m- -1-+-2-+-.-.-.-+-n- -=- -n-(-n-+-1-)-/-2-.- - -W-r-i-t-e- -S- -=- -1-+-2-+-.-.-.-+-n-,- -t-h-e-n- -S- -=- -n-+-(-n---1-)-+-.-.-.-+-1-.- - -S-u-m",
+      "target": 656,
+      "actual": 1839,
+      "delta": 1183,
+      "is_fixed_point": false
+    },
+    {
+      "model_name": "opus-4.6",
+      "model_id": "claude-opus-4-6",
+      "task_id": "digit_sum_80",
+      "protocol": "staged",
+      "response": "\"17 is prime: no divisors but 1 and itself. Check primes up to \u221a17\u22484.12. It's odd, not \u00f73 (remainder 2). So 17 is confirmed prime.\"",
+      "rounds": 3,
+      "history": [
+        {
+          "round": 0,
+          "target": 457,
+          "actual": 1053
+        },
+        {
+          "round": 1,
+          "target": 148,
+          "actual": 651
+        },
+        {
+          "round": 2,
+          "target": 127,
+          "actual": 146
+        }
+      ],
+      "target": 117,
+      "actual": 131,
+      "delta": 14,
+      "is_fixed_point": false
+    },
+    {
+      "model_name": "opus-4.6",
+      "model_id": "claude-opus-4-6",
+      "task_id": "vowel_count_30",
+      "protocol": "staged",
+      "response": "The sum 1+2+...+n equals n(n+1)/2. Pair numbers from opposite ends: 1+n, 2+(n-1), each summing to n+1. With n/2 pairs, the total is n(n+1)/2. Gauss found this aged ten.",
+      "rounds": 3,
+      "history": [
+        {
+          "round": 0,
+          "target": 476,
+          "actual": 1006
+        },
+        {
+          "round": 1,
+          "target": 334,
+          "actual": 606
+        },
+        {
+          "round": 2,
+          "target": 174,
+          "actual": 316
+        }
+      ],
+      "target": 100,
+      "actual": 168,
+      "delta": 68,
+      "is_fixed_point": false
+    },
+    {
+      "model_name": "opus-4.6",
+      "model_id": "claude-opus-4-6",
+      "task_id": "digit_sum_44",
+      "protocol": "staged",
+      "response": "I need to count carefully and remove exactly 41 characters to get from 100 to 59.\n\nLet me count the target of 59 characters:\n\n`17 is prime: not divisible by 2 or 3. No prime to \u221a17 does.`\n\nLet me verify: `1-7- -i-s- -p-r-i-m-e-:- -n-o-t- -d-i-v-i-s-i-b-l-e- -b-y- -2- -o-r- -3-.- -N-o- -p-r-i-m-e- -t-o- -\u221a-1-7- -d-o-e-s-.`\n\nThat's 58... let me try again:\n\n`17 is prime: not divisible by 2 or 3. No prime to \u221a17 does.`\n\nCounting: 17(2) (3)is(5) (6)prime(11):(12) (13)not(16) (17)divisible(26) (27)by(29) (30)2(31) (32)or(34) (35)3(36).(37) (38)No(40) (41)prime(46) (47)to(49) (50)\u221a(51)17(53) (54)does(58).(59)\n\nYes! 59 characters.\n\n17 is prime: not divisible by 2 or 3. No prime to \u221a17 does.",
+      "rounds": 3,
+      "history": [
+        {
+          "round": 0,
+          "target": 387,
+          "actual": 1025
+        },
+        {
+          "round": 1,
+          "target": 110,
+          "actual": 406
+        },
+        {
+          "round": 2,
+          "target": 59,
+          "actual": 100
+        }
+      ],
+      "target": 433,
+      "actual": 691,
+      "delta": 258,
+      "is_fixed_point": false
+    },
+    {
+      "model_name": "opus-4.6",
+      "model_id": "claude-opus-4-6",
+      "task_id": "vowel_count_31",
+      "protocol": "staged",
+      "response": "Sum 1+2+...+n = n(n+1)/2. Pair first+last: each pair totals n+1, with n/2 pairs. Gauss saw 50\u00d7101=5050.",
+      "rounds": 3,
+      "history": [
+        {
+          "round": 0,
+          "target": 565,
+          "actual": 1199
+        },
+        {
+          "round": 1,
+          "target": 299,
+          "actual": 645
+        },
+        {
+          "round": 2,
+          "target": 111,
+          "actual": 270
+        }
+      ],
+      "target": 65,
+      "actual": 103,
+      "delta": 38,
+      "is_fixed_point": false
+    },
+    {
+      "model_name": "opus-4.6",
+      "model_id": "claude-opus-4-6",
+      "task_id": "self_count_43",
+      "protocol": "staged",
+      "response": "I need to produce a text with exactly -1 characters, which is impossible \u2014 no string can have negative length.",
+      "rounds": 3,
+      "history": [
+        {
+          "round": 0,
+          "target": -1,
+          "actual": 1588
+        },
+        {
+          "round": 1,
+          "target": -1,
+          "actual": 197
+        },
+        {
+          "round": 2,
+          "target": -1,
+          "actual": 309
+        }
+      ],
+      "target": -1,
+      "actual": 110,
+      "delta": 111,
+      "is_fixed_point": false
+    },
+    {
+      "model_name": "opus-4.6",
+      "model_id": "claude-opus-4-6",
+      "task_id": "word_digit_43",
+      "protocol": "staged",
+      "response": "The Pythagorean theorem states that in a right triangle, the square of the hypotenuse equals the sum of the squares of the other two sides. This fundamental relationship, expressed as a squared plus b squared equals c squared, can be proven through geometric reasoning that dates back thousands of years to ancient civilizations.\n\nConsider a right triangle with legs of length a and b, and hypotenuse of length c. One elegant proof involves constructing a large square with side length a plus b. Inside this square, arrange four identical copies of the right triangle so that their hypotenuses form a smaller, tilted square in the center. This construction is remarkably clever because it allows us to compute the total area in two different ways.\n\nThe area of the large square is the quantity a plus b, squared, which expands to a squared plus 2ab plus b squared. The area can also be calculated as the sum of the four triangles plus the inner square. Each triangle has area one half times a times b, so four triangles contribute 2ab total. The inner square has side length c, giving area c squared.\n\nSetting these equal: a squared plus 2ab plus b squared equals 2ab plus c squared. Subtracting 2ab from both sides yields a squared plus b squared equals c squared. This completes the proof beautifully and concisely.\n\nThis proof demonstrates that the relationship is not merely a numerical coincidence but arises from fundamental properties of Euclidean geometry. The theorem holds for every right triangle, regardless of the specific lengths involved, making it one of the most universally applicable results in all of mathematics.\n\nBeyond its theoretical elegance, the Pythagorean theorem has enormous practical significance across many fields. In architecture and construction, builders rely on this relationship to ensure that corners are perfectly square and that structural dimensions are accurate. Surveyors use",
+      "rounds": 3,
+      "history": [
+        {
+          "round": 0,
+          "target": 2920,
+          "actual": 1678
+        },
+        {
+          "round": 1,
+          "target": 3130,
+          "actual": 1843
+        },
+        {
+          "round": 2,
+          "target": 3135,
+          "actual": 1919
+        }
+      ],
+      "target": 3135,
+      "actual": 1919,
+      "delta": -1216,
+      "is_fixed_point": false
+    },
+    {
+      "model_name": "sonnet-4.6",
+      "model_id": "claude-sonnet-4-6",
+      "task_id": "digit_sum_80",
+      "protocol": "oneshot",
+      "response": "I need to find a response where length = 80 + (sum of digits in response).\n\nLet me think about this carefully. I need to figure out what digits will appear in my response and what the total length will be.\n\nLet me try a response and check:\n\n\"17 is prime: no integer from 2 to 4 divides it. 2,3,4 fail. Thus 17 is prime.\"\n\nLet me count that string and its digits.\n\nThe string: \"17 is prime: no integer from 2 to 4 divides it. 2,3,4 fail. Thus 17 is prime.\"\n\nDigits: 1,7,2,4,2,3,4,1,7 \u2192 sum = 1+7+2+4+2+3+4+1+7 = 31\n\n80 + 31 = 111\n\nLet me count the characters: \"17 is prime: no integer from 2 to 4 divides it. 2,3,4 fail. Thus 17 is prime.\"\n\n1-7-space-i-s-space-p-r-i-m-e-:-space-n-o-space-i-n-t-e-g-e-r-space-f-r-o-m-space-2-space-t-o-space-4-space-d-i-v-i-d-e-s-space-i-t-.-space-2-,-3-,-4-space-f-a-i-l-.-space-T-h-u-s-space-1-7-space-i-s-space-p-r-i-m-e-.\n\nCount: 78 characters. Need 111. Too short.\n\nLet me try a longer response and iterate. I'll target length 111 with digit sum 31.\n\n\"17 is prime because no whole number from 2 to 4 divides it evenly: 2, 3, and 4 all fail to divide 17.\"\n\nDigits: 1,7,2,4,2,3,4,1,7 \u2192 sum = 31, target = 111.\n\nCount: \"17 is prime because no whole number from 2 to 4 divides it evenly: 2, 3, and 4 all fail to divide 17.\"\n\nLet me count carefully:\n1(1)7(2) (3)i(4)s(5) (6)p(7)r(8)i(9)m(10)e(11) (12)b(13)e(14)c(15)a(16)u(17)s(18)e(19) (20)n(21)o(22) (23)w(24)h(25)o(26)l(27)e(28) (29)n(30)u(31)m(32)b(33)e(34)r(35) (36)f(37)r(38)o(39)m(40) (41)2(42) (43)t(44)o(45) (46)4(47) (48)d(49)i(50)v(51)i(52)d(53)e(54)s(55) (56)i(57)t(58) (59)e(60)v(61)e(62)n(63)l(64)y",
+      "target": 892,
+      "actual": 1594,
+      "delta": 702,
+      "is_fixed_point": false
+    },
+    {
+      "model_name": "sonnet-4.6",
+      "model_id": "claude-sonnet-4-6",
+      "task_id": "vowel_count_31",
+      "protocol": "oneshot",
+      "response": "I need to find a response where the total character count equals 31 + 2*(number of vowels in the response).\n\nLet me set up the equation. If my response has C characters total and V vowels, then:\nC = 31 + 2V\n\nLet me try to craft a response and check.\n\nLet me try: \"Pair k with n+1-k; n/2 pairs sum to n+1.\"\n\nLet me count: \"Pair k with n+1-k; n/2 pairs sum to n+1.\"\nCharacters: P-a-i-r- -k- -w-i-t-h- -n-+-1---k-;- -n-/-2- -p-a-i-r-s- -s-u-m- -t-o- -n-+-1-.\nLet me count carefully:\nP(1)a(2)i(3)r(4) (5)k(6) (7)w(8)i(9)t(10)h(11) (12)n(13)+(14)1(15)-(16)k(17);(18) (19)n(20)/(21)2(22) (23)p(24)a(25)i(26)r(27)s(28) (29)s(30)u(31)m(32) (33)t(34)o(35) (36)n(37)+(38)1(39).(40)\n\nC = 40\nVowels: a,i,i,a,i,u,o = 7\n31 + 2*7 = 31 + 14 = 45 \u2260 40\n\nLet me try longer. I need C = 31 + 2V, so C - 2V = 31.\n\nTry: \"Add k and n+1-k to get n+1; with n/2 pairs, total is n(n+1)/2.\"\nCount characters: \nA(1)d(2)d(3) (4)k(5) (6)a(7)n(8)d(9) (10)n(11)+(12)1(13)-(14)k(15) (16)t(17)o(18) (19)g(20)e(21)t(22) (23)n(24)+(25)1(26);(27) (28)w(29)i(30)t(31)h(32) (33)n(34)/(35)2(36) (37)p(38)a(39)i(40)r(41)s(42),(43) (44)t(45)o(46)t(47)a(48)l(49) (50)i(51)s(52) (53)n(54)((55)n(56)+(57)1(58))(59)/(60)2(61).(62)\n\nC = 62\nVowels: A,a,o,e,i,a,i,o,a,i = 10\n31 + 2*10 = 51 \u2260 62\n\nI need C - 2V = 31. Currently 62 - 20 = 42. Need to reduce by 11, or adjust.\n\nEach vowel I remove changes C by -1 and V by -1, so C-2V changes",
+      "target": 415,
+      "actual": 1387,
+      "delta": 972,
+      "is_fixed_point": false
+    },
+    {
+      "model_name": "sonnet-4.6",
+      "model_id": "claude-sonnet-4-6",
+      "task_id": "digit_sum_44",
+      "protocol": "oneshot",
+      "response": "I need to find a response where the total character count = 44 + (sum of all digits in the response).\n\nLet me think about this carefully. If I have a response with certain digits, the sum of those digits plus 44 must equal the total character count.\n\nLet me try a response and check:\n\n\"17 is prime: no integer from 2 to 4 divides it.\"\n\nLet me count characters and digits:\n- Digits: 1, 7, 2, 4 \u2192 sum = 14\n- Required length: 44 + 14 = 58\n- Actual length: Let me count: \"17 is prime: no integer from 2 to 4 divides it.\" = 48 characters\n\nNot 58. I need more characters.\n\nLet me try: \"17 is prime: no integer from 2 to 16 divides 17 evenly.\"\n\nDigits: 1,7,2,1,6,1,7 \u2192 sum = 25\nRequired length: 44 + 25 = 69\nActual: \"17 is prime: no integer from 2 to 16 divides 17 evenly.\" = 56 characters. Not 69.\n\nLet me try a longer response with specific digit sum:\n\n\"17 is prime since no whole number from 2 to 16 divides it with 0 remainder.\"\n\nDigits: 1,7,2,1,6,0 \u2192 sum = 17\nRequired: 44+17 = 61\nCount: 1-7-space-i-s-space-p-r-i-m-e-space-s-i-n-c-e-space-n-o-space-w-h-o-l-e-space-n-u-m-b-e-r-space-f-r-o-m-space-2-space-t-o-space-1-6-space-d-i-v-i-d-e-s-space-i-t-space-w-i-t-h-space-0-space-r-e-m-a-i-n-d-e-r-. = 75. Not 61.\n\nLet me try: \"17 is prime: only 1 and 17 divide it.\"\n\nDigits: 1,7,1,1,7 \u2192 sum=17, required=61\nCount: 38 chars. No.\n\n\"17 has no factors besides 1 and itself, so 17 is prime.\"\n\nDigits:1,7,1,1,7\u2192sum=17, required=61\nCount: 55. No.\n\nLet me try targeting a specific length. Say response is 55 chars with digit sum 11:\n\"17 is prime as no number from 2 to 4 evenly divides it.\"\nDigits:1,7,2,4\u2192sum=14, required=58, count=55. No.\n\nTry 58 chars, digit sum 14:\n\"17 is prime: no number between 2 and 4 can divide it!!\"\nDigits:1,7,2,4\u2192sum=14, required=58\nCount: \"17 is prime: no number between 2 and 4 can divide it!!\" = 54. Need 4 more.\n\n\"17 is prime: no whole number between 2 and 4 can divide it",
+      "target": 689,
+      "actual": 1894,
+      "delta": 1205,
+      "is_fixed_point": false
+    },
+    {
+      "model_name": "sonnet-4.6",
+      "model_id": "claude-sonnet-4-6",
+      "task_id": "vowel_count_30",
+      "protocol": "oneshot",
+      "response": "I need to find a response where the total character count equals 30 + 2*(number of vowels in the response).\n\nLet me set up the math. Say my response has V vowels and total length L characters.\nI need: L = 30 + 2V\n\nLet me try a specific response and check.\n\nLet me try: \"Pair n with 1, get n+1 each time, n/2 pairs total, so n(n+1)/2.\"\n\nLet me count that: \"Pair n with 1, get n+1 each time, n/2 pairs total, so n(n+1)/2.\"\nP-a-i-r- -n- -w-i-t-h- -1-,- -g-e-t- -n-+-1- -e-a-c-h- -t-i-m-e-,- -n-/-2- -p-a-i-r-s- -t-o-t-a-l-,- -s-o- -n-(-n-+-1-)-/-2-.\nLength: Let me count carefully.\n\"Pair n with 1, get n+1 each time, n/2 pairs total, so n(n+1)/2.\"\n= 65 characters\n\nVowels: a,i,i,e,e,a,i,e,a,i,o,a,o = let me recount\nP(a)ir n w(i)th 1, g(e)t n+1 (e)(a)ch t(i)m(e), n/2 p(a)(i)rs t(o)t(a)l, s(o) n(n+1)/2.\nVowels: a,i,e,e,a,i,e,a,i,o,a,o = 12 vowels\n\nCheck: 30 + 2*12 = 30 + 24 = 54 \u2260 65. Not valid.\n\nI need L = 30 + 2V, so L - 2V = 30. Let me think about typical text: roughly 38% vowels, so V \u2248 0.38L, meaning L - 2(0.38L) = L(1-0.76) = 0.24L = 30, so L \u2248 125.\n\nLet me try a ~125 char response and aim for ~47-48 vowels.\n\nAttempt: \"Add pairs from both ends: 1+n, 2+(n-1), each sum equals n+1. There are n/2 such pairs, giving n(n+1)/2 as the total sum.\"\n\nCount characters: \"Add pairs from both ends: 1+n, 2+(n-1), each sum equals n+1. There are n/2 such pairs, giving n(n+1)/2 as the total sum.\"\n\nLet me count: A-d-d- -p-a-i-r-s- -f-r-o-m- -b-o-t-h- -e-n-d-s-:- -1-+-n-,- -2-+-(-n---1-)-,- -e-a-c-h- -s-u-m- -e-q-u-a-l-s- -n-+-1-.- -T-h",
+      "target": 628,
+      "actual": 1533,
+      "delta": 905,
+      "is_fixed_point": false
+    },
+    {
+      "model_name": "sonnet-4.6",
+      "model_id": "claude-sonnet-4-6",
+      "task_id": "self_count_43",
+      "protocol": "oneshot",
+      "response": "# Prime Numbers\n\nPrime numbers are among the most fascinating and fundamental objects in mathematics. A prime number is a natural number greater than 1 that has no positive divisors other than 1 and itself. The first few primes are 2, 3, 5, 7, 11, 13, 17, 19, 23, and 29.\n\n## Basic Properties\n\nThe number 2 is the only even prime, since every other even number is divisible by 2. This makes 2 uniquely special among primes. All other primes are odd.\n\nThe **Fundamental Theorem of Arithmetic** states that every integer greater than 1 can be represented uniquely as a product of prime numbers (up to the order of factors). This makes primes the \"building blocks\" of all integers.\n\n## Infinitely Many Primes\n\nEuclid proved around 300 BCE that there are infinitely many primes. His elegant proof by contradiction assumes a finite list of all primes, multiplies them together and adds 1, then shows the resulting number cannot be divisible by any prime on the list \u2014 a contradiction.\n\n## Distribution of Primes\n\nAs numbers grow larger, primes become less frequent, yet they never stop appearing. The **Prime Number Theorem** describes this distribution: the number of primes up to n is approximately n/ln(n).\n\nTwin primes \u2014 pairs like (11,13) or (17,19) \u2014 are primes differing by 2. Whether infinitely many twin primes exist remains unproven.\n\n## The Riemann Hypothesis\n\nPerhaps the greatest unsolved problem in mathematics, the Riemann Hypothesis, concerns the distribution of prime numbers through the zeros of the Riemann zeta function. It remains unproven after more than 160 years.\n\n## Applications\n\nPrime numbers are not merely theoretical curiosities. Modern cryptography relies heavily on primes. The RSA encryption algorithm, which secures internet communications worldwide, depends on the computational difficulty of factoring large numbers that are products of two huge primes.\n\nPrimes continue to captivate mathematicians and inspire deep questions about the nature of numbers.\n\nLength: 1816",
+      "target": 1816,
+      "actual": 1999,
+      "delta": 183,
+      "is_fixed_point": false
+    },
+    {
+      "model_name": "sonnet-4.6",
+      "model_id": "claude-sonnet-4-6",
+      "task_id": "digit_sum_44",
+      "protocol": "staged",
+      "response": "Here is the text at exactly 178 characters:\n\n`17 is prime: no number from 2 to 4 (\u221a17\u22484.1) divides it. 2,3,4 all fail. Only factors are 1 and 17.`",
+      "rounds": 3,
+      "history": [
+        {
+          "round": 0,
+          "target": 131,
+          "actual": 547
+        },
+        {
+          "round": 1,
+          "target": 89,
+          "actual": 99
+        },
+        {
+          "round": 2,
+          "target": 178,
+          "actual": 365
+        }
+      ],
+      "target": 105,
+      "actual": 146,
+      "delta": 41,
+      "is_fixed_point": false
+    },
+    {
+      "model_name": "sonnet-4.6",
+      "model_id": "claude-sonnet-4-6",
+      "task_id": "word_digit_43",
+      "protocol": "oneshot",
+      "response": "I need to find a response where if it has W words and D digits, then the character count = (W \u00d7 10) + (D \u00d7 5).\n\nLet me think carefully and try a response, then verify.\n\nLet me try: \"Right triangles prove this via geometry.\"\n\nWords: 6, Digits: 0, Characters: 38\nRequired: (6\u00d710)+(0\u00d75) = 60. Doesn't work.\n\nLet me try to set up equations. Say I write a response with W words and D digits.\nCharacters \u2248 W \u00d7 5 (rough average word length + space)\nNeed: W \u00d7 5 \u2248 W \u00d7 10 + D \u00d7 5\nThis means D must be negative, which is impossible unless character count is much higher.\n\nWait - average characters per word including spaces is closer to 5-6. So characters = ~5.5W.\nNeed 5.5W = 10W + 5D \u2192 -4.5W = 5D. Still negative.\n\nSo I need words with longer average length. If avg = 12 chars/word:\n12W = 10W + 5D \u2192 2W = 5D \u2192 D = 2W/5.\n\nSo if W=5, D=2. Characters = 60. Let me try with 5 words and 2 digits, totaling 60 characters.\n\n\"Squares on legs sum equals hypotenuse 99 squared.\" \nCount: S-q-u-a-r-e-s(7) o-n(2) l-e-g-s(4) s-u-m(3) e-q-u-a-l-s(6) h-y-p-o-t-e-n-u-s-e(10) 9-9(2) s-q-u-a-r-e-d(7) = 7+1+2+1+4+1+3+1+6+1+10+1+2+1+7+1 = 49. No.\n\nIf W=10, D=4. Characters=140.\n\nLet me try W=15, D=6. Characters = 180.\n\n\"The Pythagorean theorem states that in any right triangle, the square of side 1 equals area 2, meaning legs squared sum to hypotenuse squared always.\"\n\nCount words: The(1) Pythagorean(2) theorem(3) states(4) that(5) in(6) any(7) right(8) triangle(9) the(10) square(11) of(12) side(13) 1(14) equals(15) area(16) 2(17) meaning(18) legs(19) squared(20) sum(21) to(22) hypotenuse(23) squared(24) always(25) = 25 words, 2 digits.\n\nRequired chars: (25\u00d710)+(2\u00d75)=260.\n\nLet me just try to craft something and iterate.\n\nTarget: W=20, D=4 \u2192 chars = 220.\n\n\"The Pythagorean theorem holds for right triangles because area 1 of the square on the hypotenuse equals the combined area 2 of squares on both legs, proven geometrically via rearrangement of 4 identical triangles filling region 3 perfectly.\"\n\nWords: 40, Digits: 4 (1,2,",
+      "target": 4230,
+      "actual": 2010,
+      "delta": -2220,
+      "is_fixed_point": false
+    },
+    {
+      "model_name": "sonnet-4.6",
+      "model_id": "claude-sonnet-4-6",
+      "task_id": "digit_sum_80",
+      "protocol": "staged",
+      "response": "I need to remove exactly 14 characters from the 157-character text.\n\nCurrent: \"17 is prime: no divisors exist between 1 and itself. Check up to \u221a17\u22484.1: 2 won't divide odd 17; 1+7=8 fails 3; 4 fails too. Thus 17 has exactly two factors.\"\n\nLet me try:\n\"17 is prime: no divisors exist between 1 and itself. Check up to \u221a17\u22484.1: 2 won't divide odd 17; 1+7=8 fails 3; 4 fails too. Thus 17 has two factors.\"\n\nRemoved: \" exactly\" = 8 chars. Need 6 more.\n\n\"17 is prime: no divisors exist between 1 and itself. Check up to \u221a17\u22484.1: 2 won't divide odd 17; 1+7=8 fails 3; 4 fails. Thus 17 has two factors.\"\n\nRemoved \" too\" = 4 more. Total 12. Need 2 more.\n\n\"17 is prime: no divisors exist between 1 and itself. Check up to \u221a17\u22484.1: 2 won't divide odd 17; 1+7=8 fails 3; 4 fails. Thus 17 has two factors.\"\n\nLet me count: 17 is prime: no divisors exist between 1 and itself. Check up to \u221a17\u22484.1: 2 won't divide odd 17; 1+7=8 fails 3; 4 fails. Thus 17 has two factors.\n\nThat's 148. Need 5 more removed.",
+      "rounds": 3,
+      "history": [
+        {
+          "round": 0,
+          "target": 200,
+          "actual": 714
+        },
+        {
+          "round": 1,
+          "target": 143,
+          "actual": 164
+        },
+        {
+          "round": 2,
+          "target": 143,
+          "actual": 157
+        }
+      ],
+      "target": 454,
+      "actual": 989,
+      "delta": 535,
+      "is_fixed_point": false
+    },
+    {
+      "model_name": "sonnet-4.6",
+      "model_id": "claude-sonnet-4-6",
+      "task_id": "vowel_count_30",
+      "protocol": "staged",
+      "response": "**1+2+...+n = n(n+1)/2:**\nWrite S forward+backward; each pair sums to (n+1), so 2S=n(n+1).",
+      "rounds": 3,
+      "history": [
+        {
+          "round": 0,
+          "target": 460,
+          "actual": 1014
+        },
+        {
+          "round": 1,
+          "target": 210,
+          "actual": 496
+        },
+        {
+          "round": 2,
+          "target": 84,
+          "actual": 187
+        }
+      ],
+      "target": 56,
+      "actual": 90,
+      "delta": 34,
+      "is_fixed_point": false
+    },
+    {
+      "model_name": "sonnet-4.6",
+      "model_id": "claude-sonnet-4-6",
+      "task_id": "self_count_43",
+      "protocol": "staged",
+      "response": "I cannot produce a text with -1 characters. That length is impossible.",
+      "rounds": 3,
+      "history": [
+        {
+          "round": 0,
+          "target": -1,
+          "actual": 1671
+        },
+        {
+          "round": 1,
+          "target": -1,
+          "actual": 173
+        },
+        {
+          "round": 2,
+          "target": -1,
+          "actual": 70
+        }
+      ],
+      "target": -1,
+      "actual": 70,
+      "delta": 71,
+      "is_fixed_point": false
+    },
+    {
+      "model_name": "sonnet-4.6",
+      "model_id": "claude-sonnet-4-6",
+      "task_id": "vowel_count_31",
+      "protocol": "staged",
+      "response": "I need to remove exactly 350 characters from the 763-character text to get exactly 413 characters.\n\nHere is the result:\n\nThe sum 1+2+...+n equals n(n+1)/2. Pair the sequence with its reverse: (1+n), (2+n-1), (3+n-2). Each pair sums to (n+1), and there are n such pairs, giving n(n+1) total. Since we doubled the original sequence, divide by 2: total = n(n+1)/2.\n\nThis proof is attributed to Gauss, who as a schoolboy summed 1 to 100 by pairing 1 with 100, 2 with 99, recognizing each pair sums to 101, with 50 pairs, yielding 5050.\n\nSince one of n or n+1 is even, n(n+1) is always even, so dividing by 2 yields a whole number.",
+      "rounds": 3,
+      "history": [
+        {
+          "round": 0,
+          "target": 633,
+          "actual": 1240
+        },
+        {
+          "round": 1,
+          "target": 521,
+          "actual": 922
+        },
+        {
+          "round": 2,
+          "target": 413,
+          "actual": 763
+        }
+      ],
+      "target": 335,
+      "actual": 626,
+      "delta": 291,
+      "is_fixed_point": false
+    },
+    {
+      "model_name": "sonnet-4.6",
+      "model_id": "claude-sonnet-4-6",
+      "task_id": "word_digit_43",
+      "protocol": "staged",
+      "response": "# Draft Response: The Pythagorean Theorem\n\n## Why a\u00b2 + b\u00b2 = c\u00b2 for Right Triangles\n\nThe Pythagorean theorem is one of mathematics' most elegant and enduring results. Here's an intuitive geometric proof that requires no advanced algebra whatsoever.\n\n**The Core Idea: Areas**\n\nConsider a right triangle with legs of length a and b, and hypotenuse c. The theorem claims the square built on the hypotenuse has the same total area as the combined squares built on both legs. This simple claim has profound consequences throughout mathematics, science, and engineering. Architects use it to verify corners are truly square. Navigators use it to calculate direct distances. Physicists use it constantly when working with vectors and forces. It quietly underpins an enormous portion of human knowledge.\n\n**A Visual Proof**\n\nTake a large square with side length (a + b). You can arrange four identical right triangles inside this square in two different ways, and both arrangements reveal something remarkable.\n\n*Arrangement 1:* Place the four triangles in the corners, leaving a tilted square in the middle. That tilted square has side length c, so its area is c\u00b2. The four triangles fill the remaining space around it perfectly. Each triangle occupies exactly one corner, with its hypotenuse forming one side of the central tilted square.\n\n*Arrangement 2:* Rearrange the same four triangles to leave two open squares instead of one. These open squares have areas a\u00b2 and b\u00b2 respectively, corresponding exactly to the two legs of our original triangle. The triangles shift position but never change size or shape, and the outer boundary remains identical throughout.\n\n**The Key Insight**\n\nSince both arrangements use the same large outer square and the same four triangles, the leftover uncovered areas must be",
+      "rounds": 3,
+      "history": [
+        {
+          "round": 0,
+          "target": 2400,
+          "actual": 1380
+        },
+        {
+          "round": 1,
+          "target": 2900,
+          "actual": 1726
+        },
+        {
+          "round": 2,
+          "target": 2910,
+          "actual": 1801
+        }
+      ],
+      "target": 2910,
+      "actual": 1801,
+      "delta": -1109,
+      "is_fixed_point": false
+    }
+  ],
+  "_meta": {
+    "generator_script": "supplementary/experiments/fixed_point_claude_family.py",
+    "generator_script_sha256": "87572843ef601a4ec588532568d1d186e3fe65eb8d768dc133e7c5af54e8b95f",
+    "experiment": "fixed_point_claude_family",
+    "n_trials": 42,
+    "parameters": {
+      "n_models": 7,
+      "n_tasks_per_model": 6,
+      "protocols": [
+        "one_shot",
+        "staged"
+      ]
+    },
+    "backfilled_at": "2026-05-03T23:37:10",
+    "backfill_note": "Provenance _meta backfilled by ci/backfill_meta.py to satisfy L20 result_provenance_check. Generator script and parameters reflect known invocation.",
+    "models": [
+      "haiku-3",
+      "sonnet-4",
+      "opus-4",
+      "opus-4.1",
+      "haiku-4.5",
+      "sonnet-4.5",
+      "opus-4.5"
+    ],
+    "started_iso": "2026-05-03T23:37:55 (backfill placeholder; run not timestamped at source)",
+    "script_hash": "87572843ef601a4ec588532568d1d186e3fe65eb8d768dc133e7c5af54e8b95f",
+    "addition_note": "10-model merged version: 7 canonical + opus-4.6 + sonnet-4.6 + opus-4.7. Source additions: claude_family_opus46_addition.json, claude_family_sonnet46_addition.json, claude_family_opus47_addition.json (opus-4.7 has temperature caveat).",
+    "models_total": 10
+  }
+}

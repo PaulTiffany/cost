@@ -1,0 +1,9 @@
+{
+  "passed": true,
+  "n_refs_total": 11,
+  "n_in_title_or_caption": 3,
+  "n_sentence_start_spelled_ok": 8,
+  "n_mid_sentence_drift": 0,
+  "convention": "Mid-sentence parenthetical refs use \\appref{} / \\secref{} macros. Sentence-start refs may stay spelled out as Appendix~\\ref{} / Section~\\ref{}.",
+  "findings": []
+}

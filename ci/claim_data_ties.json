@@ -103,7 +103,12 @@
       "value_expr": "d['summary']['n_principles']",
       "expected": 20,
       "tolerance": 0,
-      "compare_as": "int"
+      "compare_as": "int",
+      "metadata": {
+        "cross_source_peers": [
+          "gram_n_eigenvalues"
+        ]
+      }
     },
     "constitution_n_pairs": {
       "claim_text_excerpt": "190 pairs (Claude Constitution analysis)",
@@ -129,7 +134,7 @@
       "source_file": "supplementary/experiments/outputs/constitution/constitution_analysis.json",
       "value_expr": "round(d['summary']['high_rho_fraction'], 4)",
       "expected": 0.0737,
-      "tolerance": 0.00005,
+      "tolerance": 5e-05,
       "compare_as": "float"
     },
     "constitution_mean_rho": {
@@ -182,7 +187,7 @@
       "paper_location_hint": "I8; calibration",
       "source_file": "supplementary/experiments/calibration_results.json",
       "value_expr": "d['tier_rho_estimates']['low']",
-      "expected": 0.20,
+      "expected": 0.2,
       "tolerance": 0.005,
       "compare_as": "float"
     },
@@ -191,7 +196,7 @@
       "paper_location_hint": "I9; calibration",
       "source_file": "supplementary/experiments/calibration_results.json",
       "value_expr": "d['tier_rho_estimates']['moderate']",
-      "expected": 0.40,
+      "expected": 0.4,
       "tolerance": 0.005,
       "compare_as": "float"
     },
@@ -634,7 +639,12 @@
       "value_expr": "d['constitution_gram']['n']",
       "expected": 20,
       "tolerance": 0,
-      "compare_as": "int"
+      "compare_as": "int",
+      "metadata": {
+        "cross_source_peers": [
+          "constitution_n_principles"
+        ]
+      }
     },
     "gram_empirical_cliff_high": {
       "claim_text_excerpt": "Empirical cliff at high tier: ~1.7% pass rate (matches calibration)",
@@ -700,20 +710,74 @@
       "compare_as": "int"
     },
     "claude_family_n_models": {
-      "claim_text_excerpt": "7 Claude family models analyzed (haiku-3 through opus-4.5)",
-      "paper_location_hint": "Frontier transfer paragraph: '7 models, haiku-opus'",
-      "source_file": "supplementary/experiments/fixed_point_claude_family.json",
+      "claim_text_excerpt": "10 Claude models in Tab:claude_family (canonical 7 plus opus-4.6, sonnet-4.6, opus-4.7)",
+      "paper_location_hint": "Tab:claude_family caption ('10 models')",
+      "source_file": "supplementary/experiments/fixed_point_claude_family_full10.json",
       "value_expr": "len(d['model_analyses'])",
-      "expected": 7,
+      "expected": 10,
       "tolerance": 0,
       "compare_as": "int"
+    },
+    "claude_family_opus46_wins": {
+      "claim_text_excerpt": "opus-4.6 4/6 wins (Tab:claude_family added 2026-05)",
+      "paper_location_hint": "Tab:claude_family row opus-4.6",
+      "source_file": "supplementary/experiments/fixed_point_claude_family_opus46_addition.json",
+      "value_expr": "next(m['staged_wins'] for m in d['model_analyses'] if m['model_name']=='opus-4.6')",
+      "expected": 4,
+      "tolerance": 0,
+      "compare_as": "int"
+    },
+    "claude_family_opus46_ratio": {
+      "claim_text_excerpt": "opus-4.6 7.7x staging ratio (Tab:claude_family)",
+      "paper_location_hint": "Tab:claude_family row opus-4.6",
+      "source_file": "supplementary/experiments/fixed_point_claude_family_opus46_addition.json",
+      "value_expr": "round(next(m['avg_improvement_ratio'] for m in d['model_analyses'] if m['model_name']=='opus-4.6'), 1)",
+      "expected": 7.7,
+      "tolerance": 0.05,
+      "compare_as": "float"
+    },
+    "claude_family_sonnet46_wins": {
+      "claim_text_excerpt": "sonnet-4.6 6/6 wins (only model to sweep paired tasks; Tab:claude_family)",
+      "paper_location_hint": "Tab:claude_family row sonnet-4.6",
+      "source_file": "supplementary/experiments/fixed_point_claude_family_sonnet46_addition.json",
+      "value_expr": "next(m['staged_wins'] for m in d['model_analyses'] if m['model_name']=='sonnet-4.6')",
+      "expected": 6,
+      "tolerance": 0,
+      "compare_as": "int"
+    },
+    "claude_family_sonnet46_ratio": {
+      "claim_text_excerpt": "sonnet-4.6 10.9x staging ratio (Tab:claude_family)",
+      "paper_location_hint": "Tab:claude_family row sonnet-4.6",
+      "source_file": "supplementary/experiments/fixed_point_claude_family_sonnet46_addition.json",
+      "value_expr": "round(next(m['avg_improvement_ratio'] for m in d['model_analyses'] if m['model_name']=='sonnet-4.6'), 1)",
+      "expected": 10.9,
+      "tolerance": 0.05,
+      "compare_as": "float"
+    },
+    "claude_family_opus47_wins": {
+      "claim_text_excerpt": "opus-4.7 5/6 wins (Tab:claude_family; sampling caveat)",
+      "paper_location_hint": "Tab:claude_family row opus-4.7",
+      "source_file": "supplementary/experiments/fixed_point_claude_family_opus47_addition.json",
+      "value_expr": "next(m['staged_wins'] for m in d['model_analyses'] if m['model_name']=='opus-4.7')",
+      "expected": 5,
+      "tolerance": 0,
+      "compare_as": "int"
+    },
+    "claude_family_opus47_ratio": {
+      "claim_text_excerpt": "opus-4.7 4.9x staging ratio (Tab:claude_family; sampling caveat)",
+      "paper_location_hint": "Tab:claude_family row opus-4.7",
+      "source_file": "supplementary/experiments/fixed_point_claude_family_opus47_addition.json",
+      "value_expr": "round(next(m['avg_improvement_ratio'] for m in d['model_analyses'] if m['model_name']=='opus-4.7'), 1)",
+      "expected": 4.9,
+      "tolerance": 0.05,
+      "compare_as": "float"
     },
     "json_nl_tier_rho_high": {
       "claim_text_excerpt": "JSON-NL high-tier rho = 0.70 (App H)",
       "paper_location_hint": "Line 1083 'At rho=0.70'",
       "source_file": "supplementary/experiments/json_nl_v4_results.json",
       "value_expr": "d['summary']['high']['rho']",
-      "expected": 0.70,
+      "expected": 0.7,
       "tolerance": 0.005,
       "compare_as": "float"
     },
@@ -750,7 +814,7 @@
       "source_file": "ci/derivations/bridge_baselines_derived.json",
       "value_expr": "d['bytebeat']['pitch_A4_pair_max_rho']",
       "expected": 1.0,
-      "tolerance": 1e-9,
+      "tolerance": 1e-09,
       "compare_as": "float"
     },
     "if_dsl_n_constraints": {
@@ -777,7 +841,7 @@
       "source_file": "ci/derivations/bridge_baselines_derived.json",
       "value_expr": "d['if_dsl']['high_rho_value']",
       "expected": 1.0,
-      "tolerance": 1e-9,
+      "tolerance": 1e-09,
       "compare_as": "float"
     },
     "alg1_rho_hat_stage": {
@@ -786,7 +850,7 @@
       "source_file": "ci/derivations/algorithm1_thresholds.json",
       "value_expr": "d['rho_hat_stage']",
       "expected": 0.15,
-      "tolerance": 1e-9,
+      "tolerance": 1e-09,
       "compare_as": "float"
     },
     "alg1_rho_hat_fail": {
@@ -795,7 +859,7 @@
       "source_file": "ci/derivations/algorithm1_thresholds.json",
       "value_expr": "d['rho_hat_fail']",
       "expected": 0.5,
-      "tolerance": 1e-9,
+      "tolerance": 1e-09,
       "compare_as": "float"
     },
     "alg1_pivot_step_mult": {
@@ -804,7 +868,7 @@
       "source_file": "ci/derivations/algorithm1_thresholds.json",
       "value_expr": "d['pivot_step_mult']",
       "expected": 2.5,
-      "tolerance": 1e-9,
+      "tolerance": 1e-09,
       "compare_as": "float"
     },
     "alg1_drift_threshold_deg": {
@@ -822,7 +886,7 @@
       "source_file": "ci/derivations/algorithm1_thresholds.json",
       "value_expr": "d['default_L_hat']",
       "expected": 0.025,
-      "tolerance": 1e-9,
+      "tolerance": 1e-09,
       "compare_as": "float"
     },
     "table11_one_shot_pass_pct": {
@@ -921,7 +985,7 @@
       "source_file": "ci/derivations/protocol_table11.json",
       "value_expr": "d['protocols']['geometric_router']['speedup_vs_oneshot']",
       "expected": 0.67,
-      "tolerance": 1e-9,
+      "tolerance": 1e-09,
       "compare_as": "float"
     },
     "table11_oracle_pass_pct": {
@@ -1020,7 +1084,7 @@
       "source_file": "ci/derivations/drift_stats.json",
       "value_expr": "d['direction_drift']['median']",
       "expected": 0.07,
-      "tolerance": 1e-9,
+      "tolerance": 1e-09,
       "compare_as": "float"
     },
     "drift_iqr_low": {
@@ -1029,7 +1093,7 @@
       "source_file": "ci/derivations/drift_stats.json",
       "value_expr": "d['direction_drift']['iqr_low']",
       "expected": 0.03,
-      "tolerance": 1e-9,
+      "tolerance": 1e-09,
       "compare_as": "float"
     },
     "drift_iqr_high": {
@@ -1038,7 +1102,7 @@
       "source_file": "ci/derivations/drift_stats.json",
       "value_expr": "d['direction_drift']['iqr_high']",
       "expected": 0.12,
-      "tolerance": 1e-9,
+      "tolerance": 1e-09,
       "compare_as": "float"
     },
     "drift_pct_below_015": {
@@ -1065,7 +1129,7 @@
       "source_file": "ci/derivations/drift_stats.json",
       "value_expr": "d['step_size']['p95']",
       "expected": 0.148,
-      "tolerance": 1e-9,
+      "tolerance": 1e-09,
       "compare_as": "float"
     },
     "unconditional_infeasible_regret_pct": {
@@ -1190,7 +1254,7 @@
       "paper_location_hint": "Per-encoder rho_max table",
       "source_file": "ci/derivations/encoder_lipschitz.json",
       "value_expr": "d['embedding_R']['multilingual_minilm']['rho_max']",
-      "expected": 0.20,
+      "expected": 0.2,
       "tolerance": 0,
       "compare_as": "float"
     },
@@ -1257,7 +1321,6 @@
       "tolerance": 0,
       "compare_as": "int"
     },
-
     "identifier_qwen_coder_in_lipschitz": {
       "claim_text_excerpt": "Qwen-2.5-Coder-1.5B-Instruct present in Lipschitz calibration source",
       "paper_location_hint": "Table tab:lipschitz_calibration model column; Method paragraph",
@@ -1266,7 +1329,15 @@
       "expected": 1,
       "tolerance": 0,
       "compare_as": "int",
-      "metadata": {"check_kind": "identifier", "type": "model_id", "family": "qwen", "size_b": 1.5, "specialization": "code", "tuning": "instruct", "provider": "Alibaba"}
+      "metadata": {
+        "check_kind": "identifier",
+        "type": "model_id",
+        "family": "qwen",
+        "size_b": 1.5,
+        "specialization": "code",
+        "tuning": "instruct",
+        "provider": "Alibaba"
+      }
     },
     "identifier_deepseek_coder_in_lipschitz": {
       "claim_text_excerpt": "deepseek-coder-1.3b-instruct present in Lipschitz calibration source",
@@ -1276,7 +1347,15 @@
       "expected": 1,
       "tolerance": 0,
       "compare_as": "int",
-      "metadata": {"check_kind": "identifier", "type": "model_id", "family": "deepseek", "size_b": 1.3, "specialization": "code", "tuning": "instruct", "provider": "DeepSeek"}
+      "metadata": {
+        "check_kind": "identifier",
+        "type": "model_id",
+        "family": "deepseek",
+        "size_b": 1.3,
+        "specialization": "code",
+        "tuning": "instruct",
+        "provider": "DeepSeek"
+      }
     },
     "identifier_tinyllama_in_lipschitz": {
       "claim_text_excerpt": "TinyLlama-1.1B-Chat-v1.0 present in Lipschitz calibration source",
@@ -1286,9 +1365,16 @@
       "expected": 1,
       "tolerance": 0,
       "compare_as": "int",
-      "metadata": {"check_kind": "identifier", "type": "model_id", "family": "tinyllama", "size_b": 1.1, "specialization": "general", "tuning": "chat", "provider": "TinyLlama"}
+      "metadata": {
+        "check_kind": "identifier",
+        "type": "model_id",
+        "family": "tinyllama",
+        "size_b": 1.1,
+        "specialization": "general",
+        "tuning": "chat",
+        "provider": "TinyLlama"
+      }
     },
-
     "identifier_qwen_coder_in_code_experiment": {
       "claim_text_excerpt": "Qwen-2.5-Coder-1.5B-Instruct present in code_constraint source (cross-file consistency)",
       "paper_location_hint": "Open-weight code experiment; Section 5.1; Tab tab:calibration",
@@ -1297,7 +1383,15 @@
       "expected": 1,
       "tolerance": 0,
       "compare_as": "int",
-      "metadata": {"check_kind": "identifier", "type": "model_id", "family": "qwen", "size_b": 1.5, "specialization": "code", "tuning": "instruct", "provider": "Alibaba"}
+      "metadata": {
+        "check_kind": "identifier",
+        "type": "model_id",
+        "family": "qwen",
+        "size_b": 1.5,
+        "specialization": "code",
+        "tuning": "instruct",
+        "provider": "Alibaba"
+      }
     },
     "identifier_deepseek_coder_in_code_experiment": {
       "claim_text_excerpt": "deepseek-coder-1.3b-instruct present in code_constraint source",
@@ -1307,7 +1401,15 @@
       "expected": 1,
       "tolerance": 0,
       "compare_as": "int",
-      "metadata": {"check_kind": "identifier", "type": "model_id", "family": "deepseek", "size_b": 1.3, "specialization": "code", "tuning": "instruct", "provider": "DeepSeek"}
+      "metadata": {
+        "check_kind": "identifier",
+        "type": "model_id",
+        "family": "deepseek",
+        "size_b": 1.3,
+        "specialization": "code",
+        "tuning": "instruct",
+        "provider": "DeepSeek"
+      }
     },
     "identifier_tinyllama_in_code_experiment": {
       "claim_text_excerpt": "TinyLlama-1.1B-Chat-v1.0 present in code_constraint source",
@@ -1317,7 +1419,15 @@
       "expected": 1,
       "tolerance": 0,
       "compare_as": "int",
-      "metadata": {"check_kind": "identifier", "type": "model_id", "family": "tinyllama", "size_b": 1.1, "specialization": "general", "tuning": "chat", "provider": "TinyLlama"}
+      "metadata": {
+        "check_kind": "identifier",
+        "type": "model_id",
+        "family": "tinyllama",
+        "size_b": 1.1,
+        "specialization": "general",
+        "tuning": "chat",
+        "provider": "TinyLlama"
+      }
     },
     "identifier_qwen_3b_in_code_experiment": {
       "claim_text_excerpt": "Qwen-2.5-3B-Instruct present in code_constraint source (4th open-weight model)",
@@ -1327,9 +1437,16 @@
       "expected": 1,
       "tolerance": 0,
       "compare_as": "int",
-      "metadata": {"check_kind": "identifier", "type": "model_id", "family": "qwen", "size_b": 3.0, "specialization": "general", "tuning": "instruct", "provider": "Alibaba"}
+      "metadata": {
+        "check_kind": "identifier",
+        "type": "model_id",
+        "family": "qwen",
+        "size_b": 3.0,
+        "specialization": "general",
+        "tuning": "instruct",
+        "provider": "Alibaba"
+      }
     },
-
     "identifier_haiku3_in_claude_family": {
       "claim_text_excerpt": "haiku-3 present in Claude family source",
       "paper_location_hint": "Table tab:claude_family; Frontier Transfer paragraph",
@@ -1338,7 +1455,15 @@
       "expected": 1,
       "tolerance": 0,
       "compare_as": "int",
-      "metadata": {"check_kind": "identifier", "type": "model_id", "family": "claude", "tier": "haiku", "generation": 3, "provider": "Anthropic", "via": "API"}
+      "metadata": {
+        "check_kind": "identifier",
+        "type": "model_id",
+        "family": "claude",
+        "tier": "haiku",
+        "generation": 3,
+        "provider": "Anthropic",
+        "via": "API"
+      }
     },
     "identifier_sonnet4_in_claude_family": {
       "claim_text_excerpt": "sonnet-4 present in Claude family source",
@@ -1348,7 +1473,15 @@
       "expected": 1,
       "tolerance": 0,
       "compare_as": "int",
-      "metadata": {"check_kind": "identifier", "type": "model_id", "family": "claude", "tier": "sonnet", "generation": 4, "provider": "Anthropic", "via": "API"}
+      "metadata": {
+        "check_kind": "identifier",
+        "type": "model_id",
+        "family": "claude",
+        "tier": "sonnet",
+        "generation": 4,
+        "provider": "Anthropic",
+        "via": "API"
+      }
     },
     "identifier_opus4_in_claude_family": {
       "claim_text_excerpt": "opus-4 present in Claude family source",
@@ -1358,7 +1491,15 @@
       "expected": 1,
       "tolerance": 0,
       "compare_as": "int",
-      "metadata": {"check_kind": "identifier", "type": "model_id", "family": "claude", "tier": "opus", "generation": 4, "provider": "Anthropic", "via": "API"}
+      "metadata": {
+        "check_kind": "identifier",
+        "type": "model_id",
+        "family": "claude",
+        "tier": "opus",
+        "generation": 4,
+        "provider": "Anthropic",
+        "via": "API"
+      }
     },
     "identifier_opus41_in_claude_family": {
       "claim_text_excerpt": "opus-4.1 present in Claude family source",
@@ -1368,7 +1509,15 @@
       "expected": 1,
       "tolerance": 0,
       "compare_as": "int",
-      "metadata": {"check_kind": "identifier", "type": "model_id", "family": "claude", "tier": "opus", "generation": 4.1, "provider": "Anthropic", "via": "API"}
+      "metadata": {
+        "check_kind": "identifier",
+        "type": "model_id",
+        "family": "claude",
+        "tier": "opus",
+        "generation": 4.1,
+        "provider": "Anthropic",
+        "via": "API"
+      }
     },
     "identifier_haiku45_in_claude_family": {
       "claim_text_excerpt": "haiku-4.5 present in Claude family source",
@@ -1378,7 +1527,15 @@
       "expected": 1,
       "tolerance": 0,
       "compare_as": "int",
-      "metadata": {"check_kind": "identifier", "type": "model_id", "family": "claude", "tier": "haiku", "generation": 4.5, "provider": "Anthropic", "via": "API"}
+      "metadata": {
+        "check_kind": "identifier",
+        "type": "model_id",
+        "family": "claude",
+        "tier": "haiku",
+        "generation": 4.5,
+        "provider": "Anthropic",
+        "via": "API"
+      }
     },
     "identifier_sonnet45_in_claude_family": {
       "claim_text_excerpt": "sonnet-4.5 present in Claude family source",
@@ -1388,7 +1545,15 @@
       "expected": 1,
       "tolerance": 0,
       "compare_as": "int",
-      "metadata": {"check_kind": "identifier", "type": "model_id", "family": "claude", "tier": "sonnet", "generation": 4.5, "provider": "Anthropic", "via": "API"}
+      "metadata": {
+        "check_kind": "identifier",
+        "type": "model_id",
+        "family": "claude",
+        "tier": "sonnet",
+        "generation": 4.5,
+        "provider": "Anthropic",
+        "via": "API"
+      }
     },
     "identifier_opus45_in_claude_family": {
       "claim_text_excerpt": "opus-4.5 present in Claude family source (frontier model)",
@@ -1398,9 +1563,16 @@
       "expected": 1,
       "tolerance": 0,
       "compare_as": "int",
-      "metadata": {"check_kind": "identifier", "type": "model_id", "family": "claude", "tier": "opus", "generation": 4.5, "provider": "Anthropic", "via": "API"}
+      "metadata": {
+        "check_kind": "identifier",
+        "type": "model_id",
+        "family": "claude",
+        "tier": "opus",
+        "generation": 4.5,
+        "provider": "Anthropic",
+        "via": "API"
+      }
     },
-
     "identifier_command_r_plus_in_blinded": {
       "claim_text_excerpt": "command-r-plus present in blinded external benchmark",
       "paper_location_hint": "App C Bound Transfer; screening-statistic call-out",
@@ -1409,7 +1581,14 @@
       "expected": 1,
       "tolerance": 0,
       "compare_as": "int",
-      "metadata": {"check_kind": "identifier", "type": "model_id", "family": "cohere", "openrouter_id": "cohere/command-r-plus-08-2024", "provider": "Cohere", "via": "OpenRouter"}
+      "metadata": {
+        "check_kind": "identifier",
+        "type": "model_id",
+        "family": "cohere",
+        "openrouter_id": "cohere/command-r-plus-08-2024",
+        "provider": "Cohere",
+        "via": "OpenRouter"
+      }
     },
     "identifier_deepseek_r1_in_blinded": {
       "claim_text_excerpt": "deepseek-r1 present in blinded external benchmark",
@@ -1419,7 +1598,14 @@
       "expected": 1,
       "tolerance": 0,
       "compare_as": "int",
-      "metadata": {"check_kind": "identifier", "type": "model_id", "family": "deepseek", "openrouter_id": "deepseek/deepseek-r1", "provider": "DeepSeek", "via": "OpenRouter"}
+      "metadata": {
+        "check_kind": "identifier",
+        "type": "model_id",
+        "family": "deepseek",
+        "openrouter_id": "deepseek/deepseek-r1",
+        "provider": "DeepSeek",
+        "via": "OpenRouter"
+      }
     },
     "identifier_qwen_72b_in_blinded": {
       "claim_text_excerpt": "qwen-2.5-72b present in blinded external benchmark",
@@ -1429,7 +1615,15 @@
       "expected": 1,
       "tolerance": 0,
       "compare_as": "int",
-      "metadata": {"check_kind": "identifier", "type": "model_id", "family": "qwen", "size_b": 72, "openrouter_id": "qwen/qwen-2.5-72b-instruct", "provider": "Alibaba", "via": "OpenRouter"}
+      "metadata": {
+        "check_kind": "identifier",
+        "type": "model_id",
+        "family": "qwen",
+        "size_b": 72,
+        "openrouter_id": "qwen/qwen-2.5-72b-instruct",
+        "provider": "Alibaba",
+        "via": "OpenRouter"
+      }
     },
     "identifier_mistral_large_in_blinded": {
       "claim_text_excerpt": "mistral-large present in blinded external benchmark",
@@ -1439,30 +1633,43 @@
       "expected": 1,
       "tolerance": 0,
       "compare_as": "int",
-      "metadata": {"check_kind": "identifier", "type": "model_id", "family": "mistral", "openrouter_id": "mistralai/mistral-large-2411", "provider": "Mistral", "via": "OpenRouter"}
+      "metadata": {
+        "check_kind": "identifier",
+        "type": "model_id",
+        "family": "mistral",
+        "openrouter_id": "mistralai/mistral-large-2411",
+        "provider": "Mistral",
+        "via": "OpenRouter"
+      }
     },
-
     "identifier_count_blinded_external_4models": {
-      "claim_text_excerpt": "4-model blinded benchmark — exactly 4 distinct models in source",
+      "claim_text_excerpt": "4-model blinded benchmark \u00e2\u20ac\u201d exactly 4 distinct models in source",
       "paper_location_hint": "App C Bound Transfer figure caption '4-model blinded benchmark'",
       "source_file": "rebuttal/figures/blinded_external/cross_model_results.json",
       "value_expr": "len(set(d['models']))",
       "expected": 4,
       "tolerance": 0,
       "compare_as": "int",
-      "metadata": {"check_kind": "identifier_count", "type": "model_count", "context": "blinded_external_benchmark"}
+      "metadata": {
+        "check_kind": "identifier_count",
+        "type": "model_count",
+        "context": "blinded_external_benchmark"
+      }
     },
-    "identifier_count_claude_family_7models": {
-      "claim_text_excerpt": "7 Claude family models in fixed_point analysis (matches body claim)",
-      "paper_location_hint": "Frontier transfer paragraph: '7 models, haiku-opus'",
-      "source_file": "supplementary/experiments/fixed_point_claude_family.json",
+    "identifier_count_claude_family_10models": {
+      "claim_text_excerpt": "10 Claude models in fixed_point analysis (matches Tab:claude_family caption)",
+      "paper_location_hint": "Tab:claude_family caption ('10 models')",
+      "source_file": "supplementary/experiments/fixed_point_claude_family_full10.json",
       "value_expr": "len({m['model_name'] for m in d['model_analyses']})",
-      "expected": 7,
+      "expected": 10,
       "tolerance": 0,
       "compare_as": "int",
-      "metadata": {"check_kind": "identifier_count", "type": "model_count", "context": "claude_family_frontier_transfer"}
+      "metadata": {
+        "check_kind": "identifier_count",
+        "type": "model_count",
+        "context": "claude_family_frontier_transfer"
+      }
     },
-
     "identifier_count_cross_model_5models": {
       "claim_text_excerpt": "5-model cross-provider benchmark (would have caught: paper said 4 named, source had 5)",
       "paper_location_hint": "Body line 512 'across GPT-4o, DeepSeek-v3, Llama-3.1-70B, Gemini 2.5 Flash, and Gemini 2.5 Pro'",
@@ -1471,7 +1678,12 @@
       "expected": 5,
       "tolerance": 0,
       "compare_as": "int",
-      "metadata": {"check_kind": "identifier_count", "type": "model_count", "context": "cross_model_5provider", "drift_history": "First version of paper undercounted: said 4 models, source had 5; cert added after the catch"}
+      "metadata": {
+        "check_kind": "identifier_count",
+        "type": "model_count",
+        "context": "cross_model_5provider",
+        "drift_history": "First version of paper undercounted: said 4 models, source had 5; cert added after the catch"
+      }
     },
     "identifier_gpt4o_in_cross_model": {
       "claim_text_excerpt": "GPT-4o present in cross-provider source",
@@ -1481,7 +1693,14 @@
       "expected": 1,
       "tolerance": 0,
       "compare_as": "int",
-      "metadata": {"check_kind": "identifier", "type": "model_id", "family": "gpt", "openrouter_id": "openai/gpt-4o", "provider": "OpenAI", "via": "OpenRouter"}
+      "metadata": {
+        "check_kind": "identifier",
+        "type": "model_id",
+        "family": "gpt",
+        "openrouter_id": "openai/gpt-4o",
+        "provider": "OpenAI",
+        "via": "OpenRouter"
+      }
     },
     "identifier_deepseek_v3_in_cross_model": {
       "claim_text_excerpt": "DeepSeek-v3 present in cross-provider source",
@@ -1491,7 +1710,14 @@
       "expected": 1,
       "tolerance": 0,
       "compare_as": "int",
-      "metadata": {"check_kind": "identifier", "type": "model_id", "family": "deepseek", "openrouter_id": "deepseek/deepseek-chat-v3-0324", "provider": "DeepSeek", "via": "OpenRouter"}
+      "metadata": {
+        "check_kind": "identifier",
+        "type": "model_id",
+        "family": "deepseek",
+        "openrouter_id": "deepseek/deepseek-chat-v3-0324",
+        "provider": "DeepSeek",
+        "via": "OpenRouter"
+      }
     },
     "identifier_llama_31_70b_in_cross_model": {
       "claim_text_excerpt": "Llama-3.1-70B present in cross-provider source",
@@ -1501,7 +1727,15 @@
       "expected": 1,
       "tolerance": 0,
       "compare_as": "int",
-      "metadata": {"check_kind": "identifier", "type": "model_id", "family": "llama", "size_b": 70, "openrouter_id": "meta-llama/llama-3.1-70b-instruct", "provider": "Meta", "via": "OpenRouter"}
+      "metadata": {
+        "check_kind": "identifier",
+        "type": "model_id",
+        "family": "llama",
+        "size_b": 70,
+        "openrouter_id": "meta-llama/llama-3.1-70b-instruct",
+        "provider": "Meta",
+        "via": "OpenRouter"
+      }
     },
     "identifier_gemini_25_flash_in_cross_model": {
       "claim_text_excerpt": "Gemini 2.5 Flash present in cross-provider source",
@@ -1511,7 +1745,14 @@
       "expected": 1,
       "tolerance": 0,
       "compare_as": "int",
-      "metadata": {"check_kind": "identifier", "type": "model_id", "family": "gemini", "openrouter_id": "google/gemini-2.5-flash", "provider": "Google", "via": "OpenRouter"}
+      "metadata": {
+        "check_kind": "identifier",
+        "type": "model_id",
+        "family": "gemini",
+        "openrouter_id": "google/gemini-2.5-flash",
+        "provider": "Google",
+        "via": "OpenRouter"
+      }
     },
     "identifier_gemini_25_pro_in_cross_model": {
       "claim_text_excerpt": "Gemini 2.5 Pro present in cross-provider source (the one that was silently dropped from prose)",
@@ -1521,7 +1762,15 @@
       "expected": 1,
       "tolerance": 0,
       "compare_as": "int",
-      "metadata": {"check_kind": "identifier", "type": "model_id", "family": "gemini", "openrouter_id": "google/gemini-2.5-pro", "provider": "Google", "via": "OpenRouter", "note": "Paper drift: this model was in source but missing from prose until cert caught it"}
+      "metadata": {
+        "check_kind": "identifier",
+        "type": "model_id",
+        "family": "gemini",
+        "openrouter_id": "google/gemini-2.5-pro",
+        "provider": "Google",
+        "via": "OpenRouter",
+        "note": "Paper drift: this model was in source but missing from prose until cert caught it"
+      }
     },
     "identifier_named_models_match_total_n_cross_model": {
       "claim_text_excerpt": "Named models in body == distinct models in source (consistency check)",
@@ -1531,7 +1780,2142 @@
       "expected": 1,
       "tolerance": 0,
       "compare_as": "int",
-      "metadata": {"check_kind": "set_equality", "type": "model_set_consistency", "context": "cross_provider_5model"}
+      "metadata": {
+        "check_kind": "set_equality",
+        "type": "model_set_consistency",
+        "context": "cross_provider_5model"
+      }
+    },
+    "identifier_minilm_l6_in_encoder_table": {
+      "claim_text_excerpt": "MiniLM-L6-v2 encoder in tab:embedding_R + tab:encoder_sensitivity",
+      "paper_location_hint": "main.tex lines 711, 734, 1104, 1156, 384",
+      "source_file": "ci/derivations/encoder_lipschitz.json",
+      "value_expr": "1 if 'minilm_l6' in d['embedding_R'] and 'minilm_l6' in d['encoder_sensitivity'] else 0",
+      "expected": 1,
+      "tolerance": 0,
+      "compare_as": "int",
+      "metadata": {
+        "check_kind": "identifier",
+        "type": "encoder",
+        "family": "MiniLM",
+        "dim": 384,
+        "library": "sentence-transformers"
+      }
+    },
+    "identifier_mpnet_base_in_encoder_table": {
+      "claim_text_excerpt": "mpnet-base-v2 encoder in tab:embedding_R + tab:encoder_sensitivity",
+      "paper_location_hint": "main.tex lines 712, 735",
+      "source_file": "ci/derivations/encoder_lipschitz.json",
+      "value_expr": "1 if 'mpnet_base' in d['embedding_R'] and 'mpnet_base' in d['encoder_sensitivity'] else 0",
+      "expected": 1,
+      "tolerance": 0,
+      "compare_as": "int",
+      "metadata": {
+        "check_kind": "identifier",
+        "type": "encoder",
+        "family": "MPNet",
+        "library": "sentence-transformers"
+      }
+    },
+    "identifier_multilingual_minilm_in_encoder_table": {
+      "claim_text_excerpt": "multilingual-MiniLM encoder in tab:embedding_R + tab:encoder_sensitivity (also line 384 after E5->multilingual-MiniLM fix)",
+      "paper_location_hint": "main.tex lines 713, 736, 384",
+      "source_file": "ci/derivations/encoder_lipschitz.json",
+      "value_expr": "1 if 'multilingual_minilm' in d['embedding_R'] and 'multilingual_minilm' in d['encoder_sensitivity'] else 0",
+      "expected": 1,
+      "tolerance": 0,
+      "compare_as": "int",
+      "metadata": {
+        "check_kind": "identifier",
+        "type": "encoder",
+        "family": "MiniLM",
+        "variant": "multilingual"
+      }
+    },
+    "set_equality_encoders_3": {
+      "claim_text_excerpt": "Exactly 3 encoders in tab:embedding_R and tab:encoder_sensitivity",
+      "paper_location_hint": "main.tex line 384 'across 3 encoders'; tables 711-713, 734-736",
+      "source_file": "ci/derivations/encoder_lipschitz.json",
+      "value_expr": "1 if set(d['embedding_R'].keys()) == {'minilm_l6','mpnet_base','multilingual_minilm'} and set(d['encoder_sensitivity'].keys()) == {'minilm_l6','mpnet_base','multilingual_minilm'} else 0",
+      "expected": 1,
+      "tolerance": 0,
+      "compare_as": "int",
+      "metadata": {
+        "check_kind": "set_equality",
+        "type": "encoder_set",
+        "n": 3,
+        "drift_history": "Paper line 384 prose said 'MiniLM, MPNet, E5' until 2026-05; corrected to 'MiniLM-L6-v2, mpnet-base-v2, multilingual-MiniLM' to match the table"
+      }
+    },
+    "identifier_factorial_in_code_experiment": {
+      "claim_text_excerpt": "factorial code task referenced (Table 4, multiple appendices)",
+      "paper_location_hint": "main.tex lines 496, 944, 2469, 2627",
+      "source_file": "supplementary/experiments/code_constraint_results.json",
+      "value_expr": "1 if 'factorial' in {r['task_id'] for r in d['Qwen/Qwen2.5-Coder-1.5B-Instruct']['results']} else 0",
+      "expected": 1,
+      "tolerance": 0,
+      "compare_as": "int",
+      "metadata": {
+        "check_kind": "identifier",
+        "type": "task",
+        "domain": "code"
+      }
+    },
+    "identifier_fibonacci_in_code_experiment": {
+      "claim_text_excerpt": "fibonacci code task referenced",
+      "paper_location_hint": "main.tex lines 944, 2469",
+      "source_file": "supplementary/experiments/code_constraint_results.json",
+      "value_expr": "1 if 'fibonacci' in {r['task_id'] for r in d['Qwen/Qwen2.5-Coder-1.5B-Instruct']['results']} else 0",
+      "expected": 1,
+      "tolerance": 0,
+      "compare_as": "int",
+      "metadata": {
+        "check_kind": "identifier",
+        "type": "task",
+        "domain": "code"
+      }
+    },
+    "identifier_count_code_experiment_tasks_12": {
+      "claim_text_excerpt": "12 distinct code tasks in code_constraint experiment",
+      "paper_location_hint": "main.tex line 1104 (6 for Lipschitz subset); full set is 12",
+      "source_file": "supplementary/experiments/code_constraint_results.json",
+      "value_expr": "len({r['task_id'] for r in d['Qwen/Qwen2.5-Coder-1.5B-Instruct']['results']})",
+      "expected": 12,
+      "tolerance": 0,
+      "compare_as": "int",
+      "metadata": {
+        "check_kind": "count",
+        "type": "task"
+      }
+    },
+    "set_equality_code_experiment_4_models": {
+      "claim_text_excerpt": "Tab:llm_bridge + tab:delta_capacity_model name 4 open-weight models",
+      "paper_location_hint": "main.tex lines 928, 982-985, 953",
+      "source_file": "supplementary/experiments/code_constraint_results.json",
+      "value_expr": "1 if {k for k in d.keys() if not k.startswith('_')} == {'Qwen/Qwen2.5-Coder-1.5B-Instruct','deepseek-ai/deepseek-coder-1.3b-instruct','TinyLlama/TinyLlama-1.1B-Chat-v1.0','Qwen/Qwen2.5-3B-Instruct'} else 0",
+      "expected": 1,
+      "tolerance": 0,
+      "compare_as": "int",
+      "metadata": {
+        "check_kind": "set_equality",
+        "type": "model_set",
+        "n": 4,
+        "context": "open_weight_code_experiment"
+      }
+    },
+    "set_equality_claude_family_10_models": {
+      "claim_text_excerpt": "Exactly 10 specific Claude family models in Tab:claude_family",
+      "paper_location_hint": "Tab:claude_family",
+      "source_file": "supplementary/experiments/fixed_point_claude_family_full10.json",
+      "value_expr": "1 if {m['model_name'] for m in d['model_analyses']} == {'haiku-3','sonnet-4','opus-4','opus-4.1','haiku-4.5','sonnet-4.5','opus-4.5','opus-4.6','sonnet-4.6','opus-4.7'} else 0",
+      "expected": 1,
+      "tolerance": 0,
+      "compare_as": "int",
+      "metadata": {
+        "check_kind": "set_equality",
+        "type": "model_set",
+        "family": "claude",
+        "n": 10
+      }
+    },
+    "set_equality_blinded_external_4_models": {
+      "claim_text_excerpt": "Exactly 4 specific blinded external models",
+      "paper_location_hint": "main.tex line 2474 image_format_cliff caption",
+      "source_file": "rebuttal/figures/blinded_external/cross_model_results.json",
+      "value_expr": "1 if set(d['models']) == {'command-r-plus','deepseek-r1','qwen-2.5-72b','mistral-large'} else 0",
+      "expected": 1,
+      "tolerance": 0,
+      "compare_as": "int",
+      "metadata": {
+        "check_kind": "set_equality",
+        "type": "model_set",
+        "n": 4,
+        "context": "blinded_external"
+      }
+    },
+    "identifier_image_model_gpt5_4_image_2": {
+      "claim_text_excerpt": "Image model openai/gpt-5.4-image-2 used for Run B/C/D",
+      "paper_location_hint": "main.tex line 2469",
+      "source_file": "supplementary/experiments_rebuttal/image_transfer/image_transfer_results_runA_no_medium_frame.json",
+      "value_expr": "1 if d.get('model') == 'openai/gpt-5.4-image-2' else 0",
+      "expected": 1,
+      "tolerance": 0,
+      "compare_as": "int",
+      "metadata": {
+        "check_kind": "identifier",
+        "type": "model_id",
+        "modality": "image",
+        "provider": "OpenAI",
+        "via": "OpenRouter"
+      }
+    },
+    "identifier_high_k_opus_api_model_id": {
+      "claim_text_excerpt": "High-k Opus 4.5 ran with API id claude-opus-4-5-20251101",
+      "paper_location_hint": "main.tex lines 506, 1980, 1982",
+      "source_file": "supplementary/experiments/outputs/high_k_opus/high_k_opus_results.json",
+      "value_expr": "1 if d.get('model') == 'opus-4.5' and d.get('model_id') == 'claude-opus-4-5-20251101' else 0",
+      "expected": 1,
+      "tolerance": 0,
+      "compare_as": "int",
+      "metadata": {
+        "check_kind": "identifier",
+        "type": "api_model_id",
+        "family": "claude",
+        "tier": "opus",
+        "generation": 4.5,
+        "api_id": "claude-opus-4-5-20251101"
+      }
+    },
+    "code_constraint_n_per_cell_60": {
+      "claim_text_excerpt": "Per (model, tier, protocol) cell: 60 trials (12 tasks x 5 trials)",
+      "paper_location_hint": "main.tex per-tier breakdown",
+      "source_file": "supplementary/experiments/code_constraint_results.json",
+      "value_expr": "min(sum(1 for r in v['results'] if r['tier']=='control' and r['protocol']=='one_shot') for k,v in d.items() if not k.startswith('_'))",
+      "expected": 60,
+      "tolerance": 0,
+      "compare_as": "int",
+      "metadata": {
+        "check_kind": "sample_count",
+        "context": "trials per (model, tier, protocol) cell"
+      }
+    },
+    "code_constraint_n_per_tier_per_protocol_240": {
+      "claim_text_excerpt": "Per (tier, protocol) across 4 models: 240 trials",
+      "paper_location_hint": "calibration table caption",
+      "source_file": "supplementary/experiments/code_constraint_results.json",
+      "value_expr": "sum(1 for k,v in d.items() if not k.startswith('_') for r in v['results'] if r['tier']=='control' and r['protocol']=='one_shot')",
+      "expected": 240,
+      "tolerance": 0,
+      "compare_as": "int",
+      "metadata": {
+        "check_kind": "sample_count",
+        "context": "240 per (tier, protocol) summed across models"
+      }
+    },
+    "lipschitz_n_completions_900": {
+      "claim_text_excerpt": "900 completions (50 per task x 6 tasks x 3 models)",
+      "paper_location_hint": "main.tex line 1167 (Step-Size Distribution)",
+      "source_file": "supplementary/experiments/lipschitz_calibration_results.json",
+      "value_expr": "len(d['completions'])",
+      "expected": 900,
+      "tolerance": 0,
+      "compare_as": "int",
+      "metadata": {
+        "check_kind": "sample_count",
+        "context": "lipschitz total completions"
+      }
+    },
+    "lipschitz_n_per_task_50": {
+      "claim_text_excerpt": "N=50 completions per task (lipschitz calibration)",
+      "paper_location_hint": "main.tex line 1156 'we generate 50 completions'; tab:lipschitz_calibration caption",
+      "source_file": "supplementary/experiments/lipschitz_calibration_results.json",
+      "value_expr": "d['_meta']['n_trials_per_task']",
+      "expected": 50,
+      "tolerance": 0,
+      "compare_as": "int",
+      "metadata": {
+        "check_kind": "sample_count",
+        "context": "n_trials_per_task in lipschitz meta"
+      }
+    },
+    "lipschitz_n_tokens_108957": {
+      "claim_text_excerpt": "N=108,957 per-token displacements (Step-Size Distribution)",
+      "paper_location_hint": "main.tex line 1167 (updated 2026-05 from 2,500)",
+      "source_file": "supplementary/experiments/lipschitz_calibration_results.json",
+      "value_expr": "sum(len(c['per_token_displacements']) for c in d['completions'])",
+      "expected": 108957,
+      "tolerance": 0,
+      "compare_as": "int",
+      "metadata": {
+        "check_kind": "sample_count",
+        "context": "total per-token samples across 900 completions"
+      }
+    },
+    "lipschitz_n_tasks_6": {
+      "claim_text_excerpt": "6 code tasks (lipschitz calibration)",
+      "paper_location_hint": "main.tex line 1167",
+      "source_file": "supplementary/experiments/lipschitz_calibration_results.json",
+      "value_expr": "len({c['task_id'] for c in d['completions']})",
+      "expected": 6,
+      "tolerance": 0,
+      "compare_as": "int",
+      "metadata": {
+        "check_kind": "sample_count",
+        "context": "unique tasks in lipschitz calibration"
+      }
+    },
+    "lipschitz_n_models_3": {
+      "claim_text_excerpt": "3 models (lipschitz calibration)",
+      "paper_location_hint": "tab:lipschitz_calibration",
+      "source_file": "supplementary/experiments/lipschitz_calibration_results.json",
+      "value_expr": "len(d['per_model_summary'])",
+      "expected": 3,
+      "tolerance": 0,
+      "compare_as": "int",
+      "metadata": {
+        "check_kind": "sample_count",
+        "context": "models in lipschitz per_model_summary"
+      }
+    },
+    "json_nl_n_per_tier_per_protocol_40": {
+      "claim_text_excerpt": "JSON-NL Qwen-1.5B: n=40 per (tier, protocol) cell",
+      "paper_location_hint": "JSON-NL transfer caption",
+      "source_file": "supplementary/experiments/json_nl_v4_results.json",
+      "value_expr": "sum(1 for r in d['data'] if r['tier']=='control' and r['protocol']=='one_shot')",
+      "expected": 40,
+      "tolerance": 0,
+      "compare_as": "int",
+      "metadata": {
+        "check_kind": "sample_count",
+        "context": "JSON-NL trials per cell"
+      }
+    },
+    "json_nl_n_total_320": {
+      "claim_text_excerpt": "JSON-NL total: 4 tiers x 2 protocols x 40 = 320",
+      "paper_location_hint": "JSON-NL transfer (implicit total)",
+      "source_file": "supplementary/experiments/json_nl_v4_results.json",
+      "value_expr": "len(d['data'])",
+      "expected": 320,
+      "tolerance": 0,
+      "compare_as": "int",
+      "metadata": {
+        "check_kind": "sample_count",
+        "context": "total JSON-NL trials"
+      }
+    },
+    "delta_capacity_n_per_budget_per_protocol_120": {
+      "claim_text_excerpt": "Token budget sweep: 120 trials per (budget, protocol)",
+      "paper_location_hint": "token-budget sweep caption",
+      "source_file": "supplementary/experiments/delta_capacity_results.json",
+      "value_expr": "sum(1 for t in d['trials'] if t['token_budget']==128 and t['protocol']=='oneshot')",
+      "expected": 120,
+      "tolerance": 0,
+      "compare_as": "int",
+      "metadata": {
+        "check_kind": "sample_count",
+        "context": "trials per (token_budget, protocol)"
+      }
+    },
+    "delta_capacity_n_per_budget_240": {
+      "claim_text_excerpt": "240 trials per token budget (across protocols)",
+      "paper_location_hint": "token-budget sweep aggregate",
+      "source_file": "supplementary/experiments/delta_capacity_results.json",
+      "value_expr": "sum(1 for t in d['trials'] if t['token_budget']==128)",
+      "expected": 240,
+      "tolerance": 0,
+      "compare_as": "int",
+      "metadata": {
+        "check_kind": "sample_count",
+        "context": "trials per token_budget"
+      }
+    },
+    "high_k_opus_n_total_400": {
+      "claim_text_excerpt": "Opus 4.5 high-k: 4 regimes x 100 = 400 trials total",
+      "paper_location_hint": "high-k opus aggregate",
+      "source_file": "supplementary/experiments/outputs/high_k_opus/high_k_opus_results.json",
+      "value_expr": "len(d['results'])",
+      "expected": 400,
+      "tolerance": 0,
+      "compare_as": "int",
+      "metadata": {
+        "check_kind": "sample_count",
+        "context": "high-k opus total trials"
+      }
+    },
+    "cross_model_n_per_model_older_240": {
+      "claim_text_excerpt": "5 models x 240 trials = 1,200 (older cross-model)",
+      "paper_location_hint": "cross_model_cliff figure caption",
+      "source_file": "rebuttal/figures/cross_model_results.json",
+      "value_expr": "len(d['results']) // len(d['models'])",
+      "expected": 240,
+      "tolerance": 0,
+      "compare_as": "int",
+      "metadata": {
+        "check_kind": "sample_count",
+        "context": "trials per model in older cross-model (avg, uniform per spec)"
+      }
+    },
+    "mutation_total_results_156": {
+      "claim_text_excerpt": "156 mutation tests run total",
+      "paper_location_hint": "supplementary mutation testing reference",
+      "source_file": "ci/tests/systematic_mutation_results.json",
+      "value_expr": "len(d['all_results'])",
+      "expected": 156,
+      "tolerance": 0,
+      "compare_as": "int",
+      "metadata": {
+        "check_kind": "sample_count",
+        "context": "total mutation test cases"
+      }
+    },
+    "calibration_staged_pass_control_pct": {
+      "claim_text_excerpt": "Control 78% staged (Table tab:calibration column 'Staged')",
+      "paper_location_hint": "main.tex tab:calibration",
+      "source_file": "supplementary/experiments/calibration_results.json",
+      "value_expr": "round(d['aggregate']['stats']['control']['pass_rate_staged'] * 100)",
+      "expected": 78,
+      "tolerance": 0,
+      "compare_as": "int",
+      "metadata": {
+        "check_kind": "table_cell",
+        "table": "calibration",
+        "tier": "control"
+      }
+    },
+    "calibration_staged_pass_low_pct": {
+      "claim_text_excerpt": "Low 60% staged (Table tab:calibration)",
+      "paper_location_hint": "main.tex tab:calibration",
+      "source_file": "supplementary/experiments/calibration_results.json",
+      "value_expr": "round(d['aggregate']['stats']['low']['pass_rate_staged'] * 100)",
+      "expected": 60,
+      "tolerance": 0,
+      "compare_as": "int",
+      "metadata": {
+        "check_kind": "table_cell",
+        "table": "calibration",
+        "tier": "low"
+      }
+    },
+    "calibration_staged_pass_moderate_pct": {
+      "claim_text_excerpt": "Moderate 23% staged (Table tab:calibration)",
+      "paper_location_hint": "main.tex tab:calibration",
+      "source_file": "supplementary/experiments/calibration_results.json",
+      "value_expr": "round(d['aggregate']['stats']['moderate']['pass_rate_staged'] * 100)",
+      "expected": 23,
+      "tolerance": 0,
+      "compare_as": "int",
+      "metadata": {
+        "check_kind": "table_cell",
+        "table": "calibration",
+        "tier": "moderate"
+      }
+    },
+    "calibration_staged_pass_high_pct": {
+      "claim_text_excerpt": "High 2% staged (Table tab:calibration)",
+      "paper_location_hint": "main.tex tab:calibration",
+      "source_file": "supplementary/experiments/calibration_results.json",
+      "value_expr": "round(d['aggregate']['stats']['high']['pass_rate_staged'] * 100)",
+      "expected": 2,
+      "tolerance": 0,
+      "compare_as": "int",
+      "metadata": {
+        "check_kind": "table_cell",
+        "table": "calibration",
+        "tier": "high"
+      }
+    },
+    "per_tier_control_pass_pct": {
+      "claim_text_excerpt": "76.9% control-tier mean pass (Table tab:tier_pivot_decomposition)",
+      "paper_location_hint": "main.tex tab:tier_pivot_decomposition",
+      "source_file": "rebuttal/figures/per_task_correlation_results.json",
+      "value_expr": "round(d['per_tier']['control']['mean'] * 100, 1)",
+      "expected": 76.9,
+      "tolerance": 0.1,
+      "compare_as": "float",
+      "metadata": {
+        "check_kind": "table_cell",
+        "table": "tier_pivot_decomposition",
+        "tier": "control"
+      }
+    },
+    "per_tier_low_pass_pct": {
+      "claim_text_excerpt": "58.1% low-tier mean pass",
+      "paper_location_hint": "main.tex tab:tier_pivot_decomposition",
+      "source_file": "rebuttal/figures/per_task_correlation_results.json",
+      "value_expr": "round(d['per_tier']['low']['mean'] * 100, 1)",
+      "expected": 58.1,
+      "tolerance": 0.1,
+      "compare_as": "float",
+      "metadata": {
+        "check_kind": "table_cell",
+        "table": "tier_pivot_decomposition",
+        "tier": "low"
+      }
+    },
+    "per_tier_moderate_pass_pct": {
+      "claim_text_excerpt": "23.1% moderate-tier mean pass",
+      "paper_location_hint": "main.tex tab:tier_pivot_decomposition",
+      "source_file": "rebuttal/figures/per_task_correlation_results.json",
+      "value_expr": "round(d['per_tier']['moderate']['mean'] * 100, 1)",
+      "expected": 23.1,
+      "tolerance": 0.1,
+      "compare_as": "float",
+      "metadata": {
+        "check_kind": "table_cell",
+        "table": "tier_pivot_decomposition",
+        "tier": "moderate"
+      }
+    },
+    "per_tier_high_pass_pct": {
+      "claim_text_excerpt": "1.7% high-tier mean pass (Table tab:tier_pivot_decomposition)",
+      "paper_location_hint": "main.tex tab:tier_pivot_decomposition",
+      "source_file": "rebuttal/figures/per_task_correlation_results.json",
+      "value_expr": "round(d['per_tier']['high']['mean'] * 100, 1)",
+      "expected": 1.7,
+      "tolerance": 0.1,
+      "compare_as": "float",
+      "metadata": {
+        "check_kind": "table_cell",
+        "table": "tier_pivot_decomposition",
+        "tier": "high"
+      }
+    },
+    "lipschitz_pooled_p99": {
+      "claim_text_excerpt": "p99 per-token displacement = 0.246 (Step-Size Distribution)",
+      "paper_location_hint": "main.tex line 1167",
+      "source_file": "supplementary/experiments/lipschitz_calibration_results.json",
+      "value_expr": "round(sorted([x for c in d['completions'] for x in c['per_token_displacements']])[int(0.99 * sum(len(c['per_token_displacements']) for c in d['completions']))], 3)",
+      "expected": 0.246,
+      "tolerance": 0.01,
+      "compare_as": "float",
+      "metadata": {
+        "check_kind": "tail_statistic",
+        "statistic": "p99"
+      }
+    },
+    "lipschitz_pooled_max": {
+      "claim_text_excerpt": "Maximum observed per-token displacement = 0.447",
+      "paper_location_hint": "main.tex line 1167",
+      "source_file": "supplementary/experiments/lipschitz_calibration_results.json",
+      "value_expr": "round(max(x for c in d['completions'] for x in c['per_token_displacements']), 3)",
+      "expected": 0.447,
+      "tolerance": 0.01,
+      "compare_as": "float",
+      "metadata": {
+        "check_kind": "tail_statistic",
+        "statistic": "max"
+      }
+    },
+    "claude_family_haiku3_wins": {
+      "claim_text_excerpt": "haiku-3 wins 3/6 tasks (Table tab:claude_family Wins column)",
+      "paper_location_hint": "main.tex tab:claude_family row haiku-3",
+      "source_file": "supplementary/experiments/fixed_point_claude_family.json",
+      "value_expr": "next(m['staged_wins'] for m in d['model_analyses'] if m['model_name']=='haiku-3')",
+      "expected": 3,
+      "tolerance": 0,
+      "compare_as": "int",
+      "metadata": {
+        "check_kind": "table_cell",
+        "table": "claude_family",
+        "model": "haiku-3"
+      }
+    },
+    "claude_family_sonnet4_wins": {
+      "claim_text_excerpt": "sonnet-4 wins 5/6 tasks",
+      "paper_location_hint": "main.tex tab:claude_family row sonnet-4",
+      "source_file": "supplementary/experiments/fixed_point_claude_family.json",
+      "value_expr": "next(m['staged_wins'] for m in d['model_analyses'] if m['model_name']=='sonnet-4')",
+      "expected": 5,
+      "tolerance": 0,
+      "compare_as": "int",
+      "metadata": {
+        "check_kind": "table_cell",
+        "table": "claude_family",
+        "model": "sonnet-4"
+      }
+    },
+    "claude_family_opus4_wins": {
+      "claim_text_excerpt": "opus-4 wins 5/6 tasks",
+      "paper_location_hint": "main.tex tab:claude_family row opus-4",
+      "source_file": "supplementary/experiments/fixed_point_claude_family.json",
+      "value_expr": "next(m['staged_wins'] for m in d['model_analyses'] if m['model_name']=='opus-4')",
+      "expected": 5,
+      "tolerance": 0,
+      "compare_as": "int",
+      "metadata": {
+        "check_kind": "table_cell",
+        "table": "claude_family",
+        "model": "opus-4"
+      }
+    },
+    "claude_family_opus41_wins": {
+      "claim_text_excerpt": "opus-4.1 wins 5/6 tasks",
+      "paper_location_hint": "main.tex tab:claude_family row opus-4.1",
+      "source_file": "supplementary/experiments/fixed_point_claude_family.json",
+      "value_expr": "next(m['staged_wins'] for m in d['model_analyses'] if m['model_name']=='opus-4.1')",
+      "expected": 5,
+      "tolerance": 0,
+      "compare_as": "int",
+      "metadata": {
+        "check_kind": "table_cell",
+        "table": "claude_family",
+        "model": "opus-4.1"
+      }
+    },
+    "claude_family_haiku45_wins": {
+      "claim_text_excerpt": "haiku-4.5 wins 5/6 tasks",
+      "paper_location_hint": "main.tex tab:claude_family row haiku-4.5",
+      "source_file": "supplementary/experiments/fixed_point_claude_family.json",
+      "value_expr": "next(m['staged_wins'] for m in d['model_analyses'] if m['model_name']=='haiku-4.5')",
+      "expected": 5,
+      "tolerance": 0,
+      "compare_as": "int",
+      "metadata": {
+        "check_kind": "table_cell",
+        "table": "claude_family",
+        "model": "haiku-4.5"
+      }
+    },
+    "claude_family_sonnet45_wins": {
+      "claim_text_excerpt": "sonnet-4.5 wins 5/6 tasks",
+      "paper_location_hint": "main.tex tab:claude_family row sonnet-4.5",
+      "source_file": "supplementary/experiments/fixed_point_claude_family.json",
+      "value_expr": "next(m['staged_wins'] for m in d['model_analyses'] if m['model_name']=='sonnet-4.5')",
+      "expected": 5,
+      "tolerance": 0,
+      "compare_as": "int",
+      "metadata": {
+        "check_kind": "table_cell",
+        "table": "claude_family",
+        "model": "sonnet-4.5"
+      }
+    },
+    "claude_family_opus45_wins": {
+      "claim_text_excerpt": "opus-4.5 wins 4/6 tasks (the scaling-paradox row)",
+      "paper_location_hint": "main.tex tab:claude_family row opus-4.5",
+      "source_file": "supplementary/experiments/fixed_point_claude_family.json",
+      "value_expr": "next(m['staged_wins'] for m in d['model_analyses'] if m['model_name']=='opus-4.5')",
+      "expected": 4,
+      "tolerance": 0,
+      "compare_as": "int",
+      "metadata": {
+        "check_kind": "table_cell",
+        "table": "claude_family",
+        "model": "opus-4.5",
+        "context": "scaling_paradox_anchor"
+      }
+    },
+    "claude_family_n_tasks_per_model_6": {
+      "claim_text_excerpt": "6 tasks per model (Wins column denominator: 3/6, 5/6, 4/6)",
+      "paper_location_hint": "main.tex tab:claude_family Wins column",
+      "source_file": "supplementary/experiments/fixed_point_claude_family.json",
+      "value_expr": "min(m['tasks_analyzed'] for m in d['model_analyses'])",
+      "expected": 6,
+      "tolerance": 0,
+      "compare_as": "int",
+      "metadata": {
+        "check_kind": "denominator",
+        "table": "claude_family"
+      }
+    },
+    "constitution_top_pair_max_rho": {
+      "claim_text_excerpt": "max rho = 0.897 (top high-rho pair, Table app:constitution)",
+      "paper_location_hint": "main.tex constitution app",
+      "source_file": "supplementary/experiments/outputs/constitution/constitution_analysis.json",
+      "value_expr": "round(max(p['rho'] for p in d['high_rho_pairs']), 3)",
+      "expected": 0.897,
+      "tolerance": 0.005,
+      "compare_as": "float",
+      "metadata": {
+        "check_kind": "table_cell",
+        "table": "constitution"
+      }
+    },
+    "constitution_hierarchy_ratio": {
+      "claim_text_excerpt": "Hierarchy ratio 1.30x (within > cross category)",
+      "paper_location_hint": "main.tex constitution app summary",
+      "source_file": "supplementary/experiments/outputs/constitution/constitution_analysis.json",
+      "value_expr": "round(d['summary']['hierarchy_ratio'], 2)",
+      "expected": 1.3,
+      "tolerance": 0.01,
+      "compare_as": "float",
+      "metadata": {
+        "check_kind": "summary_statistic",
+        "table": "constitution"
+      }
+    },
+    "constitution_category_hardcoded_defaults_max_rho": {
+      "claim_text_excerpt": "Hardcoded Defaults max rho 0.861 (constitution category stats)",
+      "paper_location_hint": "main.tex constitution category table",
+      "source_file": "supplementary/experiments/outputs/constitution/constitution_analysis.json",
+      "value_expr": "round(d['category_stats']['hardcoded_defaults']['max_within_rho'], 3)",
+      "expected": 0.861,
+      "tolerance": 0.005,
+      "compare_as": "float",
+      "metadata": {
+        "check_kind": "table_cell",
+        "category": "hardcoded_defaults"
+      }
+    },
+    "conflict_detection_overall_conflict_rate_pct": {
+      "claim_text_excerpt": "Behavioral validation: 76.8% overall conflict rate (146/190)",
+      "paper_location_hint": "main.tex conflict detection app",
+      "source_file": "supplementary/experiments/outputs/conflict_detection/results.json",
+      "value_expr": "round(d['conflict_rate'] * 100, 1)",
+      "expected": 76.8,
+      "tolerance": 0.1,
+      "compare_as": "float",
+      "metadata": {
+        "check_kind": "summary_statistic",
+        "table": "conflict_detection"
+      }
+    },
+    "conflict_detection_low_bucket_rate_pct": {
+      "claim_text_excerpt": "Low-rho conflict rate 68.6% (105 pairs)",
+      "paper_location_hint": "main.tex conflict detection by-bucket",
+      "source_file": "supplementary/experiments/outputs/conflict_detection/results.json",
+      "value_expr": "round(d['by_rho_bucket']['low']['conflict_rate'] * 100, 1)",
+      "expected": 68.6,
+      "tolerance": 0.1,
+      "compare_as": "float",
+      "metadata": {
+        "check_kind": "table_cell",
+        "bucket": "low"
+      }
+    },
+    "conflict_detection_med_bucket_rate_pct": {
+      "claim_text_excerpt": "Medium-rho conflict rate 90.6% (highest, non-monotonic)",
+      "paper_location_hint": "main.tex conflict detection by-bucket",
+      "source_file": "supplementary/experiments/outputs/conflict_detection/results.json",
+      "value_expr": "round(d['by_rho_bucket']['medium']['conflict_rate'] * 100, 1)",
+      "expected": 90.6,
+      "tolerance": 0.1,
+      "compare_as": "float",
+      "metadata": {
+        "check_kind": "table_cell",
+        "bucket": "medium"
+      }
+    },
+    "conflict_detection_high_bucket_rate_pct": {
+      "claim_text_excerpt": "High-rho conflict rate 76.2% (21 pairs)",
+      "paper_location_hint": "main.tex conflict detection by-bucket",
+      "source_file": "supplementary/experiments/outputs/conflict_detection/results.json",
+      "value_expr": "round(d['by_rho_bucket']['high']['conflict_rate'] * 100, 1)",
+      "expected": 76.2,
+      "tolerance": 0.1,
+      "compare_as": "float",
+      "metadata": {
+        "check_kind": "table_cell",
+        "bucket": "high"
+      }
+    },
+    "conflict_detection_point_biserial_r": {
+      "claim_text_excerpt": "Point-biserial r=0.124 (constitution behavioral correlation)",
+      "paper_location_hint": "main.tex conflict detection correlation",
+      "source_file": "supplementary/experiments/outputs/conflict_detection/results.json",
+      "value_expr": "round(d['correlation']['point_biserial_r'], 3)",
+      "expected": 0.124,
+      "tolerance": 0.001,
+      "compare_as": "float",
+      "metadata": {
+        "check_kind": "summary_statistic",
+        "table": "conflict_detection"
+      }
+    },
+    "baselines_token_savings_pct": {
+      "claim_text_excerpt": "Geometric router uses 25% fewer tokens than staged",
+      "paper_location_hint": "main.tex protocol comparison",
+      "source_file": "ci/derivations/protocol_table11.json",
+      "value_expr": "round(100 * (d['protocols']['staged']['tokens'] - d['protocols']['geometric_router']['tokens']) / d['protocols']['staged']['tokens'])",
+      "expected": 25,
+      "tolerance": 0,
+      "compare_as": "int",
+      "metadata": {
+        "check_kind": "derivation",
+        "context": "token_savings"
+      }
+    },
+    "json_nl_format_pct_control": {
+      "claim_text_excerpt": "JSON-NL control 50% format pass (Format% high end of drop)",
+      "paper_location_hint": "main.tex tab:json_nl",
+      "source_file": "supplementary/experiments/json_nl_v4_results.json",
+      "value_expr": "d['summary']['control']['one_shot_format']",
+      "expected": 50.0,
+      "tolerance": 0.5,
+      "compare_as": "float",
+      "metadata": {
+        "check_kind": "table_cell",
+        "table": "json_nl",
+        "tier": "control"
+      }
+    },
+    "json_nl_format_pct_high": {
+      "claim_text_excerpt": "JSON-NL high tier 0% format pass (Format% drops 50%->0%)",
+      "paper_location_hint": "main.tex tab:json_nl",
+      "source_file": "supplementary/experiments/json_nl_v4_results.json",
+      "value_expr": "d['summary']['high']['one_shot_format']",
+      "expected": 0.0,
+      "tolerance": 0.5,
+      "compare_as": "float",
+      "metadata": {
+        "check_kind": "table_cell",
+        "table": "json_nl",
+        "tier": "high"
+      }
+    },
+    "json_nl_one_shot_pass_control_pct": {
+      "claim_text_excerpt": "JSON-NL control one-shot 22.5% pass",
+      "paper_location_hint": "main.tex tab:json_nl",
+      "source_file": "supplementary/experiments/json_nl_v4_results.json",
+      "value_expr": "d['summary']['control']['one_shot_pass']",
+      "expected": 22.5,
+      "tolerance": 0.05,
+      "compare_as": "float",
+      "metadata": {
+        "check_kind": "table_cell",
+        "table": "json_nl",
+        "tier": "control"
+      }
+    },
+    "delta_capacity_T128_oneshot_pct": {
+      "claim_text_excerpt": "T=128 one-shot 33.3% (Table tab:delta_capacity)",
+      "paper_location_hint": "main.tex tab:delta_capacity",
+      "source_file": "supplementary/experiments/delta_capacity_results.json",
+      "value_expr": "round(100 * sum(1 for t in d['trials'] if t['token_budget']==128 and t['protocol']=='oneshot' and t.get('pass_both', False)) / sum(1 for t in d['trials'] if t['token_budget']==128 and t['protocol']=='oneshot'), 1)",
+      "expected": 33.3,
+      "tolerance": 0.5,
+      "compare_as": "float",
+      "metadata": {
+        "check_kind": "table_cell",
+        "table": "delta_capacity",
+        "budget": 128,
+        "protocol": "oneshot"
+      }
+    },
+    "delta_capacity_T128_staged_pct": {
+      "claim_text_excerpt": "T=128 staged 25.0% (paper headline 'staging starved at T=128')",
+      "paper_location_hint": "main.tex tab:delta_capacity",
+      "source_file": "supplementary/experiments/delta_capacity_results.json",
+      "value_expr": "round(100 * sum(1 for t in d['trials'] if t['token_budget']==128 and t['protocol']=='staged' and t.get('pass_both', False)) / sum(1 for t in d['trials'] if t['token_budget']==128 and t['protocol']=='staged'), 1)",
+      "expected": 25.0,
+      "tolerance": 0.5,
+      "compare_as": "float",
+      "metadata": {
+        "check_kind": "table_cell",
+        "table": "delta_capacity",
+        "budget": 128,
+        "protocol": "staged"
+      }
+    },
+    "qwen3b_one_shot_low_pct": {
+      "claim_text_excerpt": "Qwen-3B one-shot 42% at low tier (Table tab:llm_bridge)",
+      "paper_location_hint": "main.tex tab:llm_bridge Qwen-3B row",
+      "source_file": "supplementary/experiments/code_constraint_results.json",
+      "value_expr": "round(100 * sum(1 for r in d['Qwen/Qwen2.5-3B-Instruct']['results'] if r['tier']=='low' and r['protocol']=='one_shot' and r.get('pass_both', False)) / max(1, sum(1 for r in d['Qwen/Qwen2.5-3B-Instruct']['results'] if r['tier']=='low' and r['protocol']=='one_shot')))",
+      "expected": 42,
+      "tolerance": 1,
+      "compare_as": "int",
+      "metadata": {
+        "check_kind": "table_cell",
+        "table": "llm_bridge",
+        "model": "Qwen-3B",
+        "tier": "low"
+      }
+    },
+    "deltacap_model_qwencoder_T128_delta": {
+      "claim_text_excerpt": "Qwen-Coder-1.5B at T=128: staged delta = -63% (tab:delta_capacity_model)",
+      "paper_location_hint": "main.tex tab:delta_capacity_model",
+      "source_file": "supplementary/experiments/delta_capacity_results.json",
+      "value_expr": "round((100*sum(1 for t in d[\"trials\"] if t[\"model\"]==\"Qwen/Qwen2.5-Coder-1.5B-Instruct\" and t[\"token_budget\"]==128 and t[\"protocol\"]==\"staged\" and t.get(\"pass_both\",False))/sum(1 for t in d[\"trials\"] if t[\"model\"]==\"Qwen/Qwen2.5-Coder-1.5B-Instruct\" and t[\"token_budget\"]==128 and t[\"protocol\"]==\"staged\")) - (100*sum(1 for t in d[\"trials\"] if t[\"model\"]==\"Qwen/Qwen2.5-Coder-1.5B-Instruct\" and t[\"token_budget\"]==128 and t[\"protocol\"]==\"oneshot\" and t.get(\"pass_both\",False))/sum(1 for t in d[\"trials\"] if t[\"model\"]==\"Qwen/Qwen2.5-Coder-1.5B-Instruct\" and t[\"token_budget\"]==128 and t[\"protocol\"]==\"oneshot\")))",
+      "expected": -63,
+      "tolerance": 1,
+      "compare_as": "int",
+      "metadata": {
+        "check_kind": "table_cell",
+        "table": "delta_capacity_model",
+        "model": "Qwen-Coder-1.5B",
+        "budget": 128
+      }
+    },
+    "deltacap_model_qwencoder_T192_delta": {
+      "claim_text_excerpt": "Qwen-Coder-1.5B at T=192: staged delta = -37% (tab:delta_capacity_model)",
+      "paper_location_hint": "main.tex tab:delta_capacity_model",
+      "source_file": "supplementary/experiments/delta_capacity_results.json",
+      "value_expr": "round((100*sum(1 for t in d[\"trials\"] if t[\"model\"]==\"Qwen/Qwen2.5-Coder-1.5B-Instruct\" and t[\"token_budget\"]==192 and t[\"protocol\"]==\"staged\" and t.get(\"pass_both\",False))/sum(1 for t in d[\"trials\"] if t[\"model\"]==\"Qwen/Qwen2.5-Coder-1.5B-Instruct\" and t[\"token_budget\"]==192 and t[\"protocol\"]==\"staged\")) - (100*sum(1 for t in d[\"trials\"] if t[\"model\"]==\"Qwen/Qwen2.5-Coder-1.5B-Instruct\" and t[\"token_budget\"]==192 and t[\"protocol\"]==\"oneshot\" and t.get(\"pass_both\",False))/sum(1 for t in d[\"trials\"] if t[\"model\"]==\"Qwen/Qwen2.5-Coder-1.5B-Instruct\" and t[\"token_budget\"]==192 and t[\"protocol\"]==\"oneshot\")))",
+      "expected": -37,
+      "tolerance": 1,
+      "compare_as": "int",
+      "metadata": {
+        "check_kind": "table_cell",
+        "table": "delta_capacity_model",
+        "model": "Qwen-Coder-1.5B",
+        "budget": 192
+      }
+    },
+    "deltacap_model_qwencoder_T256_delta": {
+      "claim_text_excerpt": "Qwen-Coder-1.5B at T=256: staged delta = -30% (tab:delta_capacity_model)",
+      "paper_location_hint": "main.tex tab:delta_capacity_model",
+      "source_file": "supplementary/experiments/delta_capacity_results.json",
+      "value_expr": "round((100*sum(1 for t in d[\"trials\"] if t[\"model\"]==\"Qwen/Qwen2.5-Coder-1.5B-Instruct\" and t[\"token_budget\"]==256 and t[\"protocol\"]==\"staged\" and t.get(\"pass_both\",False))/sum(1 for t in d[\"trials\"] if t[\"model\"]==\"Qwen/Qwen2.5-Coder-1.5B-Instruct\" and t[\"token_budget\"]==256 and t[\"protocol\"]==\"staged\")) - (100*sum(1 for t in d[\"trials\"] if t[\"model\"]==\"Qwen/Qwen2.5-Coder-1.5B-Instruct\" and t[\"token_budget\"]==256 and t[\"protocol\"]==\"oneshot\" and t.get(\"pass_both\",False))/sum(1 for t in d[\"trials\"] if t[\"model\"]==\"Qwen/Qwen2.5-Coder-1.5B-Instruct\" and t[\"token_budget\"]==256 and t[\"protocol\"]==\"oneshot\")))",
+      "expected": -30,
+      "tolerance": 1,
+      "compare_as": "int",
+      "metadata": {
+        "check_kind": "table_cell",
+        "table": "delta_capacity_model",
+        "model": "Qwen-Coder-1.5B",
+        "budget": 256
+      }
+    },
+    "deltacap_model_qwencoder_T384_delta": {
+      "claim_text_excerpt": "Qwen-Coder-1.5B at T=384: staged delta = -33% (tab:delta_capacity_model)",
+      "paper_location_hint": "main.tex tab:delta_capacity_model",
+      "source_file": "supplementary/experiments/delta_capacity_results.json",
+      "value_expr": "round((100*sum(1 for t in d[\"trials\"] if t[\"model\"]==\"Qwen/Qwen2.5-Coder-1.5B-Instruct\" and t[\"token_budget\"]==384 and t[\"protocol\"]==\"staged\" and t.get(\"pass_both\",False))/sum(1 for t in d[\"trials\"] if t[\"model\"]==\"Qwen/Qwen2.5-Coder-1.5B-Instruct\" and t[\"token_budget\"]==384 and t[\"protocol\"]==\"staged\")) - (100*sum(1 for t in d[\"trials\"] if t[\"model\"]==\"Qwen/Qwen2.5-Coder-1.5B-Instruct\" and t[\"token_budget\"]==384 and t[\"protocol\"]==\"oneshot\" and t.get(\"pass_both\",False))/sum(1 for t in d[\"trials\"] if t[\"model\"]==\"Qwen/Qwen2.5-Coder-1.5B-Instruct\" and t[\"token_budget\"]==384 and t[\"protocol\"]==\"oneshot\")))",
+      "expected": -33,
+      "tolerance": 1,
+      "compare_as": "int",
+      "metadata": {
+        "check_kind": "table_cell",
+        "table": "delta_capacity_model",
+        "model": "Qwen-Coder-1.5B",
+        "budget": 384
+      }
+    },
+    "deltacap_model_qwencoder_T512_delta": {
+      "claim_text_excerpt": "Qwen-Coder-1.5B at T=512: staged delta = -30% (tab:delta_capacity_model)",
+      "paper_location_hint": "main.tex tab:delta_capacity_model",
+      "source_file": "supplementary/experiments/delta_capacity_results.json",
+      "value_expr": "round((100*sum(1 for t in d[\"trials\"] if t[\"model\"]==\"Qwen/Qwen2.5-Coder-1.5B-Instruct\" and t[\"token_budget\"]==512 and t[\"protocol\"]==\"staged\" and t.get(\"pass_both\",False))/sum(1 for t in d[\"trials\"] if t[\"model\"]==\"Qwen/Qwen2.5-Coder-1.5B-Instruct\" and t[\"token_budget\"]==512 and t[\"protocol\"]==\"staged\")) - (100*sum(1 for t in d[\"trials\"] if t[\"model\"]==\"Qwen/Qwen2.5-Coder-1.5B-Instruct\" and t[\"token_budget\"]==512 and t[\"protocol\"]==\"oneshot\" and t.get(\"pass_both\",False))/sum(1 for t in d[\"trials\"] if t[\"model\"]==\"Qwen/Qwen2.5-Coder-1.5B-Instruct\" and t[\"token_budget\"]==512 and t[\"protocol\"]==\"oneshot\")))",
+      "expected": -30,
+      "tolerance": 1,
+      "compare_as": "int",
+      "metadata": {
+        "check_kind": "table_cell",
+        "table": "delta_capacity_model",
+        "model": "Qwen-Coder-1.5B",
+        "budget": 512
+      }
+    },
+    "deltacap_model_qwen3b_T128_delta": {
+      "claim_text_excerpt": "Qwen-3B at T=128: staged delta = +23% (tab:delta_capacity_model)",
+      "paper_location_hint": "main.tex tab:delta_capacity_model",
+      "source_file": "supplementary/experiments/delta_capacity_results.json",
+      "value_expr": "round((100*sum(1 for t in d[\"trials\"] if t[\"model\"]==\"Qwen/Qwen2.5-3B-Instruct\" and t[\"token_budget\"]==128 and t[\"protocol\"]==\"staged\" and t.get(\"pass_both\",False))/sum(1 for t in d[\"trials\"] if t[\"model\"]==\"Qwen/Qwen2.5-3B-Instruct\" and t[\"token_budget\"]==128 and t[\"protocol\"]==\"staged\")) - (100*sum(1 for t in d[\"trials\"] if t[\"model\"]==\"Qwen/Qwen2.5-3B-Instruct\" and t[\"token_budget\"]==128 and t[\"protocol\"]==\"oneshot\" and t.get(\"pass_both\",False))/sum(1 for t in d[\"trials\"] if t[\"model\"]==\"Qwen/Qwen2.5-3B-Instruct\" and t[\"token_budget\"]==128 and t[\"protocol\"]==\"oneshot\")))",
+      "expected": 23,
+      "tolerance": 1,
+      "compare_as": "int",
+      "metadata": {
+        "check_kind": "table_cell",
+        "table": "delta_capacity_model",
+        "model": "Qwen-3B",
+        "budget": 128
+      }
+    },
+    "deltacap_model_qwen3b_T192_delta": {
+      "claim_text_excerpt": "Qwen-3B at T=192: staged delta = +20% (tab:delta_capacity_model)",
+      "paper_location_hint": "main.tex tab:delta_capacity_model",
+      "source_file": "supplementary/experiments/delta_capacity_results.json",
+      "value_expr": "round((100*sum(1 for t in d[\"trials\"] if t[\"model\"]==\"Qwen/Qwen2.5-3B-Instruct\" and t[\"token_budget\"]==192 and t[\"protocol\"]==\"staged\" and t.get(\"pass_both\",False))/sum(1 for t in d[\"trials\"] if t[\"model\"]==\"Qwen/Qwen2.5-3B-Instruct\" and t[\"token_budget\"]==192 and t[\"protocol\"]==\"staged\")) - (100*sum(1 for t in d[\"trials\"] if t[\"model\"]==\"Qwen/Qwen2.5-3B-Instruct\" and t[\"token_budget\"]==192 and t[\"protocol\"]==\"oneshot\" and t.get(\"pass_both\",False))/sum(1 for t in d[\"trials\"] if t[\"model\"]==\"Qwen/Qwen2.5-3B-Instruct\" and t[\"token_budget\"]==192 and t[\"protocol\"]==\"oneshot\")))",
+      "expected": 20,
+      "tolerance": 1,
+      "compare_as": "int",
+      "metadata": {
+        "check_kind": "table_cell",
+        "table": "delta_capacity_model",
+        "model": "Qwen-3B",
+        "budget": 192
+      }
+    },
+    "deltacap_model_qwen3b_T256_delta": {
+      "claim_text_excerpt": "Qwen-3B at T=256: staged delta = +27% (tab:delta_capacity_model)",
+      "paper_location_hint": "main.tex tab:delta_capacity_model",
+      "source_file": "supplementary/experiments/delta_capacity_results.json",
+      "value_expr": "round((100*sum(1 for t in d[\"trials\"] if t[\"model\"]==\"Qwen/Qwen2.5-3B-Instruct\" and t[\"token_budget\"]==256 and t[\"protocol\"]==\"staged\" and t.get(\"pass_both\",False))/sum(1 for t in d[\"trials\"] if t[\"model\"]==\"Qwen/Qwen2.5-3B-Instruct\" and t[\"token_budget\"]==256 and t[\"protocol\"]==\"staged\")) - (100*sum(1 for t in d[\"trials\"] if t[\"model\"]==\"Qwen/Qwen2.5-3B-Instruct\" and t[\"token_budget\"]==256 and t[\"protocol\"]==\"oneshot\" and t.get(\"pass_both\",False))/sum(1 for t in d[\"trials\"] if t[\"model\"]==\"Qwen/Qwen2.5-3B-Instruct\" and t[\"token_budget\"]==256 and t[\"protocol\"]==\"oneshot\")))",
+      "expected": 27,
+      "tolerance": 1,
+      "compare_as": "int",
+      "metadata": {
+        "check_kind": "table_cell",
+        "table": "delta_capacity_model",
+        "model": "Qwen-3B",
+        "budget": 256
+      }
+    },
+    "deltacap_model_qwen3b_T384_delta": {
+      "claim_text_excerpt": "Qwen-3B at T=384: staged delta = +23% (tab:delta_capacity_model)",
+      "paper_location_hint": "main.tex tab:delta_capacity_model",
+      "source_file": "supplementary/experiments/delta_capacity_results.json",
+      "value_expr": "round((100*sum(1 for t in d[\"trials\"] if t[\"model\"]==\"Qwen/Qwen2.5-3B-Instruct\" and t[\"token_budget\"]==384 and t[\"protocol\"]==\"staged\" and t.get(\"pass_both\",False))/sum(1 for t in d[\"trials\"] if t[\"model\"]==\"Qwen/Qwen2.5-3B-Instruct\" and t[\"token_budget\"]==384 and t[\"protocol\"]==\"staged\")) - (100*sum(1 for t in d[\"trials\"] if t[\"model\"]==\"Qwen/Qwen2.5-3B-Instruct\" and t[\"token_budget\"]==384 and t[\"protocol\"]==\"oneshot\" and t.get(\"pass_both\",False))/sum(1 for t in d[\"trials\"] if t[\"model\"]==\"Qwen/Qwen2.5-3B-Instruct\" and t[\"token_budget\"]==384 and t[\"protocol\"]==\"oneshot\")))",
+      "expected": 23,
+      "tolerance": 1,
+      "compare_as": "int",
+      "metadata": {
+        "check_kind": "table_cell",
+        "table": "delta_capacity_model",
+        "model": "Qwen-3B",
+        "budget": 384
+      }
+    },
+    "deltacap_model_qwen3b_T512_delta": {
+      "claim_text_excerpt": "Qwen-3B at T=512: staged delta = +27% (tab:delta_capacity_model)",
+      "paper_location_hint": "main.tex tab:delta_capacity_model",
+      "source_file": "supplementary/experiments/delta_capacity_results.json",
+      "value_expr": "round((100*sum(1 for t in d[\"trials\"] if t[\"model\"]==\"Qwen/Qwen2.5-3B-Instruct\" and t[\"token_budget\"]==512 and t[\"protocol\"]==\"staged\" and t.get(\"pass_both\",False))/sum(1 for t in d[\"trials\"] if t[\"model\"]==\"Qwen/Qwen2.5-3B-Instruct\" and t[\"token_budget\"]==512 and t[\"protocol\"]==\"staged\")) - (100*sum(1 for t in d[\"trials\"] if t[\"model\"]==\"Qwen/Qwen2.5-3B-Instruct\" and t[\"token_budget\"]==512 and t[\"protocol\"]==\"oneshot\" and t.get(\"pass_both\",False))/sum(1 for t in d[\"trials\"] if t[\"model\"]==\"Qwen/Qwen2.5-3B-Instruct\" and t[\"token_budget\"]==512 and t[\"protocol\"]==\"oneshot\")))",
+      "expected": 27,
+      "tolerance": 1,
+      "compare_as": "int",
+      "metadata": {
+        "check_kind": "table_cell",
+        "table": "delta_capacity_model",
+        "model": "Qwen-3B",
+        "budget": 512
+      }
+    },
+    "deltacap_model_deepseek_T128_delta": {
+      "claim_text_excerpt": "DeepSeek-Coder-1.3B at T=128: staged delta = +7% (tab:delta_capacity_model)",
+      "paper_location_hint": "main.tex tab:delta_capacity_model",
+      "source_file": "supplementary/experiments/delta_capacity_results.json",
+      "value_expr": "round((100*sum(1 for t in d[\"trials\"] if t[\"model\"]==\"deepseek-ai/deepseek-coder-1.3b-instruct\" and t[\"token_budget\"]==128 and t[\"protocol\"]==\"staged\" and t.get(\"pass_both\",False))/sum(1 for t in d[\"trials\"] if t[\"model\"]==\"deepseek-ai/deepseek-coder-1.3b-instruct\" and t[\"token_budget\"]==128 and t[\"protocol\"]==\"staged\")) - (100*sum(1 for t in d[\"trials\"] if t[\"model\"]==\"deepseek-ai/deepseek-coder-1.3b-instruct\" and t[\"token_budget\"]==128 and t[\"protocol\"]==\"oneshot\" and t.get(\"pass_both\",False))/sum(1 for t in d[\"trials\"] if t[\"model\"]==\"deepseek-ai/deepseek-coder-1.3b-instruct\" and t[\"token_budget\"]==128 and t[\"protocol\"]==\"oneshot\")))",
+      "expected": 7,
+      "tolerance": 1,
+      "compare_as": "int",
+      "metadata": {
+        "check_kind": "table_cell",
+        "table": "delta_capacity_model",
+        "model": "DeepSeek-Coder-1.3B",
+        "budget": 128
+      }
+    },
+    "deltacap_model_deepseek_T192_delta": {
+      "claim_text_excerpt": "DeepSeek-Coder-1.3B at T=192: staged delta = +17% (tab:delta_capacity_model)",
+      "paper_location_hint": "main.tex tab:delta_capacity_model",
+      "source_file": "supplementary/experiments/delta_capacity_results.json",
+      "value_expr": "round((100*sum(1 for t in d[\"trials\"] if t[\"model\"]==\"deepseek-ai/deepseek-coder-1.3b-instruct\" and t[\"token_budget\"]==192 and t[\"protocol\"]==\"staged\" and t.get(\"pass_both\",False))/sum(1 for t in d[\"trials\"] if t[\"model\"]==\"deepseek-ai/deepseek-coder-1.3b-instruct\" and t[\"token_budget\"]==192 and t[\"protocol\"]==\"staged\")) - (100*sum(1 for t in d[\"trials\"] if t[\"model\"]==\"deepseek-ai/deepseek-coder-1.3b-instruct\" and t[\"token_budget\"]==192 and t[\"protocol\"]==\"oneshot\" and t.get(\"pass_both\",False))/sum(1 for t in d[\"trials\"] if t[\"model\"]==\"deepseek-ai/deepseek-coder-1.3b-instruct\" and t[\"token_budget\"]==192 and t[\"protocol\"]==\"oneshot\")))",
+      "expected": 17,
+      "tolerance": 1,
+      "compare_as": "int",
+      "metadata": {
+        "check_kind": "table_cell",
+        "table": "delta_capacity_model",
+        "model": "DeepSeek-Coder-1.3B",
+        "budget": 192
+      }
+    },
+    "deltacap_model_deepseek_T256_delta": {
+      "claim_text_excerpt": "DeepSeek-Coder-1.3B at T=256: staged delta = +13% (tab:delta_capacity_model)",
+      "paper_location_hint": "main.tex tab:delta_capacity_model",
+      "source_file": "supplementary/experiments/delta_capacity_results.json",
+      "value_expr": "round((100*sum(1 for t in d[\"trials\"] if t[\"model\"]==\"deepseek-ai/deepseek-coder-1.3b-instruct\" and t[\"token_budget\"]==256 and t[\"protocol\"]==\"staged\" and t.get(\"pass_both\",False))/sum(1 for t in d[\"trials\"] if t[\"model\"]==\"deepseek-ai/deepseek-coder-1.3b-instruct\" and t[\"token_budget\"]==256 and t[\"protocol\"]==\"staged\")) - (100*sum(1 for t in d[\"trials\"] if t[\"model\"]==\"deepseek-ai/deepseek-coder-1.3b-instruct\" and t[\"token_budget\"]==256 and t[\"protocol\"]==\"oneshot\" and t.get(\"pass_both\",False))/sum(1 for t in d[\"trials\"] if t[\"model\"]==\"deepseek-ai/deepseek-coder-1.3b-instruct\" and t[\"token_budget\"]==256 and t[\"protocol\"]==\"oneshot\")))",
+      "expected": 13,
+      "tolerance": 1,
+      "compare_as": "int",
+      "metadata": {
+        "check_kind": "table_cell",
+        "table": "delta_capacity_model",
+        "model": "DeepSeek-Coder-1.3B",
+        "budget": 256
+      }
+    },
+    "deltacap_model_deepseek_T384_delta": {
+      "claim_text_excerpt": "DeepSeek-Coder-1.3B at T=384: staged delta = 0% (tab:delta_capacity_model)",
+      "paper_location_hint": "main.tex tab:delta_capacity_model",
+      "source_file": "supplementary/experiments/delta_capacity_results.json",
+      "value_expr": "round((100*sum(1 for t in d[\"trials\"] if t[\"model\"]==\"deepseek-ai/deepseek-coder-1.3b-instruct\" and t[\"token_budget\"]==384 and t[\"protocol\"]==\"staged\" and t.get(\"pass_both\",False))/sum(1 for t in d[\"trials\"] if t[\"model\"]==\"deepseek-ai/deepseek-coder-1.3b-instruct\" and t[\"token_budget\"]==384 and t[\"protocol\"]==\"staged\")) - (100*sum(1 for t in d[\"trials\"] if t[\"model\"]==\"deepseek-ai/deepseek-coder-1.3b-instruct\" and t[\"token_budget\"]==384 and t[\"protocol\"]==\"oneshot\" and t.get(\"pass_both\",False))/sum(1 for t in d[\"trials\"] if t[\"model\"]==\"deepseek-ai/deepseek-coder-1.3b-instruct\" and t[\"token_budget\"]==384 and t[\"protocol\"]==\"oneshot\")))",
+      "expected": 0,
+      "tolerance": 1,
+      "compare_as": "int",
+      "metadata": {
+        "check_kind": "table_cell",
+        "table": "delta_capacity_model",
+        "model": "DeepSeek-Coder-1.3B",
+        "budget": 384
+      }
+    },
+    "deltacap_model_deepseek_T512_delta": {
+      "claim_text_excerpt": "DeepSeek-Coder-1.3B at T=512: staged delta = +27% (tab:delta_capacity_model)",
+      "paper_location_hint": "main.tex tab:delta_capacity_model",
+      "source_file": "supplementary/experiments/delta_capacity_results.json",
+      "value_expr": "round((100*sum(1 for t in d[\"trials\"] if t[\"model\"]==\"deepseek-ai/deepseek-coder-1.3b-instruct\" and t[\"token_budget\"]==512 and t[\"protocol\"]==\"staged\" and t.get(\"pass_both\",False))/sum(1 for t in d[\"trials\"] if t[\"model\"]==\"deepseek-ai/deepseek-coder-1.3b-instruct\" and t[\"token_budget\"]==512 and t[\"protocol\"]==\"staged\")) - (100*sum(1 for t in d[\"trials\"] if t[\"model\"]==\"deepseek-ai/deepseek-coder-1.3b-instruct\" and t[\"token_budget\"]==512 and t[\"protocol\"]==\"oneshot\" and t.get(\"pass_both\",False))/sum(1 for t in d[\"trials\"] if t[\"model\"]==\"deepseek-ai/deepseek-coder-1.3b-instruct\" and t[\"token_budget\"]==512 and t[\"protocol\"]==\"oneshot\")))",
+      "expected": 27,
+      "tolerance": 1,
+      "compare_as": "int",
+      "metadata": {
+        "check_kind": "table_cell",
+        "table": "delta_capacity_model",
+        "model": "DeepSeek-Coder-1.3B",
+        "budget": 512
+      }
+    },
+    "deltacap_model_tinyllama_T128_delta": {
+      "claim_text_excerpt": "TinyLlama-1.1B at T=128: staged delta = 0% (tab:delta_capacity_model)",
+      "paper_location_hint": "main.tex tab:delta_capacity_model",
+      "source_file": "supplementary/experiments/delta_capacity_results.json",
+      "value_expr": "round((100*sum(1 for t in d[\"trials\"] if t[\"model\"]==\"TinyLlama/TinyLlama-1.1B-Chat-v1.0\" and t[\"token_budget\"]==128 and t[\"protocol\"]==\"staged\" and t.get(\"pass_both\",False))/sum(1 for t in d[\"trials\"] if t[\"model\"]==\"TinyLlama/TinyLlama-1.1B-Chat-v1.0\" and t[\"token_budget\"]==128 and t[\"protocol\"]==\"staged\")) - (100*sum(1 for t in d[\"trials\"] if t[\"model\"]==\"TinyLlama/TinyLlama-1.1B-Chat-v1.0\" and t[\"token_budget\"]==128 and t[\"protocol\"]==\"oneshot\" and t.get(\"pass_both\",False))/sum(1 for t in d[\"trials\"] if t[\"model\"]==\"TinyLlama/TinyLlama-1.1B-Chat-v1.0\" and t[\"token_budget\"]==128 and t[\"protocol\"]==\"oneshot\")))",
+      "expected": 0,
+      "tolerance": 1,
+      "compare_as": "int",
+      "metadata": {
+        "check_kind": "table_cell",
+        "table": "delta_capacity_model",
+        "model": "TinyLlama-1.1B",
+        "budget": 128
+      }
+    },
+    "deltacap_model_tinyllama_T192_delta": {
+      "claim_text_excerpt": "TinyLlama-1.1B at T=192: staged delta = +20% (tab:delta_capacity_model)",
+      "paper_location_hint": "main.tex tab:delta_capacity_model",
+      "source_file": "supplementary/experiments/delta_capacity_results.json",
+      "value_expr": "round((100*sum(1 for t in d[\"trials\"] if t[\"model\"]==\"TinyLlama/TinyLlama-1.1B-Chat-v1.0\" and t[\"token_budget\"]==192 and t[\"protocol\"]==\"staged\" and t.get(\"pass_both\",False))/sum(1 for t in d[\"trials\"] if t[\"model\"]==\"TinyLlama/TinyLlama-1.1B-Chat-v1.0\" and t[\"token_budget\"]==192 and t[\"protocol\"]==\"staged\")) - (100*sum(1 for t in d[\"trials\"] if t[\"model\"]==\"TinyLlama/TinyLlama-1.1B-Chat-v1.0\" and t[\"token_budget\"]==192 and t[\"protocol\"]==\"oneshot\" and t.get(\"pass_both\",False))/sum(1 for t in d[\"trials\"] if t[\"model\"]==\"TinyLlama/TinyLlama-1.1B-Chat-v1.0\" and t[\"token_budget\"]==192 and t[\"protocol\"]==\"oneshot\")))",
+      "expected": 20,
+      "tolerance": 1,
+      "compare_as": "int",
+      "metadata": {
+        "check_kind": "table_cell",
+        "table": "delta_capacity_model",
+        "model": "TinyLlama-1.1B",
+        "budget": 192
+      }
+    },
+    "deltacap_model_tinyllama_T256_delta": {
+      "claim_text_excerpt": "TinyLlama-1.1B at T=256: staged delta = 0% (tab:delta_capacity_model)",
+      "paper_location_hint": "main.tex tab:delta_capacity_model",
+      "source_file": "supplementary/experiments/delta_capacity_results.json",
+      "value_expr": "round((100*sum(1 for t in d[\"trials\"] if t[\"model\"]==\"TinyLlama/TinyLlama-1.1B-Chat-v1.0\" and t[\"token_budget\"]==256 and t[\"protocol\"]==\"staged\" and t.get(\"pass_both\",False))/sum(1 for t in d[\"trials\"] if t[\"model\"]==\"TinyLlama/TinyLlama-1.1B-Chat-v1.0\" and t[\"token_budget\"]==256 and t[\"protocol\"]==\"staged\")) - (100*sum(1 for t in d[\"trials\"] if t[\"model\"]==\"TinyLlama/TinyLlama-1.1B-Chat-v1.0\" and t[\"token_budget\"]==256 and t[\"protocol\"]==\"oneshot\" and t.get(\"pass_both\",False))/sum(1 for t in d[\"trials\"] if t[\"model\"]==\"TinyLlama/TinyLlama-1.1B-Chat-v1.0\" and t[\"token_budget\"]==256 and t[\"protocol\"]==\"oneshot\")))",
+      "expected": 0,
+      "tolerance": 1,
+      "compare_as": "int",
+      "metadata": {
+        "check_kind": "table_cell",
+        "table": "delta_capacity_model",
+        "model": "TinyLlama-1.1B",
+        "budget": 256
+      }
+    },
+    "deltacap_model_tinyllama_T384_delta": {
+      "claim_text_excerpt": "TinyLlama-1.1B at T=384: staged delta = +3% (tab:delta_capacity_model)",
+      "paper_location_hint": "main.tex tab:delta_capacity_model",
+      "source_file": "supplementary/experiments/delta_capacity_results.json",
+      "value_expr": "round((100*sum(1 for t in d[\"trials\"] if t[\"model\"]==\"TinyLlama/TinyLlama-1.1B-Chat-v1.0\" and t[\"token_budget\"]==384 and t[\"protocol\"]==\"staged\" and t.get(\"pass_both\",False))/sum(1 for t in d[\"trials\"] if t[\"model\"]==\"TinyLlama/TinyLlama-1.1B-Chat-v1.0\" and t[\"token_budget\"]==384 and t[\"protocol\"]==\"staged\")) - (100*sum(1 for t in d[\"trials\"] if t[\"model\"]==\"TinyLlama/TinyLlama-1.1B-Chat-v1.0\" and t[\"token_budget\"]==384 and t[\"protocol\"]==\"oneshot\" and t.get(\"pass_both\",False))/sum(1 for t in d[\"trials\"] if t[\"model\"]==\"TinyLlama/TinyLlama-1.1B-Chat-v1.0\" and t[\"token_budget\"]==384 and t[\"protocol\"]==\"oneshot\")))",
+      "expected": 3,
+      "tolerance": 1,
+      "compare_as": "int",
+      "metadata": {
+        "check_kind": "table_cell",
+        "table": "delta_capacity_model",
+        "model": "TinyLlama-1.1B",
+        "budget": 384
+      }
+    },
+    "deltacap_model_tinyllama_T512_delta": {
+      "claim_text_excerpt": "TinyLlama-1.1B at T=512: staged delta = -3% (tab:delta_capacity_model)",
+      "paper_location_hint": "main.tex tab:delta_capacity_model",
+      "source_file": "supplementary/experiments/delta_capacity_results.json",
+      "value_expr": "round((100*sum(1 for t in d[\"trials\"] if t[\"model\"]==\"TinyLlama/TinyLlama-1.1B-Chat-v1.0\" and t[\"token_budget\"]==512 and t[\"protocol\"]==\"staged\" and t.get(\"pass_both\",False))/sum(1 for t in d[\"trials\"] if t[\"model\"]==\"TinyLlama/TinyLlama-1.1B-Chat-v1.0\" and t[\"token_budget\"]==512 and t[\"protocol\"]==\"staged\")) - (100*sum(1 for t in d[\"trials\"] if t[\"model\"]==\"TinyLlama/TinyLlama-1.1B-Chat-v1.0\" and t[\"token_budget\"]==512 and t[\"protocol\"]==\"oneshot\" and t.get(\"pass_both\",False))/sum(1 for t in d[\"trials\"] if t[\"model\"]==\"TinyLlama/TinyLlama-1.1B-Chat-v1.0\" and t[\"token_budget\"]==512 and t[\"protocol\"]==\"oneshot\")))",
+      "expected": -3,
+      "tolerance": 1,
+      "compare_as": "int",
+      "metadata": {
+        "check_kind": "table_cell",
+        "table": "delta_capacity_model",
+        "model": "TinyLlama-1.1B",
+        "budget": 512
+      }
+    },
+    "bridge_qwencoder_control_oneshot_pct": {
+      "claim_text_excerpt": "Qwen-Coder-1.5B one-shot 100% at Control tier (tab:llm_bridge)",
+      "paper_location_hint": "main.tex tab:llm_bridge",
+      "source_file": "supplementary/experiments/code_constraint_results.json",
+      "value_expr": "round(100 * sum(1 for r in d[\"Qwen/Qwen2.5-Coder-1.5B-Instruct\"][\"results\"] if r[\"tier\"]==\"control\" and r[\"protocol\"]==\"one_shot\" and r.get(\"pass_both\", False)) / sum(1 for r in d[\"Qwen/Qwen2.5-Coder-1.5B-Instruct\"][\"results\"] if r[\"tier\"]==\"control\" and r[\"protocol\"]==\"one_shot\"))",
+      "expected": 100,
+      "tolerance": 0,
+      "compare_as": "int",
+      "metadata": {
+        "check_kind": "table_cell",
+        "table": "llm_bridge",
+        "model_key": "Qwen/Qwen2.5-Coder-1.5B-Instruct",
+        "tier": "control"
+      }
+    },
+    "bridge_qwencoder_control_delta_pct": {
+      "claim_text_excerpt": "Qwen-Coder-1.5B at Control: staged delta = -8% (tab:llm_bridge)",
+      "paper_location_hint": "main.tex tab:llm_bridge",
+      "source_file": "supplementary/experiments/code_constraint_results.json",
+      "value_expr": "round((100*sum(1 for r in d[\"Qwen/Qwen2.5-Coder-1.5B-Instruct\"][\"results\"] if r[\"tier\"]==\"control\" and r[\"protocol\"]==\"staged\" and r.get(\"pass_both\",False))/sum(1 for r in d[\"Qwen/Qwen2.5-Coder-1.5B-Instruct\"][\"results\"] if r[\"tier\"]==\"control\" and r[\"protocol\"]==\"staged\")) - (100*sum(1 for r in d[\"Qwen/Qwen2.5-Coder-1.5B-Instruct\"][\"results\"] if r[\"tier\"]==\"control\" and r[\"protocol\"]==\"one_shot\" and r.get(\"pass_both\",False))/sum(1 for r in d[\"Qwen/Qwen2.5-Coder-1.5B-Instruct\"][\"results\"] if r[\"tier\"]==\"control\" and r[\"protocol\"]==\"one_shot\")))",
+      "expected": -8,
+      "tolerance": 2,
+      "compare_as": "int",
+      "metadata": {
+        "check_kind": "table_cell",
+        "table": "llm_bridge",
+        "model_key": "Qwen/Qwen2.5-Coder-1.5B-Instruct",
+        "tier": "control"
+      }
+    },
+    "bridge_qwencoder_low_oneshot_pct": {
+      "claim_text_excerpt": "Qwen-Coder-1.5B one-shot 95% at Low tier",
+      "paper_location_hint": "main.tex tab:llm_bridge",
+      "source_file": "supplementary/experiments/code_constraint_results.json",
+      "value_expr": "round(100 * sum(1 for r in d[\"Qwen/Qwen2.5-Coder-1.5B-Instruct\"][\"results\"] if r[\"tier\"]==\"low\" and r[\"protocol\"]==\"one_shot\" and r.get(\"pass_both\", False)) / sum(1 for r in d[\"Qwen/Qwen2.5-Coder-1.5B-Instruct\"][\"results\"] if r[\"tier\"]==\"low\" and r[\"protocol\"]==\"one_shot\"))",
+      "expected": 95,
+      "tolerance": 0,
+      "compare_as": "int",
+      "metadata": {
+        "check_kind": "table_cell",
+        "table": "llm_bridge",
+        "model_key": "Qwen/Qwen2.5-Coder-1.5B-Instruct",
+        "tier": "low"
+      }
+    },
+    "bridge_qwen3b_control_oneshot_pct": {
+      "claim_text_excerpt": "Qwen-3B one-shot 95% at Control tier",
+      "paper_location_hint": "main.tex tab:llm_bridge",
+      "source_file": "supplementary/experiments/code_constraint_results.json",
+      "value_expr": "round(100 * sum(1 for r in d[\"Qwen/Qwen2.5-3B-Instruct\"][\"results\"] if r[\"tier\"]==\"control\" and r[\"protocol\"]==\"one_shot\" and r.get(\"pass_both\", False)) / sum(1 for r in d[\"Qwen/Qwen2.5-3B-Instruct\"][\"results\"] if r[\"tier\"]==\"control\" and r[\"protocol\"]==\"one_shot\"))",
+      "expected": 95,
+      "tolerance": 0,
+      "compare_as": "int",
+      "metadata": {
+        "check_kind": "table_cell",
+        "table": "llm_bridge",
+        "model_key": "Qwen/Qwen2.5-3B-Instruct",
+        "tier": "control"
+      }
+    },
+    "bridge_qwen3b_low_delta_pct": {
+      "claim_text_excerpt": "Qwen-3B at Low: staged delta = +20%",
+      "paper_location_hint": "main.tex tab:llm_bridge",
+      "source_file": "supplementary/experiments/code_constraint_results.json",
+      "value_expr": "round((100*sum(1 for r in d[\"Qwen/Qwen2.5-3B-Instruct\"][\"results\"] if r[\"tier\"]==\"low\" and r[\"protocol\"]==\"staged\" and r.get(\"pass_both\",False))/sum(1 for r in d[\"Qwen/Qwen2.5-3B-Instruct\"][\"results\"] if r[\"tier\"]==\"low\" and r[\"protocol\"]==\"staged\")) - (100*sum(1 for r in d[\"Qwen/Qwen2.5-3B-Instruct\"][\"results\"] if r[\"tier\"]==\"low\" and r[\"protocol\"]==\"one_shot\" and r.get(\"pass_both\",False))/sum(1 for r in d[\"Qwen/Qwen2.5-3B-Instruct\"][\"results\"] if r[\"tier\"]==\"low\" and r[\"protocol\"]==\"one_shot\")))",
+      "expected": 20,
+      "tolerance": 1,
+      "compare_as": "int",
+      "metadata": {
+        "check_kind": "table_cell",
+        "table": "llm_bridge",
+        "model_key": "Qwen/Qwen2.5-3B-Instruct",
+        "tier": "low"
+      }
+    },
+    "bridge_qwen3b_high_oneshot_pct": {
+      "claim_text_excerpt": "Qwen-3B one-shot 2% at High tier",
+      "paper_location_hint": "main.tex tab:llm_bridge",
+      "source_file": "supplementary/experiments/code_constraint_results.json",
+      "value_expr": "round(100 * sum(1 for r in d[\"Qwen/Qwen2.5-3B-Instruct\"][\"results\"] if r[\"tier\"]==\"high\" and r[\"protocol\"]==\"one_shot\" and r.get(\"pass_both\", False)) / sum(1 for r in d[\"Qwen/Qwen2.5-3B-Instruct\"][\"results\"] if r[\"tier\"]==\"high\" and r[\"protocol\"]==\"one_shot\"))",
+      "expected": 2,
+      "tolerance": 1,
+      "compare_as": "int",
+      "metadata": {
+        "check_kind": "table_cell",
+        "table": "llm_bridge",
+        "model_key": "Qwen/Qwen2.5-3B-Instruct",
+        "tier": "high"
+      }
+    },
+    "bridge_tinyllama_high_oneshot_pct": {
+      "claim_text_excerpt": "TinyLlama-1.1B one-shot 2% at High tier",
+      "paper_location_hint": "main.tex tab:llm_bridge",
+      "source_file": "supplementary/experiments/code_constraint_results.json",
+      "value_expr": "round(100 * sum(1 for r in d[\"TinyLlama/TinyLlama-1.1B-Chat-v1.0\"][\"results\"] if r[\"tier\"]==\"high\" and r[\"protocol\"]==\"one_shot\" and r.get(\"pass_both\", False)) / sum(1 for r in d[\"TinyLlama/TinyLlama-1.1B-Chat-v1.0\"][\"results\"] if r[\"tier\"]==\"high\" and r[\"protocol\"]==\"one_shot\"))",
+      "expected": 2,
+      "tolerance": 1,
+      "compare_as": "int",
+      "metadata": {
+        "check_kind": "table_cell",
+        "table": "llm_bridge",
+        "model_key": "TinyLlama/TinyLlama-1.1B-Chat-v1.0",
+        "tier": "high"
+      }
+    },
+    "bridge_deepseek_high_delta_pct": {
+      "claim_text_excerpt": "DeepSeek-Coder-1.3B at High: staged delta = +2%",
+      "paper_location_hint": "main.tex tab:llm_bridge",
+      "source_file": "supplementary/experiments/code_constraint_results.json",
+      "value_expr": "round((100*sum(1 for r in d[\"deepseek-ai/deepseek-coder-1.3b-instruct\"][\"results\"] if r[\"tier\"]==\"high\" and r[\"protocol\"]==\"staged\" and r.get(\"pass_both\",False))/sum(1 for r in d[\"deepseek-ai/deepseek-coder-1.3b-instruct\"][\"results\"] if r[\"tier\"]==\"high\" and r[\"protocol\"]==\"staged\")) - (100*sum(1 for r in d[\"deepseek-ai/deepseek-coder-1.3b-instruct\"][\"results\"] if r[\"tier\"]==\"high\" and r[\"protocol\"]==\"one_shot\" and r.get(\"pass_both\",False))/sum(1 for r in d[\"deepseek-ai/deepseek-coder-1.3b-instruct\"][\"results\"] if r[\"tier\"]==\"high\" and r[\"protocol\"]==\"one_shot\")))",
+      "expected": 2,
+      "tolerance": 1,
+      "compare_as": "int",
+      "metadata": {
+        "check_kind": "table_cell",
+        "table": "llm_bridge",
+        "model_key": "deepseek-ai/deepseek-coder-1.3b-instruct",
+        "tier": "high"
+      }
+    },
+    "bridge_qwencoder_low_delta_pct": {
+      "claim_text_excerpt": "Qwen-Coder-1.5B at Low: staged delta = -23% (tab:llm_bridge)",
+      "paper_location_hint": "main.tex tab:llm_bridge",
+      "source_file": "supplementary/experiments/code_constraint_results.json",
+      "value_expr": "round((100*sum(1 for r in d[\"Qwen/Qwen2.5-Coder-1.5B-Instruct\"][\"results\"] if r[\"tier\"]==\"low\" and r[\"protocol\"]==\"staged\" and r.get(\"pass_both\",False))/sum(1 for r in d[\"Qwen/Qwen2.5-Coder-1.5B-Instruct\"][\"results\"] if r[\"tier\"]==\"low\" and r[\"protocol\"]==\"staged\")) - (100*sum(1 for r in d[\"Qwen/Qwen2.5-Coder-1.5B-Instruct\"][\"results\"] if r[\"tier\"]==\"low\" and r[\"protocol\"]==\"one_shot\" and r.get(\"pass_both\",False))/sum(1 for r in d[\"Qwen/Qwen2.5-Coder-1.5B-Instruct\"][\"results\"] if r[\"tier\"]==\"low\" and r[\"protocol\"]==\"one_shot\")))",
+      "expected": -23,
+      "tolerance": 2,
+      "compare_as": "int",
+      "metadata": {
+        "check_kind": "table_cell",
+        "table": "llm_bridge",
+        "model_key": "Qwen/Qwen2.5-Coder-1.5B-Instruct",
+        "tier": "low"
+      }
+    },
+    "bridge_qwencoder_moderate_oneshot_pct": {
+      "claim_text_excerpt": "Qwen-Coder-1.5B one-shot 40% at Moderate tier (tab:llm_bridge)",
+      "paper_location_hint": "main.tex tab:llm_bridge",
+      "source_file": "supplementary/experiments/code_constraint_results.json",
+      "value_expr": "round(100 * sum(1 for r in d[\"Qwen/Qwen2.5-Coder-1.5B-Instruct\"][\"results\"] if r[\"tier\"]==\"moderate\" and r[\"protocol\"]==\"one_shot\" and r.get(\"pass_both\", False)) / sum(1 for r in d[\"Qwen/Qwen2.5-Coder-1.5B-Instruct\"][\"results\"] if r[\"tier\"]==\"moderate\" and r[\"protocol\"]==\"one_shot\"))",
+      "expected": 40,
+      "tolerance": 1,
+      "compare_as": "int",
+      "metadata": {
+        "check_kind": "table_cell",
+        "table": "llm_bridge",
+        "model_key": "Qwen/Qwen2.5-Coder-1.5B-Instruct",
+        "tier": "moderate"
+      }
+    },
+    "bridge_qwencoder_moderate_delta_pct": {
+      "claim_text_excerpt": "Qwen-Coder-1.5B at Moderate: staged delta = -22% (tab:llm_bridge)",
+      "paper_location_hint": "main.tex tab:llm_bridge",
+      "source_file": "supplementary/experiments/code_constraint_results.json",
+      "value_expr": "round((100*sum(1 for r in d[\"Qwen/Qwen2.5-Coder-1.5B-Instruct\"][\"results\"] if r[\"tier\"]==\"moderate\" and r[\"protocol\"]==\"staged\" and r.get(\"pass_both\",False))/sum(1 for r in d[\"Qwen/Qwen2.5-Coder-1.5B-Instruct\"][\"results\"] if r[\"tier\"]==\"moderate\" and r[\"protocol\"]==\"staged\")) - (100*sum(1 for r in d[\"Qwen/Qwen2.5-Coder-1.5B-Instruct\"][\"results\"] if r[\"tier\"]==\"moderate\" and r[\"protocol\"]==\"one_shot\" and r.get(\"pass_both\",False))/sum(1 for r in d[\"Qwen/Qwen2.5-Coder-1.5B-Instruct\"][\"results\"] if r[\"tier\"]==\"moderate\" and r[\"protocol\"]==\"one_shot\")))",
+      "expected": -22,
+      "tolerance": 2,
+      "compare_as": "int",
+      "metadata": {
+        "check_kind": "table_cell",
+        "table": "llm_bridge",
+        "model_key": "Qwen/Qwen2.5-Coder-1.5B-Instruct",
+        "tier": "moderate"
+      }
+    },
+    "bridge_qwencoder_high_oneshot_pct": {
+      "claim_text_excerpt": "Qwen-Coder-1.5B one-shot 3% at High tier (tab:llm_bridge)",
+      "paper_location_hint": "main.tex tab:llm_bridge",
+      "source_file": "supplementary/experiments/code_constraint_results.json",
+      "value_expr": "round(100 * sum(1 for r in d[\"Qwen/Qwen2.5-Coder-1.5B-Instruct\"][\"results\"] if r[\"tier\"]==\"high\" and r[\"protocol\"]==\"one_shot\" and r.get(\"pass_both\", False)) / sum(1 for r in d[\"Qwen/Qwen2.5-Coder-1.5B-Instruct\"][\"results\"] if r[\"tier\"]==\"high\" and r[\"protocol\"]==\"one_shot\"))",
+      "expected": 3,
+      "tolerance": 1,
+      "compare_as": "int",
+      "metadata": {
+        "check_kind": "table_cell",
+        "table": "llm_bridge",
+        "model_key": "Qwen/Qwen2.5-Coder-1.5B-Instruct",
+        "tier": "high"
+      }
+    },
+    "bridge_qwencoder_high_delta_pct": {
+      "claim_text_excerpt": "Qwen-Coder-1.5B at High: staged delta = -1% (tab:llm_bridge)",
+      "paper_location_hint": "main.tex tab:llm_bridge",
+      "source_file": "supplementary/experiments/code_constraint_results.json",
+      "value_expr": "round((100*sum(1 for r in d[\"Qwen/Qwen2.5-Coder-1.5B-Instruct\"][\"results\"] if r[\"tier\"]==\"high\" and r[\"protocol\"]==\"staged\" and r.get(\"pass_both\",False))/sum(1 for r in d[\"Qwen/Qwen2.5-Coder-1.5B-Instruct\"][\"results\"] if r[\"tier\"]==\"high\" and r[\"protocol\"]==\"staged\")) - (100*sum(1 for r in d[\"Qwen/Qwen2.5-Coder-1.5B-Instruct\"][\"results\"] if r[\"tier\"]==\"high\" and r[\"protocol\"]==\"one_shot\" and r.get(\"pass_both\",False))/sum(1 for r in d[\"Qwen/Qwen2.5-Coder-1.5B-Instruct\"][\"results\"] if r[\"tier\"]==\"high\" and r[\"protocol\"]==\"one_shot\")))",
+      "expected": -1,
+      "tolerance": 2,
+      "compare_as": "int",
+      "metadata": {
+        "check_kind": "table_cell",
+        "table": "llm_bridge",
+        "model_key": "Qwen/Qwen2.5-Coder-1.5B-Instruct",
+        "tier": "high"
+      }
+    },
+    "bridge_qwen3b_control_delta_pct": {
+      "claim_text_excerpt": "Qwen-3B at Control: staged delta = +2% (tab:llm_bridge)",
+      "paper_location_hint": "main.tex tab:llm_bridge",
+      "source_file": "supplementary/experiments/code_constraint_results.json",
+      "value_expr": "round((100*sum(1 for r in d[\"Qwen/Qwen2.5-3B-Instruct\"][\"results\"] if r[\"tier\"]==\"control\" and r[\"protocol\"]==\"staged\" and r.get(\"pass_both\",False))/sum(1 for r in d[\"Qwen/Qwen2.5-3B-Instruct\"][\"results\"] if r[\"tier\"]==\"control\" and r[\"protocol\"]==\"staged\")) - (100*sum(1 for r in d[\"Qwen/Qwen2.5-3B-Instruct\"][\"results\"] if r[\"tier\"]==\"control\" and r[\"protocol\"]==\"one_shot\" and r.get(\"pass_both\",False))/sum(1 for r in d[\"Qwen/Qwen2.5-3B-Instruct\"][\"results\"] if r[\"tier\"]==\"control\" and r[\"protocol\"]==\"one_shot\")))",
+      "expected": 2,
+      "tolerance": 2,
+      "compare_as": "int",
+      "metadata": {
+        "check_kind": "table_cell",
+        "table": "llm_bridge",
+        "model_key": "Qwen/Qwen2.5-3B-Instruct",
+        "tier": "control"
+      }
+    },
+    "bridge_qwen3b_moderate_oneshot_pct": {
+      "claim_text_excerpt": "Qwen-3B one-shot 25% at Moderate tier (tab:llm_bridge)",
+      "paper_location_hint": "main.tex tab:llm_bridge",
+      "source_file": "supplementary/experiments/code_constraint_results.json",
+      "value_expr": "round(100 * sum(1 for r in d[\"Qwen/Qwen2.5-3B-Instruct\"][\"results\"] if r[\"tier\"]==\"moderate\" and r[\"protocol\"]==\"one_shot\" and r.get(\"pass_both\", False)) / sum(1 for r in d[\"Qwen/Qwen2.5-3B-Instruct\"][\"results\"] if r[\"tier\"]==\"moderate\" and r[\"protocol\"]==\"one_shot\"))",
+      "expected": 25,
+      "tolerance": 1,
+      "compare_as": "int",
+      "metadata": {
+        "check_kind": "table_cell",
+        "table": "llm_bridge",
+        "model_key": "Qwen/Qwen2.5-3B-Instruct",
+        "tier": "moderate"
+      }
+    },
+    "bridge_qwen3b_moderate_delta_pct": {
+      "claim_text_excerpt": "Qwen-3B at Moderate: staged delta = +8% (tab:llm_bridge)",
+      "paper_location_hint": "main.tex tab:llm_bridge",
+      "source_file": "supplementary/experiments/code_constraint_results.json",
+      "value_expr": "round((100*sum(1 for r in d[\"Qwen/Qwen2.5-3B-Instruct\"][\"results\"] if r[\"tier\"]==\"moderate\" and r[\"protocol\"]==\"staged\" and r.get(\"pass_both\",False))/sum(1 for r in d[\"Qwen/Qwen2.5-3B-Instruct\"][\"results\"] if r[\"tier\"]==\"moderate\" and r[\"protocol\"]==\"staged\")) - (100*sum(1 for r in d[\"Qwen/Qwen2.5-3B-Instruct\"][\"results\"] if r[\"tier\"]==\"moderate\" and r[\"protocol\"]==\"one_shot\" and r.get(\"pass_both\",False))/sum(1 for r in d[\"Qwen/Qwen2.5-3B-Instruct\"][\"results\"] if r[\"tier\"]==\"moderate\" and r[\"protocol\"]==\"one_shot\")))",
+      "expected": 8,
+      "tolerance": 2,
+      "compare_as": "int",
+      "metadata": {
+        "check_kind": "table_cell",
+        "table": "llm_bridge",
+        "model_key": "Qwen/Qwen2.5-3B-Instruct",
+        "tier": "moderate"
+      }
+    },
+    "bridge_qwen3b_high_delta_pct": {
+      "claim_text_excerpt": "Qwen-3B at High: staged delta = +1% (tab:llm_bridge)",
+      "paper_location_hint": "main.tex tab:llm_bridge",
+      "source_file": "supplementary/experiments/code_constraint_results.json",
+      "value_expr": "round((100*sum(1 for r in d[\"Qwen/Qwen2.5-3B-Instruct\"][\"results\"] if r[\"tier\"]==\"high\" and r[\"protocol\"]==\"staged\" and r.get(\"pass_both\",False))/sum(1 for r in d[\"Qwen/Qwen2.5-3B-Instruct\"][\"results\"] if r[\"tier\"]==\"high\" and r[\"protocol\"]==\"staged\")) - (100*sum(1 for r in d[\"Qwen/Qwen2.5-3B-Instruct\"][\"results\"] if r[\"tier\"]==\"high\" and r[\"protocol\"]==\"one_shot\" and r.get(\"pass_both\",False))/sum(1 for r in d[\"Qwen/Qwen2.5-3B-Instruct\"][\"results\"] if r[\"tier\"]==\"high\" and r[\"protocol\"]==\"one_shot\")))",
+      "expected": 1,
+      "tolerance": 2,
+      "compare_as": "int",
+      "metadata": {
+        "check_kind": "table_cell",
+        "table": "llm_bridge",
+        "model_key": "Qwen/Qwen2.5-3B-Instruct",
+        "tier": "high"
+      }
+    },
+    "bridge_deepseek_control_oneshot_pct": {
+      "claim_text_excerpt": "DeepSeek-1.3B one-shot 82% at Control tier (tab:llm_bridge)",
+      "paper_location_hint": "main.tex tab:llm_bridge",
+      "source_file": "supplementary/experiments/code_constraint_results.json",
+      "value_expr": "round(100 * sum(1 for r in d[\"deepseek-ai/deepseek-coder-1.3b-instruct\"][\"results\"] if r[\"tier\"]==\"control\" and r[\"protocol\"]==\"one_shot\" and r.get(\"pass_both\", False)) / sum(1 for r in d[\"deepseek-ai/deepseek-coder-1.3b-instruct\"][\"results\"] if r[\"tier\"]==\"control\" and r[\"protocol\"]==\"one_shot\"))",
+      "expected": 82,
+      "tolerance": 1,
+      "compare_as": "int",
+      "metadata": {
+        "check_kind": "table_cell",
+        "table": "llm_bridge",
+        "model_key": "deepseek-ai/deepseek-coder-1.3b-instruct",
+        "tier": "control"
+      }
+    },
+    "bridge_deepseek_control_delta_pct": {
+      "claim_text_excerpt": "DeepSeek-1.3B at Control: staged delta = +1% (tab:llm_bridge)",
+      "paper_location_hint": "main.tex tab:llm_bridge",
+      "source_file": "supplementary/experiments/code_constraint_results.json",
+      "value_expr": "round((100*sum(1 for r in d[\"deepseek-ai/deepseek-coder-1.3b-instruct\"][\"results\"] if r[\"tier\"]==\"control\" and r[\"protocol\"]==\"staged\" and r.get(\"pass_both\",False))/sum(1 for r in d[\"deepseek-ai/deepseek-coder-1.3b-instruct\"][\"results\"] if r[\"tier\"]==\"control\" and r[\"protocol\"]==\"staged\")) - (100*sum(1 for r in d[\"deepseek-ai/deepseek-coder-1.3b-instruct\"][\"results\"] if r[\"tier\"]==\"control\" and r[\"protocol\"]==\"one_shot\" and r.get(\"pass_both\",False))/sum(1 for r in d[\"deepseek-ai/deepseek-coder-1.3b-instruct\"][\"results\"] if r[\"tier\"]==\"control\" and r[\"protocol\"]==\"one_shot\")))",
+      "expected": 1,
+      "tolerance": 2,
+      "compare_as": "int",
+      "metadata": {
+        "check_kind": "table_cell",
+        "table": "llm_bridge",
+        "model_key": "deepseek-ai/deepseek-coder-1.3b-instruct",
+        "tier": "control"
+      }
+    },
+    "bridge_deepseek_low_oneshot_pct": {
+      "claim_text_excerpt": "DeepSeek-1.3B one-shot 73% at Low tier (tab:llm_bridge)",
+      "paper_location_hint": "main.tex tab:llm_bridge",
+      "source_file": "supplementary/experiments/code_constraint_results.json",
+      "value_expr": "round(100 * sum(1 for r in d[\"deepseek-ai/deepseek-coder-1.3b-instruct\"][\"results\"] if r[\"tier\"]==\"low\" and r[\"protocol\"]==\"one_shot\" and r.get(\"pass_both\", False)) / sum(1 for r in d[\"deepseek-ai/deepseek-coder-1.3b-instruct\"][\"results\"] if r[\"tier\"]==\"low\" and r[\"protocol\"]==\"one_shot\"))",
+      "expected": 73,
+      "tolerance": 1,
+      "compare_as": "int",
+      "metadata": {
+        "check_kind": "table_cell",
+        "table": "llm_bridge",
+        "model_key": "deepseek-ai/deepseek-coder-1.3b-instruct",
+        "tier": "low"
+      }
+    },
+    "bridge_deepseek_low_delta_pct": {
+      "claim_text_excerpt": "DeepSeek-1.3B at Low: staged delta = +4% (tab:llm_bridge)",
+      "paper_location_hint": "main.tex tab:llm_bridge",
+      "source_file": "supplementary/experiments/code_constraint_results.json",
+      "value_expr": "round((100*sum(1 for r in d[\"deepseek-ai/deepseek-coder-1.3b-instruct\"][\"results\"] if r[\"tier\"]==\"low\" and r[\"protocol\"]==\"staged\" and r.get(\"pass_both\",False))/sum(1 for r in d[\"deepseek-ai/deepseek-coder-1.3b-instruct\"][\"results\"] if r[\"tier\"]==\"low\" and r[\"protocol\"]==\"staged\")) - (100*sum(1 for r in d[\"deepseek-ai/deepseek-coder-1.3b-instruct\"][\"results\"] if r[\"tier\"]==\"low\" and r[\"protocol\"]==\"one_shot\" and r.get(\"pass_both\",False))/sum(1 for r in d[\"deepseek-ai/deepseek-coder-1.3b-instruct\"][\"results\"] if r[\"tier\"]==\"low\" and r[\"protocol\"]==\"one_shot\")))",
+      "expected": 4,
+      "tolerance": 2,
+      "compare_as": "int",
+      "metadata": {
+        "check_kind": "table_cell",
+        "table": "llm_bridge",
+        "model_key": "deepseek-ai/deepseek-coder-1.3b-instruct",
+        "tier": "low"
+      }
+    },
+    "bridge_deepseek_moderate_oneshot_pct": {
+      "claim_text_excerpt": "DeepSeek-1.3B one-shot 22% at Moderate tier (tab:llm_bridge)",
+      "paper_location_hint": "main.tex tab:llm_bridge",
+      "source_file": "supplementary/experiments/code_constraint_results.json",
+      "value_expr": "round(100 * sum(1 for r in d[\"deepseek-ai/deepseek-coder-1.3b-instruct\"][\"results\"] if r[\"tier\"]==\"moderate\" and r[\"protocol\"]==\"one_shot\" and r.get(\"pass_both\", False)) / sum(1 for r in d[\"deepseek-ai/deepseek-coder-1.3b-instruct\"][\"results\"] if r[\"tier\"]==\"moderate\" and r[\"protocol\"]==\"one_shot\"))",
+      "expected": 22,
+      "tolerance": 1,
+      "compare_as": "int",
+      "metadata": {
+        "check_kind": "table_cell",
+        "table": "llm_bridge",
+        "model_key": "deepseek-ai/deepseek-coder-1.3b-instruct",
+        "tier": "moderate"
+      }
+    },
+    "bridge_deepseek_moderate_delta_pct": {
+      "claim_text_excerpt": "DeepSeek-1.3B at Moderate: staged delta = +11% (tab:llm_bridge)",
+      "paper_location_hint": "main.tex tab:llm_bridge",
+      "source_file": "supplementary/experiments/code_constraint_results.json",
+      "value_expr": "round((100*sum(1 for r in d[\"deepseek-ai/deepseek-coder-1.3b-instruct\"][\"results\"] if r[\"tier\"]==\"moderate\" and r[\"protocol\"]==\"staged\" and r.get(\"pass_both\",False))/sum(1 for r in d[\"deepseek-ai/deepseek-coder-1.3b-instruct\"][\"results\"] if r[\"tier\"]==\"moderate\" and r[\"protocol\"]==\"staged\")) - (100*sum(1 for r in d[\"deepseek-ai/deepseek-coder-1.3b-instruct\"][\"results\"] if r[\"tier\"]==\"moderate\" and r[\"protocol\"]==\"one_shot\" and r.get(\"pass_both\",False))/sum(1 for r in d[\"deepseek-ai/deepseek-coder-1.3b-instruct\"][\"results\"] if r[\"tier\"]==\"moderate\" and r[\"protocol\"]==\"one_shot\")))",
+      "expected": 11,
+      "tolerance": 2,
+      "compare_as": "int",
+      "metadata": {
+        "check_kind": "table_cell",
+        "table": "llm_bridge",
+        "model_key": "deepseek-ai/deepseek-coder-1.3b-instruct",
+        "tier": "moderate"
+      }
+    },
+    "bridge_deepseek_high_oneshot_pct": {
+      "claim_text_excerpt": "DeepSeek-1.3B one-shot 0% at High tier (tab:llm_bridge)",
+      "paper_location_hint": "main.tex tab:llm_bridge",
+      "source_file": "supplementary/experiments/code_constraint_results.json",
+      "value_expr": "round(100 * sum(1 for r in d[\"deepseek-ai/deepseek-coder-1.3b-instruct\"][\"results\"] if r[\"tier\"]==\"high\" and r[\"protocol\"]==\"one_shot\" and r.get(\"pass_both\", False)) / sum(1 for r in d[\"deepseek-ai/deepseek-coder-1.3b-instruct\"][\"results\"] if r[\"tier\"]==\"high\" and r[\"protocol\"]==\"one_shot\"))",
+      "expected": 0,
+      "tolerance": 1,
+      "compare_as": "int",
+      "metadata": {
+        "check_kind": "table_cell",
+        "table": "llm_bridge",
+        "model_key": "deepseek-ai/deepseek-coder-1.3b-instruct",
+        "tier": "high"
+      }
+    },
+    "bridge_tinyllama_control_oneshot_pct": {
+      "claim_text_excerpt": "TinyLlama-1.1B one-shot 27% at Control tier (tab:llm_bridge)",
+      "paper_location_hint": "main.tex tab:llm_bridge",
+      "source_file": "supplementary/experiments/code_constraint_results.json",
+      "value_expr": "round(100 * sum(1 for r in d[\"TinyLlama/TinyLlama-1.1B-Chat-v1.0\"][\"results\"] if r[\"tier\"]==\"control\" and r[\"protocol\"]==\"one_shot\" and r.get(\"pass_both\", False)) / sum(1 for r in d[\"TinyLlama/TinyLlama-1.1B-Chat-v1.0\"][\"results\"] if r[\"tier\"]==\"control\" and r[\"protocol\"]==\"one_shot\"))",
+      "expected": 27,
+      "tolerance": 1,
+      "compare_as": "int",
+      "metadata": {
+        "check_kind": "table_cell",
+        "table": "llm_bridge",
+        "model_key": "TinyLlama/TinyLlama-1.1B-Chat-v1.0",
+        "tier": "control"
+      }
+    },
+    "bridge_tinyllama_control_delta_pct": {
+      "claim_text_excerpt": "TinyLlama-1.1B at Control: staged delta = +13% (tab:llm_bridge)",
+      "paper_location_hint": "main.tex tab:llm_bridge",
+      "source_file": "supplementary/experiments/code_constraint_results.json",
+      "value_expr": "round((100*sum(1 for r in d[\"TinyLlama/TinyLlama-1.1B-Chat-v1.0\"][\"results\"] if r[\"tier\"]==\"control\" and r[\"protocol\"]==\"staged\" and r.get(\"pass_both\",False))/sum(1 for r in d[\"TinyLlama/TinyLlama-1.1B-Chat-v1.0\"][\"results\"] if r[\"tier\"]==\"control\" and r[\"protocol\"]==\"staged\")) - (100*sum(1 for r in d[\"TinyLlama/TinyLlama-1.1B-Chat-v1.0\"][\"results\"] if r[\"tier\"]==\"control\" and r[\"protocol\"]==\"one_shot\" and r.get(\"pass_both\",False))/sum(1 for r in d[\"TinyLlama/TinyLlama-1.1B-Chat-v1.0\"][\"results\"] if r[\"tier\"]==\"control\" and r[\"protocol\"]==\"one_shot\")))",
+      "expected": 13,
+      "tolerance": 2,
+      "compare_as": "int",
+      "metadata": {
+        "check_kind": "table_cell",
+        "table": "llm_bridge",
+        "model_key": "TinyLlama/TinyLlama-1.1B-Chat-v1.0",
+        "tier": "control"
+      }
+    },
+    "bridge_tinyllama_low_oneshot_pct": {
+      "claim_text_excerpt": "TinyLlama-1.1B one-shot 13% at Low tier (tab:llm_bridge)",
+      "paper_location_hint": "main.tex tab:llm_bridge",
+      "source_file": "supplementary/experiments/code_constraint_results.json",
+      "value_expr": "round(100 * sum(1 for r in d[\"TinyLlama/TinyLlama-1.1B-Chat-v1.0\"][\"results\"] if r[\"tier\"]==\"low\" and r[\"protocol\"]==\"one_shot\" and r.get(\"pass_both\", False)) / sum(1 for r in d[\"TinyLlama/TinyLlama-1.1B-Chat-v1.0\"][\"results\"] if r[\"tier\"]==\"low\" and r[\"protocol\"]==\"one_shot\"))",
+      "expected": 13,
+      "tolerance": 1,
+      "compare_as": "int",
+      "metadata": {
+        "check_kind": "table_cell",
+        "table": "llm_bridge",
+        "model_key": "TinyLlama/TinyLlama-1.1B-Chat-v1.0",
+        "tier": "low"
+      }
+    },
+    "bridge_tinyllama_low_delta_pct": {
+      "claim_text_excerpt": "TinyLlama-1.1B at Low: staged delta = +19% (tab:llm_bridge)",
+      "paper_location_hint": "main.tex tab:llm_bridge",
+      "source_file": "supplementary/experiments/code_constraint_results.json",
+      "value_expr": "round((100*sum(1 for r in d[\"TinyLlama/TinyLlama-1.1B-Chat-v1.0\"][\"results\"] if r[\"tier\"]==\"low\" and r[\"protocol\"]==\"staged\" and r.get(\"pass_both\",False))/sum(1 for r in d[\"TinyLlama/TinyLlama-1.1B-Chat-v1.0\"][\"results\"] if r[\"tier\"]==\"low\" and r[\"protocol\"]==\"staged\")) - (100*sum(1 for r in d[\"TinyLlama/TinyLlama-1.1B-Chat-v1.0\"][\"results\"] if r[\"tier\"]==\"low\" and r[\"protocol\"]==\"one_shot\" and r.get(\"pass_both\",False))/sum(1 for r in d[\"TinyLlama/TinyLlama-1.1B-Chat-v1.0\"][\"results\"] if r[\"tier\"]==\"low\" and r[\"protocol\"]==\"one_shot\")))",
+      "expected": 19,
+      "tolerance": 2,
+      "compare_as": "int",
+      "metadata": {
+        "check_kind": "table_cell",
+        "table": "llm_bridge",
+        "model_key": "TinyLlama/TinyLlama-1.1B-Chat-v1.0",
+        "tier": "low"
+      }
+    },
+    "bridge_tinyllama_moderate_oneshot_pct": {
+      "claim_text_excerpt": "TinyLlama-1.1B one-shot 5% at Moderate tier (tab:llm_bridge)",
+      "paper_location_hint": "main.tex tab:llm_bridge",
+      "source_file": "supplementary/experiments/code_constraint_results.json",
+      "value_expr": "round(100 * sum(1 for r in d[\"TinyLlama/TinyLlama-1.1B-Chat-v1.0\"][\"results\"] if r[\"tier\"]==\"moderate\" and r[\"protocol\"]==\"one_shot\" and r.get(\"pass_both\", False)) / sum(1 for r in d[\"TinyLlama/TinyLlama-1.1B-Chat-v1.0\"][\"results\"] if r[\"tier\"]==\"moderate\" and r[\"protocol\"]==\"one_shot\"))",
+      "expected": 5,
+      "tolerance": 1,
+      "compare_as": "int",
+      "metadata": {
+        "check_kind": "table_cell",
+        "table": "llm_bridge",
+        "model_key": "TinyLlama/TinyLlama-1.1B-Chat-v1.0",
+        "tier": "moderate"
+      }
+    },
+    "bridge_tinyllama_moderate_delta_pct": {
+      "claim_text_excerpt": "TinyLlama-1.1B at Moderate: staged delta = +3% (tab:llm_bridge)",
+      "paper_location_hint": "main.tex tab:llm_bridge",
+      "source_file": "supplementary/experiments/code_constraint_results.json",
+      "value_expr": "round((100*sum(1 for r in d[\"TinyLlama/TinyLlama-1.1B-Chat-v1.0\"][\"results\"] if r[\"tier\"]==\"moderate\" and r[\"protocol\"]==\"staged\" and r.get(\"pass_both\",False))/sum(1 for r in d[\"TinyLlama/TinyLlama-1.1B-Chat-v1.0\"][\"results\"] if r[\"tier\"]==\"moderate\" and r[\"protocol\"]==\"staged\")) - (100*sum(1 for r in d[\"TinyLlama/TinyLlama-1.1B-Chat-v1.0\"][\"results\"] if r[\"tier\"]==\"moderate\" and r[\"protocol\"]==\"one_shot\" and r.get(\"pass_both\",False))/sum(1 for r in d[\"TinyLlama/TinyLlama-1.1B-Chat-v1.0\"][\"results\"] if r[\"tier\"]==\"moderate\" and r[\"protocol\"]==\"one_shot\")))",
+      "expected": 3,
+      "tolerance": 2,
+      "compare_as": "int",
+      "metadata": {
+        "check_kind": "table_cell",
+        "table": "llm_bridge",
+        "model_key": "TinyLlama/TinyLlama-1.1B-Chat-v1.0",
+        "tier": "moderate"
+      }
+    },
+    "bridge_tinyllama_high_delta_pct": {
+      "claim_text_excerpt": "TinyLlama-1.1B at High: staged delta = -2% (tab:llm_bridge)",
+      "paper_location_hint": "main.tex tab:llm_bridge",
+      "source_file": "supplementary/experiments/code_constraint_results.json",
+      "value_expr": "round((100*sum(1 for r in d[\"TinyLlama/TinyLlama-1.1B-Chat-v1.0\"][\"results\"] if r[\"tier\"]==\"high\" and r[\"protocol\"]==\"staged\" and r.get(\"pass_both\",False))/sum(1 for r in d[\"TinyLlama/TinyLlama-1.1B-Chat-v1.0\"][\"results\"] if r[\"tier\"]==\"high\" and r[\"protocol\"]==\"staged\")) - (100*sum(1 for r in d[\"TinyLlama/TinyLlama-1.1B-Chat-v1.0\"][\"results\"] if r[\"tier\"]==\"high\" and r[\"protocol\"]==\"one_shot\" and r.get(\"pass_both\",False))/sum(1 for r in d[\"TinyLlama/TinyLlama-1.1B-Chat-v1.0\"][\"results\"] if r[\"tier\"]==\"high\" and r[\"protocol\"]==\"one_shot\")))",
+      "expected": -2,
+      "tolerance": 2,
+      "compare_as": "int",
+      "metadata": {
+        "check_kind": "table_cell",
+        "table": "llm_bridge",
+        "model_key": "TinyLlama/TinyLlama-1.1B-Chat-v1.0",
+        "tier": "high"
+      }
+    },
+    "axis_baseline_control_tests_only_pct": {
+      "claim_text_excerpt": "Axis baseline at Control tier: tests only 76% (4-model aggregate, one_shot)",
+      "paper_location_hint": "main.tex Axis baselines paragraph (after tab:llm_bridge)",
+      "source_file": "supplementary/experiments/code_constraint_results.json",
+      "value_expr": "round(100 * (sum(1 for r in d[\"Qwen/Qwen2.5-Coder-1.5B-Instruct\"][\"results\"] if r[\"tier\"]==\"control\" and r[\"protocol\"]==\"one_shot\" and r.get(\"pass_a\", False)) + sum(1 for r in d[\"Qwen/Qwen2.5-3B-Instruct\"][\"results\"] if r[\"tier\"]==\"control\" and r[\"protocol\"]==\"one_shot\" and r.get(\"pass_a\", False)) + sum(1 for r in d[\"deepseek-ai/deepseek-coder-1.3b-instruct\"][\"results\"] if r[\"tier\"]==\"control\" and r[\"protocol\"]==\"one_shot\" and r.get(\"pass_a\", False)) + sum(1 for r in d[\"TinyLlama/TinyLlama-1.1B-Chat-v1.0\"][\"results\"] if r[\"tier\"]==\"control\" and r[\"protocol\"]==\"one_shot\" and r.get(\"pass_a\", False))) / (sum(1 for r in d[\"Qwen/Qwen2.5-Coder-1.5B-Instruct\"][\"results\"] if r[\"tier\"]==\"control\" and r[\"protocol\"]==\"one_shot\") + sum(1 for r in d[\"Qwen/Qwen2.5-3B-Instruct\"][\"results\"] if r[\"tier\"]==\"control\" and r[\"protocol\"]==\"one_shot\") + sum(1 for r in d[\"deepseek-ai/deepseek-coder-1.3b-instruct\"][\"results\"] if r[\"tier\"]==\"control\" and r[\"protocol\"]==\"one_shot\") + sum(1 for r in d[\"TinyLlama/TinyLlama-1.1B-Chat-v1.0\"][\"results\"] if r[\"tier\"]==\"control\" and r[\"protocol\"]==\"one_shot\")))",
+      "expected": 76,
+      "tolerance": 1,
+      "compare_as": "int",
+      "metadata": {
+        "check_kind": "axis_baseline",
+        "tier": "control",
+        "axis": "tests_only",
+        "protocol": "one_shot",
+        "aggregate": "4_models"
+      }
+    },
+    "axis_baseline_control_format_only_pct": {
+      "claim_text_excerpt": "Axis baseline at Control tier: format only 88% (4-model aggregate, one_shot)",
+      "paper_location_hint": "main.tex Axis baselines paragraph (after tab:llm_bridge)",
+      "source_file": "supplementary/experiments/code_constraint_results.json",
+      "value_expr": "round(100 * (sum(1 for r in d[\"Qwen/Qwen2.5-Coder-1.5B-Instruct\"][\"results\"] if r[\"tier\"]==\"control\" and r[\"protocol\"]==\"one_shot\" and r.get(\"pass_b\", False)) + sum(1 for r in d[\"Qwen/Qwen2.5-3B-Instruct\"][\"results\"] if r[\"tier\"]==\"control\" and r[\"protocol\"]==\"one_shot\" and r.get(\"pass_b\", False)) + sum(1 for r in d[\"deepseek-ai/deepseek-coder-1.3b-instruct\"][\"results\"] if r[\"tier\"]==\"control\" and r[\"protocol\"]==\"one_shot\" and r.get(\"pass_b\", False)) + sum(1 for r in d[\"TinyLlama/TinyLlama-1.1B-Chat-v1.0\"][\"results\"] if r[\"tier\"]==\"control\" and r[\"protocol\"]==\"one_shot\" and r.get(\"pass_b\", False))) / (sum(1 for r in d[\"Qwen/Qwen2.5-Coder-1.5B-Instruct\"][\"results\"] if r[\"tier\"]==\"control\" and r[\"protocol\"]==\"one_shot\") + sum(1 for r in d[\"Qwen/Qwen2.5-3B-Instruct\"][\"results\"] if r[\"tier\"]==\"control\" and r[\"protocol\"]==\"one_shot\") + sum(1 for r in d[\"deepseek-ai/deepseek-coder-1.3b-instruct\"][\"results\"] if r[\"tier\"]==\"control\" and r[\"protocol\"]==\"one_shot\") + sum(1 for r in d[\"TinyLlama/TinyLlama-1.1B-Chat-v1.0\"][\"results\"] if r[\"tier\"]==\"control\" and r[\"protocol\"]==\"one_shot\")))",
+      "expected": 88,
+      "tolerance": 1,
+      "compare_as": "int",
+      "metadata": {
+        "check_kind": "axis_baseline",
+        "tier": "control",
+        "axis": "format_only",
+        "protocol": "one_shot",
+        "aggregate": "4_models"
+      }
+    },
+    "axis_baseline_control_joint_pct": {
+      "claim_text_excerpt": "Axis baseline at Control tier: joint 76% (4-model aggregate, one_shot)",
+      "paper_location_hint": "main.tex Axis baselines paragraph (after tab:llm_bridge)",
+      "source_file": "supplementary/experiments/code_constraint_results.json",
+      "value_expr": "round(100 * (sum(1 for r in d[\"Qwen/Qwen2.5-Coder-1.5B-Instruct\"][\"results\"] if r[\"tier\"]==\"control\" and r[\"protocol\"]==\"one_shot\" and r.get(\"pass_both\", False)) + sum(1 for r in d[\"Qwen/Qwen2.5-3B-Instruct\"][\"results\"] if r[\"tier\"]==\"control\" and r[\"protocol\"]==\"one_shot\" and r.get(\"pass_both\", False)) + sum(1 for r in d[\"deepseek-ai/deepseek-coder-1.3b-instruct\"][\"results\"] if r[\"tier\"]==\"control\" and r[\"protocol\"]==\"one_shot\" and r.get(\"pass_both\", False)) + sum(1 for r in d[\"TinyLlama/TinyLlama-1.1B-Chat-v1.0\"][\"results\"] if r[\"tier\"]==\"control\" and r[\"protocol\"]==\"one_shot\" and r.get(\"pass_both\", False))) / (sum(1 for r in d[\"Qwen/Qwen2.5-Coder-1.5B-Instruct\"][\"results\"] if r[\"tier\"]==\"control\" and r[\"protocol\"]==\"one_shot\") + sum(1 for r in d[\"Qwen/Qwen2.5-3B-Instruct\"][\"results\"] if r[\"tier\"]==\"control\" and r[\"protocol\"]==\"one_shot\") + sum(1 for r in d[\"deepseek-ai/deepseek-coder-1.3b-instruct\"][\"results\"] if r[\"tier\"]==\"control\" and r[\"protocol\"]==\"one_shot\") + sum(1 for r in d[\"TinyLlama/TinyLlama-1.1B-Chat-v1.0\"][\"results\"] if r[\"tier\"]==\"control\" and r[\"protocol\"]==\"one_shot\")))",
+      "expected": 76,
+      "tolerance": 1,
+      "compare_as": "int",
+      "metadata": {
+        "check_kind": "axis_baseline",
+        "tier": "control",
+        "axis": "joint",
+        "protocol": "one_shot",
+        "aggregate": "4_models"
+      }
+    },
+    "axis_baseline_high_tests_only_pct": {
+      "claim_text_excerpt": "Axis baseline at High tier: tests only 64% (4-model aggregate, one_shot)",
+      "paper_location_hint": "main.tex Axis baselines paragraph (after tab:llm_bridge)",
+      "source_file": "supplementary/experiments/code_constraint_results.json",
+      "value_expr": "round(100 * (sum(1 for r in d[\"Qwen/Qwen2.5-Coder-1.5B-Instruct\"][\"results\"] if r[\"tier\"]==\"high\" and r[\"protocol\"]==\"one_shot\" and r.get(\"pass_a\", False)) + sum(1 for r in d[\"Qwen/Qwen2.5-3B-Instruct\"][\"results\"] if r[\"tier\"]==\"high\" and r[\"protocol\"]==\"one_shot\" and r.get(\"pass_a\", False)) + sum(1 for r in d[\"deepseek-ai/deepseek-coder-1.3b-instruct\"][\"results\"] if r[\"tier\"]==\"high\" and r[\"protocol\"]==\"one_shot\" and r.get(\"pass_a\", False)) + sum(1 for r in d[\"TinyLlama/TinyLlama-1.1B-Chat-v1.0\"][\"results\"] if r[\"tier\"]==\"high\" and r[\"protocol\"]==\"one_shot\" and r.get(\"pass_a\", False))) / (sum(1 for r in d[\"Qwen/Qwen2.5-Coder-1.5B-Instruct\"][\"results\"] if r[\"tier\"]==\"high\" and r[\"protocol\"]==\"one_shot\") + sum(1 for r in d[\"Qwen/Qwen2.5-3B-Instruct\"][\"results\"] if r[\"tier\"]==\"high\" and r[\"protocol\"]==\"one_shot\") + sum(1 for r in d[\"deepseek-ai/deepseek-coder-1.3b-instruct\"][\"results\"] if r[\"tier\"]==\"high\" and r[\"protocol\"]==\"one_shot\") + sum(1 for r in d[\"TinyLlama/TinyLlama-1.1B-Chat-v1.0\"][\"results\"] if r[\"tier\"]==\"high\" and r[\"protocol\"]==\"one_shot\")))",
+      "expected": 64,
+      "tolerance": 1,
+      "compare_as": "int",
+      "metadata": {
+        "check_kind": "axis_baseline",
+        "tier": "high",
+        "axis": "tests_only",
+        "protocol": "one_shot",
+        "aggregate": "4_models"
+      }
+    },
+    "axis_baseline_high_format_only_pct": {
+      "claim_text_excerpt": "Axis baseline at High tier: format only 2% (4-model aggregate, one_shot)",
+      "paper_location_hint": "main.tex Axis baselines paragraph (after tab:llm_bridge)",
+      "source_file": "supplementary/experiments/code_constraint_results.json",
+      "value_expr": "round(100 * (sum(1 for r in d[\"Qwen/Qwen2.5-Coder-1.5B-Instruct\"][\"results\"] if r[\"tier\"]==\"high\" and r[\"protocol\"]==\"one_shot\" and r.get(\"pass_b\", False)) + sum(1 for r in d[\"Qwen/Qwen2.5-3B-Instruct\"][\"results\"] if r[\"tier\"]==\"high\" and r[\"protocol\"]==\"one_shot\" and r.get(\"pass_b\", False)) + sum(1 for r in d[\"deepseek-ai/deepseek-coder-1.3b-instruct\"][\"results\"] if r[\"tier\"]==\"high\" and r[\"protocol\"]==\"one_shot\" and r.get(\"pass_b\", False)) + sum(1 for r in d[\"TinyLlama/TinyLlama-1.1B-Chat-v1.0\"][\"results\"] if r[\"tier\"]==\"high\" and r[\"protocol\"]==\"one_shot\" and r.get(\"pass_b\", False))) / (sum(1 for r in d[\"Qwen/Qwen2.5-Coder-1.5B-Instruct\"][\"results\"] if r[\"tier\"]==\"high\" and r[\"protocol\"]==\"one_shot\") + sum(1 for r in d[\"Qwen/Qwen2.5-3B-Instruct\"][\"results\"] if r[\"tier\"]==\"high\" and r[\"protocol\"]==\"one_shot\") + sum(1 for r in d[\"deepseek-ai/deepseek-coder-1.3b-instruct\"][\"results\"] if r[\"tier\"]==\"high\" and r[\"protocol\"]==\"one_shot\") + sum(1 for r in d[\"TinyLlama/TinyLlama-1.1B-Chat-v1.0\"][\"results\"] if r[\"tier\"]==\"high\" and r[\"protocol\"]==\"one_shot\")))",
+      "expected": 2,
+      "tolerance": 1,
+      "compare_as": "int",
+      "metadata": {
+        "check_kind": "axis_baseline",
+        "tier": "high",
+        "axis": "format_only",
+        "protocol": "one_shot",
+        "aggregate": "4_models"
+      }
+    },
+    "axis_baseline_high_joint_pct": {
+      "claim_text_excerpt": "Axis baseline at High tier: joint 2% (4-model aggregate, one_shot)",
+      "paper_location_hint": "main.tex Axis baselines paragraph (after tab:llm_bridge)",
+      "source_file": "supplementary/experiments/code_constraint_results.json",
+      "value_expr": "round(100 * (sum(1 for r in d[\"Qwen/Qwen2.5-Coder-1.5B-Instruct\"][\"results\"] if r[\"tier\"]==\"high\" and r[\"protocol\"]==\"one_shot\" and r.get(\"pass_both\", False)) + sum(1 for r in d[\"Qwen/Qwen2.5-3B-Instruct\"][\"results\"] if r[\"tier\"]==\"high\" and r[\"protocol\"]==\"one_shot\" and r.get(\"pass_both\", False)) + sum(1 for r in d[\"deepseek-ai/deepseek-coder-1.3b-instruct\"][\"results\"] if r[\"tier\"]==\"high\" and r[\"protocol\"]==\"one_shot\" and r.get(\"pass_both\", False)) + sum(1 for r in d[\"TinyLlama/TinyLlama-1.1B-Chat-v1.0\"][\"results\"] if r[\"tier\"]==\"high\" and r[\"protocol\"]==\"one_shot\" and r.get(\"pass_both\", False))) / (sum(1 for r in d[\"Qwen/Qwen2.5-Coder-1.5B-Instruct\"][\"results\"] if r[\"tier\"]==\"high\" and r[\"protocol\"]==\"one_shot\") + sum(1 for r in d[\"Qwen/Qwen2.5-3B-Instruct\"][\"results\"] if r[\"tier\"]==\"high\" and r[\"protocol\"]==\"one_shot\") + sum(1 for r in d[\"deepseek-ai/deepseek-coder-1.3b-instruct\"][\"results\"] if r[\"tier\"]==\"high\" and r[\"protocol\"]==\"one_shot\") + sum(1 for r in d[\"TinyLlama/TinyLlama-1.1B-Chat-v1.0\"][\"results\"] if r[\"tier\"]==\"high\" and r[\"protocol\"]==\"one_shot\")))",
+      "expected": 2,
+      "tolerance": 1,
+      "compare_as": "int",
+      "metadata": {
+        "check_kind": "axis_baseline",
+        "tier": "high",
+        "axis": "joint",
+        "protocol": "one_shot",
+        "aggregate": "4_models"
+      }
+    },
+    "iso_fibonacci_high_joint_pct": {
+      "claim_text_excerpt": "Iso-difficulty pair: fibonacci (high) both = 0% (4-model aggregate, one_shot)",
+      "paper_location_hint": "main.tex Difficulty-conflict separation paragraph",
+      "source_file": "supplementary/experiments/code_constraint_results.json",
+      "value_expr": "round(100 * (sum(1 for r in d[\"Qwen/Qwen2.5-Coder-1.5B-Instruct\"][\"results\"] if r[\"task_id\"]==\"fibonacci\" and r[\"tier\"]==\"high\" and r[\"protocol\"]==\"one_shot\" and r.get(\"pass_both\", False)) + sum(1 for r in d[\"Qwen/Qwen2.5-3B-Instruct\"][\"results\"] if r[\"task_id\"]==\"fibonacci\" and r[\"tier\"]==\"high\" and r[\"protocol\"]==\"one_shot\" and r.get(\"pass_both\", False)) + sum(1 for r in d[\"deepseek-ai/deepseek-coder-1.3b-instruct\"][\"results\"] if r[\"task_id\"]==\"fibonacci\" and r[\"tier\"]==\"high\" and r[\"protocol\"]==\"one_shot\" and r.get(\"pass_both\", False)) + sum(1 for r in d[\"TinyLlama/TinyLlama-1.1B-Chat-v1.0\"][\"results\"] if r[\"task_id\"]==\"fibonacci\" and r[\"tier\"]==\"high\" and r[\"protocol\"]==\"one_shot\" and r.get(\"pass_both\", False))) / (sum(1 for r in d[\"Qwen/Qwen2.5-Coder-1.5B-Instruct\"][\"results\"] if r[\"task_id\"]==\"fibonacci\" and r[\"tier\"]==\"high\" and r[\"protocol\"]==\"one_shot\") + sum(1 for r in d[\"Qwen/Qwen2.5-3B-Instruct\"][\"results\"] if r[\"task_id\"]==\"fibonacci\" and r[\"tier\"]==\"high\" and r[\"protocol\"]==\"one_shot\") + sum(1 for r in d[\"deepseek-ai/deepseek-coder-1.3b-instruct\"][\"results\"] if r[\"task_id\"]==\"fibonacci\" and r[\"tier\"]==\"high\" and r[\"protocol\"]==\"one_shot\") + sum(1 for r in d[\"TinyLlama/TinyLlama-1.1B-Chat-v1.0\"][\"results\"] if r[\"task_id\"]==\"fibonacci\" and r[\"tier\"]==\"high\" and r[\"protocol\"]==\"one_shot\")))",
+      "expected": 0,
+      "tolerance": 1,
+      "compare_as": "int",
+      "metadata": {
+        "check_kind": "iso_difficulty_pair",
+        "task": "fibonacci",
+        "tier": "high",
+        "axis": "pass_both",
+        "protocol": "one_shot",
+        "aggregate": "4_models"
+      }
+    },
+    "iso_fibonacci_high_tests_only_pct": {
+      "claim_text_excerpt": "Iso-difficulty pair: fibonacci (high) a = 85% (4-model aggregate, one_shot)",
+      "paper_location_hint": "main.tex Difficulty-conflict separation paragraph",
+      "source_file": "supplementary/experiments/code_constraint_results.json",
+      "value_expr": "round(100 * (sum(1 for r in d[\"Qwen/Qwen2.5-Coder-1.5B-Instruct\"][\"results\"] if r[\"task_id\"]==\"fibonacci\" and r[\"tier\"]==\"high\" and r[\"protocol\"]==\"one_shot\" and r.get(\"pass_a\", False)) + sum(1 for r in d[\"Qwen/Qwen2.5-3B-Instruct\"][\"results\"] if r[\"task_id\"]==\"fibonacci\" and r[\"tier\"]==\"high\" and r[\"protocol\"]==\"one_shot\" and r.get(\"pass_a\", False)) + sum(1 for r in d[\"deepseek-ai/deepseek-coder-1.3b-instruct\"][\"results\"] if r[\"task_id\"]==\"fibonacci\" and r[\"tier\"]==\"high\" and r[\"protocol\"]==\"one_shot\" and r.get(\"pass_a\", False)) + sum(1 for r in d[\"TinyLlama/TinyLlama-1.1B-Chat-v1.0\"][\"results\"] if r[\"task_id\"]==\"fibonacci\" and r[\"tier\"]==\"high\" and r[\"protocol\"]==\"one_shot\" and r.get(\"pass_a\", False))) / (sum(1 for r in d[\"Qwen/Qwen2.5-Coder-1.5B-Instruct\"][\"results\"] if r[\"task_id\"]==\"fibonacci\" and r[\"tier\"]==\"high\" and r[\"protocol\"]==\"one_shot\") + sum(1 for r in d[\"Qwen/Qwen2.5-3B-Instruct\"][\"results\"] if r[\"task_id\"]==\"fibonacci\" and r[\"tier\"]==\"high\" and r[\"protocol\"]==\"one_shot\") + sum(1 for r in d[\"deepseek-ai/deepseek-coder-1.3b-instruct\"][\"results\"] if r[\"task_id\"]==\"fibonacci\" and r[\"tier\"]==\"high\" and r[\"protocol\"]==\"one_shot\") + sum(1 for r in d[\"TinyLlama/TinyLlama-1.1B-Chat-v1.0\"][\"results\"] if r[\"task_id\"]==\"fibonacci\" and r[\"tier\"]==\"high\" and r[\"protocol\"]==\"one_shot\")))",
+      "expected": 85,
+      "tolerance": 1,
+      "compare_as": "int",
+      "metadata": {
+        "check_kind": "iso_difficulty_pair",
+        "task": "fibonacci",
+        "tier": "high",
+        "axis": "pass_a",
+        "protocol": "one_shot",
+        "aggregate": "4_models"
+      }
+    },
+    "iso_power_control_joint_pct": {
+      "claim_text_excerpt": "Iso-difficulty pair: power (control) both = 85% (4-model aggregate, one_shot)",
+      "paper_location_hint": "main.tex Difficulty-conflict separation paragraph",
+      "source_file": "supplementary/experiments/code_constraint_results.json",
+      "value_expr": "round(100 * (sum(1 for r in d[\"Qwen/Qwen2.5-Coder-1.5B-Instruct\"][\"results\"] if r[\"task_id\"]==\"power\" and r[\"tier\"]==\"control\" and r[\"protocol\"]==\"one_shot\" and r.get(\"pass_both\", False)) + sum(1 for r in d[\"Qwen/Qwen2.5-3B-Instruct\"][\"results\"] if r[\"task_id\"]==\"power\" and r[\"tier\"]==\"control\" and r[\"protocol\"]==\"one_shot\" and r.get(\"pass_both\", False)) + sum(1 for r in d[\"deepseek-ai/deepseek-coder-1.3b-instruct\"][\"results\"] if r[\"task_id\"]==\"power\" and r[\"tier\"]==\"control\" and r[\"protocol\"]==\"one_shot\" and r.get(\"pass_both\", False)) + sum(1 for r in d[\"TinyLlama/TinyLlama-1.1B-Chat-v1.0\"][\"results\"] if r[\"task_id\"]==\"power\" and r[\"tier\"]==\"control\" and r[\"protocol\"]==\"one_shot\" and r.get(\"pass_both\", False))) / (sum(1 for r in d[\"Qwen/Qwen2.5-Coder-1.5B-Instruct\"][\"results\"] if r[\"task_id\"]==\"power\" and r[\"tier\"]==\"control\" and r[\"protocol\"]==\"one_shot\") + sum(1 for r in d[\"Qwen/Qwen2.5-3B-Instruct\"][\"results\"] if r[\"task_id\"]==\"power\" and r[\"tier\"]==\"control\" and r[\"protocol\"]==\"one_shot\") + sum(1 for r in d[\"deepseek-ai/deepseek-coder-1.3b-instruct\"][\"results\"] if r[\"task_id\"]==\"power\" and r[\"tier\"]==\"control\" and r[\"protocol\"]==\"one_shot\") + sum(1 for r in d[\"TinyLlama/TinyLlama-1.1B-Chat-v1.0\"][\"results\"] if r[\"task_id\"]==\"power\" and r[\"tier\"]==\"control\" and r[\"protocol\"]==\"one_shot\")))",
+      "expected": 85,
+      "tolerance": 1,
+      "compare_as": "int",
+      "metadata": {
+        "check_kind": "iso_difficulty_pair",
+        "task": "power",
+        "tier": "control",
+        "axis": "pass_both",
+        "protocol": "one_shot",
+        "aggregate": "4_models"
+      }
+    },
+    "iso_power_control_tests_only_pct": {
+      "claim_text_excerpt": "Iso-difficulty pair: power (control) a = 85% (4-model aggregate, one_shot)",
+      "paper_location_hint": "main.tex Difficulty-conflict separation paragraph",
+      "source_file": "supplementary/experiments/code_constraint_results.json",
+      "value_expr": "round(100 * (sum(1 for r in d[\"Qwen/Qwen2.5-Coder-1.5B-Instruct\"][\"results\"] if r[\"task_id\"]==\"power\" and r[\"tier\"]==\"control\" and r[\"protocol\"]==\"one_shot\" and r.get(\"pass_a\", False)) + sum(1 for r in d[\"Qwen/Qwen2.5-3B-Instruct\"][\"results\"] if r[\"task_id\"]==\"power\" and r[\"tier\"]==\"control\" and r[\"protocol\"]==\"one_shot\" and r.get(\"pass_a\", False)) + sum(1 for r in d[\"deepseek-ai/deepseek-coder-1.3b-instruct\"][\"results\"] if r[\"task_id\"]==\"power\" and r[\"tier\"]==\"control\" and r[\"protocol\"]==\"one_shot\" and r.get(\"pass_a\", False)) + sum(1 for r in d[\"TinyLlama/TinyLlama-1.1B-Chat-v1.0\"][\"results\"] if r[\"task_id\"]==\"power\" and r[\"tier\"]==\"control\" and r[\"protocol\"]==\"one_shot\" and r.get(\"pass_a\", False))) / (sum(1 for r in d[\"Qwen/Qwen2.5-Coder-1.5B-Instruct\"][\"results\"] if r[\"task_id\"]==\"power\" and r[\"tier\"]==\"control\" and r[\"protocol\"]==\"one_shot\") + sum(1 for r in d[\"Qwen/Qwen2.5-3B-Instruct\"][\"results\"] if r[\"task_id\"]==\"power\" and r[\"tier\"]==\"control\" and r[\"protocol\"]==\"one_shot\") + sum(1 for r in d[\"deepseek-ai/deepseek-coder-1.3b-instruct\"][\"results\"] if r[\"task_id\"]==\"power\" and r[\"tier\"]==\"control\" and r[\"protocol\"]==\"one_shot\") + sum(1 for r in d[\"TinyLlama/TinyLlama-1.1B-Chat-v1.0\"][\"results\"] if r[\"task_id\"]==\"power\" and r[\"tier\"]==\"control\" and r[\"protocol\"]==\"one_shot\")))",
+      "expected": 85,
+      "tolerance": 1,
+      "compare_as": "int",
+      "metadata": {
+        "check_kind": "iso_difficulty_pair",
+        "task": "power",
+        "tier": "control",
+        "axis": "pass_a",
+        "protocol": "one_shot",
+        "aggregate": "4_models"
+      }
+    },
+    "smooth_regime_total_4272": {
+      "claim_text_excerpt": "0/4,272 smooth-regime refutations (across 4 domains, predicted-infeasible region)",
+      "paper_location_hint": "main.tex lines 73, 80, 123, 259, 509",
+      "source_file": "rebuttal/figures/unconditional_pivot_results.json",
+      "value_expr": "d['full_paper_claim']['smooth_total']",
+      "expected": 4272,
+      "tolerance": 0,
+      "compare_as": "int",
+      "metadata": {
+        "check_kind": "aggregate",
+        "context": "smooth-regime infeasible across 4 domains (code+JSON+optimization+signal)"
+      },
+      "paper_render_pattern": "4[,\\{}]*272 smooth-regime",
+      "paper_render_negate": "4[,\\{}]*800 smooth-regime"
+    },
+    "smooth_regime_successes_zero": {
+      "claim_text_excerpt": "0 smooth-regime successes (refutation count)",
+      "paper_location_hint": "main.tex lines 73, 80, 123, 259, 509",
+      "source_file": "rebuttal/figures/unconditional_pivot_results.json",
+      "value_expr": "d['full_paper_claim']['smooth_successes']",
+      "expected": 0,
+      "tolerance": 0,
+      "compare_as": "int",
+      "metadata": {
+        "check_kind": "aggregate",
+        "context": "core falsification claim"
+      },
+      "paper_render_pattern": "0[/-]4[,\\{}]*272"
+    },
+    "pivot_regime_total_528": {
+      "claim_text_excerpt": "528 pivot-regime trials (across 4 domains)",
+      "paper_location_hint": "main.tex line 80 (new)",
+      "source_file": "rebuttal/figures/unconditional_pivot_results.json",
+      "value_expr": "d['full_paper_claim']['pivot_total']",
+      "expected": 528,
+      "tolerance": 0,
+      "compare_as": "int",
+      "metadata": {
+        "check_kind": "aggregate",
+        "context": "pivot-regime infeasible across 4 domains"
+      },
+      "paper_render_pattern": "528"
+    },
+    "pivot_successes_42": {
+      "claim_text_excerpt": "42 detected-pivot successes (out of 528)",
+      "paper_location_hint": "main.tex lines 73, 80 (new)",
+      "source_file": "rebuttal/figures/unconditional_pivot_results.json",
+      "value_expr": "d['full_paper_claim']['pivot_successes_estimated']",
+      "expected": 42,
+      "tolerance": 0,
+      "compare_as": "int",
+      "metadata": {
+        "check_kind": "aggregate",
+        "context": "pivot-regime successes (the 1.7% unconditional rate denominator)"
+      },
+      "paper_render_pattern": "42[/-]528"
+    },
+    "unconditional_pivot_high_tier_total_480": {
+      "claim_text_excerpt": "High-tier total trials = 480 (code constraint, directly measured)",
+      "paper_location_hint": "main.tex (implicit anchor for code-domain extrapolation)",
+      "source_file": "rebuttal/figures/unconditional_pivot_results.json",
+      "value_expr": "d['high_tier']['total']",
+      "expected": 480,
+      "tolerance": 0,
+      "compare_as": "int",
+      "metadata": {
+        "check_kind": "sample_count",
+        "context": "code-only high-tier baseline for the 4-domain extrapolation"
+      }
+    },
+    "unconditional_pivot_smooth_decomp_427": {
+      "claim_text_excerpt": "Code-domain smooth-regime estimate = 427 (89% of 480 high-tier)",
+      "paper_location_hint": "main.tex (regime decomposition reference)",
+      "source_file": "rebuttal/figures/unconditional_pivot_results.json",
+      "value_expr": "d['regime_decomposition']['smooth_estimated']",
+      "expected": 427,
+      "tolerance": 0,
+      "compare_as": "int",
+      "metadata": {
+        "check_kind": "derivation",
+        "context": "directly measured code-only smooth count (subset of 4272)"
+      }
+    },
+    "openrouter_regression_test_pct_control": {
+      "claim_text_excerpt": "Test-axis regression at control tier = 0.5% (pooled across 8 models, conditional on stage-1 pass_a)",
+      "paper_location_hint": "main.tex Empirical Regression Rates app:preservation",
+      "source_file": "supplementary/experiments/openrouter_regression_results.json",
+      "value_expr": "round(100 * sum(1 for r in [x for x in d['results'] if 'stage1_pass_a' in x and x['tier']=='control' and x['stage1_pass_a']] if not r['stage3_pass_a']) / max(1, sum(1 for x in d['results'] if 'stage1_pass_a' in x and x['tier']=='control' and x['stage1_pass_a'])), 1)",
+      "expected": 0.5,
+      "tolerance": 0.1,
+      "compare_as": "float",
+      "metadata": {
+        "check_kind": "pooled_regression_rate",
+        "axis": "test",
+        "tier": "control"
+      }
+    },
+    "openrouter_regression_test_pct_low": {
+      "claim_text_excerpt": "Test-axis regression at low tier = 0.6% (pooled across 8 models, conditional on stage-1 pass_a)",
+      "paper_location_hint": "main.tex Empirical Regression Rates app:preservation",
+      "source_file": "supplementary/experiments/openrouter_regression_results.json",
+      "value_expr": "round(100 * sum(1 for r in [x for x in d['results'] if 'stage1_pass_a' in x and x['tier']=='low' and x['stage1_pass_a']] if not r['stage3_pass_a']) / max(1, sum(1 for x in d['results'] if 'stage1_pass_a' in x and x['tier']=='low' and x['stage1_pass_a'])), 1)",
+      "expected": 0.6,
+      "tolerance": 0.1,
+      "compare_as": "float",
+      "metadata": {
+        "check_kind": "pooled_regression_rate",
+        "axis": "test",
+        "tier": "low"
+      }
+    },
+    "openrouter_regression_test_pct_moderate": {
+      "claim_text_excerpt": "Test-axis regression at moderate tier = 1.1% (pooled across 8 models, conditional on stage-1 pass_a)",
+      "paper_location_hint": "main.tex Empirical Regression Rates app:preservation",
+      "source_file": "supplementary/experiments/openrouter_regression_results.json",
+      "value_expr": "round(100 * sum(1 for r in [x for x in d['results'] if 'stage1_pass_a' in x and x['tier']=='moderate' and x['stage1_pass_a']] if not r['stage3_pass_a']) / max(1, sum(1 for x in d['results'] if 'stage1_pass_a' in x and x['tier']=='moderate' and x['stage1_pass_a'])), 1)",
+      "expected": 1.1,
+      "tolerance": 0.1,
+      "compare_as": "float",
+      "metadata": {
+        "check_kind": "pooled_regression_rate",
+        "axis": "test",
+        "tier": "moderate"
+      }
+    },
+    "openrouter_regression_test_pct_high": {
+      "claim_text_excerpt": "Test-axis regression at high tier = 1.7% (pooled across 8 models, conditional on stage-1 pass_a)",
+      "paper_location_hint": "main.tex Empirical Regression Rates app:preservation",
+      "source_file": "supplementary/experiments/openrouter_regression_results.json",
+      "value_expr": "round(100 * sum(1 for r in [x for x in d['results'] if 'stage1_pass_a' in x and x['tier']=='high' and x['stage1_pass_a']] if not r['stage3_pass_a']) / max(1, sum(1 for x in d['results'] if 'stage1_pass_a' in x and x['tier']=='high' and x['stage1_pass_a'])), 1)",
+      "expected": 1.7,
+      "tolerance": 0.1,
+      "compare_as": "float",
+      "metadata": {
+        "check_kind": "pooled_regression_rate",
+        "axis": "test",
+        "tier": "high"
+      }
+    },
+    "openrouter_format_n_s1b_pooled_control": {
+      "claim_text_excerpt": "Stage-1 format pass count at control tier = 239/240 (pooled across 8 models)",
+      "paper_location_hint": "main.tex Empirical Regression Rates app:preservation",
+      "source_file": "supplementary/experiments/openrouter_regression_results.json",
+      "value_expr": "sum(1 for r in d['results'] if 'stage1_pass_a' in r and r['tier']=='control' and r['stage1_pass_b'])",
+      "expected": 239,
+      "tolerance": 0,
+      "compare_as": "int",
+      "metadata": {
+        "check_kind": "pooled_count",
+        "axis": "format_stage1",
+        "tier": "control",
+        "denom": 240
+      }
+    },
+    "openrouter_format_n_s1b_pooled_low": {
+      "claim_text_excerpt": "Stage-1 format pass count at low tier = 56/240 (pooled across 8 models)",
+      "paper_location_hint": "main.tex Empirical Regression Rates app:preservation",
+      "source_file": "supplementary/experiments/openrouter_regression_results.json",
+      "value_expr": "sum(1 for r in d['results'] if 'stage1_pass_a' in r and r['tier']=='low' and r['stage1_pass_b'])",
+      "expected": 56,
+      "tolerance": 0,
+      "compare_as": "int",
+      "metadata": {
+        "check_kind": "pooled_count",
+        "axis": "format_stage1",
+        "tier": "low",
+        "denom": 240
+      }
+    },
+    "openrouter_format_n_s1b_pooled_moderate": {
+      "claim_text_excerpt": "Stage-1 format pass count at moderate tier = 23/240 (pooled across 8 models)",
+      "paper_location_hint": "main.tex Empirical Regression Rates app:preservation",
+      "source_file": "supplementary/experiments/openrouter_regression_results.json",
+      "value_expr": "sum(1 for r in d['results'] if 'stage1_pass_a' in r and r['tier']=='moderate' and r['stage1_pass_b'])",
+      "expected": 23,
+      "tolerance": 0,
+      "compare_as": "int",
+      "metadata": {
+        "check_kind": "pooled_count",
+        "axis": "format_stage1",
+        "tier": "moderate",
+        "denom": 240
+      }
+    },
+    "openrouter_format_n_s1b_pooled_high": {
+      "claim_text_excerpt": "Stage-1 format pass count at high tier = 0/240 (pooled across 8 models)",
+      "paper_location_hint": "main.tex Empirical Regression Rates app:preservation",
+      "source_file": "supplementary/experiments/openrouter_regression_results.json",
+      "value_expr": "sum(1 for r in d['results'] if 'stage1_pass_a' in r and r['tier']=='high' and r['stage1_pass_b'])",
+      "expected": 0,
+      "tolerance": 0,
+      "compare_as": "int",
+      "metadata": {
+        "check_kind": "pooled_count",
+        "axis": "format_stage1",
+        "tier": "high",
+        "denom": 240
+      }
+    },
+    "openrouter_format_universal_collapse_high": {
+      "claim_text_excerpt": "Universal: 0/240 stage-1 format passes at high tier (pooled across 8 models implies every model = 0)",
+      "paper_location_hint": "main.tex Empirical Regression Rates app:preservation",
+      "source_file": "supplementary/experiments/openrouter_regression_results.json",
+      "value_expr": "1 if sum(1 for r in d['results'] if 'stage1_pass_a' in r and r['tier']=='high' and r['stage1_pass_b']) == 0 else 0",
+      "expected": 1,
+      "tolerance": 0,
+      "compare_as": "int",
+      "metadata": {
+        "check_kind": "set_equality",
+        "context": "universal_collapse"
+      }
+    },
+    "openrouter_regression_n_models_8": {
+      "claim_text_excerpt": "8 OpenRouter models in regression experiment (gemini-flash, gpt-4o-mini, claude-haiku-3.5, llama-3.1-70b, deepseek-v3, mistral-large, gpt-4o, claude-sonnet-4.5)",
+      "paper_location_hint": "main.tex Empirical Regression Rates app:preservation",
+      "source_file": "supplementary/experiments/openrouter_regression_results.json",
+      "value_expr": "len(d['_meta']['models'])",
+      "expected": 8,
+      "tolerance": 0,
+      "compare_as": "int",
+      "metadata": {
+        "check_kind": "sample_count",
+        "context": "n_models_regression_exp"
+      }
+    },
+    "openrouter_regression_n_per_tier_240": {
+      "claim_text_excerpt": "240 trials per tier in regression experiment (8 models x 6 tasks x 5 trials)",
+      "paper_location_hint": "main.tex Empirical Regression Rates app:preservation",
+      "source_file": "supplementary/experiments/openrouter_regression_results.json",
+      "value_expr": "sum(1 for r in d['results'] if 'stage1_pass_a' in r and r['tier']=='control')",
+      "expected": 240,
+      "tolerance": 0,
+      "compare_as": "int",
+      "metadata": {
+        "check_kind": "sample_count",
+        "context": "n_trials_per_tier"
+      }
+    },
+    "openrouter_regression_n_tasks_6": {
+      "claim_text_excerpt": "6 tasks (factorial, fibonacci, is_palindrome, sum_digits, count_vowels, fizzbuzz)",
+      "paper_location_hint": "main.tex Empirical Regression Rates app:preservation",
+      "source_file": "supplementary/experiments/openrouter_regression_results.json",
+      "value_expr": "len(d['_meta']['task_ids'])",
+      "expected": 6,
+      "tolerance": 0,
+      "compare_as": "int",
+      "metadata": {
+        "check_kind": "sample_count",
+        "context": "n_tasks_regression_exp"
+      }
+    },
+    "high_k_opus46_conflicting_pass": {
+      "claim_text_excerpt": "opus-4.6 conflicting regime 22/25 (88%) (app:claude_genome High-k paragraph)",
+      "paper_location_hint": "app:claude_genome 'High-k Conflicting Regime'",
+      "source_file": "supplementary/experiments/outputs/high_k_opus46/high_k_opus46_results.json",
+      "value_expr": "d['regime_summary']['conflicting']['n_all_pass']",
+      "expected": 22,
+      "tolerance": 0,
+      "compare_as": "int"
+    },
+    "high_k_sonnet46_conflicting_pass": {
+      "claim_text_excerpt": "sonnet-4.6 conflicting regime 16/25 (64%) (app:claude_genome High-k paragraph)",
+      "paper_location_hint": "app:claude_genome 'High-k Conflicting Regime'",
+      "source_file": "supplementary/experiments/outputs/high_k_sonnet46/high_k_sonnet46_results.json",
+      "value_expr": "d['regime_summary']['conflicting']['n_all_pass']",
+      "expected": 16,
+      "tolerance": 0,
+      "compare_as": "int"
+    },
+    "high_k_opus47_conflicting_pass": {
+      "claim_text_excerpt": "opus-4.7 conflicting regime 22/25 (88%) (app:claude_genome High-k paragraph)",
+      "paper_location_hint": "app:claude_genome 'High-k Conflicting Regime'",
+      "source_file": "supplementary/experiments/outputs/high_k_opus47/high_k_opus47_results.json",
+      "value_expr": "d['regime_summary']['conflicting']['n_all_pass']",
+      "expected": 22,
+      "tolerance": 0,
+      "compare_as": "int"
+    },
+    "policy_density_n_models": {
+      "claim_text_excerpt": "9 working Claude models in policy density harness (app:policy_density)",
+      "paper_location_hint": "app:policy_density Tab:policy_density_curve caption",
+      "source_file": "supplementary/experiments/outputs/policy_density/policy_density_results.json",
+      "value_expr": "len(d['_meta']['models'])",
+      "expected": 9,
+      "tolerance": 0,
+      "compare_as": "int"
+    },
+    "policy_density_n_tiers": {
+      "claim_text_excerpt": "8 cumulative tiers in policy density harness (k=2,5,8,12,16,22,28,34)",
+      "paper_location_hint": "app:policy_density paragraph Design",
+      "source_file": "supplementary/experiments/outputs/policy_density/policy_density_results.json",
+      "value_expr": "len(d['_meta']['tiers'])",
+      "expected": 8,
+      "tolerance": 0,
+      "compare_as": "int"
+    },
+    "policy_density_t8_k_value": {
+      "claim_text_excerpt": "T8 = 34 atomic compliance rules (app:policy_density)",
+      "paper_location_hint": "app:policy_density paragraph Design",
+      "source_file": "supplementary/experiments/outputs/policy_density/policy_density_results.json",
+      "value_expr": "d['_meta']['rule_set_size_by_tier']['8']",
+      "expected": 34,
+      "tolerance": 0,
+      "compare_as": "int"
+    },
+    "policy_density_n_cells": {
+      "claim_text_excerpt": "432 cells in policy density v3 run (3 trials per cell, 9 models x 8 tiers x 2 protocols)",
+      "paper_location_hint": "app:policy_density Tab:policy_density_curve caption",
+      "source_file": "supplementary/experiments/outputs/policy_density/policy_density_results.json",
+      "value_expr": "len(d['results'])",
+      "expected": 432,
+      "tolerance": 0,
+      "compare_as": "int"
+    },
+    "implicit_k_library_size_34": {
+      "claim_text_excerpt": "34 atomic rules in the static library (app:implicit_k Four no-judge properties)",
+      "paper_location_hint": "app:implicit_k paragraph Four no-judge properties",
+      "source_file": "supplementary/experiments/outputs/implicit_k/implicit_k_results.json",
+      "value_expr": "d['_meta']['library_size']",
+      "expected": 34,
+      "tolerance": 0,
+      "compare_as": "int"
+    },
+    "implicit_k_n_prompts_8": {
+      "claim_text_excerpt": "8 implicit prompts (app:implicit_k Run paragraph)",
+      "paper_location_hint": "app:implicit_k paragraph Run",
+      "source_file": "supplementary/experiments/outputs/implicit_k/implicit_k_results.json",
+      "value_expr": "len(d['_meta']['implicit_prompts'])",
+      "expected": 8,
+      "tolerance": 0,
+      "compare_as": "int"
+    },
+    "implicit_k_n_models_9": {
+      "claim_text_excerpt": "9 working Claude models in implicit-k pipeline run (app:implicit_k)",
+      "paper_location_hint": "app:implicit_k paragraph Run",
+      "source_file": "supplementary/experiments/outputs/implicit_k/implicit_k_results.json",
+      "value_expr": "len(d['_meta']['models'])",
+      "expected": 9,
+      "tolerance": 0,
+      "compare_as": "int"
+    },
+    "implicit_k_opus41_pipeline_pass": {
+      "claim_text_excerpt": "opus-4.1 8/8 pipeline pass with most conservative tagger (app:implicit_k Tagger calibration)",
+      "paper_location_hint": "app:implicit_k paragraph Tagger calibration",
+      "source_file": "supplementary/experiments/outputs/implicit_k/implicit_k_results.json",
+      "value_expr": "sum(1 for r in d['results'] if r['model_name']=='opus-4.1' and r['all_pass'])",
+      "expected": 8,
+      "tolerance": 0,
+      "compare_as": "int"
+    },
+    "implicit_k_haiku45_pipeline_pass": {
+      "claim_text_excerpt": "haiku-4.5 2/8 pipeline pass with most aggressive tagger (app:implicit_k Tagger calibration)",
+      "paper_location_hint": "app:implicit_k paragraph Tagger calibration",
+      "source_file": "supplementary/experiments/outputs/implicit_k/implicit_k_results.json",
+      "value_expr": "sum(1 for r in d['results'] if r['model_name']=='haiku-4.5' and r['all_pass'])",
+      "expected": 2,
+      "tolerance": 0,
+      "compare_as": "int"
+    },
+    "model_family_opus46_wins": {
+      "claim_text_excerpt": "opus-4.6 4/6 wins in model_family sibling experiment (referenced from app:claude_genome)",
+      "paper_location_hint": "Reproducibility checklist; supplementary",
+      "source_file": "supplementary/experiments/fixed_point_model_family_opus46_addition.json",
+      "value_expr": "next(m['staged_wins'] for m in d['model_analyses'] if m['model_name']=='opus-4.6')",
+      "expected": 4,
+      "tolerance": 0,
+      "compare_as": "int"
+    },
+    "model_family_sonnet46_wins": {
+      "claim_text_excerpt": "sonnet-4.6 5/6 wins in model_family sibling experiment",
+      "paper_location_hint": "Reproducibility checklist; supplementary",
+      "source_file": "supplementary/experiments/fixed_point_model_family_sonnet46_addition.json",
+      "value_expr": "next(m['staged_wins'] for m in d['model_analyses'] if m['model_name']=='sonnet-4.6')",
+      "expected": 5,
+      "tolerance": 0,
+      "compare_as": "int"
+    },
+    "model_family_opus47_wins": {
+      "claim_text_excerpt": "opus-4.7 5/6 wins in model_family sibling experiment (sampling caveat)",
+      "paper_location_hint": "Reproducibility checklist; supplementary",
+      "source_file": "supplementary/experiments/fixed_point_model_family_opus47_addition.json",
+      "value_expr": "next(m['staged_wins'] for m in d['model_analyses'] if m['model_name']=='opus-4.7')",
+      "expected": 5,
+      "tolerance": 0,
+      "compare_as": "int"
     }
   }
 }

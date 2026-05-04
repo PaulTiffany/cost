@@ -1,0 +1,193 @@
+{
+  "check": "audio_manifest_check",
+  "status": "PASS",
+  "exit_code": 0,
+  "summary": {
+    "hard_failures": 0,
+    "soft_failures": 0,
+    "passed": 36,
+    "warnings": 0
+  },
+  "hard_failures": [],
+  "soft_failures": [],
+  "passed": [
+    {
+      "check": "manifest_parse",
+      "detail": "ci/audio_manifest.json is valid JSON"
+    },
+    {
+      "check": "sha256",
+      "path": "supplementary/demos/audio_demos/conflict_rho_0.00.wav",
+      "detail": "hash matches"
+    },
+    {
+      "check": "sha256",
+      "path": "supplementary/demos/audio_demos/conflict_rho_0.15.wav",
+      "detail": "hash matches"
+    },
+    {
+      "check": "sha256",
+      "path": "supplementary/demos/audio_demos/conflict_rho_0.30.wav",
+      "detail": "hash matches"
+    },
+    {
+      "check": "sha256",
+      "path": "supplementary/demos/audio_demos/conflict_rho_0.50.wav",
+      "detail": "hash matches"
+    },
+    {
+      "check": "sha256",
+      "path": "supplementary/demos/audio_demos/conflict_rho_0.70.wav",
+      "detail": "hash matches"
+    },
+    {
+      "check": "sha256",
+      "path": "supplementary/demos/audio_demos/conflict_rho_0.90.wav",
+      "detail": "hash matches"
+    },
+    {
+      "check": "sha256",
+      "path": "supplementary/demos/audio_demos/conflict_sweep_0_to_0.9.wav",
+      "detail": "hash matches"
+    },
+    {
+      "check": "sha256",
+      "path": "supplementary/demos/audio_demos/simultaneous_rho_0.5.wav",
+      "detail": "hash matches"
+    },
+    {
+      "check": "sha256",
+      "path": "supplementary/demos/audio_demos/staged_rho_0.5.wav",
+      "detail": "hash matches"
+    },
+    {
+      "check": "sha256",
+      "path": "supplementary/demos/audio_demos/simultaneous_rho_0.8.wav",
+      "detail": "hash matches"
+    },
+    {
+      "check": "sha256",
+      "path": "supplementary/demos/audio_demos/staged_rho_0.8.wav",
+      "detail": "hash matches"
+    },
+    {
+      "check": "sha256",
+      "path": "supplementary/demos/audio_demos/safety_helpfulness_rho_0.15.wav",
+      "detail": "hash matches"
+    },
+    {
+      "check": "sha256",
+      "path": "supplementary/demos/audio_demos/phase_transition_0.4_to_0.6.wav",
+      "detail": "hash matches"
+    },
+    {
+      "check": "sha256",
+      "path": "supplementary/demos/audio_demos/principle_helpful.wav",
+      "detail": "hash matches"
+    },
+    {
+      "check": "sha256",
+      "path": "supplementary/demos/audio_demos/principle_harmless.wav",
+      "detail": "hash matches"
+    },
+    {
+      "check": "sha256",
+      "path": "supplementary/demos/audio_demos/principle_honest.wav",
+      "detail": "hash matches"
+    },
+    {
+      "check": "sha256",
+      "path": "supplementary/demos/audio_demos/principle_autonomy.wav",
+      "detail": "hash matches"
+    },
+    {
+      "check": "sha256",
+      "path": "supplementary/demos/audio_demos/pair_helpful_harmless.wav",
+      "detail": "hash matches"
+    },
+    {
+      "check": "sha256",
+      "path": "supplementary/demos/audio_demos/pair_helpful_honest.wav",
+      "detail": "hash matches"
+    },
+    {
+      "check": "sha256",
+      "path": "supplementary/demos/audio_demos/pair_helpful_autonomy.wav",
+      "detail": "hash matches"
+    },
+    {
+      "check": "sha256",
+      "path": "supplementary/demos/audio_demos/pair_harmless_honest.wav",
+      "detail": "hash matches"
+    },
+    {
+      "check": "sha256",
+      "path": "supplementary/demos/audio_demos/pair_harmless_autonomy.wav",
+      "detail": "hash matches"
+    },
+    {
+      "check": "sha256",
+      "path": "supplementary/demos/audio_demos/pair_honest_autonomy.wav",
+      "detail": "hash matches"
+    },
+    {
+      "check": "sha256",
+      "path": "supplementary/demos/audio_demos/constitution_wheel_full.wav",
+      "detail": "hash matches"
+    },
+    {
+      "check": "bundle_manifest_cross_check",
+      "path": "supplementary/demos/audio_demos/constitution_wheel_full.wav",
+      "detail": "present in bundle_manifest"
+    },
+    {
+      "check": "sha256",
+      "path": "supplementary/demos/audio_demos/conflict_resolution_helpful_honest.wav",
+      "detail": "hash matches"
+    },
+    {
+      "check": "sha256",
+      "path": "supplementary/demos/audio_demos/conflict_resolution_harmless_autonomy.wav",
+      "detail": "hash matches"
+    },
+    {
+      "check": "sha256",
+      "path": "supplementary/demos/audio_demos/diagonal_helpful_harmless.wav",
+      "detail": "hash matches"
+    },
+    {
+      "check": "sha256",
+      "path": "supplementary/demos/audio_demos/diagonal_three_principles.wav",
+      "detail": "hash matches"
+    },
+    {
+      "check": "sha256",
+      "path": "supplementary/demos/audio_demos/diagonal_all_four.wav",
+      "detail": "hash matches"
+    },
+    {
+      "check": "bundle_manifest_cross_check",
+      "path": "supplementary/demos/audio_demos/diagonal_all_four.wav",
+      "detail": "present in bundle_manifest"
+    },
+    {
+      "check": "sha256",
+      "path": "supplementary/demos/audio_demos/staged_all_four_resolution.wav",
+      "detail": "hash matches"
+    },
+    {
+      "check": "sha256",
+      "path": "supplementary/demos/audio_demos/comparison_simultaneous_vs_staged_all_four.wav",
+      "detail": "hash matches"
+    },
+    {
+      "check": "policy_count",
+      "detail": "policy=ship_two_curated: 2 files marked for submission"
+    },
+    {
+      "check": "total_file_count",
+      "detail": "31 entries in manifest"
+    }
+  ],
+  "warnings": []
+}

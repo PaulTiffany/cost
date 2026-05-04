@@ -42,17 +42,16 @@ OUTPUT = SCRIPT_DIR / "encoder_lipschitz.json"
 
 def extract_lipschitz_table(tex: str) -> dict:
     """Parse rows of tab:lipschitz_calibration."""
-    # Each row format: "Model & $L \pm std$ & Tightness\% & Outliers\% \\"
+    # Row format (after Tightness/Outliers columns dropped 2026-05):
+    # "Model & $L \pm std$ \\"
     out = {}
     for model_key, model_re in [
         ("qwen_coder", r"Qwen-2\.5-Coder"),
         ("deepseek_coder", r"DeepSeek-Coder"),
         ("tinyllama", r"TinyLlama-1\.1B"),
     ]:
-        # Match: Model & $0.NNN \pm 0.NNN$ & NN\% & NN\% \\
         pat = (
-            rf"{model_re}\s*&\s*\$\s*([\d.]+)\s*\\pm\s*([\d.]+)\s*\$\s*"
-            rf"&\s*([\d.]+)\\%\s*&\s*([\d.]+)\\%"
+            rf"{model_re}\s*&\s*\$\s*([\d.]+)\s*\\pm\s*([\d.]+)\s*\$"
         )
         m = re.search(pat, tex)
         if not m:
@@ -60,8 +59,6 @@ def extract_lipschitz_table(tex: str) -> dict:
         out[model_key] = {
             "L_hat_mean": float(m.group(1)),
             "L_hat_std": float(m.group(2)),
-            "tightness_pct": float(m.group(3)),
-            "outliers_pct": float(m.group(4)),
         }
     return out
 
@@ -148,7 +145,7 @@ def main() -> int:
     print(f"wrote {OUTPUT.relative_to(REPO_ROOT)}")
     print("Lipschitz:")
     for k, v in payload["lipschitz_calibration"].items():
-        print(f"  {k}: L={v['L_hat_mean']}+/-{v['L_hat_std']} tightness={v['tightness_pct']}%")
+        print(f"  {k}: L={v['L_hat_mean']}+/-{v['L_hat_std']}")
     print("Embedding rho_max:")
     for k, v in payload["embedding_R"].items():
         print(f"  {k}: {v['rho_max']}+/-{v['rho_max_ci']}")

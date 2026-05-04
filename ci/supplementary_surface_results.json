@@ -1,0 +1,701 @@
+{
+  "summary": {
+    "total": 33,
+    "passed": 33,
+    "failed": 0,
+    "by_role": {
+      "excluded": {
+        "passed": 1,
+        "failed": 0
+      },
+      "reviewer_aid": {
+        "passed": 1,
+        "failed": 0
+      },
+      "demo": {
+        "passed": 2,
+        "failed": 0
+      },
+      "evidence": {
+        "passed": 17,
+        "failed": 0
+      },
+      "generated_table": {
+        "passed": 6,
+        "failed": 0
+      },
+      "internal_draft": {
+        "passed": 6,
+        "failed": 0
+      }
+    },
+    "notebooks_checked": 2,
+    "audio_files_checked": 0,
+    "generated_tables_checked": 6
+  },
+  "per_artifact": [
+    {
+      "path": "supplementary/demos/mobile_theorem34_demo.ipynb",
+      "role": "excluded",
+      "checks": [
+        {
+          "check": "schema",
+          "passed": true,
+          "detail": "All required fields present, role valid"
+        }
+      ]
+    },
+    {
+      "path": "supplementary/demos/interactive_demo.ipynb",
+      "role": "reviewer_aid",
+      "checks": [
+        {
+          "check": "schema",
+          "passed": true,
+          "detail": "All required fields present, role valid"
+        },
+        {
+          "check": "exists",
+          "passed": true,
+          "detail": "File present: C:\\src\\NeurIPS\\supplementary\\demos\\interactive_demo.ipynb"
+        },
+        {
+          "check": "notebook_static",
+          "passed": true,
+          "detail": "kernelspec=present; code_cells=5; markdown_cells=6; executed_cells=5; imports=[import numpy as np, import matplotlib.pyplot as plt, from matplotlib.patches import Circle, FancyArrowPatch, from IPython.display import Audio, display, import ipywidgets as widgets, from ipywidgets import interact, FloatSlider, from scipy.optimize import minimize]"
+        },
+        {
+          "check": "forbidden_tokens",
+          "passed": true,
+          "detail": "No forbidden tokens found (checked: ['ICML', 'Policy B', 'paulc', 'Tiffany'])"
+        },
+        {
+          "check": "scope_note_present",
+          "passed": true,
+          "detail": "scope_note present (149 chars)"
+        }
+      ]
+    },
+    {
+      "path": "supplementary/demos/sonification.py",
+      "role": "demo",
+      "checks": [
+        {
+          "check": "schema",
+          "passed": true,
+          "detail": "All required fields present, role valid"
+        },
+        {
+          "check": "exists",
+          "passed": true,
+          "detail": "File present: C:\\src\\NeurIPS\\supplementary\\demos\\sonification.py"
+        },
+        {
+          "check": "forbidden_tokens",
+          "passed": true,
+          "detail": "No forbidden tokens found (checked: ['ICML', 'paulc', 'Tiffany'])"
+        },
+        {
+          "check": "scope_note_present",
+          "passed": true,
+          "detail": "scope_note present (163 chars)"
+        }
+      ]
+    },
+    {
+      "path": "supplementary/demos/constitution_deep_dive.py",
+      "role": "demo",
+      "checks": [
+        {
+          "check": "schema",
+          "passed": true,
+          "detail": "All required fields present, role valid"
+        },
+        {
+          "check": "exists",
+          "passed": true,
+          "detail": "File present: C:\\src\\NeurIPS\\supplementary\\demos\\constitution_deep_dive.py"
+        },
+        {
+          "check": "forbidden_tokens",
+          "passed": true,
+          "detail": "No forbidden tokens found (checked: ['ICML', 'paulc', 'Tiffany'])"
+        }
+      ]
+    },
+    {
+      "path": "supplementary/bridges/bytebeat_harness.py",
+      "role": "evidence",
+      "checks": [
+        {
+          "check": "schema",
+          "passed": true,
+          "detail": "All required fields present, role valid"
+        },
+        {
+          "check": "exists",
+          "passed": true,
+          "detail": "File present: C:\\src\\NeurIPS\\supplementary\\bridges\\bytebeat_harness.py"
+        },
+        {
+          "check": "forbidden_tokens",
+          "passed": true,
+          "detail": "No forbidden tokens found (checked: ['paulc', 'Tiffany'])"
+        }
+      ]
+    },
+    {
+      "path": "supplementary/bridges/if_dsl_harness.py",
+      "role": "evidence",
+      "checks": [
+        {
+          "check": "schema",
+          "passed": true,
+          "detail": "All required fields present, role valid"
+        },
+        {
+          "check": "exists",
+          "passed": true,
+          "detail": "File present: C:\\src\\NeurIPS\\supplementary\\bridges\\if_dsl_harness.py"
+        },
+        {
+          "check": "forbidden_tokens",
+          "passed": true,
+          "detail": "No forbidden tokens found (checked: ['paulc', 'Tiffany'])"
+        }
+      ]
+    },
+    {
+      "path": "supplementary/bridges/json_nl_experiment_v4.py",
+      "role": "evidence",
+      "checks": [
+        {
+          "check": "schema",
+          "passed": true,
+          "detail": "All required fields present, role valid"
+        },
+        {
+          "check": "exists",
+          "passed": true,
+          "detail": "File present: C:\\src\\NeurIPS\\supplementary\\bridges\\json_nl_experiment_v4.py"
+        },
+        {
+          "check": "forbidden_tokens",
+          "passed": true,
+          "detail": "No forbidden tokens found (checked: ['paulc', 'Tiffany'])"
+        }
+      ]
+    },
+    {
+      "path": "supplementary/bridges/gradient_r_sanity_v2.py",
+      "role": "evidence",
+      "checks": [
+        {
+          "check": "schema",
+          "passed": true,
+          "detail": "All required fields present, role valid"
+        },
+        {
+          "check": "exists",
+          "passed": true,
+          "detail": "File present: C:\\src\\NeurIPS\\supplementary\\bridges\\gradient_r_sanity_v2.py"
+        },
+        {
+          "check": "forbidden_tokens",
+          "passed": true,
+          "detail": "No forbidden tokens found (checked: ['paulc', 'Tiffany'])"
+        }
+      ]
+    },
+    {
+      "path": "supplementary/bridges/gram_matrix_verification.py",
+      "role": "evidence",
+      "checks": [
+        {
+          "check": "schema",
+          "passed": true,
+          "detail": "All required fields present, role valid"
+        },
+        {
+          "check": "exists",
+          "passed": true,
+          "detail": "File present: C:\\src\\NeurIPS\\supplementary\\bridges\\gram_matrix_verification.py"
+        },
+        {
+          "check": "forbidden_tokens",
+          "passed": true,
+          "detail": "No forbidden tokens found (checked: ['paulc', 'Tiffany'])"
+        }
+      ]
+    },
+    {
+      "path": "supplementary/bridges/charitable_feasibility_simulation.py",
+      "role": "evidence",
+      "checks": [
+        {
+          "check": "schema",
+          "passed": true,
+          "detail": "All required fields present, role valid"
+        },
+        {
+          "check": "exists",
+          "passed": true,
+          "detail": "File present: C:\\src\\NeurIPS\\supplementary\\bridges\\charitable_feasibility_simulation.py"
+        },
+        {
+          "check": "forbidden_tokens",
+          "passed": true,
+          "detail": "No forbidden tokens found (checked: ['paulc', 'Tiffany'])"
+        }
+      ]
+    },
+    {
+      "path": "supplementary/experiments/outputs/charitable/charitable_table.tex",
+      "role": "generated_table",
+      "checks": [
+        {
+          "check": "schema",
+          "passed": true,
+          "detail": "All required fields present, role valid"
+        },
+        {
+          "check": "exists",
+          "passed": true,
+          "detail": "File present: C:\\src\\NeurIPS\\supplementary\\experiments\\outputs\\charitable\\charitable_table.tex"
+        },
+        {
+          "check": "table_display_match",
+          "passed": true,
+          "detail": "deferred \u2014 Agent K is performing table_display_match checks"
+        }
+      ]
+    },
+    {
+      "path": "supplementary/experiments/outputs/charitable/charitable_table_compact.tex",
+      "role": "generated_table",
+      "checks": [
+        {
+          "check": "schema",
+          "passed": true,
+          "detail": "All required fields present, role valid"
+        },
+        {
+          "check": "exists",
+          "passed": true,
+          "detail": "File present: C:\\src\\NeurIPS\\supplementary\\experiments\\outputs\\charitable\\charitable_table_compact.tex"
+        },
+        {
+          "check": "table_display_match",
+          "passed": true,
+          "detail": "deferred \u2014 Agent K is performing table_display_match checks"
+        }
+      ]
+    },
+    {
+      "path": "supplementary/experiments/outputs/conflict_detection/conflict_table.tex",
+      "role": "generated_table",
+      "checks": [
+        {
+          "check": "schema",
+          "passed": true,
+          "detail": "All required fields present, role valid"
+        },
+        {
+          "check": "exists",
+          "passed": true,
+          "detail": "File present: C:\\src\\NeurIPS\\supplementary\\experiments\\outputs\\conflict_detection\\conflict_table.tex"
+        },
+        {
+          "check": "table_display_match",
+          "passed": true,
+          "detail": "deferred \u2014 Agent K is performing table_display_match checks"
+        }
+      ]
+    },
+    {
+      "path": "supplementary/experiments/outputs/constitution/constitution_table.tex",
+      "role": "generated_table",
+      "checks": [
+        {
+          "check": "schema",
+          "passed": true,
+          "detail": "All required fields present, role valid"
+        },
+        {
+          "check": "exists",
+          "passed": true,
+          "detail": "File present: C:\\src\\NeurIPS\\supplementary\\experiments\\outputs\\constitution\\constitution_table.tex"
+        },
+        {
+          "check": "table_display_match",
+          "passed": true,
+          "detail": "deferred \u2014 Agent K is performing table_display_match checks"
+        }
+      ]
+    },
+    {
+      "path": "supplementary/experiments/outputs/compatibility_analysis/compatibility_table.tex",
+      "role": "generated_table",
+      "checks": [
+        {
+          "check": "schema",
+          "passed": true,
+          "detail": "All required fields present, role valid"
+        },
+        {
+          "check": "exists",
+          "passed": true,
+          "detail": "File present: C:\\src\\NeurIPS\\supplementary\\experiments\\outputs\\compatibility_analysis\\compatibility_table.tex"
+        },
+        {
+          "check": "table_display_match",
+          "passed": true,
+          "detail": "deferred \u2014 Agent K is performing table_display_match checks"
+        }
+      ]
+    },
+    {
+      "path": "supplementary/GRADED_METRICS_SPEC.md",
+      "role": "internal_draft",
+      "checks": [
+        {
+          "check": "schema",
+          "passed": true,
+          "detail": "All required fields present, role valid"
+        }
+      ]
+    },
+    {
+      "path": "supplementary/experiments/openrouter_regression_run.log",
+      "role": "internal_draft",
+      "checks": [
+        {
+          "check": "schema",
+          "passed": true,
+          "detail": "All required fields present, role valid"
+        },
+        {
+          "check": "exists",
+          "passed": true,
+          "detail": "File present: C:\\src\\NeurIPS\\supplementary\\experiments\\openrouter_regression_run.log"
+        }
+      ]
+    },
+    {
+      "path": "supplementary/illustrations/algorithm1_routing_draft.png",
+      "role": "internal_draft",
+      "checks": [
+        {
+          "check": "schema",
+          "passed": true,
+          "detail": "All required fields present, role valid"
+        },
+        {
+          "check": "exists",
+          "passed": true,
+          "detail": "File present: C:\\src\\NeurIPS\\supplementary\\illustrations\\algorithm1_routing_draft.png"
+        }
+      ]
+    },
+    {
+      "path": "supplementary/illustrations/staging_vs_refine_draft.png",
+      "role": "internal_draft",
+      "checks": [
+        {
+          "check": "schema",
+          "passed": true,
+          "detail": "All required fields present, role valid"
+        },
+        {
+          "check": "exists",
+          "passed": true,
+          "detail": "File present: C:\\src\\NeurIPS\\supplementary\\illustrations\\staging_vs_refine_draft.png"
+        }
+      ]
+    },
+    {
+      "path": "supplementary/illustrations/algorithm1_routing_spec.md",
+      "role": "internal_draft",
+      "checks": [
+        {
+          "check": "schema",
+          "passed": true,
+          "detail": "All required fields present, role valid"
+        },
+        {
+          "check": "exists",
+          "passed": true,
+          "detail": "File present: C:\\src\\NeurIPS\\supplementary\\illustrations\\algorithm1_routing_spec.md"
+        }
+      ]
+    },
+    {
+      "path": "supplementary/illustrations/staging_vs_refine_spec.md",
+      "role": "internal_draft",
+      "checks": [
+        {
+          "check": "schema",
+          "passed": true,
+          "detail": "All required fields present, role valid"
+        },
+        {
+          "check": "exists",
+          "passed": true,
+          "detail": "File present: C:\\src\\NeurIPS\\supplementary\\illustrations\\staging_vs_refine_spec.md"
+        }
+      ]
+    },
+    {
+      "path": "supplementary/bridges/gradient_rho_v2_results.json",
+      "role": "evidence",
+      "checks": [
+        {
+          "check": "schema",
+          "passed": true,
+          "detail": "All required fields present, role valid"
+        },
+        {
+          "check": "exists",
+          "passed": true,
+          "detail": "File present: C:\\src\\NeurIPS\\supplementary\\bridges\\gradient_rho_v2_results.json"
+        },
+        {
+          "check": "json_parse",
+          "passed": true,
+          "detail": "Valid JSON"
+        }
+      ]
+    },
+    {
+      "path": "supplementary/experiments/outputs/charitable/charitable_feasibility.json",
+      "role": "evidence",
+      "checks": [
+        {
+          "check": "schema",
+          "passed": true,
+          "detail": "All required fields present, role valid"
+        },
+        {
+          "check": "exists",
+          "passed": true,
+          "detail": "File present: C:\\src\\NeurIPS\\supplementary\\experiments\\outputs\\charitable\\charitable_feasibility.json"
+        },
+        {
+          "check": "json_parse",
+          "passed": true,
+          "detail": "Valid JSON"
+        }
+      ]
+    },
+    {
+      "path": "supplementary/experiments/outputs/high_k_opus/high_k_opus_results.json",
+      "role": "evidence",
+      "checks": [
+        {
+          "check": "schema",
+          "passed": true,
+          "detail": "All required fields present, role valid"
+        },
+        {
+          "check": "exists",
+          "passed": true,
+          "detail": "File present: C:\\src\\NeurIPS\\supplementary\\experiments\\outputs\\high_k_opus\\high_k_opus_results.json"
+        },
+        {
+          "check": "json_parse",
+          "passed": true,
+          "detail": "Valid JSON"
+        }
+      ]
+    },
+    {
+      "path": "supplementary/experiments/outputs/conflict_detection/results.json",
+      "role": "evidence",
+      "checks": [
+        {
+          "check": "schema",
+          "passed": true,
+          "detail": "All required fields present, role valid"
+        },
+        {
+          "check": "exists",
+          "passed": true,
+          "detail": "File present: C:\\src\\NeurIPS\\supplementary\\experiments\\outputs\\conflict_detection\\results.json"
+        },
+        {
+          "check": "json_parse",
+          "passed": true,
+          "detail": "Valid JSON"
+        }
+      ]
+    },
+    {
+      "path": "supplementary/experiments/outputs/compatibility_analysis/analysis_results.json",
+      "role": "evidence",
+      "checks": [
+        {
+          "check": "schema",
+          "passed": true,
+          "detail": "All required fields present, role valid"
+        },
+        {
+          "check": "exists",
+          "passed": true,
+          "detail": "File present: C:\\src\\NeurIPS\\supplementary\\experiments\\outputs\\compatibility_analysis\\analysis_results.json"
+        },
+        {
+          "check": "json_parse",
+          "passed": true,
+          "detail": "Valid JSON"
+        }
+      ]
+    },
+    {
+      "path": "supplementary/experiments_rebuttal/constrained_decoding/constrained_decoding_results.json",
+      "role": "evidence",
+      "checks": [
+        {
+          "check": "schema",
+          "passed": true,
+          "detail": "All required fields present, role valid"
+        },
+        {
+          "check": "exists",
+          "passed": true,
+          "detail": "File present: C:\\src\\NeurIPS\\supplementary\\experiments_rebuttal\\constrained_decoding\\constrained_decoding_results.json"
+        },
+        {
+          "check": "json_parse",
+          "passed": true,
+          "detail": "Valid JSON"
+        }
+      ]
+    },
+    {
+      "path": "supplementary/experiments_rebuttal/image_transfer/image_transfer_results_runA_no_medium_frame.json",
+      "role": "evidence",
+      "checks": [
+        {
+          "check": "schema",
+          "passed": true,
+          "detail": "All required fields present, role valid"
+        },
+        {
+          "check": "exists",
+          "passed": true,
+          "detail": "File present: C:\\src\\NeurIPS\\supplementary\\experiments_rebuttal\\image_transfer\\image_transfer_results_runA_no_medium_frame.json"
+        },
+        {
+          "check": "json_parse",
+          "passed": true,
+          "detail": "Valid JSON"
+        }
+      ]
+    },
+    {
+      "path": "supplementary/experiments_rebuttal/prompt_length_sweep/prompt_length_sweep_results.json",
+      "role": "evidence",
+      "checks": [
+        {
+          "check": "schema",
+          "passed": true,
+          "detail": "All required fields present, role valid"
+        },
+        {
+          "check": "exists",
+          "passed": true,
+          "detail": "File present: C:\\src\\NeurIPS\\supplementary\\experiments_rebuttal\\prompt_length_sweep\\prompt_length_sweep_results.json"
+        },
+        {
+          "check": "json_parse",
+          "passed": true,
+          "detail": "Valid JSON"
+        }
+      ]
+    },
+    {
+      "path": "supplementary/experiments_rebuttal/sonification_defense/chromatic_vision.py",
+      "role": "evidence",
+      "checks": [
+        {
+          "check": "schema",
+          "passed": true,
+          "detail": "All required fields present, role valid"
+        },
+        {
+          "check": "exists",
+          "passed": true,
+          "detail": "File present: C:\\src\\NeurIPS\\supplementary\\experiments_rebuttal\\sonification_defense\\chromatic_vision.py"
+        },
+        {
+          "check": "forbidden_tokens",
+          "passed": true,
+          "detail": "No forbidden tokens found (checked: ['paulc', 'Tiffany'])"
+        }
+      ]
+    },
+    {
+      "path": "supplementary/experiments_rebuttal/cross_model/cross_model_harness.py",
+      "role": "evidence",
+      "checks": [
+        {
+          "check": "schema",
+          "passed": true,
+          "detail": "All required fields present, role valid"
+        },
+        {
+          "check": "exists",
+          "passed": true,
+          "detail": "File present: C:\\src\\NeurIPS\\supplementary\\experiments_rebuttal\\cross_model\\cross_model_harness.py"
+        },
+        {
+          "check": "forbidden_tokens",
+          "passed": true,
+          "detail": "No forbidden tokens found (checked: ['paulc', 'Tiffany'])"
+        }
+      ]
+    },
+    {
+      "path": "supplementary/experiments_rebuttal/dct_analysis/gram_eigendecomposition.py",
+      "role": "evidence",
+      "checks": [
+        {
+          "check": "schema",
+          "passed": true,
+          "detail": "All required fields present, role valid"
+        },
+        {
+          "check": "exists",
+          "passed": true,
+          "detail": "File present: C:\\src\\NeurIPS\\supplementary\\experiments_rebuttal\\dct_analysis\\gram_eigendecomposition.py"
+        },
+        {
+          "check": "forbidden_tokens",
+          "passed": true,
+          "detail": "No forbidden tokens found (checked: ['paulc', 'Tiffany'])"
+        }
+      ]
+    },
+    {
+      "path": "supplementary/experiments/calibration_table.tex",
+      "role": "generated_table",
+      "checks": [
+        {
+          "check": "schema",
+          "passed": true,
+          "detail": "All required fields present, role valid"
+        },
+        {
+          "check": "exists",
+          "passed": true,
+          "detail": "File present: C:\\src\\NeurIPS\\supplementary\\experiments\\calibration_table.tex"
+        },
+        {
+          "check": "table_display_match",
+          "passed": true,
+          "detail": "deferred \u2014 Agent K is performing table_display_match checks"
+        }
+      ]
+    }
+  ]
+}

@@ -14423,5 +14423,28 @@
       "generated_tokens": 1460,
       "hit_max_tokens": true
     }
-  ]
+  ],
+  "_meta": {
+    "generator_script": "supplementary/experiments/delta_capacity_experiment.py",
+    "generator_script_sha256": "d87368cfc41fbc71922234e7ad4c6fef904725533aa7551cae106db3a415e1bf",
+    "experiment": "delta_capacity_token_budget_sweep",
+    "n_trials": 1200,
+    "parameters": {
+      "token_budgets": [
+        128,
+        192,
+        256,
+        384,
+        512
+      ],
+      "protocols": [
+        "oneshot",
+        "staged"
+      ],
+      "n_trials_per_cell": 60
+    },
+    "backfilled_at": "2026-05-03T23:37:10",
+    "backfill_note": "Provenance _meta backfilled by ci/backfill_meta.py to satisfy L20 result_provenance_check. Generator script and parameters reflect known invocation.",
+    "script_hash": "d87368cfc41fbc71922234e7ad4c6fef904725533aa7551cae106db3a415e1bf"
+  }
 }

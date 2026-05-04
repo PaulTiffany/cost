@@ -1,0 +1,13 @@
+{
+  "_meta": {
+    "generated_at": "2026-05-04T10:28:51.881497+00:00"
+  },
+  "summary": {
+    "total_files": 3,
+    "passed": 3,
+    "failed": 0,
+    "skipped": 0,
+    "total_findings": 0
+  },
+  "findings": []
+}

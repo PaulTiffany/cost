@@ -67,13 +67,115 @@ LAYER_SCRIPTS = {
     "L14_illustrations": SCRIPT_DIR / "illustration_lineage_check.py",
     "L15_data_ties": SCRIPT_DIR / "claim_data_ties_check.py",
     "L16_author_claims": SCRIPT_DIR / "author_claims_check.py",
+    # Suite expansion (added 2026-05-04 second pass; see CERTIFICATE_CHANGELOG)
+    "L17_table_values":         SCRIPT_DIR / "table_value_check.py",                  # claim_text
+    "L18_sample_size_adequacy": SCRIPT_DIR / "sample_size_adequacy_check.py",         # statistical_hygiene
+    "L19_ci_coverage":          SCRIPT_DIR / "confidence_interval_coverage_check.py", # statistical_hygiene
+    "L20_cross_source_recompute": SCRIPT_DIR / "cross_source_recomputation_check.py", # data_ties
+    "L21_sbom":                 SCRIPT_DIR / "sbom_check.py",                         # provenance
+    "L22_container_lineage":    SCRIPT_DIR / "container_lineage_check.py",            # artifact_lineage
+    "L23_license_clearance":    SCRIPT_DIR / "license_clearance_check.py",            # submission_hygiene
+    "L24_pdf_camera_ready":     SCRIPT_DIR / "pdf_camera_ready_check.py",             # submission_hygiene
+    "L25_multi_seed_drift":     SCRIPT_DIR / "multi_seed_drift_check.py",             # statistical_hygiene
+    "L26_reference_convention": SCRIPT_DIR / "reference_convention_check.py",          # submission_hygiene
 }
 
-# L12 in unified-cert mode runs --quick (mtime + asset-hash only) so
-# the certificate stays fast. Full re-render mode is invoked manually.
-LAYER_EXTRA_ARGS = {
+# L12 in default (quick) mode runs --quick (mtime + asset-hash only) so
+# the certificate stays fast. Release mode strips --quick for full re-render
+# equivalence checking. See _resolve_extra_args().
+LAYER_EXTRA_ARGS_QUICK = {
     "L12_build_equiv": ["--quick"],
 }
+LAYER_EXTRA_ARGS_RELEASE = {
+    # No --quick on L12 in release mode (full equivalence check)
+}
+
+
+def _resolve_extra_args(mode: str) -> dict:
+    return LAYER_EXTRA_ARGS_RELEASE if mode == "release" else LAYER_EXTRA_ARGS_QUICK
+
+
+# Profile-driven layer skipping. reviewer_quick prioritizes <10s runtime
+# (skip the slow ones); artifact_eval and author_release run everything.
+PROFILE_SKIP_LAYERS = {
+    "standard": set(),
+    "reviewer_quick": {"L11_scripts", "L12_build_equiv"},
+    "artifact_eval": set(),
+    "author_release": set(),
+}
+
+
+def _profile_skip(profile: str, layer_name: str) -> bool:
+    return layer_name in PROFILE_SKIP_LAYERS.get(profile, set())
+
+
+# Used as a module-level fallback by run_layer for backward-compat call sites.
+LAYER_EXTRA_ARGS = LAYER_EXTRA_ARGS_QUICK
+
+
+def get_git_state() -> dict:
+    """Capture git provenance: commit, branch, dirty status, untracked count.
+
+    Returns a dict suitable for embedding in cert provenance. Best-effort:
+    if git is unavailable or this is not a repo, returns a minimal dict
+    with status='unavailable'.
+    """
+    import subprocess
+    def _run(cmd: list[str]) -> str | None:
+        try:
+            r = subprocess.run(cmd, capture_output=True, text=True, cwd=str(REPO_ROOT), timeout=5)
+            return r.stdout.strip() if r.returncode == 0 else None
+        except Exception:
+            return None
+    sha = _run(["git", "rev-parse", "HEAD"])
+    if not sha:
+        return {"status": "unavailable", "reason": "git command failed or not a repo"}
+    branch = _run(["git", "rev-parse", "--abbrev-ref", "HEAD"]) or "(detached)"
+    porcelain = _run(["git", "status", "--porcelain"])
+    if porcelain is None:
+        porcelain = ""
+    porcelain_lines = [l for l in porcelain.splitlines() if l.strip()]
+    n_modified = sum(1 for l in porcelain_lines if l.startswith((" M", "M ", "MM", " D", "D ")))
+    n_untracked = sum(1 for l in porcelain_lines if l.startswith("??"))
+    n_staged = sum(1 for l in porcelain_lines if l.startswith(("A ", "M ", "D ", "R ", "C ")))
+    return {
+        "status": "ok",
+        "commit": sha,
+        "commit_short": sha[:8],
+        "branch": branch,
+        "dirty": bool(porcelain_lines),
+        "n_modified_unstaged": n_modified,
+        "n_staged": n_staged,
+        "n_untracked": n_untracked,
+    }
+
+
+def detect_venue(default: str = "neurips") -> str:
+    """Auto-detect submission venue from main.tex preamble.
+
+    Returns one of: "arxiv" (preprint mode), "camera_ready" (final mode),
+    or default (NeurIPS double-blind submission).
+
+    Ignores LaTeX comments (lines starting with %) so example invocations
+    in preamble docs do not trigger false positives.
+    """
+    if not MAIN_TEX.exists():
+        return default
+    import re as _re
+    head_lines = MAIN_TEX.read_text(encoding="utf-8", errors="replace").splitlines()[:80]
+    for raw in head_lines:
+        if raw.lstrip().startswith("%"):
+            continue
+        m = _re.search(r"\\usepackage\[([^\]]*)\]\{neurips_\d+\}", raw)
+        if not m:
+            continue
+        opts = {o.strip() for o in m.group(1).split(",")}
+        if "preprint" in opts:
+            return "arxiv"
+        if "final" in opts:
+            return "camera_ready"
+        return default
+    return default
 
 LAYER_RESULT_JSONS = {
     "L1_audit": SCRIPT_DIR / "claim_audit_results.json",
@@ -89,6 +191,16 @@ LAYER_RESULT_JSONS = {
     "L14_illustrations": SCRIPT_DIR / "illustration_lineage_results.json",
     "L15_data_ties": SCRIPT_DIR / "claim_data_ties_results.json",
     "L16_author_claims": SCRIPT_DIR / "author_claims_results.json",
+    "L17_table_values":         SCRIPT_DIR / "table_value_results.json",
+    "L18_sample_size_adequacy": SCRIPT_DIR / "sample_size_adequacy_results.json",
+    "L19_ci_coverage":          SCRIPT_DIR / "confidence_interval_coverage_results.json",
+    "L20_cross_source_recompute": SCRIPT_DIR / "cross_source_recomputation_results.json",
+    "L21_sbom":                 SCRIPT_DIR / "sbom_check_results.json",
+    "L22_container_lineage":    SCRIPT_DIR / "container_lineage_results.json",
+    "L23_license_clearance":    SCRIPT_DIR / "license_clearance_results.json",
+    "L24_pdf_camera_ready":     SCRIPT_DIR / "pdf_camera_ready_results.json",
+    "L25_multi_seed_drift":     SCRIPT_DIR / "multi_seed_drift_results.json",
+    "L26_reference_convention": SCRIPT_DIR / "reference_convention_results.json",
 }
 
 
@@ -102,9 +214,105 @@ class LayerOutcome:
 
     @property
     def status(self) -> str:
+        if self.summary.get("skipped"):
+            return "SKIP"
         if self.return_code == 0:
             return "PASS"
         return "FAIL"
+
+
+# ---------------------------------------------------------------------------
+# Suite registry roll-up (additive; preserves layers[] for backward compat)
+# ---------------------------------------------------------------------------
+def _load_suite_registry() -> dict:
+    """Load ci/suite_registry.json. The registry maps each blocking layer
+    and L9 sub-check into a named suite (claim_text, data_ties, etc.).
+    The cert payload emits both the legacy layers[] array (for downstream
+    tooling) and a suites[] roll-up (for human-friendly reading).
+    Migration is additive; this function is the only new orchestrator
+    surface introduced by the suite reorganization."""
+    here = Path(__file__).resolve().parent
+    p = here / "suite_registry.json"
+    if not p.exists():
+        return {"suites": {}}
+    return json.loads(p.read_text(encoding="utf-8"))
+
+
+def _roll_up_suites(outcomes) -> list[dict]:
+    """Group LayerOutcome objects by suite as defined in suite_registry.json.
+    Layer outcomes not listed in the registry land in 'unmapped'. Each
+    suite reports passed / failed / skipped counts and a derived status.
+    Sub-check (subproc__) outcomes are inferred from the L9 consistency
+    output if present (we surface the layer-level status here; sub-check
+    detail lives in cross_claim_consistency_results.json)."""
+    reg = _load_suite_registry()
+    by_name = {o.name: o for o in outcomes}
+    rolled: list[dict] = []
+    seen: set[str] = set()
+    for suite_name, suite_def in reg.get("suites", {}).items():
+        members_status: list[dict] = []
+        passed = failed = skipped = 0
+        for member in suite_def.get("members", []):
+            check_name = member["check"]
+            seen.add(check_name)
+            outcome = by_name.get(check_name)
+            if outcome is None:
+                # Sub-check or layer not surfaced as its own LayerOutcome.
+                # We mark it 'inherited' so the reader sees it's tracked
+                # by the suite even though its detail is inside L9.
+                members_status.append({
+                    "check": check_name,
+                    "script": member.get("script"),
+                    "severity": member.get("severity"),
+                    "status": "INHERITED_FROM_L9",
+                })
+                continue
+            members_status.append({
+                "check": check_name,
+                "script": outcome.script,
+                "severity": member.get("severity"),
+                "status": outcome.status,
+            })
+            if outcome.status == "PASS":
+                passed += 1
+            elif outcome.status == "SKIP":
+                skipped += 1
+            else:
+                failed += 1
+        # Suite status: PASS if all blocker members passed (or skipped);
+        # FAIL if any blocker failed; advisory-only failures do not flip
+        # the suite, but they're visible in members_status.
+        any_blocker_fail = any(
+            m["status"] not in {"PASS", "SKIP", "INHERITED_FROM_L9"}
+            and m.get("severity") == "blocker"
+            for m in members_status
+        )
+        suite_status = "FAIL" if any_blocker_fail else "PASS"
+        rolled.append({
+            "suite": suite_name,
+            "purpose": suite_def.get("purpose", ""),
+            "status": suite_status,
+            "passed": passed,
+            "failed": failed,
+            "skipped": skipped,
+            "members": members_status,
+        })
+    # Append an 'unmapped' bucket if any LayerOutcome wasn't claimed by a suite.
+    unmapped = [o for o in outcomes if o.name not in seen]
+    if unmapped:
+        rolled.append({
+            "suite": "unmapped",
+            "purpose": "Layer outcomes not yet assigned to a named suite (legacy or new).",
+            "status": "ADVISORY",
+            "passed": sum(1 for o in unmapped if o.status == "PASS"),
+            "failed": sum(1 for o in unmapped if o.status not in {"PASS", "SKIP"}),
+            "skipped": sum(1 for o in unmapped if o.status == "SKIP"),
+            "members": [
+                {"check": o.name, "script": o.script, "severity": "unassigned", "status": o.status}
+                for o in unmapped
+            ],
+        })
+    return rolled
 
 
 # ---------------------------------------------------------------------------
@@ -342,11 +550,48 @@ def render_markdown(payload: dict) -> str:
     p = payload["provenance"]
     v = payload["verdict"]
     lines: list[str] = []
+
+    # ------------------------------------------------------------------
+    # Reviewer one-pager (top of file). Designed for a reviewer who has
+    # minutes, not hours: verdict + scope + spot-check recipe + limits.
+    # ------------------------------------------------------------------
     lines.append(f"# Claim Certificate")
     lines.append("")
+    lines.append("> **For reviewers:** this certificate proves the paper says what it says without numerical, citation, or figure-asset drift. It does NOT prove the experiments are well-designed or the conclusions follow. See **Scope** below.")
+    lines.append("")
     lines.append(f"**Paper:** {p['paper_title']}")
+    lines.append(f"**Venue:** {p['venue']}")
+    lines.append(f"**Mode:** `{p.get('mode','quick')}` ({p.get('mode_note','')})")
     lines.append(f"**Generated:** {p['generated_at']}")
     lines.append(f"**Verdict:** **{v['verdict']}** — {v['rationale']}")
+    lines.append("")
+    lines.append("## Scope of certification")
+    lines.append("")
+    lines.append("| Label | What this certificate guarantees |")
+    lines.append("|---|---|")
+    lines.append("| **Mechanically verified** | Every numeric/citation claim with a ✓ row in the layer table below has been recomputed from source data and matches the paper text. |")
+    lines.append("| **Consistency-checked** | Cross-claim arithmetic relations hold (e.g., decompositions sum correctly, formulas evaluate to tabulated values). |")
+    lines.append("| **Advisory** | Coverage scans (L3, L5, L16) report uncovered numerics for human review. They do not block. |")
+    lines.append("| **NOT certified** | Theorem proofs (math correctness beyond the encoded relations), experimental design, scientific judgment, the underlying truth of the claims about the world. |")
+    lines.append("")
+    lines.append("## Spot-check recipes")
+    lines.append("")
+    lines.append("Verify any flagship claim with a single command. Examples:")
+    lines.append("")
+    lines.append("```")
+    lines.append("# Verify 0/4,272 smooth-regime refutations:")
+    lines.append("python ci/claim_data_ties_check.py     # find smooth_regime_total_4272")
+    lines.append("# Source: rebuttal/figures/unconditional_pivot_results.json (full_paper_claim.smooth_total)")
+    lines.append("")
+    lines.append("# Verify cross-model figure counts (9 models, 6 providers, N=3,120):")
+    lines.append("python ci/cross_model_metadata_check.py")
+    lines.append("# Source: supplementary/experiments/code_constraint_results.json + rebuttal/figures/cross_model_results.json")
+    lines.append("")
+    lines.append("# Re-run full cert:")
+    lines.append("python ci/claim_certificate.py")
+    lines.append("# Re-run release-mode cert (full L12 build equivalence + artifact hashes):")
+    lines.append("python ci/claim_certificate.py --release")
+    lines.append("```")
     lines.append("")
     lines.append("## Provenance")
     lines.append("")
@@ -355,6 +600,9 @@ def render_markdown(payload: dict) -> str:
     lines.append(f"- main.pdf size: {p['main_pdf_size']:,} bytes")
     lines.append(f"- main.pdf mtime: {p['main_pdf_mtime']}")
     lines.append(f"- registry sha256: `{p['claim_audit_md_sha256'][:16]}...`")
+    if "artifact_hashes" in payload:
+        n_artifacts = len(payload["artifact_hashes"])
+        lines.append(f"- artifact hashes: {n_artifacts} layer-result JSONs + manifests recorded in JSON payload")
     cert_hash = payload.get("certificate_self_hash", "<not-yet-computed>")
     if cert_hash != "<not-yet-computed>":
         lines.append(f"- certificate self-hash: `{cert_hash[:16]}...` (sha256 of this payload minus the hash field; recompute to verify integrity)")
@@ -446,10 +694,56 @@ def render_markdown(payload: dict) -> str:
 def main() -> int:
     parser = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
     parser.add_argument("--quiet", action="store_true", help="suppress per-layer console output during execution")
+    parser.add_argument("--release", action="store_true",
+                        help="release mode: full L12 build equivalence (no --quick), embed artifact hashes in payload, fail on dirty git tree")
+    parser.add_argument("--allow-dirty", action="store_true",
+                        help="allow --release to proceed even with a dirty working tree (records dirty=true in provenance)")
+    parser.add_argument("--venue", choices=["auto", "neurips", "arxiv", "camera_ready"], default="neurips",
+                        help="record submission venue in cert provenance. Default 'neurips' protects double-blind: the cert ships with the supplementary and must never accidentally record 'arxiv'. Use --venue auto only for non-anonymous local builds, --venue arxiv only when explicitly producing an arXiv-attached cert.")
+    parser.add_argument("--profile", choices=["standard", "reviewer_quick", "artifact_eval", "author_release"], default="standard",
+                        help="time-budgeted verification profile. standard (default): all layers, quick L12. reviewer_quick: skip L12+L11. artifact_eval: standard + tighter gates. author_release: same as --release.")
     args = parser.parse_args()
 
     if not MAIN_TEX.exists():
         print(f"ERROR: main.tex not found at {MAIN_TEX}", file=sys.stderr)
+        return 2
+
+    # Resolve mode + venue once, used by L12 invocation and provenance.
+    # author_release profile implies --release.
+    if args.profile == "author_release":
+        args.release = True
+    mode = "release" if args.release else "quick"
+    venue = detect_venue() if args.venue == "auto" else args.venue
+    profile = args.profile
+    # Propagate profile to subprocess-wrapped sub-checks via env (used by
+    # cross_claim_consistency_check.py to promote advisory → blocking).
+    import os as _os
+    _os.environ["CERT_PROFILE"] = profile
+    # Make the resolved extra-args visible to run_layer's module-level lookup.
+    global LAYER_EXTRA_ARGS
+    LAYER_EXTRA_ARGS = _resolve_extra_args(mode)
+
+    # Capture git state up-front; release mode rejects dirty trees unless allowed.
+    git_state = get_git_state()
+
+    # Dependency fingerprint (best-effort; non-fatal if module unavailable).
+    dep_fingerprint = {}
+    try:
+        import importlib.util as _ilu
+        dep_path = SCRIPT_DIR / "dependency_fingerprint.py"
+        if dep_path.exists():
+            spec = _ilu.spec_from_file_location("_dep_fp", dep_path)
+            mod = _ilu.module_from_spec(spec)
+            sys.modules["_dep_fp"] = mod
+            spec.loader.exec_module(mod)
+            if hasattr(mod, "collect_fingerprint"):
+                dep_fingerprint = mod.collect_fingerprint()
+    except Exception:
+        dep_fingerprint = {"status": "unavailable"}
+    if mode == "release" and git_state.get("dirty") and not args.allow_dirty:
+        print("ERROR: --release on dirty working tree.", file=sys.stderr)
+        print(f"  modified={git_state['n_modified_unstaged']} staged={git_state['n_staged']} untracked={git_state['n_untracked']}", file=sys.stderr)
+        print("  Either commit/stash changes or pass --allow-dirty.", file=sys.stderr)
         return 2
 
     # Run each layer in sequence.
@@ -505,14 +799,25 @@ def main() -> int:
     attach_summary_l10(o)
     outcomes.append(o)
 
-    if not args.quiet: print("  L11 script integrity...")
-    o = run_layer("L11_scripts", LAYER_SCRIPTS["L11_scripts"])
-    attach_summary_l11(o)
+    if _profile_skip(profile, "L11_scripts"):
+        if not args.quiet: print("  L11 script integrity... [SKIPPED by profile]")
+        o = LayerOutcome(name="L11_scripts", script=str(LAYER_SCRIPTS["L11_scripts"]),
+                          return_code=0, summary={"skipped": True, "skip_reason": f"profile={profile}"})
+    else:
+        if not args.quiet: print("  L11 script integrity...")
+        o = run_layer("L11_scripts", LAYER_SCRIPTS["L11_scripts"])
+        attach_summary_l11(o)
     outcomes.append(o)
 
-    if not args.quiet: print("  L12 build equivalence (--quick)...")
-    o = run_layer("L12_build_equiv", LAYER_SCRIPTS["L12_build_equiv"])
-    attach_summary_l12(o)
+    if _profile_skip(profile, "L12_build_equiv"):
+        if not args.quiet: print("  L12 build equivalence... [SKIPPED by profile]")
+        o = LayerOutcome(name="L12_build_equiv", script=str(LAYER_SCRIPTS["L12_build_equiv"]),
+                          return_code=0, summary={"skipped": True, "skip_reason": f"profile={profile}"})
+    else:
+        if not args.quiet:
+            print("  L12 build equivalence (full)..." if mode == "release" else "  L12 build equivalence (--quick)...")
+        o = run_layer("L12_build_equiv", LAYER_SCRIPTS["L12_build_equiv"])
+        attach_summary_l12(o)
     outcomes.append(o)
 
     if not args.quiet: print("  L13 cross-tree consistency...")
@@ -535,13 +840,70 @@ def main() -> int:
     attach_summary_l16(o)
     outcomes.append(o)
 
+    # Suite expansion (L17-L24): added 2026-05-04 to fill the BIS gaps Gemini's
+    # taxonomy review surfaced. Each is a small standalone check that returns 0
+    # for pass; advisory layers do not block the verdict. See suite_registry.json
+    # for the per-suite assignment.
+    for name in (
+        "L17_table_values", "L18_sample_size_adequacy", "L19_ci_coverage",
+        "L20_cross_source_recompute", "L21_sbom", "L22_container_lineage",
+        "L23_license_clearance", "L24_pdf_camera_ready", "L25_multi_seed_drift",
+        "L26_reference_convention",
+    ):
+        if not args.quiet: print(f"  {name}...")
+        o = run_layer(name, LAYER_SCRIPTS[name])
+        outcomes.append(o)
+
     verdict, rationale = aggregate_verdict(outcomes)
 
+    # Artifact hashes: every layer-result JSON + key manifests.
+    # Lets verify_certificate.py detect post-cert tampering.
+    artifact_hashes: dict[str, str] = {}
+    for layer_name, json_path in LAYER_RESULT_JSONS.items():
+        if json_path.exists():
+            artifact_hashes[str(json_path.relative_to(REPO_ROOT))] = sha256_of(json_path)
+    for manifest in (
+        SCRIPT_DIR / "claim_data_ties.json",
+        SCRIPT_DIR / "figure_lineage.json",
+        SCRIPT_DIR / "illustration_lineage.json",
+    ):
+        if manifest.exists():
+            artifact_hashes[str(manifest.relative_to(REPO_ROOT))] = sha256_of(manifest)
+
+    # Venue label for the provenance block. Both NeurIPS and arXiv builds
+    # use this same cert; the venue field records which one it covers.
+    venue_labels = {
+        "neurips": "NeurIPS 2026 (anonymous double-blind submission)",
+        "arxiv": "arXiv preprint (preprint mode)",
+        "camera_ready": "NeurIPS 2026 camera-ready (final)",
+    }
+
+    # Zero-work guard: in release mode, fail if a layer reports zero
+    # checks performed. Catches "vacuously passed" failures.
+    if mode == "release":
+        zero_work = []
+        for o in outcomes:
+            s = o.summary or {}
+            counts = [s.get(k) for k in ("total", "checks_total", "n_urls", "n_cites_in_paper", "n_refs", "total_scripts")]
+            if any(c == 0 for c in counts if c is not None):
+                zero_work.append(o.name)
+        if zero_work:
+            print(f"WARNING (release mode): zero-work layers detected: {zero_work}", file=sys.stderr)
+
     payload = {
-        "schema_version": 1,
+        "schema_version": 3,
         "provenance": {
             "paper_title": "The Cost of Cacophony: Geometric Limits on Multi-Constraint Alignment",
-            "venue": "NeurIPS 2026",
+            "venue": venue_labels.get(venue, venue),
+            "venue_key": venue,
+            "mode": mode,
+            "mode_note": (
+                "release: full L12 build equivalence + artifact hashes embedded; "
+                "quick: --quick L12 (mtime+asset-hash only), faster local checks"
+            ),
+            "profile": profile,
+            "git": git_state,
+            "dependencies": dep_fingerprint,
             "generated_at": datetime.datetime.now().isoformat(timespec="seconds"),
             "main_tex_path": str(MAIN_TEX.relative_to(REPO_ROOT)),
             "main_tex_sha256": sha256_of(MAIN_TEX),
@@ -552,6 +914,7 @@ def main() -> int:
             "claim_audit_md_path": str(CLAIMS_MD.relative_to(REPO_ROOT)),
             "claim_audit_md_sha256": sha256_of(CLAIMS_MD),
         },
+        "artifact_hashes": artifact_hashes,
         "verdict": {
             "verdict": verdict,
             "rationale": rationale,
@@ -567,6 +930,7 @@ def main() -> int:
             }
             for o in outcomes
         ],
+        "suites": _roll_up_suites(outcomes),
     }
 
     # Self-tamper-evident hash: sha256 of the payload with the

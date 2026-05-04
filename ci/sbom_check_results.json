@@ -1,0 +1,11 @@
+{
+  "lockfile": "requirements.lock.txt",
+  "manifest": "ci\\sbom_manifest.json",
+  "pinned_count": 8,
+  "manifest_count": 8,
+  "missing_in_manifest": [],
+  "license_gaps": [],
+  "lockfile_parse_errors": [],
+  "manifest_errors": [],
+  "verdict": "PASS"
+}

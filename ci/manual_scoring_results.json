@@ -1,0 +1,18 @@
+{
+  "summary": {
+    "total": 1,
+    "passed": 1,
+    "failed": 0
+  },
+  "per_file": [
+    {
+      "path": "supplementary/experiments_rebuttal/image_transfer/image_transfer_runD_passB.json",
+      "skipped": false,
+      "passed": true,
+      "missing": [],
+      "warnings": [
+        "Advisory: '_meta.scoring_methodology' not present. Adding a free-text description of the scoring approach improves auditability."
+      ]
+    }
+  ]
+}

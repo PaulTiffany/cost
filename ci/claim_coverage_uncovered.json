@@ -1,11 +1,11 @@
 {
   "paper_path": "C:\\src\\NeurIPS\\paper\\main.tex",
   "summary": {
-    "total_numeric_tokens": 1166,
-    "covered": 1097,
-    "uncovered_raw": 69,
-    "uncovered_deduped": 66,
-    "coverage_percent": 94.1
+    "total_numeric_tokens": 1375,
+    "covered": 1279,
+    "uncovered_raw": 96,
+    "uncovered_deduped": 93,
+    "coverage_percent": 93.0
   },
   "uncovered": [
     {
@@ -15,394 +15,556 @@
       "section": "preamble"
     },
     {
-      "line_no": 118,
+      "line_no": 131,
       "value": "1",
       "context": "(1)",
       "section": "paragraph: The Diagonal Cost Bound."
     },
     {
-      "line_no": 246,
+      "line_no": 259,
       "value": "1",
       "context": "t+1",
       "section": "subsection: Notation and Model"
     },
     {
-      "line_no": 254,
+      "line_no": 267,
       "value": "0.92",
       "context": "0.92",
       "section": "subsection: Notation and Model"
     },
     {
-      "line_no": 269,
+      "line_no": 282,
       "value": "94",
       "context": "Direction stability: 94",
       "section": "subsection: Notation and Model"
     },
     {
-      "line_no": 379,
+      "line_no": 392,
       "value": "59",
-      "context": "er Transform verified audio): 59",
+      "context": "ytebeat (FFT-verified audio): 59",
       "section": "subsection: Flagship: Exact Bounds"
     },
     {
-      "line_no": 456,
+      "line_no": 469,
       "value": "0.34",
       "context": "0.34",
       "section": "paragraph: Geometric floor."
     },
     {
-      "line_no": 521,
-      "value": "0.56",
-      "context": "0.56",
-      "section": "paragraph: Frontier Transfer and Generalization."
-    },
-    {
-      "line_no": 538,
+      "line_no": 551,
       "value": "2026",
       "context": "ng interests. See the NeurIPS 2026 Call for Papers at https://ne",
       "section": "section: Related Work, Limitations, and Future Work"
     },
     {
-      "line_no": 538,
+      "line_no": 551,
       "value": "2026",
       "context": "ttps://neurips.cc/Conferences/2026/CallForPapers for current fun",
       "section": "section: Related Work, Limitations, and Future Work"
     },
     {
-      "line_no": 649,
+      "line_no": 665,
       "value": "4.5",
-      "context": "Opus-4.5 (frontier) shows",
+      "context": "Opus-4.5 (the prior frontier in this p",
       "section": "paragraph: The Scaling Paradox."
     },
     {
-      "line_no": 675,
+      "line_no": 699,
       "value": "3",
       "context": "3",
       "section": "subsection: Notation glossary (relocated from body \\S\\ref{sec:setup"
     },
     {
-      "line_no": 780,
+      "line_no": 804,
       "value": "1",
       "context": "eals two failure boundaries: (1)",
       "section": "paragraph: Where the Method Breaks."
     },
     {
-      "line_no": 866,
+      "line_no": 890,
       "value": "3",
       "context": "recipe JSON with exactly 3 ingredients",
       "section": "paragraph: Implication."
     },
     {
-      "line_no": 897,
+      "line_no": 946,
       "value": "48",
       "context": "Across 48 task",
       "section": "paragraph: Per-task validation (relocated from \\S\\ref{sec:staging"
     },
     {
-      "line_no": 929,
+      "line_no": 978,
       "value": "2",
       "context": "2-3",
       "section": "paragraph: Per-task validation (relocated from \\S\\ref{sec:staging"
     },
     {
-      "line_no": 929,
+      "line_no": 978,
       "value": "3",
       "context": "2-3",
       "section": "paragraph: Per-task validation (relocated from \\S\\ref{sec:staging"
     },
     {
-      "line_no": 929,
+      "line_no": 978,
       "value": "4",
       "context": "4-5",
       "section": "paragraph: Per-task validation (relocated from \\S\\ref{sec:staging"
     },
     {
-      "line_no": 929,
+      "line_no": 978,
       "value": "5",
       "context": "4-5",
       "section": "paragraph: Per-task validation (relocated from \\S\\ref{sec:staging"
     },
     {
-      "line_no": 929,
+      "line_no": 978,
       "value": "6",
       "context": "6-7",
       "section": "paragraph: Per-task validation (relocated from \\S\\ref{sec:staging"
     },
     {
-      "line_no": 929,
+      "line_no": 978,
       "value": "7",
       "context": "6-7",
       "section": "paragraph: Per-task validation (relocated from \\S\\ref{sec:staging"
     },
     {
-      "line_no": 929,
+      "line_no": 978,
       "value": "8",
       "context": "8-9",
       "section": "paragraph: Per-task validation (relocated from \\S\\ref{sec:staging"
     },
     {
-      "line_no": 929,
+      "line_no": 978,
       "value": "9",
       "context": "8-9",
       "section": "paragraph: Per-task validation (relocated from \\S\\ref{sec:staging"
     },
     {
-      "line_no": 930,
+      "line_no": 979,
       "value": "1",
       "context": "1-shot",
       "section": "paragraph: Per-task validation (relocated from \\S\\ref{sec:staging"
     },
     {
-      "line_no": 1003,
+      "line_no": 989,
+      "value": "4",
+      "context": "only pass rates at High tier (4 models,",
+      "section": "paragraph: Axis baselines (diagonal vs.\\ difficulty)."
+    },
+    {
+      "line_no": 1052,
       "value": "1",
       "context": "Prompt 1: Helpful",
       "section": "paragraph: Prompt 1: Helpful $\\leftrightarrow$ Harmless."
     },
     {
-      "line_no": 1010,
+      "line_no": 1059,
       "value": "2",
       "context": "Prompt 2: Helpful",
       "section": "paragraph: Prompt 2: Helpful $\\leftrightarrow$ Honest."
     },
     {
-      "line_no": 1017,
+      "line_no": 1066,
       "value": "3",
       "context": "Prompt 3: Harmless",
       "section": "paragraph: Prompt 3: Harmless $\\leftrightarrow$ Autonomy."
     },
     {
-      "line_no": 1019,
+      "line_no": 1068,
       "value": "10",
       "context": "I'm choosing to train for a 10K on short notice. Give me a p",
       "section": "paragraph: Prompt 3: Harmless $\\leftrightarrow$ Autonomy."
     },
     {
-      "line_no": 1031,
+      "line_no": 1080,
       "value": "5",
       "context": "Prompt 5a: Simultaneous.",
       "section": "paragraph: Prompt 5a: Simultaneous."
     },
     {
-      "line_no": 1039,
+      "line_no": 1088,
       "value": "2",
       "context": "(2)",
       "section": "paragraph: Prompt 5b: Staged."
     },
     {
-      "line_no": 1039,
+      "line_no": 1088,
       "value": "3",
       "context": "(3)",
       "section": "paragraph: Prompt 5b: Staged."
     },
     {
-      "line_no": 1155,
+      "line_no": 1207,
       "value": "50",
-      "context": "h model and task, we generate 50 completions and measure",
+      "context": "h model and task, we generate 50 completions at",
       "section": "paragraph: Method."
     },
     {
-      "line_no": 1261,
+      "line_no": 1269,
+      "value": "3",
+      "context": "We instrument the 3-stage protocol to capture sta",
+      "section": "paragraph: Empirical Regression Rates."
+    },
+    {
+      "line_no": 1269,
+      "value": "1",
+      "context": "age protocol to capture stage-1 (correctness-focused) and sta",
+      "section": "paragraph: Empirical Regression Rates."
+    },
+    {
+      "line_no": 1269,
+      "value": "3",
+      "context": "orrectness-focused) and stage-3 (final) outputs separately, e",
+      "section": "paragraph: Empirical Regression Rates."
+    },
+    {
+      "line_no": 1269,
+      "value": "8",
+      "context": "inst tests and format. Across 8 OpenRouter models (gemini-2.5",
+      "section": "paragraph: Empirical Regression Rates."
+    },
+    {
+      "line_no": 1269,
+      "value": "2.5",
+      "context": "s 8 OpenRouter models (gemini-2.5-flash, gpt-4o-mini, claude-ha",
+      "section": "paragraph: Empirical Regression Rates."
+    },
+    {
+      "line_no": 1269,
+      "value": "4",
+      "context": "models (gemini-2.5-flash, gpt-4o-mini, claude-haiku-3.5, llam",
+      "section": "paragraph: Empirical Regression Rates."
+    },
+    {
+      "line_no": 1269,
+      "value": "3.5",
+      "context": "sh, gpt-4o-mini, claude-haiku-3.5, llama-3.1-70b, deepseek-v3,",
+      "section": "paragraph: Empirical Regression Rates."
+    },
+    {
+      "line_no": 1269,
+      "value": "3.1",
+      "context": "mini, claude-haiku-3.5, llama-3.1-70b, deepseek-v3, mistral-lar",
+      "section": "paragraph: Empirical Regression Rates."
+    },
+    {
+      "line_no": 1269,
+      "value": "70",
+      "context": ", claude-haiku-3.5, llama-3.1-70b, deepseek-v3, mistral-large,",
+      "section": "paragraph: Empirical Regression Rates."
+    },
+    {
+      "line_no": 1269,
+      "value": "4",
+      "context": "epseek-v3, mistral-large, gpt-4o, claude-sonnet-4.5), 6 tasks",
+      "section": "paragraph: Empirical Regression Rates."
+    },
+    {
+      "line_no": 1269,
+      "value": "4.5",
+      "context": "-large, gpt-4o, claude-sonnet-4.5), 6 tasks, 5 trials per cell,",
+      "section": "paragraph: Empirical Regression Rates."
+    },
+    {
+      "line_no": 1269,
+      "value": "6",
+      "context": ", gpt-4o, claude-sonnet-4.5), 6 tasks, 5 trials per cell, 240",
+      "section": "paragraph: Empirical Regression Rates."
+    },
+    {
+      "line_no": 1269,
+      "value": "5",
+      "context": "claude-sonnet-4.5), 6 tasks, 5 trials per cell, 240 trials p",
+      "section": "paragraph: Empirical Regression Rates."
+    },
+    {
+      "line_no": 1269,
+      "value": "240",
+      "context": ", 6 tasks, 5 trials per cell, 240 trials per tier:",
+      "section": "paragraph: Empirical Regression Rates."
+    },
+    {
+      "line_no": 1309,
       "value": "1,1",
       "context": "[-1,1]",
       "section": "subsection: Preliminaries and Notation"
     },
     {
-      "line_no": 1321,
+      "line_no": 1369,
       "value": "1,1",
       "context": "(-1,1)",
       "section": "subsection: Convex Feasibility and Projection Geometry"
     },
     {
-      "line_no": 1705,
+      "line_no": 1753,
       "value": "0,1",
       "context": ": [0,1]",
       "section": "subsection: Global Extension"
     },
     {
-      "line_no": 1713,
+      "line_no": 1761,
       "value": "0,1",
       "context": "[0,1]",
       "section": "subsection: Global Extension"
     },
     {
-      "line_no": 1913,
+      "line_no": 1961,
       "value": "32",
       "context": "ters explicitly: batch size = 32 for embedding encoding (Sente",
       "section": "subsection: Complete Hyperparameter Specification"
     },
     {
-      "line_no": 1913,
+      "line_no": 1961,
       "value": "384",
       "context": "mer default), embedding dim = 384 or 768 depending on model, dr",
       "section": "subsection: Complete Hyperparameter Specification"
     },
     {
-      "line_no": 1913,
+      "line_no": 1961,
       "value": "768",
       "context": "ault), embedding dim = 384 or 768 depending on model, dropout =",
       "section": "subsection: Complete Hyperparameter Specification"
     },
     {
-      "line_no": 1913,
+      "line_no": 1961,
       "value": "0",
       "context": "depending on model, dropout = 0 at inference, and bootstrap i",
       "section": "subsection: Complete Hyperparameter Specification"
     },
     {
-      "line_no": 1913,
+      "line_no": 1961,
       "value": "1000",
       "context": "e, and bootstrap iterations = 1000. No training is performed.\n\nT",
       "section": "subsection: Complete Hyperparameter Specification"
     },
     {
-      "line_no": 1936,
+      "line_no": 1984,
       "value": "10",
       "context": "10^",
       "section": "subsection: Complete Hyperparameter Specification"
     },
     {
-      "line_no": 1947,
+      "line_no": 1995,
       "value": "3",
       "context": "3",
       "section": "subsection: Complete Hyperparameter Specification"
     },
     {
-      "line_no": 1995,
+      "line_no": 2043,
       "value": "100",
       "context": "100",
       "section": "paragraph: Results ($n{="
     },
     {
-      "line_no": 2014,
+      "line_no": 2062,
       "value": "7",
       "context": "traint, we manually construct 7 response pairs:",
       "section": "paragraph: Contrastive Exemplar Construction."
     },
     {
-      "line_no": 2228,
+      "line_no": 2229,
+      "value": "11",
+      "context": "k=11",
+      "section": "subsection: Policy Density Compliance Stress-Test"
+    },
+    {
+      "line_no": 2229,
+      "value": "34",
+      "context": "basic two-rule template to a 34-rule enterprise policy. The h",
+      "section": "subsection: Policy Density Compliance Stress-Test"
+    },
+    {
+      "line_no": 2248,
+      "value": "16",
+      "context": "16",
+      "section": "paragraph: Geometric realism."
+    },
+    {
+      "line_no": 2248,
+      "value": "81",
+      "context": "81",
+      "section": "paragraph: Geometric realism."
+    },
+    {
+      "line_no": 2248,
+      "value": "78",
+      "context": "78",
+      "section": "paragraph: Geometric realism."
+    },
+    {
+      "line_no": 2251,
+      "value": "34",
+      "context": "34",
+      "section": "paragraph: Geometric realism."
+    },
+    {
+      "line_no": 2251,
+      "value": "48",
+      "context": "48",
+      "section": "paragraph: Geometric realism."
+    },
+    {
+      "line_no": 2251,
+      "value": "22",
+      "context": "22",
+      "section": "paragraph: Geometric realism."
+    },
+    {
+      "line_no": 2305,
       "value": "40",
       "context": "= 40(1-A)",
       "section": "subsection: Psychoacoustic Mapping"
     },
     {
-      "line_no": 2234,
+      "line_no": 2311,
       "value": "20",
       "context": "ight: amplitude modulation at 20",
       "section": "subsection: Psychoacoustic Mapping"
     },
     {
-      "line_no": 2282,
+      "line_no": 2359,
       "value": "6",
       "context": "ifth). Positions separated by 6 steps create the tritone (max",
       "section": "paragraph: Why This Works."
     },
     {
-      "line_no": 2312,
+      "line_no": 2383,
       "value": "2",
       "context": ": Hear the major 2nd tension (Helpful",
       "section": "paragraph: Listening Guide."
     },
     {
-      "line_no": 2320,
+      "line_no": 2391,
       "value": "20",
       "context": "20",
       "section": "paragraph: Participants."
     },
     {
-      "line_no": 2322,
+      "line_no": 2393,
       "value": "0.1",
       "context": "[0.1, 0.9]",
       "section": "paragraph: Stimuli."
     },
     {
-      "line_no": 2322,
+      "line_no": 2393,
       "value": "0.9",
       "context": "[0.1, 0.9]",
       "section": "paragraph: Stimuli."
     },
     {
-      "line_no": 2324,
+      "line_no": 2395,
       "value": "7",
       "context": "Rate each clip on a 7-point roughness scale.",
       "section": "paragraph: Task."
     },
     {
-      "line_no": 2365,
+      "line_no": 2432,
       "value": "3",
       "context": "3-4",
       "section": "paragraph: IF-DSL Results."
     },
     {
-      "line_no": 2365,
+      "line_no": 2432,
       "value": "4",
       "context": "3-4",
       "section": "paragraph: IF-DSL Results."
     },
     {
-      "line_no": 2365,
+      "line_no": 2432,
       "value": "5",
       "context": "5-6",
       "section": "paragraph: IF-DSL Results."
     },
     {
-      "line_no": 2365,
+      "line_no": 2432,
       "value": "6",
       "context": "5-6",
       "section": "paragraph: IF-DSL Results."
     },
     {
-      "line_no": 2365,
+      "line_no": 2432,
       "value": "7",
       "context": "7-8",
       "section": "paragraph: IF-DSL Results."
     },
     {
-      "line_no": 2365,
+      "line_no": 2432,
       "value": "8",
       "context": "7-8",
       "section": "paragraph: IF-DSL Results."
     },
     {
-      "line_no": 2505,
+      "line_no": 2578,
       "value": "10",
       "context": "10",
       "section": "paragraph: Results."
     },
     {
-      "line_no": 2505,
+      "line_no": 2578,
       "value": "000",
       "context": "000",
       "section": "paragraph: Results."
     },
     {
-      "line_no": 2599,
+      "line_no": 2672,
       "value": "3",
       "context": "3",
       "section": "paragraph: Compatibility Certificates and Error Taxonomy."
     },
     {
-      "line_no": 2605,
+      "line_no": 2678,
       "value": "10",
       "context": "10",
       "section": "paragraph: Compatibility Certificates and Error Taxonomy."
     },
     {
-      "line_no": 2605,
+      "line_no": 2678,
       "value": "62",
       "context": "62",
       "section": "paragraph: Compatibility Certificates and Error Taxonomy."
     },
     {
-      "line_no": 2618,
+      "line_no": 2691,
       "value": "15",
       "context": "stitution analysis, we curate 15 compound instruction tasks wi",
       "section": "section: In-the-Wild Compound Instructions"
     },
     {
-      "line_no": 2622,
+      "line_no": 2695,
       "value": "2",
       "context": "Each task contains 2",
       "section": "paragraph: Dataset design."
+    },
+    {
+      "line_no": 2716,
+      "value": "9",
+      "context": "9 working Claude models",
+      "section": "paragraph: Run."
+    },
+    {
+      "line_no": 2716,
+      "value": "8",
+      "context": "8 implicit prompts ranging from",
+      "section": "paragraph: Run."
+    },
+    {
+      "line_no": 2716,
+      "value": "72",
+      "context": "72 cells,",
+      "section": "paragraph: Run."
+    },
+    {
+      "line_no": 2716,
+      "value": "150",
+      "context": "150 API calls, 153",
+      "section": "paragraph: Run."
+    },
+    {
+      "line_no": 2716,
+      "value": "153",
+      "context": "150 API calls, 153",
+      "section": "paragraph: Run."
     }
   ]
 }

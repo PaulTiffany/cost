@@ -85,6 +85,15 @@ diagonal cost framework formalizes a pattern alignment training already uses
 implicitly. Our work extends to inference time with a closed-form bound and
 routing rule.
 
+\hypertarget{rw:cove}{}\textbf{Chain-of-Verification} \citep{dhuliawala2023chainofverification}.
+Self-verifying revision loop for hallucination reduction.
+
+CoVe is a sibling of self-refine: both iterate on a single output to
+correct errors after generation. Neither predicts pre-generation when the
+constraint set is geometrically infeasible; our router complements both by
+diverting infeasible problems to staging or rejection before revision wastes
+tokens.
+
 \subsection{Inference-time single-constraint methods}
 
 \hypertarget{rw:cot}{}\textbf{Chain-of-Thought} \citep{wei2022chain}.
@@ -107,7 +116,7 @@ orthogonally to decide whether multi-constraint problems require staging.
 
 \subsection{Training-time single-constraint methods}
 
-\hypertarget{rw:rlhf}{}\textbf{RLHF} \citep{ouyang2022training}.
+\hypertarget{rw:rlhf}{}\textbf{RLHF} \citep{ouyang2022training,bai2022training}.
 Reinforcement learning from human feedback, single reward function.
 
 Standard alignment baseline; our work explains why single-reward
@@ -141,6 +150,23 @@ are orthogonal.
 
 Theoretical foundation for using cosine similarity between constraint
 embeddings as a conflict measure (Definition~\ref{def:conflict}).
+
+\hypertarget{rw:turner}{}\textbf{Turner et al.\ 2023} \citep{turner2023activation}.
+Activation Addition: steering language model behavior by adding a contrast
+vector at inference time, no fine-tuning.
+
+Empirical evidence that semantic differences are linear directions in
+activation space, validating the move from direction-as-representation to
+direction-as-control. Our use of constraint-pair cosine treats the same
+geometry as a conflict observable rather than a steering knob.
+
+\hypertarget{rw:zou}{}\textbf{Zou et al.\ 2023} \citep{zou2023representation}.
+Representation Engineering: a top-down framework casting interpretability and
+safety as operations on representational geometry.
+
+The top-down view that representations are the right level of analysis
+for both interpretability and intervention is exactly the level our $\hat{\rho}$
+operates at; we extend the framework from inspection to pre-generation routing.
 
 % End of Extended Related Work appendix stub.
 % TODO before submission: replace 

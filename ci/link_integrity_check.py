@@ -291,7 +291,13 @@ def analyze(venue_year: int = VENUE_YEAR, check_dead_labels: bool = True) -> Lin
     r.n_refs = len(expanded_refs)
     r.n_labels = len(label_keys)
 
-    r.unresolved_refs = sorted(expanded_refs - label_keys)
+    # Exclude macro parameter placeholders like \ref{#1} that appear inside
+    # \newcommand{\appref}[1]{App.~\ref{#1}} definitions. These are not real
+    # references; they are positional parameters that get substituted at use.
+    _macro_param_rx = re.compile(r"^#\d+$")
+    r.unresolved_refs = sorted(
+        k for k in (expanded_refs - label_keys) if not _macro_param_rx.match(k)
+    )
     if check_dead_labels:
         r.dead_labels = sorted(label_keys - expanded_refs)
 

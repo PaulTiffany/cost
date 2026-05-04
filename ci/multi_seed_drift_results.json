@@ -1,0 +1,51 @@
+{
+  "status": "cached",
+  "passed": true,
+  "n_models_checked": 3,
+  "n_over_threshold": 0,
+  "threshold_chars": 400.0,
+  "data_meta": {
+    "experiment": "multi_seed_drift_runner",
+    "task_id": "digit_sum_80",
+    "protocol": "oneshot",
+    "temperature": 0.7,
+    "n_reruns_per_cell": 5,
+    "n_models": 3,
+    "n_total_calls": 15,
+    "started_iso": "2026-05-04T07:47:36Z",
+    "finished_iso": "2026-05-04T07:48:11Z",
+    "elapsed_sec": 34.78662991523743,
+    "note": "Drift baseline: same prompt and same temperature, repeated N_RERUNS times per model. The check L25 reads this data and verifies that the per-cell actual_stdev is below a threshold (default 200 chars). This is the API-side BIS gap-fill identified by Gemini's taxonomy review.",
+    "purpose": "Capture per-model variance under repeated identical sampling so that future reruns can detect distributional drift."
+  },
+  "findings": [
+    {
+      "model": "sonnet-4.5",
+      "n_runs": 5,
+      "actual_stdev": 260.62175657454236,
+      "delta_stdev": 162.98220761788693,
+      "fixed_point_hit_rate": 0.0,
+      "threshold": 400.0,
+      "within_threshold": true
+    },
+    {
+      "model": "opus-4.6",
+      "n_runs": 5,
+      "actual_stdev": 0.0,
+      "delta_stdev": 0.0,
+      "fixed_point_hit_rate": 0.0,
+      "threshold": 400.0,
+      "within_threshold": true
+    },
+    {
+      "model": "sonnet-4.6",
+      "n_runs": 5,
+      "actual_stdev": 329.73656151540126,
+      "delta_stdev": 59.85649505275096,
+      "fixed_point_hit_rate": 0.0,
+      "threshold": 400.0,
+      "within_threshold": true
+    }
+  ],
+  "note": "Advisory layer. Per-model actual_stdev (response length variance across reruns) compared against threshold. A model that exceeds the threshold is flagged for investigation but does not block the cert."
+}

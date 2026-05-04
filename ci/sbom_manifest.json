@@ -1,0 +1,64 @@
+{
+  "schema_version": 1,
+  "generated_at": "2026-05-04",
+  "generation_method": "pip show <name> against the active interpreter; license, version, and source URL captured per package",
+  "note": "Direct dependencies of the certificate pipeline. Transitive dependencies are pinned by requirements.lock.txt but not enumerated here.",
+  "packages": [
+    {
+      "name": "numpy",
+      "version": "2.1.3",
+      "license": "BSD-3-Clause (NumPy Developers)",
+      "source": "https://numpy.org",
+      "role": "core: numerical kernels for verify.py and sweep checks"
+    },
+    {
+      "name": "scipy",
+      "version": "1.15.1",
+      "license": "BSD-3-Clause (SciPy Developers)",
+      "source": "https://scipy.org/",
+      "role": "core: linear algebra and statistics for validation"
+    },
+    {
+      "name": "pylatexenc",
+      "version": "2.10",
+      "license": "MIT",
+      "source": "https://github.com/phfaist/pylatexenc",
+      "role": "claim_coverage_sweep AST mode for math vs text distinction"
+    },
+    {
+      "name": "pandas",
+      "version": "2.2.3",
+      "license": "BSD-3-Clause",
+      "source": "https://pandas.pydata.org",
+      "role": "tabular intermediate results for cross_model and figure pipelines"
+    },
+    {
+      "name": "matplotlib",
+      "version": "3.10.1",
+      "license": "Matplotlib License (BSD-style, PSF-based)",
+      "source": "https://matplotlib.org",
+      "role": "figure rendering for paper figures"
+    },
+    {
+      "name": "transformers",
+      "version": "4.57.3",
+      "license": "Apache-2.0",
+      "source": "https://github.com/huggingface/transformers",
+      "role": "model loading for cross-model and embedding-based experiments"
+    },
+    {
+      "name": "sentence-transformers",
+      "version": "5.1.2",
+      "license": "Apache-2.0",
+      "source": "https://www.SBERT.net",
+      "role": "embedding-based similarity for supplementary experiments"
+    },
+    {
+      "name": "openai",
+      "version": "1.60.2",
+      "license": "Apache-2.0",
+      "source": "https://github.com/openai/openai-python",
+      "role": "optional: API client for cross-model experiments (offline by default)"
+    }
+  ]
+}

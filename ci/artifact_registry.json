@@ -1,0 +1,290 @@
+{
+  "_meta": {
+    "version": 1,
+    "description": "Superseded-artifact registry. Each entry tracks a result JSON (raw log, aggregate, or derived) that is referenced by ci/claim_data_ties.json (L15 numerical-claim checks). status values: current | supplementary_only | reviewer_evidence | superseded | deprecated. Before marking any artifact superseded, update superseded_by and ensure no L15 entry still binds to the old path (artifact_registry_check.py enforces this). raw_inputs is null everywhere because the repo does not retain raw API-response archives; this is noted per entry."
+  },
+  "artifacts": [
+    {
+      "path": "supplementary/experiments/calibration_results.json",
+      "status": "current",
+      "kind": "aggregate",
+      "supersedes": null,
+      "superseded_by": null,
+      "raw_inputs": null,
+      "recompute_script": null,
+      "reason_or_note": "Main calibration table (Table 2). Aggregate over 4 models x 12 tasks x 4 tiers x 5 trials x 2 protocols. Raw API responses not retained in repo."
+    },
+    {
+      "path": "supplementary/experiments/code_constraint_results.json",
+      "status": "current",
+      "kind": "aggregate",
+      "supersedes": null,
+      "superseded_by": null,
+      "raw_inputs": null,
+      "recompute_script": null,
+      "reason_or_note": "AST code-constraint experiment aggregate. Raw API call logs not retained."
+    },
+    {
+      "path": "supplementary/experiments/delta_capacity_results.json",
+      "status": "current",
+      "kind": "aggregate",
+      "supersedes": null,
+      "superseded_by": null,
+      "raw_inputs": null,
+      "recompute_script": null,
+      "reason_or_note": "Delta-capacity sweep (5 token budgets x 4 models x 6 tasks). Raw API logs not retained."
+    },
+    {
+      "path": "supplementary/experiments/fixed_point_claude_family.json",
+      "status": "current",
+      "kind": "aggregate",
+      "supersedes": null,
+      "superseded_by": null,
+      "raw_inputs": null,
+      "recompute_script": null,
+      "reason_or_note": "Claude-family staging ratios (7 models, haiku-3 through opus-4.5). Used for Table 4 and frontier transfer claims. Raw API logs not retained."
+    },
+    {
+      "path": "supplementary/experiments/fixed_point_floor_opus_43.json",
+      "status": "current",
+      "kind": "aggregate",
+      "supersedes": null,
+      "superseded_by": null,
+      "raw_inputs": null,
+      "recompute_script": null,
+      "reason_or_note": "Fixed-point floor probe for opus-4.3 (6 tasks). Raw API logs not retained."
+    },
+    {
+      "path": "supplementary/experiments/fixed_point_model_family.json",
+      "status": "supplementary_only",
+      "kind": "aggregate",
+      "supersedes": null,
+      "superseded_by": null,
+      "raw_inputs": null,
+      "recompute_script": null,
+      "reason_or_note": "Older model-family fixed-point file. Not bound by any L15 claim; superseded in scope by fixed_point_claude_family.json which covers the 7-model Claude-family series. Kept for reproducibility audit trail."
+    },
+    {
+      "path": "supplementary/experiments/json_nl_v4_results.json",
+      "status": "current",
+      "kind": "aggregate",
+      "supersedes": null,
+      "superseded_by": null,
+      "raw_inputs": null,
+      "recompute_script": null,
+      "reason_or_note": "JSON-NL transfer v4 aggregate (4 tiers). v1-v3 runs were exploratory and are not retained. Raw API logs not retained."
+    },
+    {
+      "path": "supplementary/experiments/lipschitz_calibration_results.json",
+      "status": "current",
+      "kind": "aggregate",
+      "supersedes": "supplementary/experiments/lipschitz_calibration_results_unnormalized_v1.json",
+      "superseded_by": null,
+      "raw_inputs": null,
+      "recompute_script": null,
+      "reason_or_note": "Normalized Lipschitz calibration. Replaces unnormalized v1 below. Raw API logs not retained."
+    },
+    {
+      "path": "supplementary/experiments/lipschitz_calibration_results_unnormalized_v1.json",
+      "status": "superseded",
+      "kind": "aggregate",
+      "supersedes": null,
+      "superseded_by": "supplementary/experiments/lipschitz_calibration_results.json",
+      "raw_inputs": null,
+      "recompute_script": null,
+      "reason_or_note": "Unnormalized v1 Lipschitz calibration run. Superseded by the normalized version. Retained for audit; no L15 claim should bind here."
+    },
+    {
+      "path": "supplementary/experiments/openrouter_regression_results.json",
+      "status": "current",
+      "kind": "aggregate",
+      "supersedes": null,
+      "superseded_by": null,
+      "raw_inputs": null,
+      "recompute_script": null,
+      "reason_or_note": "OpenRouter multi-provider regression results. Raw API logs not retained."
+    },
+    {
+      "path": "supplementary/experiments/outputs/charitable/charitable_feasibility.json",
+      "status": "current",
+      "kind": "derived",
+      "supersedes": null,
+      "superseded_by": null,
+      "raw_inputs": null,
+      "recompute_script": null,
+      "reason_or_note": "Monte Carlo charitable-composition feasibility table (10,000 trials per k). Derived from constitution analysis parameters. Raw Monte Carlo draws not retained."
+    },
+    {
+      "path": "supplementary/experiments/outputs/conflict_detection/results.json",
+      "status": "current",
+      "kind": "aggregate",
+      "supersedes": null,
+      "superseded_by": null,
+      "raw_inputs": ["supplementary/experiments/outputs/conflict_detection/probes.json",
+                     "supplementary/experiments/outputs/conflict_detection/probes_intermediate.json"],
+      "recompute_script": null,
+      "reason_or_note": "Conflict detection results for 190 constitution pairs. Intermediate probe files are retained alongside."
+    },
+    {
+      "path": "supplementary/experiments/outputs/constitution/constitution_analysis.json",
+      "status": "current",
+      "kind": "aggregate",
+      "supersedes": null,
+      "superseded_by": null,
+      "raw_inputs": null,
+      "recompute_script": null,
+      "reason_or_note": "Claude Constitution Gram analysis (20 principles, 190 pairs). Underlying pairwise API calls not retained."
+    },
+    {
+      "path": "supplementary/experiments/outputs/high_k_opus/high_k_opus_results.json",
+      "status": "current",
+      "kind": "aggregate",
+      "supersedes": null,
+      "superseded_by": null,
+      "raw_inputs": null,
+      "recompute_script": null,
+      "reason_or_note": "High-k opus experiment (4 regimes x 100 trials each). Raw API call logs not retained."
+    },
+    {
+      "path": "supplementary/experiments_rebuttal/image_transfer/image_transfer_results_runA_no_medium_frame.json",
+      "status": "current",
+      "kind": "aggregate",
+      "supersedes": null,
+      "superseded_by": null,
+      "raw_inputs": null,
+      "recompute_script": null,
+      "reason_or_note": "Image transfer Run A (no medium frame variant). Reviewer-evidence run. Raw API logs not retained."
+    },
+    {
+      "path": "supplementary/experiments_rebuttal/image_transfer/image_transfer_results_runB.json",
+      "status": "supplementary_only",
+      "kind": "aggregate",
+      "supersedes": null,
+      "superseded_by": null,
+      "raw_inputs": null,
+      "recompute_script": null,
+      "reason_or_note": "Image transfer Run B. Retained for completeness; not bound by any L15 claim. Raw API logs not retained."
+    },
+    {
+      "path": "supplementary/experiments_rebuttal/image_transfer/image_transfer_results_runC.json",
+      "status": "supplementary_only",
+      "kind": "aggregate",
+      "supersedes": null,
+      "superseded_by": null,
+      "raw_inputs": null,
+      "recompute_script": null,
+      "reason_or_note": "Image transfer Run C. Retained for completeness; not bound by any L15 claim. Raw API logs not retained."
+    },
+    {
+      "path": "supplementary/experiments_rebuttal/image_transfer/image_transfer_results_runD.json",
+      "status": "supplementary_only",
+      "kind": "aggregate",
+      "supersedes": null,
+      "superseded_by": null,
+      "raw_inputs": null,
+      "recompute_script": null,
+      "reason_or_note": "Image transfer Run D main results. Retained for completeness; the L15 claims for Run D bind to image_transfer_runD_passB.json (Pass B analysis). Raw API logs not retained."
+    },
+    {
+      "path": "supplementary/experiments_rebuttal/image_transfer/image_transfer_runD_passB.json",
+      "status": "current",
+      "kind": "aggregate",
+      "supersedes": null,
+      "superseded_by": null,
+      "raw_inputs": ["supplementary/experiments_rebuttal/image_transfer/image_transfer_results_runD.json"],
+      "recompute_script": null,
+      "reason_or_note": "Image transfer Run D Pass-B tier breakdown. Bound by L15 runD_* claims. Derived from runD main results."
+    },
+    {
+      "path": "rebuttal/figures/blinded_external/cross_model_results.json",
+      "status": "current",
+      "kind": "aggregate",
+      "supersedes": null,
+      "superseded_by": null,
+      "raw_inputs": null,
+      "recompute_script": null,
+      "reason_or_note": "4-model blinded cross-model benchmark (N=1839 trials). Used for fig:image_format_cliff. Distinct from rebuttal/figures/cross_model_results.json which is the 5-model unblinded run (N=1200) used for fig:cross_model. Both are current but serve different figures."
+    },
+    {
+      "path": "rebuttal/figures/cross_model_results.json",
+      "status": "current",
+      "kind": "aggregate",
+      "supersedes": null,
+      "superseded_by": null,
+      "raw_inputs": null,
+      "recompute_script": null,
+      "reason_or_note": "5-model cross-model generalization run (N=1200 trials). Used for fig:cross_model body-text claims. Distinct from blinded_external/cross_model_results.json (N=1839, 4-model, blinded). Both are current; they serve different figures. Raw API logs not retained."
+    },
+    {
+      "path": "rebuttal/figures/gram_eigendecomposition_results.json",
+      "status": "current",
+      "kind": "derived",
+      "supersedes": null,
+      "superseded_by": null,
+      "raw_inputs": ["supplementary/experiments/outputs/constitution/constitution_analysis.json"],
+      "recompute_script": null,
+      "reason_or_note": "Gram eigendecomposition of the Constitution constraint matrix. Derived from constitution_analysis.json pairwise rho values."
+    },
+    {
+      "path": "rebuttal/figures/per_task_correlation_results.json",
+      "status": "current",
+      "kind": "aggregate",
+      "supersedes": null,
+      "superseded_by": null,
+      "raw_inputs": null,
+      "recompute_script": null,
+      "reason_or_note": "48-point per-task Spearman correlation (12 tasks x 4 tiers; N=1920 trials). Raw API logs not retained."
+    },
+    {
+      "path": "rebuttal/figures/unconditional_pivot_results.json",
+      "status": "current",
+      "kind": "aggregate",
+      "supersedes": null,
+      "superseded_by": null,
+      "raw_inputs": null,
+      "recompute_script": null,
+      "reason_or_note": "Unconditional pivot analysis (0/4800 smooth-regime successes; 89/11 smooth/pivot split). Backs abstract claim. Raw API logs not retained."
+    },
+    {
+      "path": "ci/derivations/algorithm1_thresholds.json",
+      "status": "current",
+      "kind": "derived",
+      "supersedes": null,
+      "superseded_by": null,
+      "raw_inputs": null,
+      "recompute_script": null,
+      "reason_or_note": "Canonical Algorithm 1 threshold values (rho_hat_stage, rho_hat_fail, pivot_step_mult, drift_threshold_deg, default_L_hat). Hand-curated from algorithm spec; not derived from API calls."
+    },
+    {
+      "path": "ci/derivations/bridge_baselines_derived.json",
+      "status": "current",
+      "kind": "derived",
+      "supersedes": null,
+      "superseded_by": null,
+      "raw_inputs": ["supplementary/experiments/outputs/bytebeat_baseline.json",
+                     "supplementary/experiments/outputs/if_dsl_baseline.json"],
+      "recompute_script": null,
+      "reason_or_note": "Derived bridge baseline statistics for Bytebeat and IF-DSL (constraint counts, valid samples, high-rho pair values). Derived from bridge harness baseline runs."
+    },
+    {
+      "path": "ci/derivations/protocol_table11.json",
+      "status": "current",
+      "kind": "derived",
+      "supersedes": null,
+      "superseded_by": null,
+      "raw_inputs": null,
+      "recompute_script": null,
+      "reason_or_note": "Protocol comparison Table 11 values (one-shot, staged, best-of-4, self-refine, geometric-router pass rates and token counts). Hand-curated derivation from calibration aggregate."
+    },
+    {
+      "path": "ci/tests/systematic_mutation_results.json",
+      "status": "current",
+      "kind": "derived",
+      "supersedes": null,
+      "superseded_by": null,
+      "raw_inputs": null,
+      "recompute_script": "ci/tests/run_systematic_mutations.py",
+      "reason_or_note": "Systematic mutation test results (147 of 147 single-digit substitutions caught). Regenerable by running the mutation test suite."
+    }
+  ]
+}

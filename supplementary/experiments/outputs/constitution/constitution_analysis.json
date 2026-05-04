@@ -187,5 +187,18 @@
       "category_j": "hardcoded_off",
       "same_category": false
     }
-  ]
+  ],
+  "_meta": {
+    "generator_script": "supplementary/experiments/constitution_rho_analysis.py",
+    "generator_script_sha256": "aff1cddd6244627dbff3a3b37796400e8eef19d9e55a089c4c97d5962c336e0a",
+    "experiment": "constitution_gram_analysis",
+    "n_trials": 34,
+    "parameters": {
+      "source": "Anthropic Claude Constitution (CC0)",
+      "n_principles": 20
+    },
+    "backfilled_at": "2026-05-03T23:37:10",
+    "backfill_note": "Provenance _meta backfilled by ci/backfill_meta.py to satisfy L20 result_provenance_check. Generator script and parameters reflect known invocation.",
+    "script_hash": "aff1cddd6244627dbff3a3b37796400e8eef19d9e55a089c4c97d5962c336e0a"
+  }
 }

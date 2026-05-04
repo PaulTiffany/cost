@@ -1,0 +1,705 @@
+{
+  "status": "PASS",
+  "exit_code": 0,
+  "summary": {
+    "passed": 81,
+    "warned": 47,
+    "blocked": 0,
+    "inconclusive": 38,
+    "skipped_as_count": 159,
+    "adequacy_floor": 30,
+    "headline_blocks": 0,
+    "advisory": true
+  },
+  "findings": [
+    {
+      "name": "runD_high_pass_b_pct",
+      "verdict": "WARN",
+      "reason": "inferred N=6 below adequacy floor 30; N source: by_tier['high'].n_trials",
+      "n_inferred": 6,
+      "headline": false,
+      "claim_text": "image medium at 33% Pass B (Run D high tier)",
+      "source_file": "supplementary/experiments_rebuttal/image_transfer/image_transfer_runD_passB.json"
+    },
+    {
+      "name": "runD_control_pass_b_pct",
+      "verdict": "WARN",
+      "reason": "inferred N=6 below adequacy floor 30; N source: by_tier['control'].n_trials",
+      "n_inferred": 6,
+      "headline": false,
+      "claim_text": "Run D control tier 100% Pass B (per-tier paragraph)",
+      "source_file": "supplementary/experiments_rebuttal/image_transfer/image_transfer_runD_passB.json"
+    },
+    {
+      "name": "unconditional_pivot_high_pct",
+      "verdict": "INCONCLUSIVE",
+      "reason": "no N field or pattern matched",
+      "n_inferred": null,
+      "headline": false
+    },
+    {
+      "name": "gram_empirical_cliff_high",
+      "verdict": "INCONCLUSIVE",
+      "reason": "no N field or pattern matched",
+      "n_inferred": null,
+      "headline": false
+    },
+    {
+      "name": "claude_family_opus46_ratio",
+      "verdict": "WARN",
+      "reason": "inferred N=12 below adequacy floor 30; N source: _meta.n_trials (grand total)",
+      "n_inferred": 12,
+      "headline": false,
+      "claim_text": "opus-4.6 7.7x staging ratio (Tab:claude_family)",
+      "source_file": "supplementary/experiments/fixed_point_claude_family_opus46_addition.json"
+    },
+    {
+      "name": "claude_family_sonnet46_ratio",
+      "verdict": "WARN",
+      "reason": "inferred N=12 below adequacy floor 30; N source: _meta.n_trials (grand total)",
+      "n_inferred": 12,
+      "headline": false,
+      "claim_text": "sonnet-4.6 10.9x staging ratio (Tab:claude_family)",
+      "source_file": "supplementary/experiments/fixed_point_claude_family_sonnet46_addition.json"
+    },
+    {
+      "name": "claude_family_opus47_ratio",
+      "verdict": "WARN",
+      "reason": "inferred N=12 below adequacy floor 30; N source: _meta.n_trials (grand total)",
+      "n_inferred": 12,
+      "headline": false,
+      "claim_text": "opus-4.7 4.9x staging ratio (Tab:claude_family; sampling caveat)",
+      "source_file": "supplementary/experiments/fixed_point_claude_family_opus47_addition.json"
+    },
+    {
+      "name": "bytebeat_pitch_pair_max_rho",
+      "verdict": "INCONCLUSIVE",
+      "reason": "no N field or pattern matched",
+      "n_inferred": null,
+      "headline": false
+    },
+    {
+      "name": "if_dsl_high_rho_pair_value",
+      "verdict": "INCONCLUSIVE",
+      "reason": "no N field or pattern matched",
+      "n_inferred": null,
+      "headline": false
+    },
+    {
+      "name": "alg1_rho_hat_stage",
+      "verdict": "INCONCLUSIVE",
+      "reason": "no N field or pattern matched",
+      "n_inferred": null,
+      "headline": false
+    },
+    {
+      "name": "alg1_rho_hat_fail",
+      "verdict": "INCONCLUSIVE",
+      "reason": "no N field or pattern matched",
+      "n_inferred": null,
+      "headline": false
+    },
+    {
+      "name": "table11_one_shot_pass_pct",
+      "verdict": "INCONCLUSIVE",
+      "reason": "no N field or pattern matched",
+      "n_inferred": null,
+      "headline": false
+    },
+    {
+      "name": "table11_staged_pass_pct",
+      "verdict": "INCONCLUSIVE",
+      "reason": "no N field or pattern matched",
+      "n_inferred": null,
+      "headline": false
+    },
+    {
+      "name": "table11_best_of_4_pass_pct",
+      "verdict": "INCONCLUSIVE",
+      "reason": "no N field or pattern matched",
+      "n_inferred": null,
+      "headline": false
+    },
+    {
+      "name": "table11_self_refine_pass_pct",
+      "verdict": "INCONCLUSIVE",
+      "reason": "no N field or pattern matched",
+      "n_inferred": null,
+      "headline": false
+    },
+    {
+      "name": "table11_geometric_router_pass_pct",
+      "verdict": "INCONCLUSIVE",
+      "reason": "no N field or pattern matched",
+      "n_inferred": null,
+      "headline": false
+    },
+    {
+      "name": "table11_oracle_pass_pct",
+      "verdict": "INCONCLUSIVE",
+      "reason": "no N field or pattern matched",
+      "n_inferred": null,
+      "headline": false
+    },
+    {
+      "name": "transfer_code_router_agree_pct",
+      "verdict": "INCONCLUSIVE",
+      "reason": "no N field or pattern matched",
+      "n_inferred": null,
+      "headline": false
+    },
+    {
+      "name": "transfer_code_regret_pct",
+      "verdict": "INCONCLUSIVE",
+      "reason": "no N field or pattern matched",
+      "n_inferred": null,
+      "headline": false
+    },
+    {
+      "name": "transfer_json_nl_router_agree_pct",
+      "verdict": "INCONCLUSIVE",
+      "reason": "no N field or pattern matched",
+      "n_inferred": null,
+      "headline": false
+    },
+    {
+      "name": "transfer_json_nl_regret_pct",
+      "verdict": "INCONCLUSIVE",
+      "reason": "no N field or pattern matched",
+      "n_inferred": null,
+      "headline": false
+    },
+    {
+      "name": "transfer_if_dsl_router_agree_pct",
+      "verdict": "INCONCLUSIVE",
+      "reason": "no N field or pattern matched",
+      "n_inferred": null,
+      "headline": false
+    },
+    {
+      "name": "transfer_if_dsl_regret_pct",
+      "verdict": "INCONCLUSIVE",
+      "reason": "no N field or pattern matched",
+      "n_inferred": null,
+      "headline": false
+    },
+    {
+      "name": "transfer_bytebeat_router_agree_pct",
+      "verdict": "INCONCLUSIVE",
+      "reason": "no N field or pattern matched",
+      "n_inferred": null,
+      "headline": false
+    },
+    {
+      "name": "transfer_bytebeat_regret_pct",
+      "verdict": "INCONCLUSIVE",
+      "reason": "no N field or pattern matched",
+      "n_inferred": null,
+      "headline": false
+    },
+    {
+      "name": "high_drift_pct",
+      "verdict": "INCONCLUSIVE",
+      "reason": "no N field or pattern matched",
+      "n_inferred": null,
+      "headline": false
+    },
+    {
+      "name": "unconditional_infeasible_regret_pct",
+      "verdict": "INCONCLUSIVE",
+      "reason": "no N field or pattern matched",
+      "n_inferred": null,
+      "headline": false
+    },
+    {
+      "name": "embedding_minilm_rho_max",
+      "verdict": "INCONCLUSIVE",
+      "reason": "no N field or pattern matched",
+      "n_inferred": null,
+      "headline": false
+    },
+    {
+      "name": "embedding_minilm_rho_max_ci",
+      "verdict": "INCONCLUSIVE",
+      "reason": "no N field or pattern matched",
+      "n_inferred": null,
+      "headline": false
+    },
+    {
+      "name": "embedding_mpnet_rho_max",
+      "verdict": "INCONCLUSIVE",
+      "reason": "no N field or pattern matched",
+      "n_inferred": null,
+      "headline": false
+    },
+    {
+      "name": "embedding_mpnet_rho_max_ci",
+      "verdict": "INCONCLUSIVE",
+      "reason": "no N field or pattern matched",
+      "n_inferred": null,
+      "headline": false
+    },
+    {
+      "name": "embedding_multilingual_rho_max",
+      "verdict": "INCONCLUSIVE",
+      "reason": "no N field or pattern matched",
+      "n_inferred": null,
+      "headline": false
+    },
+    {
+      "name": "embedding_multilingual_rho_max_ci",
+      "verdict": "INCONCLUSIVE",
+      "reason": "no N field or pattern matched",
+      "n_inferred": null,
+      "headline": false
+    },
+    {
+      "name": "encoder_sens_minilm_rho_low",
+      "verdict": "INCONCLUSIVE",
+      "reason": "no N field or pattern matched",
+      "n_inferred": null,
+      "headline": false
+    },
+    {
+      "name": "encoder_sens_minilm_rho_high",
+      "verdict": "INCONCLUSIVE",
+      "reason": "no N field or pattern matched",
+      "n_inferred": null,
+      "headline": false
+    },
+    {
+      "name": "encoder_sens_mpnet_router_pct",
+      "verdict": "INCONCLUSIVE",
+      "reason": "no N field or pattern matched",
+      "n_inferred": null,
+      "headline": false
+    },
+    {
+      "name": "encoder_sens_mpnet_outcome_pct",
+      "verdict": "INCONCLUSIVE",
+      "reason": "no N field or pattern matched",
+      "n_inferred": null,
+      "headline": false
+    },
+    {
+      "name": "encoder_sens_multilingual_router_pct",
+      "verdict": "INCONCLUSIVE",
+      "reason": "no N field or pattern matched",
+      "n_inferred": null,
+      "headline": false
+    },
+    {
+      "name": "encoder_sens_multilingual_outcome_pct",
+      "verdict": "INCONCLUSIVE",
+      "reason": "no N field or pattern matched",
+      "n_inferred": null,
+      "headline": false
+    },
+    {
+      "name": "conflict_detection_overall_conflict_rate_pct",
+      "verdict": "INCONCLUSIVE",
+      "reason": "no N field or pattern matched",
+      "n_inferred": null,
+      "headline": false
+    },
+    {
+      "name": "conflict_detection_low_bucket_rate_pct",
+      "verdict": "INCONCLUSIVE",
+      "reason": "no N field or pattern matched",
+      "n_inferred": null,
+      "headline": false
+    },
+    {
+      "name": "conflict_detection_med_bucket_rate_pct",
+      "verdict": "INCONCLUSIVE",
+      "reason": "no N field or pattern matched",
+      "n_inferred": null,
+      "headline": false
+    },
+    {
+      "name": "conflict_detection_high_bucket_rate_pct",
+      "verdict": "INCONCLUSIVE",
+      "reason": "no N field or pattern matched",
+      "n_inferred": null,
+      "headline": false
+    },
+    {
+      "name": "qwen3b_one_shot_low_pct",
+      "verdict": "WARN",
+      "reason": "inferred N=5 below adequacy floor 30; N source: _meta.parameters.n_trials_per_cell",
+      "n_inferred": 5,
+      "headline": false,
+      "claim_text": "Qwen-3B one-shot 42% at low tier (Table tab:llm_bridge)",
+      "source_file": "supplementary/experiments/code_constraint_results.json"
+    },
+    {
+      "name": "bridge_qwencoder_control_oneshot_pct",
+      "verdict": "WARN",
+      "reason": "inferred N=5 below adequacy floor 30; N source: _meta.parameters.n_trials_per_cell",
+      "n_inferred": 5,
+      "headline": false,
+      "claim_text": "Qwen-Coder-1.5B one-shot 100% at Control tier (tab:llm_bridge)",
+      "source_file": "supplementary/experiments/code_constraint_results.json"
+    },
+    {
+      "name": "bridge_qwencoder_control_delta_pct",
+      "verdict": "WARN",
+      "reason": "inferred N=5 below adequacy floor 30; N source: _meta.parameters.n_trials_per_cell",
+      "n_inferred": 5,
+      "headline": false,
+      "claim_text": "Qwen-Coder-1.5B at Control: staged delta = -8% (tab:llm_bridge)",
+      "source_file": "supplementary/experiments/code_constraint_results.json"
+    },
+    {
+      "name": "bridge_qwencoder_low_oneshot_pct",
+      "verdict": "WARN",
+      "reason": "inferred N=5 below adequacy floor 30; N source: _meta.parameters.n_trials_per_cell",
+      "n_inferred": 5,
+      "headline": false,
+      "claim_text": "Qwen-Coder-1.5B one-shot 95% at Low tier",
+      "source_file": "supplementary/experiments/code_constraint_results.json"
+    },
+    {
+      "name": "bridge_qwen3b_control_oneshot_pct",
+      "verdict": "WARN",
+      "reason": "inferred N=5 below adequacy floor 30; N source: _meta.parameters.n_trials_per_cell",
+      "n_inferred": 5,
+      "headline": false,
+      "claim_text": "Qwen-3B one-shot 95% at Control tier",
+      "source_file": "supplementary/experiments/code_constraint_results.json"
+    },
+    {
+      "name": "bridge_qwen3b_low_delta_pct",
+      "verdict": "WARN",
+      "reason": "inferred N=5 below adequacy floor 30; N source: _meta.parameters.n_trials_per_cell",
+      "n_inferred": 5,
+      "headline": false,
+      "claim_text": "Qwen-3B at Low: staged delta = +20%",
+      "source_file": "supplementary/experiments/code_constraint_results.json"
+    },
+    {
+      "name": "bridge_qwen3b_high_oneshot_pct",
+      "verdict": "WARN",
+      "reason": "inferred N=5 below adequacy floor 30; N source: _meta.parameters.n_trials_per_cell",
+      "n_inferred": 5,
+      "headline": false,
+      "claim_text": "Qwen-3B one-shot 2% at High tier",
+      "source_file": "supplementary/experiments/code_constraint_results.json"
+    },
+    {
+      "name": "bridge_tinyllama_high_oneshot_pct",
+      "verdict": "WARN",
+      "reason": "inferred N=5 below adequacy floor 30; N source: _meta.parameters.n_trials_per_cell",
+      "n_inferred": 5,
+      "headline": false,
+      "claim_text": "TinyLlama-1.1B one-shot 2% at High tier",
+      "source_file": "supplementary/experiments/code_constraint_results.json"
+    },
+    {
+      "name": "bridge_deepseek_high_delta_pct",
+      "verdict": "WARN",
+      "reason": "inferred N=5 below adequacy floor 30; N source: _meta.parameters.n_trials_per_cell",
+      "n_inferred": 5,
+      "headline": false,
+      "claim_text": "DeepSeek-Coder-1.3B at High: staged delta = +2%",
+      "source_file": "supplementary/experiments/code_constraint_results.json"
+    },
+    {
+      "name": "bridge_qwencoder_low_delta_pct",
+      "verdict": "WARN",
+      "reason": "inferred N=5 below adequacy floor 30; N source: _meta.parameters.n_trials_per_cell",
+      "n_inferred": 5,
+      "headline": false,
+      "claim_text": "Qwen-Coder-1.5B at Low: staged delta = -23% (tab:llm_bridge)",
+      "source_file": "supplementary/experiments/code_constraint_results.json"
+    },
+    {
+      "name": "bridge_qwencoder_moderate_oneshot_pct",
+      "verdict": "WARN",
+      "reason": "inferred N=5 below adequacy floor 30; N source: _meta.parameters.n_trials_per_cell",
+      "n_inferred": 5,
+      "headline": false,
+      "claim_text": "Qwen-Coder-1.5B one-shot 40% at Moderate tier (tab:llm_bridge)",
+      "source_file": "supplementary/experiments/code_constraint_results.json"
+    },
+    {
+      "name": "bridge_qwencoder_moderate_delta_pct",
+      "verdict": "WARN",
+      "reason": "inferred N=5 below adequacy floor 30; N source: _meta.parameters.n_trials_per_cell",
+      "n_inferred": 5,
+      "headline": false,
+      "claim_text": "Qwen-Coder-1.5B at Moderate: staged delta = -22% (tab:llm_bridge)",
+      "source_file": "supplementary/experiments/code_constraint_results.json"
+    },
+    {
+      "name": "bridge_qwencoder_high_oneshot_pct",
+      "verdict": "WARN",
+      "reason": "inferred N=5 below adequacy floor 30; N source: _meta.parameters.n_trials_per_cell",
+      "n_inferred": 5,
+      "headline": false,
+      "claim_text": "Qwen-Coder-1.5B one-shot 3% at High tier (tab:llm_bridge)",
+      "source_file": "supplementary/experiments/code_constraint_results.json"
+    },
+    {
+      "name": "bridge_qwencoder_high_delta_pct",
+      "verdict": "WARN",
+      "reason": "inferred N=5 below adequacy floor 30; N source: _meta.parameters.n_trials_per_cell",
+      "n_inferred": 5,
+      "headline": false,
+      "claim_text": "Qwen-Coder-1.5B at High: staged delta = -1% (tab:llm_bridge)",
+      "source_file": "supplementary/experiments/code_constraint_results.json"
+    },
+    {
+      "name": "bridge_qwen3b_control_delta_pct",
+      "verdict": "WARN",
+      "reason": "inferred N=5 below adequacy floor 30; N source: _meta.parameters.n_trials_per_cell",
+      "n_inferred": 5,
+      "headline": false,
+      "claim_text": "Qwen-3B at Control: staged delta = +2% (tab:llm_bridge)",
+      "source_file": "supplementary/experiments/code_constraint_results.json"
+    },
+    {
+      "name": "bridge_qwen3b_moderate_oneshot_pct",
+      "verdict": "WARN",
+      "reason": "inferred N=5 below adequacy floor 30; N source: _meta.parameters.n_trials_per_cell",
+      "n_inferred": 5,
+      "headline": false,
+      "claim_text": "Qwen-3B one-shot 25% at Moderate tier (tab:llm_bridge)",
+      "source_file": "supplementary/experiments/code_constraint_results.json"
+    },
+    {
+      "name": "bridge_qwen3b_moderate_delta_pct",
+      "verdict": "WARN",
+      "reason": "inferred N=5 below adequacy floor 30; N source: _meta.parameters.n_trials_per_cell",
+      "n_inferred": 5,
+      "headline": false,
+      "claim_text": "Qwen-3B at Moderate: staged delta = +8% (tab:llm_bridge)",
+      "source_file": "supplementary/experiments/code_constraint_results.json"
+    },
+    {
+      "name": "bridge_qwen3b_high_delta_pct",
+      "verdict": "WARN",
+      "reason": "inferred N=5 below adequacy floor 30; N source: _meta.parameters.n_trials_per_cell",
+      "n_inferred": 5,
+      "headline": false,
+      "claim_text": "Qwen-3B at High: staged delta = +1% (tab:llm_bridge)",
+      "source_file": "supplementary/experiments/code_constraint_results.json"
+    },
+    {
+      "name": "bridge_deepseek_control_oneshot_pct",
+      "verdict": "WARN",
+      "reason": "inferred N=5 below adequacy floor 30; N source: _meta.parameters.n_trials_per_cell",
+      "n_inferred": 5,
+      "headline": false,
+      "claim_text": "DeepSeek-1.3B one-shot 82% at Control tier (tab:llm_bridge)",
+      "source_file": "supplementary/experiments/code_constraint_results.json"
+    },
+    {
+      "name": "bridge_deepseek_control_delta_pct",
+      "verdict": "WARN",
+      "reason": "inferred N=5 below adequacy floor 30; N source: _meta.parameters.n_trials_per_cell",
+      "n_inferred": 5,
+      "headline": false,
+      "claim_text": "DeepSeek-1.3B at Control: staged delta = +1% (tab:llm_bridge)",
+      "source_file": "supplementary/experiments/code_constraint_results.json"
+    },
+    {
+      "name": "bridge_deepseek_low_oneshot_pct",
+      "verdict": "WARN",
+      "reason": "inferred N=5 below adequacy floor 30; N source: _meta.parameters.n_trials_per_cell",
+      "n_inferred": 5,
+      "headline": false,
+      "claim_text": "DeepSeek-1.3B one-shot 73% at Low tier (tab:llm_bridge)",
+      "source_file": "supplementary/experiments/code_constraint_results.json"
+    },
+    {
+      "name": "bridge_deepseek_low_delta_pct",
+      "verdict": "WARN",
+      "reason": "inferred N=5 below adequacy floor 30; N source: _meta.parameters.n_trials_per_cell",
+      "n_inferred": 5,
+      "headline": false,
+      "claim_text": "DeepSeek-1.3B at Low: staged delta = +4% (tab:llm_bridge)",
+      "source_file": "supplementary/experiments/code_constraint_results.json"
+    },
+    {
+      "name": "bridge_deepseek_moderate_oneshot_pct",
+      "verdict": "WARN",
+      "reason": "inferred N=5 below adequacy floor 30; N source: _meta.parameters.n_trials_per_cell",
+      "n_inferred": 5,
+      "headline": false,
+      "claim_text": "DeepSeek-1.3B one-shot 22% at Moderate tier (tab:llm_bridge)",
+      "source_file": "supplementary/experiments/code_constraint_results.json"
+    },
+    {
+      "name": "bridge_deepseek_moderate_delta_pct",
+      "verdict": "WARN",
+      "reason": "inferred N=5 below adequacy floor 30; N source: _meta.parameters.n_trials_per_cell",
+      "n_inferred": 5,
+      "headline": false,
+      "claim_text": "DeepSeek-1.3B at Moderate: staged delta = +11% (tab:llm_bridge)",
+      "source_file": "supplementary/experiments/code_constraint_results.json"
+    },
+    {
+      "name": "bridge_deepseek_high_oneshot_pct",
+      "verdict": "WARN",
+      "reason": "inferred N=5 below adequacy floor 30; N source: _meta.parameters.n_trials_per_cell",
+      "n_inferred": 5,
+      "headline": false,
+      "claim_text": "DeepSeek-1.3B one-shot 0% at High tier (tab:llm_bridge)",
+      "source_file": "supplementary/experiments/code_constraint_results.json"
+    },
+    {
+      "name": "bridge_tinyllama_control_oneshot_pct",
+      "verdict": "WARN",
+      "reason": "inferred N=5 below adequacy floor 30; N source: _meta.parameters.n_trials_per_cell",
+      "n_inferred": 5,
+      "headline": false,
+      "claim_text": "TinyLlama-1.1B one-shot 27% at Control tier (tab:llm_bridge)",
+      "source_file": "supplementary/experiments/code_constraint_results.json"
+    },
+    {
+      "name": "bridge_tinyllama_control_delta_pct",
+      "verdict": "WARN",
+      "reason": "inferred N=5 below adequacy floor 30; N source: _meta.parameters.n_trials_per_cell",
+      "n_inferred": 5,
+      "headline": false,
+      "claim_text": "TinyLlama-1.1B at Control: staged delta = +13% (tab:llm_bridge)",
+      "source_file": "supplementary/experiments/code_constraint_results.json"
+    },
+    {
+      "name": "bridge_tinyllama_low_oneshot_pct",
+      "verdict": "WARN",
+      "reason": "inferred N=5 below adequacy floor 30; N source: _meta.parameters.n_trials_per_cell",
+      "n_inferred": 5,
+      "headline": false,
+      "claim_text": "TinyLlama-1.1B one-shot 13% at Low tier (tab:llm_bridge)",
+      "source_file": "supplementary/experiments/code_constraint_results.json"
+    },
+    {
+      "name": "bridge_tinyllama_low_delta_pct",
+      "verdict": "WARN",
+      "reason": "inferred N=5 below adequacy floor 30; N source: _meta.parameters.n_trials_per_cell",
+      "n_inferred": 5,
+      "headline": false,
+      "claim_text": "TinyLlama-1.1B at Low: staged delta = +19% (tab:llm_bridge)",
+      "source_file": "supplementary/experiments/code_constraint_results.json"
+    },
+    {
+      "name": "bridge_tinyllama_moderate_oneshot_pct",
+      "verdict": "WARN",
+      "reason": "inferred N=5 below adequacy floor 30; N source: _meta.parameters.n_trials_per_cell",
+      "n_inferred": 5,
+      "headline": false,
+      "claim_text": "TinyLlama-1.1B one-shot 5% at Moderate tier (tab:llm_bridge)",
+      "source_file": "supplementary/experiments/code_constraint_results.json"
+    },
+    {
+      "name": "bridge_tinyllama_moderate_delta_pct",
+      "verdict": "WARN",
+      "reason": "inferred N=5 below adequacy floor 30; N source: _meta.parameters.n_trials_per_cell",
+      "n_inferred": 5,
+      "headline": false,
+      "claim_text": "TinyLlama-1.1B at Moderate: staged delta = +3% (tab:llm_bridge)",
+      "source_file": "supplementary/experiments/code_constraint_results.json"
+    },
+    {
+      "name": "bridge_tinyllama_high_delta_pct",
+      "verdict": "WARN",
+      "reason": "inferred N=5 below adequacy floor 30; N source: _meta.parameters.n_trials_per_cell",
+      "n_inferred": 5,
+      "headline": false,
+      "claim_text": "TinyLlama-1.1B at High: staged delta = -2% (tab:llm_bridge)",
+      "source_file": "supplementary/experiments/code_constraint_results.json"
+    },
+    {
+      "name": "axis_baseline_control_tests_only_pct",
+      "verdict": "WARN",
+      "reason": "inferred N=5 below adequacy floor 30; N source: _meta.parameters.n_trials_per_cell",
+      "n_inferred": 5,
+      "headline": false,
+      "claim_text": "Axis baseline at Control tier: tests only 76% (4-model aggregate, one_shot)",
+      "source_file": "supplementary/experiments/code_constraint_results.json"
+    },
+    {
+      "name": "axis_baseline_control_format_only_pct",
+      "verdict": "WARN",
+      "reason": "inferred N=5 below adequacy floor 30; N source: _meta.parameters.n_trials_per_cell",
+      "n_inferred": 5,
+      "headline": false,
+      "claim_text": "Axis baseline at Control tier: format only 88% (4-model aggregate, one_shot)",
+      "source_file": "supplementary/experiments/code_constraint_results.json"
+    },
+    {
+      "name": "axis_baseline_control_joint_pct",
+      "verdict": "WARN",
+      "reason": "inferred N=5 below adequacy floor 30; N source: _meta.parameters.n_trials_per_cell",
+      "n_inferred": 5,
+      "headline": false,
+      "claim_text": "Axis baseline at Control tier: joint 76% (4-model aggregate, one_shot)",
+      "source_file": "supplementary/experiments/code_constraint_results.json"
+    },
+    {
+      "name": "axis_baseline_high_tests_only_pct",
+      "verdict": "WARN",
+      "reason": "inferred N=5 below adequacy floor 30; N source: _meta.parameters.n_trials_per_cell",
+      "n_inferred": 5,
+      "headline": false,
+      "claim_text": "Axis baseline at High tier: tests only 64% (4-model aggregate, one_shot)",
+      "source_file": "supplementary/experiments/code_constraint_results.json"
+    },
+    {
+      "name": "axis_baseline_high_format_only_pct",
+      "verdict": "WARN",
+      "reason": "inferred N=5 below adequacy floor 30; N source: _meta.parameters.n_trials_per_cell",
+      "n_inferred": 5,
+      "headline": false,
+      "claim_text": "Axis baseline at High tier: format only 2% (4-model aggregate, one_shot)",
+      "source_file": "supplementary/experiments/code_constraint_results.json"
+    },
+    {
+      "name": "axis_baseline_high_joint_pct",
+      "verdict": "WARN",
+      "reason": "inferred N=5 below adequacy floor 30; N source: _meta.parameters.n_trials_per_cell",
+      "n_inferred": 5,
+      "headline": false,
+      "claim_text": "Axis baseline at High tier: joint 2% (4-model aggregate, one_shot)",
+      "source_file": "supplementary/experiments/code_constraint_results.json"
+    },
+    {
+      "name": "iso_fibonacci_high_joint_pct",
+      "verdict": "WARN",
+      "reason": "inferred N=5 below adequacy floor 30; N source: _meta.parameters.n_trials_per_cell",
+      "n_inferred": 5,
+      "headline": false,
+      "claim_text": "Iso-difficulty pair: fibonacci (high) both = 0% (4-model aggregate, one_shot)",
+      "source_file": "supplementary/experiments/code_constraint_results.json"
+    },
+    {
+      "name": "iso_fibonacci_high_tests_only_pct",
+      "verdict": "WARN",
+      "reason": "inferred N=5 below adequacy floor 30; N source: _meta.parameters.n_trials_per_cell",
+      "n_inferred": 5,
+      "headline": false,
+      "claim_text": "Iso-difficulty pair: fibonacci (high) a = 85% (4-model aggregate, one_shot)",
+      "source_file": "supplementary/experiments/code_constraint_results.json"
+    },
+    {
+      "name": "iso_power_control_joint_pct",
+      "verdict": "WARN",
+      "reason": "inferred N=5 below adequacy floor 30; N source: _meta.parameters.n_trials_per_cell",
+      "n_inferred": 5,
+      "headline": false,
+      "claim_text": "Iso-difficulty pair: power (control) both = 85% (4-model aggregate, one_shot)",
+      "source_file": "supplementary/experiments/code_constraint_results.json"
+    },
+    {
+      "name": "iso_power_control_tests_only_pct",
+      "verdict": "WARN",
+      "reason": "inferred N=5 below adequacy floor 30; N source: _meta.parameters.n_trials_per_cell",
+      "n_inferred": 5,
+      "headline": false,
+      "claim_text": "Iso-difficulty pair: power (control) a = 85% (4-model aggregate, one_shot)",
+      "source_file": "supplementary/experiments/code_constraint_results.json"
+    }
+  ]
+}

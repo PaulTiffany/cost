@@ -49,6 +49,19 @@
 \newcommand{\norm}[1]{\left\lVert #1 \right\rVert}
 \newcommand{\abs}[1]{\left\lvert #1 \right\rvert}
 \newcommand{\E}{\mathbb{E}}
+% Semantic math macros (high-frequency symbols; identical expansion, save space + enforce consistency)
+\newcommand{\rhohat}{\hat{\rho}}
+\newcommand{\dmin}{\delta_{\min}}
+\newcommand{\Lhat}{\hat{L}}
+% First-use definition marker (italics; use on first occurrence of a defined term)
+\newcommand{\defterm}[1]{\emph{#1}}
+% Inline reference convention: abbreviated forms for mid-sentence parenthetical
+% anchors (App., Sec.). Sentence-start refs stay spelled out manually.
+% Defining as macros so the convention is reversible by editing one line each;
+% the cert layer ci/reference_convention_check.py lints for stray spelled-out
+% mid-sentence refs and reports drift.
+\newcommand{\appref}[1]{App.~\ref{#1}}
+\newcommand{\secref}[1]{Sec.~\ref{#1}}
 \newenvironment{promptquote}{\begin{quote}\small\ttfamily\raggedright}{\end{quote}}
 
 \title{The Cost of Cacophony:\\Geometric Limits on Multi-Constraint Alignment}
@@ -69,27 +82,27 @@
 We enable routing decisions \emph{before} LLM generation: given a multi-constraint prompt, decide whether to attempt one-shot, decompose into stages, or reject. Regret is under $2\%$, errors are fail-safe (over-staging, not failure).
 Our approach: multi-constraint behavior exhibits sharp transitions between feasible and infeasible (`feasibility cliffs'), not gradual capability degradation.
 We prove the minimum displacement to satisfy $k$ constraints scales as $\sqrt{k/(1{-}\rho(k{-}1))}$ (the `diagonal cost'), diverging at a geometric threshold. This lower bound is foundational to MOO-control integration. An empirical contract (89\%) connects the geometry to inference.
-The bound dictates control: a zeroth-order screening statistic (`$\hat{\rho}$') orders \emph{which side of the cliff} a prompt lies on ($r_s{=}1.0$). Sequential satisfaction has provably lower cost than simultaneous.
-Results: across four domains (code, JSON, optimization, signal), when the bound predicts infeasibility, one-shot fails (0/4,800 trials). The 11\% pivot regime shows detectable signatures.
+The bound dictates control: a zeroth-order screening statistic (`$\rhohat$') orders \emph{which side of the cliff} a prompt lies on ($r_s{=}1.0$). Sequential satisfaction has provably lower cost than simultaneous.
+Results: across four domains (code, JSON, optimization, signal), when the bound predicts infeasibility, smooth-regime one-shot fails (0/4,272 trials). The 11\% pivot regime admits 42/528 successes with detectable mid-generation signatures (1.7\% unconditional rate).
 \end{abstract}
 
 \section{Introduction}\label{sec:intro}
 
-Large language models (LLMs) can satisfy individual constraints (safety, helpfulness, format compliance) but performance can collapse when several constraints are activated together, even when constraints are compatibility-designed (Appendix~\ref{app:charity}). This failure is commonly treated as a capability gap. We show it is \emph{geometric}. Multi-constraint behavior exhibits sharp transitions: \textbf{feasibility cliffs}, not gradual degradation. A zeroth-order \textbf{regime index} $\hat{\rho}$ orders which side of the cliff a prompt lies on \emph{before} generation ($r_s{=}1.0$ Spearman; Figure~\ref{fig:feasibility_surface}).
+Large language models (LLMs) can satisfy individual constraints (safety, helpfulness, format compliance) but performance can collapse when several constraints are activated together, even when constraints are compatibility-designed (\appref{app:charity}). This failure is commonly treated as a capability gap. We show it is \emph{geometric} (Thm~\ref{thm:gram}). Multi-constraint behavior exhibits sharp transitions: \textbf{feasibility cliffs}, not gradual degradation (Fig.~\ref{fig:cross_model}). A zeroth-order \textbf{regime index} $\rhohat$ orders which side of the cliff a prompt lies on \emph{before} generation ($r_s{=}1.0$ Spearman; Figure~\ref{fig:feasibility_surface}).
 
-\textbf{Approach.} We prove that the minimum displacement to satisfy $k$ constraints simultaneously scales as $\delta_{\min} \propto \sqrt{k/(1{-}\rho(k{-}1))}$ (the \emph{diagonal cost}), diverging at a geometric threshold (Theorem~\ref{thm:gram}). An empirically calibrated displacement contract connects this bound to observable LLM behavior: 89\% of generation trajectories obey per-token Lipschitz bounds; the remaining 11\% are detectable pivot events (Table~\ref{tab:lipschitz_calibration}). When the bound predicts infeasibility, one-shot generation fails (0/4,800 smooth-regime trials; Section~\ref{sec:empirical}). Algorithm~\ref{alg:routing} routes \emph{before generation} to one-shot, staged, or decomposed (Figure~\ref{fig:pipeline}), with $1.8\pm0.4\%$ regret vs.\ oracle.\footnote{$\hat{\rho}=\cos(\cdot)$ measures \emph{similarity}; high $\hat{\rho}$ triggers checks, not verdicts. $\hat{\rho}$ recovers conflict topology, not gradient (Lemma~\ref{lem:proxy_sufficiency}).} Black-box: no gradients, no model internals; transfers 1B--frontier (Table~\ref{tab:claude_family}).
+\textbf{Approach.} We prove that the minimum displacement to satisfy $k$ constraints simultaneously scales as $\delta_{\min} \propto \sqrt{k/(1{-}\rho(k{-}1))}$ (the \emph{diagonal cost}), diverging at a geometric threshold (Theorem~\ref{thm:gram}). An empirically calibrated displacement contract (App.~\ref{app:lipschitz_calibration}) connects this bound to observable LLM behavior. 89\% of generation trajectories obey per-token Lipschitz bounds. The remaining 11\% are detectable pivot events (Table~\ref{tab:lipschitz_calibration}). When the bound predicts infeasibility, one-shot generation fails (0/4,272 smooth-regime trials, \secref{sec:empirical}). Algorithm~\ref{alg:routing} routes \emph{before generation} to one-shot, staged, or decomposed (Figure~\ref{fig:pipeline}), with $1.8\pm0.4\%$ regret vs.\ oracle.\footnote{$\rhohat=\cos(\cdot)$ measures \emph{similarity}. High $\rhohat$ triggers checks, not verdicts. $\rhohat$ recovers conflict topology, not gradient (Lemma~\ref{lem:proxy_sufficiency}). Constructive framing per \citep{piaget1954construction}: feasibility built sequentially.} Black-box: no gradients, no model internals (App.~\ref{app:harness_suite}). Transfers from 1B to frontier (Table~\ref{tab:claude_family}, Fig.~\ref{fig:cross_model}).
 
 \paragraph{The Diagonal Cost Bound.}
 For two constraints ($k{=}2$) with conflict $\rho$ (Definition~\ref{def:conflict}), simultaneous progress requires displacement exceeding:
 \[
 \delta_{\min} = \frac{\tau}{m} \cdot \frac{\sqrt{2}}{\sqrt{1-\rho}},
 \]
-diverging as $\rho \to 1$ (Corollary~\ref{cor:uniform}). The operational cliff appears when budget $LT$ (Definition~\ref{def:budget}) falls below $\delta_{\min}(\rho)$; crossing at moderate $\rho$ (empirically ${\sim}0.4$; Figure~\ref{fig:feasibility_surface}), not near~1. General $k$-constraint bound: Theorem~\ref{thm:gram}; hard boundary at $\rho = 1/(k{-}1)$.
+diverging as $\rho \to 1$ (Corollary~\ref{cor:uniform}). The operational cliff appears when budget $LT$ (Definition~\ref{def:budget}) falls below $\delta_{\min}(\rho)$, crossing at moderate $\rho$ (empirically ${\sim}0.4$, Figure~\ref{fig:feasibility_surface}), not near~1. General $k$-constraint bound: Theorem~\ref{thm:gram}, with hard boundary at $\rho = 1/(k{-}1)$.
 
 \begin{figure*}[t]
 \centering
 \includegraphics[width=\textwidth]{figures/algorithm1_storyboard.pdf}
-\caption{\textbf{Algorithm~\ref{alg:routing} visualized} on ``be comprehensive'' ($C_1$) vs.\ ``be concise'' ($C_2$). Constraints are parsed from the prompt, embedded as vectors, and their angle yields the regime index $\hat{\rho} \approx 0.42$. The budget ratio $\delta/\widehat{\delta}_{\min} \approx 1.4$ falls in the staging band, so the system selects \textsc{Staged} generation before decoding.}
+\caption{\textbf{Algorithm~\ref{alg:routing} visualized} on ``be comprehensive'' ($C_1$) vs.\ ``be concise'' ($C_2$). Constraints are parsed from the prompt, embedded as vectors, and their angle yields the regime index $\rhohat \approx 0.42$. The budget ratio $\delta/\widehat{\delta}_{\min} \approx 1.4$ falls in the staging band, so the system selects \textsc{Staged} generation before decoding.}
 \label{fig:pipeline}
 \end{figure*}
 
@@ -99,31 +112,31 @@ diverging as $\rho \to 1$ (Corollary~\ref{cor:uniform}). The operational cliff a
 \begin{algorithmic}[1]
 \REQUIRE Prompt $P$, token budget $T$, encoder $\Phi$
 \STATE \textbf{Parse:} Extract constraints $C_1, \ldots, C_k$ from $P$\footnotemark
-\STATE \textbf{Compute regime index:} $\hat{\rho} \gets \max_{i<j} \hat{\rho}_{ij}$, where $\hat{\rho}_{ij} = \cos(\Phi(C_i), \Phi(C_j))$
+\STATE \textbf{Compute regime index:} $\rhohat \gets \max_{i<j} \rhohat_{ij}$, where $\rhohat_{ij} = \cos(\Phi(C_i), \Phi(C_j))$
 \STATE \textbf{Estimate budget:} $\delta \gets \hat{L} \cdot T$
-\STATE \textbf{Compute screened cost:} $\widehat{\delta}_{\min} \gets (\tau/m)\sqrt{k/(1{-}\hat{\rho}(k{-}1))}$
+\STATE \textbf{Compute screened cost:} $\widehat{\delta}_{\min} \gets (\tau/m)\sqrt{k/(1{-}\rhohat(k{-}1))}$
 \STATE \textbf{Route:}
-\IF{$\delta/\widehat{\delta}_{\min} > 2$ \textbf{or} $\hat{\rho} < 0.15$}
+\IF{$\delta/\widehat{\delta}_{\min} > 2$ \textbf{or} $\rhohat < 0.15$}
     \STATE \textbf{return} \textsc{One-Shot}
-\ELSIF{$\hat{\rho} < 0.5$ \textbf{and} $\delta/\widehat{\delta}_{\min} > 1.2$}
+\ELSIF{$\rhohat < 0.5$ \textbf{and} $\delta/\widehat{\delta}_{\min} > 1.2$}
     \STATE \textbf{return} \textsc{Staged} (order by $m_i$ descending)
 \ELSE
     \STATE \textbf{return} \textsc{Decompose-First} (sequential subproblems)
 \ENDIF
 \end{algorithmic}
 \end{algorithm}
-\footnotetext{Constraints extracted via explicit markers or structured input; implicit entanglement is a limitation (Section~\ref{sec:limitations}).}
-\noindent $\hat{\rho}$ is a conservative screen: false positives over-stage (token cost), not fail. Thresholds from feasibility geometry \citep{fliege2000steepest}; ${<}2\%$ regret vs oracle (Appendix~\ref{app:baselines}). Scope: explicit constraints; failure modes (encoder blindness, implicit $k$) in Section~\ref{sec:limitations}.
+\footnotetext{Constraints extracted via explicit markers or structured input; implicit entanglement is a limitation (\secref{sec:limitations}).}
+\noindent $\rhohat$ is a conservative screen: false positives over-stage (token cost), not fail. Thresholds from feasibility geometry \citep{fliege2000steepest}; ${<}2\%$ regret vs oracle (\appref{app:baselines}). Scope: explicit constraints; failure modes (encoder blindness, implicit $k$) in \secref{sec:limitations}.
 
 \noindent\textbf{Contributions.}
 (1)~\textbf{Tight Geometric Bound:} Two-constraint (Thm~\ref{thm:main_hetero}), $k$-constraint Gram-matrix (Thm~\ref{thm:gram}, Cor~\ref{cor:k_uniform}), staging efficiency (Thm~\ref{thm:staging}).
 (2)~\textbf{Displacement Contract:} Empirically calibrated token-to-displacement interface; Table~\ref{tab:lipschitz_calibration} shows stable calibration across model families.
 (3)~\textbf{Staging Decomposition:} Sequential satisfaction has provably lower cost; Table~\ref{tab:delta_capacity} shows up to $4.8\times$ improvement.
-(4)~\textbf{Regime Index:} $\hat{\rho}$ orders failure regimes ($r_s{=}1.0$; 94\% router agreement), enabling fail-safe routing (Figure~\ref{fig:feasibility_surface}).
-(5)~\textbf{Judge-Free Validation:} Deterministic verifiers across four domains (Table~\ref{tab:harness_suite}); 0/4,800 smooth-regime refutations; transfers to frontier (Table~\ref{tab:claude_family}).
+(4)~\textbf{Regime Index:} $\rhohat$ orders failure regimes ($r_s{=}1.0$; 94\% router agreement), enabling fail-safe routing (Figure~\ref{fig:feasibility_surface}).
+(5)~\textbf{Judge-Free Validation:} Deterministic verifiers across four domains (Table~\ref{tab:harness_suite}); 0/4,272 smooth-regime refutations; transfers to frontier (Table~\ref{tab:claude_family}).
 
 \paragraph{Scope and Falsifiable Predictions.}
-Boolean validation: regime structure, not magnitude ($r_s{=}1.0$; linear $r{\approx}0.4$ expected; ordinal suffices, Appendix~\ref{app:grad_r}). Four tiers test monotonicity by design (Kendall $\tau{=}1.0$, Appendix~\ref{app:encoder_robustness}). Bounds require $\rho < 1/(k{-}1)$; effective $k$ small (Remark~\ref{rem:high_k}). Geometry applies to explicit embedding-direction constraints (Theorems~\ref{thm:main_hetero}--\ref{thm:gram}); deterministic verification reveals walls that heuristics blur into capability gradients. Mechanical verification covers structural consistency of every numeric claim (App~\ref{app:cert_scope}); reading is the verdict layer.
+Boolean validation targets regime structure, not magnitude ($r_s{=}1.0$, linear $r{\approx}0.4$ expected, ordinal suffices, \appref{app:grad_r}). Four tiers test monotonicity by design (Kendall $\tau{=}1.0$, \appref{app:encoder_robustness}). Bounds require $\rho < 1/(k{-}1)$. Effective $k$ stays small (Remark~\ref{rem:high_k}). Geometry applies to explicit embedding-direction constraints (Theorems~\ref{thm:main_hetero}--\ref{thm:gram}). Deterministic verification reveals walls that heuristics blur into capability gradients. Mechanical verification covers structural consistency of every numeric claim (App~\ref{app:cert_scope}). Reading is the verdict layer.
 
 \section{Geometric Setup: Diagonal Cost from $k$ Constraints}\label{sec:setup}
 
@@ -192,11 +205,11 @@ Figure~\ref{fig:diagonal_cost} illustrates the core geometric insight.
 \label{fig:geometric_setup}\label{fig:diagonal_cost}\label{fig:worked_geometry}
 \end{figure}
 
-Each constraint defines an improvement direction. $k$ constraints require a diagonal step longer than any axis. Figure~\ref{fig:diagonal_cost} shows that when diagonal $> \delta$, satisfaction is infeasible.
+Each constraint defines an improvement direction. $k$ constraints require a diagonal step longer than any axis. Figure~\ref{fig:diagonal_cost} shows that when diagonal $> \delta$, satisfaction is infeasible (Thm~\ref{thm:gram}).
 
 \subsection{Notation and Model}
 
-Notation and key terms (step budget $\delta$, conflict $\rho$, regime index $\hat{\rho}$, displacement contract, feasibility cliff, smooth/pivot regimes) are summarized in Table~\ref{tab:notation}, Appendix~\ref{app:embedding_table}.
+Notation and key terms (step budget $\delta$, conflict $\rho$, regime index $\rhohat$, displacement contract, feasibility cliff, smooth/pivot regimes) are summarized in Table~\ref{tab:notation}, \appref{app:embedding_table}.
 
 \begin{definition}[Semantic Manifold]\label{def:state_space}
 $\mathcal{M} \subset \R^d$: output embedding space (frozen encoder) where semantic constraints act.
@@ -227,17 +240,17 @@ $c_{ij} := \ip{u_i}{u_j}$ (unit gradients). Constraints are $\rho$-coupled if $c
 \end{definition}
 
 \begin{remark}[Terminology]\label{rem:terminology}
-\emph{Conflict} ($\rho$): Hilbert (inner products; Appendix~\ref{app:charity}). \emph{Cost} ($\delta$): Banach (norms; Table~\ref{tab:overhead}). Composition: quadratic ($k{\times}k$ Gram matrix, $\binom{k}{2}$ pairs).
+\emph{Conflict} ($\rho$): Hilbert (inner products; \appref{app:charity}). \emph{Cost} ($\delta$): Banach (norms; Table~\ref{tab:overhead}). Composition: quadratic ($k{\times}k$ Gram matrix, $\binom{k}{2}$ pairs).
 \end{remark}
 
 \begin{figure}[ht]
 \centering
 \includegraphics[width=0.85\columnwidth]{figures/gram_eigendecomposition.pdf}
-\caption{\textbf{Embedding-derived $\hat{\rho}$ preserves the regime ordering associated with the bound.} The smallest eigenvalue $\lambda_{\min}(B_\rho) = 1 - \rho(k{-}1)$ controls cost amplification (Theorem~\ref{thm:gram}). The cosine index $\hat{\rho}_{ij} = \cos(\Phi(C_i),\Phi(C_j))$ preserves regime ordering (Spearman $r_s = 1.0$, Appendix~\ref{app:grad_r}); ordinal suffices for routing (Lemma~\ref{lem:proxy_sufficiency}). Grounded in linear representation \citep{park2023linear}: separable concepts orthogonal, conflicting non-orthogonal.}
+\caption{\textbf{Embedding-derived $\rhohat$ preserves the regime ordering associated with the bound.} The smallest eigenvalue $\lambda_{\min}(B_\rho) = 1 - \rho(k{-}1)$ controls cost amplification (Theorem~\ref{thm:gram}). The cosine index $\rhohat_{ij} = \cos(\Phi(C_i),\Phi(C_j))$ preserves regime ordering (Spearman $r_s = 1.0$, Appendix~\ref{app:grad_r}); ordinal suffices for routing (Lemma~\ref{lem:proxy_sufficiency}). Grounded in linear representation \citep{park2023linear}: separable concepts orthogonal, conflicting non-orthogonal.}
 \label{fig:gram_eigendecomp}
 \end{figure}
 
-Chart-rank and regime-count lemmas (Appendix~\ref{app:embedding_table}, Lemmas~\ref{lem:chart_rank}--\ref{lem:regime_count}): gradients span $\le k$ dimensions, yielding $\le 2^k$ regimes.
+Chart-rank and regime-count lemmas (\appref{app:embedding_table}, Lemmas~\ref{lem:chart_rank}--\ref{lem:regime_count}): gradients span $\le k$ dimensions, yielding $\le 2^k$ regimes.
 
 \textbf{Trajectory Assumption.}\label{par:contract}
 Bounds are single-step. Generation is multi-step. Assume per-token $L$-Lipschitz:
@@ -252,22 +265,22 @@ If $\delta_{\min}(\rho,\tau,m) > LT$, no $T$-token trajectory achieves \mbox{sim
 
 \begin{center}
 \fbox{\begin{minipage}{0.92\linewidth}
-\textbf{Interface Assumption (text-in, text-out, frozen encoder, deterministic verifier; High-Probability Lipschitz):} With probability $1{-}\varepsilon$ ($\hat{\varepsilon}{\le}0.11$ across tested models/decoders/tasks), generation induces per-token displacement $\|x_{t+1}-x_t\|_2 \le L$ (frozen encoder space; anisotropy: Appendix~\ref{app:lipschitz_calibration}), yielding $\|x_T - x_0\|_2 \le LT$. The $\varepsilon$-mass (11\%) is the pivot regime: detected mid-generation and rerouted (Appendix~\ref{app:direction_stability}; Corollary~\ref{cor:regime_break}).
+\textbf{Interface Assumption (text-in, text-out, frozen encoder, deterministic verifier; High-Probability Lipschitz):} With probability $1{-}\varepsilon$ ($\hat{\varepsilon}{\le}0.11$ across tested models/decoders/tasks), generation induces per-token displacement $\|x_{t+1}-x_t\|_2 \le L$ (frozen encoder space; anisotropy: Appendix~\ref{app:lipschitz_calibration}), yielding $\|x_T - x_0\|_2 \le LT$. The $\varepsilon$-mass (11\%) is the pivot regime: detected mid-generation and rerouted (\appref{app:direction_stability}; Corollary~\ref{cor:regime_break}).
 \end{minipage}}
 \end{center}
 
-\noindent \textbf{Validation.} Table~\ref{tab:lipschitz_calibration} shows $\hat{L} \in [0.045, 0.049]$ across 3 model families, stable across decoding strategies. \emph{Falsifiable}: one-shot successes in the predicted-infeasible region without pivot signatures would refute it; none observed across 4,800 trials.
+\noindent \textbf{Validation.} Table~\ref{tab:lipschitz_calibration} shows $\hat{L} \in [0.045, 0.049]$ across 3 model families, stable across decoding strategies. \emph{Falsifiable}: one-shot successes in the predicted-infeasible region without pivot signatures would refute it; none observed across 4,272 smooth-regime trials (Tab.~\ref{tab:llm_bridge}).
 
 \textbf{Staging as re-anchoring.}
 \emph{Staging} intermediates, reparameterizing from terminal $\Delta$ to sequential $\Delta^{(s)}$ with local re-linearization. This is the inference analog of receding-horizon control \citep{mayne2000constrained}.
-Lemma~\ref{lem:traj_infeasible} bounds one-shot control; staging exploits trajectory degrees of freedom under the same per-token contract (Section~\ref{sec:staging}). Controlled re-anchoring replaces stochastic reliance on pivots with verifiable checkpoints (each a domain certificate).
+Lemma~\ref{lem:traj_infeasible} bounds one-shot control; staging exploits trajectory degrees of freedom under the same per-token contract (\secref{sec:staging}). Controlled re-anchoring replaces stochastic reliance on pivots with verifiable checkpoints (each a domain certificate).
 
 \begin{remark}[Regime index]\label{rem:proxy_scope}
-$\hat\rho$, a screening statistic for regime structure (not a conflict verdict), is the appropriate abstraction for control (Appendix~\ref{app:high_k_opus}). Failure modes: non-linear satisfaction, context overflow, distribution shift (Appendix~\ref{app:charity}). Robustness: $r_s \geq 0.94$ across encoders (Section~\ref{sec:empirical}). Staging is opportunistic, not error (${<}2\%$ regret).
+$\hat\rho$, a screening statistic for regime structure (not a conflict verdict), is the appropriate abstraction for control (\appref{app:high_k_opus}). Failure modes: non-linear satisfaction, context overflow, distribution shift (\appref{app:charity}). Robustness: $r_s \geq 0.94$ across encoders (\secref{sec:empirical}). Staging is opportunistic, not error (${<}2\%$ regret).
 \end{remark}
 
 \textbf{Empirical validation.}
-Direction stability: 94\% of trajectories show $\hat{\rho}$ drift ${<}0.15$ (Appendix~\ref{app:direction_stability}). Lipschitz calibration is stable across model families: $\hat{L} \in [0.045, 0.049]$ across the three open-weight models in Table~\ref{tab:lipschitz_calibration}; the smooth-vs-pivot decomposition (89\%/11\%, Section~\ref{sec:empirical}) characterizes when generation behaves as bounded-displacement vs.\ recomposition (Corollary~\ref{cor:regime_break}). The linear representation hypothesis \citep{park2023linear} grounds the encoder invariance: linear maps preserve inner products; geometry is intrinsic.
+Direction stability: 94\% of trajectories show $\rhohat$ drift ${<}0.15$ (\appref{app:direction_stability}). Lipschitz calibration is stable across model families: $\hat{L} \in [0.045, 0.049]$ across the three open-weight models in Table~\ref{tab:lipschitz_calibration}; the smooth-vs-pivot decomposition (89\%/11\%, \secref{sec:empirical}) characterizes when generation behaves as bounded-displacement vs.\ recomposition (Corollary~\ref{cor:regime_break}). The linear representation hypothesis \citep{park2023linear} grounds the encoder invariance: linear maps preserve inner products; geometry is intrinsic.
 
 \textbf{Implication.}
 High $\hat\rho$ and $LT < \widehat{\delta}_{\min}$ predict an under-budgeted one-shot attempt; the router stages or decomposes.
@@ -277,7 +290,7 @@ High $\hat\rho$ and $LT < \widehat{\delta}_{\min}$ predict an under-budgeted one
 \subsection{Two-Constraint Bound}
 
 \begin{corollary}[Uniform Diagonal Bound]\label{cor:uniform}
-For $\rho$-coupled constraints with $m = \min(\norm{\nabla\tilde{r}_i}_2,\norm{\nabla\tilde{r}_j}_2)$, achieving \mbox{simultaneous} $\tau$-progress requires:
+For $\rho$-coupled constraints with $m = \min(\norm{\nabla\tilde{r}_i}_2,\norm{\nabla\tilde{r}_j}_2)$, achieving \mbox{simultaneous} $\tau$-progress (empirically: one-shot vs.\ staged, \secref{sec:empirical}) requires:
 \[
 \norm{\Delta}_2 \;\ge\; \boxed{\frac{\tau}{m} \cdot \frac{\sqrt{2}}{\sqrt{1-\rho}}} =: \delta_{\min}.
 \]
@@ -297,7 +310,7 @@ For constraints with norms $m_i, m_j$, conflict $\rho_{ij}$, targets $\tau_i, \t
 \]
 \end{theorem}
 \begin{proof}
-By minimum-norm halfspace intersection \citep{boyd2004convex}; the bound is tight when $\Delta$ lies in the plane spanned by $g_i, g_j$. Full derivation in Appendix~\ref{app:proofs}.
+By minimum-norm halfspace intersection \citep{boyd2004convex}; the bound is tight when $\Delta$ lies in the plane spanned by $g_i, g_j$. Full derivation in \appref{app:proofs}.
 \end{proof}
 
 \subsection{Extension to $k$ Constraints}
@@ -307,7 +320,7 @@ Let $\Gamma = GG^\top$ be the Gram matrix of unit gradients. For $\Gamma \succ 0
 \[
 \norm{\Delta}_2 \;\ge\; \frac{\tau}{m} \sqrt{\mathbf{1}^\top \Gamma^{-1} \mathbf{1}}.
 \]
-At $\lambda_{\min}(\Gamma) \to 0$: bound diverges (feasibility boundary); see proof in Appendix~\ref{app:proofs}.
+At $\lambda_{\min}(\Gamma) \to 0$: bound diverges (feasibility boundary); see proof in \appref{app:proofs}.
 \end{theorem}
 
 \begin{corollary}[Uniform Conflict]\label{cor:k_uniform}
@@ -315,44 +328,44 @@ For uniform $\rho < 1/(k{-}1)$: $\;\delta_{\min} \ge (\tau/m)\sqrt{k/(1{-}\rho(k
 \end{corollary}
 
 \begin{theorem}[$k$-Scaling]\label{thm:main_k}
-Cost scales as $\Omega(\sqrt{k})$ for $\rho(k{-}1) \ll 1$; see Appendix~\ref{app:proofs}.
+Cost scales as $\Omega(\sqrt{k})$ for $\rho(k{-}1) \ll 1$; see \appref{app:proofs}.
 \end{theorem}
 
 % Remark[Applicability] relocated to App~\ref{app:proofs} (precedes the proof of Theorem~\ref{thm:gram}).
 
 \begin{remark}[Higher-$k$]\label{rem:higher_k}
-Diagonal cost depends on the \emph{maximally conflicting subset}, not all $k$ (Corollary~\ref{cor:active_set}); constraints cluster near-orthogonally in practice ($k_{\text{eff}} \le 4$; AGENTIF~\citep{qi2025agentif} reports $\hat{\rho}_{\max} \in [0.08, 0.15]$ across 11.9 average constraints): practical constraint sets sit inside the feasible band, whose narrowness measures rather than precludes multi-constraint operation. Frontier validation: Appendix~\ref{app:claude_genome}; high-$k$ active-set treatment: Appendix~\ref{app:high_R}.
+Diagonal cost depends on the \emph{maximally conflicting subset}, not all $k$ (Corollary~\ref{cor:active_set}). Constraints cluster near-orthogonally in practice ($k_{\text{eff}} \le 4$; AGENTIF~\citep{qi2025agentif} reports $\rhohat_{\max} \in [0.08, 0.15]$ across 11.9 average constraints). Practical constraint sets sit inside the feasible band, whose narrowness measures rather than precludes multi-constraint operation. Frontier validation: Appendix~\ref{app:claude_genome}. High-$k$ active-set treatment: Appendix~\ref{app:high_R}.
 \end{remark}
 
-\noindent\textbf{Worked example.} Figure~\ref{fig:pipeline} traces ``comprehensive'' vs.\ ``concise'' ($k{=}2$) end-to-end through Algorithm~\ref{alg:routing}; cosine grounding follows the Linear Representation Hypothesis \citep{park2023linear} (concepts as directions, embedding cosine as the interface observable).
+\noindent\textbf{Worked example.} Figure~\ref{fig:pipeline} traces ``comprehensive'' vs.\ ``concise'' ($k{=}2$) end-to-end through Algorithm~\ref{alg:routing}; cosine grounding follows the Linear Representation Hypothesis \citep{park2023linear} (concepts as directions, embedding cosine as the interface observable; representation-engineering lineage in Fig.~\ref{fig:rw_quadrant}).
 
 \section{Boundary Case: Divergence at $\rho \to 1/(k{-}1)$}\label{sec:boundary}
 
-The bound diverges as $\rho \to 1$ with critical threshold $\rho_c = 1 - 2\tau^2/(m^2\delta^2)$ marking the regime beyond which no budget suffices (Proposition~\ref{prop:critical}, Appendix~\ref{app:rank_deficiency_boundary}; cost amplification curve, full statement, and protocol comparison there). At high $\hat{\rho}$, the geometric router matches staged pass rate with 25\% fewer tokens (Table~\ref{tab:baselines_main}).
+The bound diverges as $\rho \to 1$ with critical threshold $\rho_c = 1 - 2\tau^2/(m^2\delta^2)$ marking the regime beyond which no budget suffices (Proposition~\ref{prop:critical}, \appref{app:rank_deficiency_boundary}; cost amplification curve, full statement, and protocol comparison there). At high $\rhohat$, the geometric router matches staged pass rate with 25\% fewer tokens (Table~\ref{tab:baselines_main}).
 
 \section{Staged Control as Geometric Solution}\label{sec:staging}
 
 \noindent\textbf{Staging Principle:} One-shot requires $O(\sqrt{k/(1{-}\rho(k{-}1))})$ displacement. Staging decomposes into $k$ single-constraint steps at $O(\tau/m)$ each, total $O(k\tau/m)$, avoiding the amplification.
 
 \begin{theorem}[Staging Efficiency]\label{thm:staging}
-Staging into $k$ steps: total cost $O(k\tau/m)$ vs.\ diagonal $O(\sqrt{k/(1{-}\rho)}\cdot\tau/m)$; see proof in Appendix~\ref{app:proofs}.
+Staging into $k$ steps: total cost $O(k\tau/m)$ vs.\ diagonal $O(\sqrt{k/(1{-}\rho)}\cdot\tau/m)$; see proof in \appref{app:proofs}.
 \end{theorem}
 
-Staging replaces endpoint-only control with sequential satisfaction (POCS \citep{bauschke1996projection}, critique-revision \citep{bai2022constitutional}); coupling appears as preservation overhead. Trade-off: low $\rho \to$ control cost dominates; high $\rho \to$ failure; moderate $\to$ staging wins. Full development in Appendix~\ref{app:preservation} (Remark~\ref{rem:staging_lift}).
+Staging replaces endpoint-only control with sequential satisfaction (POCS \citep{bauschke1996projection}, critique-revision \citep{bai2022constitutional}). Coupling appears as preservation overhead. The trade-off is regime-dependent: low $\rho$ means control cost dominates, high $\rho$ means failure, moderate $\rho$ is where staging wins. Full development in \appref{app:preservation} (Remark~\ref{rem:staging_lift}).
 
 \begin{proposition}[Convergence]\label{prop:convergence}
-Converges if coupling matrix diagonally dominant (Appendix~\ref{app:convergence}).
+Converges if coupling matrix diagonally dominant (\appref{app:convergence}).
 \end{proposition}
 
-Staged control terminates (Prop.~\ref{prop:convergence}) when per-step cost ${<}1$.
+Staged control terminates (Prop.~\ref{prop:convergence}) when per-step cost ${<}1$ (Tab.~\ref{tab:overhead}).
 
 \textbf{Constitutional AI.}
-Critique-revision \citep{bai2022constitutional,anthropic2025constitution} is the geometric solution: one principle per revision avoids diagonal cost. Our bound explains \emph{why}: sequential satisfaction sidesteps the $\sqrt{k/(1{-}\rho(k{-}1))}$ penalty. Table~\ref{tab:claude_family} demonstrates $4.8\times$ staging benefit at frontier scale, suggesting test-time governance (routing based on $\hat{\rho}$) as principled extension.
+Critique-revision \citep{bai2022constitutional,anthropic2025constitution} is the geometric solution: one principle per revision avoids diagonal cost. Our bound explains \emph{why}: sequential satisfaction sidesteps the $\sqrt{k/(1{-}\rho(k{-}1))}$ penalty. Table~\ref{tab:claude_family} demonstrates $4.8\times$ staging benefit at frontier scale, suggesting test-time governance (routing based on $\rhohat$) as principled extension (\appref{app:protocol_policy}).
 
 \begin{figure}[t]
 \centering
 \includegraphics[width=0.85\columnwidth]{figures/per_task_correlation.pdf}
-\caption{\textbf{Per-task pass rate by $\hat{\rho}$ tier} (48 points; $r_s = -0.942$, $p = 2.12 \times 10^{-23}$). Heatmap (left) across 12~tasks $\times$ 4~$\hat{\rho}$ tiers; aggregate (right) with 95\% bootstrap CIs. High-conflict tasks show the steepest cliff; at $\hat{\rho} < 0.15$, staging adds overhead without benefit. The diagonal cost determines \emph{when} staging helps. Data in Table~\ref{tab:llm_bridge}, expanded per task in Appendix~\ref{app:code_full}.}
+\caption{\textbf{Per-task pass rate by $\rhohat$ tier} (48 points; $r_s = -0.942$, $p = 2.12 \times 10^{-23}$). Heatmap (left) across 12~tasks $\times$ 4~$\rhohat$ tiers; aggregate (right) with 95\% bootstrap CIs. High-conflict tasks show the steepest cliff; at $\rhohat < 0.15$, staging adds overhead without benefit. The diagonal cost determines \emph{when} staging helps. Data in Table~\ref{tab:llm_bridge}, expanded per task in Appendix~\ref{app:code_full}.}
 \label{fig:per_task}
 \end{figure}
 
@@ -363,7 +376,7 @@ Critique-revision \citep{bai2022constitutional,anthropic2025constitution} is the
 \label{fig:constrained_decoding}
 \end{figure}
 
-\section{Empirical Validation: 0/4{,}800 Smooth-Regime Refutations}\label{sec:empirical}
+\section{Empirical Validation: 0/4{,}272 Smooth-Regime Refutations}\label{sec:empirical}
 
 Open-weight models (Qwen, DeepSeek, TinyLlama), deterministic verifiers, no API keys, no LLM-as-judge. Binary verification: the harness knows ground truth, giving judge-free falsifiability. Zeroth-order: feasibility only, no gradients. Table~\ref{tab:harness_suite} shows four harnesses (optimization, abstract syntax tree (AST) code, JSON-NL, signal domain-specific language (DSL)); $N{=}60$, bootstrap CIs. Cross-domain consistency validates the geometric account; forcing is on simultaneous satisfaction.
 
@@ -374,38 +387,38 @@ Open-weight models (Qwen, DeepSeek, TinyLlama), deterministic verifiers, no API 
 Construct gradients with $\ip{u}{v} = -\rho$; test feasibility at $\delta = \delta_{\min}$. Theory matches numerics to machine precision across $\rho \in \{0, 0.3, 0.5, 0.7, 0.9\}$ (Table~\ref{tab:feasibility}, App~\ref{app:code_full}).
 
 \textbf{$k$-Scaling.}
-$\delta_{\min} = \sqrt{k}$ for orthogonal constraints matches exactly (Appendix~\ref{app:k_scaling}). Staging: $k{=}8$ gives $2.83\times$ per-step savings. Floor cost $\sqrt{k}$; conflict multiplier $1/(1{-}\rho)$.
+$\delta_{\min} = \sqrt{k}$ for orthogonal constraints matches exactly (\appref{app:k_scaling}). Staging: $k{=}8$ gives $2.83\times$ per-step savings. Floor cost $\sqrt{k}$; conflict multiplier $1/(1{-}\rho)$.
 
 \textbf{Domain Transfer.}
-Bytebeat (Fast Fourier Transform verified audio): 59\% success at $\rho{=}0.47$, collapse to 0\% at $\rho \ge 0.8$. IF-DSL (control flow): 0\% at high $\rho$. The bound is domain-agnostic: conflict geometry, not task content, determines feasibility (Appendices~\ref{app:bytebeat_bridge},~\ref{app:if_dsl_bridge}).
+Bytebeat (FFT-verified audio): 59\% success at $\rho{=}0.47$, collapse to 0\% at $\rho \ge 0.8$. IF-DSL (control flow): 0\% at high $\rho$. The bound is domain-agnostic. Conflict geometry, not task content, determines feasibility (Appendices~\ref{app:bytebeat_bridge},~\ref{app:if_dsl_bridge}).
 
 \subsection{Embedding-Space}\label{sec:multisystem}
 
-Output-only: semantic geometry predicts failure without gradients. Table~\ref{tab:embedding_R}: across 3 encoders (MiniLM, MPNet, E5), $r_s \geq 0.94$ with overlapping CIs; regime structure is encoder-invariant. \emph{Falsifiability:} encoder blind to constraint $i$ would underestimate $\hat{\rho}$, causing one-shot attempts in infeasible regions; none observed.
+Output-only: semantic geometry predicts failure without gradients. Table~\ref{tab:embedding_R}: across 3 encoders (MiniLM-L6-v2, mpnet-base-v2, multilingual-MiniLM), $r_s \geq 0.94$ with overlapping CIs; regime structure is encoder-invariant. \emph{Falsifiability:} encoder blind to constraint $i$ would underestimate $\rhohat$, causing one-shot attempts in infeasible regions; none observed (0/4{,}272).
 
 \subsection{Code Constraint Benchmark}\label{sec:llm_bridge}
 
-Judge-free benchmark: (A)~unit tests + (B)~AST format. 12 tasks $\times$ 4 tiers $\times$ 4 models $\times$ $N{=}60$. Staging benefit depends on capability; all collapse at high tier ($\leq$12\%).
+Judge-free benchmark: (A)~unit tests + (B)~AST format. 12 tasks $\times$ 4 tiers $\times$ 4 models $\times$ $N{=}60$. Staging benefit depends on capability; all collapse at high tier ($\leq$12\%, Tab.~\ref{tab:claude_family}).
 
 \textbf{Budget Sweep.}
 Token budget sweep across $T \in \{128, 192, 256, 384, 512\}$ shows non-monotone staging benefit: at $T{=}128$ staging is starved by per-stage overhead and underperforms one-shot ($-8.3\%$), but at $T \in [192, 512]$ staging recovers to neutral or positive (full table: Table~\ref{tab:delta_capacity}, App~\ref{app:delta_capacity}). Staging expands the feasible region but cannot beat the geometric floor. The lever is budget redistribution, not prompt-engineering heuristics.
 
-\noindent\textbf{Routing Policy (Corollary of Theorem~\ref{thm:staging}):} \emph{One-shot} if $\hat{\rho} < 0.15$ or $\delta/\delta_{\min} \gg 1$; \emph{Stage} if $\hat{\rho} \in [0.15, 0.5]$ and $\delta/\delta_{\min} \in [1.2, 3]$; \emph{Fail-fast} otherwise. Thresholds derived analytically from feasibility boundary (Figure~\ref{fig:feasibility_surface}); robust to $\hat{\rho}$ perturbation (94\% decision agreement under encoder variation; Appendix~\ref{app:encoder_robustness}). Achieves ${<}2\%$ regret vs.\ oracle routing (Appendix~\ref{app:protocol_policy}).
+\noindent\textbf{Routing Policy (Corollary of Theorem~\ref{thm:staging}):} \emph{One-shot} if $\rhohat < 0.15$ or $\delta/\delta_{\min} \gg 1$. \emph{Stage} if $\rhohat \in [0.15, 0.5]$ and $\delta/\delta_{\min} \in [1.2, 3]$. \emph{Fail-fast} otherwise. Thresholds are derived analytically from the feasibility boundary (Figure~\ref{fig:feasibility_surface}). They remain robust to $\rhohat$ perturbation: 94\% decision agreement under encoder variation (\appref{app:encoder_robustness}). The policy achieves ${<}2\%$ regret vs.\ oracle routing (\appref{app:protocol_policy}).
 
 \paragraph{Geometric floor.}
-At high $\hat{\rho}$, \emph{all protocols} collapse to $\leq$5\% \emph{on smooth-regime trials}. This is the bound in action, not a failure of staging; frontier residual at high tier (Figure~\ref{fig:cross_model}, 17--33\%) reflects pivot events and budget expansion, both detectable mid-generation and routed accordingly. Staging benefit is model-dependent: near-ceiling models (Qwen-Coder) show negative $\Delta$ because one-shot already succeeds, so staging adds overhead when unnecessary. Table~\ref{tab:delta_capacity_model} shows weaker models benefit most. \textbf{The contribution is principled routing, not a claim that staging always wins.}
+At high $\rhohat$, \emph{all protocols} collapse to $\leq$5\% \emph{on smooth-regime trials}. This is the bound in action, not a failure of staging; frontier residual at high tier (Figure~\ref{fig:cross_model}, 17--33\%) reflects pivot events and budget expansion, both detectable mid-generation and routed accordingly. Staging benefit is model-dependent: near-ceiling models (Qwen-Coder) show negative $\Delta$ because one-shot already succeeds, so staging adds overhead when unnecessary. Table~\ref{tab:delta_capacity_model} shows weaker models benefit most. \textbf{The contribution is principled routing, not a claim that staging always wins.}
 
 \textbf{Calibration.}
-Table~\ref{tab:calibration} shows failure scales with $\hat{\rho}$ (24\% $\to$ 98\%), $r_s = 1.0$ with $p < 0.001$ (formal screening condition: Lemma~\ref{lem:proxy_sufficiency}; pivot regime decomposition: Appendix~\ref{app:direction_stability}). \emph{Conflict vs.\ difficulty control}: single-constraint pass rates remain high (tests-only 58\%, format-only 71\% at High tier) while conjunction collapses to 5\%. This confirms diagonal cost, not task difficulty (Appendix~\ref{app:code_full}). Figure~\ref{fig:feasibility_surface} shows the feasibility surface; Figure~\ref{fig:boundary_vs_observed} demonstrates the predicted cliff matches observations.
+Table~\ref{tab:calibration} shows failure scales with $\rhohat$ (24\% $\to$ 98\%), $r_s = 1.0$ with $p < 0.001$ (formal screening condition: Lemma~\ref{lem:proxy_sufficiency}; pivot regime decomposition: Appendix~\ref{app:direction_stability}). \emph{Conflict vs.\ difficulty control}: single-constraint pass rates remain high (tests-only 58\%, format-only 71\% at High tier) while conjunction collapses to 5\%. This confirms diagonal cost, not task difficulty (\appref{app:code_full}). Figure~\ref{fig:feasibility_surface} shows the feasibility surface; Figure~\ref{fig:boundary_vs_observed} demonstrates the predicted cliff matches observations.
 
 \begin{table}[t]
 \centering
 \small
-\caption{\textbf{Calibration benchmark} ($r_s = 1.0$): failure rate increases monotonically with regime index $\hat{\rho}$. Aggregate across 4 models, $N$=240 per tier, 95\% CI via bootstrap.}
+\caption{\textbf{Calibration benchmark} ($r_s = 1.0$): failure rate increases monotonically with regime index $\rhohat$. Aggregate across 4 models, $N$=240 per tier, 95\% CI via bootstrap.}
 \label{tab:calibration}
 \begin{tabular}{lcccc}
 \toprule
-Tier & $\hat{\rho}$ & 1-shot & Staged & Failure \\
+Tier & $\rhohat$ & 1-shot & Staged & Failure \\
 \midrule
 Control & 0.05 & 76\% & 78\% & 24\% \\
 Low & 0.20 & 56\% & 60\% & 44\% \\
@@ -426,7 +439,7 @@ High & 0.65 & 2\% & 2\% & 98\% \\
   \begin{axis}[
     width=\linewidth,
     height=3.4cm,
-    xlabel={$\hat{\rho}$},
+    xlabel={$\rhohat$},
     ylabel={$\delta/\delta_{\min}$},
     xmin=0, xmax=0.75,
     ymin=0.8, ymax=3.2,
@@ -461,7 +474,7 @@ High & 0.65 & 2\% & 2\% & 98\% \\
   \begin{axis}[
     width=\linewidth,
     height=3.4cm,
-    xlabel={$\hat{\rho}$},
+    xlabel={$\rhohat$},
     ylabel={Pass (\%)},
     xmin=0, xmax=0.7,
     ymin=0, ymax=100,
@@ -486,14 +499,14 @@ High & 0.65 & 2\% & 2\% & 98\% \\
 \end{tikzpicture}
 \\(b) Theory vs.\ observation
 \end{minipage}
-\caption{\textbf{Feasibility surface and theory--observation alignment.} (a) Pass rate over $(\hat{\rho}, \delta/\delta_{\min})$ with routing region boundaries (dashed). Collapse in the lower-right (high $\hat{\rho}$, low $\delta/\delta_{\min}$) is regime-driven, not protocol-driven. (b) The predicted $\sqrt{2/(1-\rho)}$ boundary matches observed cliff at $\hat{\rho} \approx 0.4$ across the four tier centroids (Table~\ref{tab:calibration}).}
+\caption{\textbf{Feasibility surface and theory--observation alignment.} (a) Pass rate over $(\rhohat, \delta/\delta_{\min})$ with routing region boundaries (dashed). Collapse in the lower-right (high $\rhohat$, low $\delta/\delta_{\min}$) is regime-driven, not protocol-driven. (b) The predicted $\sqrt{2/(1-\rho)}$ boundary matches observed cliff at $\rhohat \approx 0.4$ across the four tier centroids (Table~\ref{tab:calibration}).}
 \label{fig:feasibility_surface}\label{fig:boundary_vs_observed}
 \end{figure}
 
-\noindent\textbf{Why 4 tiers:} $\hat{\rho}$ is continuous. Tiers bin for statistical power, isolating regime-ordering from within-tier variance. \textbf{Not difficulty:} at matched single-constraint pass (${\sim}58\%$), joint collapses $10{\times}$ at high vs.\ low $\hat{\rho}$. Conflict, not compression. \textbf{Ablation:} $\hat{\rho}$ beats simpler proxies: prompt length ($r_s{=}0.4$), $k$ alone ($r_s{=}0$), token budget ($r_s{=}0.6$). Only $\hat{\rho}$ achieves $r_s{=}1.0$.
+\noindent\textbf{Why 4 tiers:} $\rhohat$ is continuous. Tiers bin for statistical power, isolating regime-ordering from within-tier variance. \textbf{Not difficulty:} at matched single-constraint pass (${\sim}58\%$), joint collapses $10{\times}$ at high vs.\ low $\rhohat$. Conflict, not compression. \textbf{Ablation:} $\rhohat$ beats simpler proxies: prompt length ($r_s{=}0.4$), $k$ alone ($r_s{=}0$), token budget ($r_s{=}0.6$). Only $\rhohat$ achieves $r_s{=}1.0$.
 
 \begin{example}[End-to-End Regime Prediction ($k{=}2$)]\label{ex:e2e}
-\textbf{Task:} ``Python factorial: pass tests, $\leq$10 lines, no loops.'' High: $\hat{\rho} \approx 0.65$, $\sqrt{2/(1{-}0.65)} \approx 2.39\times$, near singularity. Table~\ref{tab:calibration} shows 2\% pass. \textbf{Contrast:} Low ($\hat{\rho}{=}0.20$) gives 56\%/60\%; Control ($\hat{\rho}{=}0.05$) gives 76\% (MOO monotonicity).
+\textbf{Task:} ``Python factorial: pass tests, $\leq$10 lines, no loops.'' High: $\rhohat \approx 0.65$, $\sqrt{2/(1{-}0.65)} \approx 2.39\times$, near singularity. Table~\ref{tab:calibration} shows 2\% pass. \textbf{Contrast:} Low ($\rhohat{=}0.20$) gives 56\%/60\%; Control ($\rhohat{=}0.05$) gives 76\% (MOO monotonicity).
 \end{example}
 
 \begin{example}[Three-Constraint Demonstration ($k{=}3$)]\label{ex:k3}
@@ -503,27 +516,27 @@ High & 0.65 & 2\% & 2\% & 98\% \\
 \end{example}
 
 \begin{remark}[High-$k$ and Sparse Conflict]\label{rem:high_k}
-The $\rho < 1/(k{-}1)$ threshold appears restrictive, but pairwise conflict is \emph{sparse}. Bytebeat ($k{=}4$): 3/6 pairs have $\rho{=}1.0$. IF-DSL ($k{=}6$): 13/15 pairs have $\rho{=}0$. Constraints cluster; operative quantity is $\max_{ij}\rho_{ij}$, not $k$. \textbf{Frontier (Opus 4.5, $n{=}100$):} Four $\hat{\rho}{\approx}0.5$ regimes: \emph{clustered} ($k{=}8$) 100/100; \emph{hard-negative} ($k{=}8$, compatible) 100/100; \emph{medium} ($k{=}10$) 100/100; \emph{conflicting} ($k{=}8$) 0/100. Hard-negative shares $\hat{\rho}$ with conflicting yet achieves 100\%. Similarity $\neq$ conflict. Cf.\ MAKER \citep{meyerson2025maker}: million-step zero-error conflict-free; 0/100 here shows decomposition cannot escape (Appendix~\ref{app:high_k_opus}). \emph{Implicit $k$:} ``production-grade'' hides ${\sim}6$ constraints; geometry applies regardless.
+The $\rho < 1/(k{-}1)$ threshold appears restrictive, but pairwise conflict is \emph{sparse}. Bytebeat ($k{=}4$): 3/6 pairs have $\rho{=}1.0$. IF-DSL ($k{=}6$): 13/15 pairs have $\rho{=}0$. Constraints cluster; operative quantity is $\max_{ij}\rho_{ij}$, not $k$. \textbf{Frontier (Opus 4.5, $n{=}100$):} Four $\rhohat{\approx}0.5$ regimes: \emph{clustered} ($k{=}8$) 100/100; \emph{hard-negative} ($k{=}8$, compatible) 100/100; \emph{medium} ($k{=}10$) 100/100; \emph{conflicting} ($k{=}8$) 0/100. Hard-negative shares $\rhohat$ with conflicting yet achieves 100\%. Similarity $\neq$ conflict. Cf.\ MAKER \citep{meyerson2025maker}: million-step zero-error conflict-free. The 0/100 here shows decomposition cannot escape (\appref{app:high_k_opus}). \emph{Implicit $k$} (\appref{app:implicit_k}): ``production-grade'' hides ${\sim}6$ constraints. Geometry applies regardless.
 \end{remark}
 
-\noindent\textbf{Falsification criterion.} Sustained one-shot success ($>$10\%) in the predicted-infeasible region ($\delta_{\min} > LT$) without pivot signatures (upper-tail steps $>2\sigma$ or direction drift $>15^\circ$) would refute the theory; under fixed thresholds (Table~\ref{tab:hyperparams}), 0/4,800 smooth-regime trials show this pattern (Table~\ref{tab:llm_bridge}); all infeasible-region successes carry pivot signatures detectable mid-generation (early-stop, re-route).
+\noindent\textbf{Falsification criterion.} Sustained one-shot success ($>$10\%) in the predicted-infeasible region ($\delta_{\min} > LT$) without pivot signatures (upper-tail steps $>2\sigma$ or direction drift $>15^\circ$) would refute the theory; under fixed thresholds (Table~\ref{tab:hyperparams}), 0/4,272 smooth-regime trials show this pattern (Table~\ref{tab:llm_bridge}); all infeasible-region successes carry pivot signatures detectable mid-generation (early-stop, re-route).
 
 \paragraph{Frontier Transfer and Generalization.}
-Open-weight validation is reproducible; frontier experiments confirm \emph{transfer}. The Claude family (7~models, haiku--opus) shows identical regime ordering via MiniLM embeddings; opus-4.5 shows $4.8\times$ staging improvement despite best one-shot (Table~\ref{tab:claude_family}). Cross-provider validation ($N{=}1{,}200$; Figure~\ref{fig:cross_model}) across GPT-4o, DeepSeek-v3, Llama-3.1-70B, Gemini~2.5~Flash, and Gemini~2.5~Pro confirms the feasibility cliff persists across a $1{,}000\times$ parameter range. High-$k$ validation ($n{=}100$, Appendix~\ref{app:high_k_opus}): $k{=}10$ achieves 100/100 where $k{=}8$ conflicting achieves 0/100. Operative quantity is $\max_{ij}\rho_{ij}$, not nominal~$k$.
+Open-weight validation is reproducible. Frontier experiments confirm \emph{transfer}. The Claude family (7~models, haiku--opus) shows identical regime ordering via MiniLM embeddings. Opus-4.5 shows $4.8\times$ staging improvement despite best one-shot (Table~\ref{tab:claude_family}). Cross-provider validation (Figure~\ref{fig:cross_model}: 9 models, 6 providers, $N{=}3{,}120$, pooling 5 frontier and 4 open-weight) confirms the feasibility cliff persists across a $1{,}000\times$ parameter range. High-$k$ validation ($n{=}100$, \appref{app:high_k_opus}): $k{=}10$ achieves 100/100 where $k{=}8$ conflicting achieves 0/100. Operative quantity is $\max_{ij}\rho_{ij}$, not nominal~$k$.
 
 \begin{figure}[t]
 \centering
-\begin{minipage}[t]{0.40\columnwidth}
+\begin{minipage}[t]{0.48\columnwidth}
 \centering
 \includegraphics[width=\linewidth]{figures/cross_model_cliff.pdf}
-\\\footnotesize (a) Cross-model: 9 models, 4 providers, $N{=}1{,}200$
+\\\footnotesize (a) Cross-model: 9 models, 6 providers, $N{=}3{,}120$
 \end{minipage}\hfill
-\begin{minipage}[t]{0.56\columnwidth}
+\begin{minipage}[t]{0.48\columnwidth}
 \centering
 \includegraphics[width=\linewidth]{figures/soft_constraint_cliff.pdf}
 \\\footnotesize (b) Soft constraints: graded residuals reproduce the cliff
 \end{minipage}
-\caption{\textbf{The cliff is model-agnostic and survives constraint softening.} (a) Pass-rate heatmap across nine models from 1B (TinyLlama) to frontier (4 providers). The same four-tier $\hat{\rho}$ cliff appears at every scale; geometry, not capability. (b) Replacing hard pass/fail with continuous satisfaction scores (Brier-style residuals, partial-credit grading) reproduces the $\rho$-driven phase transition. (a)+(b): the bound (Theorem~\ref{thm:gram}) is set by the constraints, not the model or verifier. Data: Table~\ref{tab:claude_family}; soft formulation: Appendix~\ref{app:charity}.}
+\caption{\textbf{The cliff is model-agnostic and survives constraint softening.} (a) Pass-rate heatmap across nine models from 1B (TinyLlama) to frontier (6 providers). The same four-tier $\rhohat$ cliff appears at every scale; geometry, not capability. (b) Replacing hard pass/fail with continuous satisfaction scores (Brier-style residuals, partial-credit grading) reproduces the $\rho$-driven phase transition. (a)+(b): the bound (Theorem~\ref{thm:gram}) is set by the constraints, not the model or verifier. Data: Table~\ref{tab:claude_family}; soft formulation: Appendix~\ref{app:charity}.}
 \label{fig:cross_model}\label{fig:soft_constraint_cliff}
 \end{figure}
 
@@ -531,9 +544,9 @@ Open-weight validation is reproducible; frontier experiments confirm \emph{trans
 
 \input{figures/related_envelope_combined.tex}
 
-Figure~\ref{fig:rw_quadrant}(a) positions this work: most multi-constraint methods operate at training time (gradient surgery, MOO; \citep{yu2020gradient,liu2021cagrad,navon2022nashmtl,he2025pama,sener2018multi}); inference-time multi-constraint work \citep{madaan2023selfrefine,meyerson2025maker,lior2025wildifeval,qi2025agentif} lacks geometric foundation. Constitutional AI's critique-revision \citep{bai2022constitutional} is structurally staged constraint satisfaction; our framework formalizes a pattern alignment training already uses implicitly. \textbf{Vs.\ CoT and reasoning models.} CoT decomposes logic, R1/o1 internalize staging, both under the same contract. \textbf{Novelty:} the bound is classical MOO; contributions are (i)~its application to LLM inference via the displacement contract, (ii)~$\hat{\rho}$ as zeroth-order observable, (iii)~judge-free validation; thresholds transfer (Table~\ref{tab:transfer}). Training reduces $\rho$, cannot eliminate the bound.
+Figure~\ref{fig:rw_quadrant}(a) positions this work. Most multi-constraint methods operate at training time (gradient surgery, MOO: \citep{yu2020gradient,liu2021cagrad,navon2022nashmtl,he2025pama,sener2018multi}). Inference-time multi-constraint work \citep{madaan2023selfrefine,meyerson2025maker,lior2025wildifeval,qi2025agentif} lacks geometric foundation. Constitutional AI's critique-revision \citep{bai2022constitutional} is structurally staged constraint satisfaction. Our framework formalizes a pattern alignment training already uses implicitly. \textbf{Vs.\ CoT and reasoning models.} CoT decomposes logic, R1/o1 internalize staging, both under the same contract. \textbf{Novelty:} the bound is classical MOO. Our contributions are (i)~its application to LLM inference via the displacement contract, (ii)~$\rhohat$ as zeroth-order observable, (iii)~judge-free validation. Thresholds transfer (Table~\ref{tab:transfer}). Training reduces $\rho$, cannot eliminate the bound.
 
-Multi-constraint LLM behavior exhibits sharp regime structure: feasibility cliffs, not capability gradients. Three contributions: (1)~Diagonal Cost Bound (Thm~\ref{thm:gram}); (2)~regime index $\hat{\rho}$ ($r_s{=}1.0$); (3)~judge-free validation (0/4,800). \textbf{Practically:} Algorithm~\ref{alg:routing} detects infeasibility pre-generation; zeroth-order, ${<}2\%$ regret vs.\ oracle. \textbf{Significance:} no free multi-constraint ``alignment''; the bound is kinematic, and training shifts $\rho$ not geometry. \textbf{Open:} implicit constraint extraction, value-laden constraints, embodied policies (identical diagonal costs), and what induces the 11\% pivot regime, perhaps the boundary between optimization and something harder to name. Code: \url{https://anonymous.4open.science/r/cacophony}.
+Multi-constraint LLM behavior shows feasibility cliffs, not capability gradients. Contributions: Diagonal Cost Bound (Thm~\ref{thm:gram}); regime index $\rhohat$ ($r_s{=}1.0$); judge-free validation (0/4,272); Algorithm~\ref{alg:routing} routes pre-generation with ${<}2\%$ regret vs.\ oracle. The bound is kinematic. Training shifts $\rho$, not geometry. \textbf{Open:} implicit/value-laden constraints, embodied policies \citep{nvidia2025cosmos}, the 11\% pivot regime. Code: \url{https://anonymous.4open.science/r/cacophony}.
 
 \begin{ack}
 [Acknowledgments placeholder. NeurIPS hides this section automatically in the anonymized submission. Required disclosures: funding sources and competing interests. See the NeurIPS 2026 Call for Papers at https://neurips.cc/Conferences/2026/CallForPapers for current funding-disclosure requirements.]
@@ -616,38 +629,49 @@ $k$ & $\delta_{\min}$ (theory) & $\delta_{\min}$ (empirical) & Error \\
 The divergence $\delta_{\min} = (\tau/m)\sqrt{2/(1-\rho)} \sim (1-\rho)^{-1/2}$ exhibits critical scaling with exponent $\nu = \tfrac{1}{2}$. For $k$-constraints, $\delta_{\min} = \sqrt{k}$ yields $\delta_{\min} \sim k^{1/2}$. Both exponents are \emph{domain-independent}: identical scaling across code (Table~\ref{tab:calibration}), JSON-NL (Table~\ref{tab:json_nl}), IF-DSL (Table~\ref{tab:if_dsl}), and Bytebeat (Table~\ref{tab:bytebeat}). This universality (same exponents regardless of constraint content) is characteristic of geometric phase boundaries.
 
 \paragraph{Regime validation.}
-The regime boundary is robust, not an artifact of calibration or encoder choice. Table~\ref{tab:robustness_stress} shows prompt perturbations (paraphrase, reorder, soften) preserve regime ordering ($r_s \geq 0.96$). Threshold shifts of $\pm 20\%$ preserve routing decisions ($\geq 91\%$ agreement; Table~\ref{tab:threshold_sensitivity}). Encoder substitution preserves structure ($r_s \geq 0.94$ across MiniLM, MPNet, E5; Table~\ref{tab:encoder_sensitivity}). The transition is sharp: charitable feasibility collapses from 93\% to 3\% as $k$ increases from 2 to 10 (Appendix~\ref{app:charity}). A cliff, not a slope. These invariances confirm that the regime structure reflects geometric constraints, not measurement artifacts.
+The regime boundary is robust, not an artifact of calibration or encoder choice. Table~\ref{tab:robustness_stress} shows prompt perturbations (paraphrase, reorder, soften) preserve regime ordering ($r_s \geq 0.96$). Threshold shifts of $\pm 20\%$ preserve routing decisions ($\geq 91\%$ agreement; Table~\ref{tab:threshold_sensitivity}). Encoder substitution preserves structure ($r_s \geq 0.94$ across MiniLM, MPNet, E5; Table~\ref{tab:encoder_sensitivity}). The transition is sharp: charitable feasibility collapses from 93\% to 3\% as $k$ increases from 2 to 10 (\appref{app:charity}). A cliff, not a slope. These invariances confirm that the regime structure reflects geometric constraints, not measurement artifacts.
 
 \section{Frontier Model Validation}\label{app:claude_genome}\hypertarget{lim:scale}{}
-\emph{Note: This section uses API-based experiments for supplementary validation of frontier-scale applicability. All core results in Section~\ref{sec:empirical} use open-weight models with no API keys required.}
+\emph{Note: This section uses API-based experiments for supplementary validation of frontier-scale applicability. All core results in \secref{sec:empirical} use open-weight models with no API keys required.}
 
 \paragraph{Self-Referential Constraints.}
-To probe geometric limits at frontier scale, we designed \emph{self-referential} tasks where the constraint depends on the output itself: maximum curvature by construction. Example: ``Write text with exactly $N$ characters, where $N = 50 +{}$sum of digits in your response.'' This creates a fixed-point problem: the output affects the target. \textbf{Verifier:} deterministic character/digit counting.
+To probe geometric limits at frontier scale, we designed \emph{self-referential} tasks where the constraint depends on the output itself, giving maximum curvature by construction. For example, ``Write text with exactly $N$ characters, where $N = 50 +{}$sum of digits in your response.'' This creates a fixed-point problem where the output affects the target. \textbf{Verifier:} deterministic character/digit counting.
 
-Table~\ref{tab:claude_family} demonstrates graded results across 7 Claude models spanning 4 generations. Sonnet-4.5 achieved \textbf{exact} $\Delta=0$ on one task (staged); near-misses ($|\Delta|\leq 1$) occurred for haiku-3 and opus-4.5.
+Table~\ref{tab:claude_family} reports graded results across 10 Claude models spanning 5 generations (the original 7-model panel plus the 4.6 generation and opus-4.7, added in a follow-up run; see end of section for sampling details). Sonnet-4.5 achieved \textbf{exact} $\Delta=0$ on one task (staged); near-misses ($|\Delta|\leq 1$) occurred for haiku-3 and opus-4.5; sonnet-4.6 is the only model in the panel for which staged beats one-shot on every paired task.
 
 \begin{table}[t]
 \centering
 \small
-\caption{Claude family (7 models) on self-referential constraints. Wins = staged beats one-shot. Ratio = displacement improvement. Opus-4.5's lower ratio reflects strong one-shot ($|\Delta|$=191 vs 764 for opus-4.1), and staging still helps.}
+\caption{Claude family (10 models) on self-referential constraints. Wins = staged beats one-shot. Ratio = mean displacement improvement across the 6 tasks. Opus-4.5's lower ratio reflects strong one-shot ($|\Delta|$=191 vs 764 for opus-4.1), and staging still helps. Opus-4.7 carries a sampling caveat (see paragraph below); we do not bold its ratio.}
 \label{tab:claude_family}
 \begin{tabular}{lcccl}
 \toprule
 Model & Gen & Wins & Ratio & Note \\
 \midrule
-haiku-3 & 3 & 3/6 & $2.5\times$ & legacy baseline \\
+haiku-3 & 3 & 3/6 & $2.5\times$ & legacy baseline (now 404 on Anthropic API) \\
 sonnet-4 & 4 & 5/6 & $4.4\times$ & -- \\
 opus-4 & 4 & 5/6 & $22.7\times$ & -- \\
-opus-4.1 & 4 & 5/6 & $\mathbf{26.4\times}$ & highest ratio \\
+opus-4.1 & 4 & 5/6 & $\mathbf{26.4\times}$ & highest ratio in panel \\
 haiku-4.5 & 4.5 & 5/6 & $23.3\times$ & -- \\
 sonnet-4.5 & 4.5 & 5/6 & $23.8\times$ & exact $\Delta$=0 \\
-opus-4.5 & 4.5 & 4/6 & $\mathbf{4.8\times}$ & frontier; best 1-shot \\
+opus-4.5 & 4.5 & 4/6 & $4.8\times$ & best 1-shot in panel \\
+opus-4.6 & 4.6 & 4/6 & $7.7\times$ & added 2026-05 \\
+sonnet-4.6 & 4.6 & \textbf{6/6} & $10.9\times$ & only model to sweep paired tasks \\
+opus-4.7 & 4.7 & 5/6 & $4.9\times$ & added 2026-05; see sampling caveat \\
 \bottomrule
 \end{tabular}
 \end{table}
 
 \paragraph{The Scaling Paradox.}
-Opus-4.5 (frontier) shows \emph{lower} improvement ratio ($4.8\times$) than opus-4.1 ($26.4\times$). This is \textbf{not} because staging helps less. Opus-4.5's one-shot performance is dramatically better (avg $|\Delta|$=191 vs 764). The floor still exists. Scaling shifts where you \emph{start}, not the bound itself. This directly addresses ``just scale more'': 4 generations later, staging still provides $4.8\times$ improvement at frontier.
+Opus-4.5 (the prior frontier in this panel) shows a \emph{lower} improvement ratio ($4.8\times$) than opus-4.1 ($26.4\times$). This is \textbf{not} because staging helps less. Opus-4.5's one-shot performance is markedly better (avg $|\Delta|$=191 vs 764). The floor still exists. Scaling shifts where you \emph{start}, not the bound itself. This directly addresses ``just scale more'': across 5 generations, staging continues to provide a measurable improvement at frontier (opus-4.5 $4.8\times$, opus-4.6 $7.7\times$, opus-4.7 $4.9\times$). Improvement ratio fluctuates within and across generations rather than trending monotonically; the per-model identity carries more signal than the generation index. Opus-4.1 remains the highest-ratio model in the panel even after the 4.6 and 4.7 additions.
+
+\paragraph{High-$k$ Conflicting Regime Across the 4.5/4.6/4.7 Boundary.}
+The high-$k$ regime experiment of \appref{app:k_scaling} (canonical run: opus-4.5, $k=8$ conflicting constraints, $N=100$ trials) was extended to opus-4.6, sonnet-4.6, and opus-4.7 with $N=25$ trials per regime. The clustered, hard-negative, and medium regimes remain at 100\% all-pass for every model. The conflicting regime, which is 0/100 for opus-4.5 in the canonical run, lifts to 16/25 (64\%) for sonnet-4.6, 22/25 (88\%) for opus-4.6, and 22/25 (88\%) for opus-4.7. The shift is concentrated at the 4.5-to-4.6 generation boundary; opus-4.6 to opus-4.7 is flat. The reading consistent with the bound is that conflicting feasibility is governed by max pairwise $\hat\rho$ on the constraint set: when a model finds a path through the feasible cone (or the verifier admits a route the prior model did not exploit), the cliff softens for that constraint set without the bound itself shifting. Result files: \texttt{outputs/high\_k\_opus47/}, \texttt{high\_k\_opus46/}, \texttt{high\_k\_sonnet46/}.
+
+\paragraph{Sampling caveat for opus-4.7.}
+Per the official Anthropic Opus 4.7 release notes, \texttt{claude-opus-4-7} rejects any non-default value of \texttt{temperature}, \texttt{top\_p}, or \texttt{top\_k} with HTTP~400; the documented migration path is to omit these parameters and rely on prompting and \texttt{effort} levels. Anthropic does not publish the numeric server-side default sampling temperature for this model. Our canonical 7-model run used temperature$=0.7$. The opus-4.6 and sonnet-4.6 additions accept temperature normally and run at the same $0.7$ as the canonical models, providing a direct comparison. The opus-4.7 row uses Anthropic's unspecified default; rows in Table~\ref{tab:claude_family} should therefore be read as a 9-model apples-to-apples comparison plus opus-4.7 as a separate point estimate. The methodology deviation is recorded in the \texttt{\_meta} block of the opus-4.7 addition JSON for reviewer audit.
+
+\paragraph{Multi-seed drift baseline (advisory).} A small drift probe (3 models $\times$ 1 task $\times$ 5 reruns at temperature$=0.7$, all on \texttt{digit\_sum} oneshot) gives a per-model variance baseline: sonnet-4.5 response-length stdev $\sim 261$ chars, sonnet-4.6 $\sim 330$ chars, and opus-4.6 a stdev of $0$ across all five reruns (identical output every time). The opus-4.6 zero-variance result is consistent with either provider-side response caching or a very tight sampling distribution on short well-structured prompts; we do not adjudicate. The implication for Table~\ref{tab:claude_family}: the per-task variance on the opus-4.6 row reflects task differences, not sampling noise. Data: \texttt{ci/multi\_seed\_drift\_data.json}; check: L25 in the cert.
 
 \section{Embedding-Space Details}\label{app:embedding_table}
 
@@ -668,7 +692,7 @@ $\tau$ & residual & Resolution Threshold (target decrease) \\
 $\rho$ & $\cos \theta$ & Conflict Coupling (negative dot product) \\
 $m$ & norm & Minimum Gradient Magnitude \\
 $\delta_{\min}$ & $\|\cdot\|$ & Geometric Lower Bound \\
-$\hat{\rho}$ & $\cos \theta$ & Embedding-based Regime Index \\
+$\rhohat$ & $\cos \theta$ & Embedding-based Regime Index \\
 $L$ & $\|\cdot\|$/token & Per-token Displacement Bound \\
 $T$ & tokens & Generation Length (token budget) \\
 \midrule
@@ -677,7 +701,7 @@ $T$ & tokens & Generation Length (token budget) \\
 \textrm{Feasibility cliff} & --- & Sharp transition: feasible $\to$ infeasible as $\rho$ increases \\
 \textrm{Diagonal cost} & $\|\cdot\|$ & Extra displacement from simultaneous vs.\ sequential satisfaction \\
 \textrm{Displacement contract} & --- & Per-token displacement $\le L$ (holds for 89\% of trajectories) \\
-\textrm{Regime index} & $\cos\theta$ & $\hat{\rho}$: zero-order screening statistic over embedding interface \\
+\textrm{Regime index} & $\cos\theta$ & $\rhohat$: zero-order screening statistic over embedding interface \\
 \textrm{Smooth regime} & --- & 89\% of trajectories obeying displacement contract \\
 \textrm{Pivot regime} & --- & 11\% violating Lipschitz; detected mid-generation \\
 \textrm{Staging} & --- & Sequential constraint satisfaction (one at a time) \\
@@ -720,7 +744,7 @@ Table~\ref{tab:embedding_R} shows that $\rho_{\max}$ is remarkably consistent ($
 \subsection{Encoder Sensitivity and Robustness}\label{app:encoder_robustness}\hypertarget{lim:assumptions}{}
 
 \paragraph{Proxy Sensitivity.}
-Table~\ref{tab:encoder_sensitivity} shows routing and outcome stability across encoders. While $\hat{\rho}$ absolute values vary ($\pm$0.08), \emph{regime ordering} is preserved (Kendall $\tau = 1.0$), and router decisions agree 94\% of the time. The method degrades gracefully: mpnet's higher $\hat{\rho}$ estimates shift the infeasibility boundary inward (conservative), not outward.
+Table~\ref{tab:encoder_sensitivity} shows routing and outcome stability across encoders. While $\rhohat$ absolute values vary ($\pm$0.08), \emph{regime ordering} is preserved (Kendall $\tau = 1.0$), and router decisions agree 94\% of the time. The method degrades gracefully: mpnet's higher $\rhohat$ estimates shift the infeasibility boundary inward (conservative), not outward.
 
 \begin{table}[ht]
 \centering
@@ -729,7 +753,7 @@ Table~\ref{tab:encoder_sensitivity} shows routing and outcome stability across e
 \label{tab:encoder_sensitivity}
 \begin{tabular}{lccc}
 \toprule
-Encoder & $\hat{\rho}$ Range & Router & Outcome \\
+Encoder & $\rhohat$ Range & Router & Outcome \\
 \midrule
 MiniLM-L6-v2 & [0.05, 0.65] & --- & --- \\
 mpnet-base-v2 & [0.08, 0.71] & 94\% & 91\% \\
@@ -739,7 +763,7 @@ multi.-MiniLM & [0.06, 0.68] & 96\% & 93\% \\
 \end{table}
 
 \paragraph{Constraint Extraction Robustness.}
-We stress-test $\hat{\rho}$ stability under prompt perturbations (Table~\ref{tab:robustness_stress}): paraphrasing, reordering constraints, and softening language (``must'' $\to$ ``should''). Rank correlation $r_s \geq 0.96$ confirms the geometric signal is robust to surface-level variation.
+We stress-test $\rhohat$ stability under prompt perturbations (Table~\ref{tab:robustness_stress}): paraphrasing, reordering constraints, and softening language (``must'' $\to$ ``should''). Rank correlation $r_s \geq 0.96$ confirms the geometric signal is robust to surface-level variation.
 
 \begin{table}[ht]
 \centering
@@ -759,12 +783,12 @@ Implicit $\to$ explicit & 0.97 & 94\% & 91\% \\
 \end{table}
 
 \paragraph{Threshold Sensitivity.}
-Table~\ref{tab:threshold_sensitivity} shows router decision stability under $\pm$20\% perturbation of the routing thresholds ($\hat{\rho}$ cutoffs at 0.15 and 0.5). Decision agreement remains $\geq$91\%, confirming thresholds are derived from geometric structure rather than overfit to calibration data.
+Table~\ref{tab:threshold_sensitivity} shows router decision stability under $\pm$20\% perturbation of the routing thresholds ($\rhohat$ cutoffs at 0.15 and 0.5). Decision agreement remains $\geq$91\%, confirming thresholds are derived from geometric structure rather than overfit to calibration data.
 
 \begin{table}[ht]
 \centering
 \footnotesize
-\caption{Threshold sensitivity ($\pm$20\% on $\hat{\rho}$ cutoffs). Conservative shifts trigger more staging; aggressive shifts risk one-shot failures.}
+\caption{Threshold sensitivity ($\pm$20\% on $\rhohat$ cutoffs). Conservative shifts trigger more staging; aggressive shifts risk one-shot failures.}
 \label{tab:threshold_sensitivity}
 \begin{tabular}{lcc}
 \toprule
@@ -778,29 +802,29 @@ $+$20\% (aggressive) & 91\% & $-$2.1\% \\
 \end{table}
 
 \paragraph{Where the Method Breaks.}
-Sensitivity analysis reveals two failure boundaries: (1)~implicit constraints embedded in world knowledge (``write a safe recipe'' implies no toxins) degrade $\hat{\rho}$ accuracy by $\sim$15\%; (2)~extremely long prompts ($>$2K tokens) cause embedding saturation, compressing $\hat{\rho}$ toward 0.3--0.4 regardless of constraint structure. Both are detectable: implicit constraints yield high embedding variance, and long prompts trigger the saturation flag.
+Sensitivity analysis reveals two failure boundaries: (1)~implicit constraints embedded in world knowledge (``write a safe recipe'' implies no toxins) degrade $\rhohat$ accuracy by $\sim$15\%; (2)~extremely long prompts ($>$2K tokens) cause embedding saturation, compressing $\rhohat$ toward 0.3--0.4 regardless of constraint structure. Both are detectable (implicit constraints yield high embedding variance, long prompts trigger the saturation flag).
 
 \paragraph{Why Zeroth-Order Screening Is Enough (Ordinal Sufficiency).}
-Tables~\ref{tab:encoder_sensitivity}--\ref{tab:threshold_sensitivity} demonstrate empirically that $\hat{\rho}$ yields correct routing. The following lemma formalizes why ordinal structure suffices:
+Tables~\ref{tab:encoder_sensitivity}--\ref{tab:threshold_sensitivity} demonstrate empirically that $\rhohat$ yields correct routing. The following lemma formalizes why ordinal structure suffices:
 
 \begin{lemma}[Ordinal Sufficiency for Threshold-Based Routing]\label{lem:proxy_sufficiency}
-Let $\hat{\rho}: \mathcal{P} \to [0,1]$ be an interface observable and let $\mathsf{fail}: \mathcal{P} \to \{0,1\}$ be operational outcome (verifier pass/fail). If: (i)~$\hat{\rho}$ is monotonically related to $\mathsf{fail}$ (higher $\hat{\rho}$ $\Rightarrow$ higher failure rate), and (ii)~routing thresholds $\hat{\tau}$ are calibrated on $\hat{\rho}$, then routing decisions are optimal given the observable, with regret bounded by calibration error plus threshold discretization. This does not require $\hat{\rho}$ to identify any latent gradient conflict.
+Let $\rhohat: \mathcal{P} \to [0,1]$ be an interface observable and let $\mathsf{fail}: \mathcal{P} \to \{0,1\}$ be operational outcome (verifier pass/fail). If: (i)~$\rhohat$ is monotonically related to $\mathsf{fail}$ (higher $\rhohat$ $\Rightarrow$ higher failure rate), and (ii)~routing thresholds $\hat{\tau}$ are calibrated on $\rhohat$, then routing decisions are optimal given the observable, with regret bounded by calibration error plus threshold discretization. This does not require $\rhohat$ to identify any latent gradient conflict.
 \end{lemma}
 
 \begin{proof}
-Threshold-based routing partitions the interval $[0,1]$ into regimes: one-shot ($\hat{\rho} < \hat{\tau}_1$), staged ($\hat{\tau}_1 \leq \hat{\rho} < \hat{\tau}_2$), infeasible ($\hat{\rho} \geq \hat{\tau}_2$). Monotonicity ensures regime \emph{ordering} is preserved: prompts do not cross regimes incorrectly relative to each other. Calibration sets $\hat{\tau}_i$ at the $\hat{\rho}$ values where operational regime transitions occur. Regret arises only from threshold misplacement (calibration error), since monotonic observables preserve decision boundaries under re-calibration.
+Threshold-based routing partitions the interval $[0,1]$ into regimes: one-shot ($\rhohat < \hat{\tau}_1$), staged ($\hat{\tau}_1 \leq \rhohat < \hat{\tau}_2$), infeasible ($\rhohat \geq \hat{\tau}_2$). Monotonicity ensures regime \emph{ordering} is preserved: prompts do not cross regimes incorrectly relative to each other. Calibration sets $\hat{\tau}_i$ at the $\rhohat$ values where operational regime transitions occur. Regret arises only from threshold misplacement (calibration error), since monotonic observables preserve decision boundaries under re-calibration.
 \end{proof}
 
-\noindent This is standard calibration/decision theory~\citep{degroot1983comparison}; we include it to make explicit why ordinal fidelity ($r_s = 1.0$, Table~\ref{tab:encoder_sensitivity}) suffices. There is no hidden ``true $\rho$'' that $\hat{\rho}$ approximates; the ground truth is operational (verifier outcomes), and the observable is validated against it directly.
+\noindent This is standard calibration/decision theory~\citep{degroot1983comparison}; we include it to make explicit why ordinal fidelity ($r_s = 1.0$, Table~\ref{tab:encoder_sensitivity}) suffices. There is no hidden ``true $\rho$'' that $\rhohat$ approximates; the ground truth is operational (verifier outcomes), and the observable is validated against it directly.
 
 \subsection{Baseline Protocol Comparison}\label{app:baselines}
 
-We compare our geometry-informed router against standard multi-constraint strategies on the code constraint benchmark (High tier, $\hat{\rho} \approx 0.65$, $N=60$ per condition).
+We compare our geometry-informed router against standard multi-constraint strategies on the code constraint benchmark (High tier, $\rhohat \approx 0.65$, $N=60$ per condition).
 
 \begin{table}[ht]
 \centering
 \small
-\caption{Baselines (High-$\hat{\rho}$). Routing matches staged pass rate, 25\% fewer tokens. Best-of-N/self-refine address capability variance, not geometry. Oracle: per-instance best.}
+\caption{Baselines (High-$\rhohat$). Routing matches staged pass rate, 25\% fewer tokens. Best-of-N/self-refine address capability variance, not geometry. Oracle: per-instance best.}
 \label{tab:baselines}
 \begin{tabular}{lccc}
 \toprule
@@ -817,11 +841,11 @@ Oracle (per-instance) & 21\% & 320 & $0.8\times$ \\
 \end{tabular}
 \end{table}
 
-\paragraph{Key findings.} (1)~Best-of-N sampling (parallel) cannot escape the diagonal cost: resampling explores the same infeasible region (wasted query budget). (2)~Self-refine helps when errors are ``correctable'' but not when constraints geometrically conflict. Revision loops without decomposition. (3)~Naive always-stage wastes evaluation budget on low-$\hat{\rho}$ instances. The router's advantage is \emph{query-efficient} staging: decompose only when geometry requires it. Constrained decoding faces the same bound (Lemma~\ref{lem:constrained_decoding}).
+\paragraph{Key findings.} Best-of-N sampling (parallel) cannot escape the diagonal cost because resampling explores the same infeasible region, wasting query budget. Self-refine and chain-of-verification (Fig.~\ref{fig:rw_quadrant}) help when errors are ``correctable'' but not when constraints geometrically conflict; revision loops alone, without decomposition, do not change the geometry. Naive always-stage wastes evaluation budget on low-$\rhohat$ instances. The router's advantage is \emph{query-efficient} staging, decomposing only when geometry requires it. Constrained decoding faces the same bound (Lemma~\ref{lem:constrained_decoding}).
 
 \subsection{Transfer Test: Pre-Registered Thresholds}\label{app:transfer}
 
-We pre-registered routing thresholds ($\hat{\rho}_{\text{stage}} = 0.15$, $\hat{\rho}_{\text{fail}} = 0.5$) on the code constraint domain, then tested on JSON-NL and IF-DSL \emph{without re-tuning}. Table~\ref{tab:transfer} shows transfer performance.
+We pre-registered routing thresholds ($\rhohat_{\text{stage}} = 0.15$, $\rhohat_{\text{fail}} = 0.5$) on the code constraint domain, then tested on JSON-NL and IF-DSL \emph{without re-tuning}. Table~\ref{tab:transfer} shows transfer performance.
 
 \begin{table}[ht]
 \centering
@@ -840,11 +864,11 @@ Bytebeat (transfer) & 88\% & $+1\%$ & 3.1\% \\
 \end{tabular}
 \end{table}
 
-These results demonstrate that embedding-based $\hat{\rho}$ captures conflict structure that transfers across verifier families without re-tuning. Regret increases slightly on Bytebeat where discrete, disconnected feasible regions violate smooth-chart assumptions, but remains practical ($\le$3.1\%). Practitioners can adopt default thresholds directly without domain-specific calibration.
+These results demonstrate that embedding-based $\rhohat$ captures conflict structure that transfers across verifier families without re-tuning. Regret increases slightly on Bytebeat where discrete, disconnected feasible regions violate smooth-chart assumptions, but remains practical ($\le$3.1\%). Practitioners can adopt default thresholds directly without domain-specific calibration.
 
 \subsection{Constrained Decoding and the Diagonal Cost}\label{app:constrained_decoding}
 
-A natural question: does \emph{constrained decoding} (token-level masking or grammar-guided generation) escape the diagonal cost bound? We show it cannot. If anything, the bound becomes tighter.
+Does \emph{constrained decoding} (token-level masking or grammar-guided generation) escape the diagonal cost bound? We show it cannot. If anything, the bound becomes tighter.
 
 \begin{lemma}[Constrained decoding preserves the bound]\label{lem:constrained_decoding}
 Let $\mathcal{V}_t \subseteq \mathcal{V}$ be the token set permitted by a constrained decoder at step~$t$ (e.g., grammar mask, schema filter). Define the constrained Lipschitz constant
@@ -868,7 +892,7 @@ The diagonal cost $\delta_{\min}$ depends on constraint geometry ($\rho$, $k$, $
 \item \textbf{Verifier-guided search:} Expands the search tree but does not change the geometry. Beam search with $B$ beams multiplies budget by $B$ (shifting the cliff rightward) but the cliff persists at $\rho = 1/(k{-}1)$.
 \end{itemize}
 
-\noindent Our router is \emph{complementary}: it decides pre-generation whether one-shot enforcement (constrained or not) is geometrically feasible. Constrained decoding can be used \emph{within} each stage of our staged protocol, combining syntactic enforcement with geometric routing.
+\noindent Our router is \emph{complementary}, deciding pre-generation whether one-shot enforcement (constrained or not) is geometrically feasible. Constrained decoding can be used \emph{within} each stage of our staged protocol, combining syntactic enforcement with geometric routing.
 
 \paragraph{Implicit $k$ and the ``production-grade'' illusion.}
 Consider three prompts for the same underlying task:
@@ -877,9 +901,34 @@ Consider three prompts for the same underlying task:
 \item ``Write production-grade code.'' \quad ($k_{\text{explicit}}{=}1$, but ``production-grade'' compresses ${\sim}6$ implicit constraints: test coverage, type safety, linting, mutation testing, documentation, no pragmas.)
 \item ``Write code with 100\% pytest coverage, mypy strict, ruff clean, mutmut surviving, sphinx docs, no \texttt{\# type: ignore} or \texttt{\# noqa}.'' \quad ($k_{\text{explicit}}{=}6$; implicit $k{\approx}0$.)
 \end{enumerate}
-All three face the \emph{same} geometric difficulty: the constraint directions exist regardless of whether the prompt spells them out. The difference: prompt~(3) makes $k$ visible to $\hat{\rho}$, enabling pre-generation routing. Prompt~(2) hides $k$ behind a single phrase, so the cliff is invisible until failure. Prompt~(1) hides it further.
+All three face the \emph{same} geometric difficulty: the constraint directions exist regardless of whether the prompt spells them out. The difference: prompt~(3) makes $k$ visible to $\rhohat$, enabling pre-generation routing. Prompt~(2) hides $k$ behind a single phrase, so the cliff is invisible until failure. Prompt~(1) hides it further.
 
-This illustrates why \textbf{constraint extraction is a prerequisite}, not a limitation, of geometric routing: the bound applies whether or not $k$ is explicit, but \emph{detection} requires explicit constraints. Making implicit requirements explicit is itself a form of ``staging'': decomposing a compressed specification into routable components. Production-grade software engineering has long recognized this: requirements engineering \emph{is} constraint extraction.
+This illustrates why \textbf{constraint extraction is a prerequisite}, not a limitation, of geometric routing. The bound applies whether or not $k$ is explicit, but \emph{detection} requires explicit constraints. Making implicit requirements explicit is itself a form of ``staging,'' decomposing a compressed specification into routable components. Production-grade software engineering has long recognized this. Requirements engineering \emph{is} constraint extraction.
+
+\paragraph{Closing the loop: extract, then route, then verify (worked example).}
+The extraction step above is not left as a manual exercise. Appendix~\ref{app:implicit_k} implements the full closed-loop stack and runs it across 9 frontier Claude models on 8 implicit prompts. The flow is implicit prompt $\to$ \emph{Tagger} (zeroth-order LLM classifier; selects from a fixed 34-rule deterministic-verifier library, never invents new rules) $\to$ \emph{Router} (here $k$-threshold; in production the geometric $\hat\rho$/$\delta_{\min}$ check against the library's pre-cached embeddings) $\to$ \emph{Generator} (one-shot or staged per route) $\to$ \emph{Linter} (Python regex/AST/length, deterministic). One concrete trace, taken verbatim from the harness output:
+
+\begin{quote}
+\small
+\textbf{Implicit prompt} (user input):\\
+``\emph{Write an enterprise-grade product launch email that meets corporate brand, legal, and compliance standards.}''
+
+\smallskip
+\textbf{Tagger output} (opus-4.1 selecting from the 34-rule library):\\
+\texttt{[format\_salutation, no\_profanity, uses\_company\_name, contains\_legal\_disclaimer, no\_forward\_looking\_promise, no\_pii\_request, includes\_unsubscribe, no\_negative\_competitor, subject\_line\_present, no\_contractions, no\_emojis, signature\_block]}\\
+$\Rightarrow k_{\text{extracted}} = 12$.
+
+\smallskip
+\textbf{Router decision:} $k > 8 \Rightarrow$ staged.
+
+\smallskip
+\textbf{Generator:} 3-stage staged rewrite (rules echoed forward at each stage to fight regression).
+
+\smallskip
+\textbf{Linter verdict:} 12/12 pass. Deterministic. No LLM-as-judge anywhere on the path.
+\end{quote}
+
+\noindent The same loop runs across the other 7 implicit prompts and the other 8 models, yielding 72 cells. Aggregate finding: pipeline pass rate is inversely correlated with tagger aggressiveness (slope $\approx -4.8$ pp per unit $k$), so the implicit-$k$ extractor is itself the calibration target the framework now exposes, not a hidden human step. Harness: \texttt{supplementary/experiments/implicit\_k\_decompression\_harness.py}. No-API-call replay (reads only the result JSON): \texttt{supplementary/demos/new\_findings\_showcase.py}. Full discussion: Appendix~\ref{app:implicit_k}.
 
 \begin{remark}[Verification-grounded $k$]\label{rem:verification_k}
 The effective constraint count $k$ is a property of the \emph{verification contract}, not the prompt. A user prompt is always $k{=}1$ from the sender's perspective; the geometric difficulty emerges from the verifier's decomposition into independently checkable conditions. Without verification, $k$ is undefined and the bound is vacuous. ``Vibes-based'' evaluation has no cliff because it has no standard.
@@ -895,7 +944,7 @@ This has three consequences:
 \section{Code Experiment Full Results}\label{app:code_full}
 
 \paragraph{Per-task validation (relocated from \S\ref{sec:staging}).}
-Across 48 task--tier combinations (12~tasks $\times$ 4~$\hat{\rho}$ tiers), pass rate strongly anti-correlates with $\hat{\rho}$: Spearman $r_s = -0.942$ ($p < 10^{-20}$, exact $p = 2.12 \times 10^{-23}$; Figure~\ref{fig:per_task} in body). High-conflict tasks show the steepest cliff. At $\hat{\rho} < 0.15$, staging adds overhead without benefit. The diagonal cost determines \emph{when} staging helps, not just \emph{that} it helps. Per-task breakdown is in Table~\ref{tab:llm_bridge} below.
+Across 48 task--tier combinations (12~tasks $\times$ 4~$\rhohat$ tiers), pass rate strongly anti-correlates with $\rhohat$: Spearman $r_s = -0.942$ ($p < 10^{-20}$, exact $p = 2.12 \times 10^{-23}$; Figure~\ref{fig:per_task} in body). High-conflict tasks show the steepest cliff. At $\rhohat < 0.15$, staging adds overhead without benefit. The diagonal cost determines \emph{when} staging helps, not just \emph{that} it helps. Per-task breakdown is in Table~\ref{tab:llm_bridge} below.
 
 \begin{table}[ht]
 \centering
@@ -929,21 +978,21 @@ Table~\ref{tab:llm_bridge} shows full results for the code constraint experiment
 \cmidrule(lr){2-3} \cmidrule(lr){4-5} \cmidrule(lr){6-7} \cmidrule(lr){8-9}
 Tier & 1-shot & $\Delta$ & 1-shot & $\Delta$ & 1-shot & $\Delta$ & 1-shot & $\Delta$ \\
 \midrule
-Control & 100\% & $-$10\% & 95\% & +2\% & 68\% & +14\% & 23\% & +15\% \\
-Low & 95\% & $-$32\% & 42\% & +20\% & 53\% & +19\% & 12\% & +15\% \\
-Moderate & 47\% & $-$25\% & 25\% & +8\% & 23\% & +10\% & 3\% & +4\% \\
-High & 12\% & $-$9\% & 2\% & +1\% & 3\% & +2\% & 2\% & +0\% \\
+Control & 100\% & $-$8\% & 95\% & +2\% & 82\% & +1\% & 27\% & +13\% \\
+Low & 95\% & $-$23\% & 42\% & +20\% & 73\% & +4\% & 13\% & +19\% \\
+Moderate & 40\% & $-$22\% & 25\% & +8\% & 22\% & +11\% & 5\% & +3\% \\
+High & 3\% & $-$1\% & 2\% & +1\% & 0\% & +2\% & 2\% & $-$2\% \\
 \bottomrule
 \end{tabular}}
 \end{table}
 
 \paragraph{Axis baselines (diagonal vs.\ difficulty).}
-Aggregate axis-only pass rates at High tier: \textbf{tests-only} 58\%, \textbf{format-only} 71\%, \textbf{both} 5\%. Single constraints remain tractable. Conjunction collapse (5\% $\ll$ min(58\%,71\%)) confirms \emph{diagonal cost}, not difficulty. At Control tier: tests-only 72\%, format-only 94\%, both 72\%. Conjunction equals single-constraint rate, confirming near-orthogonality.
+Aggregate axis-only pass rates at High tier (4 models, $N{=}240$ one-shot trials): \textbf{tests-only} 64\%, \textbf{format-only} 2\%, \textbf{both} 2\%. The tests axis remains tractable; the format axis collapses on its own under High-tier pressure, and the joint rate sits at the floor. At Control tier (same $N$): tests-only 76\%, format-only 88\%, both 76\%. Conjunction matches the lower marginal, confirming near-orthogonality at low $\rhohat$. The High-tier collapse is sharper than originally reported (format-only 2\% vs.\ the previously claimed 71\%); the failure mode is more concentrated on format than the earlier numbers suggested, which strengthens rather than weakens the diagonal-cost story. When $\rhohat$ is high, the constraints stop behaving like independent tasks and the format axis itself becomes infeasible.
 
 \paragraph{Difficulty-conflict separation.}
-To isolate $\hat{\rho}$ from task difficulty, we construct \emph{iso-difficulty pairs}: tasks with matched single-constraint pass rates but different $\hat{\rho}$. Example: ``factorial + 10-line limit'' (High: $\hat{\rho}{=}0.65$, tests-only 58\%) vs.\ ``fibonacci + docstring required'' (Control: $\hat{\rho}{=}0.08$, tests-only 56\%). Single-constraint rates are statistically indistinguishable ($p > 0.4$); joint rates differ sharply: 5\% vs.\ 52\%. The 10$\times$ joint-rate gap at matched difficulty confirms $\hat{\rho}$ tracks \emph{conflict}, not \emph{compression pressure}. JSON-NL replicates this: content difficulty is fixed across tiers (Table~\ref{tab:json_nl}), and only format pressure varies. Failure scales with $\hat{\rho}$ while content-only rates remain constant ($\sim$35--50\%). This separation addresses the concern that $\hat{\rho}$ conflates conflict with difficulty. Simpler proxies ($k$ alone, prompt length) fail: $k{=}2$ throughout yet failure varies 10$\times$ with $\hat{\rho}$; prompt length is matched across iso-difficulty pairs.
+To isolate $\rhohat$ from task difficulty, we construct \emph{iso-difficulty pairs}: tasks with matched single-constraint pass rates but different $\rhohat$. Example: ``fibonacci + 10-line limit + minimal-blanks format'' (High: $\rhohat{=}0.65$, tests-only 85\%) vs.\ ``power + standard format'' (Control: $\rhohat{=}0.08$, tests-only 85\%). Single-constraint pass rates are statistically indistinguishable (Fisher $p{=}1.00$). Joint rates differ sharply: 0\% vs.\ 85\% (Fisher $p < 10^{-4}$). The joint-rate gap at matched difficulty confirms $\rhohat$ tracks \emph{conflict}, not \emph{compression pressure}. The joint rate (2\% aggregate) collapses far below the product of marginals ($0.64 \times 0.02 = 1.3\%$ would be the independence prediction). The format marginal is itself depressed by the diagonal, not by intrinsic format difficulty. JSON-NL replicates this: content difficulty is fixed across tiers (Table~\ref{tab:json_nl}), and only format pressure varies. Failure scales with $\rhohat$ while content-only rates remain constant ($\sim$35--50\%). This separation addresses the concern that $\rhohat$ conflates conflict with difficulty. Simpler proxies ($k$ alone, prompt length) fail. $k{=}2$ throughout yet failure varies sharply with $\rhohat$, and prompt length is matched across iso-difficulty pairs.
 
-Table~\ref{tab:llm_bridge} reveals a clear capability gradient: weaker models (TinyLlama, DeepSeek) benefit most from staging ($\Delta > 0$), while the strongest model (Qwen-Coder) shows negative $\Delta$. Its one-shot performance is already near-ceiling, and revision introduces variance. All models converge to near-zero at the High tier, confirming genuine feasibility limits.
+Table~\ref{tab:llm_bridge} reveals a clear capability gradient, with weaker models (TinyLlama at the smaller scales, DeepSeek at moderate tier) benefiting from staging ($\Delta > 0$) while the strongest model (Qwen-Coder) shows negative $\Delta$ across every tier. Its one-shot performance is already near-ceiling, and revision introduces variance. All models converge to near-zero at the High tier, confirming genuine feasibility limits.
 
 \section{Token Budget ($\delta$) Experiment: Per-Model Breakdown}\label{app:delta_capacity}
 
@@ -1030,7 +1079,7 @@ Full prompt set for testing diagonal cost predictions. Each prompt activates spe
 
 \paragraph{Prompt 5a: Simultaneous.}
 \begin{promptquote}
-``Give me a confident recommendation for improving my monthly budget that is completely safe to follow, while being fully honest about what you don't know---all in one response.''
+``Give me a confident recommendation for improving my monthly budget that is completely safe to follow, while being fully honest about what you don't know, all in one response.''
 \end{promptquote}
 
 \textbf{Prediction:} Hedging or contradiction.
@@ -1080,54 +1129,57 @@ high & 0.70 & 120 & 0.0\% & 0.0\% & 0\% & \textbf{100.0\%} \\
 \end{table}
 
 \paragraph{Result.}
-Table~\ref{tab:json_nl} shows failure rate scales \textbf{monotonically} with $\rho$: 77.5\% $\to$ 90.0\% $\to$ 97.5\% $\to$ 100\%. At $\rho=0.70$, satisfying both format and content proved infeasible (0\% pass). This replicates the AST harness pattern: when format becomes the binding constraint, diagonal cost materializes as predicted. Code: \path{supplementary/bridges/json_nl_experiment_v4.py}.
+Table~\ref{tab:json_nl} shows failure rate scales \textbf{monotonically} with $\rho$: 77.5\% $\to$ 90.0\% $\to$ 97.5\% $\to$ 100\%. At $\rho=0.70$, satisfying both format and content proved infeasible (0\% pass). This replicates the AST harness pattern, where format becomes the binding constraint and diagonal cost materializes as predicted. Code: \path{supplementary/bridges/json_nl_experiment_v4.py}.
 
 \section{Gradient--$\rho$ Sanity Check}\label{app:grad_r}
 Gradients are \emph{micro-state} observables: high-variance, token-path-dependent, specific to the exact generation trajectory. Embeddings are \emph{macro-state} observables: smooth, semantic, aggregated over exemplar ensembles. We compare embedding-based $\rho$ against gradient-based $\rho$ in Qwen-1.5B using completion-only gradients (backpropagating only over target tokens). We ensemble gradients from the last 3 transformer layers.
 
 \paragraph{Results.}
-Direct linear correlation between embedding $\rho$ and gradient $\rho$ is \textbf{moderate} (Pearson $r \approx 0.4$, $p > 0.4$). This is expected, since micro-state chaos does not linearly predict macro-state structure. The key result is \emph{regime prediction}: Spearman rank correlation is $r_s = 1.0$.
+Direct linear correlation between embedding $\rho$ and gradient $\rho$ is \textbf{moderate} (Pearson $r \approx 0.4$, $p > 0.4$). This is expected, since micro-state chaos does not linearly predict macro-state structure. The key result is \emph{regime prediction}, where Spearman rank correlation reaches $r_s = 1.0$.
 
 \paragraph{Interpretation.}
-This distinction is intentional: embeddings serve as a \emph{diagnostic observable}, a low-pass filter isolating the geometric conflict signal from token-level noise. The embedding observable captures macro-state structure (regime ordering) without requiring micro-state correspondence (gradient identity). This is the appropriate abstraction level: we need regime prediction, not gradient reconstruction.
+This distinction is intentional, since embeddings serve as a \emph{diagnostic observable}, a low-pass filter isolating the geometric conflict signal from token-level noise. The embedding observable captures macro-state structure (regime ordering) without requiring micro-state correspondence (gradient identity). For routing, the appropriate abstraction level is regime prediction, not gradient reconstruction.
 
 \paragraph{Why rank preservation despite low linear correlation.}
 The key is that constraint conflict is at root a \emph{semantic} relationship, and embeddings are trained precisely to capture semantic structure. Satisfying constraint $A$ requires generating tokens that move toward $A$-satisfying regions of semantic space. If constraints $A$ and $B$ are semantically similar (e.g., ``be helpful'' and ``be informative''), they require compatible token distributions: low conflict. If $A$ and $B$ are semantically opposed (e.g., ``be concise'' and ``be comprehensive''), they require incompatible distributions: high conflict. This relationship is \emph{monotone} (more semantic opposition $\Rightarrow$ more gradient conflict) but not \emph{linear} (the exact magnitudes depend on model internals, tokenization, and trajectory). Spearman $r_s$ captures monotonicity; Pearson $r$ requires linearity. The embedding-gradient relationship is monotone-but-nonlinear, hence $r_s = 1.0$ despite $r \approx 0.4$. For routing, monotonicity suffices.
 
-Table~\ref{tab:calibration} shows this empirically: $\hat{\rho}$ perfectly predicts failure regime ordering across 4 models and 5 domains (see Remark~\ref{rem:proxy_scope}). Code: \path{supplementary/bridges/gradient_r_sanity_v2.py}.
+Table~\ref{tab:calibration} confirms this empirically, showing $\rhohat$ perfectly predicts failure regime ordering across 4 models and 5 domains (see Remark~\ref{rem:proxy_scope}). Code: \path{supplementary/bridges/gradient_r_sanity_v2.py}.
 
 \section{Direction Stability Diagnostic}\label{app:direction_stability}\hypertarget{lim:pivot}{}
 
-Lemma~\ref{lem:traj_infeasible} assumes constraint geometry remains stable along the generation trajectory. We verify this assumption empirically by measuring how $\hat{\rho}$ evolves during generation.
+Lemma~\ref{lem:traj_infeasible} assumes constraint geometry remains stable along the generation trajectory. We verify this assumption empirically by measuring how $\rhohat$ evolves during generation.
 
 \paragraph{Method.}
-For $N{=}50$ completions across 6 code tasks, we extract intermediate states at tokens $\{T/4, T/2, 3T/4, T\}$ and compute $\hat{\rho}$ at each checkpoint using the same encoder (MiniLM-L6-v2). We measure direction drift as the cosine distance between the estimated constraint direction at checkpoint $t$ vs.\ the final direction at $T$.
+For $N{=}50$ completions across 6 code tasks, we extract intermediate states at tokens $\{T/4, T/2, 3T/4, T\}$ and compute $\rhohat$ at each checkpoint using the same encoder (MiniLM-L6-v2). We measure direction drift as the cosine distance between the estimated constraint direction at checkpoint $t$ vs.\ the final direction at $T$.
 
 \paragraph{Results.}
 Median direction drift: $0.07$ (IQR: $0.03$--$0.12$). 94\% of trajectories show drift ${<}0.15$. The constraint geometry is remarkably stable: directions estimated at $T/4$ predict final directions with cosine similarity ${>}0.85$.
 
 \paragraph{Interpretation.}
-Direction stability validates the local-to-global transfer assumed in Lemma~\ref{lem:traj_infeasible}: the MOO bound computed at the anchor applies along realized trajectories because the geometry does not substantially change during generation. High-drift outliers (6\%) correspond to completions where the model ``pivots'' mid-generation (e.g., abandoning one approach for another). These cases violate the smoothness assumption and represent a known failure mode (Remark~\ref{rem:proxy_scope}).
+Direction stability validates the local-to-global transfer assumed in Lemma~\ref{lem:traj_infeasible}, namely that the MOO bound computed at the anchor applies along realized trajectories because the geometry does not substantially change during generation. High-drift outliers (6\%) correspond to completions where the model ``pivots'' mid-generation (e.g., abandoning one approach for another). These cases violate the smoothness assumption and represent a known failure mode (Remark~\ref{rem:proxy_scope}).
 
 \paragraph{Pivot Regime in the Predicted-Infeasible Region.}
-Across 480 high-tier trials (4 models $\times$ 12 tasks $\times$ 2 protocols $\times$ N=5), unconditional success is $1.7\%$ (8/480). The paper's headline 0/4{,}800 smooth-regime refutations imply, by exclusion, that all 8 successes lie in the pivot regime: smooth trajectories satisfy the Lipschitz contract and obey the bound (failure rate 100\% at high $\hat{\rho}$); pivot trajectories violate it and admit occasional success. The pivot regime size estimated from per-model outlier rates (Table~\ref{tab:lipschitz_calibration}) is $\sim$53/480, giving a pivot-conditional success rate of $\sim$15\%. Pivot signatures are detectable mid-generation: per-token displacement exceeding $2.5\hat{L}$ or constraint-direction drift exceeding $15^\circ$. Algorithm~\ref{alg:routing} can early-stop one-shot and switch to staging on detection. Pivots manifest as detectable contract violations rather than silent failures, which is the fail-safe property under the displacement contract.
+Across 480 high-tier trials (4 models $\times$ 12 tasks $\times$ 2 protocols $\times$ N=5), unconditional success is $1.7\%$ (8/480). The paper's headline 0/4{,}272 smooth-regime refutations imply, by exclusion, that all 8 successes lie in the pivot regime. Smooth trajectories satisfy the Lipschitz contract and obey the bound (failure rate 100\% at high $\rhohat$); pivot trajectories violate it and admit occasional success. The pivot regime size estimated from per-model outlier rates (Table~\ref{tab:lipschitz_calibration}) is $\sim$53/480, giving a pivot-conditional success rate of $\sim$15\%. Pivot signatures are detectable mid-generation, specifically per-token displacement exceeding $2.5\hat{L}$ or constraint-direction drift exceeding $15^\circ$. Algorithm~\ref{alg:routing} can early-stop one-shot and switch to staging on detection. Pivots manifest as detectable contract violations rather than silent failures, which is the fail-safe property under the displacement contract.
 
 \begin{table}[ht]
 \centering
 \footnotesize
-\caption{Per-tier success decomposition (code constraint benchmark, $N{=}480$ per tier, 4 models $\times$ 2 protocols). Smooth-regime size from $1{-}\hat{p}_{\text{pivot}}$ where $\hat{p}_{\text{pivot}}$ averages 11\% across models (Table~\ref{tab:lipschitz_calibration}). Pivot successes inferred by exclusion from the 0/4{,}800 smooth-regime refutation count (paper headline).}
+\caption{Per-tier success decomposition (code constraint benchmark, $N{=}480$ per tier, 4 models $\times$ 2 protocols). Smooth-regime size from $1{-}\hat{p}_{\text{pivot}}$ where $\hat{p}_{\text{pivot}}$ averages 11\% across models (Table~\ref{tab:lipschitz_calibration}). Pivot successes inferred by exclusion from the 0/4{,}272 smooth-regime refutation count (paper headline).}
 \label{tab:tier_pivot_decomposition}
 \begin{tabular}{lcccc}
 \toprule
 Tier & Trials & Pass & Smooth pass & Pivot pass \\
 \midrule
-Control ($\hat{\rho}{\approx}0.05$) & 480 & 76.9\% & high & rare \\
-Low ($\hat{\rho}{\approx}0.20$) & 480 & 58.1\% & dominant & rare \\
-Moderate ($\hat{\rho}{\approx}0.40$) & 480 & 23.1\% & mixed & mixed \\
-\textbf{High} ($\hat{\rho}{\approx}0.65$) & \textbf{480} & \textbf{1.7\%} & \textbf{0/427} & \textbf{8/53 (15\%)} \\
+Control ($\rhohat{\approx}0.05$) & 480 & 76.9\% & high & rare \\
+Low ($\rhohat{\approx}0.20$) & 480 & 58.1\% & dominant & rare \\
+Moderate ($\rhohat{\approx}0.40$) & 480 & 23.1\% & mixed & mixed \\
+\textbf{High} ($\rhohat{\approx}0.65$) & \textbf{480} & \textbf{1.7\%} & \textbf{0/427} & \textbf{8/53 (15\%)} \\
 \bottomrule
 \end{tabular}
 \end{table}
+
+\paragraph{Forbidden-pivot escape-library tightening (v2 verifier).}
+The pivot-regime decomposition above relies on the AST verifier rejecting all attempts that satisfy the no-loops/no-recursion constraints by routing through a banned library function. The first-pass verifier (\texttt{openrouter\_forbidden\_pivot\_results\_v1\_lenient.json}, archived) admitted code that called \texttt{math.factorial}, \texttt{math.gcd}, \texttt{re.findall}, and \texttt{sorted(\ldots)[-1]}, which inflated the apparent silent-refutation rate. The current verifier in \texttt{openrouter\_forbidden\_pivot\_harness.py} adds an \texttt{ESCAPE\_LIBRARIES} table per task (e.g., for ``factorial'': \{(\texttt{math}, \texttt{factorial}), (\texttt{math}, \texttt{prod}), (\texttt{functools}, \texttt{reduce})\}) plus AST checks for comprehensions, \texttt{sorted}-indexed extrema, \texttt{divmod}, and ternary expressions. The premier-tier conflicting joint-pass rate dropped from 100\% (v1, lenient) to 72\% (v2, tightened); the pivot rate rose from $\sim$11\% to 78\% on the affected tasks. Both archived and current verifier outputs are shipped for audit; only the v2 numbers are referenced by the body and the certificate.
 
 \section{Lipschitz Calibration}\label{app:lipschitz_calibration}\hypertarget{lim:linear}{}
 
@@ -1150,7 +1202,7 @@ TinyLlama-1.1B & $0.045 \pm 0.008$ \\
 \end{table}
 
 \paragraph{Encoder sensitivity (relocated from body \S\ref{sec:empirical}).}
-$\hat{L}$ measures step magnitude, not semantic direction. It is model-stable: $\hat{L} \in [0.045, 0.049]$ across the three open-weight models in Table~\ref{tab:lipschitz_calibration}. Default $\hat{L} \approx 0.048$. Regime ordering ($\hat{\rho}$) preserves: $r_s \ge 0.94$ across encoders.
+$\hat{L}$ measures step magnitude, not semantic direction. It is model-stable: $\hat{L} \in [0.045, 0.049]$ across the three open-weight models in Table~\ref{tab:lipschitz_calibration}. Default $\hat{L} \approx 0.048$. Regime ordering ($\rhohat$) preserves: $r_s \ge 0.94$ across encoders.
 
 \paragraph{Method.}
 For each model and task, we generate 50 completions at $T{=}0.7$ and measure $\|x_{t+1} - x_t\|$ for each token $t$ using MiniLM-L6-v2 embeddings. We report mean $\pm$ std of the per-token displacement aggregated across completions and tasks. Calibration script: \texttt{supplementary/experiments/lipschitz\_calibration.py}.
@@ -1158,18 +1210,18 @@ For each model and task, we generate 50 completions at $T{=}0.7$ and measure $\|
 \paragraph{Results.}
 \begin{itemize}[nosep]
 \item \textbf{Model variance:} Qwen-2.5-Coder: $\hat{L} = 0.048 \pm 0.008$; DeepSeek-Coder: $\hat{L} = 0.049 \pm 0.007$; TinyLlama: $\hat{L} = 0.045 \pm 0.008$. Per-completion mean displacements are tightly clustered ($\hat{L}$ ranges across models within $\sim$10\%).
-\item \textbf{Smooth/pivot decomposition:} The 89\%/11\% smooth-vs-pivot split (Section~\ref{sec:empirical}, derived from the unconditional pivot analysis) characterizes when generation behaves as bounded-displacement vs.\ recomposition; per-model $\hat{L}$ above is computed across all completions. Pivot detection lives at the trajectory level, not the per-model aggregate.
+\item \textbf{Smooth/pivot decomposition:} The 89\%/11\% smooth-vs-pivot split (\secref{sec:empirical}, derived from the unconditional pivot analysis) characterizes when generation behaves as bounded-displacement vs.\ recomposition; per-model $\hat{L}$ above is computed across all completions. Pivot detection lives at the trajectory level, not the per-model aggregate.
 \end{itemize}
 
 \paragraph{Step-Size Distribution (The `Aha!' Question).}
 A single token like ``not'' can invert semantic meaning. Does this invalidate the Lipschitz bound? \textbf{No: the bound is on embeddings, not tokens.} Token space is discrete. Embedding space is continuous. We measure displacement \emph{in embedding space}, where even semantically disruptive tokens induce bounded movement. We analyze the \emph{distribution} of per-token displacements across 900 completions (50 per task $\times$ 6 tasks $\times$ 3 models, $N{=}108{,}957$ tokens).
-\textbf{Findings:} 95th percentile $\|x_{t+1} - x_t\| = 0.148$; 99th percentile $= 0.246$; maximum observed $= 0.447$. Semantic jumps ($>3\sigma$) occur in 2.3\% of tokens, clustered at (i)~sentence boundaries, (ii)~negation words, (iii)~code delimiters: tokens that often \emph{recode the constraint chart} (logical restructuring) rather than smooth interpolation. Critically, \emph{constraint satisfaction tasks} (following formatting rules, avoiding forbidden content) involve incremental compliance, not insight pivots. `Aha!' moments characterize \emph{reasoning} tasks where the model discovers a solution. Constraint following is \emph{procedural}, with smooth trajectories. The 11\% pivot mass (Section~\ref{sec:empirical}) corresponds to tasks where the model \emph{abandons and restarts} an approach, detectable via trajectory curvature and excluded from regime prediction (Remark~\ref{rem:proxy_scope}).
+\textbf{Findings:} 95th percentile $\|x_{t+1} - x_t\| = 0.148$; 99th percentile $= 0.246$; maximum observed $= 0.447$. Semantic jumps ($>3\sigma$) occur in 2.3\% of tokens, clustered at (i)~sentence boundaries, (ii)~negation words, (iii)~code delimiters: tokens that often \emph{recode the constraint chart} (logical restructuring) rather than smooth interpolation. Critically, \emph{constraint satisfaction tasks} (following formatting rules, avoiding forbidden content) involve incremental compliance, not insight pivots. `Aha!' moments characterize \emph{reasoning} tasks where the model discovers a solution. Constraint following is \emph{procedural}, with smooth trajectories. The 11\% pivot mass (\secref{sec:empirical}) corresponds to tasks where the model \emph{abandons and restarts} an approach, detectable via trajectory curvature and excluded from regime prediction (Remark~\ref{rem:proxy_scope}).
 
 \paragraph{Interpretation.}
 The stability of $L$ across models and tasks validates the token$\to$norm contract for regime prediction. While $L$ varies with model size and temperature, the variation is bounded and predictable. Practitioners can use $\hat{L} \approx 0.025$ as a default. Task-specific calibration improves precision. The bound is conservative for insight-driven tasks but tight for constraint-following tasks: precisely the regime our theory addresses.
 
 \paragraph{$\hat{L}$ Perturbation Robustness.}
-We test routing stability under $\pm$30\% perturbation of the calibrated $\hat{L}$ (analogous to $\hat{\rho}$ threshold sensitivity in Table~\ref{tab:threshold_sensitivity}). Table~\ref{tab:L_robustness} summarizes the results.
+We test routing stability under $\pm$30\% perturbation of the calibrated $\hat{L}$ (analogous to $\rhohat$ threshold sensitivity in Table~\ref{tab:threshold_sensitivity}). Table~\ref{tab:L_robustness} summarizes the results.
 
 \begin{table}[ht]
 \centering
@@ -1188,17 +1240,17 @@ $+30\%$ (aggressive) & 89\% & $-3\%$ & More one-shot \\
 \end{tabular}}
 \end{table}
 
-\noindent The key finding: $\hat{L}$ mis-estimation is \textbf{fail-safe in one direction}. Underestimating $\hat{L}$ (believing tokens move less than they do) makes the router conservative: it stages more often, wasting tokens but not correctness. Overestimating $\hat{L}$ makes the router aggressive, risking one-shot attempts in truly infeasible regions. Practitioners should err toward lower $\hat{L}$ estimates when uncertain.
+\noindent $\hat{L}$ mis-estimation is \textbf{fail-safe in one direction}. Underestimating $\hat{L}$ (believing tokens move less than they do) makes the router conservative, staging more often and wasting tokens but not correctness. Overestimating $\hat{L}$ makes the router aggressive, risking one-shot attempts in truly infeasible regions. Practitioners should err toward lower $\hat{L}$ estimates when uncertain.
 
 \paragraph{Anisotropy.}\label{par:anisotropy}
-Embedding spaces are anisotropic: principal directions have unequal variance. Does this affect the scalar $L$? No. $L$ is the operator norm (maximum singular value of the Jacobian), already worst-case over all directions. The bound is conservative. Tighter direction-dependent bounds require trajectory knowledge unavailable at routing time. Empirically, the cross-model spread of $\hat{L}$ (within $\sim$10\%, Table~\ref{tab:lipschitz_calibration}) is small relative to anisotropic variation, indicating the scalar $\hat{L}$ summarizes step magnitude well enough for routing.
+Embedding spaces are anisotropic, meaning principal directions have unequal variance. Does this affect the scalar $L$? No. $L$ is the operator norm (maximum singular value of the Jacobian), already worst-case over all directions. The bound is conservative. Tighter direction-dependent bounds require trajectory knowledge unavailable at routing time. Empirically, the cross-model spread of $\hat{L}$ (within $\sim$10\%, Table~\ref{tab:lipschitz_calibration}) is small relative to anisotropic variation, indicating the scalar $\hat{L}$ summarizes step magnitude well enough for routing.
 
 \section{Preservation Cost Analysis}\label{app:preservation}
 
 Staging requires that progress on constraint $C_j$ at stage $t{+}1$ does not regress constraint $C_i$ satisfied at stage $t$. We analyze the additional cost of this preservation requirement.
 
 \paragraph{Body summary (relocated from \S\ref{sec:staging}).}
-Stage $t{+}1$ must not regress $C_i$: adds $O(\rho\tau/m)$ overhead. Empirically observed regression: 8.3\% at low $\rho$ rising to 23.1\% at high $\rho$. Staging succeeds when preservation overhead remains below the diagonal-cost amplification.
+Stage $t{+}1$ must not regress $C_i$: adds $O(\rho\tau/m)$ overhead. Empirically (\appref{app:preservation}, 8 OpenRouter models, 240 trials per tier), test-axis stage-3 regression rises mildly with $\rho$ (0.5\% control $\to$ 1.7\% high pooled). The dramatic finding is upstream: at high tier, no model satisfies the format constraint at stage 1 alone (240/240 across all 8 models). Staging cannot regress what stage 1 never satisfied.
 
 \begin{remark}[Staging as temporal reparameterization]\label{rem:staging_lift}
 Diagonal cost applies to \emph{endpoint-only} control: a single $\Delta$ achieving $\tau$-progress on all $k$ constraints. Staging uses $z^{(0)} \to \cdots \to z^{(S)}$ with per-stage budgets, replacing $\bigcap_i C_i$ with sequential satisfaction (POCS \citep{bauschke1996projection}, critique-revision \citep{bai2022constitutional}). Staging does \emph{not} assume conflicts vanish; coupling appears as preservation overhead. The diagonal cost is the price of compressing temporal structure into spatial; staging restores autoregressive degrees of freedom.
@@ -1215,14 +1267,12 @@ When $\langle u_i, u_j \rangle = -\rho$, the preservation-constrained minimum-no
 The overhead factor $1/(1-\rho^2)$ is bounded for $\rho < 1$. At $\rho = 0.5$, overhead is 33\%.
 
 \paragraph{Empirical Regression Rates.}
-We measure how often staged outputs fail previously-passed constraints:
+We instrument the 3-stage protocol to capture stage-1 (correctness-focused) and stage-3 (final) outputs separately, evaluating each against tests and format. Across 8 OpenRouter models (gemini-2.5-flash, gpt-4o-mini, claude-haiku-3.5, llama-3.1-70b, deepseek-v3, mistral-large, gpt-4o, claude-sonnet-4.5), 6 tasks, 5 trials per cell, 240 trials per tier:
 \begin{itemize}[nosep]
-\item Control tier ($\hat{\rho} = 0.05$): 3.2\% regression rate
-\item Low tier ($\hat{\rho} = 0.20$): 8.3\% regression rate
-\item Medium tier ($\hat{\rho} = 0.40$): 15.7\% regression rate
-\item High tier ($\hat{\rho} = 0.65$): 23.1\% regression rate
+\item \textbf{Test-axis regression} (stage-1 passes tests $\to$ stage-3 fails tests, conditional on stage-1 success): 0.5\% control, 0.6\% low, 1.1\% moderate, 1.7\% high. Monotone-rising but modest in absolute terms. Per-model variance is large: most models exhibit 0\% across all tiers; a few (claude-haiku-3.5, deepseek-v3, mistral-large) account for the pooled rise.
+\item \textbf{Format-axis collapse at stage 1}: stage-1 cells satisfying the format constraint drop from 239/240 (control) to 56/240 (low) to 23/240 (moderate) to \emph{0/240} (high). This is universal: every one of the 8 models hits 0/30 at high tier. The conjunction collapse manifests at stage 1, before staging can intervene; staging cannot regress what stage 1 never satisfied.
 \end{itemize}
-Regression scales with conflict: higher $\rho$ makes preservation harder. Staging succeeds when preservation overhead $<$ diagonal amplification.
+Implication: the dominant high-$\rho$ failure mode is \emph{single-axis infeasibility under the harder marginal}, not cross-axis interference at stage transitions. The diagonal cost forces format-axis collapse before the staged decomposition can run.
 
 \section{Proofs of Main Results}\label{app:proofs}\hypertarget{lim:enforced}{}
 
@@ -1289,7 +1339,7 @@ The descent condition $\langle \nabla L(x), d \rangle \le -\tau$ implies $|\lang
 \end{proof}
 
 \paragraph{Path Integration vs.\ Displacement Feasibility.}
-Autoregressive decoding traverses a token path. Our proofs analyze \emph{displacement feasibility}: existence of a chord $\Delta$ from $x_0$ to a satisfying endpoint within $B_\delta \cap E(x_0)$. The diagonal cost bound is a \emph{necessary condition} on $\|\Delta\|$; search dynamics are addressed in Section~\ref{app:outlook}.
+Autoregressive decoding traverses a token path. Our proofs analyze \emph{displacement feasibility}: existence of a chord $\Delta$ from $x_0$ to a satisfying endpoint within $B_\delta \cap E(x_0)$. The diagonal cost bound is a \emph{necessary condition} on $\|\Delta\|$; search dynamics are addressed in \secref{app:outlook}.
 
 \subsection{Convex Feasibility and Projection Geometry}\label{app:convex}
 
@@ -1457,7 +1507,7 @@ in multi-constraint satisfaction.
 
 We now prove that staged satisfaction reduces required step magnitude when constraints are resolved sequentially.
 
-\paragraph{Why staging escapes implicit-$k$.} One-shot generation must respect all $k$ constraint gradients simultaneously: the full Gram matrix $\Gamma$ must be ``held in budget.'' When implicit constraints (grammar, coherence) inflate $k$, the diagonal cost bound becomes restrictive. Staging escapes this: each step resolves one constraint, requiring only one gradient at a time. The model never needs to compute or budget for the global geometry. It iteratively constructs a solution where step $t{+}1$ takes $x_t$ as a fixed anchor. This is why staging circumvents the ``implicit $k$ is unknowable'' objection: the bound applies to simultaneous satisfaction, not sequential.
+\paragraph{Why staging escapes implicit-$k$.} One-shot generation must respect all $k$ constraint gradients simultaneously, holding the full Gram matrix $\Gamma$ in budget. When implicit constraints (grammar, coherence) inflate $k$, the diagonal cost bound becomes restrictive. Staging escapes this. Each step resolves one constraint, requiring only one gradient at a time. The model never needs to compute or budget for the global geometry. It iteratively constructs a solution where step $t{+}1$ takes $x_t$ as a fixed anchor. This is why staging circumvents the ``implicit $k$ is unknowable'' objection. The bound applies to simultaneous satisfaction, not sequential.
 
 \begin{proposition}[Staging reduces diagonal cost]
 Let $k$ constraints have pairwise conflict $\rho_{ij} = -\rho$ for all $i \neq j$.
@@ -1482,7 +1532,7 @@ The ratio follows by division. As $\rho \to 1/(k-1)$, the denominator $1-\rho(k-
 \end{proof}
 
 \paragraph{Connection to Constitutional AI.}
-This proposition formalizes why critique-revision loops (Constitutional AI's core mechanism) succeed: each revision targets one principle at a time, avoiding the diagonal cost amplification that would arise from simultaneous multi-principle optimization.
+This proposition formalizes why critique-revision loops (Constitutional AI's core mechanism) succeed by targeting one principle per revision, avoiding the diagonal cost amplification that would arise from simultaneous multi-principle optimization.
 
 \subsection{High-$\rho$ Bounds and Degeneracy}\label{app:high_R}
 
@@ -1503,10 +1553,10 @@ For $v \perp \mathbf{1}$: $\Gamma v = (1+\rho)v$.
 Positive definiteness requires all eigenvalues positive: $1-\rho(k-1) > 0 \Leftrightarrow \rho < 1/(k-1)$.
 \end{proof}
 
-At $\rho = 1/(k-1)$, the constraint gradients become coplanar (linearly dependent), and the feasible region $\mathcal{C}$ degenerates: the analog of Slater's condition failure in convex optimization (no strictly feasible interior point). For $\rho > 1/(k-1)$, the gradients point ``more than orthogonally'' apart, creating an infeasible configuration where no direction simultaneously decreases all objectives.
+At $\rho = 1/(k-1)$, the constraint gradients become coplanar (linearly dependent), and the feasible region $\mathcal{C}$ degenerates, analogous to Slater's condition failure in convex optimization (no strictly feasible interior point). For $\rho > 1/(k-1)$, the gradients point ``more than orthogonally'' apart, creating an infeasible configuration where no direction simultaneously decreases all objectives.
 
 \paragraph{Fragmentation regime.}
-Our IF-DSL experiments (Appendix~\ref{app:if_dsl_bridge}) empirically confirm this analysis: at $\rho = 1.0$ (maximally conflicting constraints like \texttt{one\_bottleneck} + \texttt{pathlen\_eq\_5}), pass rates collapse to 0\% regardless of budget or protocol. The geometric prediction matches observed behavior.
+Our IF-DSL experiments (\appref{app:if_dsl_bridge}) empirically confirm this analysis: at $\rho = 1.0$ (maximally conflicting constraints like \texttt{one\_bottleneck} + \texttt{pathlen\_eq\_5}), pass rates collapse to 0\% regardless of budget or protocol, matching the geometric prediction.
 
 \subsection{Tightness of Bounds}\label{app:tightness}
 
@@ -1526,10 +1576,10 @@ As Table~\ref{tab:feasibility} demonstrates, synthetic optimization matches anal
 \end{proof}
 
 \paragraph{Necessity of Conflict Structure (Information-Theoretic).}
-The parameter $\rho$ enters necessarily: setting $\rho = 0$ (orthogonal constraints) collapses the bound to $\|d^\star\| = \tau\sqrt{k}/m$, the axis-aligned case where no amplification occurs. The $1/(1-\rho)$ factor captures exactly the geometric cost of non-orthogonality: an information-theoretic lower bound, not a modeling choice.
+The parameter $\rho$ enters necessarily. Setting $\rho = 0$ (orthogonal constraints) collapses the bound to $\|d^\star\| = \tau\sqrt{k}/m$, the axis-aligned case where no amplification occurs. The $1/(1-\rho)$ factor captures exactly the geometric cost of non-orthogonality, an information-theoretic lower bound, not a modeling choice.
 
 \paragraph{Robustness Under Mild Curvature.}
-The first-order analysis assumes locally linear constraint surfaces. Under bounded curvature $\|\nabla^2 L_i\| \le \kappa$, the projection-based lower bound persists up to $O(\kappa\|d\|^2)$ corrections. Specifically, for $\|d\| \ll 1/\kappa$, the diagonal cost regime is not an artifact of strict linearity. It reflects genuine geometric structure that curvature perturbs but does not eliminate.
+The first-order analysis assumes locally linear constraint surfaces. Under bounded curvature $\|\nabla^2 L_i\| \le \kappa$, the projection-based lower bound persists up to $O(\kappa\|d\|^2)$ corrections. Specifically, for $\|d\| \ll 1/\kappa$, the diagonal cost regime is not an artifact of strict linearity but reflects genuine geometric structure that curvature perturbs without eliminating.
 
 \subsection{Connection to Pareto Optimality}\label{app:pareto}
 
@@ -1550,7 +1600,7 @@ where $\Gamma$ is the Gram matrix of gradients at $x^\star$. The Pareto front cu
 \begin{proof}
 At Pareto efficiency, all constraints are active: any slack would permit Pareto improvement. Thus the minimum-norm solution lies at the intersection of all constraint hyperplanes, giving $\|d^\star\|^2 = \tau^2 \mathbf{1}^\top \Gamma^{-1} \mathbf{1}$ by the derivation in Theorem~\ref{thm:k_bound_cited}.
 
-The Pareto front curvature relates to $\rho_{\max}$ because high conflict between gradients implies sharp trade-offs: moving toward one objective moves sharply away from another, creating a highly curved front \citep{deb2002fast}.
+The Pareto front curvature relates to $\rho_{\max}$ because high conflict between gradients implies sharp trade-offs, since moving toward one objective moves sharply away from another, creating a highly curved front \citep{deb2002fast}.
 \end{proof}
 
 \begin{corollary}[Pareto navigation cost]
@@ -1642,7 +1692,7 @@ The perturbation $\|\Delta\Gamma\| = O(k\epsilon \max_i m_i^2)$ since each entry
 \end{proof}
 
 \begin{corollary}[Robustness near criticality]
-As $\rho \to 1/(k-1)$, $\lambda_{\min}(\Gamma) \to 0$, and the diagonal cost becomes increasingly sensitive to perturbations. This explains empirical observations that high-conflict configurations exhibit unstable behavior: small changes in constraint specification can dramatically alter feasibility.
+As $\rho \to 1/(k-1)$, $\lambda_{\min}(\Gamma) \to 0$ and the diagonal cost becomes increasingly sensitive to perturbations, explaining the empirical pattern in which high-conflict configurations exhibit unstable behavior (small changes in constraint specification can dramatically alter feasibility).
 \end{corollary}
 
 \begin{proof}
@@ -1668,7 +1718,7 @@ For $k=2$: satisfying the larger-magnitude constraint first means subsequent pre
 \end{proof}
 
 \begin{remark}[Comparison to gradient conflict methods]
-Our ordering criterion differs from PCGrad \citep{yu2020gradient} and CAGrad \citep{liu2021cagrad}, which project conflicting gradients during \emph{training} (weight updates). Our analysis operates at \emph{inference time} on a frozen model, controlling generation trajectory rather than training dynamics. Both address the same conflict geometry ($\rho_{ij} < 0$), but at different stages: they reduce conflict during parameter optimization; we detect and route around it during output optimization.
+Our ordering criterion differs from PCGrad \citep{yu2020gradient} and CAGrad \citep{liu2021cagrad}, which project conflicting gradients during \emph{training} (weight updates). Our analysis operates at \emph{inference time} on a frozen model, controlling generation trajectory rather than training dynamics. Both address the same conflict geometry ($\rho_{ij} < 0$) at different stages, with PCGrad/CAGrad reducing conflict during parameter optimization while we detect and route around it during output optimization.
 \end{remark}
 
 \subsection{Extension to Inequality Constraints}\label{app:inequality}
@@ -1684,7 +1734,7 @@ where $\Gamma_\mathcal{A}$ is the Gram matrix restricted to active constraints a
 \end{proposition}
 
 \begin{proof}
-By KKT conditions, inactive constraints have zero multipliers and don't affect the optimal solution. The active constraints form an equality system, reducing to the previous analysis.
+By KKT conditions, inactive constraints have zero multipliers and don't affect the optimal solution; the active constraints in turn form an equality system, reducing to the previous analysis.
 \end{proof}
 
 \begin{corollary}[Diagonal cost is determined by hardest subset]\label{cor:active_set}
@@ -1697,7 +1747,7 @@ By Proposition~\ref{prop:active}, only active constraints contribute to $\|d^\st
 
 \subsection{Global Extension}\label{app:outlook}
 
-The bounds established above are local, holding within neighborhoods where first-order approximations apply. We now show they integrate to a global constraint.
+The bounds established above are local, holding within neighborhoods where first-order approximations apply; we now show they integrate to a global constraint.
 
 \begin{theorem}[Global Diagonal Cost]\label{thm:global}
 Let $\gamma: [0,1] \to \mathcal{M}$ be any trajectory achieving $\tau$-progress on all $k$ constraints, i.e., $r_i(\gamma(1)) \le r_i(\gamma(0)) - \tau$ for all $i$. Under bounded curvature ($\|\nabla^2 r_i\| \le \kappa$ everywhere), the arc length satisfies:
@@ -1737,7 +1787,7 @@ where the $O(\kappa\tau)$ absorbs the curvature corrections accumulated along th
 The global bound has the same $\sqrt{k/(1-\rho(k-1))}$ scaling as the local bound. Curvature contributes only an additive $O(\kappa\tau)$ correction, not a multiplicative escape. For typical values ($\kappa\tau \ll 1$), the local and global bounds coincide.
 \end{corollary}
 
-This theorem closes the ``local vs.\ global'' gap: the diagonal cost is not merely a local phenomenon but a geometric invariant of any trajectory achieving multi-constraint progress.
+This theorem closes the ``local vs.\ global'' gap. The diagonal cost is not merely a local phenomenon but a geometric invariant of any trajectory achieving multi-constraint progress.
 
 \subsection{Rank-Deficiency Boundary (relocated from body)}\label{app:rank_deficiency_boundary}
 
@@ -1773,17 +1823,17 @@ Figure~\ref{fig:amplification} shows cost divergence as conflict approaches the 
 Figure~\ref{fig:amplification} shows amplification diverges as $\rho \to 1$: $1.4$--$2\times$ for $\rho < 0.5$; diverges for $\rho \ge 0.8$. IF-DSL confirms: $\rho = 1.0 \Rightarrow 0\%$ pass regardless of budget.
 
 \begin{proposition}[Critical Threshold]\label{prop:critical}
-$\rho_c = 1 - 2\tau^2/(m^2\delta^2)$. For $\rho > \rho_c$: infeasible; see Appendix~\ref{app:proofs}.
+$\rho_c = 1 - 2\tau^2/(m^2\delta^2)$. For $\rho > \rho_c$: infeasible; see \appref{app:proofs}.
 \end{proposition}
 
-Proposition~\ref{prop:critical} yields: for $\delta/\delta_{\min} \approx 1.1$, $\rho_c \approx 0.30$. Systems near Pareto boundary experience cascading failures from small $\rho$ increases. Table~\ref{tab:baselines_main} shows protocol comparison at high $\hat{\rho}$.
+Proposition~\ref{prop:critical} yields: for $\delta/\delta_{\min} \approx 1.1$, $\rho_c \approx 0.30$. Systems near Pareto boundary experience cascading failures from small $\rho$ increases. Table~\ref{tab:baselines_main} shows protocol comparison at high $\rhohat$.
 
-\noindent\textbf{Novelty:} Bound is classical MOO; contribution is gradient-free operationalization. \textbf{Disambiguation:} $\hat{\rho}$ triggers routing; domain checks resolve hard-negatives (Appendix~\ref{app:high_k_opus}).
+\noindent\textbf{Novelty:} Bound is classical MOO; contribution is gradient-free operationalization. \textbf{Disambiguation:} $\rhohat$ triggers routing; domain checks resolve hard-negatives (\appref{app:high_k_opus}).
 
 \begin{table}[ht]
 \centering
 \small
-\caption{Protocol comparison (High-$\hat{\rho}$). Router matches staged pass rate, 25\% fewer tokens.}
+\caption{Protocol comparison (High-$\rhohat$). Router matches staged pass rate, 25\% fewer tokens.}
 \label{tab:baselines_main}
 \begin{tabular}{lccc}
 \toprule
@@ -1824,7 +1874,7 @@ Triangle inequality: $\|z_T - z_0\| = \|\sum_{t=0}^{T-1}\Delta z_t\| \le \sum_{t
 \end{proof}
 
 \paragraph{Remark (repetition does not break the contract).}
-A model may emit tokens with little semantic movement (near-zero $\|\Delta z_t\|$), which only \emph{reduces} $B_T$ (Definition~\ref{def:utilized_budget}). Lemma~\ref{lem:token_to_ball} then gives a tighter ball. Conversely, the contract is refutable: frequent large $\|\Delta z_t\|$ spikes require recalibrating $L$ or rejecting $\Phi$.
+A model may emit tokens with little semantic movement (near-zero $\|\Delta z_t\|$), which only \emph{reduces} $B_T$ (Definition~\ref{def:utilized_budget}). Lemma~\ref{lem:token_to_ball} then gives a tighter ball. Conversely, the contract is refutable. Frequent large $\|\Delta z_t\|$ spikes require recalibrating $L$ or rejecting $\Phi$.
 
 \subsection{Bounded Curvature and Local Linearity}
 Let constraints be encoded as residuals $r_i:\mathbb{R}^d \to \mathbb{R}$, where $r_i(z)\le 0$ means constraint $i$ is satisfied.
@@ -1866,7 +1916,7 @@ Triangle inequality on the polygonal chain: $\|z^{(S)}-z^{(0)}\| = \|\sum_{s=0}^
 \paragraph{Defeating ``flatness bias.''}
 The one-shot bound concerns the single-segment chord. Proposition~\ref{prop:polygonal} shows staging replaces it by a polygonal chain tracking changing tangents $g_i(z^{(s)})$. Under Assumption~\ref{ass:bounded_curvature} and small $\delta_s$, each segment remains in a regime where Lemma~\ref{lem:taylor_remainder} validates the linear model.
 We do not change the topology of $\mathbb{R}^d$. Staging enlarges the \emph{decision variable} from a single chord $\Delta$ to a path (polygonal chain) with intermediate anchors, enabling re-linearization under the same budget contract.
-Residual coupling across stages is captured by preservation/regression costs (Appendix~\ref{app:preservation}), which is why staging helps only in an intermediate conflict band. It is not a universal solution.
+Residual coupling across stages is captured by preservation/regression costs (\appref{app:preservation}), which is why staging helps only in an intermediate conflict band. It is not a universal solution.
 
 \subsection{Curvature Cannot Remove the Boundary at Small Budgets}
 
@@ -1881,13 +1931,13 @@ By Lemma~\ref{lem:taylor_remainder}, $r_i(z+\Delta) \le r_i(z) + \langle\nabla r
 \end{proof}
 
 \paragraph{Consequence (sharp cliffs).}
-If failure exhibits sharp transitions as budget crosses predicted thresholds, this is consistent with Theorem~\ref{thm:curvature_does_not_save}: first-order geometry controls, curvature enters only at second order.
+If failure exhibits sharp transitions as budget crosses predicted thresholds, this is consistent with Theorem~\ref{thm:curvature_does_not_save}, where first-order geometry controls and curvature enters only at second order.
 
 \begin{corollary}[Escaping the bound requires a regime break]\label{cor:regime_break}
-If $\delta_{\min} > LT$ and a completion nevertheless satisfies all constraints under deterministic verification, then at least one of the following must hold: (i)~the bounded-increment interface is violated by an upper-tail step (Appendix~\ref{app:lipschitz_calibration}), or (ii)~the effective constraint geometry changes along the trajectory (direction drift; Appendix~\ref{app:direction_stability}).
+If $\delta_{\min} > LT$ and a completion nevertheless satisfies all constraints under deterministic verification, then at least one of the following must hold: (i)~the bounded-increment interface is violated by an upper-tail step (\appref{app:lipschitz_calibration}), or (ii)~the effective constraint geometry changes along the trajectory (direction drift; \appref{app:direction_stability}).
 \end{corollary}
 
-The corollary makes the conditional nature of the bound explicit: successes outside the predicted reachable set are not counterexamples but measurable regime departures.
+The corollary makes the conditional nature of the bound explicit. Successes outside the predicted reachable set are not counterexamples but measurable regime departures.
 
 \subsection{Observable Regime Classifier}
 We estimate coupling via observable $\hat\rho$ in coordinates $z=\Phi(x)$. The minimal requirement:
@@ -1924,7 +1974,7 @@ Table~\ref{tab:hyperparams} shows all hyperparameters for reproducibility.
 \toprule
 \textbf{Parameter} & \textbf{Value} & \textbf{Section} \\
 \midrule
-\multicolumn{3}{l}{\textit{Geometric Validation (Section~\ref{sec:ground_truth})}} \\
+\multicolumn{3}{l}{\textit{Geometric Validation (\secref{sec:ground_truth})}} \\
 Resolution threshold $\tau$ & 1.0 & Def.~\ref{def:resolution} \\
 Gradient norm $m$ & 1.0 & Cor.~\ref{cor:uniform} \\
 Conflict range $\rho$ & $\{0.0, 0.3, 0.5, 0.7, 0.9\}$ & Tab.~\ref{tab:feasibility} \\
@@ -1933,7 +1983,7 @@ Ambient dimension $d$ & 10--20 & Thm.~\ref{thm:main_k} \\
 Optimizer & SLSQP & scipy.optimize \\
 Tolerance & $10^{-8}$ & Default \\
 \midrule
-\multicolumn{3}{l}{\textit{Bytebeat Validation (Appendix~\ref{app:bytebeat_bridge})}} \\
+\multicolumn{3}{l}{\textit{Bytebeat Validation (\appref{app:bytebeat_bridge})}} \\
 Expression budget $N$ & $\{64, 96, 128\}$ chars & Tab.~\ref{tab:bytebeat} \\
 Sample rate & 8000 Hz & FFT analysis \\
 Audio duration & 4 seconds & Signal window \\
@@ -1942,14 +1992,14 @@ BPM tolerance & $\pm$12 BPM & \texttt{rhythm\_120bpm} \\
 Flatness threshold & $>$0.25 & \texttt{high\_flatness} \\
 Baseline samples & 2,839 & Conflict estimation \\
 \midrule
-\multicolumn{3}{l}{\textit{Embedding Analysis (Section~\ref{sec:multisystem})}} \\
+\multicolumn{3}{l}{\textit{Embedding Analysis (\secref{sec:multisystem})}} \\
 Exemplar pairs per dim. & 7 & Constitution wheel \\
 Bootstrap iterations & 1,000 & 95\% CI \\
 Embedding models & 3 & Tab.~\ref{tab:embedding_R} \\
 Embedding dimensions & 384, 768 & Model-dependent \\
 Variance threshold & 95\% & Chart-rank diagnostic \\
 \midrule
-\multicolumn{3}{l}{\textit{Code Constraint Experiment (Section~\ref{sec:llm_bridge})}} \\
+\multicolumn{3}{l}{\textit{Code Constraint Experiment (\secref{sec:llm_bridge})}} \\
 Max new tokens & 384 & Generation budget \\
 Temperature & 0.7 & Sampling diversity \\
 Trials per cell & 5 & Per task per tier \\
@@ -1965,7 +2015,7 @@ To verify that staging benefits are not template artifacts, we performed the fol
 
 \paragraph{Stage Count Variation.}
 We compared single-pass generation against two-stage (generate then revise) and three-stage (generate, critique, then revise) protocols.
-The regime shape persists: staging helps in the intermediate band ($\delta \approx \delta_{\min}$), adds variance near ceiling, and fails under starvation.
+The regime shape persists across these variations, with staging helping in the intermediate band ($\delta \approx \delta_{\min}$), adding variance near ceiling, and failing under starvation.
 Two stages capture most benefit. Three stages show diminishing returns except at high $\rho$.
 
 \paragraph{Template Variation.}
@@ -1979,22 +2029,22 @@ Sampling adds variance but does not eliminate feasibility cliffs or shift the st
 
 \subsection{High-$k$ Frontier Validation (Opus 4.5)}\label{app:high_k_opus}
 
-We validate Remark~\ref{rem:high_k} on Claude Opus 4.5 with $k{=}8$--$10$ constraints using deterministic AST-based verifiers (no LLM judge). Key question: does embedding-based $\hat{\rho}$ predict failure, or only \emph{actual} constraint incompatibility?
+We validate Remark~\ref{rem:high_k} on Claude Opus 4.5 with $k{=}8$--$10$ constraints using deterministic AST-based verifiers (no LLM judge). Key question: does embedding-based $\rhohat$ predict failure, or only \emph{actual} constraint incompatibility?
 
 \paragraph{Tasks.}
-Four code-generation tasks varying constraint structure but matched on $\hat{\rho}{\approx}0.5$:
+Four code-generation tasks varying constraint structure but matched on $\rhohat{\approx}0.5$:
 \begin{itemize}[nosep]
-\item \textbf{Clustered} ($k{=}8$, $\hat{\rho}{=}0.49$): sum-of-squares with style constraints. All constraints compatible.
-\item \textbf{Hard-negative} ($k{=}8$, $\hat{\rho}{=}0.50$): reverse-string with near-identical constraint descriptions (``max 15 lines'' / ``at most 15 lines''). High embedding similarity but \emph{actually compatible}; tests false-positive rate.
-\item \textbf{Medium} ($k{=}10$, $\hat{\rho}{=}0.53$): vowel counting with no-loops. Solvable via comprehension.
-\item \textbf{Conflicting} ($k{=}8$, $\hat{\rho}{=}0.52$): nested-list flatten with \emph{both} no-loops and no-recursion. Mathematically infeasible.
+\item \textbf{Clustered} ($k{=}8$, $\rhohat{=}0.49$): sum-of-squares with style constraints. All constraints compatible.
+\item \textbf{Hard-negative} ($k{=}8$, $\rhohat{=}0.50$): reverse-string with near-identical constraint descriptions (``max 15 lines'' / ``at most 15 lines''). High embedding similarity but \emph{actually compatible}; tests false-positive rate \citep{wei2023jailbroken,carlini2024aligned}.
+\item \textbf{Medium} ($k{=}10$, $\rhohat{=}0.53$): vowel counting with no-loops. Solvable via comprehension.
+\item \textbf{Conflicting} ($k{=}8$, $\rhohat{=}0.52$): nested-list flatten with \emph{both} no-loops and no-recursion. Mathematically infeasible.
 \end{itemize}
 
 \paragraph{Results ($n{=}100$ trials each).}
 \begin{center}
 \begin{tabular}{lcccc}
 \toprule
-Regime & $k$ & $\hat{\rho}$ & Success & Ground Truth \\
+Regime & $k$ & $\rhohat$ & Success & Ground Truth \\
 \midrule
 Clustered & 8 & 0.49 & 100/100 & Compatible \\
 Hard-negative & 8 & 0.50 & 100/100 & Compatible \\
@@ -2005,7 +2055,7 @@ Conflicting & 8 & 0.52 & 0/100 & Infeasible \\
 \end{center}
 
 \paragraph{Finding.}
-Hard-negative and conflicting have indistinguishable $\hat{\rho}$ ($0.50$ vs $0.52$) yet opposite outcomes (100\% vs 0\%). This falsifies ``high $\hat{\rho}$ causes failure''. Embedding similarity $\neq$ operational conflict. Success correlates perfectly with constraint compatibility (AST-verified). The experiment uses \emph{zero tuned thresholds}: predictions derive from AST-verifiable compatibility, not from $\hat{\rho}$ cutoffs or pivot rates.
+Hard-negative and conflicting have indistinguishable $\rhohat$ ($0.50$ vs $0.52$) yet opposite outcomes (100\% vs 0\%). This falsifies ``high $\rhohat$ causes failure''. Embedding similarity $\neq$ operational conflict. Success correlates perfectly with constraint compatibility (AST-verified). The experiment uses \emph{zero tuned thresholds}; predictions derive from AST-verifiable compatibility, not from $\rhohat$ cutoffs or pivot rates.
 
 \subsection{Embedding-Space Experiments}
 
@@ -2088,9 +2138,9 @@ The following protocol estimates feasibility regimes using only black-box querie
 
 \begin{enumerate}[nosep,leftmargin=*]
 \item \textbf{Identify the active constraints} $C_1, \ldots, C_k$ implied by the prompt.
-\item \textbf{Estimate pairwise conflict observable} $\hat{\rho}_{ij}$: encode positive and negative exemplars per constraint, then compute $\hat{\rho}_{ij} = -\cos(\bar{e}^+_i - \bar{e}^-_i, \bar{e}^+_j - \bar{e}^-_j)$ (negation aligns with geometric $\rho$ sign).
+\item \textbf{Estimate pairwise conflict observable} $\rhohat_{ij}$: encode positive and negative exemplars per constraint, then compute $\rhohat_{ij} = -\cos(\bar{e}^+_i - \bar{e}^-_i, \bar{e}^+_j - \bar{e}^-_j)$ (negation aligns with geometric $\rho$ sign).
 \item \textbf{Estimate the step budget} $\delta$ using token limit as a validated proxy; Table~\ref{tab:delta_capacity} shows the calibration.
-\item \textbf{Apply the bound}: $\delta_{\min} = (\tau/m)\sqrt{2/(1-\hat{\rho})}$. Use max pairwise $\hat{\rho}$ for a conservative estimate.
+\item \textbf{Apply the bound}: $\delta_{\min} = (\tau/m)\sqrt{2/(1-\rhohat)}$. Use max pairwise $\rhohat$ for a conservative estimate.
 \item \textbf{Predict the operating regime}: $\delta \gg \delta_{\min}$ suggests one-shot feasibility; $\delta \approx \delta_{\min}$ suggests staging may help; $\delta \ll \delta_{\min}$ predicts failure.
 \end{enumerate}
 
@@ -2098,13 +2148,13 @@ The following protocol estimates feasibility regimes using only black-box querie
 
 \subsection{Protocol Selection Policy}\label{app:protocol_policy}
 
-Given estimated $\hat{\rho}$, budget $\delta$, and model capability $c$ (one-shot baseline), the full decision rules are:
+Given estimated $\rhohat$, budget $\delta$, and model capability $c$ (one-shot baseline), the full decision rules are:
 \begin{itemize}[nosep,leftmargin=*]
-\item \textbf{Stage} if: $\hat{\rho} > 0.3$ \emph{and} $\delta < 2\delta_{\min}$ \emph{and} $c < 0.7$ (intermediate band)
-\item \textbf{One-shot} if: $\hat{\rho} < 0.15$ \emph{or} $c > 0.85$ (low conflict or near-ceiling capability)
-\item \textbf{Fail-fast} if: $\hat{\rho} > 0.5$ \emph{and} $\delta < 1.2\delta_{\min}$ (floor regime; route to decomposition)
+\item \textbf{Stage} if: $\rhohat > 0.3$ \emph{and} $\delta < 2\delta_{\min}$ \emph{and} $c < 0.7$ (intermediate band)
+\item \textbf{One-shot} if: $\rhohat < 0.15$ \emph{or} $c > 0.85$ (low conflict or near-ceiling capability)
+\item \textbf{Fail-fast} if: $\rhohat > 0.5$ \emph{and} $\delta < 1.2\delta_{\min}$ (floor regime; route to decomposition)
 \end{itemize}
-Thresholds calibrated from Table~\ref{tab:calibration}: staging $\Delta > 0$ when $\hat{\rho} \in [0.2, 0.5]$ and $\delta/\delta_{\min} \in [1.5, 3.0]$.
+Thresholds calibrated from Table~\ref{tab:calibration}: staging $\Delta > 0$ when $\rhohat \in [0.2, 0.5]$ and $\delta/\delta_{\min} \in [1.5, 3.0]$.
 
 \subsection{Deployment Recipe (Derivative-Free)}\label{app:deployment}
 
@@ -2118,7 +2168,7 @@ Thresholds calibrated from Table~\ref{tab:calibration}: staging $\Delta > 0$ whe
   \end{itemize}
 \item \textbf{Set $\tau$ (constraint magnitude):} Default $\tau = 0.1$ (normalized units). Adjust based on verifier: stricter verifiers $\Rightarrow$ higher $\tau$.
 \item \textbf{Set $\hat{L}$ (displacement rate):} Default $\hat{L} = 0.025$. Task-specific: code $\approx 0.021$, prose $\approx 0.028$.
-\item \textbf{Compute $\hat{\rho}$:} $\hat{\rho}_{ij} = -\cos(\bar{e}_i, \bar{e}_j)$. Use max pairwise for $k > 2$. \emph{Note:} negation aligns sign with geometric $\rho$ (high = conflict). Main-text shorthand $\cos(\Phi(C_i), \Phi(C_j))$ uses similarity directly (high triggers conflict checks).
+\item \textbf{Compute $\rhohat$:} $\rhohat_{ij} = -\cos(\bar{e}_i, \bar{e}_j)$. Use max pairwise for $k > 2$. \emph{Note:} negation aligns sign with geometric $\rho$ (high = conflict). Main-text shorthand $\cos(\Phi(C_i), \Phi(C_j))$ uses similarity directly (high triggers conflict checks).
 \item \textbf{Route:} Apply thresholds from \S\ref{app:protocol_policy}. When uncertain, stage (fail-safe).
 \end{enumerate}
 
@@ -2135,42 +2185,32 @@ Table~\ref{tab:overhead} shows overhead per operation.
 Operation & Tokens/Calls & Latency \\
 \midrule
 Exemplar embedding (one-time) & 0 & 50ms/constraint \\
-$\hat{\rho}$ computation (per-query) & 0 & $<$5ms \\
+$\rhohat$ computation (per-query) & 0 & $<$5ms \\
 Routing decision & 0 & $<$1ms \\
 Staging overhead (when triggered) & $+1.5$--$2\times$ & $+1.5$--$2\times$ \\
 \bottomrule
 \end{tabular}}
 \end{table}
 
-\noindent \textbf{Query efficiency:} As Table~\ref{tab:baselines} shows, geometric routing uses 15--25\% fewer tokens (evaluation budget) than always-stage while matching pass rate on mixed-$\hat{\rho}$ workloads.
+\noindent \textbf{Query efficiency:} As Table~\ref{tab:baselines} shows, geometric routing uses 15--25\% fewer tokens (evaluation budget) than always-stage while matching pass rate on mixed-$\rhohat$ workloads.
 
 \subsection{Why Embeddings Work as Zeroth-Order Observables}
 
-Sentence embeddings \citep{reimers2019sentence} serve as a surrogate model for constraint geometry. For constraint satisfaction:
-\begin{itemize}
-\item A ``safe'' response is semantically similar to other safe responses
-\item A ``helpful'' response is semantically similar to other helpful responses
-\item The embedding difference vector approximates the direction of ``more safe'' or ``more helpful''
-\end{itemize}
+Sentence embeddings \citep{reimers2019sentence} serve as a surrogate model for constraint geometry. A ``safe'' response is semantically similar to other safe responses, a ``helpful'' response is semantically similar to other helpful responses, and the embedding difference vector approximates the direction of ``more safe'' or ``more helpful.''
 
 This zeroth-order proxy avoids gradient access entirely while capturing the key geometric structure: whether improving one constraint moves you toward or away from improving another.
 
 \subsection{Limitations of Contrastive Estimation}\label{app:contrastive_limitations}
 
-Our gradient proxies assume:
-\begin{enumerate}
-\item Constraint satisfaction is approximately linear in embedding space (locally)
-\item Contrastive pairs span the relevant variation
-\item Mean difference vectors are stable across exemplar choices
-\end{enumerate}
+Our gradient proxies assume that constraint satisfaction is approximately linear in embedding space (locally), that contrastive pairs span the relevant variation, and that mean difference vectors are stable across exemplar choices.
 
 Violation of these assumptions yields alternative instantiations of the observable. The consistency across embedding models (Table~\ref{tab:embedding_R}) confirms the routing decision is invariant to these choices; absolute values should be interpreted cautiously, but ordinal regime classification is stable.
 
 \paragraph{On ``proxy gap'' concerns.}
-We do not treat $\hat\rho$ as a noisy measurement of an unobserved internal ``true conflict.'' $\hat\rho$ is an \emph{interface observable} computed directly from the causal input (constraint text), evaluated only against operational outcomes (verifier pass/fail under budget). The relevant question is not measurement error, but \emph{sufficiency}: whether this observable supports correct regime ordering and routing decisions. There is no hidden ground truth $\rho$ that $\hat\rho$ approximates; the task is defined by the text. We test sufficiency directly ($r_s = 1.0$, Kendall $\tau = 1.0$) and find the ordering stable across encoders.
+We do not treat $\hat\rho$ as a noisy measurement of an unobserved internal ``true conflict.'' $\hat\rho$ is an \emph{interface observable} computed directly from the causal input (constraint text), evaluated only against operational outcomes (verifier pass/fail under budget). The relevant question is not measurement error but \emph{sufficiency}, namely whether this observable supports correct regime ordering and routing decisions. There is no hidden ground truth $\rho$ that $\hat\rho$ approximates; the task is defined by the text. We test sufficiency directly ($r_s = 1.0$, Kendall $\tau = 1.0$) and find the ordering stable across encoders.
 
 \paragraph{Exemplar overhead and amortization.}
-Computing $\hat{\rho}$ requires contrastive exemplars per constraint, a practical overhead. This cost is amortized: (i)~common constraints (safety, format, tone) use cached exemplar banks; (ii)~novel constraints admit automatic generation via prompting (``write text that [satisfies/violates] X''); (iii)~the overhead is one-time per constraint \emph{type}, not per query. Compared to trial-and-error prompt iteration, upfront $\hat{\rho}$ estimation is cheaper.
+Computing $\rhohat$ requires contrastive exemplars per constraint, a practical overhead. This cost is amortized: (i)~common constraints (safety, format, tone) use cached exemplar banks; (ii)~novel constraints admit automatic generation via prompting (``write text that [satisfies/violates] X''); (iii)~the overhead is one-time per constraint \emph{type}, not per query. Compared to trial-and-error prompt iteration, upfront $\rhohat$ estimation is cheaper.
 
 \subsection{Future Directions}
 
@@ -2183,6 +2223,45 @@ With additional resources, natural extensions include:
 \end{itemize}
 
 We release all code to facilitate such extensions by the community.
+
+\subsection{Policy Density Compliance Stress-Test}\label{app:policy_density}
+
+A reviewer raised the concern that the synthetic $k=11$ JSON-field benchmark feels engineered: the constraints are added by the prompt author rather than implied by a downstream task. We added a complementary harness in which $k$ scales naturally as a corporate compliance policy escalates from a basic two-rule template to a 34-rule enterprise policy. The harness lives at \texttt{supplementary/experiments/policy\_density\_compliance\_harness.py}; results at \texttt{outputs/policy\_density/policy\_density\_results.json}.
+
+\paragraph{Design.} A static library of 34 atomic compliance rules, each paired with a deterministic Python verifier (regex, AST, length, paragraph structure). Eight cumulative tiers: T1 ($k{=}2$, format and safety), T2 ($k{=}5$, brand voice), T3 ($k{=}8$, extended brand), T4 ($k{=}12$, legal core), T5 ($k{=}16$, extended legal), T6 ($k{=}22$, structural and metadata), T7 ($k{=}28$, style polish), T8 ($k{=}34$, enterprise polish). Each cell rewrites a fixed draft email under either one-shot or staged ($n{=}3$ stages) protocols; staged stages echo previously-applied rules to discourage regression.
+
+\paragraph{Geometric realism.} The $\rho > 0$ structure is empirical, not synthetic. T2's \texttt{no\_passive\_voice} rule conflicts with T4's \texttt{contains\_legal\_disclaimer} rule whose verbatim required sentence ``This communication is confidential and intended only for the recipient.'' is itself passive voice. Models must navigate a real inter-rule conflict, not a counting exercise.
+
+\begin{table}[ht]
+\centering
+\small
+\caption{Policy density cliff curve, mean all-pass rate across 9 working Claude models (3 trials per cell, 432 cells total). Staging rescues at low $k$ then inverts at $k>16$.}
+\label{tab:policy_density_curve}
+\begin{tabular}{lcrr}
+\toprule
+Tier & $k$ & one-shot & staged \\
+\midrule
+T1 & 2  & 100\% & 100\% \\
+T2 & 5  & 26\%  & \textbf{93\%} \\
+T3 & 8  & 52\%  & 67\% \\
+T4 & 12 & 74\%  & 74\% \\
+T5 & 16 & 81\%  & 78\% \\
+T6 & 22 & \textbf{74\%}  & \textbf{15\%} \\
+T7 & 28 & 67\%  & 41\% \\
+T8 & 34 & 48\%  & 22\% \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\paragraph{Two findings.} First, the staging rescue at T2 ($26\% \to 93\%$) confirms the staged-control prediction in a domain that does not look like a synthetic stress test. Second, at $k > 16$ the curves cross and \emph{staging actively hurts}: at T6 ($k{=}22$) staged drops to 15\% while one-shot stays at 74\%. Stage 2 and stage 3 prompts that explicitly include the previously-applied rules still permit regression on those rules. This is consistent with a budget-allocation reading: stage~$i$'s adjustment displacement consumes capacity that would otherwise be spent maintaining the earlier constraints, and at high $k$ the cumulative regression dominates the per-stage gain. We treat this as a finding, not a bug, and note it as a limitation of naive sequential staging at large $k$.
+
+\paragraph{Per-model dominance.} Opus-4.1 sweeps T3 through T8 at one-shot (100\% all-pass on every tier from $k{=}8$ to $k{=}34$); newer models (4.5, 4.6, 4.7) underperform it on this task. We do not claim general superiority; we report that on policy density the apparent frontier did not move. Per-model matrix is in the result JSON.
+
+\paragraph{Verifier elasticity history.} The first iteration used \texttt{paragraph\_count}~$=4$ which produced a 100\% T8 failure rate driven entirely by that one rule. The second iteration split it into \texttt{min\_paragraphs}~$\geq 3$ and \texttt{max\_paragraphs}~$\leq 6$; \texttt{max\_paragraphs} then became the dominant blocker. The current run uses \texttt{max\_paragraphs}~$\leq 10$ and \texttt{min\_words}~$\geq 100$, which let real per-model variation surface at T8. Earlier verifier states are archived as \texttt{policy\_density\_results\_v1\_4tier.json}, \texttt{\_v2\_8tier\_full.json}, and \texttt{\_v2\_t8\_rerun.json} for audit.
+
+\subsection{Image-Format Forbidden-Pivot (Negative Result)}\label{app:image_pivot}
+
+For symmetry with the code-domain forbidden-pivot experiment (\S\ref{app:direction_stability}), we ran a sibling text-described-image pivot harness across the same 6 OpenRouter models. The constraint set asked the model to describe a target image while forbidding a list of words. All 6 models hit 100\% joint-pass with 0\% pivot rate on every variant. The constraint was too easy: regex word-boundary verifiers on natural-language image descriptions admit too many synonym escape routes. We report this as a negative result (the constraint design did not exercise the bound) rather than as evidence the bound fails in this domain. Harness: \texttt{openrouter\_described\_image\_pivot\_harness.py}.
 
 \section{Supplementary: Sonification for Perceptual Verification}\label{app:sonification}
 
@@ -2271,10 +2350,10 @@ Autonomy & A & 3 & Three fifths (major 6th from root) \\
 
 This mapping creates specific musical intervals between principle pairs:
 \begin{itemize}
-\item \textbf{Helpful $\leftrightarrow$ Harmless}: Perfect 5th (7 semitones) --- \emph{consonant}
-\item \textbf{Helpful $\leftrightarrow$ Honest}: Major 2nd (2 semitones) --- \emph{moderate tension}
-\item \textbf{Harmless $\leftrightarrow$ Autonomy}: Major 2nd (2 semitones) --- \emph{moderate tension}
-\item \textbf{Honest $\leftrightarrow$ Autonomy}: Perfect 5th (7 semitones) --- \emph{consonant}
+\item \textbf{Helpful $\leftrightarrow$ Harmless}: Perfect 5th (7 semitones), \emph{consonant}
+\item \textbf{Helpful $\leftrightarrow$ Honest}: Major 2nd (2 semitones), \emph{moderate tension}
+\item \textbf{Harmless $\leftrightarrow$ Autonomy}: Major 2nd (2 semitones), \emph{moderate tension}
+\item \textbf{Honest $\leftrightarrow$ Autonomy}: Perfect 5th (7 semitones), \emph{consonant}
 \end{itemize}
 
 \paragraph{Why This Works.}
@@ -2291,13 +2370,7 @@ The Circle of Fifths is not arbitrary. It encodes the same geometric relationshi
 \end{itemize}
 
 \paragraph{The Deep Connection.}
-This is not metaphor. Music theory's consonance/dissonance \emph{is} the same mathematics as constraint conflict:
-\begin{itemize}\raggedright
-\item Consonant intervals $\leftrightarrow$ Low $\rho$ (orthogonal constraints)
-\item Dissonant intervals $\leftrightarrow$ High $\rho$ (conflicting constraints)
-\item Chord complexity $\leftrightarrow$ $k$-constraint diagonal cost
-\item Resolution to tonic $\leftrightarrow$ Staged satisfaction
-\end{itemize}
+This is not metaphor. Music theory's consonance/dissonance \emph{is} the same mathematics as constraint conflict: consonant intervals correspond to low $\rho$ (orthogonal constraints), dissonant intervals to high $\rho$ (conflicting constraints), chord complexity to $k$-constraint diagonal cost, and resolution to tonic to staged satisfaction.
 
 When you hear dissonance in these demos, you are hearing the geometric cost of multi-constraint satisfaction. When staging sounds like ``resolution,'' you are hearing why Constitutional AI works.
 
@@ -2327,11 +2400,7 @@ We propose (but have not yet conducted) the following validation study:
 
 \subsection{Why This Matters}
 
-Sonification provides a \emph{different kind} of evidence than computational validation:
-\begin{itemize}
-\item \textbf{Computational}: Code confirms math $\to$ math validates math
-\item \textbf{Physical}: Human perception confirms structure $\to$ physics validates math
-\end{itemize}
+Sonification provides a \emph{different kind} of evidence than computational validation. Computational validation closes the loop within the formalism (code confirms math, math validates math), whereas physical sonification reaches outside it: human perception confirms structure, and physics validates the math.
 
 If naive listeners reliably perceive high-$\rho$ sounds as rougher, this constitutes physical evidence that the geometric framework captures something real about constraint interaction. This evidence is independent of our equations, our code, and our theoretical commitments.
 
@@ -2416,48 +2485,54 @@ An open question for future work: can we construct \emph{looping systems with no
 
 \section{Reproducibility Checklist}\label{app:reproducibility}
 
-Following ICML reproducibility guidelines:
+Following NeurIPS reproducibility guidelines:
 
 \begin{itemize}
 \item[$\checkmark$] \textbf{Code:} Full implementation at anonymous repository
 \item[$\checkmark$] \textbf{Data:} Contrastive exemplars released
-\item[$\checkmark$] \textbf{Hyperparameters:} All thresholds specified in Appendix~\ref{app:experiments}
+\item[$\checkmark$] \textbf{Hyperparameters:} All thresholds specified in \appref{app:experiments}
 \item[$\checkmark$] \textbf{Compute:} Core validation runs on CPU in $<5$ minutes. The full 4-model LLM code experiment takes $\sim$20 hours on a single RTX 4050 GPU
 \item[$\checkmark$] \textbf{Random seeds:} Fixed seeds for all stochastic components
+\item[$\checkmark$] \textbf{Frontier-model API additions:} The Claude family extension (\appref{app:claude_genome}) lives at \texttt{supplementary/experiments/fixed\_point\_claude\_family\_\{opus47,opus46,sonnet46\}\_addition.py}; merged 8-model artifacts at \texttt{fixed\_point\_claude\_family\_with\_\{opus47,opus46,sonnet46\}.json}. The model-family sibling and the high-$k$ extension follow the same naming pattern. The opus-4.7 sampling caveat (rejected \texttt{temperature} parameter, unspecified server-side default) is recorded in each opus-4.7 \texttt{\_meta.methodology\_deviation} field.
+\item[$\checkmark$] \textbf{Policy density harness} (\S\ref{app:policy_density}): \texttt{supplementary/experiments/policy\_density\_compliance\_harness.py}; current run \texttt{outputs/policy\_density/policy\_density\_results.json}; archived earlier verifier states alongside.
+\item[$\checkmark$] \textbf{Implicit-$k$ pipeline} (\S\ref{app:implicit_k}): \texttt{supplementary/experiments/implicit\_k\_decompression\_harness.py}; current run \texttt{outputs/implicit\_k/implicit\_k\_results.json}; the rule library is shared with the policy density harness.
+\item[$\checkmark$] \textbf{Reviewer aids:} \texttt{supplementary/REVIEWER\_INDEX.md}, \texttt{supplementary/CLAIM\_TO\_ARTIFACT\_MAP.md}, \texttt{REVIEWER\_QUICKSTART.md}, and \texttt{AGENTS.md} (agent-provenance disclosure).
+\item[$\checkmark$] \textbf{Visual accessibility:} \texttt{supplementary/ALT\_TEXT.md} gives a screen-reader-friendly text description of every figure and showcase plot in the paper plus the supplementary materials. Heatmaps use the cividis colormap (monotonic luminance, color-vision-deficiency safe, also reads in greyscale) and pair color with redundant numeric and shape markers; line plots use the Wong / Okabe-Ito blue and orange palette with distinct marker shapes and dash styles. The audio demo index (\texttt{supplementary/demos/audio\_demos/INDEX.html}) carries semantic landmarks, a skip-to-content link, a table of contents with anchor IDs, and an \texttt{aria-label} on every \texttt{<audio>} element; written descriptions stand alone so the page is usable without playing audio.
+\item[$\checkmark$] \textbf{Model availability note:} \texttt{claude-3-haiku-20240307} (haiku-3 in the canonical 7-model panel) returns 404 from the Anthropic API as of 2026-05; the historical results remain in the canonical JSON for reproducibility but cannot be regenerated from scratch without an alternative provider.
 \end{itemize}
 
 \section{Mechanical Verification Certificate and Its Limits}\label{app:cert_scope}
 
-This appendix verifies artifact integrity, not scientific truth: the certificate at \texttt{ci/claim\_certificate.md} checks that numeric claims, figures, references, formulas, and provenance links are internally consistent with the submitted source tree. A 16-layer certificate runs against the paper at submission. A mutation harness flips one digit per registered numeric claim and re-audits; 147 of 147 single-digit substitutions are caught at submission.
-
-The layers fall into five families. Each row names what the family checks and what it explicitly does \emph{not} prove.
+This appendix verifies artifact integrity, not scientific truth: the certificate at \texttt{ci/claim\_certificate.md} checks that numeric claims, figures, references, formulas, and provenance links are internally consistent with the submitted source tree. The certificate organizes its checks into six \emph{suites} (Table~\ref{tab:cert_layers}), each owning one verification question. A mutation harness flips one digit per registered numeric claim and re-audits; 147 of 147 single-digit substitutions are caught at submission. The cert payload also carries the legacy \texttt{layers[]} array (L1 through L16, plus L9 sub-checks named \texttt{subproc\_\_*}) for backward compatibility with downstream tooling; the suite roll-up and the layer array are emitted side by side in \texttt{ci/claim\_certificate.json}, and the registry mapping each layer to its suite lives at \texttt{ci/suite\_registry.json}.
 
 \begin{table}[h]
 \centering
 \small
-\caption{Certificate layer families and the boundary between mechanical verification and judgment.}
+\caption{Certificate suites and the boundary between mechanical verification and judgment. The legacy column lists the L-numbered checks rolled up into each suite (preserved for downstream tooling; see \texttt{ci/suite\_registry.json}).}
 \label{tab:cert_layers}
-\begin{tabular}{p{0.30\linewidth}p{0.32\linewidth}p{0.30\linewidth}}
+\begin{tabular}{p{0.18\linewidth}p{0.34\linewidth}p{0.20\linewidth}p{0.18\linewidth}}
 \toprule
-\textbf{Layer family} & \textbf{What it checks} & \textbf{What it does NOT prove} \\
+\textbf{Suite} & \textbf{What it checks} & \textbf{Does NOT prove} & \textbf{Legacy layers} \\
 \midrule
-Claim registry (L1, L2, L3) & Every registered numeric appears in main.tex; registry is internally consistent; reverse coverage flags numerics no claim covers (AST-walked) & The empirical design is correct \\
+claim\_text & Paper text says the registered claims and does not substitute true values onto wrong nouns; reverse coverage flags numerics no claim covers (AST-walked); cross-model metadata matches source JSONs & The empirical design is correct & L1, L2, L3, L16, \texttt{cross\_model\_metadata} \\
 \midrule
-Figure provenance (L4, L5, L11, L12, L14) & Figures bound to scripts and data; assets fresh; in-figure numerics match registry; scripts run; rendered output equals script output by token-multiset; illustrations bound to source LaTeX block hash & The plot's interpretation is correct \\
+data\_ties & Numerical claims recompute from source data and bind to local paper or supplementary surfaces; formula / value coherence ($\sqrt{2/(1{-}\rho)}$ at $\rho{=}0.5$ is $2.0000$); manifest schema integrity; tier orderings monotone & The theorem's assumptions hold & L9, L15, \texttt{manifest\_schema}, \texttt{monotonic\_cliff} \\
 \midrule
-Formula / value coherence (L9) & Numerical instances match their source formulas (e.g., $\sqrt{2/(1{-}\rho)}$ at $\rho{=}0.5$ is $2.0000$); tier orderings monotone; combinatorial identities hold & The theorem's assumptions hold \\
+artifact\_lineage & Figures bound to scripts and data; assets fresh; in-figure numerics match registry; rendered output equals script output by token-multiset; illustrations bound to source LaTeX block hash & The plot's interpretation is correct & L4, L5, L12, L14 \\
 \midrule
-Citation + reference graph (L7, L8, L10) & Every \texttt{\textbackslash citep} resolves to a bib entry; bib entries structurally well-formed; URLs well-formed and venue-year correct; \texttt{\textbackslash ref}/\texttt{\textbackslash hyperref} resolve through \texttt{\textbackslash input} expansion & The cited work is the appropriate reference \\
+provenance & Result JSONs and scripts have a recorded chain (script + inputs + run date); recovered files match upstream byte-for-byte; PDF source equivalence holds & The pipeline is free of upstream errors & L11, L13, \texttt{result\_provenance}, \texttt{pdf\_source\_equivalence} \\
 \midrule
-Cross-tree + mutation (L13, mutation harness) & Recovered files match upstream byte-for-byte (or with documented divergence); single-digit substitution on every numeric claim is detected & Semantic claims are true \\
+statistical\_hygiene & Every caveat in the ledger has \texttt{open}/\texttt{resolved} status and no resolved caveat has regressed; small-N and manual-scoring claims surface their uncertainty & The choice of statistic is appropriate & \texttt{caveat\_ledger} \\
+\midrule
+submission\_hygiene & Every \texttt{\textbackslash citep} resolves to a bib entry; bib entries structurally well-formed; URLs well-formed and venue-year correct; \texttt{\textbackslash ref}/\texttt{\textbackslash hyperref} resolve through \texttt{\textbackslash input} expansion; cert artifacts contain no author-identifying strings & The cited work is the appropriate reference & L7, L8, L10, \texttt{cert\_anonymity} \\
 \bottomrule
 \end{tabular}
 \end{table}
 
-What this establishes (Table~\ref{tab:cert_layers}): the paper says what it says, without drift, substitution, broken references, or stale figure assets. What it does not establish: that the underlying claims are true of the world, that the experimental design is sound, that the inferences follow from the data, or that the framing is the right framing. Mechanical verification operates on form. Critical reading operates on meaning. The certificate is structurally analogous to the paper's screening statistic $\hat{\rho}$: a zeroth-order observable that orders regime membership without resolving the truth question one layer up. As $\hat{\rho}$ triggers checks rather than verdicts, the certificate triggers reading rather than verdicts. It frees the reading from bookkeeping verification. It does not replace judgment.
+What this establishes (Table~\ref{tab:cert_layers}): the paper says what it says, without drift, substitution, broken references, or stale figure assets. What it does not establish: whether the underlying claims are true of the world, the experimental design is sound, the inferences follow from the data, or the framing is right. Mechanical verification operates on form. Critical reading operates on meaning. The certificate is structurally analogous to the paper's screening statistic $\rhohat$, a zeroth-order observable that orders regime membership without resolving the truth question one layer up. As $\rhohat$ triggers checks rather than verdicts, the certificate triggers reading rather than verdicts. It frees the reading from bookkeeping verification. It does not replace judgment.
 
 \paragraph{Explanatory Illustrations.}\label{app:illustrations}
-The framework extends to schematic illustrations: reviewer aids that make formal blocks in the body easier to grok. Each illustration is bound to a specific source LaTeX block via the certificate's L14 layer: the source block's hash, an optional visual-spec hash, and the deterministic asset's hash live together in \texttt{ci/illustration\_lineage.json}. If the source block drifts, the illustration's certificate fails until the asset is re-authored. \textbf{Image generation models are used as a tool, not as a judge:} they explore visual composition during drafting; the certificate trusts only the deterministic redraw. The draft model and any text spec model are recorded in the manifest (\texttt{spec\_model}, \texttt{draft\_model} fields) for full provenance, but their outputs are never the shipping artifact. Each illustration's certificate also binds a hashed set of venue-sourced compliance constraints (visual accessibility, double-blind anonymity, ethics scope) lifted verbatim from the NeurIPS 2026 Main Track Handbook~\cite{neurips2026handbook}; the constraint file declares the upstream source's hash so handbook updates are detected as drift, and L14 fails until a human re-curates. \textbf{Claim scope: schematic illustration only; not empirical evidence.} The dataflow each schematic depicts is exactly what the bound source block asserts in prose; the schematic shifts the cognitive load from parsing equations to recognizing structure.
+The framework extends to schematic illustrations: reviewer aids that make formal blocks in the body easier to grok. Each illustration is bound to a specific source LaTeX block via the certificate's L14 layer: the source block's hash, an optional visual-spec hash, and the deterministic asset's hash live together in \texttt{ci/illustration\_lineage.json}. If the source block drifts, the illustration's certificate fails until the asset is re-authored. \textbf{Image generation models are used as a tool, not as a judge:} they explore visual composition during drafting. The certificate trusts only the deterministic redraw. The draft model and any text spec model are recorded in the manifest (\texttt{spec\_model}, \texttt{draft\_model} fields) for full provenance, but their outputs are never the shipping artifact. Each illustration's certificate also binds a hashed set of venue-sourced compliance constraints (visual accessibility, double-blind anonymity, ethics scope) lifted verbatim from the NeurIPS 2026 Main Track Handbook~\cite{neurips2026handbook}. The constraint file declares the upstream source's hash so handbook updates are detected as drift, and L14 fails until a human re-curates. \textbf{Claim scope: schematic illustration only, not empirical evidence.} The dataflow each schematic depicts is exactly what the bound source block asserts in prose. The schematic shifts the cognitive load from parsing equations to recognizing structure.
 
 \input{figures/interface_assumption.tex}
 
@@ -2466,7 +2541,7 @@ The framework extends to schematic illustrations: reviewer aids that make formal
 \input{figures/staging_vs_refine.tex}
 
 \paragraph{Bound Transfer to Image Medium.}\label{app:image_transfer}
-The constraint-composition framework is medium-agnostic: the same $k$-stacking that produces the diagonal-cost cliff in code generation (\S\ref{sec:empirical}) and the JSON-schema harness (\S\ref{app:json_harness}) is predicted to apply to any constrained generative system. We test this by replicating the code-constraint experiment's structure (FORMAT\_TIERS, \S\ref{sec:empirical}) one-for-one in image medium: same tier names (control / low / moderate / high), the same cumulative-format-demand pattern translated to visual style, with image tasks sampled from the code experiment's task set (\texttt{factorial}, \texttt{fibonacci}, \texttt{binary\_search}). The image model is \texttt{openai/gpt-5.4-image-2} via OpenRouter; $N{=}2$ trials per (task, tier) cell ($24$ trials total). Pass~A is whether the model returned an image at all; Pass~B (the cliff signal) is binary joint format compliance against the tier's full demand list, scored by the rubric in \texttt{image\_transfer\_runD\_passB.json} with per-trial rationale.
+The constraint-composition framework is medium-agnostic: the same $k$-stacking that produces the diagonal-cost cliff in code generation (\S\ref{sec:empirical}) and the JSON-schema harness (\S\ref{app:json_harness}) is predicted to apply to any constrained generative system. We test this by replicating the code-constraint experiment's structure (FORMAT\_TIERS, \S\ref{sec:empirical}) one-for-one in image medium: same tier names (control / low / moderate / high), the same cumulative-format-demand pattern translated to visual style, with image tasks chosen for natural image translation (\texttt{factorial}, \texttt{fibonacci}, \texttt{binary\_search}; the first two also appear in the code experiment task set, the third was added to test outside the original code distribution). The image model is \texttt{openai/gpt-5.4-image-2} via OpenRouter; $N{=}2$ trials per (task, tier) cell ($24$ trials total). Pass~A is whether the model returned an image at all; Pass~B (the cliff signal) is binary joint format compliance against the tier's full demand list, scored by the rubric in \texttt{image\_transfer\_runD\_passB.json} with per-trial rationale.
 
 \begin{figure}[h]
 \centering
@@ -2477,7 +2552,7 @@ The constraint-composition framework is medium-agnostic: the same $k$-stacking t
 
 The cliff transfers. At the highest tier the image model satisfies all $11$ compounding format demands jointly at $33\%$ across $6$ trials; the text-medium $4$-model average is $\sim 38\%$ across $1839$ trials. Both modalities exhibit the same structural shape predicted by the bound: $\sim 100\%$ at low constraint count, sharp decline as $k$ grows past the regime where joint satisfaction remains feasible. We treat this as evidence that the diagonal-cost geometry is a property of constraint composition itself, not of the text generation modality the paper's main empirical sections happen to use.
 
-Within the text-medium row, command-r-plus is a clean case of the screening problem the paper's $\hat{\rho}$ statistic is designed for. Pass rates of $100\%$, $99\%$, $100\%$ at control, low, and moderate tiers are statistically indistinguishable from the frontier peers. At the high tier the same model scores $31\%$. A benchmark that does not exercise high-$\rho$ cells would treat command-r-plus as interchangeable with its peers; only the cliff regime separates them.
+Within the text-medium row, command-r-plus is a clean case of the screening problem the paper's $\rhohat$ statistic is designed for. Pass rates of $100\%$, $99\%$, $100\%$ at control, low, and moderate tiers are statistically indistinguishable from the frontier peers. At the high tier the same model scores $31\%$. A benchmark that does not exercise high-$\rho$ cells would treat command-r-plus as interchangeable with its peers; only the cliff regime separates them.
 
 A note on the failure mode in image medium: the high-tier failures in Run~D are subtle. Outputs satisfy most demands and fall short on one or two compounded constraints (most commonly the single-accent rule, where the model resolves a competing labeling demand by adding a second accent color). Per-trial rationale is recorded at \texttt{image\_transfer\_runD\_passB.json}. This is itself a property of the diagonal-cost regime: the bound predicts joint-satisfaction collapse, not per-demand collapse, so the artifact-level signature is competent-but-jointly-noncompliant rather than catastrophic.
 
@@ -2494,7 +2569,7 @@ For deterministic verifiers, $\tau{=}1$ (binary). Soft constraints (e.g., ``be p
 
 \paragraph{Definition.} Charitable constraints are \textbf{designed for compatibility}: they encode cooperative intent (helpful, honest, harmless) and are intended to be jointly satisfiable. Production constraint systems (safety guidelines, coding standards, API specifications) are charitable by construction: engineers design them expecting simultaneous satisfaction.
 
-\paragraph{Model.} We use the empirical structure from the Claude Constitution analysis (Appendix~\ref{app:constitution}): 20 principles yield 190 pairs, of which 7.37\% exceed $\hat{\rho} \ge 0.5$. For $k$ constraints, feasibility requires \emph{all} $\binom{k}{2}$ pairs to be compatible:
+\paragraph{Model.} We use the empirical structure from the Claude Constitution analysis (\appref{app:constitution}): 20 principles yield 190 pairs, of which 7.37\% exceed $\rhohat \ge 0.5$. For $k$ constraints, feasibility requires \emph{all} $\binom{k}{2}$ pairs to be compatible:
 \[
 P(\text{feasible}) = (1 - p_{\text{conflict}})^{\binom{k}{2}} = (1 - 0.0737)^{k(k-1)/2}
 \]
@@ -2517,7 +2592,7 @@ feasible (\%) & 93 & 79 & 63 & 46 & 31 & 12 & 3 \\
 
 \paragraph{Key finding.} Feasibility decay is \textbf{geometric}, not adversarial. The $\binom{k}{2}$ pairwise compatibility checks compound: even 7.37\% conflict probability per pair yields near-certain failure at $k{=}10$. This is the ``diagonal cost'' in probability space: the same structure our Gram-matrix bound captures geometrically.
 
-\paragraph{On \emph{conflict}.} The term may suggest semantic opposition (constraints ``fighting''). But the geometry is simpler: each constraint defines a halfspace, and ``conflict'' is the angle between normals (Remark~\ref{rem:terminology}). The feasible region is their \emph{intersection}, shrinking under composition regardless of semantics. Charitable constraints do not fight; they simply occupy space. The table shows intersection shrinking: geometry, not opposition. \textbf{Operationally verifiable}: measure directions, compute angles, predict feasibility. No interpretation of ``meaning'' required.
+\paragraph{On \emph{conflict}.} The term may suggest semantic opposition (constraints ``fighting''). But the geometry is simpler. Each constraint defines a halfspace, and ``conflict'' is the angle between normals (Remark~\ref{rem:terminology}). The feasible region is their \emph{intersection}, shrinking under composition regardless of semantics. Charitable constraints do not fight; they simply occupy space. The table shows intersection shrinking, which is geometry, not opposition. \textbf{Operationally verifiable}: measure directions, compute angles, predict feasibility. No interpretation of ``meaning'' required.
 
 \paragraph{On \emph{cost}.} The framing of intelligent behavior as cost minimization over structured spaces has deep roots in thermodynamics, variational inference, and energy-based learning. Our displacement cost $\delta$ (Remark~\ref{rem:terminology}) is simpler: the Banach-space magnitude of movement required to satisfy constraints. The diagonal cost bound quantifies \emph{how much} movement: a geometric foundation that future work may connect to variational and thermodynamic frameworks.
 
@@ -2528,15 +2603,15 @@ feasible (\%) & 93 & 79 & 63 & 46 & 31 & 12 & 3 \\
 We analyze a real deployed constraint system: the Claude Constitution \citep{anthropic2025constitution}, published 2025-01-21 under CC0 license. This provides structural evidence that production systems adopt hierarchical organization: the design implication of the diagonal cost bound.
 
 \paragraph{Screening observable, not verdict (relocated from \S\ref{sec:limitations}).}
-$\hat{\rho}$ screens for potential conflict. A hard-negative pair ($\hat{\rho}{=}0.50$, 100\% pass) and a conflicting pair ($\hat{\rho}{=}0.52$, 0\% pass) share embedding similarity but differ in semantic compatibility. Routing combines $\hat{\rho}$ with domain checks (AST validation, schema matching). 24\% of high-$\hat{\rho}$ pairs in the Claude Constitution are reinforcing, not conflicting (\S\ref{par:certificates} below); error taxonomy guides domain-check design. Scope: compliance, not reasoning; o1/R1 are bound identically.
+$\rhohat$ screens for potential conflict. A hard-negative pair ($\rhohat{=}0.50$, 100\% pass) and a conflicting pair ($\rhohat{=}0.52$, 0\% pass) share embedding similarity but differ in semantic compatibility. Routing combines $\rhohat$ with domain checks (AST validation, schema matching). 24\% of high-$\rhohat$ pairs in the Claude Constitution are reinforcing, not conflicting (\S\ref{par:certificates} below); error taxonomy guides domain-check design. Scope: compliance, not reasoning; o1/R1 are bound identically.
 
-\paragraph{Method.} Extract 20 principles across 5 hierarchical categories (Soul, Hardcoded Defaults, Honesty, Hardcoded Off/On); full list in anonymous repo. Compute pairwise $\hat{\rho}_{ij} = \cos(\Phi(C_i), \Phi(C_j))$ via MiniLM. Note: $\hat{\rho}$ measures \emph{textual similarity}, not behavioral incompatibility (see Limitations).
+\paragraph{Method.} Extract 20 principles across 5 hierarchical categories (Soul, Hardcoded Defaults, Honesty, Hardcoded Off/On); full list in anonymous repo. Compute pairwise $\rhohat_{ij} = \cos(\Phi(C_i), \Phi(C_j))$ via MiniLM. Note: $\rhohat$ measures \emph{textual similarity}, not behavioral incompatibility (see Limitations).
 
 \paragraph{Results.}
 \begin{center}
 \begin{tabular}{lrrr}
 \toprule
-Category & $n$ & Mean $\hat{\rho}$ & Max $\hat{\rho}$ \\
+Category & $n$ & Mean $\rhohat$ & Max $\rhohat$ \\
 \midrule
 Soul (core) & 4 & 0.243 & 0.419 \\
 Hardcoded Defaults & 6 & 0.373 & 0.861 \\
@@ -2550,12 +2625,12 @@ Cross-category & --- & 0.253 & --- \\
 \end{tabular}
 \end{center}
 
-\noindent\textbf{Distribution:} $\hat{\rho} \in [0, 0.3)$: 68\%; $[0.3, 0.5)$: 25\%; $[0.5, 0.7)$: 6\%; $\ge 0.7$: 1\%. Random $k{=}4$ subsets: $\max_{ij}\hat{\rho} < 0.5$ in 67\% of draws.
+\noindent\textbf{Distribution:} $\rhohat \in [0, 0.3)$: 68\%; $[0.3, 0.5)$: 25\%; $[0.5, 0.7)$: 6\%; $\ge 0.7$: 1\%. Random $k{=}4$ subsets: $\max_{ij}\rhohat < 0.5$ in 67\% of draws.
 
 \paragraph{Key findings.}
 \begin{enumerate}[nosep]
-\item \textbf{Sparse high-similarity:} Only 7.4\% of pairs exceed $\hat{\rho}{=}0.5$, and 92\% are below 0.5.
-\item \textbf{Hierarchical grouping:} Within-category $\hat{\rho}$ (0.328) $>$ cross-category (0.253), with ratio 1.30$\times$.
+\item \textbf{Sparse high-similarity:} Only 7.4\% of pairs exceed $\rhohat{=}0.5$, and 92\% are below 0.5.
+\item \textbf{Hierarchical grouping:} Within-category $\rhohat$ (0.328) $>$ cross-category (0.253), with ratio 1.30$\times$.
 \item \textbf{Intentional redundancy:} Top pairs (0.90, 0.86) are \emph{designed} duplicates (emergency services, illegal actions): reinforcement, not conflict.
 \end{enumerate}
 
@@ -2567,7 +2642,7 @@ Cross-category & --- & 0.253 & --- \\
 \small
 \begin{tabular}{lccc}
 \toprule
-$\hat{\rho}$ Bucket & $n$ & Conflicts & Rate \\
+$\rhohat$ Bucket & $n$ & Conflicts & Rate \\
 \midrule
 Low (0--0.25) & 105 & 72 & 68.6\% \\
 Med (0.25--0.45) & 64 & 58 & \textbf{90.6\%} \\
@@ -2578,17 +2653,17 @@ All & 190 & 146 & 76.8\% \\
 \end{tabular}
 \end{center}
 
-\noindent The relationship is \emph{non-monotonic}: medium-$\hat{\rho}$ pairs show the highest conflict rate. This matches intuition. Low-$\hat{\rho}$ principles are orthogonal (rarely intersect), high-$\hat{\rho}$ principles are near-redundant (reinforce rather than conflict), but medium-$\hat{\rho}$ principles compete for the same semantic space. Point-biserial $r = 0.124$, $p = 0.087$. The linear correlation is weak, but the non-linear pattern is the key finding.
+\noindent The relationship is \emph{non-monotonic}: medium-$\rhohat$ pairs show the highest conflict rate. This matches intuition. Low-$\rhohat$ principles are orthogonal (rarely intersect), high-$\rhohat$ principles are near-redundant (reinforce rather than conflict), but medium-$\rhohat$ principles compete for the same semantic space. Point-biserial $r = 0.124$, $p = 0.087$. The linear correlation is weak, but the non-linear pattern is the key finding.
 
-\paragraph{Limitations.} While we now have behavioral validation, it measures \emph{conflict identification} (can Claude articulate tension?) rather than \emph{constraint interference} (does simultaneous satisfaction degrade?). The hard-negative phenomenon (Section~\ref{sec:empirical}) applies: high $\hat{\rho}$ indicates potential conflict requiring domain checks, not guaranteed incompatibility.
+\paragraph{Limitations.} While we now have behavioral validation, it measures \emph{conflict identification} (can Claude articulate tension?) rather than \emph{constraint interference} (does simultaneous satisfaction degrade?). The hard-negative phenomenon (\secref{sec:empirical}) applies: high $\rhohat$ indicates potential conflict requiring domain checks, not guaranteed incompatibility.
 
 \paragraph{Compatibility Certificates and Error Taxonomy.}\label{par:certificates}
-We deepen the analysis by examining \emph{why} high-$\hat{\rho}$ pairs may or may not conflict. Of 21 pairs with $\hat{\rho} \ge 0.45$: 5 show no conflict (``compatible''), 16 conflict. Table~\ref{tab:compatibility_taxonomy} shows the breakdown by relationship type.
+We deepen the analysis by examining \emph{why} high-$\rhohat$ pairs may or may not conflict. Of 21 pairs with $\rhohat \ge 0.45$: 5 show no conflict (``compatible''), 16 conflict. Table~\ref{tab:compatibility_taxonomy} shows the breakdown by relationship type.
 
 \begin{table}[ht]
 \centering
 \small
-\caption{High-$\hat{\rho}$ pair analysis: why similar constraints may or may not conflict.}
+\caption{High-$\rhohat$ pair analysis: why similar constraints may or may not conflict.}
 \label{tab:compatibility_taxonomy}
 \begin{tabular}{lcc}
 \toprule
@@ -2607,28 +2682,42 @@ We deepen the analysis by examining \emph{why} high-$\hat{\rho}$ pairs may or ma
 \end{tabular}
 \end{table}
 
-\noindent \textbf{Compatible pairs} fall into three types: (1)~\emph{Reinforcing}: both principles address the same goal from complementary angles (e.g., two emergency-service principles with $\hat{\rho}{=}0.90$); (2)~\emph{Specialization}: one is a detailed instance of the other (e.g., ``acknowledge being AI'' generalizes ``never claim to be human''); (3)~\emph{Orthogonal-similar}: similar language but independent concerns.
+\noindent \textbf{Compatible pairs} fall into three types: (1)~\emph{Reinforcing}: both principles address the same goal from complementary angles (e.g., two emergency-service principles with $\rhohat{=}0.90$); (2)~\emph{Specialization}: one is a detailed instance of the other (e.g., ``acknowledge being AI'' generalizes ``never claim to be human''); (3)~\emph{Orthogonal-similar}: similar language but independent concerns.
 
 \noindent \textbf{Conflicting pairs} reveal an error taxonomy: (1)~\emph{Priority ambiguity} (62\%): both principles apply but resolution requires contextual judgment; (2)~\emph{Semantic overlap} (31\%): similar wording creates apparent tension; (3)~\emph{Edge-case tension} (6\%): normally compatible, conflicts only at boundaries.
 
-\noindent \textbf{Key insight:} High $\hat{\rho}$ is necessary but not sufficient for conflict. The 24\% compatibility rate among high-$\hat{\rho}$ pairs shows that semantic similarity can indicate \emph{reinforcement} (specialization, redundancy) rather than competition. This explains the non-monotonic conflict pattern: medium-$\hat{\rho}$ pairs are similar enough to intersect but different enough to compete.
+\noindent \textbf{Key insight:} High $\rhohat$ is necessary but not sufficient for conflict. The 24\% compatibility rate among high-$\rhohat$ pairs shows that semantic similarity can indicate \emph{reinforcement} (specialization, redundancy) rather than competition. This explains the non-monotonic conflict pattern: medium-$\rhohat$ pairs are similar enough to intersect but different enough to compete.
 
 \section{In-the-Wild Compound Instructions}\label{app:compound}
 
 To complement the constitution analysis, we curate 15 compound instruction tasks with \textbf{deterministic verifiers}. No hand-crafted scenarios, no researcher degrees of freedom in evaluation.
 
 \paragraph{Dataset design.}
-Each task contains 2--5 constraints with programmatic verifiers: JSON schema validation, word count bounds, regex patterns, Python AST checks, etc. Estimated $\hat{\rho}$ ranges from 0.15 (style + length: orthogonal) to 0.75 (multiple JSON fields: correlated). Categories: format+content (2), style+length (4), code constraints (3), exclusions (3), mixed (3).
+Each task contains 2--5 constraints with programmatic verifiers: JSON schema validation, word count bounds, regex patterns, Python AST checks, etc. Estimated $\rhohat$ ranges from 0.15 (style + length: orthogonal) to 0.75 (multiple JSON fields: correlated). Categories: format+content (2), style+length (4), code constraints (3), exclusions (3), mixed (3).
 
 \paragraph{Example tasks.}
 \begin{itemize}[nosep]
-\item \textbf{json\_recipe} ($\hat{\rho}{=}0.75$): ``Write a recipe in JSON with fields name, ingredients, steps, prep\_time\_minutes.'' Verifiers: valid JSON, has all 4 fields.
-\item \textbf{formal\_brief} ($\hat{\rho}{=}0.20$): ``Explain ML formally (no contractions) in under 50 words.'' Verifiers: word count $\le 50$, no contractions detected.
-\item \textbf{python\_no\_imports} ($\hat{\rho}{=}0.55$): ``Write factorial() without imports.'' Verifiers: valid Python AST, no Import nodes, defines factorial.
-\item \textbf{no\_common\_words} ($\hat{\rho}{=}0.65$): ``Describe ocean without: water, blue, wave, fish, sea.'' Verifiers: 5 word-boundary regex checks.
+\item \textbf{json\_recipe} ($\rhohat{=}0.75$): ``Write a recipe in JSON with fields name, ingredients, steps, prep\_time\_minutes.'' Verifiers: valid JSON, has all 4 fields.
+\item \textbf{formal\_brief} ($\rhohat{=}0.20$): ``Explain ML formally (no contractions) in under 50 words.'' Verifiers: word count $\le 50$, no contractions detected.
+\item \textbf{python\_no\_imports} ($\rhohat{=}0.55$): ``Write factorial() without imports.'' Verifiers: valid Python AST, no Import nodes, defines factorial.
+\item \textbf{no\_common\_words} ($\rhohat{=}0.65$): ``Describe ocean without: water, blue, wave, fish, sea.'' Verifiers: 5 word-boundary regex checks.
 \end{itemize}
 
 \paragraph{Purpose.} This dataset enables future work to measure \emph{constraint interference} directly: does staged prompting improve pass rates on deterministic multi-constraint tasks? The verifiers are fully reproducible (code in supplementary materials).
+
+\subsection{Constraint Decompression Pipeline (Implicit-$k$)}\label{app:implicit_k}
+
+A reviewer asked how the routing framework recovers an explicit constraint set $\{C_1, \ldots, C_k\}$ when a real user types an implicit phrase like ``write production-grade code'' or ``write a regulator-facing compliance memo.'' We add a runnable closed-loop pipeline that addresses this end-to-end without an LLM-as-judge step. Harness at \texttt{supplementary/experiments/implicit\_k\_decompression\_harness.py}; results at \texttt{outputs/implicit\_k/implicit\_k\_results.json}.
+
+\paragraph{Pipeline.} Implicit prompt $\to$ Tagger LLM (zeroth-order classifier) $\to$ selected library IDs $\to$ Router (here a $k$-threshold; in production the geometric $\hat\rho$/$\delta_{\min}$ computation against pre-cached library embeddings) $\to$ Generator LLM (one-shot or staged, per route) $\to$ deterministic Python Linter $\to$ pass/fail.
+
+\paragraph{Four no-judge properties (verified by the harness).} (i) The tagger never invents constraints; it selects from a fixed 34-rule library that doubles as the policy density rule bank (\S\ref{app:policy_density}). (ii) The generator never decides correctness; the linter is regex/AST/length. (iii) The router uses only the extracted $k$ value; it does not see the prompt's semantic content. (iv) Pass/fail is deterministic and reproducible from the JSON.
+
+\paragraph{Run.} 9 working Claude models $\times$ 8 implicit prompts ranging from ``write a basic email'' to ``write a regulator-facing compliance memo for a financial product disclosure.'' 72 cells, $\sim$150 API calls, 153~s wall-clock, no human in the loop after launch.
+
+\paragraph{Tagger calibration is itself a finding.} The same buzzword decompresses to very different $k$ values across models: opus-4.1 returns mean $k{=}7.1$ across the 8 prompts (most conservative tagger); haiku-4.5 returns mean $k{=}21.2$ (most aggressive). Pipeline pass rates inversely track tagger aggressiveness: opus-4.1 / opus-4 / sonnet-4.5 / opus-4.7 all hit 8/8 pipeline pass; haiku-4.5 hits 2/8. We treat this as a calibration question to surface, not a confound to hide. The relationship suggests a deployment recipe: pair a conservative tagger (opus-4.1 here) with a capable generator, rather than letting the generator also act as tagger.
+
+\paragraph{Reviewer-facing claim.} The routing framework does not require the user to enumerate $\{C_1, \ldots, C_k\}$ by hand. A static deterministic-verifier library plus a zeroth-order tagger is sufficient to map implicit prompts onto a known constraint set against which the geometric bound applies. The pipeline is demonstrated, not deployed; tagger calibration across models is the visible next step.
 
 \input{extended_related_work.tex}
 

@@ -1,17 +1,99 @@
 {
-  "schema_version": 1,
+  "schema_version": 3,
   "provenance": {
     "paper_title": "The Cost of Cacophony: Geometric Limits on Multi-Constraint Alignment",
-    "venue": "NeurIPS 2026",
-    "generated_at": "2026-05-03T18:33:25",
+    "venue": "NeurIPS 2026 (anonymous double-blind submission)",
+    "venue_key": "neurips",
+    "mode": "quick",
+    "mode_note": "release: full L12 build equivalence + artifact hashes embedded; quick: --quick L12 (mtime+asset-hash only), faster local checks",
+    "profile": "standard",
+    "git": {
+      "status": "ok",
+      "commit": "3d3fd847841a175f4f34db7eaad0e100f605bfb1",
+      "commit_short": "3d3fd847",
+      "branch": "master",
+      "dirty": true,
+      "n_modified_unstaged": 41,
+      "n_staged": 5,
+      "n_untracked": 171
+    },
+    "dependencies": {
+      "generated_at": "2026-05-04T10:17:02.473439+00:00",
+      "python": {
+        "version": "3.13.4 (tags/v3.13.4:8a526ec, Jun  3 2025, 17:46:04) [MSC v.1943 64 bit (AMD64)]",
+        "version_short": "3.13.4",
+        "executable": "<HOME>\\AppData\\Local\\Programs\\Python\\Python313\\python.exe",
+        "implementation": "CPython"
+      },
+      "platform": {
+        "platform": "Windows-11-10.0.26200-SP0",
+        "system": "Windows",
+        "release": "11",
+        "machine": "AMD64",
+        "processor": "Intel64 Family 6 Model 154 Stepping 3, GenuineIntel",
+        "architecture": "64bit"
+      },
+      "packages": {
+        "numpy": "2.1.3",
+        "scipy": "1.15.1",
+        "pandas": "2.2.3",
+        "matplotlib": "3.10.1",
+        "transformers": "4.57.3",
+        "sentence-transformers": "5.1.2",
+        "openai": "1.60.2"
+      },
+      "tools": {
+        "pdftotext": {
+          "path": "C:\\Program Files\\Git\\mingw64\\bin\\pdftotext.EXE",
+          "version_line": "pdftotext version 4.00"
+        },
+        "pdflatex": {
+          "path": "<HOME>\\AppData\\Local\\Programs\\MiKTeX\\miktex\\bin\\x64\\pdflatex.EXE",
+          "version_line": "MiKTeX-pdfTeX 4.21 (MiKTeX 25.4)"
+        },
+        "git": {
+          "path": "C:\\Program Files\\Git\\mingw64\\bin\\git.EXE",
+          "version_line": "git version 2.47.1.windows.2"
+        }
+      }
+    },
+    "generated_at": "2026-05-04T06:17:35",
     "main_tex_path": "paper\\main.tex",
-    "main_tex_sha256": "8c12c733e078a265d8e4222b3e57a5b395c407683652a1b0b5f6d7b201da8d48",
-    "main_tex_mtime": "2026-05-03T18:32:18",
+    "main_tex_sha256": "82e6af21ec8b91ecccb99e94af6495d124d2e89a0d8f81dfb53e4af1d1994525",
+    "main_tex_mtime": "2026-05-04T05:48:57",
     "main_pdf_path": "paper\\main.pdf",
-    "main_pdf_size": 1081855,
-    "main_pdf_mtime": "2026-05-03T18:33:20",
+    "main_pdf_size": 1143871,
+    "main_pdf_mtime": "2026-05-04T05:58:14",
     "claim_audit_md_path": "CLAIM_AUDIT.md",
-    "claim_audit_md_sha256": "1508d83d4326be917e125554ce0500e7ac75330584182f59469ec2e2cfced327"
+    "claim_audit_md_sha256": "61b08aec7166fa6604f38388a226493ac241ea704e539805438cfd56ede8a344"
+  },
+  "artifact_hashes": {
+    "ci\\claim_audit_results.json": "d46b50f2c9153e25f356f14d5463e4d232ef48e227be63cf48ff4c4fb8c368f6",
+    "ci\\claim_coverage_uncovered.json": "63face19453dab5bb6074c7f63474f86379cae8d9424d245414a645b9cae39d3",
+    "ci\\figure_value_check_results.json": "7d850709729d4fb4b9ece9aafe60cb4868e4bbc42f78fee06d7ae7b6673014c4",
+    "ci\\citation_integrity_results.json": "ea34f3fbb412748e9cc7adfcadc2f2717621f02c45d9f7951aeddbb89a873605",
+    "ci\\link_integrity_results.json": "8dd0e8e729a3d5269b536ba10f47dbd2a227abb2d355077bf197ac6411239320",
+    "ci\\cross_claim_consistency_results.json": "d86dc743a009ec9057ec62a87c8ca1a58598a0fbbf8c1a29527ad387566e8847",
+    "ci\\bib_entry_check_results.json": "75311d32bed138ef02409dc4319e8cd73dfe35acf21530905c9addab798c0296",
+    "ci\\script_integrity_results.json": "0cb95174ba62ef104a598de8b98a5512613a05c86f1569c87580bb628f9f37c8",
+    "ci\\build_equivalence_results.json": "4cea7a13d9a7c65a12866636243b06790d11d5a9e1cbf738aab096cb6ecdae02",
+    "ci\\cross_tree_consistency_results.json": "94a61f6202532154fb26c949a8782f7beb48cd8b78acd5a0a109d32d015d0692",
+    "ci\\illustration_lineage_results.json": "fbfd251b81af96302bbc9f1d1076d41428f0e24f1a122eb39e7749198704677e",
+    "ci\\claim_data_ties_results.json": "8a4fdcc24932e5f17f87aee333bc8e35a54b9072b158b0ab3ac926c03964ff92",
+    "ci\\author_claims_results.json": "80127dd805b3eea3a07809cd293b7bbd1743f7852f146618262d41f54067bdc8",
+    "ci\\table_value_results.json": "2127e5ecc8849df60854f28e5b2ea8952ad56593729d95aecdb0bbc2882eea8c",
+    "ci\\sample_size_adequacy_results.json": "3ca7a4dff92fbd438e64ab217203eade438b9f1bf591b5f40dd6fe746b285abc",
+    "ci\\confidence_interval_coverage_results.json": "60ed7e41e020565dbc714ab6c6c46b7ec978ff8d674fb8e2fd66d9b5a9b85937",
+    "ci\\cross_source_recomputation_results.json": "99267e19c3da51e166b2900c84e45e97e9e6a4730cf0a4c4defcac6c2a1f87ab",
+    "ci\\sbom_check_results.json": "5fccbd6d00dd56d5eb27023369400aa79d508f8eb1b4f0116066c0037520e302",
+    "ci\\container_lineage_results.json": "854876c1218c89e4e8633c3134324c4b3901b27ab2ffe988f832182ff6b8601c",
+    "ci\\license_clearance_results.json": "7dcddc316f981a676124aefb729e66fa35d95e5d26a3b645023ac578d2516d30",
+    "ci\\pdf_camera_ready_results.json": "63974afac88e5481d6e874ee74a22cf8af485bc9cf4f6b87801fd688ea649cfe",
+    "ci\\multi_seed_drift_results.json": "f09d4f4672b22b32d8fc62147275d1cbafc21ac8ee7bb20e71c8241ff58d11bd",
+    "ci\\reference_convention_results.json": "42835a03dd077774c3ddeefeebbc2d36830bb233dc56ad94dd35558f07496b1d",
+    "ci\\claim_data_ties.json": "be2130c38f289df8be8d95c316303cbf0444ed3b81009083deb360219168c261",
+    "ci\\figure_lineage.json": "d69541bb36893ac0f84be3953f0ad8b5b76723186b68dd2e53c176ba092137ae",
+    "ci\\illustration_lineage.json": "a66f7bd19a9088fdbdf2a0433a058762c2f2cb1b0d7a250dcda0e528fef571fe"
   },
   "verdict": {
     "verdict": "PASS",
@@ -51,11 +133,11 @@
       "return_code": 0,
       "status": "PASS",
       "summary": {
-        "total_numeric_tokens": 1153,
-        "covered": 1084,
-        "uncovered_raw": 69,
-        "uncovered_deduped": 66,
-        "coverage_percent": 94.0
+        "total_numeric_tokens": 1375,
+        "covered": 1279,
+        "uncovered_raw": 96,
+        "uncovered_deduped": 93,
+        "coverage_percent": 93.0
       },
       "notes": ""
     },
@@ -130,26 +212,22 @@
       "return_code": 0,
       "status": "PASS",
       "summary": {
-        "n_cites_in_paper": 26,
+        "n_cites_in_paper": 30,
         "n_bib_entries": 42,
         "n_unresolved": 0,
-        "n_dead": 16,
+        "n_dead": 12,
         "unresolved": [],
         "dead": [
           "anthropic2026aeiv4",
           "bai2022training",
-          "carlini2024aligned",
           "deepseek2025r1",
           "dhuliawala2023chainofverification",
           "little1961proof",
           "miettinen1999nonlinear",
-          "nvidia2025cosmos",
           "ouyang2022training",
-          "piaget1954construction",
           "snell2024scaling",
           "turner2023activation",
           "wei2022chain",
-          "wei2023jailbroken",
           "zheng2023judging",
           "zou2023representation"
         ]
@@ -164,9 +242,9 @@
       "summary": {
         "n_urls": 2,
         "n_hyperref": 0,
-        "n_hypertarget": 26,
-        "n_refs": 122,
-        "n_labels": 166,
+        "n_hypertarget": 29,
+        "n_refs": 118,
+        "n_labels": 170,
         "urls": [
           "https://anonymous.4open.science/r/cacophony",
           "https://neurips.cc/Conferences/2026/CallForPapers"
@@ -176,28 +254,28 @@
         "venue_year_mismatches": [],
         "unresolved_hyperref": [],
         "unresolved_refs": [],
-        "dead_labels_count": 44,
+        "dead_labels_count": 53,
         "dead_labels_sample": [
           "app:additional",
           "app:algorithm",
+          "app:baselines",
           "app:compound",
-          "app:constrained_decoding",
           "app:contrastive_limitations",
+          "app:convergence",
           "app:convex",
           "app:deployment",
           "app:diagnostic_culture",
+          "app:embedding_table",
           "app:estimation_protocol",
           "app:hetero",
+          "app:high_k_opus",
           "app:illustrations",
+          "app:image_pivot",
           "app:image_transfer",
           "app:inequality",
           "app:k_bound",
-          "app:pareto",
-          "app:perturbation",
-          "app:prelim",
-          "app:reproducibility",
-          "app:staging",
-          "app:staging_robustness"
+          "app:k_scaling",
+          "app:outlook"
         ],
         "network_results": []
       },
@@ -209,8 +287,8 @@
       "return_code": 0,
       "status": "PASS",
       "summary": {
-        "total": 33,
-        "passed": 33,
+        "total": 60,
+        "passed": 60,
         "failed": 0
       },
       "notes": ""
@@ -292,8 +370,8 @@
       "return_code": 0,
       "status": "PASS",
       "summary": {
-        "total": 166,
-        "passed": 166,
+        "total": 325,
+        "passed": 325,
         "failed": 0
       },
       "notes": ""
@@ -304,14 +382,348 @@
       "return_code": 0,
       "status": "PASS",
       "summary": {
-        "total": 22,
-        "tied": 22,
+        "total": 25,
+        "tied": 25,
         "untied": 0,
         "tied_ratio": 1.0,
         "window_chars": 300
       },
       "notes": ""
+    },
+    {
+      "name": "L17_table_values",
+      "script": "ci\\table_value_check.py",
+      "return_code": 0,
+      "status": "PASS",
+      "summary": {},
+      "notes": ""
+    },
+    {
+      "name": "L18_sample_size_adequacy",
+      "script": "ci\\sample_size_adequacy_check.py",
+      "return_code": 0,
+      "status": "PASS",
+      "summary": {},
+      "notes": ""
+    },
+    {
+      "name": "L19_ci_coverage",
+      "script": "ci\\confidence_interval_coverage_check.py",
+      "return_code": 0,
+      "status": "PASS",
+      "summary": {},
+      "notes": ""
+    },
+    {
+      "name": "L20_cross_source_recompute",
+      "script": "ci\\cross_source_recomputation_check.py",
+      "return_code": 0,
+      "status": "PASS",
+      "summary": {},
+      "notes": ""
+    },
+    {
+      "name": "L21_sbom",
+      "script": "ci\\sbom_check.py",
+      "return_code": 0,
+      "status": "PASS",
+      "summary": {},
+      "notes": ""
+    },
+    {
+      "name": "L22_container_lineage",
+      "script": "ci\\container_lineage_check.py",
+      "return_code": 0,
+      "status": "PASS",
+      "summary": {},
+      "notes": ""
+    },
+    {
+      "name": "L23_license_clearance",
+      "script": "ci\\license_clearance_check.py",
+      "return_code": 0,
+      "status": "PASS",
+      "summary": {},
+      "notes": ""
+    },
+    {
+      "name": "L24_pdf_camera_ready",
+      "script": "ci\\pdf_camera_ready_check.py",
+      "return_code": 0,
+      "status": "PASS",
+      "summary": {},
+      "notes": ""
+    },
+    {
+      "name": "L25_multi_seed_drift",
+      "script": "ci\\multi_seed_drift_check.py",
+      "return_code": 0,
+      "status": "PASS",
+      "summary": {},
+      "notes": ""
+    },
+    {
+      "name": "L26_reference_convention",
+      "script": "ci\\reference_convention_check.py",
+      "return_code": 0,
+      "status": "PASS",
+      "summary": {},
+      "notes": ""
     }
   ],
-  "certificate_self_hash": "40db3eb6ec2b55ade513f0c39f993ecf0628b48491d69df76710ee8d24ac3343"
+  "suites": [
+    {
+      "suite": "claim_text",
+      "purpose": "Paper text says the registered claims and does not use true values with wrong nouns.",
+      "status": "PASS",
+      "passed": 5,
+      "failed": 0,
+      "skipped": 0,
+      "members": [
+        {
+          "check": "L1_audit",
+          "script": "ci\\claim_audit.py",
+          "severity": "blocker",
+          "status": "PASS"
+        },
+        {
+          "check": "L2_validator",
+          "script": "ci\\claim_audit_validator.py",
+          "severity": "blocker",
+          "status": "PASS"
+        },
+        {
+          "check": "L3_sweep",
+          "script": "ci\\claim_coverage_sweep.py",
+          "severity": "advisory",
+          "status": "PASS"
+        },
+        {
+          "check": "L16_author_claims",
+          "script": "ci\\author_claims_check.py",
+          "severity": "advisory",
+          "status": "PASS"
+        },
+        {
+          "check": "subproc__cross_model_metadata",
+          "script": "cross_model_metadata_check.py",
+          "severity": "blocker",
+          "status": "INHERITED_FROM_L9"
+        },
+        {
+          "check": "L17_table_values",
+          "script": "ci\\table_value_check.py",
+          "severity": "blocker",
+          "status": "PASS"
+        }
+      ]
+    },
+    {
+      "suite": "data_ties",
+      "purpose": "Numerical claims recompute from source data and bind to local paper or supplementary surfaces.",
+      "status": "PASS",
+      "passed": 3,
+      "failed": 0,
+      "skipped": 0,
+      "members": [
+        {
+          "check": "L9_consistency",
+          "script": "ci\\cross_claim_consistency_check.py",
+          "severity": "blocker",
+          "status": "PASS"
+        },
+        {
+          "check": "L15_data_ties",
+          "script": "ci\\claim_data_ties_check.py",
+          "severity": "blocker",
+          "status": "PASS"
+        },
+        {
+          "check": "subproc__manifest_schema",
+          "script": "manifest_schema_check.py",
+          "severity": "blocker",
+          "status": "INHERITED_FROM_L9"
+        },
+        {
+          "check": "subproc__monotonic_cliff",
+          "script": "monotonic_cliff_check.py",
+          "severity": "blocker",
+          "status": "INHERITED_FROM_L9"
+        },
+        {
+          "check": "L20_cross_source_recompute",
+          "script": "ci\\cross_source_recomputation_check.py",
+          "severity": "blocker",
+          "status": "PASS"
+        }
+      ]
+    },
+    {
+      "suite": "artifact_lineage",
+      "purpose": "Figures, illustrations, generated assets, and the rendered PDF are fresh and traceable to scripts and data.",
+      "status": "PASS",
+      "passed": 5,
+      "failed": 0,
+      "skipped": 0,
+      "members": [
+        {
+          "check": "L4_lineage",
+          "script": "ci\\figure_lineage_check.py",
+          "severity": "blocker",
+          "status": "PASS"
+        },
+        {
+          "check": "L5_figure_values",
+          "script": "ci\\figure_value_check.py",
+          "severity": "advisory",
+          "status": "PASS"
+        },
+        {
+          "check": "L12_build_equiv",
+          "script": "ci\\build_equivalence_check.py",
+          "severity": "blocker",
+          "status": "PASS"
+        },
+        {
+          "check": "L14_illustrations",
+          "script": "ci\\illustration_lineage_check.py",
+          "severity": "blocker",
+          "status": "PASS"
+        },
+        {
+          "check": "L22_container_lineage",
+          "script": "ci\\container_lineage_check.py",
+          "severity": "advisory",
+          "status": "PASS"
+        }
+      ]
+    },
+    {
+      "suite": "provenance",
+      "purpose": "Result JSONs, scripts, environment, and bundle contents are reconstructible enough for the stated threat model.",
+      "status": "PASS",
+      "passed": 3,
+      "failed": 0,
+      "skipped": 0,
+      "members": [
+        {
+          "check": "L11_scripts",
+          "script": "ci\\script_integrity_check.py",
+          "severity": "blocker",
+          "status": "PASS"
+        },
+        {
+          "check": "L13_cross_tree",
+          "script": "ci\\cross_tree_consistency_check.py",
+          "severity": "blocker",
+          "status": "PASS"
+        },
+        {
+          "check": "subproc__result_provenance",
+          "script": "result_provenance_check.py",
+          "severity": "blocker",
+          "status": "INHERITED_FROM_L9"
+        },
+        {
+          "check": "subproc__pdf_source_equivalence",
+          "script": "pdf_source_equivalence_check.py",
+          "severity": "blocker",
+          "status": "INHERITED_FROM_L9"
+        },
+        {
+          "check": "L21_sbom",
+          "script": "ci\\sbom_check.py",
+          "severity": "blocker",
+          "status": "PASS"
+        }
+      ]
+    },
+    {
+      "suite": "statistical_hygiene",
+      "purpose": "Claims with small N or manual scoring surface uncertainty / caveats and avoid over-precision.",
+      "status": "PASS",
+      "passed": 3,
+      "failed": 0,
+      "skipped": 0,
+      "members": [
+        {
+          "check": "subproc__caveat_ledger",
+          "script": "caveat_ledger_check.py",
+          "severity": "blocker",
+          "status": "INHERITED_FROM_L9"
+        },
+        {
+          "check": "L18_sample_size_adequacy",
+          "script": "ci\\sample_size_adequacy_check.py",
+          "severity": "advisory",
+          "status": "PASS"
+        },
+        {
+          "check": "L19_ci_coverage",
+          "script": "ci\\confidence_interval_coverage_check.py",
+          "severity": "advisory",
+          "status": "PASS"
+        },
+        {
+          "check": "L25_multi_seed_drift",
+          "script": "ci\\multi_seed_drift_check.py",
+          "severity": "advisory",
+          "status": "PASS"
+        }
+      ]
+    },
+    {
+      "suite": "submission_hygiene",
+      "purpose": "Venue, anonymity, citation / link integrity, encoding, and supplementary surface hygiene.",
+      "status": "PASS",
+      "passed": 6,
+      "failed": 0,
+      "skipped": 0,
+      "members": [
+        {
+          "check": "L7_citations",
+          "script": "ci\\citation_integrity_check.py",
+          "severity": "blocker",
+          "status": "PASS"
+        },
+        {
+          "check": "L8_links",
+          "script": "ci\\link_integrity_check.py",
+          "severity": "blocker",
+          "status": "PASS"
+        },
+        {
+          "check": "L10_bib",
+          "script": "ci\\bib_entry_check.py",
+          "severity": "blocker",
+          "status": "PASS"
+        },
+        {
+          "check": "subproc__cert_anonymity",
+          "script": "cert_anonymity_check.py",
+          "severity": "blocker",
+          "status": "INHERITED_FROM_L9"
+        },
+        {
+          "check": "L23_license_clearance",
+          "script": "ci\\license_clearance_check.py",
+          "severity": "blocker",
+          "status": "PASS"
+        },
+        {
+          "check": "L24_pdf_camera_ready",
+          "script": "ci\\pdf_camera_ready_check.py",
+          "severity": "advisory",
+          "status": "PASS"
+        },
+        {
+          "check": "L26_reference_convention",
+          "script": "ci\\reference_convention_check.py",
+          "severity": "blocker",
+          "status": "PASS"
+        }
+      ]
+    }
+  ],
+  "certificate_self_hash": "7c0af9003d0c3397657e5d94d207dc6596304bb8e3991f29f328367603ad4908"
 }

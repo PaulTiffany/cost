@@ -10,22 +10,16 @@
   },
   "lipschitz_calibration": {
     "qwen_coder": {
-      "L_hat_mean": 0.023,
-      "L_hat_std": 0.008,
-      "tightness_pct": 91.0,
-      "outliers_pct": 9.0
+      "L_hat_mean": 0.048,
+      "L_hat_std": 0.008
     },
     "deepseek_coder": {
-      "L_hat_mean": 0.019,
-      "L_hat_std": 0.006,
-      "tightness_pct": 93.0,
-      "outliers_pct": 7.0
+      "L_hat_mean": 0.049,
+      "L_hat_std": 0.007
     },
     "tinyllama": {
-      "L_hat_mean": 0.031,
-      "L_hat_std": 0.011,
-      "tightness_pct": 84.0,
-      "outliers_pct": 16.0
+      "L_hat_mean": 0.045,
+      "L_hat_std": 0.008
     }
   },
   "embedding_R": {

@@ -1,0 +1,4330 @@
+{
+  "_meta": {
+    "experiment": "implicit_k_decompression",
+    "via": "Anthropic SDK",
+    "generator_script": "supplementary/experiments/implicit_k_decompression_harness.py",
+    "script_hash": "60674afab973df2a29cb2102f55ef47979e01a057fd4ec311729f693d3469bc8",
+    "library_source": "policy_density_compliance_harness.py (build_all_rules)",
+    "library_size": 34,
+    "library_rule_ids": [
+      "format_salutation",
+      "no_profanity",
+      "no_passive_voice",
+      "no_superlatives",
+      "uses_company_name",
+      "no_first_person_plural",
+      "no_jargon",
+      "no_em_dashes",
+      "contains_legal_disclaimer",
+      "contains_regulatory_notice",
+      "no_forward_looking_promise",
+      "no_pii_request",
+      "includes_unsubscribe",
+      "cites_terms",
+      "no_negative_competitor",
+      "industry_disclaimer",
+      "max_words",
+      "min_words",
+      "max_sentence_length",
+      "includes_iso_date",
+      "includes_reference_number",
+      "subject_line_present",
+      "no_exclamation",
+      "no_questions",
+      "no_contractions",
+      "consistent_currency",
+      "no_emojis",
+      "no_double_spaces",
+      "min_paragraphs",
+      "max_paragraphs",
+      "no_imperative_cta",
+      "no_all_caps_word",
+      "subject_title_case",
+      "signature_block"
+    ],
+    "models": [
+      "haiku-3",
+      "sonnet-4",
+      "opus-4",
+      "opus-4.1",
+      "haiku-4.5",
+      "sonnet-4.5",
+      "opus-4.5",
+      "opus-4.7"
+    ],
+    "router_threshold_k": 8,
+    "implicit_prompts": [
+      {
+        "id": "P1_basic_email",
+        "text": "Write a basic email announcing a new product."
+      },
+      {
+        "id": "P2_professional",
+        "text": "Write a professional, polished customer-facing announcement."
+      },
+      {
+        "id": "P3_compliant",
+        "text": "Write a fully GDPR/SEC-compliant marketing email for a new financial product."
+      },
+      {
+        "id": "P4_executive",
+        "text": "Write an executive-level Q4 results briefing for shareholders."
+      },
+      {
+        "id": "P5_enterprise",
+        "text": "Write an enterprise-grade product launch email that meets corporate brand, legal, and compliance standards."
+      },
+      {
+        "id": "P6_concise_legal",
+        "text": "Write a concise, legally airtight notice to subscribers about a service change."
+      },
+      {
+        "id": "P7_brand_voice",
+        "text": "Write a tightly on-brand corporate update; follow our style guide strictly."
+      },
+      {
+        "id": "P8_regulatory_finance",
+        "text": "Write a regulator-facing compliance memo for a financial product disclosure."
+      }
+    ],
+    "started_iso": "2026-05-04T06:04:56Z",
+    "finished_iso": "2026-05-04T06:06:42Z",
+    "elapsed_sec": 106.3472957611084,
+    "n_cells": 56,
+    "design_note": "Constraint Decompression Pipeline (Gemini collaborator, 2026-05). Demonstrates the 'no-judge' stack for the Implicit-k reviewer concern: prompt-gen LLM, tagger LLM, generator LLM, but the verdict is a deterministic Python linter against a static library of atomic verifiers. The tagger never invents rules; it only selects from a fixed bank. The generator never decides correctness; the linter does. Routing here uses a simple k-threshold (k > 8 -> staged); a production system would replace this with the geometric rho-hat / delta_min computation against the library's pre-computed embeddings.",
+    "sampling_note": "Non-opus-4.7 models use temperature=0.0; opus-4.7 omits the parameter (rejected by API). Source: https://platform.claude.com/docs/en/about-claude/models/whats-new-claude-4-7"
+  },
+  "summary": [
+    {
+      "prompt_id": "P2_professional",
+      "implicit_text": "Write a professional, polished customer-facing announcement.",
+      "mean_extracted_k": 5.285714285714286,
+      "min_extracted_k": 2,
+      "max_extracted_k": 11,
+      "majority_route": "one_shot",
+      "all_pass_rate": 0.8571428571428571,
+      "n_models": 7
+    },
+    {
+      "prompt_id": "P4_executive",
+      "implicit_text": "Write an executive-level Q4 results briefing for shareholders.",
+      "mean_extracted_k": 12.428571428571429,
+      "min_extracted_k": 4,
+      "max_extracted_k": 30,
+      "majority_route": "staged",
+      "all_pass_rate": 0.8571428571428571,
+      "n_models": 7
+    },
+    {
+      "prompt_id": "P1_basic_email",
+      "implicit_text": "Write a basic email announcing a new product.",
+      "mean_extracted_k": 3.857142857142857,
+      "min_extracted_k": 2,
+      "max_extracted_k": 10,
+      "majority_route": "one_shot",
+      "all_pass_rate": 0.8571428571428571,
+      "n_models": 7
+    },
+    {
+      "prompt_id": "P3_compliant",
+      "implicit_text": "Write a fully GDPR/SEC-compliant marketing email for a new financial product.",
+      "mean_extracted_k": 10.857142857142858,
+      "min_extracted_k": 5,
+      "max_extracted_k": 21,
+      "majority_route": "one_shot",
+      "all_pass_rate": 0.8571428571428571,
+      "n_models": 7
+    },
+    {
+      "prompt_id": "P5_enterprise",
+      "implicit_text": "Write an enterprise-grade product launch email that meets corporate brand, legal, and compliance standards.",
+      "mean_extracted_k": 16.0,
+      "min_extracted_k": 9,
+      "max_extracted_k": 21,
+      "majority_route": "staged",
+      "all_pass_rate": 0.7142857142857143,
+      "n_models": 7
+    },
+    {
+      "prompt_id": "P7_brand_voice",
+      "implicit_text": "Write a tightly on-brand corporate update; follow our style guide strictly.",
+      "mean_extracted_k": 10.142857142857142,
+      "min_extracted_k": 5,
+      "max_extracted_k": 18,
+      "majority_route": "staged",
+      "all_pass_rate": 0.8571428571428571,
+      "n_models": 7
+    },
+    {
+      "prompt_id": "P6_concise_legal",
+      "implicit_text": "Write a concise, legally airtight notice to subscribers about a service change.",
+      "mean_extracted_k": 15.142857142857142,
+      "min_extracted_k": 9,
+      "max_extracted_k": 29,
+      "majority_route": "staged",
+      "all_pass_rate": 0.8571428571428571,
+      "n_models": 7
+    },
+    {
+      "prompt_id": "P8_regulatory_finance",
+      "implicit_text": "Write a regulator-facing compliance memo for a financial product disclosure.",
+      "mean_extracted_k": 14.428571428571429,
+      "min_extracted_k": 9,
+      "max_extracted_k": 30,
+      "majority_route": "staged",
+      "all_pass_rate": 0.8571428571428571,
+      "n_models": 7
+    }
+  ],
+  "results": [
+    {
+      "prompt_id": "P2_professional",
+      "implicit_text": "Write a professional, polished customer-facing announcement.",
+      "model_name": "sonnet-4",
+      "model_id": "claude-sonnet-4-20250514",
+      "extracted_ids": [
+        "no_profanity",
+        "no_jargon",
+        "no_contractions",
+        "no_emojis",
+        "no_all_caps_word"
+      ],
+      "extracted_k": 5,
+      "routing": "one_shot",
+      "rewritten_text": "Subject: New Product Launch\n\nHi everyone,\n\nWe are excited to announce our new platform! It is the best thing we have ever built and we are confident you will love it. Click here to check it out.\n\nThis product was designed by our experienced team and we believe you will see results immediately. Our competitor's product cannot compare.\n\nCheers,\nThe Team",
+      "n_pass": 5,
+      "n_total": 5,
+      "all_pass": true,
+      "rule_results": {
+        "no_profanity": {
+          "pass": true,
+          "msg": "Clean"
+        },
+        "no_jargon": {
+          "pass": true,
+          "msg": "No jargon"
+        },
+        "no_contractions": {
+          "pass": true,
+          "msg": "No contractions"
+        },
+        "no_emojis": {
+          "pass": true,
+          "msg": "No emojis"
+        },
+        "no_all_caps_word": {
+          "pass": true,
+          "msg": "No all-caps shouting"
+        }
+      },
+      "tagger_tokens": 955,
+      "generator_tokens": 392,
+      "elapsed_sec": 3.250831365585327
+    },
+    {
+      "prompt_id": "P4_executive",
+      "implicit_text": "Write an executive-level Q4 results briefing for shareholders.",
+      "model_name": "sonnet-4",
+      "model_id": "claude-sonnet-4-20250514",
+      "extracted_ids": [
+        "uses_company_name",
+        "industry_disclaimer",
+        "consistent_currency",
+        "no_forward_looking_promise"
+      ],
+      "extracted_k": 4,
+      "routing": "one_shot",
+      "rewritten_text": "Subject: New Product Launch\n\nHi everyone,\n\nWe're excited to announce our new platform from Acme Corp! It's a significant addition to our product suite and we believe you'll find it valuable. Click here to check it out.\n\nThis product was designed by our experienced team and represents our latest innovation. We invite you to explore its features and capabilities.\n\nPast performance is not indicative of future results.\n\nCheers,\nThe Team",
+      "n_pass": 4,
+      "n_total": 4,
+      "all_pass": true,
+      "rule_results": {
+        "uses_company_name": {
+          "pass": true,
+          "msg": "References Acme Corp"
+        },
+        "industry_disclaimer": {
+          "pass": true,
+          "msg": "Has industry disclaimer"
+        },
+        "consistent_currency": {
+          "pass": true,
+          "msg": "No currency"
+        },
+        "no_forward_looking_promise": {
+          "pass": true,
+          "msg": "No promises"
+        }
+      },
+      "tagger_tokens": 953,
+      "generator_tokens": 367,
+      "elapsed_sec": 4.410031318664551
+    },
+    {
+      "prompt_id": "P1_basic_email",
+      "implicit_text": "Write a basic email announcing a new product.",
+      "model_name": "sonnet-4",
+      "model_id": "claude-sonnet-4-20250514",
+      "extracted_ids": [
+        "format_salutation",
+        "uses_company_name",
+        "subject_line_present",
+        "signature_block"
+      ],
+      "extracted_k": 4,
+      "routing": "one_shot",
+      "rewritten_text": "Subject: New Product Launch\n\nDear Team,\n\nWe are pleased to announce the launch of our new platform. Acme Corp has developed this product with careful attention to quality and functionality, and we believe it will provide value to our users.\n\nOur dedicated team has worked diligently on this project, and we are optimistic about the positive impact it will have. We invite you to explore the new features and capabilities.\n\nBest regards,\n\nThe Product Team\nAcme Corp\nproduct-team@acmecorp.com",
+      "n_pass": 4,
+      "n_total": 4,
+      "all_pass": true,
+      "rule_results": {
+        "format_salutation": {
+          "pass": true,
+          "msg": "Has formal salutation"
+        },
+        "uses_company_name": {
+          "pass": true,
+          "msg": "References Acme Corp"
+        },
+        "subject_line_present": {
+          "pass": true,
+          "msg": "Has Subject:"
+        },
+        "signature_block": {
+          "pass": true,
+          "msg": "Signature block present"
+        }
+      },
+      "tagger_tokens": 942,
+      "generator_tokens": 390,
+      "elapsed_sec": 4.647953033447266
+    },
+    {
+      "prompt_id": "P3_compliant",
+      "implicit_text": "Write a fully GDPR/SEC-compliant marketing email for a new financial product.",
+      "model_name": "sonnet-4",
+      "model_id": "claude-sonnet-4-20250514",
+      "extracted_ids": [
+        "format_salutation",
+        "uses_company_name",
+        "contains_legal_disclaimer",
+        "contains_regulatory_notice",
+        "no_pii_request",
+        "includes_unsubscribe",
+        "cites_terms",
+        "industry_disclaimer",
+        "includes_iso_date",
+        "includes_reference_number",
+        "subject_line_present",
+        "no_emojis",
+        "min_paragraphs",
+        "signature_block"
+      ],
+      "extracted_k": 14,
+      "routing": "staged",
+      "rewritten_text": "Subject: New Product Launch\n\nDear everyone,\n\nDate: 2024-01-15\nRef: 789456\n\nWe're super excited to announce our amazing new platform from Acme Corp! It's the best thing we've ever built and we're confident you'll love it. Click here to check it out.\n\nThis stunning product was designed by our world-class team and we guarantee you'll see results immediately. Our competitor's product can't even come close.\n\nPast performance is not indicative of future results.\n\nTerms of Service available at acme.com/terms\n\nThis communication is confidential and intended only for the recipient.\n\nRegulated by the SEC.\n\nTo unsubscribe, reply STOP.\n\nBest regards,\nThe Team\nAcme Corp",
+      "n_pass": 14,
+      "n_total": 14,
+      "all_pass": true,
+      "rule_results": {
+        "format_salutation": {
+          "pass": true,
+          "msg": "Has formal salutation"
+        },
+        "uses_company_name": {
+          "pass": true,
+          "msg": "References Acme Corp"
+        },
+        "contains_legal_disclaimer": {
+          "pass": true,
+          "msg": "Has legal disclaimer"
+        },
+        "contains_regulatory_notice": {
+          "pass": true,
+          "msg": "Has SEC notice"
+        },
+        "no_pii_request": {
+          "pass": true,
+          "msg": "No PII solicitation"
+        },
+        "includes_unsubscribe": {
+          "pass": true,
+          "msg": "Has unsub line"
+        },
+        "cites_terms": {
+          "pass": true,
+          "msg": "Cites ToS"
+        },
+        "industry_disclaimer": {
+          "pass": true,
+          "msg": "Has industry disclaimer"
+        },
+        "includes_iso_date": {
+          "pass": true,
+          "msg": "Has ISO date"
+        },
+        "includes_reference_number": {
+          "pass": true,
+          "msg": "Has ref number"
+        },
+        "subject_line_present": {
+          "pass": true,
+          "msg": "Has Subject:"
+        },
+        "no_emojis": {
+          "pass": true,
+          "msg": "No emojis"
+        },
+        "min_paragraphs": {
+          "pass": true,
+          "msg": "11 paragraphs"
+        },
+        "signature_block": {
+          "pass": true,
+          "msg": "Signature block present"
+        }
+      },
+      "tagger_tokens": 1026,
+      "generator_tokens": 1894,
+      "elapsed_sec": 8.629932880401611
+    },
+    {
+      "prompt_id": "P5_enterprise",
+      "implicit_text": "Write an enterprise-grade product launch email that meets corporate brand, legal, and compliance standards.",
+      "model_name": "sonnet-4",
+      "model_id": "claude-sonnet-4-20250514",
+      "extracted_ids": [
+        "format_salutation",
+        "uses_company_name",
+        "contains_legal_disclaimer",
+        "contains_regulatory_notice",
+        "no_pii_request",
+        "includes_unsubscribe",
+        "cites_terms",
+        "subject_line_present",
+        "signature_block"
+      ],
+      "extracted_k": 9,
+      "routing": "staged",
+      "rewritten_text": "Subject: New Product Launch\n\nDear everyone,\n\nWe're super excited to announce our amazing new platform! It's the best thing\nAcme Corp has ever built and we're confident you'll love it. Click here to check it out.\n\nThis stunning product was designed by our world-class team and we guarantee\nyou'll see results immediately. Our competitor's product can't even come close.\n\nTerms of Service available at acme.com/terms\n\nThis communication is confidential and intended only for the recipient.\n\nRegulated by the SEC.\n\nTo unsubscribe, reply STOP.\n\nCheers,\nThe Team\nAcme Corp\nsupport@acme.com",
+      "n_pass": 9,
+      "n_total": 9,
+      "all_pass": true,
+      "rule_results": {
+        "format_salutation": {
+          "pass": true,
+          "msg": "Has formal salutation"
+        },
+        "uses_company_name": {
+          "pass": true,
+          "msg": "References Acme Corp"
+        },
+        "contains_legal_disclaimer": {
+          "pass": true,
+          "msg": "Has legal disclaimer"
+        },
+        "contains_regulatory_notice": {
+          "pass": true,
+          "msg": "Has SEC notice"
+        },
+        "no_pii_request": {
+          "pass": true,
+          "msg": "No PII solicitation"
+        },
+        "includes_unsubscribe": {
+          "pass": true,
+          "msg": "Has unsub line"
+        },
+        "cites_terms": {
+          "pass": true,
+          "msg": "Cites ToS"
+        },
+        "subject_line_present": {
+          "pass": true,
+          "msg": "Has Subject:"
+        },
+        "signature_block": {
+          "pass": true,
+          "msg": "Signature block present"
+        }
+      },
+      "tagger_tokens": 993,
+      "generator_tokens": 1493,
+      "elapsed_sec": 6.83078670501709
+    },
+    {
+      "prompt_id": "P7_brand_voice",
+      "implicit_text": "Write a tightly on-brand corporate update; follow our style guide strictly.",
+      "model_name": "sonnet-4",
+      "model_id": "claude-sonnet-4-20250514",
+      "extracted_ids": [
+        "uses_company_name",
+        "no_jargon",
+        "no_superlatives",
+        "no_profanity",
+        "no_contractions",
+        "no_emojis",
+        "no_double_spaces",
+        "max_sentence_length",
+        "no_all_caps_word"
+      ],
+      "extracted_k": 9,
+      "routing": "staged",
+      "rewritten_text": "Subject: New Product Launch\n\nHi everyone,\n\nWe are excited to announce our new platform from Acme Corp! It is something we have built and we are confident you will find it useful. Click here to check it out.\n\nThis product was designed by our team. We believe you will see results quickly. Our competitor's product does not offer the same features.\n\nCheers,\nThe Team",
+      "n_pass": 9,
+      "n_total": 9,
+      "all_pass": true,
+      "rule_results": {
+        "uses_company_name": {
+          "pass": true,
+          "msg": "References Acme Corp"
+        },
+        "no_jargon": {
+          "pass": true,
+          "msg": "No jargon"
+        },
+        "no_superlatives": {
+          "pass": true,
+          "msg": "Plain language"
+        },
+        "no_profanity": {
+          "pass": true,
+          "msg": "Clean"
+        },
+        "no_contractions": {
+          "pass": true,
+          "msg": "No contractions"
+        },
+        "no_emojis": {
+          "pass": true,
+          "msg": "No emojis"
+        },
+        "no_double_spaces": {
+          "pass": true,
+          "msg": "Single-spaced"
+        },
+        "max_sentence_length": {
+          "pass": true,
+          "msg": "All sentences <=25 words"
+        },
+        "no_all_caps_word": {
+          "pass": true,
+          "msg": "No all-caps shouting"
+        }
+      },
+      "tagger_tokens": 988,
+      "generator_tokens": 1263,
+      "elapsed_sec": 6.813604116439819
+    },
+    {
+      "prompt_id": "P6_concise_legal",
+      "implicit_text": "Write a concise, legally airtight notice to subscribers about a service change.",
+      "model_name": "sonnet-4",
+      "model_id": "claude-sonnet-4-20250514",
+      "extracted_ids": [
+        "uses_company_name",
+        "contains_legal_disclaimer",
+        "contains_regulatory_notice",
+        "includes_unsubscribe",
+        "cites_terms",
+        "max_sentence_length",
+        "includes_iso_date",
+        "includes_reference_number",
+        "subject_line_present",
+        "no_contractions",
+        "min_paragraphs",
+        "subject_title_case",
+        "signature_block"
+      ],
+      "extracted_k": 13,
+      "routing": "staged",
+      "rewritten_text": "Subject: New Product Launch\n\nHi everyone,\n\nWe are super excited to announce our amazing new platform on 2024-01-15! It is the best thing Acme Corp has ever built. We are confident you will love it. Click here to check it out.\n\nThis stunning product was designed by our world-class team. We guarantee you will see results immediately. Our competitor's product cannot even come close.\n\nRef: 12345\n\nThis communication is confidential and intended only for the recipient.\n\nRegulated by the SEC.\n\nTerms of Service available at acme.com/terms\n\nTo unsubscribe, reply STOP.\n\nCheers,\nThe Team\nAcme Corp",
+      "n_pass": 13,
+      "n_total": 13,
+      "all_pass": true,
+      "rule_results": {
+        "uses_company_name": {
+          "pass": true,
+          "msg": "References Acme Corp"
+        },
+        "contains_legal_disclaimer": {
+          "pass": true,
+          "msg": "Has legal disclaimer"
+        },
+        "contains_regulatory_notice": {
+          "pass": true,
+          "msg": "Has SEC notice"
+        },
+        "includes_unsubscribe": {
+          "pass": true,
+          "msg": "Has unsub line"
+        },
+        "cites_terms": {
+          "pass": true,
+          "msg": "Cites ToS"
+        },
+        "max_sentence_length": {
+          "pass": true,
+          "msg": "All sentences <=25 words"
+        },
+        "includes_iso_date": {
+          "pass": true,
+          "msg": "Has ISO date"
+        },
+        "includes_reference_number": {
+          "pass": true,
+          "msg": "Has ref number"
+        },
+        "subject_line_present": {
+          "pass": true,
+          "msg": "Has Subject:"
+        },
+        "no_contractions": {
+          "pass": true,
+          "msg": "No contractions"
+        },
+        "min_paragraphs": {
+          "pass": true,
+          "msg": "10 paragraphs"
+        },
+        "subject_title_case": {
+          "pass": true,
+          "msg": "Subject in title case"
+        },
+        "signature_block": {
+          "pass": true,
+          "msg": "Signature block present"
+        }
+      },
+      "tagger_tokens": 1013,
+      "generator_tokens": 1860,
+      "elapsed_sec": 9.067139863967896
+    },
+    {
+      "prompt_id": "P1_basic_email",
+      "implicit_text": "Write a basic email announcing a new product.",
+      "model_name": "opus-4",
+      "model_id": "claude-opus-4-20250514",
+      "extracted_ids": [
+        "format_salutation",
+        "subject_line_present"
+      ],
+      "extracted_k": 2,
+      "routing": "one_shot",
+      "rewritten_text": "Subject: New Product Launch\n\nDear everyone,\n\nWe're super excited to announce our amazing new platform! It's the best thing\nwe've ever built and we're confident you'll love it. Click here to check it out.\n\nThis stunning product was designed by our world-class team and we guarantee\nyou'll see results immediately. Our competitor's product can't even come close.\n\nCheers,\nThe Team",
+      "n_pass": 2,
+      "n_total": 2,
+      "all_pass": true,
+      "rule_results": {
+        "format_salutation": {
+          "pass": true,
+          "msg": "Has formal salutation"
+        },
+        "subject_line_present": {
+          "pass": true,
+          "msg": "Has Subject:"
+        }
+      },
+      "tagger_tokens": 930,
+      "generator_tokens": 314,
+      "elapsed_sec": 3.9056057929992676
+    },
+    {
+      "prompt_id": "P8_regulatory_finance",
+      "implicit_text": "Write a regulator-facing compliance memo for a financial product disclosure.",
+      "model_name": "sonnet-4",
+      "model_id": "claude-sonnet-4-20250514",
+      "extracted_ids": [
+        "uses_company_name",
+        "contains_legal_disclaimer",
+        "contains_regulatory_notice",
+        "industry_disclaimer",
+        "includes_iso_date",
+        "includes_reference_number",
+        "no_contractions",
+        "consistent_currency",
+        "min_paragraphs",
+        "max_paragraphs",
+        "signature_block"
+      ],
+      "extracted_k": 11,
+      "routing": "staged",
+      "rewritten_text": "Subject: New Product Launch\n\nHi everyone,\n\nWe are super excited to announce our amazing new platform! It is the best thing\nAcme Corp has ever built and we are confident you will love it. Click here to check it out.\n\nThis stunning product was designed by our world-class team and we guarantee\nyou will see results immediately. Our competitor's product cannot even come close.\n\nDate: 2024-01-15\nRef: 12345\n\nThis communication is confidential and intended only for the recipient. Regulated by the SEC. Past performance is not indicative of future results.\n\nBest regards,\nThe Team\nAcme Corp",
+      "n_pass": 11,
+      "n_total": 11,
+      "all_pass": true,
+      "rule_results": {
+        "uses_company_name": {
+          "pass": true,
+          "msg": "References Acme Corp"
+        },
+        "contains_legal_disclaimer": {
+          "pass": true,
+          "msg": "Has legal disclaimer"
+        },
+        "contains_regulatory_notice": {
+          "pass": true,
+          "msg": "Has SEC notice"
+        },
+        "industry_disclaimer": {
+          "pass": true,
+          "msg": "Has industry disclaimer"
+        },
+        "includes_iso_date": {
+          "pass": true,
+          "msg": "Has ISO date"
+        },
+        "includes_reference_number": {
+          "pass": true,
+          "msg": "Has ref number"
+        },
+        "no_contractions": {
+          "pass": true,
+          "msg": "No contractions"
+        },
+        "consistent_currency": {
+          "pass": true,
+          "msg": "No currency"
+        },
+        "min_paragraphs": {
+          "pass": true,
+          "msg": "7 paragraphs"
+        },
+        "max_paragraphs": {
+          "pass": true,
+          "msg": "7 paragraphs"
+        },
+        "signature_block": {
+          "pass": true,
+          "msg": "Signature block present"
+        }
+      },
+      "tagger_tokens": 992,
+      "generator_tokens": 1650,
+      "elapsed_sec": 7.342036962509155
+    },
+    {
+      "prompt_id": "P2_professional",
+      "implicit_text": "Write a professional, polished customer-facing announcement.",
+      "model_name": "opus-4",
+      "model_id": "claude-opus-4-20250514",
+      "extracted_ids": [
+        "no_profanity",
+        "no_jargon",
+        "no_contractions",
+        "no_emojis",
+        "no_double_spaces",
+        "no_all_caps_word"
+      ],
+      "extracted_k": 6,
+      "routing": "one_shot",
+      "rewritten_text": "Subject: New Product Launch\n\nHi everyone,\n\nWe are excited to announce our new platform! It is an excellent addition to our offerings and we are confident you will find it valuable. Click here to check it out.\n\nThis product was designed by our talented team and we believe you will see positive results quickly. Our solution offers significant advantages in the market.\n\nRegards,\nThe Team",
+      "n_pass": 6,
+      "n_total": 6,
+      "all_pass": true,
+      "rule_results": {
+        "no_profanity": {
+          "pass": true,
+          "msg": "Clean"
+        },
+        "no_jargon": {
+          "pass": true,
+          "msg": "No jargon"
+        },
+        "no_contractions": {
+          "pass": true,
+          "msg": "No contractions"
+        },
+        "no_emojis": {
+          "pass": true,
+          "msg": "No emojis"
+        },
+        "no_double_spaces": {
+          "pass": true,
+          "msg": "Single-spaced"
+        },
+        "no_all_caps_word": {
+          "pass": true,
+          "msg": "No all-caps shouting"
+        }
+      },
+      "tagger_tokens": 962,
+      "generator_tokens": 409,
+      "elapsed_sec": 5.027909994125366
+    },
+    {
+      "prompt_id": "P3_compliant",
+      "implicit_text": "Write a fully GDPR/SEC-compliant marketing email for a new financial product.",
+      "model_name": "opus-4",
+      "model_id": "claude-opus-4-20250514",
+      "extracted_ids": [
+        "contains_regulatory_notice",
+        "no_forward_looking_promise",
+        "no_pii_request",
+        "includes_unsubscribe",
+        "industry_disclaimer"
+      ],
+      "extracted_k": 5,
+      "routing": "one_shot",
+      "rewritten_text": "Subject: New Product Launch\n\nHi everyone,\n\nWe're excited to announce our new platform! It's the latest addition to our product line and we believe you'll find it valuable. Click here to check it out.\n\nThis product was designed by our experienced team. Past performance is not indicative of future results.\n\nRegulated by the SEC.\n\nTo unsubscribe, reply STOP.\n\nCheers,\nThe Team",
+      "n_pass": 5,
+      "n_total": 5,
+      "all_pass": true,
+      "rule_results": {
+        "contains_regulatory_notice": {
+          "pass": true,
+          "msg": "Has SEC notice"
+        },
+        "no_forward_looking_promise": {
+          "pass": true,
+          "msg": "No promises"
+        },
+        "no_pii_request": {
+          "pass": true,
+          "msg": "No PII solicitation"
+        },
+        "includes_unsubscribe": {
+          "pass": true,
+          "msg": "Has unsub line"
+        },
+        "industry_disclaimer": {
+          "pass": true,
+          "msg": "Has industry disclaimer"
+        }
+      },
+      "tagger_tokens": 964,
+      "generator_tokens": 401,
+      "elapsed_sec": 5.125936031341553
+    },
+    {
+      "prompt_id": "P4_executive",
+      "implicit_text": "Write an executive-level Q4 results briefing for shareholders.",
+      "model_name": "opus-4",
+      "model_id": "claude-opus-4-20250514",
+      "extracted_ids": [
+        "no_profanity",
+        "no_superlatives",
+        "no_forward_looking_promise",
+        "no_pii_request",
+        "no_negative_competitor",
+        "industry_disclaimer",
+        "no_exclamation",
+        "no_contractions",
+        "consistent_currency",
+        "no_emojis",
+        "no_double_spaces",
+        "no_all_caps_word"
+      ],
+      "extracted_k": 12,
+      "routing": "staged",
+      "rewritten_text": "Subject: New Product Launch\n\nHi everyone,\n\nWe are excited to announce our new platform. It is a significant development we have been working on and we think you will find it useful. Click here to check it out.\n\nThis product was designed by our experienced team and we believe you will see positive results. Our product offers features that make it valuable.\n\nPast performance is not indicative of future results.\n\nCheers,\nThe Team",
+      "n_pass": 12,
+      "n_total": 12,
+      "all_pass": true,
+      "rule_results": {
+        "no_profanity": {
+          "pass": true,
+          "msg": "Clean"
+        },
+        "no_superlatives": {
+          "pass": true,
+          "msg": "Plain language"
+        },
+        "no_forward_looking_promise": {
+          "pass": true,
+          "msg": "No promises"
+        },
+        "no_pii_request": {
+          "pass": true,
+          "msg": "No PII solicitation"
+        },
+        "no_negative_competitor": {
+          "pass": true,
+          "msg": "No competitor reference"
+        },
+        "industry_disclaimer": {
+          "pass": true,
+          "msg": "Has industry disclaimer"
+        },
+        "no_exclamation": {
+          "pass": true,
+          "msg": "No exclamations"
+        },
+        "no_contractions": {
+          "pass": true,
+          "msg": "No contractions"
+        },
+        "consistent_currency": {
+          "pass": true,
+          "msg": "No currency"
+        },
+        "no_emojis": {
+          "pass": true,
+          "msg": "No emojis"
+        },
+        "no_double_spaces": {
+          "pass": true,
+          "msg": "Single-spaced"
+        },
+        "no_all_caps_word": {
+          "pass": true,
+          "msg": "No all-caps shouting"
+        }
+      },
+      "tagger_tokens": 1006,
+      "generator_tokens": 1414,
+      "elapsed_sec": 10.894336223602295
+    },
+    {
+      "prompt_id": "P6_concise_legal",
+      "implicit_text": "Write a concise, legally airtight notice to subscribers about a service change.",
+      "model_name": "opus-4",
+      "model_id": "claude-opus-4-20250514",
+      "extracted_ids": [
+        "no_profanity",
+        "no_jargon",
+        "no_forward_looking_promise",
+        "no_pii_request",
+        "no_negative_competitor",
+        "no_exclamation",
+        "no_contractions",
+        "no_emojis",
+        "no_double_spaces",
+        "no_all_caps_word"
+      ],
+      "extracted_k": 10,
+      "routing": "staged",
+      "rewritten_text": "Subject: New Product Launch\n\nHi everyone,\n\nWe are excited to announce our new platform. It is a significant achievement for our team and we believe you will find it valuable. Click here to check it out.\n\nThis product was designed by our experienced team and we expect you will see positive results. We believe it offers strong value in the market.\n\nCheers,\nThe Team",
+      "n_pass": 10,
+      "n_total": 10,
+      "all_pass": true,
+      "rule_results": {
+        "no_profanity": {
+          "pass": true,
+          "msg": "Clean"
+        },
+        "no_jargon": {
+          "pass": true,
+          "msg": "No jargon"
+        },
+        "no_forward_looking_promise": {
+          "pass": true,
+          "msg": "No promises"
+        },
+        "no_pii_request": {
+          "pass": true,
+          "msg": "No PII solicitation"
+        },
+        "no_negative_competitor": {
+          "pass": true,
+          "msg": "No competitor reference"
+        },
+        "no_exclamation": {
+          "pass": true,
+          "msg": "No exclamations"
+        },
+        "no_contractions": {
+          "pass": true,
+          "msg": "No contractions"
+        },
+        "no_emojis": {
+          "pass": true,
+          "msg": "No emojis"
+        },
+        "no_double_spaces": {
+          "pass": true,
+          "msg": "Single-spaced"
+        },
+        "no_all_caps_word": {
+          "pass": true,
+          "msg": "No all-caps shouting"
+        }
+      },
+      "tagger_tokens": 999,
+      "generator_tokens": 1319,
+      "elapsed_sec": 10.657636404037476
+    },
+    {
+      "prompt_id": "P5_enterprise",
+      "implicit_text": "Write an enterprise-grade product launch email that meets corporate brand, legal, and compliance standards.",
+      "model_name": "opus-4",
+      "model_id": "claude-opus-4-20250514",
+      "extracted_ids": [
+        "format_salutation",
+        "no_profanity",
+        "uses_company_name",
+        "contains_legal_disclaimer",
+        "no_forward_looking_promise",
+        "no_pii_request",
+        "includes_unsubscribe",
+        "no_negative_competitor",
+        "subject_line_present",
+        "no_contractions",
+        "no_emojis",
+        "signature_block"
+      ],
+      "extracted_k": 12,
+      "routing": "staged",
+      "rewritten_text": "Subject: New Product Launch\n\nDear everyone,\n\nWe are excited to announce our new platform from Acme Corp! It is an impressive addition to our product line and we believe you will find it valuable. Click here to check it out.\n\nThis innovative product was designed by our dedicated team and we are confident in its capabilities.\n\nThis communication is confidential and intended only for the recipient.\n\nTo unsubscribe, reply STOP.\n\nBest regards,\nThe Team\nAcme Corp",
+      "n_pass": 12,
+      "n_total": 12,
+      "all_pass": true,
+      "rule_results": {
+        "format_salutation": {
+          "pass": true,
+          "msg": "Has formal salutation"
+        },
+        "no_profanity": {
+          "pass": true,
+          "msg": "Clean"
+        },
+        "uses_company_name": {
+          "pass": true,
+          "msg": "References Acme Corp"
+        },
+        "contains_legal_disclaimer": {
+          "pass": true,
+          "msg": "Has legal disclaimer"
+        },
+        "no_forward_looking_promise": {
+          "pass": true,
+          "msg": "No promises"
+        },
+        "no_pii_request": {
+          "pass": true,
+          "msg": "No PII solicitation"
+        },
+        "includes_unsubscribe": {
+          "pass": true,
+          "msg": "Has unsub line"
+        },
+        "no_negative_competitor": {
+          "pass": true,
+          "msg": "No competitor reference"
+        },
+        "subject_line_present": {
+          "pass": true,
+          "msg": "Has Subject:"
+        },
+        "no_contractions": {
+          "pass": true,
+          "msg": "No contractions"
+        },
+        "no_emojis": {
+          "pass": true,
+          "msg": "No emojis"
+        },
+        "signature_block": {
+          "pass": true,
+          "msg": "Signature block present"
+        }
+      },
+      "tagger_tokens": 1011,
+      "generator_tokens": 1526,
+      "elapsed_sec": 11.25608515739441
+    },
+    {
+      "prompt_id": "P7_brand_voice",
+      "implicit_text": "Write a tightly on-brand corporate update; follow our style guide strictly.",
+      "model_name": "opus-4",
+      "model_id": "claude-opus-4-20250514",
+      "extracted_ids": [
+        "uses_company_name",
+        "no_profanity",
+        "no_jargon",
+        "no_superlatives",
+        "no_exclamation",
+        "no_contractions",
+        "no_emojis",
+        "no_double_spaces",
+        "no_all_caps_word"
+      ],
+      "extracted_k": 9,
+      "routing": "staged",
+      "rewritten_text": "Subject: New Product Launch\n\nHi everyone,\n\nWe are pleased to announce our new platform from Acme Corp. It is a significant addition to our product line and we believe you will find it valuable. Click here to check it out.\n\nThis product was designed by our experienced team and we expect you will see positive results quickly. Our product offers distinct advantages over competing solutions.\n\nCheers,\nThe Team",
+      "n_pass": 9,
+      "n_total": 9,
+      "all_pass": true,
+      "rule_results": {
+        "uses_company_name": {
+          "pass": true,
+          "msg": "References Acme Corp"
+        },
+        "no_profanity": {
+          "pass": true,
+          "msg": "Clean"
+        },
+        "no_jargon": {
+          "pass": true,
+          "msg": "No jargon"
+        },
+        "no_superlatives": {
+          "pass": true,
+          "msg": "Plain language"
+        },
+        "no_exclamation": {
+          "pass": true,
+          "msg": "No exclamations"
+        },
+        "no_contractions": {
+          "pass": true,
+          "msg": "No contractions"
+        },
+        "no_emojis": {
+          "pass": true,
+          "msg": "No emojis"
+        },
+        "no_double_spaces": {
+          "pass": true,
+          "msg": "Single-spaced"
+        },
+        "no_all_caps_word": {
+          "pass": true,
+          "msg": "No all-caps shouting"
+        }
+      },
+      "tagger_tokens": 988,
+      "generator_tokens": 1283,
+      "elapsed_sec": 10.227830648422241
+    },
+    {
+      "prompt_id": "P2_professional",
+      "implicit_text": "Write a professional, polished customer-facing announcement.",
+      "model_name": "opus-4.1",
+      "model_id": "claude-opus-4-1-20250805",
+      "extracted_ids": [
+        "no_profanity",
+        "no_contractions"
+      ],
+      "extracted_k": 2,
+      "routing": "one_shot",
+      "rewritten_text": "Subject: New Product Launch\n\nHi everyone,\n\nWe are super excited to announce our amazing new platform! It is the best thing\nwe have ever built and we are confident you will love it. Click here to check it out.\n\nThis stunning product was designed by our world-class team and we guarantee\nyou will see results immediately. Our competitor's product cannot even come close.\n\nCheers,\nThe Team",
+      "n_pass": 2,
+      "n_total": 2,
+      "all_pass": true,
+      "rule_results": {
+        "no_profanity": {
+          "pass": true,
+          "msg": "Clean"
+        },
+        "no_contractions": {
+          "pass": true,
+          "msg": "No contractions"
+        }
+      },
+      "tagger_tokens": 932,
+      "generator_tokens": 319,
+      "elapsed_sec": 3.6826744079589844
+    },
+    {
+      "prompt_id": "P1_basic_email",
+      "implicit_text": "Write a basic email announcing a new product.",
+      "model_name": "opus-4.1",
+      "model_id": "claude-opus-4-1-20250805",
+      "extracted_ids": [
+        "format_salutation",
+        "subject_line_present"
+      ],
+      "extracted_k": 2,
+      "routing": "one_shot",
+      "rewritten_text": "Subject: New Product Launch\n\nDear everyone,\n\nWe're super excited to announce our amazing new platform! It's the best thing\nwe've ever built and we're confident you'll love it. Click here to check it out.\n\nThis stunning product was designed by our world-class team and we guarantee\nyou'll see results immediately. Our competitor's product can't even come close.\n\nCheers,\nThe Team",
+      "n_pass": 2,
+      "n_total": 2,
+      "all_pass": true,
+      "rule_results": {
+        "format_salutation": {
+          "pass": true,
+          "msg": "Has formal salutation"
+        },
+        "subject_line_present": {
+          "pass": true,
+          "msg": "Has Subject:"
+        }
+      },
+      "tagger_tokens": 930,
+      "generator_tokens": 314,
+      "elapsed_sec": 4.716423988342285
+    },
+    {
+      "prompt_id": "P3_compliant",
+      "implicit_text": "Write a fully GDPR/SEC-compliant marketing email for a new financial product.",
+      "model_name": "opus-4.1",
+      "model_id": "claude-opus-4-1-20250805",
+      "extracted_ids": [
+        "contains_regulatory_notice",
+        "no_forward_looking_promise",
+        "no_pii_request",
+        "includes_unsubscribe",
+        "industry_disclaimer"
+      ],
+      "extracted_k": 5,
+      "routing": "one_shot",
+      "rewritten_text": "Subject: New Product Launch\n\nHi everyone,\n\nWe're excited to announce our new platform! It's a significant achievement for our team and we believe you'll find it valuable. Click here to check it out.\n\nThis product was designed by our dedicated team and represents our latest innovation. We encourage you to explore its features and see how it compares to other options in the market.\n\nRegulated by the SEC.\n\nPast performance is not indicative of future results.\n\nTo unsubscribe, reply STOP.\n\nCheers,\nThe Team",
+      "n_pass": 5,
+      "n_total": 5,
+      "all_pass": true,
+      "rule_results": {
+        "contains_regulatory_notice": {
+          "pass": true,
+          "msg": "Has SEC notice"
+        },
+        "no_forward_looking_promise": {
+          "pass": true,
+          "msg": "No promises"
+        },
+        "no_pii_request": {
+          "pass": true,
+          "msg": "No PII solicitation"
+        },
+        "includes_unsubscribe": {
+          "pass": true,
+          "msg": "Has unsub line"
+        },
+        "industry_disclaimer": {
+          "pass": true,
+          "msg": "Has industry disclaimer"
+        }
+      },
+      "tagger_tokens": 964,
+      "generator_tokens": 426,
+      "elapsed_sec": 5.487470388412476
+    },
+    {
+      "prompt_id": "P8_regulatory_finance",
+      "implicit_text": "Write a regulator-facing compliance memo for a financial product disclosure.",
+      "model_name": "opus-4",
+      "model_id": "claude-opus-4-20250514",
+      "extracted_ids": [
+        "no_profanity",
+        "no_superlatives",
+        "contains_regulatory_notice",
+        "no_forward_looking_promise",
+        "no_pii_request",
+        "no_negative_competitor",
+        "industry_disclaimer",
+        "no_exclamation",
+        "no_contractions",
+        "no_emojis",
+        "no_all_caps_word"
+      ],
+      "extracted_k": 11,
+      "routing": "staged",
+      "rewritten_text": "Subject: New Product Launch\n\nHi everyone,\n\nWe are excited to announce our new platform. It is a significant development \nwe have been working on and we think you will find it useful. Click here to check it out.\n\nThis product was designed by our experienced team and we believe \nyou will see positive results.\n\nPast performance is not indicative of future results.\n\nRegulated by the SEC.\n\nCheers,\nThe Team",
+      "n_pass": 11,
+      "n_total": 11,
+      "all_pass": true,
+      "rule_results": {
+        "no_profanity": {
+          "pass": true,
+          "msg": "Clean"
+        },
+        "no_superlatives": {
+          "pass": true,
+          "msg": "Plain language"
+        },
+        "contains_regulatory_notice": {
+          "pass": true,
+          "msg": "Has SEC notice"
+        },
+        "no_forward_looking_promise": {
+          "pass": true,
+          "msg": "No promises"
+        },
+        "no_pii_request": {
+          "pass": true,
+          "msg": "No PII solicitation"
+        },
+        "no_negative_competitor": {
+          "pass": true,
+          "msg": "No competitor reference"
+        },
+        "industry_disclaimer": {
+          "pass": true,
+          "msg": "Has industry disclaimer"
+        },
+        "no_exclamation": {
+          "pass": true,
+          "msg": "No exclamations"
+        },
+        "no_contractions": {
+          "pass": true,
+          "msg": "No contractions"
+        },
+        "no_emojis": {
+          "pass": true,
+          "msg": "No emojis"
+        },
+        "no_all_caps_word": {
+          "pass": true,
+          "msg": "No all-caps shouting"
+        }
+      },
+      "tagger_tokens": 1001,
+      "generator_tokens": 1417,
+      "elapsed_sec": 10.717032194137573
+    },
+    {
+      "prompt_id": "P4_executive",
+      "implicit_text": "Write an executive-level Q4 results briefing for shareholders.",
+      "model_name": "opus-4.1",
+      "model_id": "claude-opus-4-1-20250805",
+      "extracted_ids": [
+        "no_profanity",
+        "no_forward_looking_promise",
+        "industry_disclaimer",
+        "no_contractions",
+        "consistent_currency",
+        "no_emojis",
+        "no_double_spaces",
+        "no_all_caps_word"
+      ],
+      "extracted_k": 8,
+      "routing": "one_shot",
+      "rewritten_text": "Subject: New Product Launch\n\nHi everyone,\n\nWe are excited to announce our new platform. It is an excellent addition to our product line and we believe you will find it valuable. Please visit our website to learn more.\n\nThis product was designed by our experienced team and we anticipate positive user experiences. Our solution offers competitive features in the marketplace.\n\nPast performance is not indicative of future results.\n\nCheers,\nThe Team",
+      "n_pass": 8,
+      "n_total": 8,
+      "all_pass": true,
+      "rule_results": {
+        "no_profanity": {
+          "pass": true,
+          "msg": "Clean"
+        },
+        "no_forward_looking_promise": {
+          "pass": true,
+          "msg": "No promises"
+        },
+        "industry_disclaimer": {
+          "pass": true,
+          "msg": "Has industry disclaimer"
+        },
+        "no_contractions": {
+          "pass": true,
+          "msg": "No contractions"
+        },
+        "consistent_currency": {
+          "pass": true,
+          "msg": "No currency"
+        },
+        "no_emojis": {
+          "pass": true,
+          "msg": "No emojis"
+        },
+        "no_double_spaces": {
+          "pass": true,
+          "msg": "Single-spaced"
+        },
+        "no_all_caps_word": {
+          "pass": true,
+          "msg": "No all-caps shouting"
+        }
+      },
+      "tagger_tokens": 977,
+      "generator_tokens": 463,
+      "elapsed_sec": 5.319260120391846
+    },
+    {
+      "prompt_id": "P5_enterprise",
+      "implicit_text": "Write an enterprise-grade product launch email that meets corporate brand, legal, and compliance standards.",
+      "model_name": "opus-4.1",
+      "model_id": "claude-opus-4-1-20250805",
+      "extracted_ids": [
+        "format_salutation",
+        "no_profanity",
+        "uses_company_name",
+        "contains_legal_disclaimer",
+        "no_forward_looking_promise",
+        "no_pii_request",
+        "includes_unsubscribe",
+        "no_negative_competitor",
+        "subject_line_present",
+        "no_contractions",
+        "no_emojis",
+        "signature_block"
+      ],
+      "extracted_k": 12,
+      "routing": "staged",
+      "rewritten_text": "Subject: New Product Launch\n\nDear everyone,\n\nWe are excited to announce our new platform from Acme Corp! It is an impressive addition to our product line and we believe you will find it valuable. Click here to check it out.\n\nThis product was designed by our dedicated team and we are pleased to share it with you.\n\nThis communication is confidential and intended only for the recipient.\n\nTo unsubscribe, reply STOP.\n\nBest regards,\nThe Team\nAcme Corp",
+      "n_pass": 12,
+      "n_total": 12,
+      "all_pass": true,
+      "rule_results": {
+        "format_salutation": {
+          "pass": true,
+          "msg": "Has formal salutation"
+        },
+        "no_profanity": {
+          "pass": true,
+          "msg": "Clean"
+        },
+        "uses_company_name": {
+          "pass": true,
+          "msg": "References Acme Corp"
+        },
+        "contains_legal_disclaimer": {
+          "pass": true,
+          "msg": "Has legal disclaimer"
+        },
+        "no_forward_looking_promise": {
+          "pass": true,
+          "msg": "No promises"
+        },
+        "no_pii_request": {
+          "pass": true,
+          "msg": "No PII solicitation"
+        },
+        "includes_unsubscribe": {
+          "pass": true,
+          "msg": "Has unsub line"
+        },
+        "no_negative_competitor": {
+          "pass": true,
+          "msg": "No competitor reference"
+        },
+        "subject_line_present": {
+          "pass": true,
+          "msg": "Has Subject:"
+        },
+        "no_contractions": {
+          "pass": true,
+          "msg": "No contractions"
+        },
+        "no_emojis": {
+          "pass": true,
+          "msg": "No emojis"
+        },
+        "signature_block": {
+          "pass": true,
+          "msg": "Signature block present"
+        }
+      },
+      "tagger_tokens": 1011,
+      "generator_tokens": 1529,
+      "elapsed_sec": 10.805236577987671
+    },
+    {
+      "prompt_id": "P6_concise_legal",
+      "implicit_text": "Write a concise, legally airtight notice to subscribers about a service change.",
+      "model_name": "opus-4.1",
+      "model_id": "claude-opus-4-1-20250805",
+      "extracted_ids": [
+        "no_profanity",
+        "no_jargon",
+        "no_pii_request",
+        "no_negative_competitor",
+        "no_exclamation",
+        "no_contractions",
+        "no_emojis",
+        "no_double_spaces",
+        "no_all_caps_word"
+      ],
+      "extracted_k": 9,
+      "routing": "staged",
+      "rewritten_text": "Subject: New Product Launch\n\nHi everyone,\n\nWe are very excited to announce our amazing new platform. It is the best thing we have ever built and we are confident you will love it. Click here to check it out.\n\nThis stunning product was designed by our world-class team and we guarantee you will see results immediately.\n\nCheers,\nThe Team",
+      "n_pass": 9,
+      "n_total": 9,
+      "all_pass": true,
+      "rule_results": {
+        "no_profanity": {
+          "pass": true,
+          "msg": "Clean"
+        },
+        "no_jargon": {
+          "pass": true,
+          "msg": "No jargon"
+        },
+        "no_pii_request": {
+          "pass": true,
+          "msg": "No PII solicitation"
+        },
+        "no_negative_competitor": {
+          "pass": true,
+          "msg": "No competitor reference"
+        },
+        "no_exclamation": {
+          "pass": true,
+          "msg": "No exclamations"
+        },
+        "no_contractions": {
+          "pass": true,
+          "msg": "No contractions"
+        },
+        "no_emojis": {
+          "pass": true,
+          "msg": "No emojis"
+        },
+        "no_double_spaces": {
+          "pass": true,
+          "msg": "Single-spaced"
+        },
+        "no_all_caps_word": {
+          "pass": true,
+          "msg": "No all-caps shouting"
+        }
+      },
+      "tagger_tokens": 990,
+      "generator_tokens": 1233,
+      "elapsed_sec": 9.980668544769287
+    },
+    {
+      "prompt_id": "P7_brand_voice",
+      "implicit_text": "Write a tightly on-brand corporate update; follow our style guide strictly.",
+      "model_name": "opus-4.1",
+      "model_id": "claude-opus-4-1-20250805",
+      "extracted_ids": [
+        "uses_company_name",
+        "no_profanity",
+        "no_jargon",
+        "no_superlatives",
+        "no_exclamation",
+        "no_contractions",
+        "no_emojis",
+        "no_double_spaces",
+        "no_all_caps_word"
+      ],
+      "extracted_k": 9,
+      "routing": "staged",
+      "rewritten_text": "Subject: New Product Launch\n\nHi everyone,\n\nWe are pleased to announce our new platform from Acme Corp. It is a significant achievement for our company and we believe you will find it valuable. Click here to check it out.\n\nThis product was designed by our experienced team and we expect you will see positive results quickly. Our product offers distinct advantages over competing solutions.\n\nCheers,\nThe Team",
+      "n_pass": 9,
+      "n_total": 9,
+      "all_pass": true,
+      "rule_results": {
+        "uses_company_name": {
+          "pass": true,
+          "msg": "References Acme Corp"
+        },
+        "no_profanity": {
+          "pass": true,
+          "msg": "Clean"
+        },
+        "no_jargon": {
+          "pass": true,
+          "msg": "No jargon"
+        },
+        "no_superlatives": {
+          "pass": true,
+          "msg": "Plain language"
+        },
+        "no_exclamation": {
+          "pass": true,
+          "msg": "No exclamations"
+        },
+        "no_contractions": {
+          "pass": true,
+          "msg": "No contractions"
+        },
+        "no_emojis": {
+          "pass": true,
+          "msg": "No emojis"
+        },
+        "no_double_spaces": {
+          "pass": true,
+          "msg": "Single-spaced"
+        },
+        "no_all_caps_word": {
+          "pass": true,
+          "msg": "No all-caps shouting"
+        }
+      },
+      "tagger_tokens": 988,
+      "generator_tokens": 1284,
+      "elapsed_sec": 10.739444017410278
+    },
+    {
+      "prompt_id": "P8_regulatory_finance",
+      "implicit_text": "Write a regulator-facing compliance memo for a financial product disclosure.",
+      "model_name": "opus-4.1",
+      "model_id": "claude-opus-4-1-20250805",
+      "extracted_ids": [
+        "no_profanity",
+        "no_superlatives",
+        "contains_regulatory_notice",
+        "no_forward_looking_promise",
+        "industry_disclaimer",
+        "no_exclamation",
+        "no_contractions",
+        "no_emojis",
+        "no_all_caps_word"
+      ],
+      "extracted_k": 9,
+      "routing": "staged",
+      "rewritten_text": "Subject: New Product Launch\n\nHi everyone,\n\nWe are pleased to announce our new platform. It is a significant development\nwe have built and we hope you will find it valuable. Click here to check it out.\n\nThis product was designed by our experienced team and we expect\nyou will see positive results quickly. Our competitor's product offers different features.\n\nPast performance is not indicative of future results.\n\nRegulated by the SEC.\n\nCheers,\nThe Team",
+      "n_pass": 9,
+      "n_total": 9,
+      "all_pass": true,
+      "rule_results": {
+        "no_profanity": {
+          "pass": true,
+          "msg": "Clean"
+        },
+        "no_superlatives": {
+          "pass": true,
+          "msg": "Plain language"
+        },
+        "contains_regulatory_notice": {
+          "pass": true,
+          "msg": "Has SEC notice"
+        },
+        "no_forward_looking_promise": {
+          "pass": true,
+          "msg": "No promises"
+        },
+        "industry_disclaimer": {
+          "pass": true,
+          "msg": "Has industry disclaimer"
+        },
+        "no_exclamation": {
+          "pass": true,
+          "msg": "No exclamations"
+        },
+        "no_contractions": {
+          "pass": true,
+          "msg": "No contractions"
+        },
+        "no_emojis": {
+          "pass": true,
+          "msg": "No emojis"
+        },
+        "no_all_caps_word": {
+          "pass": true,
+          "msg": "No all-caps shouting"
+        }
+      },
+      "tagger_tokens": 986,
+      "generator_tokens": 1317,
+      "elapsed_sec": 11.62973403930664
+    },
+    {
+      "prompt_id": "P2_professional",
+      "implicit_text": "Write a professional, polished customer-facing announcement.",
+      "model_name": "haiku-4.5",
+      "model_id": "claude-haiku-4-5-20251001",
+      "extracted_ids": [
+        "format_salutation",
+        "no_profanity",
+        "no_jargon",
+        "no_pii_request",
+        "no_negative_competitor",
+        "max_words",
+        "min_words",
+        "no_emojis",
+        "no_double_spaces",
+        "no_all_caps_word",
+        "signature_block"
+      ],
+      "extracted_k": 11,
+      "routing": "staged",
+      "rewritten_text": "Subject: New Product Launch\n\nDear everyone,\n\nWe are pleased to announce our new platform. We believe you will find it valuable and invite you to learn more about it. Click here to check it out.\n\nThis product was designed by our talented team and we are confident you will see positive results. Our offering provides distinct advantages and features designed with your needs in mind.\n\nBest regards,\nSarah Johnson\nProduct Manager\nAcme Corp",
+      "n_pass": 10,
+      "n_total": 11,
+      "all_pass": false,
+      "rule_results": {
+        "format_salutation": {
+          "pass": true,
+          "msg": "Has formal salutation"
+        },
+        "no_profanity": {
+          "pass": true,
+          "msg": "Clean"
+        },
+        "no_jargon": {
+          "pass": true,
+          "msg": "No jargon"
+        },
+        "no_pii_request": {
+          "pass": true,
+          "msg": "No PII solicitation"
+        },
+        "no_negative_competitor": {
+          "pass": true,
+          "msg": "No competitor reference"
+        },
+        "max_words": {
+          "pass": true,
+          "msg": "73 words"
+        },
+        "min_words": {
+          "pass": false,
+          "msg": "73 words below 100"
+        },
+        "no_emojis": {
+          "pass": true,
+          "msg": "No emojis"
+        },
+        "no_double_spaces": {
+          "pass": true,
+          "msg": "Single-spaced"
+        },
+        "no_all_caps_word": {
+          "pass": true,
+          "msg": "No all-caps shouting"
+        },
+        "signature_block": {
+          "pass": true,
+          "msg": "Signature block present"
+        }
+      },
+      "tagger_tokens": 1027,
+      "generator_tokens": 1347,
+      "elapsed_sec": 3.930551290512085
+    },
+    {
+      "prompt_id": "P1_basic_email",
+      "implicit_text": "Write a basic email announcing a new product.",
+      "model_name": "haiku-4.5",
+      "model_id": "claude-haiku-4-5-20251001",
+      "extracted_ids": [
+        "format_salutation",
+        "no_profanity",
+        "no_pii_request",
+        "no_negative_competitor",
+        "max_words",
+        "min_words",
+        "no_emojis",
+        "no_double_spaces",
+        "subject_line_present",
+        "subject_title_case"
+      ],
+      "extracted_k": 10,
+      "routing": "staged",
+      "rewritten_text": "Subject: New Product Launch\n\nDear Everyone,\n\nWe are pleased to announce our new platform. We believe you will find it valuable and invite you to learn more about it. Click here to check it out.\n\nThis product was designed by our talented team with careful attention to quality and user experience. We are confident it will deliver meaningful results for your needs.\n\nBest regards,\nThe Team",
+      "n_pass": 9,
+      "n_total": 10,
+      "all_pass": false,
+      "rule_results": {
+        "format_salutation": {
+          "pass": true,
+          "msg": "Has formal salutation"
+        },
+        "no_profanity": {
+          "pass": true,
+          "msg": "Clean"
+        },
+        "no_pii_request": {
+          "pass": true,
+          "msg": "No PII solicitation"
+        },
+        "no_negative_competitor": {
+          "pass": true,
+          "msg": "No competitor reference"
+        },
+        "max_words": {
+          "pass": true,
+          "msg": "66 words"
+        },
+        "min_words": {
+          "pass": false,
+          "msg": "66 words below 100"
+        },
+        "no_emojis": {
+          "pass": true,
+          "msg": "No emojis"
+        },
+        "no_double_spaces": {
+          "pass": true,
+          "msg": "Single-spaced"
+        },
+        "subject_line_present": {
+          "pass": true,
+          "msg": "Has Subject:"
+        },
+        "subject_title_case": {
+          "pass": true,
+          "msg": "Subject in title case"
+        }
+      },
+      "tagger_tokens": 1016,
+      "generator_tokens": 1257,
+      "elapsed_sec": 7.037783145904541
+    },
+    {
+      "prompt_id": "P3_compliant",
+      "implicit_text": "Write a fully GDPR/SEC-compliant marketing email for a new financial product.",
+      "model_name": "haiku-4.5",
+      "model_id": "claude-haiku-4-5-20251001",
+      "extracted_ids": [
+        "format_salutation",
+        "no_profanity",
+        "no_pii_request",
+        "contains_legal_disclaimer",
+        "contains_regulatory_notice",
+        "industry_disclaimer",
+        "includes_unsubscribe",
+        "cites_terms",
+        "uses_company_name",
+        "min_words",
+        "max_words",
+        "no_emojis",
+        "no_double_spaces",
+        "min_paragraphs",
+        "max_paragraphs",
+        "subject_line_present",
+        "subject_title_case",
+        "signature_block",
+        "includes_iso_date",
+        "consistent_currency",
+        "no_all_caps_word"
+      ],
+      "extracted_k": 21,
+      "routing": "staged",
+      "rewritten_text": "Subject: New Product Launch\n\nDear Everyone,\n\nWe are pleased to announce our new platform from Acme Corp. It has been designed by our experienced team and we believe you will find it valuable. Click here to check it out.\n\nThis product was designed by our experienced team and we are confident in its capabilities. Past performance is not indicative of future results.\n\nThis communication is confidential and intended only for the recipient. Regulated by the SEC. Terms of Service available at acme.com/terms.\n\nTo unsubscribe, reply STOP.\n\nDate: 2024-01-15\n\nBest regards,\nThe Team\nAcme Corp",
+      "n_pass": 20,
+      "n_total": 21,
+      "all_pass": false,
+      "rule_results": {
+        "format_salutation": {
+          "pass": true,
+          "msg": "Has formal salutation"
+        },
+        "no_profanity": {
+          "pass": true,
+          "msg": "Clean"
+        },
+        "no_pii_request": {
+          "pass": true,
+          "msg": "No PII solicitation"
+        },
+        "contains_legal_disclaimer": {
+          "pass": true,
+          "msg": "Has legal disclaimer"
+        },
+        "contains_regulatory_notice": {
+          "pass": true,
+          "msg": "Has SEC notice"
+        },
+        "industry_disclaimer": {
+          "pass": true,
+          "msg": "Has industry disclaimer"
+        },
+        "includes_unsubscribe": {
+          "pass": true,
+          "msg": "Has unsub line"
+        },
+        "cites_terms": {
+          "pass": true,
+          "msg": "Cites ToS"
+        },
+        "uses_company_name": {
+          "pass": true,
+          "msg": "References Acme Corp"
+        },
+        "min_words": {
+          "pass": false,
+          "msg": "98 words below 100"
+        },
+        "max_words": {
+          "pass": true,
+          "msg": "98 words"
+        },
+        "no_emojis": {
+          "pass": true,
+          "msg": "No emojis"
+        },
+        "no_double_spaces": {
+          "pass": true,
+          "msg": "Single-spaced"
+        },
+        "min_paragraphs": {
+          "pass": true,
+          "msg": "8 paragraphs"
+        },
+        "max_paragraphs": {
+          "pass": true,
+          "msg": "8 paragraphs"
+        },
+        "subject_line_present": {
+          "pass": true,
+          "msg": "Has Subject:"
+        },
+        "subject_title_case": {
+          "pass": true,
+          "msg": "Subject in title case"
+        },
+        "signature_block": {
+          "pass": true,
+          "msg": "Signature block present"
+        },
+        "includes_iso_date": {
+          "pass": true,
+          "msg": "Has ISO date"
+        },
+        "consistent_currency": {
+          "pass": true,
+          "msg": "No currency"
+        },
+        "no_all_caps_word": {
+          "pass": true,
+          "msg": "No all-caps shouting"
+        }
+      },
+      "tagger_tokens": 1121,
+      "generator_tokens": 2078,
+      "elapsed_sec": 4.98186182975769
+    },
+    {
+      "prompt_id": "P4_executive",
+      "implicit_text": "Write an executive-level Q4 results briefing for shareholders.",
+      "model_name": "haiku-4.5",
+      "model_id": "claude-haiku-4-5-20251001",
+      "extracted_ids": [
+        "format_salutation",
+        "no_profanity",
+        "no_superlatives",
+        "uses_company_name",
+        "no_jargon",
+        "no_em_dashes",
+        "contains_legal_disclaimer",
+        "contains_regulatory_notice",
+        "no_forward_looking_promise",
+        "no_pii_request",
+        "no_negative_competitor",
+        "industry_disclaimer",
+        "max_words",
+        "min_words",
+        "max_sentence_length",
+        "includes_iso_date",
+        "includes_reference_number",
+        "subject_line_present",
+        "no_exclamation",
+        "no_questions",
+        "no_contractions",
+        "consistent_currency",
+        "no_emojis",
+        "no_double_spaces",
+        "min_paragraphs",
+        "max_paragraphs",
+        "no_imperative_cta",
+        "no_all_caps_word",
+        "subject_title_case",
+        "signature_block"
+      ],
+      "extracted_k": 30,
+      "routing": "staged",
+      "rewritten_text": "Subject: New Product Launch\n\nDear Everyone,\n\nAcme Corp is pleased to announce the launch of our new platform. We believe you will find it useful and invite you to learn more about it.\n\nRef: 2024001\n\nThis product was developed by our team with careful attention to quality and functionality. We are interested in your feedback on how it performs for your needs.\n\nPast performance is not indicative of future results.\n\nThis communication is confidential and intended only for the recipient.\n\nRegulated by the SEC.\n\nDate: 2024-01-15\n\nBest regards,\nThe Team\nAcme Corp\nsupport@acmecorp.com",
+      "n_pass": 29,
+      "n_total": 30,
+      "all_pass": false,
+      "rule_results": {
+        "format_salutation": {
+          "pass": true,
+          "msg": "Has formal salutation"
+        },
+        "no_profanity": {
+          "pass": true,
+          "msg": "Clean"
+        },
+        "no_superlatives": {
+          "pass": true,
+          "msg": "Plain language"
+        },
+        "uses_company_name": {
+          "pass": true,
+          "msg": "References Acme Corp"
+        },
+        "no_jargon": {
+          "pass": true,
+          "msg": "No jargon"
+        },
+        "no_em_dashes": {
+          "pass": true,
+          "msg": "No em dashes"
+        },
+        "contains_legal_disclaimer": {
+          "pass": true,
+          "msg": "Has legal disclaimer"
+        },
+        "contains_regulatory_notice": {
+          "pass": true,
+          "msg": "Has SEC notice"
+        },
+        "no_forward_looking_promise": {
+          "pass": true,
+          "msg": "No promises"
+        },
+        "no_pii_request": {
+          "pass": true,
+          "msg": "No PII solicitation"
+        },
+        "no_negative_competitor": {
+          "pass": true,
+          "msg": "No competitor reference"
+        },
+        "industry_disclaimer": {
+          "pass": true,
+          "msg": "Has industry disclaimer"
+        },
+        "max_words": {
+          "pass": true,
+          "msg": "97 words"
+        },
+        "min_words": {
+          "pass": false,
+          "msg": "97 words below 100"
+        },
+        "max_sentence_length": {
+          "pass": true,
+          "msg": "All sentences <=25 words"
+        },
+        "includes_iso_date": {
+          "pass": true,
+          "msg": "Has ISO date"
+        },
+        "includes_reference_number": {
+          "pass": true,
+          "msg": "Has ref number"
+        },
+        "subject_line_present": {
+          "pass": true,
+          "msg": "Has Subject:"
+        },
+        "no_exclamation": {
+          "pass": true,
+          "msg": "No exclamations"
+        },
+        "no_questions": {
+          "pass": true,
+          "msg": "No questions"
+        },
+        "no_contractions": {
+          "pass": true,
+          "msg": "No contractions"
+        },
+        "consistent_currency": {
+          "pass": true,
+          "msg": "No currency"
+        },
+        "no_emojis": {
+          "pass": true,
+          "msg": "No emojis"
+        },
+        "no_double_spaces": {
+          "pass": true,
+          "msg": "Single-spaced"
+        },
+        "min_paragraphs": {
+          "pass": true,
+          "msg": "10 paragraphs"
+        },
+        "max_paragraphs": {
+          "pass": true,
+          "msg": "10 paragraphs"
+        },
+        "no_imperative_cta": {
+          "pass": true,
+          "msg": "No imperative CTAs"
+        },
+        "no_all_caps_word": {
+          "pass": true,
+          "msg": "No all-caps shouting"
+        },
+        "subject_title_case": {
+          "pass": true,
+          "msg": "Subject in title case"
+        },
+        "signature_block": {
+          "pass": true,
+          "msg": "Signature block present"
+        }
+      },
+      "tagger_tokens": 1199,
+      "generator_tokens": 2447,
+      "elapsed_sec": 5.041805982589722
+    },
+    {
+      "prompt_id": "P5_enterprise",
+      "implicit_text": "Write an enterprise-grade product launch email that meets corporate brand, legal, and compliance standards.",
+      "model_name": "haiku-4.5",
+      "model_id": "claude-haiku-4-5-20251001",
+      "extracted_ids": [
+        "format_salutation",
+        "no_profanity",
+        "uses_company_name",
+        "no_jargon",
+        "contains_legal_disclaimer",
+        "no_pii_request",
+        "no_negative_competitor",
+        "max_words",
+        "min_words",
+        "max_sentence_length",
+        "includes_iso_date",
+        "subject_line_present",
+        "no_exclamation",
+        "no_emojis",
+        "no_double_spaces",
+        "min_paragraphs",
+        "max_paragraphs",
+        "no_all_caps_word",
+        "subject_title_case",
+        "signature_block"
+      ],
+      "extracted_k": 20,
+      "routing": "staged",
+      "rewritten_text": "Subject: New Product Launch\n\nDear Everyone,\n\nAcme Corp is pleased to announce the launch of our new platform. We believe you will find it valuable and useful. Please visit the link below to learn more.\n\nOur team has worked diligently to design this product with your needs in mind. We are confident it will deliver the results you're looking for.\n\nLaunch Date: 2024-01-15\n\nThis communication is confidential and intended only for the recipient.\n\nBest regards,\nThe Team\nAcme Corp",
+      "n_pass": 19,
+      "n_total": 20,
+      "all_pass": false,
+      "rule_results": {
+        "format_salutation": {
+          "pass": true,
+          "msg": "Has formal salutation"
+        },
+        "no_profanity": {
+          "pass": true,
+          "msg": "Clean"
+        },
+        "uses_company_name": {
+          "pass": true,
+          "msg": "References Acme Corp"
+        },
+        "no_jargon": {
+          "pass": true,
+          "msg": "No jargon"
+        },
+        "contains_legal_disclaimer": {
+          "pass": true,
+          "msg": "Has legal disclaimer"
+        },
+        "no_pii_request": {
+          "pass": true,
+          "msg": "No PII solicitation"
+        },
+        "no_negative_competitor": {
+          "pass": true,
+          "msg": "No competitor reference"
+        },
+        "max_words": {
+          "pass": true,
+          "msg": "82 words"
+        },
+        "min_words": {
+          "pass": false,
+          "msg": "82 words below 100"
+        },
+        "max_sentence_length": {
+          "pass": true,
+          "msg": "All sentences <=25 words"
+        },
+        "includes_iso_date": {
+          "pass": true,
+          "msg": "Has ISO date"
+        },
+        "subject_line_present": {
+          "pass": true,
+          "msg": "Has Subject:"
+        },
+        "no_exclamation": {
+          "pass": true,
+          "msg": "No exclamations"
+        },
+        "no_emojis": {
+          "pass": true,
+          "msg": "No emojis"
+        },
+        "no_double_spaces": {
+          "pass": true,
+          "msg": "Single-spaced"
+        },
+        "min_paragraphs": {
+          "pass": true,
+          "msg": "7 paragraphs"
+        },
+        "max_paragraphs": {
+          "pass": true,
+          "msg": "7 paragraphs"
+        },
+        "no_all_caps_word": {
+          "pass": true,
+          "msg": "No all-caps shouting"
+        },
+        "subject_title_case": {
+          "pass": true,
+          "msg": "Subject in title case"
+        },
+        "signature_block": {
+          "pass": true,
+          "msg": "Signature block present"
+        }
+      },
+      "tagger_tokens": 1116,
+      "generator_tokens": 1882,
+      "elapsed_sec": 4.689041376113892
+    },
+    {
+      "prompt_id": "P6_concise_legal",
+      "implicit_text": "Write a concise, legally airtight notice to subscribers about a service change.",
+      "model_name": "haiku-4.5",
+      "model_id": "claude-haiku-4-5-20251001",
+      "extracted_ids": [
+        "format_salutation",
+        "no_profanity",
+        "no_superlatives",
+        "uses_company_name",
+        "no_jargon",
+        "no_em_dashes",
+        "contains_legal_disclaimer",
+        "no_forward_looking_promise",
+        "no_pii_request",
+        "includes_unsubscribe",
+        "cites_terms",
+        "no_negative_competitor",
+        "max_words",
+        "min_words",
+        "max_sentence_length",
+        "includes_iso_date",
+        "includes_reference_number",
+        "subject_line_present",
+        "no_exclamation",
+        "no_questions",
+        "no_contractions",
+        "no_emojis",
+        "no_double_spaces",
+        "min_paragraphs",
+        "max_paragraphs",
+        "no_imperative_cta",
+        "no_all_caps_word",
+        "subject_title_case",
+        "signature_block"
+      ],
+      "extracted_k": 29,
+      "routing": "staged",
+      "rewritten_text": "Subject: New Product Launch\n\nDear Valued Customer,\n\nAcme Corp is pleased to announce the launch of our new platform. We believe you will find it useful and invite you to learn more by visiting our website.\n\nThis product was developed by our team with careful attention to quality and user experience. We look forward to your feedback on this offering.\n\nThis communication is confidential and intended only for the recipient.\n\nRef: 2024001\n\nDate: 2024-01-15\n\nTerms of Service available at acme.com/terms\n\nTo unsubscribe, reply STOP.\n\nBest regards,\nThe Team\nAcme Corp",
+      "n_pass": 28,
+      "n_total": 29,
+      "all_pass": false,
+      "rule_results": {
+        "format_salutation": {
+          "pass": true,
+          "msg": "Has formal salutation"
+        },
+        "no_profanity": {
+          "pass": true,
+          "msg": "Clean"
+        },
+        "no_superlatives": {
+          "pass": true,
+          "msg": "Plain language"
+        },
+        "uses_company_name": {
+          "pass": true,
+          "msg": "References Acme Corp"
+        },
+        "no_jargon": {
+          "pass": true,
+          "msg": "No jargon"
+        },
+        "no_em_dashes": {
+          "pass": true,
+          "msg": "No em dashes"
+        },
+        "contains_legal_disclaimer": {
+          "pass": true,
+          "msg": "Has legal disclaimer"
+        },
+        "no_forward_looking_promise": {
+          "pass": true,
+          "msg": "No promises"
+        },
+        "no_pii_request": {
+          "pass": true,
+          "msg": "No PII solicitation"
+        },
+        "includes_unsubscribe": {
+          "pass": true,
+          "msg": "Has unsub line"
+        },
+        "cites_terms": {
+          "pass": true,
+          "msg": "Cites ToS"
+        },
+        "no_negative_competitor": {
+          "pass": true,
+          "msg": "No competitor reference"
+        },
+        "max_words": {
+          "pass": true,
+          "msg": "94 words"
+        },
+        "min_words": {
+          "pass": false,
+          "msg": "94 words below 100"
+        },
+        "max_sentence_length": {
+          "pass": true,
+          "msg": "All sentences <=25 words"
+        },
+        "includes_iso_date": {
+          "pass": true,
+          "msg": "Has ISO date"
+        },
+        "includes_reference_number": {
+          "pass": true,
+          "msg": "Has ref number"
+        },
+        "subject_line_present": {
+          "pass": true,
+          "msg": "Has Subject:"
+        },
+        "no_exclamation": {
+          "pass": true,
+          "msg": "No exclamations"
+        },
+        "no_questions": {
+          "pass": true,
+          "msg": "No questions"
+        },
+        "no_contractions": {
+          "pass": true,
+          "msg": "No contractions"
+        },
+        "no_emojis": {
+          "pass": true,
+          "msg": "No emojis"
+        },
+        "no_double_spaces": {
+          "pass": true,
+          "msg": "Single-spaced"
+        },
+        "min_paragraphs": {
+          "pass": true,
+          "msg": "10 paragraphs"
+        },
+        "max_paragraphs": {
+          "pass": true,
+          "msg": "10 paragraphs"
+        },
+        "no_imperative_cta": {
+          "pass": true,
+          "msg": "No imperative CTAs"
+        },
+        "no_all_caps_word": {
+          "pass": true,
+          "msg": "No all-caps shouting"
+        },
+        "subject_title_case": {
+          "pass": true,
+          "msg": "Subject in title case"
+        },
+        "signature_block": {
+          "pass": true,
+          "msg": "Signature block present"
+        }
+      },
+      "tagger_tokens": 1197,
+      "generator_tokens": 2459,
+      "elapsed_sec": 5.552193880081177
+    },
+    {
+      "prompt_id": "P1_basic_email",
+      "implicit_text": "Write a basic email announcing a new product.",
+      "model_name": "sonnet-4.5",
+      "model_id": "claude-sonnet-4-5-20250929",
+      "extracted_ids": [
+        "format_salutation",
+        "subject_line_present"
+      ],
+      "extracted_k": 2,
+      "routing": "one_shot",
+      "rewritten_text": "Subject: New Product Launch\n\nDear everyone,\n\nWe're super excited to announce our amazing new platform! It's the best thing\nwe've ever built and we're confident you'll love it. Click here to check it out.\n\nThis stunning product was designed by our world-class team and we guarantee\nyou'll see results immediately. Our competitor's product can't even come close.\n\nCheers,\nThe Team",
+      "n_pass": 2,
+      "n_total": 2,
+      "all_pass": true,
+      "rule_results": {
+        "format_salutation": {
+          "pass": true,
+          "msg": "Has formal salutation"
+        },
+        "subject_line_present": {
+          "pass": true,
+          "msg": "Has Subject:"
+        }
+      },
+      "tagger_tokens": 947,
+      "generator_tokens": 314,
+      "elapsed_sec": 2.765798330307007
+    },
+    {
+      "prompt_id": "P7_brand_voice",
+      "implicit_text": "Write a tightly on-brand corporate update; follow our style guide strictly.",
+      "model_name": "haiku-4.5",
+      "model_id": "claude-haiku-4-5-20251001",
+      "extracted_ids": [
+        "format_salutation",
+        "no_profanity",
+        "uses_company_name",
+        "no_jargon",
+        "no_negative_competitor",
+        "max_words",
+        "min_words",
+        "max_sentence_length",
+        "no_exclamation",
+        "no_contractions",
+        "no_emojis",
+        "no_double_spaces",
+        "min_paragraphs",
+        "max_paragraphs",
+        "no_all_caps_word",
+        "subject_title_case",
+        "signature_block",
+        "subject_line_present"
+      ],
+      "extracted_k": 18,
+      "routing": "staged",
+      "rewritten_text": "Subject: New Product Launch\n\nDear Everyone,\n\nAcme Corp is pleased to announce the launch of our new platform. We believe you will find it valuable and invite you to explore it.\n\nThe product was developed by our experienced team with careful attention to quality and user needs. We are confident it will deliver meaningful results for your work.\n\nThis platform was built to address real challenges you face daily. Our team spent months gathering feedback from users like you. We listened carefully to understand what matters most.\n\nThe interface is straightforward and intuitive. You will find it easy to navigate and adopt. Training resources are available to help you get started quickly.\n\nWe welcome your feedback as you try the platform. Your input helps us improve and serve you better. Please share your thoughts with us at any time.\n\nBest regards,\n\nThe Team\nAcme Corp\nwww.acmecorp.com",
+      "n_pass": 18,
+      "n_total": 18,
+      "all_pass": true,
+      "rule_results": {
+        "format_salutation": {
+          "pass": true,
+          "msg": "Has formal salutation"
+        },
+        "no_profanity": {
+          "pass": true,
+          "msg": "Clean"
+        },
+        "uses_company_name": {
+          "pass": true,
+          "msg": "References Acme Corp"
+        },
+        "no_jargon": {
+          "pass": true,
+          "msg": "No jargon"
+        },
+        "no_negative_competitor": {
+          "pass": true,
+          "msg": "No competitor reference"
+        },
+        "max_words": {
+          "pass": true,
+          "msg": "148 words"
+        },
+        "min_words": {
+          "pass": true,
+          "msg": "148 words"
+        },
+        "max_sentence_length": {
+          "pass": true,
+          "msg": "All sentences <=25 words"
+        },
+        "no_exclamation": {
+          "pass": true,
+          "msg": "No exclamations"
+        },
+        "no_contractions": {
+          "pass": true,
+          "msg": "No contractions"
+        },
+        "no_emojis": {
+          "pass": true,
+          "msg": "No emojis"
+        },
+        "no_double_spaces": {
+          "pass": true,
+          "msg": "Single-spaced"
+        },
+        "min_paragraphs": {
+          "pass": true,
+          "msg": "9 paragraphs"
+        },
+        "max_paragraphs": {
+          "pass": true,
+          "msg": "9 paragraphs"
+        },
+        "no_all_caps_word": {
+          "pass": true,
+          "msg": "No all-caps shouting"
+        },
+        "subject_title_case": {
+          "pass": true,
+          "msg": "Subject in title case"
+        },
+        "signature_block": {
+          "pass": true,
+          "msg": "Signature block present"
+        },
+        "subject_line_present": {
+          "pass": true,
+          "msg": "Has Subject:"
+        }
+      },
+      "tagger_tokens": 1093,
+      "generator_tokens": 1909,
+      "elapsed_sec": 5.640820026397705
+    },
+    {
+      "prompt_id": "P8_regulatory_finance",
+      "implicit_text": "Write a regulator-facing compliance memo for a financial product disclosure.",
+      "model_name": "haiku-4.5",
+      "model_id": "claude-haiku-4-5-20251001",
+      "extracted_ids": [
+        "format_salutation",
+        "no_profanity",
+        "no_superlatives",
+        "uses_company_name",
+        "no_jargon",
+        "no_em_dashes",
+        "contains_legal_disclaimer",
+        "contains_regulatory_notice",
+        "no_forward_looking_promise",
+        "no_pii_request",
+        "no_negative_competitor",
+        "industry_disclaimer",
+        "max_words",
+        "min_words",
+        "max_sentence_length",
+        "includes_iso_date",
+        "includes_reference_number",
+        "subject_line_present",
+        "no_exclamation",
+        "no_questions",
+        "no_contractions",
+        "consistent_currency",
+        "no_emojis",
+        "no_double_spaces",
+        "min_paragraphs",
+        "max_paragraphs",
+        "no_imperative_cta",
+        "no_all_caps_word",
+        "subject_title_case",
+        "signature_block"
+      ],
+      "extracted_k": 30,
+      "routing": "staged",
+      "rewritten_text": "Subject: New Product Launch\n\nDear Everyone,\n\nAcme Corp is pleased to announce the launch of our new platform. We believe you will find it useful and invite you to learn more about it.\n\nThis product was designed by our team and offers features of interest to you. We welcome your feedback on this solution.\n\nRef: 2024001\n\nPast performance is not indicative of future results. This communication is confidential and intended only for the recipient. Regulated by the SEC.\n\nDate: 2024-01-15\n\nBest regards,\nThe Team\nAcme Corp",
+      "n_pass": 29,
+      "n_total": 30,
+      "all_pass": false,
+      "rule_results": {
+        "format_salutation": {
+          "pass": true,
+          "msg": "Has formal salutation"
+        },
+        "no_profanity": {
+          "pass": true,
+          "msg": "Clean"
+        },
+        "no_superlatives": {
+          "pass": true,
+          "msg": "Plain language"
+        },
+        "uses_company_name": {
+          "pass": true,
+          "msg": "References Acme Corp"
+        },
+        "no_jargon": {
+          "pass": true,
+          "msg": "No jargon"
+        },
+        "no_em_dashes": {
+          "pass": true,
+          "msg": "No em dashes"
+        },
+        "contains_legal_disclaimer": {
+          "pass": true,
+          "msg": "Has legal disclaimer"
+        },
+        "contains_regulatory_notice": {
+          "pass": true,
+          "msg": "Has SEC notice"
+        },
+        "no_forward_looking_promise": {
+          "pass": true,
+          "msg": "No promises"
+        },
+        "no_pii_request": {
+          "pass": true,
+          "msg": "No PII solicitation"
+        },
+        "no_negative_competitor": {
+          "pass": true,
+          "msg": "No competitor reference"
+        },
+        "industry_disclaimer": {
+          "pass": true,
+          "msg": "Has industry disclaimer"
+        },
+        "max_words": {
+          "pass": true,
+          "msg": "88 words"
+        },
+        "min_words": {
+          "pass": false,
+          "msg": "88 words below 100"
+        },
+        "max_sentence_length": {
+          "pass": true,
+          "msg": "All sentences <=25 words"
+        },
+        "includes_iso_date": {
+          "pass": true,
+          "msg": "Has ISO date"
+        },
+        "includes_reference_number": {
+          "pass": true,
+          "msg": "Has ref number"
+        },
+        "subject_line_present": {
+          "pass": true,
+          "msg": "Has Subject:"
+        },
+        "no_exclamation": {
+          "pass": true,
+          "msg": "No exclamations"
+        },
+        "no_questions": {
+          "pass": true,
+          "msg": "No questions"
+        },
+        "no_contractions": {
+          "pass": true,
+          "msg": "No contractions"
+        },
+        "consistent_currency": {
+          "pass": true,
+          "msg": "No currency"
+        },
+        "no_emojis": {
+          "pass": true,
+          "msg": "No emojis"
+        },
+        "no_double_spaces": {
+          "pass": true,
+          "msg": "Single-spaced"
+        },
+        "min_paragraphs": {
+          "pass": true,
+          "msg": "8 paragraphs"
+        },
+        "max_paragraphs": {
+          "pass": true,
+          "msg": "8 paragraphs"
+        },
+        "no_imperative_cta": {
+          "pass": true,
+          "msg": "No imperative CTAs"
+        },
+        "no_all_caps_word": {
+          "pass": true,
+          "msg": "No all-caps shouting"
+        },
+        "subject_title_case": {
+          "pass": true,
+          "msg": "Subject in title case"
+        },
+        "signature_block": {
+          "pass": true,
+          "msg": "Signature block present"
+        }
+      },
+      "tagger_tokens": 1199,
+      "generator_tokens": 2404,
+      "elapsed_sec": 5.071233510971069
+    },
+    {
+      "prompt_id": "P2_professional",
+      "implicit_text": "Write a professional, polished customer-facing announcement.",
+      "model_name": "sonnet-4.5",
+      "model_id": "claude-sonnet-4-5-20250929",
+      "extracted_ids": [
+        "no_profanity",
+        "no_contractions",
+        "no_emojis"
+      ],
+      "extracted_k": 3,
+      "routing": "one_shot",
+      "rewritten_text": "Subject: New Product Launch\n\nHi everyone,\n\nWe are very excited to announce our new platform! It is the best thing\nwe have ever built and we are confident you will love it. Click here to check it out.\n\nThis stunning product was designed by our world-class team and we guarantee\nyou will see results immediately. Our competitor's product cannot even come close.\n\nCheers,\nThe Team",
+      "n_pass": 3,
+      "n_total": 3,
+      "all_pass": true,
+      "rule_results": {
+        "no_profanity": {
+          "pass": true,
+          "msg": "Clean"
+        },
+        "no_contractions": {
+          "pass": true,
+          "msg": "No contractions"
+        },
+        "no_emojis": {
+          "pass": true,
+          "msg": "No emojis"
+        }
+      },
+      "tagger_tokens": 958,
+      "generator_tokens": 333,
+      "elapsed_sec": 2.9959282875061035
+    },
+    {
+      "prompt_id": "P3_compliant",
+      "implicit_text": "Write a fully GDPR/SEC-compliant marketing email for a new financial product.",
+      "model_name": "sonnet-4.5",
+      "model_id": "claude-sonnet-4-5-20250929",
+      "extracted_ids": [
+        "format_salutation",
+        "no_superlatives",
+        "no_jargon",
+        "contains_legal_disclaimer",
+        "contains_regulatory_notice",
+        "no_forward_looking_promise",
+        "no_pii_request",
+        "includes_unsubscribe",
+        "cites_terms",
+        "industry_disclaimer",
+        "no_exclamation",
+        "no_contractions",
+        "consistent_currency",
+        "no_emojis",
+        "subject_line_present",
+        "subject_title_case",
+        "signature_block",
+        "uses_company_name"
+      ],
+      "extracted_k": 18,
+      "routing": "staged",
+      "rewritten_text": "Subject: New Product Launch\n\nDear everyone,\n\nWe are pleased to announce our new platform from Acme Corp. We invite you to click here to check it out.\n\nThis product was designed by our team and we believe you will see results. Our competitor's product offers different features.\n\nPast performance is not indicative of future results.\n\nThis communication is confidential and intended only for the recipient.\n\nRegulated by the SEC.\n\nTerms of Service available at acme.com/terms\n\nTo unsubscribe, reply STOP.\n\nCheers,\nThe Team\nAcme Corp",
+      "n_pass": 18,
+      "n_total": 18,
+      "all_pass": true,
+      "rule_results": {
+        "format_salutation": {
+          "pass": true,
+          "msg": "Has formal salutation"
+        },
+        "no_superlatives": {
+          "pass": true,
+          "msg": "Plain language"
+        },
+        "no_jargon": {
+          "pass": true,
+          "msg": "No jargon"
+        },
+        "contains_legal_disclaimer": {
+          "pass": true,
+          "msg": "Has legal disclaimer"
+        },
+        "contains_regulatory_notice": {
+          "pass": true,
+          "msg": "Has SEC notice"
+        },
+        "no_forward_looking_promise": {
+          "pass": true,
+          "msg": "No promises"
+        },
+        "no_pii_request": {
+          "pass": true,
+          "msg": "No PII solicitation"
+        },
+        "includes_unsubscribe": {
+          "pass": true,
+          "msg": "Has unsub line"
+        },
+        "cites_terms": {
+          "pass": true,
+          "msg": "Cites ToS"
+        },
+        "industry_disclaimer": {
+          "pass": true,
+          "msg": "Has industry disclaimer"
+        },
+        "no_exclamation": {
+          "pass": true,
+          "msg": "No exclamations"
+        },
+        "no_contractions": {
+          "pass": true,
+          "msg": "No contractions"
+        },
+        "consistent_currency": {
+          "pass": true,
+          "msg": "No currency"
+        },
+        "no_emojis": {
+          "pass": true,
+          "msg": "No emojis"
+        },
+        "subject_line_present": {
+          "pass": true,
+          "msg": "Has Subject:"
+        },
+        "subject_title_case": {
+          "pass": true,
+          "msg": "Subject in title case"
+        },
+        "signature_block": {
+          "pass": true,
+          "msg": "Signature block present"
+        },
+        "uses_company_name": {
+          "pass": true,
+          "msg": "References Acme Corp"
+        }
+      },
+      "tagger_tokens": 1097,
+      "generator_tokens": 1852,
+      "elapsed_sec": 8.361303567886353
+    },
+    {
+      "prompt_id": "P4_executive",
+      "implicit_text": "Write an executive-level Q4 results briefing for shareholders.",
+      "model_name": "sonnet-4.5",
+      "model_id": "claude-sonnet-4-5-20250929",
+      "extracted_ids": [
+        "uses_company_name",
+        "no_first_person_plural",
+        "no_superlatives",
+        "no_forward_looking_promise",
+        "industry_disclaimer",
+        "contains_regulatory_notice",
+        "no_contractions",
+        "consistent_currency",
+        "min_words",
+        "min_paragraphs"
+      ],
+      "extracted_k": 10,
+      "routing": "staged",
+      "rewritten_text": "Subject: New Product Launch\n\nHi everyone,\n\nAcme Corp is excited to announce a new platform. Click here to check it out.\n\nThis product was designed by the team at Acme Corp. The platform offers a range of features that have been developed over the past year. The development process involved extensive research and testing to create a solution that addresses key market needs. Users will find tools and resources that support their business objectives.\n\nThe launch represents a significant milestone for the organization. The platform is now available for access through the main website. Additional information and documentation can be found in the resource center. Training materials and support options are also available to assist with onboarding and implementation.\n\nPast performance is not indicative of future results.\n\nRegulated by the SEC.\n\nCheers,\nThe Team",
+      "n_pass": 10,
+      "n_total": 10,
+      "all_pass": true,
+      "rule_results": {
+        "uses_company_name": {
+          "pass": true,
+          "msg": "References Acme Corp"
+        },
+        "no_first_person_plural": {
+          "pass": true,
+          "msg": "No 'we/our/us'"
+        },
+        "no_superlatives": {
+          "pass": true,
+          "msg": "Plain language"
+        },
+        "no_forward_looking_promise": {
+          "pass": true,
+          "msg": "No promises"
+        },
+        "industry_disclaimer": {
+          "pass": true,
+          "msg": "Has industry disclaimer"
+        },
+        "contains_regulatory_notice": {
+          "pass": true,
+          "msg": "Has SEC notice"
+        },
+        "no_contractions": {
+          "pass": true,
+          "msg": "No contractions"
+        },
+        "consistent_currency": {
+          "pass": true,
+          "msg": "No currency"
+        },
+        "min_words": {
+          "pass": true,
+          "msg": "134 words"
+        },
+        "min_paragraphs": {
+          "pass": true,
+          "msg": "8 paragraphs"
+        }
+      },
+      "tagger_tokens": 1022,
+      "generator_tokens": 1389,
+      "elapsed_sec": 10.614355325698853
+    },
+    {
+      "prompt_id": "P6_concise_legal",
+      "implicit_text": "Write a concise, legally airtight notice to subscribers about a service change.",
+      "model_name": "sonnet-4.5",
+      "model_id": "claude-sonnet-4-5-20250929",
+      "extracted_ids": [
+        "no_profanity",
+        "uses_company_name",
+        "no_pii_request",
+        "includes_unsubscribe",
+        "cites_terms",
+        "max_sentence_length",
+        "includes_iso_date",
+        "includes_reference_number",
+        "subject_line_present",
+        "no_contractions",
+        "no_emojis",
+        "no_double_spaces",
+        "min_paragraphs",
+        "subject_title_case",
+        "signature_block"
+      ],
+      "extracted_k": 15,
+      "routing": "staged",
+      "rewritten_text": "Subject: New Product Launch\n\nHi everyone,\n\nWe are super excited to announce our amazing new platform! It is the best thing we have ever built. We are confident you will love it. Click here to check it out.\n\nThis stunning product was designed by our world-class team at Acme Corp. We guarantee you will see results immediately. Our competitor's product cannot even come close.\n\nLaunch date: 2024-01-15\n\nRef: 847293\n\nTerms of Service available at acme.com/terms\n\nTo unsubscribe, reply STOP.\n\nCheers,\nThe Team\nAcme Corp",
+      "n_pass": 15,
+      "n_total": 15,
+      "all_pass": true,
+      "rule_results": {
+        "no_profanity": {
+          "pass": true,
+          "msg": "Clean"
+        },
+        "uses_company_name": {
+          "pass": true,
+          "msg": "References Acme Corp"
+        },
+        "no_pii_request": {
+          "pass": true,
+          "msg": "No PII solicitation"
+        },
+        "includes_unsubscribe": {
+          "pass": true,
+          "msg": "Has unsub line"
+        },
+        "cites_terms": {
+          "pass": true,
+          "msg": "Cites ToS"
+        },
+        "max_sentence_length": {
+          "pass": true,
+          "msg": "All sentences <=25 words"
+        },
+        "includes_iso_date": {
+          "pass": true,
+          "msg": "Has ISO date"
+        },
+        "includes_reference_number": {
+          "pass": true,
+          "msg": "Has ref number"
+        },
+        "subject_line_present": {
+          "pass": true,
+          "msg": "Has Subject:"
+        },
+        "no_contractions": {
+          "pass": true,
+          "msg": "No contractions"
+        },
+        "no_emojis": {
+          "pass": true,
+          "msg": "No emojis"
+        },
+        "no_double_spaces": {
+          "pass": true,
+          "msg": "Single-spaced"
+        },
+        "min_paragraphs": {
+          "pass": true,
+          "msg": "9 paragraphs"
+        },
+        "subject_title_case": {
+          "pass": true,
+          "msg": "Subject in title case"
+        },
+        "signature_block": {
+          "pass": true,
+          "msg": "Signature block present"
+        }
+      },
+      "tagger_tokens": 1071,
+      "generator_tokens": 1794,
+      "elapsed_sec": 9.66331148147583
+    },
+    {
+      "prompt_id": "P7_brand_voice",
+      "implicit_text": "Write a tightly on-brand corporate update; follow our style guide strictly.",
+      "model_name": "sonnet-4.5",
+      "model_id": "claude-sonnet-4-5-20250929",
+      "extracted_ids": [
+        "uses_company_name",
+        "no_profanity",
+        "no_contractions",
+        "no_emojis",
+        "no_double_spaces"
+      ],
+      "extracted_k": 5,
+      "routing": "one_shot",
+      "rewritten_text": "Subject: New Product Launch\n\nHi everyone,\n\nWe are excited to announce our new platform! It is the best thing we have ever built and we are confident you will love it. Click here to check it out.\n\nThis product was designed by our team at Acme Corp and we are certain you will see results immediately. Our competitor's product cannot even come close.\n\nCheers,\nThe Team",
+      "n_pass": 5,
+      "n_total": 5,
+      "all_pass": true,
+      "rule_results": {
+        "uses_company_name": {
+          "pass": true,
+          "msg": "References Acme Corp"
+        },
+        "no_profanity": {
+          "pass": true,
+          "msg": "Clean"
+        },
+        "no_contractions": {
+          "pass": true,
+          "msg": "No contractions"
+        },
+        "no_emojis": {
+          "pass": true,
+          "msg": "No emojis"
+        },
+        "no_double_spaces": {
+          "pass": true,
+          "msg": "Single-spaced"
+        }
+      },
+      "tagger_tokens": 981,
+      "generator_tokens": 374,
+      "elapsed_sec": 3.8860177993774414
+    },
+    {
+      "prompt_id": "P5_enterprise",
+      "implicit_text": "Write an enterprise-grade product launch email that meets corporate brand, legal, and compliance standards.",
+      "model_name": "sonnet-4.5",
+      "model_id": "claude-sonnet-4-5-20250929",
+      "extracted_ids": [
+        "format_salutation",
+        "no_profanity",
+        "no_superlatives",
+        "uses_company_name",
+        "no_jargon",
+        "contains_legal_disclaimer",
+        "contains_regulatory_notice",
+        "no_forward_looking_promise",
+        "no_pii_request",
+        "includes_unsubscribe",
+        "cites_terms",
+        "max_words",
+        "min_words",
+        "includes_reference_number",
+        "subject_line_present",
+        "no_contractions",
+        "no_emojis",
+        "no_double_spaces",
+        "min_paragraphs",
+        "subject_title_case",
+        "signature_block"
+      ],
+      "extracted_k": 21,
+      "routing": "staged",
+      "rewritten_text": "Subject: New Product Launch\n\nDear everyone,\n\nWe are excited to announce our new platform at Acme Corp! We have built this product and you are likely to find it valuable. Click here to check it out.\n\nRef: 847293\n\nThis product was designed by our experienced team and you may see results quickly. Our competitor's product offers fewer features.\n\nTerms of Service available at acme.com/terms\n\nTo unsubscribe, reply STOP.\n\nThis communication is confidential and intended only for the recipient.\n\nRegulated by the SEC.\n\nBest regards,\nThe Team\nAcme Corp",
+      "n_pass": 20,
+      "n_total": 21,
+      "all_pass": false,
+      "rule_results": {
+        "format_salutation": {
+          "pass": true,
+          "msg": "Has formal salutation"
+        },
+        "no_profanity": {
+          "pass": true,
+          "msg": "Clean"
+        },
+        "no_superlatives": {
+          "pass": true,
+          "msg": "Plain language"
+        },
+        "uses_company_name": {
+          "pass": true,
+          "msg": "References Acme Corp"
+        },
+        "no_jargon": {
+          "pass": true,
+          "msg": "No jargon"
+        },
+        "contains_legal_disclaimer": {
+          "pass": true,
+          "msg": "Has legal disclaimer"
+        },
+        "contains_regulatory_notice": {
+          "pass": true,
+          "msg": "Has SEC notice"
+        },
+        "no_forward_looking_promise": {
+          "pass": true,
+          "msg": "No promises"
+        },
+        "no_pii_request": {
+          "pass": true,
+          "msg": "No PII solicitation"
+        },
+        "includes_unsubscribe": {
+          "pass": true,
+          "msg": "Has unsub line"
+        },
+        "cites_terms": {
+          "pass": true,
+          "msg": "Cites ToS"
+        },
+        "max_words": {
+          "pass": true,
+          "msg": "91 words"
+        },
+        "min_words": {
+          "pass": false,
+          "msg": "91 words below 100"
+        },
+        "includes_reference_number": {
+          "pass": true,
+          "msg": "Has ref number"
+        },
+        "subject_line_present": {
+          "pass": true,
+          "msg": "Has Subject:"
+        },
+        "no_contractions": {
+          "pass": true,
+          "msg": "No contractions"
+        },
+        "no_emojis": {
+          "pass": true,
+          "msg": "No emojis"
+        },
+        "no_double_spaces": {
+          "pass": true,
+          "msg": "Single-spaced"
+        },
+        "min_paragraphs": {
+          "pass": true,
+          "msg": "10 paragraphs"
+        },
+        "subject_title_case": {
+          "pass": true,
+          "msg": "Subject in title case"
+        },
+        "signature_block": {
+          "pass": true,
+          "msg": "Signature block present"
+        }
+      },
+      "tagger_tokens": 1124,
+      "generator_tokens": 2059,
+      "elapsed_sec": 11.570885181427002
+    },
+    {
+      "prompt_id": "P2_professional",
+      "implicit_text": "Write a professional, polished customer-facing announcement.",
+      "model_name": "opus-4.5",
+      "model_id": "claude-opus-4-5-20251101",
+      "extracted_ids": [
+        "no_profanity",
+        "no_jargon",
+        "no_emojis",
+        "no_double_spaces",
+        "no_all_caps_word"
+      ],
+      "extracted_k": 5,
+      "routing": "one_shot",
+      "rewritten_text": "Subject: New Product Launch\n\nHi everyone,\n\nWe're excited to announce our new platform! It's one of the best things we've ever built and we're confident you'll love it. Click here to check it out.\n\nThis product was designed by our talented team and we believe you'll see results quickly. We think it offers significant advantages over other options in the market.\n\nCheers,\nThe Team",
+      "n_pass": 5,
+      "n_total": 5,
+      "all_pass": true,
+      "rule_results": {
+        "no_profanity": {
+          "pass": true,
+          "msg": "Clean"
+        },
+        "no_jargon": {
+          "pass": true,
+          "msg": "No jargon"
+        },
+        "no_emojis": {
+          "pass": true,
+          "msg": "No emojis"
+        },
+        "no_double_spaces": {
+          "pass": true,
+          "msg": "Single-spaced"
+        },
+        "no_all_caps_word": {
+          "pass": true,
+          "msg": "No all-caps shouting"
+        }
+      },
+      "tagger_tokens": 956,
+      "generator_tokens": 387,
+      "elapsed_sec": 3.5412662029266357
+    },
+    {
+      "prompt_id": "P1_basic_email",
+      "implicit_text": "Write a basic email announcing a new product.",
+      "model_name": "opus-4.5",
+      "model_id": "claude-opus-4-5-20251101",
+      "extracted_ids": [
+        "format_salutation",
+        "no_profanity",
+        "no_emojis",
+        "no_double_spaces"
+      ],
+      "extracted_k": 4,
+      "routing": "one_shot",
+      "rewritten_text": "Subject: New Product Launch\n\nDear everyone,\n\nWe are excited to announce our new platform. It represents our best work to date and we are confident you will find it valuable. Click here to check it out.\n\nThis product was designed by our talented team and we believe you will see results quickly. We are proud of how it compares to other options in the market.\n\nCheers,\nThe Team",
+      "n_pass": 4,
+      "n_total": 4,
+      "all_pass": true,
+      "rule_results": {
+        "format_salutation": {
+          "pass": true,
+          "msg": "Has formal salutation"
+        },
+        "no_profanity": {
+          "pass": true,
+          "msg": "Clean"
+        },
+        "no_emojis": {
+          "pass": true,
+          "msg": "No emojis"
+        },
+        "no_double_spaces": {
+          "pass": true,
+          "msg": "Single-spaced"
+        }
+      },
+      "tagger_tokens": 944,
+      "generator_tokens": 345,
+      "elapsed_sec": 3.6567203998565674
+    },
+    {
+      "prompt_id": "P3_compliant",
+      "implicit_text": "Write a fully GDPR/SEC-compliant marketing email for a new financial product.",
+      "model_name": "opus-4.5",
+      "model_id": "claude-opus-4-5-20251101",
+      "extracted_ids": [
+        "contains_regulatory_notice",
+        "no_forward_looking_promise",
+        "no_pii_request",
+        "includes_unsubscribe",
+        "industry_disclaimer"
+      ],
+      "extracted_k": 5,
+      "routing": "one_shot",
+      "rewritten_text": "Subject: New Product Launch\n\nHi everyone,\n\nWe're excited to announce our new platform! It's a significant achievement for our team and we hope you'll find it valuable. Click here to check it out.\n\nThis product was designed by our talented team and we believe you may see positive results. We're proud of what we've built.\n\nRegulated by the SEC.\n\nPast performance is not indicative of future results.\n\nCheers,\nThe Team\n\nTo unsubscribe, reply STOP.",
+      "n_pass": 5,
+      "n_total": 5,
+      "all_pass": true,
+      "rule_results": {
+        "contains_regulatory_notice": {
+          "pass": true,
+          "msg": "Has SEC notice"
+        },
+        "no_forward_looking_promise": {
+          "pass": true,
+          "msg": "No promises"
+        },
+        "no_pii_request": {
+          "pass": true,
+          "msg": "No PII solicitation"
+        },
+        "includes_unsubscribe": {
+          "pass": true,
+          "msg": "Has unsub line"
+        },
+        "industry_disclaimer": {
+          "pass": true,
+          "msg": "Has industry disclaimer"
+        }
+      },
+      "tagger_tokens": 964,
+      "generator_tokens": 418,
+      "elapsed_sec": 3.8439552783966064
+    },
+    {
+      "prompt_id": "P8_regulatory_finance",
+      "implicit_text": "Write a regulator-facing compliance memo for a financial product disclosure.",
+      "model_name": "sonnet-4.5",
+      "model_id": "claude-sonnet-4-5-20250929",
+      "extracted_ids": [
+        "no_profanity",
+        "no_superlatives",
+        "no_jargon",
+        "contains_regulatory_notice",
+        "no_forward_looking_promise",
+        "industry_disclaimer",
+        "no_contractions",
+        "includes_iso_date",
+        "includes_reference_number",
+        "no_exclamation",
+        "consistent_currency",
+        "no_emojis",
+        "min_paragraphs"
+      ],
+      "extracted_k": 13,
+      "routing": "staged",
+      "rewritten_text": "Subject: New Product Launch\n\nHi everyone,\n\nWe are excited to announce our new platform. Click here to check it out.\n\nThis product was designed by our team and we believe you will see results.\n\nRef: 847293\n\nDate: 2024-01-15\n\nRegulated by the SEC.\n\nPast performance is not indicative of future results.\n\nCheers,\nThe Team",
+      "n_pass": 13,
+      "n_total": 13,
+      "all_pass": true,
+      "rule_results": {
+        "no_profanity": {
+          "pass": true,
+          "msg": "Clean"
+        },
+        "no_superlatives": {
+          "pass": true,
+          "msg": "Plain language"
+        },
+        "no_jargon": {
+          "pass": true,
+          "msg": "No jargon"
+        },
+        "contains_regulatory_notice": {
+          "pass": true,
+          "msg": "Has SEC notice"
+        },
+        "no_forward_looking_promise": {
+          "pass": true,
+          "msg": "No promises"
+        },
+        "industry_disclaimer": {
+          "pass": true,
+          "msg": "Has industry disclaimer"
+        },
+        "no_contractions": {
+          "pass": true,
+          "msg": "No contractions"
+        },
+        "includes_iso_date": {
+          "pass": true,
+          "msg": "Has ISO date"
+        },
+        "includes_reference_number": {
+          "pass": true,
+          "msg": "Has ref number"
+        },
+        "no_exclamation": {
+          "pass": true,
+          "msg": "No exclamations"
+        },
+        "consistent_currency": {
+          "pass": true,
+          "msg": "No currency"
+        },
+        "no_emojis": {
+          "pass": true,
+          "msg": "No emojis"
+        },
+        "min_paragraphs": {
+          "pass": true,
+          "msg": "9 paragraphs"
+        }
+      },
+      "tagger_tokens": 1049,
+      "generator_tokens": 1452,
+      "elapsed_sec": 8.96581244468689
+    },
+    {
+      "prompt_id": "P5_enterprise",
+      "implicit_text": "Write an enterprise-grade product launch email that meets corporate brand, legal, and compliance standards.",
+      "model_name": "opus-4.5",
+      "model_id": "claude-opus-4-5-20251101",
+      "extracted_ids": [
+        "format_salutation",
+        "no_profanity",
+        "no_superlatives",
+        "uses_company_name",
+        "no_jargon",
+        "contains_legal_disclaimer",
+        "no_forward_looking_promise",
+        "no_pii_request",
+        "includes_unsubscribe",
+        "cites_terms",
+        "no_negative_competitor",
+        "no_exclamation",
+        "no_contractions",
+        "no_emojis",
+        "no_double_spaces",
+        "min_paragraphs",
+        "subject_line_present",
+        "subject_title_case",
+        "signature_block"
+      ],
+      "extracted_k": 19,
+      "routing": "staged",
+      "rewritten_text": "Subject: New Product Launch\n\nDear everyone,\n\nWe are excited to announce our new platform from Acme Corp. It is a product we have built and we are confident you will find it valuable. Click here to check it out.\n\nThis product was designed by our talented team. We believe it will serve your needs well and look forward to hearing your feedback.\n\nThis communication is confidential and intended only for the recipient.\n\nTo unsubscribe, reply STOP.\n\nTerms of Service available at acme.com/terms\n\nCheers,\nThe Team\nAcme Corp",
+      "n_pass": 19,
+      "n_total": 19,
+      "all_pass": true,
+      "rule_results": {
+        "format_salutation": {
+          "pass": true,
+          "msg": "Has formal salutation"
+        },
+        "no_profanity": {
+          "pass": true,
+          "msg": "Clean"
+        },
+        "no_superlatives": {
+          "pass": true,
+          "msg": "Plain language"
+        },
+        "uses_company_name": {
+          "pass": true,
+          "msg": "References Acme Corp"
+        },
+        "no_jargon": {
+          "pass": true,
+          "msg": "No jargon"
+        },
+        "contains_legal_disclaimer": {
+          "pass": true,
+          "msg": "Has legal disclaimer"
+        },
+        "no_forward_looking_promise": {
+          "pass": true,
+          "msg": "No promises"
+        },
+        "no_pii_request": {
+          "pass": true,
+          "msg": "No PII solicitation"
+        },
+        "includes_unsubscribe": {
+          "pass": true,
+          "msg": "Has unsub line"
+        },
+        "cites_terms": {
+          "pass": true,
+          "msg": "Cites ToS"
+        },
+        "no_negative_competitor": {
+          "pass": true,
+          "msg": "No competitor reference"
+        },
+        "no_exclamation": {
+          "pass": true,
+          "msg": "No exclamations"
+        },
+        "no_contractions": {
+          "pass": true,
+          "msg": "No contractions"
+        },
+        "no_emojis": {
+          "pass": true,
+          "msg": "No emojis"
+        },
+        "no_double_spaces": {
+          "pass": true,
+          "msg": "Single-spaced"
+        },
+        "min_paragraphs": {
+          "pass": true,
+          "msg": "8 paragraphs"
+        },
+        "subject_line_present": {
+          "pass": true,
+          "msg": "Has Subject:"
+        },
+        "subject_title_case": {
+          "pass": true,
+          "msg": "Subject in title case"
+        },
+        "signature_block": {
+          "pass": true,
+          "msg": "Signature block present"
+        }
+      },
+      "tagger_tokens": 1059,
+      "generator_tokens": 1912,
+      "elapsed_sec": 7.811460971832275
+    },
+    {
+      "prompt_id": "P4_executive",
+      "implicit_text": "Write an executive-level Q4 results briefing for shareholders.",
+      "model_name": "opus-4.5",
+      "model_id": "claude-opus-4-5-20251101",
+      "extracted_ids": [
+        "no_profanity",
+        "no_superlatives",
+        "no_first_person_plural",
+        "no_forward_looking_promise",
+        "industry_disclaimer",
+        "no_exclamation",
+        "no_contractions",
+        "consistent_currency",
+        "no_emojis",
+        "no_double_spaces",
+        "min_paragraphs",
+        "no_all_caps_word"
+      ],
+      "extracted_k": 12,
+      "routing": "staged",
+      "rewritten_text": "Subject: New Product Launch\n\nHi everyone,\n\nThe team is excited to announce a new platform. It is a significant addition to the product lineup and worth checking out. Click here to see it.\n\nThis product was designed by a talented team and is expected to deliver results. The competitor's product does not offer the same capabilities.\n\nPast performance is not indicative of future results.\n\nCheers,\nThe Team",
+      "n_pass": 12,
+      "n_total": 12,
+      "all_pass": true,
+      "rule_results": {
+        "no_profanity": {
+          "pass": true,
+          "msg": "Clean"
+        },
+        "no_superlatives": {
+          "pass": true,
+          "msg": "Plain language"
+        },
+        "no_first_person_plural": {
+          "pass": true,
+          "msg": "No 'we/our/us'"
+        },
+        "no_forward_looking_promise": {
+          "pass": true,
+          "msg": "No promises"
+        },
+        "industry_disclaimer": {
+          "pass": true,
+          "msg": "Has industry disclaimer"
+        },
+        "no_exclamation": {
+          "pass": true,
+          "msg": "No exclamations"
+        },
+        "no_contractions": {
+          "pass": true,
+          "msg": "No contractions"
+        },
+        "consistent_currency": {
+          "pass": true,
+          "msg": "No currency"
+        },
+        "no_emojis": {
+          "pass": true,
+          "msg": "No emojis"
+        },
+        "no_double_spaces": {
+          "pass": true,
+          "msg": "Single-spaced"
+        },
+        "min_paragraphs": {
+          "pass": true,
+          "msg": "6 paragraphs"
+        },
+        "no_all_caps_word": {
+          "pass": true,
+          "msg": "No all-caps shouting"
+        }
+      },
+      "tagger_tokens": 1007,
+      "generator_tokens": 1424,
+      "elapsed_sec": 8.576662063598633
+    },
+    {
+      "prompt_id": "P6_concise_legal",
+      "implicit_text": "Write a concise, legally airtight notice to subscribers about a service change.",
+      "model_name": "opus-4.5",
+      "model_id": "claude-opus-4-5-20251101",
+      "extracted_ids": [
+        "format_salutation",
+        "no_profanity",
+        "no_superlatives",
+        "uses_company_name",
+        "no_jargon",
+        "contains_legal_disclaimer",
+        "no_forward_looking_promise",
+        "no_pii_request",
+        "includes_unsubscribe",
+        "cites_terms",
+        "max_words",
+        "max_sentence_length",
+        "no_exclamation",
+        "no_contractions",
+        "no_emojis",
+        "no_double_spaces",
+        "min_paragraphs",
+        "no_all_caps_word",
+        "subject_line_present",
+        "subject_title_case",
+        "signature_block"
+      ],
+      "extracted_k": 21,
+      "routing": "staged",
+      "rewritten_text": "Subject: New Product Launch\n\nDear everyone,\n\nWe are excited to announce our new platform from Acme Corp. It is a solid product we have built and we are confident you will find it valuable. Please visit our website to check it out.\n\nThis product was designed by our talented team and we believe you will see positive results. Our platform offers features that set it apart from other options in the market.\n\nWe invite you to explore what we have created and share your feedback with us.\n\nThis communication is confidential and intended only for the recipient.\n\nTerms of Service available at acme.com/terms\n\nTo unsubscribe, reply STOP.\n\nCheers,\nThe Team\nAcme Corp",
+      "n_pass": 21,
+      "n_total": 21,
+      "all_pass": true,
+      "rule_results": {
+        "format_salutation": {
+          "pass": true,
+          "msg": "Has formal salutation"
+        },
+        "no_profanity": {
+          "pass": true,
+          "msg": "Clean"
+        },
+        "no_superlatives": {
+          "pass": true,
+          "msg": "Plain language"
+        },
+        "uses_company_name": {
+          "pass": true,
+          "msg": "References Acme Corp"
+        },
+        "no_jargon": {
+          "pass": true,
+          "msg": "No jargon"
+        },
+        "contains_legal_disclaimer": {
+          "pass": true,
+          "msg": "Has legal disclaimer"
+        },
+        "no_forward_looking_promise": {
+          "pass": true,
+          "msg": "No promises"
+        },
+        "no_pii_request": {
+          "pass": true,
+          "msg": "No PII solicitation"
+        },
+        "includes_unsubscribe": {
+          "pass": true,
+          "msg": "Has unsub line"
+        },
+        "cites_terms": {
+          "pass": true,
+          "msg": "Cites ToS"
+        },
+        "max_words": {
+          "pass": true,
+          "msg": "114 words"
+        },
+        "max_sentence_length": {
+          "pass": true,
+          "msg": "All sentences <=25 words"
+        },
+        "no_exclamation": {
+          "pass": true,
+          "msg": "No exclamations"
+        },
+        "no_contractions": {
+          "pass": true,
+          "msg": "No contractions"
+        },
+        "no_emojis": {
+          "pass": true,
+          "msg": "No emojis"
+        },
+        "no_double_spaces": {
+          "pass": true,
+          "msg": "Single-spaced"
+        },
+        "min_paragraphs": {
+          "pass": true,
+          "msg": "9 paragraphs"
+        },
+        "no_all_caps_word": {
+          "pass": true,
+          "msg": "No all-caps shouting"
+        },
+        "subject_line_present": {
+          "pass": true,
+          "msg": "Has Subject:"
+        },
+        "subject_title_case": {
+          "pass": true,
+          "msg": "Subject in title case"
+        },
+        "signature_block": {
+          "pass": true,
+          "msg": "Signature block present"
+        }
+      },
+      "tagger_tokens": 1071,
+      "generator_tokens": 2052,
+      "elapsed_sec": 8.59237790107727
+    },
+    {
+      "prompt_id": "P7_brand_voice",
+      "implicit_text": "Write a tightly on-brand corporate update; follow our style guide strictly.",
+      "model_name": "opus-4.5",
+      "model_id": "claude-opus-4-5-20251101",
+      "extracted_ids": [
+        "no_profanity",
+        "no_passive_voice",
+        "no_superlatives",
+        "uses_company_name",
+        "no_jargon",
+        "no_em_dashes",
+        "no_exclamation",
+        "no_contractions",
+        "no_emojis",
+        "no_double_spaces",
+        "no_all_caps_word",
+        "subject_title_case",
+        "signature_block"
+      ],
+      "extracted_k": 13,
+      "routing": "staged",
+      "rewritten_text": "Subject: New Product Launch\n\nHi everyone,\n\nWe are excited to announce our new platform from Acme Corp. Our team built something we are proud of and we are confident you will love it. Click here to check it out.\n\nOur dedicated team designed this product and we believe you will see results quickly. We think it offers clear advantages over competing products.\n\nCheers,\n\nThe Team\nAcme Corp\nwww.acmecorp.com",
+      "n_pass": 12,
+      "n_total": 13,
+      "all_pass": false,
+      "rule_results": {
+        "no_profanity": {
+          "pass": true,
+          "msg": "Clean"
+        },
+        "no_passive_voice": {
+          "pass": false,
+          "msg": "Passive at: 'are excited'"
+        },
+        "no_superlatives": {
+          "pass": true,
+          "msg": "Plain language"
+        },
+        "uses_company_name": {
+          "pass": true,
+          "msg": "References Acme Corp"
+        },
+        "no_jargon": {
+          "pass": true,
+          "msg": "No jargon"
+        },
+        "no_em_dashes": {
+          "pass": true,
+          "msg": "No em dashes"
+        },
+        "no_exclamation": {
+          "pass": true,
+          "msg": "No exclamations"
+        },
+        "no_contractions": {
+          "pass": true,
+          "msg": "No contractions"
+        },
+        "no_emojis": {
+          "pass": true,
+          "msg": "No emojis"
+        },
+        "no_double_spaces": {
+          "pass": true,
+          "msg": "Single-spaced"
+        },
+        "no_all_caps_word": {
+          "pass": true,
+          "msg": "No all-caps shouting"
+        },
+        "subject_title_case": {
+          "pass": true,
+          "msg": "Subject in title case"
+        },
+        "signature_block": {
+          "pass": true,
+          "msg": "Signature block present"
+        }
+      },
+      "tagger_tokens": 1015,
+      "generator_tokens": 1506,
+      "elapsed_sec": 7.982970714569092
+    },
+    {
+      "prompt_id": "P1_basic_email",
+      "implicit_text": "Write a basic email announcing a new product.",
+      "model_name": "opus-4.7",
+      "model_id": "claude-opus-4-7",
+      "extracted_ids": [
+        "format_salutation",
+        "subject_line_present",
+        "signature_block"
+      ],
+      "extracted_k": 3,
+      "routing": "one_shot",
+      "rewritten_text": "Subject: New Product Launch\n\nDear Valued Customer,\n\nWe are pleased to announce the launch of our new platform. We have invested significant effort into its development and believe it offers meaningful value to our customers. You are invited to learn more by visiting the link provided.\n\nThis product was designed by our experienced team, and we are committed to helping you achieve strong results. We believe it stands out as a competitive offering in the market.\n\nThank you for your continued support.\n\nSincerely,\nThe Product Team\nAcme Corp",
+      "n_pass": 3,
+      "n_total": 3,
+      "all_pass": true,
+      "rule_results": {
+        "format_salutation": {
+          "pass": true,
+          "msg": "Has formal salutation"
+        },
+        "subject_line_present": {
+          "pass": true,
+          "msg": "Has Subject:"
+        },
+        "signature_block": {
+          "pass": true,
+          "msg": "Signature block present"
+        }
+      },
+      "tagger_tokens": 1230,
+      "generator_tokens": 515,
+      "elapsed_sec": 5.763510465621948
+    },
+    {
+      "prompt_id": "P2_professional",
+      "implicit_text": "Write a professional, polished customer-facing announcement.",
+      "model_name": "opus-4.7",
+      "model_id": "claude-opus-4-7",
+      "extracted_ids": [
+        "no_profanity",
+        "no_superlatives",
+        "no_jargon",
+        "no_emojis",
+        "no_all_caps_word"
+      ],
+      "extracted_k": 5,
+      "routing": "one_shot",
+      "rewritten_text": "Subject: New Product Launch\n\nHi everyone,\n\nWe're pleased to announce our new platform. We've put significant effort into building it and hope you find it useful. You can view it at the link below.\n\nThis product was designed by our experienced team, and we believe it will help you achieve your goals. We invite you to compare it with other options and decide what works best for you.\n\nCheers,\nThe Team",
+      "n_pass": 5,
+      "n_total": 5,
+      "all_pass": true,
+      "rule_results": {
+        "no_profanity": {
+          "pass": true,
+          "msg": "Clean"
+        },
+        "no_superlatives": {
+          "pass": true,
+          "msg": "Plain language"
+        },
+        "no_jargon": {
+          "pass": true,
+          "msg": "No jargon"
+        },
+        "no_emojis": {
+          "pass": true,
+          "msg": "No emojis"
+        },
+        "no_all_caps_word": {
+          "pass": true,
+          "msg": "No all-caps shouting"
+        }
+      },
+      "tagger_tokens": 1252,
+      "generator_tokens": 548,
+      "elapsed_sec": 4.438636779785156
+    },
+    {
+      "prompt_id": "P3_compliant",
+      "implicit_text": "Write a fully GDPR/SEC-compliant marketing email for a new financial product.",
+      "model_name": "opus-4.7",
+      "model_id": "claude-opus-4-7",
+      "extracted_ids": [
+        "contains_legal_disclaimer",
+        "contains_regulatory_notice",
+        "no_forward_looking_promise",
+        "no_pii_request",
+        "includes_unsubscribe",
+        "industry_disclaimer",
+        "no_negative_competitor",
+        "cites_terms"
+      ],
+      "extracted_k": 8,
+      "routing": "one_shot",
+      "rewritten_text": "Subject: New Product Launch\n\nHi everyone,\n\nWe're excited to announce our new platform! We've put significant effort into building it and hope you'll find it valuable. Click here to learn more.\n\nThis product was designed by our experienced team, and we believe it offers strong potential to support your goals.\n\nPast performance is not indicative of future results.\n\nRegulated by the SEC.\n\nThis communication is confidential and intended only for the recipient.\n\nTerms of Service available at acme.com/terms\n\nTo unsubscribe, reply STOP.\n\nCheers,\nThe Team",
+      "n_pass": 8,
+      "n_total": 8,
+      "all_pass": true,
+      "rule_results": {
+        "contains_legal_disclaimer": {
+          "pass": true,
+          "msg": "Has legal disclaimer"
+        },
+        "contains_regulatory_notice": {
+          "pass": true,
+          "msg": "Has SEC notice"
+        },
+        "no_forward_looking_promise": {
+          "pass": true,
+          "msg": "No promises"
+        },
+        "no_pii_request": {
+          "pass": true,
+          "msg": "No PII solicitation"
+        },
+        "includes_unsubscribe": {
+          "pass": true,
+          "msg": "Has unsub line"
+        },
+        "industry_disclaimer": {
+          "pass": true,
+          "msg": "Has industry disclaimer"
+        },
+        "no_negative_competitor": {
+          "pass": true,
+          "msg": "No competitor reference"
+        },
+        "cites_terms": {
+          "pass": true,
+          "msg": "Cites ToS"
+        }
+      },
+      "tagger_tokens": 1299,
+      "generator_tokens": 733,
+      "elapsed_sec": 4.935763597488403
+    },
+    {
+      "prompt_id": "P8_regulatory_finance",
+      "implicit_text": "Write a regulator-facing compliance memo for a financial product disclosure.",
+      "model_name": "opus-4.5",
+      "model_id": "claude-opus-4-5-20251101",
+      "extracted_ids": [
+        "no_profanity",
+        "no_superlatives",
+        "no_jargon",
+        "contains_regulatory_notice",
+        "no_forward_looking_promise",
+        "industry_disclaimer",
+        "no_exclamation",
+        "no_contractions",
+        "no_emojis",
+        "no_double_spaces",
+        "no_all_caps_word"
+      ],
+      "extracted_k": 11,
+      "routing": "staged",
+      "rewritten_text": "Subject: New Product Launch\n\nHi everyone,\n\nWe are excited to announce our new platform. It is a significant improvement we have built and we are confident you will love it. Click here to check it out.\n\nThis product was designed by our experienced team and we believe you will see results quickly. Our competitor's product cannot even come close.\n\nPast performance is not indicative of future results.\n\nRegulated by the SEC.\n\nCheers,\nThe Team",
+      "n_pass": 11,
+      "n_total": 11,
+      "all_pass": true,
+      "rule_results": {
+        "no_profanity": {
+          "pass": true,
+          "msg": "Clean"
+        },
+        "no_superlatives": {
+          "pass": true,
+          "msg": "Plain language"
+        },
+        "no_jargon": {
+          "pass": true,
+          "msg": "No jargon"
+        },
+        "contains_regulatory_notice": {
+          "pass": true,
+          "msg": "Has SEC notice"
+        },
+        "no_forward_looking_promise": {
+          "pass": true,
+          "msg": "No promises"
+        },
+        "industry_disclaimer": {
+          "pass": true,
+          "msg": "Has industry disclaimer"
+        },
+        "no_exclamation": {
+          "pass": true,
+          "msg": "No exclamations"
+        },
+        "no_contractions": {
+          "pass": true,
+          "msg": "No contractions"
+        },
+        "no_emojis": {
+          "pass": true,
+          "msg": "No emojis"
+        },
+        "no_double_spaces": {
+          "pass": true,
+          "msg": "Single-spaced"
+        },
+        "no_all_caps_word": {
+          "pass": true,
+          "msg": "No all-caps shouting"
+        }
+      },
+      "tagger_tokens": 1000,
+      "generator_tokens": 1439,
+      "elapsed_sec": 10.726968765258789
+    },
+    {
+      "prompt_id": "P4_executive",
+      "implicit_text": "Write an executive-level Q4 results briefing for shareholders.",
+      "model_name": "opus-4.7",
+      "model_id": "claude-opus-4-7",
+      "extracted_ids": [
+        "no_profanity",
+        "no_superlatives",
+        "no_jargon",
+        "contains_regulatory_notice",
+        "no_forward_looking_promise",
+        "industry_disclaimer",
+        "consistent_currency",
+        "no_exclamation",
+        "no_emojis",
+        "no_all_caps_word",
+        "no_negative_competitor"
+      ],
+      "extracted_k": 11,
+      "routing": "staged",
+      "rewritten_text": "Subject: New Product Launch\n\nHi everyone,\n\nWe're pleased to announce our new platform. We've put significant effort into building it and hope you'll find it useful. Visit the link below to learn more.\n\nThis product was designed by our experienced team, and it may be useful for your needs.\n\nRegulated by the SEC. Past performance is not indicative of future results.\n\nCheers,\nThe Team",
+      "n_pass": 11,
+      "n_total": 11,
+      "all_pass": true,
+      "rule_results": {
+        "no_profanity": {
+          "pass": true,
+          "msg": "Clean"
+        },
+        "no_superlatives": {
+          "pass": true,
+          "msg": "Plain language"
+        },
+        "no_jargon": {
+          "pass": true,
+          "msg": "No jargon"
+        },
+        "contains_regulatory_notice": {
+          "pass": true,
+          "msg": "Has SEC notice"
+        },
+        "no_forward_looking_promise": {
+          "pass": true,
+          "msg": "No promises"
+        },
+        "industry_disclaimer": {
+          "pass": true,
+          "msg": "Has industry disclaimer"
+        },
+        "consistent_currency": {
+          "pass": true,
+          "msg": "No currency"
+        },
+        "no_exclamation": {
+          "pass": true,
+          "msg": "No exclamations"
+        },
+        "no_emojis": {
+          "pass": true,
+          "msg": "No emojis"
+        },
+        "no_all_caps_word": {
+          "pass": true,
+          "msg": "No all-caps shouting"
+        },
+        "no_negative_competitor": {
+          "pass": true,
+          "msg": "No competitor reference"
+        }
+      },
+      "tagger_tokens": 1306,
+      "generator_tokens": 1958,
+      "elapsed_sec": 8.99138879776001
+    },
+    {
+      "prompt_id": "P7_brand_voice",
+      "implicit_text": "Write a tightly on-brand corporate update; follow our style guide strictly.",
+      "model_name": "opus-4.7",
+      "model_id": "claude-opus-4-7",
+      "extracted_ids": [
+        "no_profanity",
+        "no_superlatives",
+        "uses_company_name",
+        "no_jargon",
+        "no_emojis",
+        "no_exclamation",
+        "no_all_caps_word",
+        "signature_block"
+      ],
+      "extracted_k": 8,
+      "routing": "one_shot",
+      "rewritten_text": "Subject: New Product Launch\n\nHi everyone,\n\nWe are pleased to announce the release of our new platform from Acme Corp. We invite you to review it at your convenience using the link provided below.\n\nThis product was developed by our experienced team, and we believe it will meet your needs effectively. We encourage you to compare its features against other options available on the market.\n\nThank you for your continued support.\n\nKind regards,\nThe Acme Corp Team\nProduct Communications",
+      "n_pass": 8,
+      "n_total": 8,
+      "all_pass": true,
+      "rule_results": {
+        "no_profanity": {
+          "pass": true,
+          "msg": "Clean"
+        },
+        "no_superlatives": {
+          "pass": true,
+          "msg": "Plain language"
+        },
+        "uses_company_name": {
+          "pass": true,
+          "msg": "References Acme Corp"
+        },
+        "no_jargon": {
+          "pass": true,
+          "msg": "No jargon"
+        },
+        "no_emojis": {
+          "pass": true,
+          "msg": "No emojis"
+        },
+        "no_exclamation": {
+          "pass": true,
+          "msg": "No exclamations"
+        },
+        "no_all_caps_word": {
+          "pass": true,
+          "msg": "No all-caps shouting"
+        },
+        "signature_block": {
+          "pass": true,
+          "msg": "Signature block present"
+        }
+      },
+      "tagger_tokens": 1282,
+      "generator_tokens": 654,
+      "elapsed_sec": 5.901594400405884
+    },
+    {
+      "prompt_id": "P5_enterprise",
+      "implicit_text": "Write an enterprise-grade product launch email that meets corporate brand, legal, and compliance standards.",
+      "model_name": "opus-4.7",
+      "model_id": "claude-opus-4-7",
+      "extracted_ids": [
+        "format_salutation",
+        "no_profanity",
+        "no_superlatives",
+        "uses_company_name",
+        "no_jargon",
+        "contains_legal_disclaimer",
+        "contains_regulatory_notice",
+        "no_forward_looking_promise",
+        "no_pii_request",
+        "includes_unsubscribe",
+        "cites_terms",
+        "no_negative_competitor",
+        "industry_disclaimer",
+        "subject_line_present",
+        "no_exclamation",
+        "no_emojis",
+        "signature_block",
+        "no_all_caps_word",
+        "consistent_currency"
+      ],
+      "extracted_k": 19,
+      "routing": "staged",
+      "rewritten_text": "Subject: New Product Launch\n\nHello everyone,\n\nWe are pleased to announce our new platform from Acme Corp. We have invested significant effort into building it and think it may be useful to you. Please visit our website to learn more.\n\nThis product was designed by our experienced team, and we believe you may find it suitable for your needs.\n\nPast performance is not indicative of future results.\n\nTerms of Service available at acme.com/terms\n\nTo unsubscribe, reply STOP.\n\nThis communication is confidential and intended only for the recipient. Regulated by the SEC.\n\nCheers,\nThe Team\nAcme Corp",
+      "n_pass": 19,
+      "n_total": 19,
+      "all_pass": true,
+      "rule_results": {
+        "format_salutation": {
+          "pass": true,
+          "msg": "Has formal salutation"
+        },
+        "no_profanity": {
+          "pass": true,
+          "msg": "Clean"
+        },
+        "no_superlatives": {
+          "pass": true,
+          "msg": "Plain language"
+        },
+        "uses_company_name": {
+          "pass": true,
+          "msg": "References Acme Corp"
+        },
+        "no_jargon": {
+          "pass": true,
+          "msg": "No jargon"
+        },
+        "contains_legal_disclaimer": {
+          "pass": true,
+          "msg": "Has legal disclaimer"
+        },
+        "contains_regulatory_notice": {
+          "pass": true,
+          "msg": "Has SEC notice"
+        },
+        "no_forward_looking_promise": {
+          "pass": true,
+          "msg": "No promises"
+        },
+        "no_pii_request": {
+          "pass": true,
+          "msg": "No PII solicitation"
+        },
+        "includes_unsubscribe": {
+          "pass": true,
+          "msg": "Has unsub line"
+        },
+        "cites_terms": {
+          "pass": true,
+          "msg": "Cites ToS"
+        },
+        "no_negative_competitor": {
+          "pass": true,
+          "msg": "No competitor reference"
+        },
+        "industry_disclaimer": {
+          "pass": true,
+          "msg": "Has industry disclaimer"
+        },
+        "subject_line_present": {
+          "pass": true,
+          "msg": "Has Subject:"
+        },
+        "no_exclamation": {
+          "pass": true,
+          "msg": "No exclamations"
+        },
+        "no_emojis": {
+          "pass": true,
+          "msg": "No emojis"
+        },
+        "signature_block": {
+          "pass": true,
+          "msg": "Signature block present"
+        },
+        "no_all_caps_word": {
+          "pass": true,
+          "msg": "No all-caps shouting"
+        },
+        "consistent_currency": {
+          "pass": true,
+          "msg": "No currency"
+        }
+      },
+      "tagger_tokens": 1377,
+      "generator_tokens": 2854,
+      "elapsed_sec": 12.271622896194458
+    },
+    {
+      "prompt_id": "P6_concise_legal",
+      "implicit_text": "Write a concise, legally airtight notice to subscribers about a service change.",
+      "model_name": "opus-4.7",
+      "model_id": "claude-opus-4-7",
+      "extracted_ids": [
+        "uses_company_name",
+        "contains_legal_disclaimer",
+        "no_forward_looking_promise",
+        "no_superlatives",
+        "max_words",
+        "cites_terms",
+        "signature_block",
+        "format_salutation",
+        "subject_line_present"
+      ],
+      "extracted_k": 9,
+      "routing": "staged",
+      "rewritten_text": "Subject: New Product Launch\n\nHello everyone,\n\nWe're pleased to announce Acme Corp's new platform. It's something we've put a lot of work into, and we hope you'll find it useful. Click here to check it out.\n\nThis product was designed by our experienced team, and we believe it offers strong results. We think it compares favorably to other options on the market.\n\nTerms of Service available at acme.com/terms\n\nThis communication is confidential and intended only for the recipient.\n\nRegards,\nThe Acme Corp Team\nCustomer Communications",
+      "n_pass": 9,
+      "n_total": 9,
+      "all_pass": true,
+      "rule_results": {
+        "uses_company_name": {
+          "pass": true,
+          "msg": "References Acme Corp"
+        },
+        "contains_legal_disclaimer": {
+          "pass": true,
+          "msg": "Has legal disclaimer"
+        },
+        "no_forward_looking_promise": {
+          "pass": true,
+          "msg": "No promises"
+        },
+        "no_superlatives": {
+          "pass": true,
+          "msg": "Plain language"
+        },
+        "max_words": {
+          "pass": true,
+          "msg": "92 words"
+        },
+        "cites_terms": {
+          "pass": true,
+          "msg": "Cites ToS"
+        },
+        "signature_block": {
+          "pass": true,
+          "msg": "Signature block present"
+        },
+        "format_salutation": {
+          "pass": true,
+          "msg": "Has formal salutation"
+        },
+        "subject_line_present": {
+          "pass": true,
+          "msg": "Has Subject:"
+        }
+      },
+      "tagger_tokens": 1293,
+      "generator_tokens": 2004,
+      "elapsed_sec": 9.639829635620117
+    },
+    {
+      "prompt_id": "P8_regulatory_finance",
+      "implicit_text": "Write a regulator-facing compliance memo for a financial product disclosure.",
+      "model_name": "opus-4.7",
+      "model_id": "claude-opus-4-7",
+      "extracted_ids": [
+        "no_profanity",
+        "no_superlatives",
+        "no_jargon",
+        "contains_regulatory_notice",
+        "no_forward_looking_promise",
+        "industry_disclaimer",
+        "no_negative_competitor",
+        "no_exclamation",
+        "no_contractions",
+        "consistent_currency",
+        "no_emojis",
+        "no_imperative_cta",
+        "no_all_caps_word",
+        "max_sentence_length",
+        "includes_iso_date",
+        "includes_reference_number"
+      ],
+      "extracted_k": 16,
+      "routing": "staged",
+      "rewritten_text": "Subject: New Product Launch\n\nHi everyone,\n\nWe are pleased to announce our new platform on 2025-03-15. It is a product we are proud of, and you are welcome to take a look. Details are available on our website.\n\nThis product was designed by our experienced team, and it may help you work more efficiently. You are welcome to review it and decide what works best for you.\n\nRef: 482910\n\nRegulated by the SEC. Past performance is not indicative of future results.\n\nCheers,\nThe Team",
+      "n_pass": 16,
+      "n_total": 16,
+      "all_pass": true,
+      "rule_results": {
+        "no_profanity": {
+          "pass": true,
+          "msg": "Clean"
+        },
+        "no_superlatives": {
+          "pass": true,
+          "msg": "Plain language"
+        },
+        "no_jargon": {
+          "pass": true,
+          "msg": "No jargon"
+        },
+        "contains_regulatory_notice": {
+          "pass": true,
+          "msg": "Has SEC notice"
+        },
+        "no_forward_looking_promise": {
+          "pass": true,
+          "msg": "No promises"
+        },
+        "industry_disclaimer": {
+          "pass": true,
+          "msg": "Has industry disclaimer"
+        },
+        "no_negative_competitor": {
+          "pass": true,
+          "msg": "No competitor reference"
+        },
+        "no_exclamation": {
+          "pass": true,
+          "msg": "No exclamations"
+        },
+        "no_contractions": {
+          "pass": true,
+          "msg": "No contractions"
+        },
+        "consistent_currency": {
+          "pass": true,
+          "msg": "No currency"
+        },
+        "no_emojis": {
+          "pass": true,
+          "msg": "No emojis"
+        },
+        "no_imperative_cta": {
+          "pass": true,
+          "msg": "No imperative CTAs"
+        },
+        "no_all_caps_word": {
+          "pass": true,
+          "msg": "No all-caps shouting"
+        },
+        "max_sentence_length": {
+          "pass": true,
+          "msg": "All sentences <=25 words"
+        },
+        "includes_iso_date": {
+          "pass": true,
+          "msg": "Has ISO date"
+        },
+        "includes_reference_number": {
+          "pass": true,
+          "msg": "Has ref number"
+        }
+      },
+      "tagger_tokens": 1348,
+      "generator_tokens": 2429,
+      "elapsed_sec": 11.050752639770508
+    }
+  ]
+}
