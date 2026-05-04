@@ -61,6 +61,8 @@ EXCLUDE_FILE_NAMES = {
     "cacophony_arxiv_source.tar.gz",
     "cacophony_4open_anonymous.zip",
     ".DS_Store", "Thumbs.db", "desktop.ini",
+    # Sensitive collaborator handoff (matches user instruction):
+    "notetoclaude.json", "note2claude2.json",
 }
 
 # PII patterns: any text-like file containing these is a hard fail

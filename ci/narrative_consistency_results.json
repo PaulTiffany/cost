@@ -11,14 +11,14 @@
       "appearances_by_section": {
         "abstract": true,
         "contributions": true,
-        "approach": true,
-        "conclusion_summary": true
+        "conclusion_summary": true,
+        "approach": true
       },
       "present_in": [
         "abstract",
         "contributions",
-        "approach",
-        "conclusion_summary"
+        "conclusion_summary",
+        "approach"
       ],
       "absent_from": [],
       "verdict": "consistent"
@@ -29,8 +29,8 @@
       "appearances_by_section": {
         "abstract": true,
         "contributions": true,
-        "approach": false,
-        "conclusion_summary": true
+        "conclusion_summary": true,
+        "approach": false
       },
       "present_in": [
         "abstract",
@@ -48,8 +48,8 @@
       "appearances_by_section": {
         "abstract": false,
         "contributions": false,
-        "approach": true,
-        "conclusion_summary": false
+        "conclusion_summary": false,
+        "approach": true
       },
       "present_in": [
         "approach"
@@ -67,8 +67,8 @@
       "appearances_by_section": {
         "abstract": true,
         "contributions": false,
-        "approach": false,
-        "conclusion_summary": true
+        "conclusion_summary": true,
+        "approach": false
       },
       "present_in": [
         "abstract",
@@ -86,8 +86,8 @@
       "appearances_by_section": {
         "abstract": true,
         "contributions": false,
-        "approach": true,
-        "conclusion_summary": false
+        "conclusion_summary": false,
+        "approach": true
       },
       "present_in": [
         "abstract",
@@ -105,16 +105,16 @@
       "appearances_by_section": {
         "abstract": false,
         "contributions": true,
-        "approach": false,
-        "conclusion_summary": false
+        "conclusion_summary": false,
+        "approach": false
       },
       "present_in": [
         "contributions"
       ],
       "absent_from": [
         "abstract",
-        "approach",
-        "conclusion_summary"
+        "conclusion_summary",
+        "approach"
       ],
       "verdict": "drift"
     }

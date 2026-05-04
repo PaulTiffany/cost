@@ -31,6 +31,7 @@ SRC = REPO_ROOT / "paper" / "main.tex"
 DST = REPO_ROOT / "paper" / "main_arxiv.tex"
 
 GH = "https://github.com/PaulTiffany/cost"
+PAGES = "https://paultiffany.github.io/cost"  # GitHub Pages site for browser-rendered HTML
 
 SUBS = [
     (r"^\\usepackage\{neurips_2026\}\s*$",
@@ -47,10 +48,24 @@ SUBS = [
     (r"Code: \\url\{https://anonymous\.4open\.science/r/cacophony\}\.",
      r"Code: \\url{" + GH + r"}."
      r"\\footnote{Direct artifact links: "
-     r"\\href{" + GH + r"/blob/main/supplementary/demos/audio_demos/INDEX.html}{audio demos (browser-playable)}, "
+     r"\\href{" + PAGES + r"/supplementary/demos/audio_demos/INDEX.html}{audio demos (browser-playable)}, "
      r"\\href{" + GH + r"/blob/main/ci/claim_certificate.md}{mechanical certificate}, "
      r"\\href{" + GH + r"/blob/main/ci/cost_report.json}{cost report}, "
      r"\\href{" + GH + r"/blob/main/supplementary/REVIEWER_INDEX.md}{reviewer index}.}"),
+    # Strip submission-flow meta-instructions (acknowledgments placeholder is a
+    # NeurIPS-anonymized-review artifact; in the arXiv preprint the section is
+    # visible, so replace the placeholder with a real one-line disclosure).
+    (r"\[Acknowledgments placeholder[^\]]+\]",
+     r"The author received no external funding for this work and reports no competing interests."),
+    # Reproducibility section header: drop the venue-specific qualifier.
+    # The handbook citation (~\\cite{neurips2026handbook}) and "11 NeurIPS
+    # SOCIETAL IMPACT topics" stay as-is because they are content (citing
+    # real documents), not submission-flow signals.
+    (r"^Following NeurIPS reproducibility guidelines:$",
+     r"Following standard reproducibility guidelines:"),
+    # Re-point checklist input to the renamed sister file.
+    (r"\\input\{checklist\.tex\}",
+     r"\\input{checklist_arxiv.tex}"),
 ]
 
 
@@ -75,6 +90,21 @@ def main() -> int:
     print(f"Wrote {DST.name}: {sum(n for _, n in applied)} substitutions across {len(applied)} patterns")
     for p, n in applied:
         print(f"  {n} match(es): {p}")
+
+    # Sister file: checklist_arxiv.tex with the venue-prefixed title softened.
+    # The questions still reference "NeurIPS Code of Ethics" etc. because
+    # those are content (real documents being cited); the title is the only
+    # cosmetic edit.
+    check_src = REPO_ROOT / "paper" / "checklist.tex"
+    check_dst = REPO_ROOT / "paper" / "checklist_arxiv.tex"
+    if check_src.exists():
+        ctext = check_src.read_text(encoding="utf-8")
+        ctext = ctext.replace(
+            r"\section*{NeurIPS Paper Checklist}",
+            r"\section*{Paper Checklist}",
+        )
+        check_dst.write_text(ctext, encoding="utf-8")
+        print(f"Wrote {check_dst.name}: title 'NeurIPS Paper Checklist' -> 'Paper Checklist'")
 
     if args.compile:
         print("\nRunning latexmk on main_arxiv.tex ...")

@@ -49,3 +49,7 @@ rebuttal/
 # Build outputs of the variant builders
 paper/cacophony_arxiv_source.tar.gz
 paper/cacophony_4open_anonymous.zip
+paper/cacophony_openreview_supplementary.zip
+
+# Legacy local repo (predates current submission flow)
+submission_repo/

@@ -78,7 +78,7 @@
     {
       "path": "ci/cross_claim_consistency_results.json",
       "expected_sha256": "2a7ec675d9a51a45cdda6e513a53482ca3e2569f5a76257dee927dd171bbec0e",
-      "actual_sha256": "d86dc743a009ec9057ec62a87c8ca1a58598a0fbbf8c1a29527ad387566e8847",
+      "actual_sha256": "cf2381698e765d979c90af42856452896a852d65f96ee45725caea6b35ccce22",
       "expected_size": 24413,
       "actual_size": 26732,
       "note": "size differs by 2319 bytes (possibly Windows CRLF vs LF line endings)"

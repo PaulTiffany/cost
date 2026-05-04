@@ -545,10 +545,10 @@ Open-weight validation is reproducible. Frontier experiments confirm \emph{trans
 
 Figure~\ref{fig:rw_quadrant}(a) positions this work. Most multi-constraint methods operate at training time (gradient surgery, MOO: \citep{yu2020gradient,liu2021cagrad,navon2022nashmtl,he2025pama,sener2018multi}). Inference-time multi-constraint work \citep{madaan2023selfrefine,meyerson2025maker,lior2025wildifeval,qi2025agentif} lacks geometric foundation. Constitutional AI's critique-revision \citep{bai2022constitutional} is structurally staged constraint satisfaction. Our framework formalizes a pattern alignment training already uses implicitly. \textbf{Vs.\ CoT and reasoning models.} CoT decomposes logic, R1/o1 internalize staging, both under the same contract. \textbf{Novelty:} the bound is classical MOO. Our contributions are (i)~its application to LLM inference via the displacement contract, (ii)~$\rhohat$ as zeroth-order observable, (iii)~judge-free validation. Thresholds transfer (Table~\ref{tab:transfer}). Training reduces $\rho$, cannot eliminate the bound.
 
-Multi-constraint LLM behavior shows feasibility cliffs, not capability gradients. Contributions: Diagonal Cost Bound (Thm~\ref{thm:gram}); regime index $\rhohat$ ($r_s{=}1.0$); judge-free validation (0/4,272); Algorithm~\ref{alg:routing} routes pre-generation with ${<}2\%$ regret vs.\ oracle. The bound is kinematic. Training shifts $\rho$, not geometry. \textbf{Open:} implicit/value-laden constraints, embodied policies \citep{nvidia2025cosmos}, the 11\% pivot regime. Code: \url{https://github.com/PaulTiffany/cost}.\footnote{Direct artifact links: \href{https://github.com/PaulTiffany/cost/blob/main/supplementary/demos/audio_demos/INDEX.html}{audio demos (browser-playable)}, \href{https://github.com/PaulTiffany/cost/blob/main/ci/claim_certificate.md}{mechanical certificate}, \href{https://github.com/PaulTiffany/cost/blob/main/ci/cost_report.json}{cost report}, \href{https://github.com/PaulTiffany/cost/blob/main/supplementary/REVIEWER_INDEX.md}{reviewer index}.}
+Multi-constraint LLM behavior shows feasibility cliffs, not capability gradients. Contributions: Diagonal Cost Bound (Thm~\ref{thm:gram}); regime index $\rhohat$ ($r_s{=}1.0$); judge-free validation (0/4,272); Algorithm~\ref{alg:routing} routes pre-generation with ${<}2\%$ regret vs.\ oracle. The bound is kinematic. Training shifts $\rho$, not geometry. \textbf{Open:} implicit/value-laden constraints, embodied policies \citep{nvidia2025cosmos}, the 11\% pivot regime. Code: \url{https://github.com/PaulTiffany/cost}.\footnote{Direct artifact links: \href{https://paultiffany.github.io/cost/supplementary/demos/audio_demos/INDEX.html}{audio demos (browser-playable)}, \href{https://github.com/PaulTiffany/cost/blob/main/ci/claim_certificate.md}{mechanical certificate}, \href{https://github.com/PaulTiffany/cost/blob/main/ci/cost_report.json}{cost report}, \href{https://github.com/PaulTiffany/cost/blob/main/supplementary/REVIEWER_INDEX.md}{reviewer index}.}
 
 \begin{ack}
-[Acknowledgments placeholder. NeurIPS hides this section automatically in the anonymized submission. Required disclosures: funding sources and competing interests. See the NeurIPS 2026 Call for Papers at https://neurips.cc/Conferences/2026/CallForPapers for current funding-disclosure requirements.]
+The author received no external funding for this work and reports no competing interests.
 \end{ack}
 
 % Impact Statement folded into NeurIPS Checklist Q10 (broader impacts) per
@@ -2484,7 +2484,7 @@ An open question for future work: can we construct \emph{looping systems with no
 
 \section{Reproducibility Checklist}\label{app:reproducibility}
 
-Following NeurIPS reproducibility guidelines:
+Following standard reproducibility guidelines:
 
 \begin{itemize}
 \item[$\checkmark$] \textbf{Code:} Full implementation at anonymous repository
@@ -2722,6 +2722,6 @@ A reviewer asked how the routing framework recovers an explicit constraint set $
 
 % NeurIPS checklist (last per Handbook page 7; does not count toward 9-page limit; required, desk-reject if missing)
 \newpage
-\input{checklist.tex}
+\input{checklist_arxiv.tex}
 
 \end{document}

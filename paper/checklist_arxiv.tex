@@ -1,0 +1,91 @@
+\section*{Paper Checklist}
+
+\begin{enumerate}
+
+\item {\bf Claims}
+    \item[] Question: Do the main claims made in the abstract and introduction accurately reflect the paper's contributions and scope?
+    \item[] Answer: \answerYes{}
+    \item[] Justification: The abstract and Section~\ref{sec:intro} state the geometric lower bound (diagonal cost), the regime-based router, and the empirical contract; Sections~\ref{sec:setup}--\ref{sec:empirical} establish each. Falsifiable predictions are stated explicitly in Section~1 under ``Scope and Falsifiable Predictions.''
+
+\item {\bf Limitations}
+    \item[] Question: Does the paper discuss the limitations of the work performed by the authors?
+    \item[] Answer: \answerYes{}
+    \item[] Justification: Section~\ref{sec:limitations} documents encoder blindness, scope to explicit constraints, and the 11\% pivot regime as known failure modes; Appendix~D.1 reports robustness stress tests under paraphrasing, reordering, and softening. The implicit-$k$ extraction step is no longer left as a manual exercise: Appendix~\ref{app:implicit_k} implements a closed-loop Constraint Decompression Pipeline (Tagger LLM $\to$ static deterministic-verifier library $\to$ Router $\to$ Generator $\to$ Linter, no LLM-as-judge) and runs it across 9 frontier Claude models on 8 implicit prompts; the worked example in Section~\ref{app:constrained_decoding} shows the literal trace. Two additional limitations now documented: a staging inversion observed in Appendix~\ref{app:policy_density} where staging actively hurts at $k > {\sim}22$ on the 34-rule policy density bank, and an opus-4.7 sampling caveat (the model rejects \texttt{temperature}/\texttt{top\_p}/\texttt{top\_k} per Anthropic's release notes; Appendix~\ref{app:claude_genome}).
+
+\item {\bf Theory assumptions and proofs}
+    \item[] Question: For each theoretical result, does the paper provide the full set of assumptions and a complete (and correct) proof?
+    \item[] Answer: \answerYes{}
+    \item[] Justification: All theorems state assumptions explicitly (Hilbert space, finite $k$, displacement contract). Full proofs appear in Appendix~\ref{app:proofs}; proof sketches appear inline in the main text.
+
+\item {\bf Experimental result reproducibility}
+    \item[] Question: Does the paper fully disclose all the information needed to reproduce the main experimental results of the paper to the extent that it affects the main claims and/or conclusions of the paper (regardless of whether the code and data are provided or not)?
+    \item[] Answer: \answerYes{}
+    \item[] Justification: Five deterministic verifier families (code AST, JSON schema, optimization gradient, signal DSL, regex/AST/length compliance) replace LLM-as-judge. Pre-computed results in supplementary JSON files enable direct inspection without re-running expensive experiments. Verification harnesses listed in Appendix~\ref{app:harness_suite}; the multi-suite mechanical certificate (Appendix~\ref{app:cert_scope}, six suites spanning 24 layer scripts) verifies 325 of 325 numeric claim ties at submission. The May 2026 Claude family extension ships its own merged 10-model artifacts (\texttt{fixed\_point\_claude\_family\_full10.json}, \texttt{fixed\_point\_model\_family\_full10.json}) plus three sibling additions per canonical experiment (opus-4.6, sonnet-4.6, opus-4.7), each with a \texttt{\_meta.methodology\_deviation} field for any sampling caveats.
+
+\item {\bf Open access to data and code}
+    \item[] Question: Does the paper provide open access to the data and code, with sufficient instructions to faithfully reproduce the main experimental results, as described in supplemental material?
+    \item[] Answer: \answerYes{}
+    \item[] Justification: Anonymized repository contains all verification harnesses, embeddings, reproducibility scripts, and result JSONs. Reproducibility guide maps every quantitative claim to verification code (CLAIM\_AUDIT.md). The multi-suite certificate (Appendix~\ref{app:cert_scope}) is itself reproducible: \texttt{python ci/claim\_certificate.py} regenerates the verdict from scratch. Visual accessibility of figures and audio is documented in \texttt{supplementary/ALT\_TEXT.md}; the audio demo index (\texttt{supplementary/demos/audio\_demos/INDEX.html}) is browser-playable with semantic landmarks, a skip-to-content link, and \texttt{aria-label} on every audio element.
+
+\item {\bf Experimental setting/details}
+    \item[] Question: Does the paper specify all the training and test details (e.g., data splits, hyperparameters, how they were chosen, type of optimizer) necessary to understand the results?
+    \item[] Answer: \answerYes{}
+    \item[] Justification: Appendix~\ref{app:experiments} documents data splits, models tested, encoder choices, and routing thresholds. Table~\ref{tab:lipschitz_calibration} reports Lipschitz calibration per model. Routing thresholds are pre-registered in Algorithm~\ref{alg:routing} and mechanically verified by L9 sub-checks in the cert (formula evaluation: $\sqrt{2/(1{-}\rho)}$ at $\rho{=}0.5$ matches the tabulated $2.0000$, etc.); the registered values in \texttt{ci/claim\_data\_ties.json} drive the verification.
+
+\item {\bf Experiment statistical significance}
+    \item[] Question: Does the paper report error bars suitably and correctly defined or other appropriate information about the statistical significance of the experiments?
+    \item[] Answer: \answerYes{}
+    \item[] Justification: Lipschitz calibration reports mean $\pm$ standard deviation per model (Table~\ref{tab:lipschitz_calibration}); rank correlations report Spearman $r_s$, Kendall $\tau$, sample size, and p-values (e.g., $r_s=-0.942$, 48 points, $p=2.1\times10^{-23}$, Section~\ref{sec:empirical}). Three cert-side checks make the statistical surface independently auditable: (i) \texttt{ci/sample\_size\_adequacy\_check.py} (L18) flags every rate claim whose denominator falls below $N{=}30$ (current state: 47 advisory warnings, all on per-cell N${\le}12$ trials, no headline claim flagged); (ii) \texttt{ci/confidence\_interval\_coverage\_check.py} (L19) verifies every percentage / ratio claim has either CI data in its source JSON or an explicit \texttt{point\_estimate\_only} caveat (current state: 31 advisory warnings, headline claims covered); (iii) \texttt{ci/multi\_seed\_drift\_check.py} (L25) reads a small variance baseline (3 models $\times$ 5 reruns at temperature 0.7 on a self-referential task, in \texttt{ci/multi\_seed\_drift\_data.json}) and verifies per-model response-length stdev stays under threshold. The drift baseline surfaced one substantive finding: opus-4.6 returned identical output across all 5 reruns, recorded as a sampling caveat in Appendix~\ref{app:claude_genome}.
+
+\item {\bf Experiments compute resources}
+    \item[] Question: For each experiment, does the paper provide sufficient information on the computer resources (type of compute workers, memory, time of execution) needed to reproduce the experiments?
+    \item[] Answer: \answerYes{}
+    \item[] Justification: Inference-time experiments use commercial LLM APIs (GPT-4o, Claude family, Gemini, DeepSeek) and local inference for open-weight models (Qwen-2.5-Coder, TinyLlama-1.1B, CodeLlama-7B) on a single workstation. Embedding computation is CPU-only ($<$10\,ms per regime-index call). Open-weight 4-model code experiment: $\sim$20 hours on a single RTX 4050 GPU. Per-run wall-clock for the May 2026 family extensions was 1--7 minutes thanks to a 4--6 worker \texttt{ThreadPoolExecutor}. \textbf{Per-run elapsed time and token totals are recorded in the \texttt{\_meta} block of every result JSON for audit, and a tractable cost reconstruction lives at \texttt{ci/cost\_report.json}, regenerable via \texttt{python ci/cost\_report.py}.} The reconstruction reads every result JSON, sums tokens by \texttt{model\_id}, and multiplies by the current per-million-token prices in \texttt{ci/model\_pricing.json} (Anthropic prices hand-edited and dated; OpenRouter prices auto-refreshable via \texttt{python ci/refresh\_pricing.py} against \texttt{openrouter.ai/api/v1/models}). At the prices verified 2026-05-04, the May 2026 family extension cost \$26.89 across 14 experiments with measured token data; the older experiments (cross-model, regression, image-transfer, hard-negatives, forbidden-pivot, calibration, constitution analysis) record call counts but not per-call tokens, so their costs are reconstructed by token estimate from response text and are flagged \texttt{text\_estimate} in \texttt{cost\_report.json}.
+
+\item {\bf Code of ethics}
+    \item[] Question: Does the research conducted in the paper conform, in every respect, with the NeurIPS Code of Ethics?
+    \item[] Answer: \answerYes{}
+    \item[] Justification: The research conforms with the NeurIPS Code of Ethics. No human subjects, no scraped or sensitive data, no released models requiring additional safeguards. A signed attestation lives at \texttt{CODE\_OF\_CONDUCT\_ATTESTATION.md} at the supplementary root; it affirms compliance, documents the absence of human subjects data, and points to \texttt{AGENTS.md} for agent-provenance disclosure and \texttt{ci/sbom\_manifest.json} for dependency license tracking.
+
+\item {\bf Broader impacts}
+    \item[] Question: Does the paper discuss both potential positive societal impacts and negative societal impacts of the work performed?
+    \item[] Answer: \answerYes{}
+    \item[] Justification: \textbf{Positive:} Making geometric limits visible is prerequisite to respecting them; practitioners cannot avoid cliffs they cannot detect. The pre-generation routing rule lets aligned systems decline impossible requests rather than degrade silently. \textbf{Risk:} Same principles could optimize harmful constraint satisfaction (e.g., compound adversarial prompts). \textbf{Mitigation:} The bound is symmetric, so adversaries face the same limits. $\hat{\rho}$ detection works bidirectionally: compound adversarial prompts are \emph{more} visible (same cliffs). Fail-safe property: when constraints conflict, the system abstains rather than persuades. \textbf{Dual-use note (explicit):} the framework qualifies as dual-use research: a routing system that helps aligned generation also helps adversarial generation against the same bound; we accept this symmetry as inherent to a kinematic result and treat the visibility of $\hat{\rho}$ as the safety primitive that makes the symmetric application diagnosable rather than silent. \textbf{Environmental footprint:} all reported experiments together totalled approximately \$26.89 of API spend at 2026-05 prices (\texttt{ci/cost\_report.json}), consistent with a low compute footprint; estimating CO$_2$ from token totals follows the methodology of Lacoste et al.\ (1910.09700) and is dominated by the open-weight 4-model code experiment ($\sim$20 GPU-hours on a single RTX 4050). \textbf{Commercial relevance:} multi-stakeholder optimization in commercial settings exhibits constraint coupling, with examples including advertising (user intent vs.\ promotion vs.\ transparency), long-cycle capital reporting (asset-life accuracy vs.\ earnings predictability vs.\ competitive parity), and platform moderation (user vs.\ advertiser vs.\ regulator); the diagonal cost predicts the regime where joint satisfaction becomes infeasible, informing context-integrity, disclosure, and routing policy.
+
+\item {\bf Safeguards}
+    \item[] Question: Does the paper describe safeguards that have been put in place for responsible release of data or models that have a high risk for misuse (e.g., pre-trained language models, image generators, or scraped datasets)?
+    \item[] Answer: \answerNA{}
+    \item[] Justification: The paper releases no models, datasets, or assets with misuse risk. The contribution is a geometric lower bound and a routing algorithm using existing publicly available embedding models.
+
+\item {\bf Licenses for existing assets}
+    \item[] Question: Are the creators or original owners of assets (e.g., code, data, models), used in the paper, properly credited and are the license and terms of use explicitly mentioned and properly respected?
+    \item[] Answer: \answerYes{}
+    \item[] Justification: All evaluated LLMs are accessed via published APIs (commercial models) or open-weight releases under their respective licenses (Llama 3.1 community license, Qwen Apache 2.0, TinyLlama Apache 2.0, CodeLlama community license). Sentence-Transformers encoders (MiniLM-L6-v2, mpnet-base-v2, multilingual-MiniLM) are Apache 2.0. Each is cited in the relevant section. Python dependency licenses are tracked in \texttt{ci/sbom\_manifest.json} (8 packages, every entry carrying a non-empty license field) and verified against an explicit NeurIPS-acceptable allowlist (MIT, BSD variants, Apache-2.0, ISC, Python-2.0, MPL-2.0, LGPL-3.0-or-later, PSF-2.0, Unlicense) by \texttt{ci/license\_clearance\_check.py} (L23). Current state: 8 of 8 packages allowed, zero warnings, zero blockers. Dependency pins live in \texttt{requirements.lock.txt}.
+
+\item {\bf New assets}
+    \item[] Question: Are new assets introduced in the paper well documented and is the documentation provided alongside the assets?
+    \item[] Answer: \answerYes{}
+    \item[] Justification: No new datasets or pre-trained models are released. Code-side new assets, all documented in-place. \textbf{Experiment harnesses:} (i) a 34-rule policy density compliance library with deterministic Python verifiers (\texttt{policy\_density\_compliance\_harness.py}, doubled-up as the static library for the implicit-$k$ pipeline); (ii) the Constraint Decompression Pipeline (\texttt{implicit\_k\_decompression\_harness.py}); (iii) three Claude-family addition scripts taking a \texttt{--model} flag (\texttt{fixed\_point\_\{claude,model\}\_family\_opus47\_addition.py}, \texttt{high\_k\_opus47\_addition.py}). \textbf{Cert-side tooling:} (iv) the suite registry and roll-up (\texttt{ci/suite\_registry.json} mapping every check into one of six named suites, with \texttt{ci/claim\_certificate.py} emitting both \texttt{suites[]} and \texttt{layers[]}); (v) eight new layer scripts spanning all six suites (L17 through L25, including SBOM verification, license clearance, container lineage, sample-size adequacy, CI coverage, multi-seed drift, table-value consistency, and cross-source recomputation); (vi) the cost-reconstruction tooling (\texttt{ci/model\_pricing.json} + \texttt{ci/refresh\_pricing.py} + \texttt{ci/cost\_report.py}); (vii) a \texttt{Dockerfile} plus pinned \texttt{requirements.lock.txt} for hermetic reruns. \textbf{Reviewer aids:} (viii) an audio sonification suite (31 deterministically-generated clips) with a browser-playable HTML index; (ix) showcase plots and an alt-text manifest (\texttt{supplementary/ALT\_TEXT.md}); (x) the agent-provenance disclosure (\texttt{AGENTS.md}) and code-of-conduct attestation (\texttt{CODE\_OF\_CONDUCT\_ATTESTATION.md}). Each asset ships with a README or in-script docstring describing inputs, outputs, and reproduction commands.
+
+\item {\bf Crowdsourcing and research with human subjects}
+    \item[] Question: For crowdsourcing experiments and research with human subjects, does the paper include the full text of instructions given to participants and screenshots, if applicable, as well as details about compensation (if any)?
+    \item[] Answer: \answerNA{}
+    \item[] Justification: The research does not involve crowdsourcing or human subjects.
+
+\item {\bf Institutional review board (IRB) approvals or equivalent for research with human subjects}
+    \item[] Question: Does the paper describe potential risks incurred by study participants, whether such risks were disclosed to the subjects, and whether Institutional Review Board (IRB) approvals (or an equivalent approval/review based on the requirements of your country or institution) were obtained?
+    \item[] Answer: \answerNA{}
+    \item[] Justification: No human subjects research.
+
+\item {\bf Declaration of LLM usage}
+    \item[] Question: Does the paper describe the usage of LLMs if it is an important, original, or non-standard component of the core methods in this research?
+    \item[] Answer: \answerYes{}
+    \item[] Justification: LLMs play three distinct roles in this work, all of which are documented and none of which act as a judge for headline empirical claims.
+
+    \textbf{(1) LLMs as object of study.} The empirical work analyzes multi-constraint generation behavior across GPT-4o, the Claude family (haiku-3, sonnet-4, opus-4, opus-4.1, sonnet-4.5, haiku-4.5, opus-4.5, plus the May 2026 additions opus-4.6, sonnet-4.6, opus-4.7), Gemini-2.5 Flash and Pro, DeepSeek-v3 and -R1, Llama-3.1-70B, Qwen-2.5-Coder, TinyLlama-1.1B, and CodeLlama-7B. Specific model IDs, versions, access methods, and any per-model sampling caveats (notably opus-4.7's rejection of \texttt{temperature}/\texttt{top\_p}/\texttt{top\_k}) are documented in Section~\ref{sec:empirical}, Appendix~\ref{app:experiments}, and the \texttt{\_meta} block of every result JSON. Note: \texttt{claude-3-haiku-20240307} (haiku-3) returns 404 from the Anthropic API as of 2026-05; the historical results remain in the canonical artifact for reproducibility.
+
+    \textbf{(2) LLMs as zeroth-order classifier (Tagger role).} The Constraint Decompression Pipeline (Appendix~\ref{app:implicit_k}) uses an LLM as a Tagger that selects from a fixed 34-rule deterministic-verifier library. The Tagger never invents constraints, never decides correctness, and never sees the verifier output; the verdict is a Python regex/AST/length linter. This role is non-standard and is documented end-to-end including a worked trace.
+
+    \textbf{(3) LLMs as a writing aid.} LLM-assisted prose editing was used during manuscript preparation; full agent-provenance disclosure is in \texttt{AGENTS.md} at the supplementary root. This does not affect the core methodology, scientific rigor, or originality of the research.
+
+\end{enumerate}

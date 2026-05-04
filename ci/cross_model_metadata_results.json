@@ -20,9 +20,9 @@
       "Qwen/Qwen2.5-3B-Instruct",
       "google/gemini-2.5-flash",
       "meta-llama/llama-3.1-70b-instruct",
-      "openai/gpt-4o",
       "deepseek/deepseek-chat-v3-0324",
-      "google/gemini-2.5-pro"
+      "google/gemini-2.5-pro",
+      "openai/gpt-4o"
     ],
     "provider_set": [
       "Alibaba",
