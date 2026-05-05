@@ -236,9 +236,10 @@ CLAIMS: list[dict] = [
     },
     {
         "id": "C20",
-        "description": r"<2% regret vs oracle (Table 11)",
+        "description": r"1.8% regret on calibration; <=3.1% on transfer (Table 11)",
         "patterns": [
-            r"(?:<|\\leq|\\le)\s*2\s*\\?%|2\s*\\?%\s*regret|1\.8\s*\\?\\?pm\s*0\.4\s*\\?%",
+            r"1\.8\s*\\?%",
+            r"3\.1\s*\\?%",
         ],
     },
     {

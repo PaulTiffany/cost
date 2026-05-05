@@ -6,7 +6,7 @@
     "overall": "PASS",
     "paper_window_lines": [
       81,
-      551
+      552
     ]
   },
   "computed": {
@@ -20,8 +20,8 @@
       "Qwen/Qwen2.5-3B-Instruct",
       "google/gemini-2.5-pro",
       "openai/gpt-4o",
-      "google/gemini-2.5-flash",
       "meta-llama/llama-3.1-70b-instruct",
+      "google/gemini-2.5-flash",
       "deepseek/deepseek-chat-v3-0324"
     ],
     "provider_set": [
@@ -44,31 +44,31 @@
       "passed": true,
       "expected_n_models": 9,
       "found_at_lines": [
-        526,
-        533
+        527,
+        534
       ],
-      "detail": "Found phrase '9 models' at line(s) [526, 533]"
+      "detail": "Found phrase '9 models' at line(s) [527, 534]"
     },
     {
       "name": "n_providers_in_paper_window",
       "passed": true,
       "expected_n_providers": 6,
       "found_at_lines": [
-        526,
-        533,
-        540
+        527,
+        534,
+        541
       ],
-      "detail": "Found phrase '6 providers' at line(s) [526, 533, 540]"
+      "detail": "Found phrase '6 providers' at line(s) [527, 534, 541]"
     },
     {
       "name": "n_trials_in_paper_window",
       "passed": true,
       "expected_n_trials": 3120,
       "found_at_lines": [
-        526,
-        533
+        527,
+        534
       ],
-      "detail": "Found '3120' at line(s) [526, 533]"
+      "detail": "Found '3120' at line(s) [527, 534]"
     }
   ]
 }

@@ -5,8 +5,8 @@
 **Paper:** The Cost of Cacophony: Geometric Limits on Multi-Constraint Alignment
 **Venue:** NeurIPS 2026 (anonymous double-blind submission)
 **Mode:** `quick` (release: full L12 build equivalence + artifact hashes embedded; quick: --quick L12 (mtime+asset-hash only), faster local checks)
-**Generated:** 2026-05-04T20:27:27
-**Verdict:** **PASS** — all structural checks clean (L1+L2+L4+L7+L8+L9+L10+L11+L12+L13+L14+L15+L27); L3+L5+L16 coverage is advisory, see triage JSONs
+**Generated:** 2026-05-04T21:01:00
+**Verdict:** **PASS** — all structural checks clean (L1+L2+L4+L7+L8+L9+L10+L11+L12+L13+L14+L15+L27+L28+L29); L3+L5+L16 coverage is advisory, see triage JSONs
 
 ## Scope of certification
 
@@ -38,13 +38,13 @@ python ci/claim_certificate.py --release
 
 ## Provenance
 
-- main.tex sha256: `93ef6f9176892c00...` (full hash in JSON)
-- main.tex mtime: 2026-05-04T20:20:34
-- main.pdf size: 1,173,985 bytes
-- main.pdf mtime: 2026-05-04T20:26:39
-- registry sha256: `61b08aec7166fa66...`
-- artifact hashes: 27 layer-result JSONs + manifests recorded in JSON payload
-- certificate self-hash: `f770646ee224ae53...` (sha256 of this payload minus the hash field; recompute to verify integrity)
+- main.tex sha256: `76504abf3eb9096d...` (full hash in JSON)
+- main.tex mtime: 2026-05-04T20:58:34
+- main.pdf size: 1,178,066 bytes
+- main.pdf mtime: 2026-05-04T20:59:15
+- registry sha256: `4d086d3d1663d2c5...`
+- artifact hashes: 29 layer-result JSONs + manifests recorded in JSON payload
+- certificate self-hash: `39680f72ebfdddbb...` (sha256 of this payload minus the hash field; recompute to verify integrity)
 
 ## Layer-by-layer Results
 
@@ -52,11 +52,11 @@ python ci/claim_certificate.py --release
 |---|---|---|---|
 | L1_audit | `ci\claim_audit.py` | PASS | 149/149 verbatim |
 | L2_validator | `ci\claim_audit_validator.py` | PASS | 14/14 checks pass |
-| L3_sweep | `ci\claim_coverage_sweep.py` | PASS | 92.9% coverage, 96 uncovered |
+| L3_sweep | `ci\claim_coverage_sweep.py` | PASS | 93.0% coverage, 96 uncovered |
 | L4_lineage | `ci\figure_lineage_check.py` | PASS | 8/8 checks pass, 11 figures fresh |
 | L5_figure_values | `ci\figure_value_check.py` | PASS | 77.6% overall figure coverage, 23 uncovered |
 | L7_citations | `ci\citation_integrity_check.py` | PASS | 30 cites, 42 bib entries, 0 unresolved, 12 dead |
-| L8_links | `ci\link_integrity_check.py` | PASS | 2 URLs, 120 refs / 175 labels, 0 unresolved, 56 dead labels |
+| L8_links | `ci\link_integrity_check.py` | PASS | 2 URLs, 122 refs / 175 labels, 0 unresolved, 54 dead labels |
 | L9_consistency | `ci\cross_claim_consistency_check.py` | PASS | 60/60 consistency relations hold |
 | L10_bib | `ci\bib_entry_check.py` | PASS | 42/42 bib entries well-formed |
 | L11_scripts | `ci\script_integrity_check.py` | PASS | 13/13 figure scripts pass smoke test |
@@ -76,6 +76,8 @@ python ci/claim_certificate.py --release
 | L25_multi_seed_drift | `ci\multi_seed_drift_check.py` | PASS | (no summary) |
 | L26_reference_convention | `ci\reference_convention_check.py` | PASS | (no summary) |
 | L27_stat_algo_sanity | `ci\statistical_and_algorithmic_sanity_check.py` | PASS | 0 blocker / 1 warn (impossible p, algo guards, ref types, headline drift) |
+| L28_symbolic_algebra | `ci\symbolic_algebra_check.py` | PASS | 9/9 algebraic identities verified by SymPy |
+| L29_numerical_bounds | `ci\numerical_bound_check.py` | PASS | 6/6 bounds numerically verified (SLSQP counter-example search; H1 demo: 100 violations of original m=min_i m_i form) |
 
 ### Per-figure coverage (L5)
 
@@ -130,4 +132,6 @@ python ci\pdf_camera_ready_check.py    # L24_pdf_camera_ready
 python ci\multi_seed_drift_check.py    # L25_multi_seed_drift
 python ci\reference_convention_check.py    # L26_reference_convention
 python ci\statistical_and_algorithmic_sanity_check.py    # L27_stat_algo_sanity
+python ci\symbolic_algebra_check.py    # L28_symbolic_algebra
+python ci\numerical_bound_check.py    # L29_numerical_bounds
 ```

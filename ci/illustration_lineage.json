@@ -22,8 +22,8 @@
         {
           "kind": "latex_block",
           "file": "paper/main.tex",
-          "line_start": 357,
-          "line_end": 359,
+          "line_start": 358,
+          "line_end": 360,
           "hash": "13bfe00540f440410b2317b8fb15e2297c3c8178dde33eac3ac5221da3427fc2"
         },
         {
@@ -55,8 +55,8 @@
           "kind": "latex_block",
           "file": "paper/main.tex",
           "line_start": 109,
-          "line_end": 128,
-          "hash": "7d27e59e33b1232cb840331d74b0b1c5b6d99367b1f36516850ba76731c1a1e9"
+          "line_end": 129,
+          "hash": "cc3ee9a286c147d8a2ef12ea7e5503ede65b85a2d1a5836fc96eb2acd68b65f8"
         },
         {
           "kind": "text_file",
@@ -86,8 +86,8 @@
         {
           "kind": "latex_block",
           "file": "paper/main.tex",
-          "line_start": 263,
-          "line_end": 265,
+          "line_start": 264,
+          "line_end": 266,
           "hash": "46f3fbaf6fe5f63dbe07638d5c99ad7620f67a2b2d3e89061b97ca844b192c81"
         },
         {

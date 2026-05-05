@@ -55,7 +55,7 @@
 | C17 | $r_s \geq 0.94$ across encoders | Table 6 | `conflict_detection/results.json` |
 | C18 | 94% trajectories with drift <0.15 | Section 4 | `code_constraint_results.json` |
 | C19 | 6% high-drift = pivot completions | Appendix J | `code_constraint_results.json` |
-| C20 | <2% regret vs oracle | Table 11 | `code_constraint_results.json` |
+| C20 | 1.8% regret on calibration | Table 11 | `code_constraint_results.json` |
 
 ## Domain Transfer (4 claims)
 

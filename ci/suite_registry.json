@@ -160,6 +160,16 @@
           "check": "L27_stat_algo_sanity",
           "script": "statistical_and_algorithmic_sanity_check.py",
           "severity": "blocker"
+        },
+        {
+          "check": "L28_symbolic_algebra",
+          "script": "symbolic_algebra_check.py",
+          "severity": "blocker"
+        },
+        {
+          "check": "L29_numerical_bounds",
+          "script": "numerical_bound_check.py",
+          "severity": "blocker"
         }
       ]
     },

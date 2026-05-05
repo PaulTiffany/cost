@@ -79,18 +79,18 @@
 \maketitle
 
 \begin{abstract}
-We enable routing decisions \emph{before} LLM generation: given a multi-constraint prompt, decide whether to attempt one-shot, decompose into stages, or reject. Regret is under $2\%$, errors are fail-safe (over-staging, not failure).
+We enable routing decisions \emph{before} LLM generation: given a multi-constraint prompt, decide whether to attempt one-shot, decompose into stages, or reject. Regret vs.\ oracle is $1.8\%$ on calibration and $\le 3.1\%$ across four transfer domains; errors are fail-safe (over-staging, not failure).
 Our approach: multi-constraint behavior exhibits sharp transitions between feasible and infeasible (`feasibility cliffs'), not gradual capability degradation.
 We prove the minimum displacement to satisfy $k$ constraints scales as $\sqrt{k/(1{-}\rho(k{-}1))}$ (the `diagonal cost'), diverging at a geometric threshold. This lower bound is foundational to MOO-control integration. An empirical contract (89\%) connects the geometry to inference.
 The bound dictates control: a zeroth-order screening statistic (`$\rhohat$') orders \emph{which side of the cliff} a prompt lies on ($r_s{=}1.0$). Sequential satisfaction has provably lower cost than simultaneous.
-Results: across four domains (code, JSON, optimization, signal), when the bound predicts infeasibility, smooth-regime one-shot fails (0/4,272 trials). The 11\% pivot regime admits 42/528 successes with detectable mid-generation signatures (1.7\% unconditional rate).
+Results: across four domains (code, JSON, optimization, signal), when the bound predicts infeasibility, smooth-regime one-shot fails (0/4,272 trials). The 11\% pivot regime admits 42/528 successes with detectable mid-generation signatures; the high-tier unconditional pass rate is 1.7\% (8/480).
 \end{abstract}
 
 \section{Introduction}\label{sec:intro}
 
 Large language models (LLMs) can satisfy individual constraints (safety, helpfulness, format compliance) but performance can collapse when several constraints are activated together, even when constraints are compatibility-designed (\appref{app:charity}). This failure is commonly treated as a capability gap. We show it is \emph{geometric} (Thm~\ref{thm:gram}). Multi-constraint behavior exhibits sharp transitions: \textbf{feasibility cliffs}, not gradual degradation (Fig.~\ref{fig:cross_model}). A zeroth-order \textbf{regime index} $\rhohat$ orders which side of the cliff a prompt lies on \emph{before} generation ($r_s{=}1.0$ Spearman; Figure~\ref{fig:feasibility_surface}).
 
-\textbf{Approach.} We prove that the minimum displacement to satisfy $k$ constraints simultaneously scales as $\delta_{\min} \propto \sqrt{k/(1{-}\rho(k{-}1))}$ (the \emph{diagonal cost}), diverging at a geometric threshold (Theorem~\ref{thm:gram}). An empirically calibrated displacement contract (App.~\ref{app:lipschitz_calibration}) connects this bound to observable LLM behavior. 89\% of generation trajectories obey per-token Lipschitz bounds. The remaining 11\% are detectable pivot events (Table~\ref{tab:lipschitz_calibration}). When the bound predicts infeasibility, one-shot generation fails (0/4,272 smooth-regime trials, \secref{sec:empirical}). Algorithm~\ref{alg:routing} routes \emph{before generation} to one-shot, staged, or decomposed (Figure~\ref{fig:pipeline}), with $1.8\pm0.4\%$ regret vs.\ oracle.\footnote{$\rhohat=\cos(\cdot)$ measures \emph{similarity}. High $\rhohat$ triggers checks, not verdicts. $\rhohat$ recovers conflict topology, not gradient (Lemma~\ref{lem:proxy_sufficiency}). Constructive framing per \citep{piaget1954construction}: feasibility built sequentially.} Black-box: no gradients, no model internals (App.~\ref{app:harness_suite}). Transfers from 1B to frontier (Table~\ref{tab:claude_family}, Fig.~\ref{fig:cross_model}).
+\textbf{Approach.} We prove that the minimum displacement to satisfy $k$ constraints simultaneously scales as $\delta_{\min} \propto \sqrt{k/(1{-}\rho(k{-}1))}$ (the \emph{diagonal cost}), diverging at a geometric threshold (Theorem~\ref{thm:gram}). An empirically calibrated displacement contract (App.~\ref{app:lipschitz_calibration}) connects this bound to observable LLM behavior. 89\% of generation trajectories obey per-token Lipschitz bounds. The remaining 11\% are detectable pivot events (Table~\ref{tab:lipschitz_calibration}). When the bound predicts infeasibility, one-shot generation fails (0/4,272 smooth-regime trials, \secref{sec:empirical}). Algorithm~\ref{alg:routing} routes \emph{before generation} to one-shot, staged, or decomposed (Figure~\ref{fig:pipeline}), with $1.8\%$ regret on calibration ($\le 3.1\%$ across four transfer domains).\footnote{$\rhohat=\cos(\cdot)$ measures \emph{similarity}. High $\rhohat$ triggers checks, not verdicts. $\rhohat$ recovers conflict topology, not gradient (Lemma~\ref{lem:proxy_sufficiency}). Constructive framing per \citep{piaget1954construction}: feasibility built sequentially.} Black-box: no gradients, no model internals (App.~\ref{app:harness_suite}). Transfers from 1B to frontier (Table~\ref{tab:claude_family}, Fig.~\ref{fig:cross_model}).
 
 \paragraph{The Diagonal Cost Bound.}
 For two constraints ($k{=}2$) with conflict $\rho$ (Definition~\ref{def:conflict}), simultaneous progress requires displacement exceeding:
@@ -107,14 +107,15 @@ diverging as $\rho \to 1$ (Corollary~\ref{cor:uniform}). The operational cliff a
 \end{figure*}
 
 \begin{algorithm}[t]
-\caption{Regime-Based Routing: One-Shot, Stage, or Decompose, Decided Before Generation. This is the deployed policy (regret ${<}2\%$ vs.\ oracle); a capability-aware extension that conditions on a one-shot baseline $c$ is given in \appref{app:protocol_policy}.}
+\caption{Regime-Based Routing: One-Shot, Stage, or Decompose, Decided Before Generation. This is the deployed policy (regret $1.8\%$ on calibration; $\le 3.1\%$ across four transfer domains); a capability-aware extension that conditions on a one-shot baseline $c$ is given in \appref{app:protocol_policy}.}
 \label{alg:routing}
 \begin{algorithmic}[1]
-\REQUIRE Prompt $P$, token budget $T$, encoder $\Phi$; calibration $\tau$ (constraint magnitude; default $0.1$), $\hat{L}$ (per-token displacement; default $0.025$, calibrated $\approx 0.048$, \appref{app:lipschitz_calibration}), $m$ (gradient-magnitude lower bound from constraint embeddings, Def.~\ref{def:conflict})
+\REQUIRE Prompt $P$, token budget $T$, encoder $\Phi$; calibration $\tau$ (constraint magnitude; default $0.1$), $\hat{L}$ (per-token displacement; default $0.025$, calibrated $\approx 0.048$, \appref{app:lipschitz_calibration}), $m > 0$ (gradient-magnitude lower bound from constraint embeddings, Def.~\ref{def:conflict}; if $m_i$ vanishes the encoder fails to capture $C_i$ and the prompt is escalated to \textsc{Decompose-First} per \secref{sec:limitations})
 \STATE \textbf{Parse:} Extract constraints $C_1, \ldots, C_k$ from $P$\footnotemark
+\STATE \textbf{Trivial-case guard:} \textbf{if} $k \le 1$ \textbf{then return} \textsc{One-Shot} \quad\emph{// no conflict possible}
 \STATE \textbf{Compute regime index:} $\rhohat \gets \max_{i<j} \rhohat_{ij}$, where $\rhohat_{ij} = \cos(\Phi(C_i), \Phi(C_j))$
 \STATE \textbf{Estimate budget:} $\delta \gets \hat{L} \cdot T$
-\STATE \textbf{Guard:} \textbf{if} $\rhohat(k{-}1) \ge 1$ \textbf{then return} \textsc{Decompose-First} \quad\emph{// rank-deficiency boundary; both one-shot and staged diverge here (Cor.~\ref{cor:k_uniform})}
+\STATE \textbf{Guard:} \textbf{if} $\rhohat(k{-}1) \ge 1$ \textbf{then return} \textsc{Decompose-First} \quad\emph{// rank-deficiency boundary; one-shot and staged both diverge (Cor.~\ref{cor:k_uniform}, Remark~\ref{rem:universal_boundary}); decompose escapes by reducing $k$}
 \STATE \textbf{Compute screened cost:} $\widehat{\delta}_{\min} \gets (\tau/m)\sqrt{k/(1{-}\rhohat(k{-}1))}$
 \STATE \textbf{Route:}
 \IF{$\delta/\widehat{\delta}_{\min} > 2$ \textbf{or} $\rhohat < 0.15$}
@@ -127,7 +128,7 @@ diverging as $\rho \to 1$ (Corollary~\ref{cor:uniform}). The operational cliff a
 \end{algorithmic}
 \end{algorithm}
 \footnotetext{Constraints extracted via explicit markers or structured input; implicit entanglement is a limitation (\secref{sec:limitations}). Line~2 uses the similarity shorthand $\cos(\Phi(C_i),\Phi(C_j))$; the deployment estimator is the contrastive form $-\cos(\bar{e}^+_i{-}\bar{e}^-_i,\bar{e}^+_j{-}\bar{e}^-_j)$ (\appref{app:estimation_protocol}, \appref{app:deployment}). High value triggers conflict checks in both.}
-\noindent $\rhohat$ is a conservative screen: false positives over-stage (token cost), not fail. Thresholds from feasibility geometry \citep{fliege2000steepest}; ${<}2\%$ regret vs oracle (\appref{app:baselines}). Scope: explicit constraints; failure modes (encoder blindness, implicit $k$) in \secref{sec:limitations}.
+\noindent $\rhohat$ is a conservative screen: false positives over-stage (token cost), not fail. Thresholds from feasibility geometry \citep{fliege2000steepest}; regret $1.8\%$ on calibration / $\le 3.1\%$ on transfer (\appref{app:baselines}). Scope: explicit constraints; failure modes (encoder blindness, implicit $k$) in \secref{sec:limitations}.
 
 \noindent\textbf{Contributions.}
 (1)~\textbf{Tight Geometric Bound:} Two-constraint (Thm~\ref{thm:main_hetero}), $k$-constraint Gram-matrix (Thm~\ref{thm:gram}, Cor~\ref{cor:k_uniform}), staging efficiency (Thm~\ref{thm:staging}).
@@ -277,7 +278,7 @@ If $\delta_{\min}(\rho,\tau,m) > LT$, no $T$-token trajectory achieves \mbox{sim
 Lemma~\ref{lem:traj_infeasible} bounds one-shot control; staging exploits trajectory degrees of freedom under the same per-token contract (\secref{sec:staging}). Controlled re-anchoring replaces stochastic reliance on pivots with verifiable checkpoints (each a domain certificate).
 
 \begin{remark}[Regime index]\label{rem:proxy_scope}
-$\hat\rho$, a screening statistic for regime structure (not a conflict verdict), is the appropriate abstraction for control (\appref{app:high_k_opus}). Failure modes: non-linear satisfaction, context overflow, distribution shift (\appref{app:charity}). Robustness: $r_s \geq 0.94$ across encoders (\secref{sec:empirical}). Staging is opportunistic, not error (${<}2\%$ regret).
+$\hat\rho$, a screening statistic for regime structure (not a conflict verdict), is the appropriate abstraction for control (\appref{app:high_k_opus}). Failure modes: non-linear satisfaction, context overflow, distribution shift (\appref{app:charity}). Robustness: $r_s \geq 0.94$ across encoders (\secref{sec:empirical}). Staging is opportunistic, not error ($1.8\%$ regret on calibration; $\le 3.1\%$ on transfer).
 \end{remark}
 
 \textbf{Empirical validation.}
@@ -317,11 +318,11 @@ By minimum-norm halfspace intersection \citep{boyd2004convex}; the bound is tigh
 \subsection{Extension to $k$ Constraints}
 
 \begin{theorem}[$k$-Constraint Gram Bound]\label{thm:gram}
-Let $\Gamma = GG^\top$ be the Gram matrix of unit gradients. For $\Gamma \succ 0$:
+Let $\Gamma = GG^\top$ be the Gram matrix of unit gradients and $\alpha \in \mathbb{R}^k$ with $\alpha_i = \tau/m_i$. For $\Gamma \succ 0$:
 \[
-\norm{\Delta}_2 \;\ge\; \frac{\tau}{m} \sqrt{\mathbf{1}^\top \Gamma^{-1} \mathbf{1}}.
+\norm{\Delta}_2 \;\ge\; \sqrt{\alpha^\top \Gamma^{-1} \alpha}.
 \]
-At $\lambda_{\min}(\Gamma) \to 0$: bound diverges (feasibility boundary); see proof in \appref{app:proofs}.
+Under uniform $m_i = m$, this reduces to $(\tau/m)\sqrt{\mathbf{1}^\top \Gamma^{-1} \mathbf{1}}$. At $\lambda_{\min}(\Gamma) \to 0$: bound diverges (feasibility boundary); see proof in \appref{app:proofs}.
 \end{theorem}
 
 \begin{corollary}[Uniform Conflict]\label{cor:k_uniform}
@@ -346,10 +347,10 @@ The bound diverges as $\rho \to 1$ with critical threshold $\rho_c = 1 - 2\tau^2
 
 \section{Staged Control as Geometric Solution}\label{sec:staging}
 
-\noindent\textbf{Staging Principle:} One-shot requires $O(\sqrt{k/(1{-}\rho(k{-}1))})$ displacement. Staging decomposes into $k$ single-constraint steps at $O(\tau/m)$ each, total $O(k\tau/m)$, avoiding the amplification.
+\noindent\textbf{Staging Principle:} One-shot requires $O(\sqrt{k/(1{-}\rho(k{-}1))})$ displacement. Staging decomposes into $k$ single-constraint steps at $O(\tau/m)$ each, total $O(k\tau/m)$, avoiding the amplification (per-step ratio: Cor.~\ref{cor:staging_ratio}).
 
 \begin{theorem}[Staging Efficiency]\label{thm:staging}
-Staging into $k$ steps: total cost $O(k\tau/m)$ vs.\ diagonal $O(\sqrt{k/(1{-}\rho)}\cdot\tau/m)$; see proof in \appref{app:proofs}.
+Staging into $k$ steps: total cost $O(k\tau/m)$ vs.\ diagonal $O(\sqrt{k/(1{-}\rho(k{-}1))}\cdot\tau/m)$; see proof in \appref{app:proofs}.
 \end{theorem}
 
 Staging replaces endpoint-only control with sequential satisfaction (POCS \citep{bauschke1996projection}, critique-revision \citep{bai2022constitutional}). Coupling appears as preservation overhead. The trade-off is regime-dependent: low $\rho$ means control cost dominates, high $\rho$ means failure, moderate $\rho$ is where staging wins. Full development in \appref{app:preservation} (Remark~\ref{rem:staging_lift}).
@@ -404,7 +405,7 @@ Judge-free benchmark: (A)~unit tests + (B)~AST format. 12 tasks $\times$ 4 tiers
 \textbf{Budget Sweep.}
 Token budget sweep across $T \in \{128, 192, 256, 384, 512\}$ shows non-monotone staging benefit: at $T{=}128$ staging is starved by per-stage overhead and underperforms one-shot ($-8.3\%$), but at $T \in [192, 512]$ staging recovers to neutral or positive (full table: Table~\ref{tab:delta_capacity}, App~\ref{app:delta_capacity}). Staging expands the feasible region but cannot beat the geometric floor. The lever is budget redistribution, not prompt-engineering heuristics.
 
-\noindent\textbf{Routing Policy (Corollary of Theorem~\ref{thm:staging}):} \emph{One-shot} if $\rhohat < 0.15$ or $\delta/\delta_{\min} \gg 1$. \emph{Stage} if $\rhohat \in [0.15, 0.5]$ and $\delta/\delta_{\min} \in [1.2, 3]$. \emph{Fail-fast} otherwise. Thresholds are derived analytically from the feasibility boundary (Figure~\ref{fig:feasibility_surface}). They remain robust to $\rhohat$ perturbation: 94\% decision agreement under encoder variation (\appref{app:encoder_robustness}). The policy achieves ${<}2\%$ regret vs.\ oracle routing (\appref{app:protocol_policy}).
+\noindent\textbf{Routing Policy (Corollary of Theorem~\ref{thm:staging}):} \emph{One-shot} if $\rhohat < 0.15$ or $\delta/\delta_{\min} > 2$. \emph{Stage} if $\rhohat < 0.5$ and $\delta/\delta_{\min} > 1.2$ (the upper $\delta/\delta_{\min} > 2$ case is caught by the one-shot branch, leaving an effective staging band of $\delta/\delta_{\min} \in (1.2, 2]$). \emph{Decompose-First} otherwise. Thresholds are derived analytically from the feasibility boundary (Figure~\ref{fig:feasibility_surface}). They remain robust to $\rhohat$ perturbation: 94\% decision agreement under encoder variation (\appref{app:encoder_robustness}). The policy achieves $1.8\%$ regret on calibration; transfer regret is bounded by $3.1\%$ across the four domains (\appref{app:protocol_policy}).
 
 \paragraph{Geometric floor.}
 At high $\rhohat$, \emph{all protocols} collapse to $\leq$5\% \emph{on smooth-regime trials}. This is the bound in action, not a failure of staging; frontier residual at high tier (Figure~\ref{fig:cross_model}, 17--33\%) reflects pivot events and budget expansion, both detectable mid-generation and routed accordingly. Staging benefit is model-dependent: near-ceiling models (Qwen-Coder) show negative $\Delta$ because one-shot already succeeds, so staging adds overhead when unnecessary. Table~\ref{tab:delta_capacity_model} shows weaker models benefit most. \textbf{The contribution is principled routing, not a claim that staging always wins.}
@@ -547,7 +548,7 @@ Open-weight validation is reproducible. Frontier experiments confirm \emph{trans
 
 Figure~\ref{fig:rw_quadrant}(a) positions this work. Most multi-constraint methods operate at training time (gradient surgery, MOO: \citep{yu2020gradient,liu2021cagrad,navon2022nashmtl,he2025pama,sener2018multi}). Inference-time multi-constraint work \citep{madaan2023selfrefine,meyerson2025maker,lior2025wildifeval,qi2025agentif} lacks geometric foundation. Constitutional AI's critique-revision \citep{bai2022constitutional} is structurally staged constraint satisfaction. Our framework formalizes a pattern alignment training already uses implicitly. \textbf{Vs.\ CoT and reasoning models.} CoT decomposes logic, R1/o1 internalize staging, both under the same contract. \textbf{Novelty:} the bound is classical MOO. Our contributions are (i)~its application to LLM inference via the displacement contract, (ii)~$\rhohat$ as zeroth-order observable, (iii)~judge-free validation. Thresholds transfer (Table~\ref{tab:transfer}). Training reduces $\rho$, cannot eliminate the bound.
 
-Multi-constraint LLM behavior shows feasibility cliffs, not capability gradients. Contributions: Diagonal Cost Bound (Thm~\ref{thm:gram}); regime index $\rhohat$ ($r_s{=}1.0$); judge-free validation (0/4,272); Algorithm~\ref{alg:routing} routes pre-generation with ${<}2\%$ regret vs.\ oracle. The bound is kinematic. Training shifts $\rho$, not geometry. \textbf{Open:} implicit/value-laden constraints, embodied policies \citep{nvidia2025cosmos}, the 11\% pivot regime. Code: \url{https://anonymous.4open.science/r/cacophony}.
+Multi-constraint LLM behavior shows feasibility cliffs, not capability gradients. Contributions: Diagonal Cost Bound (Thm~\ref{thm:gram}); regime index $\rhohat$ ($r_s{=}1.0$); judge-free validation (0/4,272); Algorithm~\ref{alg:routing} routes pre-generation with $1.8\%$ regret on calibration ($\le 3.1\%$ on transfer) vs.\ oracle. The bound is kinematic. Training shifts $\rho$, not geometry. \textbf{Open:} implicit/value-laden constraints, embodied policies \citep{nvidia2025cosmos}, the 11\% pivot regime. Code: \url{https://anonymous.4open.science/r/cacophony}.
 
 \begin{ack}
 [Acknowledgments placeholder. NeurIPS hides this section automatically in the anonymized submission. Required disclosures: funding sources and competing interests. See the NeurIPS 2026 Call for Papers at https://neurips.cc/Conferences/2026/CallForPapers for current funding-disclosure requirements.]
@@ -1260,7 +1261,7 @@ Diagonal cost applies to \emph{endpoint-only} control: a single $\Delta$ achievi
 \paragraph{Formal Setup.}
 At stage $t{+}1$, the model solves $\min \|\Delta\|$ subject to a progress requirement on the active constraint $C_j$ and a non-regression requirement on every prior constraint $C_i$ already satisfied at stages $s \le t$:
 \[
-\langle u_j, \Delta\rangle \le -\tau/m, \qquad \langle u_i, \Delta\rangle \ge 0 \;\; \forall i \in P_t,
+\langle u_j, \Delta\rangle \le -\tau/m, \qquad \langle u_i, \Delta\rangle \le 0 \;\; \forall i \in P_t,
 \]
 where $P_t = \{\pi(s) : s \le t\}$ indexes the prior set, $|P_t| = p$. We assume uniform magnitudes $m_i = m$ for clarity; the general case scales each row by $m_i$ without changing the structure.
 
@@ -1427,7 +1428,7 @@ Then every $d$ satisfying \eqref{eq:firstorder} obeys
 \[
 \|d\|
 \;\ge\;
-\frac{\tau\sqrt{2}}{\sqrt{m_1^2 + m_2^2 - 2\rho m_1 m_2}}.
+\sqrt{\frac{\alpha_1^2 + \alpha_2^2 + 2\rho\,\alpha_1 \alpha_2}{1-\rho^2}}, \qquad \alpha_i := \tau/m_i.
 \]
 \end{theorem}
 
@@ -1559,7 +1560,7 @@ finite even as $\rhohat(k-1) \to 1$ (both diverge at the same rate $1/\sqrt{1-\r
 \end{corollary}
 
 \begin{remark}[Universal feasibility limit]\label{rem:universal_boundary}
-For uniform pairwise conflict, both simultaneous and staged satisfaction become infeasible at the same rank-deficiency boundary $\rhohat(k-1) = 1$. This is structural: at that boundary the $k$ unit gradients become linearly dependent and the orthogonal complement of any $k{-}1$-subset that contains a descent direction for the remaining one collapses. No memoryless policy that respects the linearization can escape this boundary; only constraint decomposition (reducing $k$) or magnitude rescaling (changing $\tau/m$) does. This motivates the Algorithm~\ref{alg:routing} guard \texttt{if $\rhohat(k-1) \ge 1$: return DECOMPOSE}: routing past the cliff is provably futile, not merely costly.
+For uniform pairwise conflict, both simultaneous and staged satisfaction become infeasible at the same rank-deficiency boundary $\rhohat(k-1) = 1$. This is structural: at that boundary the $k$ unit gradients become linearly dependent and the orthogonal complement of any $k{-}1$-subset that contains a descent direction for the remaining one collapses. No memoryless policy at fixed $(k, \tau/m)$ that respects the linearization can escape this boundary; only constraint decomposition (reducing $k$) or magnitude rescaling (changing $\tau/m$) does. This motivates the Algorithm~\ref{alg:routing} guard \texttt{if $\rhohat(k-1) \ge 1$: return DECOMPOSE}: routing past the cliff is provably futile, not merely costly.
 \end{remark}
 
 \paragraph{Connection to Constitutional AI.}
@@ -1683,7 +1684,7 @@ where $x^\star_{i_t}$ is the projection onto constraint $i_t$'s satisfying halfs
 \end{definition}
 
 \begin{theorem}[Cyclic projection convergence]\label{thm:convergence}
-For $k$ constraints with pairwise conflicts $\rho_{ij} \le \rho_{\max} < 1$, cyclic projected gradient iteration converges linearly:
+For $k$ constraints with pairwise conflicts $\rho_{ij} \le \rho_{\max} < 1/(k{-}1)$ (so the unit gradients are linearly independent by Proposition~\ref{prop:gram_spectrum}), cyclic projected gradient iteration converges linearly:
 \[
 \|x_T - x^\star\| \le \left(1 - \frac{1-\rho_{\max}}{k}\right)^{T/k} \|x_0 - x^\star\|.
 \]
@@ -2187,7 +2188,7 @@ The following protocol estimates feasibility regimes using only black-box querie
 
 \subsection{Protocol Selection Policy}\label{app:protocol_policy}
 
-Algorithm~\ref{alg:routing} is the deployed policy used for all reported regret numbers. The rules below are an optional capability-aware extension that adds a one-shot baseline $c$ when available; they were not used to generate Table~\ref{tab:calibration} or the headline ${<}2\%$ regret. Given estimated $\rhohat$, budget $\delta$, and model capability $c$ (one-shot baseline), the full decision rules are:
+Algorithm~\ref{alg:routing} is the deployed policy used for all reported regret numbers. The rules below are an optional capability-aware extension that adds a one-shot baseline $c$ when available; they were not used to generate Table~\ref{tab:calibration} or the headline $1.8\%$ calibration / $\le 3.1\%$ transfer regret. Given estimated $\rhohat$, budget $\delta$, and model capability $c$ (one-shot baseline), the full decision rules are:
 \begin{itemize}[nosep,leftmargin=*]
 \item \textbf{Stage} if: $\rhohat > 0.3$ \emph{and} $\delta < 2\delta_{\min}$ \emph{and} $c < 0.7$ (intermediate band)
 \item \textbf{One-shot} if: $\rhohat < 0.15$ \emph{or} $c > 0.85$ (low conflict or near-ceiling capability)

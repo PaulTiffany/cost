@@ -1,0 +1,138 @@
+{
+  "summary": {
+    "total": 9,
+    "passed": 9,
+    "failed": 0,
+    "errored": 0,
+    "passed_all": true
+  },
+  "identities": [
+    {
+      "name": "sherman_morrison_uniform_conflict",
+      "paper_location": "paper/main.tex:1517-1519 (cor:k_uniform proof)",
+      "description": "1^T Gamma^-1 1 = k/(1-rho(k-1)) for Gamma=(1+rho)I-rho 11^T at k in {2,3,4,5}.",
+      "lhs_sympy": "1^T * inv((1+rho)*I_k - rho*1*1^T) * 1   (instantiated for k in {2,3,4,5})",
+      "rhs_sympy": "k / (1 - rho*(k-1))",
+      "domain": {
+        "rho": "Symbol('rho', real=True)",
+        "k": "instantiated to {2,3,4,5}"
+      },
+      "simplification_strategy": "algebraic",
+      "status": "PASS",
+      "detail": "k=2: 0; k=3: 0; k=4: 0; k=5: 0"
+    },
+    {
+      "name": "magnitude_conflict_k2_cross_term_sign",
+      "paper_location": "paper/main.tex:1663 (cor magnitude-conflict)",
+      "description": "k=2 quadratic form 1^T M^-1 Gamma_tilde^-1 M^-1 1 with Gamma_tilde=((1,-rho),(-rho,1)) equals (1/m1^2+1/m2^2+2*rho/(m1*m2))/(1-rho^2). Verifies + cross-term sign.",
+      "lhs_sympy": "1^T diag(1/m1,1/m2) inv([[1,-rho],[-rho,1]]) diag(1/m1,1/m2) 1",
+      "rhs_sympy": "(1/m1**2 + 1/m2**2 + 2*rho/(m1*m2)) / (1-rho**2)",
+      "domain": {
+        "m1": "Symbol('m1', positive=True, real=True)",
+        "m2": "Symbol('m2', positive=True, real=True)",
+        "rho": "Symbol('rho', real=True)"
+      },
+      "simplification_strategy": "algebraic",
+      "status": "PASS",
+      "detail": "simplify(LHS - RHS) == 0"
+    },
+    {
+      "name": "convexity_f_for_thm_global",
+      "paper_location": "paper/main.tex:1812 (thm:global proof, convexity argument)",
+      "description": "f(rho)=sqrt(k/(1-rho(k-1))) has f''(rho) = (3*sqrt(k)/4)*(k-1)^2*(1-rho(k-1))^(-5/2).",
+      "lhs_sympy": "diff(sqrt(k/(1 - rho*(k-1))), rho, 2)",
+      "rhs_sympy": "(3*sqrt(k)/4) * (k-1)**2 * (1 - rho*(k-1))**(-5/2)",
+      "domain": {
+        "rho": "Symbol('rho', real=True, positive=True)",
+        "k": "Symbol('k', real=True, positive=True)"
+      },
+      "simplification_strategy": "algebraic",
+      "status": "PASS",
+      "detail": "simplify(LHS - RHS) == 0"
+    },
+    {
+      "name": "preservation_overhead_k2_squared_norm",
+      "paper_location": "paper/main.tex:1278-1280 (app:preservation k=2)",
+      "description": "k=2 preservation: ||Delta||^2 * m^2 = tau^2 / (1 - rho^2).",
+      "lhs_sympy": "((tau/m) * 1/sqrt(1-rho**2))**2 * m**2",
+      "rhs_sympy": "tau**2 / (1-rho**2)",
+      "domain": {
+        "tau": "Symbol('tau', positive=True, real=True)",
+        "m": "Symbol('m', positive=True, real=True)",
+        "rho": "Symbol('rho', real=True)"
+      },
+      "simplification_strategy": "algebraic",
+      "status": "PASS",
+      "detail": "simplify(LHS - RHS) == 0"
+    },
+    {
+      "name": "preservation_overhead_at_rho_half_numeric",
+      "paper_location": "paper/main.tex:1280 (app:preservation, '15.5%' claim at rho=0.5)",
+      "description": "At rho=0.5, ||Delta||/(tau/m) = 2/sqrt(3) ~ 1.15470 (15.47% overhead, paper rounds to 15.5%).",
+      "lhs_sympy": "(tau/m) * 1/sqrt(1 - (1/2)**2)  scaled by m/tau",
+      "rhs_sympy": "2/sqrt(3)",
+      "domain": {
+        "rho_value": "1/2"
+      },
+      "simplification_strategy": "algebraic",
+      "status": "PASS",
+      "detail": "simplify(LHS - RHS) == 0"
+    },
+    {
+      "name": "uniform_conflict_factorisation",
+      "paper_location": "paper/main.tex:1287 (eq:pres_uniform simplification step)",
+      "description": "Polynomial identity: 1 - rho(p-1) - rho^2 p == (1+rho)(1-rho p).",
+      "lhs_sympy": "1 - rho*(p-1) - rho**2 * p",
+      "rhs_sympy": "(1+rho) * (1 - rho*p)",
+      "domain": {
+        "rho": "Symbol('rho', real=True)",
+        "p": "Symbol('p', real=True)"
+      },
+      "simplification_strategy": "algebraic",
+      "status": "PASS",
+      "detail": "simplify(LHS - RHS) == 0"
+    },
+    {
+      "name": "cor_staging_ratio_squared",
+      "paper_location": "paper/main.tex:1554-1558 (cor:staging_ratio)",
+      "description": "(delta_sim/delta_staged^(k-1))^2 = [k/(1-rho(k-1))] * [(1+rho)(1-rho(k-1))/(1-rho(k-2))] reduces to k(1+rho)/(1-rho(k-2)).",
+      "lhs_sympy": "[k/(1-rho*(k-1))] * [(1+rho)*(1-rho*(k-1)) / (1-rho*(k-2))]",
+      "rhs_sympy": "k*(1+rho)/(1-rho*(k-2))",
+      "domain": {
+        "rho": "Symbol('rho', real=True, positive=True)",
+        "k": "Symbol('k', real=True, positive=True)"
+      },
+      "simplification_strategy": "algebraic",
+      "status": "PASS",
+      "detail": "simplify(LHS - RHS) == 0"
+    },
+    {
+      "name": "cor_uniform_from_hetero",
+      "paper_location": "paper/main.tex:307-310, 1458-1461 (thm:main_hetero -> cor:uniform reduction)",
+      "description": "With alpha_1=alpha_2=tau/m and rho_12=rho, sqrt((alpha1^2+alpha2^2+2*rho*alpha1*alpha2)/(1-rho^2)) == (tau/m)*sqrt(2/(1-rho)).",
+      "lhs_sympy": "sqrt((alpha**2 + alpha**2 + 2*rho*alpha**2) / (1-rho**2))  [alpha=tau/m]",
+      "rhs_sympy": "(tau/m) * sqrt(2/(1-rho))",
+      "domain": {
+        "tau": "Symbol('tau', positive=True, real=True)",
+        "m": "Symbol('m', positive=True, real=True)",
+        "rho": "Symbol('rho', real=True, positive=True)"
+      },
+      "simplification_strategy": "numerical_at_points (fallback)",
+      "status": "PASS",
+      "detail": "simplify did not close to 0 (got sqrt(2)*tau*(-sqrt(-1/(rho - 1)) + sqrt(-1/(rho**2 - 1))*sqrt(rho + 1))/m); numerical sweep over 36 samples max|LHS-RHS|=1.44e-15"
+    },
+    {
+      "name": "two_constraint_hetero_numeric",
+      "paper_location": "paper/main.tex:1455 (thm:two_bound_cited, derivation)",
+      "description": "Numerically verify (alpha1^2+alpha2^2+2*rho*alpha1*alpha2)/(1-rho^2) form == (1/m1^2+1/m2^2+2*rho/(m1*m2))*tau^2/(1-rho^2) form at five (m1,m2,rho,tau) sample points.",
+      "lhs_sympy": "sqrt((alpha1**2+alpha2**2+2*rho*alpha1*alpha2)/(1-rho**2))  [alpha_i=tau/m_i]",
+      "rhs_sympy": "tau*sqrt((1/m1**2+1/m2**2+2*rho/(m1*m2))/(1-rho**2))",
+      "domain": {
+        "samples": "5 (m1,m2,rho,tau) triples"
+      },
+      "simplification_strategy": "numerical_at_points",
+      "status": "PASS",
+      "detail": "sample 0: lhs=1.41421, rhs=1.41421, |diff|=0.00e+00; sample 1: lhs=2, rhs=2, |diff|=0.00e+00; sample 2: lhs=1.3051, rhs=1.3051, |diff|=0.00e+00; sample 3: lhs=3.32843, rhs=3.32843, |diff|=0.00e+00; sample 4: lhs=0.444523, rhs=0.444523, |diff|=1.11e-16"
+    }
+  ]
+}

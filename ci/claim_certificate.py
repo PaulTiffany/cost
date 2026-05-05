@@ -79,6 +79,8 @@ LAYER_SCRIPTS = {
     "L25_multi_seed_drift":     SCRIPT_DIR / "multi_seed_drift_check.py",             # statistical_hygiene
     "L26_reference_convention": SCRIPT_DIR / "reference_convention_check.py",          # submission_hygiene
     "L27_stat_algo_sanity":     SCRIPT_DIR / "statistical_and_algorithmic_sanity_check.py", # statistical_hygiene
+    "L28_symbolic_algebra":     SCRIPT_DIR / "symbolic_algebra_check.py",                    # statistical_hygiene
+    "L29_numerical_bounds":     SCRIPT_DIR / "numerical_bound_check.py",                     # statistical_hygiene
 }
 
 # L12 in default (quick) mode runs --quick (mtime + asset-hash only) so
@@ -203,6 +205,8 @@ LAYER_RESULT_JSONS = {
     "L25_multi_seed_drift":     SCRIPT_DIR / "multi_seed_drift_results.json",
     "L26_reference_convention": SCRIPT_DIR / "reference_convention_results.json",
     "L27_stat_algo_sanity":     SCRIPT_DIR / "statistical_and_algorithmic_sanity_results.json",
+    "L28_symbolic_algebra":     SCRIPT_DIR / "symbolic_algebra_results.json",
+    "L29_numerical_bounds":     SCRIPT_DIR / "numerical_bound_results.json",
 }
 
 
@@ -532,6 +536,48 @@ def attach_summary_l27(outcome: LayerOutcome) -> None:
     outcome.summary = payload.get("summary", {})
 
 
+def attach_summary_l28(outcome: LayerOutcome) -> None:
+    """L28 symbolic algebra: surface PASS/FAIL counts and the names of any
+    failing identities so the cert payload tells reviewers which math
+    relation broke without forcing them to open the result JSON."""
+    p = LAYER_RESULT_JSONS["L28_symbolic_algebra"]
+    if not p.exists():
+        outcome.notes = "no results JSON found"
+        return
+    payload = json.loads(p.read_text(encoding="utf-8"))
+    summary = dict(payload.get("summary", {}))
+    failing = [i["name"] for i in payload.get("identities", [])
+               if i.get("status") in ("FAIL", "ERROR")]
+    if failing:
+        summary["failing_identities"] = failing
+    outcome.summary = summary
+
+
+def attach_summary_l29(outcome: LayerOutcome) -> None:
+    """L29 numerical bound check: surface per-bound PASS/FAIL counts and
+    flag any bound whose claimed lower bound was numerically violated.
+    The H1 demo entry (``thm:gram_ORIGINAL_buggy_demo'') is gated
+    inverted -- it ``passes'' only when counter-examples are found, so
+    a normal payload includes both gate types coexisting."""
+    p = LAYER_RESULT_JSONS["L29_numerical_bounds"]
+    if not p.exists():
+        outcome.notes = "no results JSON found"
+        return
+    payload = json.loads(p.read_text(encoding="utf-8"))
+    summary = dict(payload.get("summary", {}))
+    failing = [b["name"] for b in payload.get("bounds", []) if not b.get("passed")]
+    if failing:
+        summary["failing_bounds"] = failing
+    # Surface the H1 demo's witness count so reviewers see that PAT's
+    # original critique remains mechanically reproducible.
+    h1 = next((b for b in payload.get("bounds", [])
+               if b["name"] == "thm:gram_ORIGINAL_buggy_demo"), None)
+    if h1:
+        summary["h1_demo_violations_found"] = h1.get("n_violations", 0)
+        summary["h1_demo_max_relative_violation"] = h1.get("max_relative_violation", 0.0)
+    outcome.summary = summary
+
+
 # ---------------------------------------------------------------------------
 # Aggregate verdict
 # ---------------------------------------------------------------------------
@@ -546,12 +592,12 @@ def aggregate_verdict(outcomes: list[LayerOutcome]) -> tuple[str, str]:
     surface previously-hidden noise can drop below it). The triage
     JSONs are the actionable signal, not the percentage.
     """
-    structural = {"L1_audit", "L2_validator", "L4_lineage", "L7_citations", "L8_links", "L9_consistency", "L10_bib", "L11_scripts", "L12_build_equiv", "L13_cross_tree", "L14_illustrations", "L15_data_ties", "L27_stat_algo_sanity"}
+    structural = {"L1_audit", "L2_validator", "L4_lineage", "L7_citations", "L8_links", "L9_consistency", "L10_bib", "L11_scripts", "L12_build_equiv", "L13_cross_tree", "L14_illustrations", "L15_data_ties", "L27_stat_algo_sanity", "L28_symbolic_algebra", "L29_numerical_bounds"}
     structurally_failed = [o for o in outcomes if o.return_code != 0 and o.name in structural]
     if structurally_failed:
         names = ", ".join(o.name for o in structurally_failed)
         return ("FAIL", f"Structural layers failed: {names}")
-    return ("PASS", "all structural checks clean (L1+L2+L4+L7+L8+L9+L10+L11+L12+L13+L14+L15+L27); L3+L5+L16 coverage is advisory, see triage JSONs")
+    return ("PASS", "all structural checks clean (L1+L2+L4+L7+L8+L9+L10+L11+L12+L13+L14+L15+L27+L28+L29); L3+L5+L16 coverage is advisory, see triage JSONs")
 
 
 # ---------------------------------------------------------------------------
@@ -663,6 +709,16 @@ def render_markdown(payload: dict) -> str:
             blurb = f"{tied}/{total} judgment claims have data anchors ({ratio_str}; advisory)"
         elif layer["name"] == "L27_stat_algo_sanity":
             blurb = f"{s.get('total_blocker','?')} blocker / {s.get('total_warn','?')} warn (impossible p, algo guards, ref types, headline drift)"
+        elif layer["name"] == "L28_symbolic_algebra":
+            blurb = f"{s.get('passed','?')}/{s.get('total','?')} algebraic identities verified by SymPy"
+            if s.get("failing_identities"):
+                blurb += f"; FAIL: {', '.join(s['failing_identities'])}"
+        elif layer["name"] == "L29_numerical_bounds":
+            blurb = (f"{s.get('passed','?')}/{s.get('total_bounds','?')} bounds numerically verified "
+                     f"(SLSQP counter-example search; H1 demo: "
+                     f"{s.get('h1_demo_violations_found','?')} violations of original m=min_i m_i form)")
+            if s.get("failing_bounds"):
+                blurb += f"; FAIL: {', '.join(s['failing_bounds'])}"
         else:
             blurb = "(no summary)"
         lines.append(f"| {layer['name']} | `{layer['script']}` | {status} | {blurb} |")
@@ -873,6 +929,23 @@ def main() -> int:
     if not args.quiet: print("  L27_stat_algo_sanity...")
     o = run_layer("L27_stat_algo_sanity", LAYER_SCRIPTS["L27_stat_algo_sanity"])
     attach_summary_l27(o)
+    outcomes.append(o)
+
+    # L28: symbolic algebra. Mechanical SymPy verification of paper identities.
+    # Counter-correlated witness against LLM-judge cert reviewers: SymPy fails
+    # in a different way than LLMs do, so a SymPy PASS strengthens the cert
+    # against shared-hallucination failure modes.
+    if not args.quiet: print("  L28_symbolic_algebra...")
+    o = run_layer("L28_symbolic_algebra", LAYER_SCRIPTS["L28_symbolic_algebra"])
+    attach_summary_l28(o)
+    outcomes.append(o)
+
+    # L29: numerical bound check. Counter-example search via SLSQP for the
+    # paper's stated lower bounds. Permanently demonstrates PAT's heterogeneous-m
+    # critique via the inverted-gate H1 entry, alongside the post-fix forms.
+    if not args.quiet: print("  L29_numerical_bounds...")
+    o = run_layer("L29_numerical_bounds", LAYER_SCRIPTS["L29_numerical_bounds"])
+    attach_summary_l29(o)
     outcomes.append(o)
 
     verdict, rationale = aggregate_verdict(outcomes)

@@ -1,0 +1,164 @@
+{
+  "summary": {
+    "total_bounds": 6,
+    "passed": 6,
+    "failed": 0,
+    "elapsed_seconds": 0.115,
+    "seed": 20260504
+  },
+  "bounds": [
+    {
+      "name": "thm:main_hetero_k2",
+      "paper_location": "paper/main.tex:307-312",
+      "description": "k=2 heterogeneous diagonal cost: ||d|| >= sqrt((a1^2+a2^2+2*rho*a1*a2)/(1-rho^2)), a_i = tau_i/m_i.",
+      "n_samples": 150,
+      "n_converged": 150,
+      "n_skipped_invalid_formula": 0,
+      "n_violations": 0,
+      "max_relative_violation": 0.0,
+      "expected_pass": true,
+      "passed": true,
+      "tolerance": 0.0001,
+      "counter_examples": []
+    },
+    {
+      "name": "cor:k_uniform",
+      "paper_location": "paper/main.tex:327-329",
+      "description": "Uniform-conflict k-bound: ||d|| >= (tau/m)*sqrt(k/(1-rho(k-1))) for k in {2,3,4,5,8}, rho < 1/(k-1).",
+      "n_samples": 80,
+      "n_converged": 80,
+      "n_skipped_invalid_formula": 0,
+      "n_violations": 0,
+      "max_relative_violation": 0.0,
+      "expected_pass": true,
+      "passed": true,
+      "tolerance": 0.0001,
+      "counter_examples": []
+    },
+    {
+      "name": "thm:gram_hetero_postfix",
+      "paper_location": "paper/main.tex:319-325 (post-fix interpretation)",
+      "description": "Heterogeneous-m k-Gram bound (post-fix): ||d|| >= sqrt(alpha^T Gamma^-1 alpha), alpha_i = tau_i/m_i. This is the form that survives PAT's critique.",
+      "n_samples": 100,
+      "n_converged": 100,
+      "n_skipped_invalid_formula": 0,
+      "n_violations": 0,
+      "max_relative_violation": 0.0,
+      "expected_pass": true,
+      "passed": true,
+      "tolerance": 0.0001,
+      "counter_examples": []
+    },
+    {
+      "name": "thm:gram_ORIGINAL_buggy_demo",
+      "paper_location": "paper/main.tex:319-325 (PAT's critique of the m=min substitution)",
+      "description": "PAT's original critique: substituting m=min_i m_i into the uniform-m formula is NOT a valid lower bound under heterogeneous magnitudes. This entry passes ONLY if counter-examples are found (gate inverted). Permanent demonstration in the cert that we know why the post-fix form is necessary.",
+      "n_samples": 100,
+      "n_converged": 100,
+      "n_skipped_invalid_formula": 0,
+      "n_violations": 100,
+      "max_relative_violation": 0.683107859546742,
+      "expected_pass": false,
+      "passed": true,
+      "tolerance": 0.0001,
+      "counter_examples": [
+        {
+          "params": {
+            "k": 5,
+            "rho": 0.06065779816075502,
+            "m": [
+              7.427330274867113,
+              1.142229803545973,
+              2.314633942404295,
+              0.8821072612651135,
+              6.073870892047149
+            ],
+            "tau": 0.33281619812247126
+          },
+          "numerical_d_min_norm": 0.548894749948768,
+          "claimed_lower_bound": 0.969425307362724,
+          "relative_violation": 0.4337936654016076,
+          "d_optimal_first8": [
+            -0.044809667243222134,
+            -0.29463470506927186,
+            -0.16614889875766753,
+            -0.4130328698210861,
+            -0.11944171256553351
+          ]
+        },
+        {
+          "params": {
+            "k": 3,
+            "rho": 0.26705005506969864,
+            "m": [
+              3.81970199642158,
+              8.054178859129843,
+              3.775590286300066
+            ],
+            "tau": 0.7473665245585649
+          },
+          "numerical_d_min_norm": 0.4182843627882292,
+          "claimed_lower_bound": 0.5022999151147945,
+          "relative_violation": 0.16726172909538436,
+          "d_optimal_first8": [
+            -0.19566095084337687,
+            -0.1505097747728531,
+            -0.33767648447300214
+          ]
+        },
+        {
+          "params": {
+            "k": 5,
+            "rho": 0.03886529071916832,
+            "m": [
+              1.2196754754962853,
+              9.49670633493241,
+              9.030080787850888,
+              5.436615689595276,
+              3.2727622503802345
+            ],
+            "tau": 0.6127258282836021
+          },
+          "numerical_d_min_norm": 0.5796863533831632,
+          "claimed_lower_bound": 1.222354245916409,
+          "relative_violation": 0.5257623922690532,
+          "d_optimal_first8": [
+            -0.5023679171986123,
+            -0.084108046948019,
+            -0.09092003321689329,
+            -0.13979600398982156,
+            -0.2208601488161784
+          ]
+        }
+      ]
+    },
+    {
+      "name": "app:preservation_general_k",
+      "paper_location": "paper/main.tex:1267-1272 (eq:pres_general)",
+      "description": "Preservation-constrained min-norm: ||Delta_preserve|| = (tau/m)/sqrt(1 - h^T G_P^-1 h). Random PD Gram, p prior unit vectors with active preservation halfspaces (<u_i,d>=0) plus active constraint <u_j,d> <= -tau/m.",
+      "n_samples": 80,
+      "n_converged": 80,
+      "n_skipped_invalid_formula": 0,
+      "n_violations": 0,
+      "max_relative_violation": 0.0,
+      "expected_pass": true,
+      "passed": true,
+      "tolerance": 0.001,
+      "counter_examples": []
+    },
+    {
+      "name": "prop:staging_reduces",
+      "paper_location": "paper/main.tex:1536-1540",
+      "description": "Stage-p step magnitude under uniform conflict: (tau/m)*sqrt((1-rho(p-1))/((1+rho)(1-rho*p))) for p in {1,..,4}, rho*p<1.",
+      "n_samples": 100,
+      "n_converged": 100,
+      "n_skipped_invalid_formula": 0,
+      "n_violations": 0,
+      "max_relative_violation": 0.0,
+      "expected_pass": true,
+      "passed": true,
+      "tolerance": 0.001,
+      "counter_examples": []
+    }
+  ]
+}

@@ -9,16 +9,16 @@
     "profile": "standard",
     "git": {
       "status": "ok",
-      "commit": "4167840be3868228ccdb9ee382cb19dd794ff0c6",
-      "commit_short": "4167840b",
+      "commit": "9d5d28ff3cb4e4153140095437a3e159c945ac57",
+      "commit_short": "9d5d28ff",
       "branch": "master",
       "dirty": true,
-      "n_modified_unstaged": 20,
+      "n_modified_unstaged": 23,
       "n_staged": 1,
-      "n_untracked": 2
+      "n_untracked": 4
     },
     "dependencies": {
-      "generated_at": "2026-05-05T00:26:53.748699+00:00",
+      "generated_at": "2026-05-05T01:00:25.842107+00:00",
       "python": {
         "version": "3.13.4 (tags/v3.13.4:8a526ec, Jun  3 2025, 17:46:04) [MSC v.1943 64 bit (AMD64)]",
         "version_short": "3.13.4",
@@ -57,22 +57,22 @@
         }
       }
     },
-    "generated_at": "2026-05-04T20:27:27",
+    "generated_at": "2026-05-04T21:01:00",
     "main_tex_path": "paper\\main.tex",
-    "main_tex_sha256": "93ef6f9176892c00d60f0b15419beec25c06dd8ddd2bc123ade923bfee3ce28a",
-    "main_tex_mtime": "2026-05-04T20:20:34",
+    "main_tex_sha256": "76504abf3eb9096d833a29fc8e00cb64f922784c7b0e7ae1fcc36ed36c65facc",
+    "main_tex_mtime": "2026-05-04T20:58:34",
     "main_pdf_path": "paper\\main.pdf",
-    "main_pdf_size": 1173985,
-    "main_pdf_mtime": "2026-05-04T20:26:39",
+    "main_pdf_size": 1178066,
+    "main_pdf_mtime": "2026-05-04T20:59:15",
     "claim_audit_md_path": "CLAIM_AUDIT.md",
-    "claim_audit_md_sha256": "61b08aec7166fa6604f38388a226493ac241ea704e539805438cfd56ede8a344"
+    "claim_audit_md_sha256": "4d086d3d1663d2c50d3e762c3dec9c3153c52ee5109e5208fbf1c1179b74bbfc"
   },
   "artifact_hashes": {
-    "ci\\claim_audit_results.json": "73f9dba1e30bcc3a4de0a00972fc2e960a91dd8949dfe80355a47d00b5d4d99d",
-    "ci\\claim_coverage_uncovered.json": "e8c56cabed19f1eb25dd605c965acb9eba33abe35d2137eb3fbaad4cc4ca1a87",
+    "ci\\claim_audit_results.json": "ca154e0dff5243713e7554426a47b40ca0b7cdaca888ba218600653c419b48ba",
+    "ci\\claim_coverage_uncovered.json": "3ef4f8b4ebb6cd670589a1cc500a315cc07e62199ced9f96e412e01a10ba9372",
     "ci\\figure_value_check_results.json": "7d850709729d4fb4b9ece9aafe60cb4868e4bbc42f78fee06d7ae7b6673014c4",
     "ci\\citation_integrity_results.json": "ea34f3fbb412748e9cc7adfcadc2f2717621f02c45d9f7951aeddbb89a873605",
-    "ci\\link_integrity_results.json": "627804f750518d063b5f2c8420c1e60665fc699eb15f2a54478e6dfed2e9b846",
+    "ci\\link_integrity_results.json": "dcb94ff661023902c4cb5e9889bc26306795b67561039f61825b60db9304431d",
     "ci\\cross_claim_consistency_results.json": "15d471750a6394be1df8ab86b9a9ea9901a02a7b0ed891ee4c004ea96d9398b7",
     "ci\\bib_entry_check_results.json": "75311d32bed138ef02409dc4319e8cd73dfe35acf21530905c9addab798c0296",
     "ci\\script_integrity_results.json": "0cb95174ba62ef104a598de8b98a5512613a05c86f1569c87580bb628f9f37c8",
@@ -80,7 +80,7 @@
     "ci\\cross_tree_consistency_results.json": "75909f4c90ace4f58530ada886179c56406c705a4b296af0d7cfb3893dc49316",
     "ci\\illustration_lineage_results.json": "fbfd251b81af96302bbc9f1d1076d41428f0e24f1a122eb39e7749198704677e",
     "ci\\claim_data_ties_results.json": "8a4fdcc24932e5f17f87aee333bc8e35a54b9072b158b0ab3ac926c03964ff92",
-    "ci\\author_claims_results.json": "0a769c6c33eb4e9e512b8940988e9f7e4464384c62920f52f8721c91891b4f66",
+    "ci\\author_claims_results.json": "5f709678d18b2751329d07a17aeba4273c9f16217ceda7de75d9209b16a91893",
     "ci\\table_value_results.json": "2127e5ecc8849df60854f28e5b2ea8952ad56593729d95aecdb0bbc2882eea8c",
     "ci\\sample_size_adequacy_results.json": "3ca7a4dff92fbd438e64ab217203eade438b9f1bf591b5f40dd6fe746b285abc",
     "ci\\confidence_interval_coverage_results.json": "60ed7e41e020565dbc714ab6c6c46b7ec978ff8d674fb8e2fd66d9b5a9b85937",
@@ -91,14 +91,16 @@
     "ci\\pdf_camera_ready_results.json": "a6750dafc9fa2d6a0510442d7620ca1640b174fdb338ff415f7670ab35346b3b",
     "ci\\multi_seed_drift_results.json": "f09d4f4672b22b32d8fc62147275d1cbafc21ac8ee7bb20e71c8241ff58d11bd",
     "ci\\reference_convention_results.json": "42835a03dd077774c3ddeefeebbc2d36830bb233dc56ad94dd35558f07496b1d",
-    "ci\\statistical_and_algorithmic_sanity_results.json": "3d9f957131d5738085038afba163c51c920ae5f714322a7dc7e3e53f466a34e4",
+    "ci\\statistical_and_algorithmic_sanity_results.json": "a45c53b402c64802385ed843668ea9c94c985c3ba713ae01f47cfb6f66a98fbf",
+    "ci\\symbolic_algebra_results.json": "1b0792cfa15543e9f2b18e2378a9b6ae861a9bb1d6925e689bff69ee70232d5b",
+    "ci\\numerical_bound_results.json": "ad4ca05158a1107d87714fd95d8234123e64522d8426835c8cb696a981284028",
     "ci\\claim_data_ties.json": "be2130c38f289df8be8d95c316303cbf0444ed3b81009083deb360219168c261",
     "ci\\figure_lineage.json": "d69541bb36893ac0f84be3953f0ad8b5b76723186b68dd2e53c176ba092137ae",
-    "ci\\illustration_lineage.json": "3217586c1cfda4ad02731f01baee749b34bee7613f16933d05feaea755e4fb9f"
+    "ci\\illustration_lineage.json": "7ef3205e7c46aef855e68c6e684e56a7a39a2c0e1b967c997d6ce828a4e65e5c"
   },
   "verdict": {
     "verdict": "PASS",
-    "rationale": "all structural checks clean (L1+L2+L4+L7+L8+L9+L10+L11+L12+L13+L14+L15+L27); L3+L5+L16 coverage is advisory, see triage JSONs"
+    "rationale": "all structural checks clean (L1+L2+L4+L7+L8+L9+L10+L11+L12+L13+L14+L15+L27+L28+L29); L3+L5+L16 coverage is advisory, see triage JSONs"
   },
   "layers": [
     {
@@ -134,11 +136,11 @@
       "return_code": 0,
       "status": "PASS",
       "summary": {
-        "total_numeric_tokens": 1393,
-        "covered": 1294,
+        "total_numeric_tokens": 1407,
+        "covered": 1308,
         "uncovered_raw": 99,
         "uncovered_deduped": 96,
-        "coverage_percent": 92.9
+        "coverage_percent": 93.0
       },
       "notes": ""
     },
@@ -244,7 +246,7 @@
         "n_urls": 2,
         "n_hyperref": 0,
         "n_hypertarget": 29,
-        "n_refs": 120,
+        "n_refs": 122,
         "n_labels": 175,
         "urls": [
           "https://anonymous.4open.science/r/cacophony",
@@ -255,7 +257,7 @@
         "venue_year_mismatches": [],
         "unresolved_hyperref": [],
         "unresolved_refs": [],
-        "dead_labels_count": 56,
+        "dead_labels_count": 54,
         "dead_labels_sample": [
           "app:additional",
           "app:algorithm",
@@ -505,6 +507,36 @@
         }
       },
       "notes": ""
+    },
+    {
+      "name": "L28_symbolic_algebra",
+      "script": "ci\\symbolic_algebra_check.py",
+      "return_code": 0,
+      "status": "PASS",
+      "summary": {
+        "total": 9,
+        "passed": 9,
+        "failed": 0,
+        "errored": 0,
+        "passed_all": true
+      },
+      "notes": ""
+    },
+    {
+      "name": "L29_numerical_bounds",
+      "script": "ci\\numerical_bound_check.py",
+      "return_code": 0,
+      "status": "PASS",
+      "summary": {
+        "total_bounds": 6,
+        "passed": 6,
+        "failed": 0,
+        "elapsed_seconds": 0.115,
+        "seed": 20260504,
+        "h1_demo_violations_found": 100,
+        "h1_demo_max_relative_violation": 0.683107859546742
+      },
+      "notes": ""
     }
   ],
   "suites": [
@@ -678,7 +710,7 @@
       "suite": "statistical_hygiene",
       "purpose": "Claims with small N or manual scoring surface uncertainty / caveats and avoid over-precision.",
       "status": "PASS",
-      "passed": 4,
+      "passed": 6,
       "failed": 0,
       "skipped": 0,
       "members": [
@@ -709,6 +741,18 @@
         {
           "check": "L27_stat_algo_sanity",
           "script": "ci\\statistical_and_algorithmic_sanity_check.py",
+          "severity": "blocker",
+          "status": "PASS"
+        },
+        {
+          "check": "L28_symbolic_algebra",
+          "script": "ci\\symbolic_algebra_check.py",
+          "severity": "blocker",
+          "status": "PASS"
+        },
+        {
+          "check": "L29_numerical_bounds",
+          "script": "ci\\numerical_bound_check.py",
           "severity": "blocker",
           "status": "PASS"
         }
@@ -767,5 +811,5 @@
       ]
     }
   ],
-  "certificate_self_hash": "f770646ee224ae5302ead0480af44382b962a240804f945807c7231d6b8705c6"
+  "certificate_self_hash": "39680f72ebfdddbb98359c79eeef3caf715f219d4806bb07ca841f654d82c332"
 }
