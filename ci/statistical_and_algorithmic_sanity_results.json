@@ -1,0 +1,38 @@
+{
+  "summary": {
+    "total_blocker": 0,
+    "total_warn": 1,
+    "passed": true,
+    "subchecks": {
+      "impossible_p_values": {
+        "blocker": 0,
+        "warn": 0,
+        "total": 0
+      },
+      "algorithm_guards": {
+        "blocker": 0,
+        "warn": 1,
+        "total": 1
+      },
+      "cross_reference_type_match": {
+        "blocker": 0,
+        "warn": 0,
+        "total": 0
+      },
+      "headline_consistency": {
+        "blocker": 0,
+        "warn": 0,
+        "total": 0
+      }
+    }
+  },
+  "findings": [
+    {
+      "subcheck": "algorithm_guards",
+      "severity": "warn",
+      "location": "line 118",
+      "snippet": "\\sqrt{k/(1{-}\\rhohat(k{-}1))}",
+      "detail": "\\sqrt operand contains subtraction or division (could go non-positive); no \\IF/\\REQUIRE guard found in 5 preceding pseudocode lines. Algorithm block at line 112."
+    }
+  ]
+}

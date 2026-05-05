@@ -22,9 +22,9 @@
         {
           "kind": "latex_block",
           "file": "paper/main.tex",
-          "line_start": 356,
-          "line_end": 357,
-          "hash": "3c8a5a6470c7e9de51a51e6cfa9c93ffa8b248762c83fd7174ccfe4408abaf47"
+          "line_start": 357,
+          "line_end": 359,
+          "hash": "13bfe00540f440410b2317b8fb15e2297c3c8178dde33eac3ac5221da3427fc2"
         },
         {
           "kind": "text_file",
@@ -54,9 +54,9 @@
         {
           "kind": "latex_block",
           "file": "paper/main.tex",
-          "line_start": 103,
-          "line_end": 121,
-          "hash": "8bf1fe929b38d5be048271067810705570d866878a95ca1b91866c1fbe4fb9b8"
+          "line_start": 109,
+          "line_end": 128,
+          "hash": "7d27e59e33b1232cb840331d74b0b1c5b6d99367b1f36516850ba76731c1a1e9"
         },
         {
           "kind": "text_file",
@@ -76,7 +76,7 @@
       "draft_image": "supplementary/illustrations/algorithm1_routing_draft.png",
       "draft_image_hash": "bc58ec3ee3fb2007ede7e05aff27347f5318bd92ba6bd96c6ba10ea030607644",
       "final_asset": "paper/figures/algorithm1_routing.tex",
-      "final_asset_hash": "801326e23e5fed0a01c6838958fa0f7849a51b9c7ee4650cb542e8cdb35ad4e8",
+      "final_asset_hash": "10aecfea2bc61f88d6411eed5e01f655781262ca8de32aef153b01076107c39d",
       "main_tex_ref": "figures/algorithm1_routing.tex",
       "in_use": true,
       "claim_scope": "schematic illustration only; not empirical evidence. Decision-tree shape of Algorithm 1 routing logic with paper-accurate conditions."
@@ -86,9 +86,9 @@
         {
           "kind": "latex_block",
           "file": "paper/main.tex",
-          "line_start": 260,
-          "line_end": 264,
-          "hash": "5aaa3e25e2b90651ce3ddadee323dcd720fcae8f8fa35c8bfe226451dbef7193"
+          "line_start": 263,
+          "line_end": 265,
+          "hash": "46f3fbaf6fe5f63dbe07638d5c99ad7620f67a2b2d3e89061b97ca844b192c81"
         },
         {
           "kind": "text_file",

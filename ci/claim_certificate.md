@@ -5,8 +5,8 @@
 **Paper:** The Cost of Cacophony: Geometric Limits on Multi-Constraint Alignment
 **Venue:** NeurIPS 2026 (anonymous double-blind submission)
 **Mode:** `quick` (release: full L12 build equivalence + artifact hashes embedded; quick: --quick L12 (mtime+asset-hash only), faster local checks)
-**Generated:** 2026-05-04T19:48:31
-**Verdict:** **PASS** — all structural checks clean (L1+L2+L4+L7+L8+L9+L10+L11+L12+L13+L14+L15); L3+L5+L16 coverage is advisory, see triage JSONs
+**Generated:** 2026-05-04T20:27:27
+**Verdict:** **PASS** — all structural checks clean (L1+L2+L4+L7+L8+L9+L10+L11+L12+L13+L14+L15+L27); L3+L5+L16 coverage is advisory, see triage JSONs
 
 ## Scope of certification
 
@@ -38,13 +38,13 @@ python ci/claim_certificate.py --release
 
 ## Provenance
 
-- main.tex sha256: `82e6af21ec8b91ec...` (full hash in JSON)
-- main.tex mtime: 2026-05-04T05:48:57
-- main.pdf size: 1,143,966 bytes
-- main.pdf mtime: 2026-05-04T08:07:17
+- main.tex sha256: `93ef6f9176892c00...` (full hash in JSON)
+- main.tex mtime: 2026-05-04T20:20:34
+- main.pdf size: 1,173,985 bytes
+- main.pdf mtime: 2026-05-04T20:26:39
 - registry sha256: `61b08aec7166fa66...`
-- artifact hashes: 26 layer-result JSONs + manifests recorded in JSON payload
-- certificate self-hash: `7f26e1eccac10903...` (sha256 of this payload minus the hash field; recompute to verify integrity)
+- artifact hashes: 27 layer-result JSONs + manifests recorded in JSON payload
+- certificate self-hash: `f770646ee224ae53...` (sha256 of this payload minus the hash field; recompute to verify integrity)
 
 ## Layer-by-layer Results
 
@@ -52,11 +52,11 @@ python ci/claim_certificate.py --release
 |---|---|---|---|
 | L1_audit | `ci\claim_audit.py` | PASS | 149/149 verbatim |
 | L2_validator | `ci\claim_audit_validator.py` | PASS | 14/14 checks pass |
-| L3_sweep | `ci\claim_coverage_sweep.py` | PASS | 93.0% coverage, 93 uncovered |
+| L3_sweep | `ci\claim_coverage_sweep.py` | PASS | 92.9% coverage, 96 uncovered |
 | L4_lineage | `ci\figure_lineage_check.py` | PASS | 8/8 checks pass, 11 figures fresh |
 | L5_figure_values | `ci\figure_value_check.py` | PASS | 77.6% overall figure coverage, 23 uncovered |
 | L7_citations | `ci\citation_integrity_check.py` | PASS | 30 cites, 42 bib entries, 0 unresolved, 12 dead |
-| L8_links | `ci\link_integrity_check.py` | PASS | 2 URLs, 118 refs / 170 labels, 0 unresolved, 53 dead labels |
+| L8_links | `ci\link_integrity_check.py` | PASS | 2 URLs, 120 refs / 175 labels, 0 unresolved, 56 dead labels |
 | L9_consistency | `ci\cross_claim_consistency_check.py` | PASS | 60/60 consistency relations hold |
 | L10_bib | `ci\bib_entry_check.py` | PASS | 42/42 bib entries well-formed |
 | L11_scripts | `ci\script_integrity_check.py` | PASS | 13/13 figure scripts pass smoke test |
@@ -75,6 +75,7 @@ python ci/claim_certificate.py --release
 | L24_pdf_camera_ready | `ci\pdf_camera_ready_check.py` | PASS | (no summary) |
 | L25_multi_seed_drift | `ci\multi_seed_drift_check.py` | PASS | (no summary) |
 | L26_reference_convention | `ci\reference_convention_check.py` | PASS | (no summary) |
+| L27_stat_algo_sanity | `ci\statistical_and_algorithmic_sanity_check.py` | PASS | 0 blocker / 1 warn (impossible p, algo guards, ref types, headline drift) |
 
 ### Per-figure coverage (L5)
 
@@ -128,4 +129,5 @@ python ci\license_clearance_check.py    # L23_license_clearance
 python ci\pdf_camera_ready_check.py    # L24_pdf_camera_ready
 python ci\multi_seed_drift_check.py    # L25_multi_seed_drift
 python ci\reference_convention_check.py    # L26_reference_convention
+python ci\statistical_and_algorithmic_sanity_check.py    # L27_stat_algo_sanity
 ```

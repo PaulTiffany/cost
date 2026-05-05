@@ -62,7 +62,7 @@
     % Decision conditions on the route arrows
     \node[cond, color=green!50!black] at ($(route.south)+(-3.6, -0.7)$) {$\hat{\rho}<0.15$ \\ or $\delta/\widehat{\delta}_{\min}>2$};
     \node[cond, color=blue!50!black] at ($(route.south)+(-0.4, -0.7)$) {$\hat{\rho}<0.5$ \\ and $\delta/\widehat{\delta}_{\min}>1.2$};
-    \node[cond, color=purple!50!black] at ($(route.south)+(2.7, -0.7)$) {else: \\ $\hat{\rho}\ge 0.5$};
+    \node[cond, color=purple!50!black] at ($(route.south)+(2.7, -0.7)$) {else: \\ $\hat{\rho}\ge 0.5$ \\ or $\delta/\widehat{\delta}_{\min}\le 1.2$};
 \end{tikzpicture}
 }
 \caption{Algorithm~\ref{alg:routing} as a decision tree (schematic). The screening statistic $\hat{\rho}$ and budget ratio $\delta/\widehat{\delta}_{\min}$ are computed from the prompt before generation, then composed at a single routing junction with three terminal regimes. The conditions printed beside each terminal are exactly those in lines 6--12 of Algorithm~\ref{alg:routing}. Provenance: \texttt{ci/illustration\_lineage.json}; draft via gpt-5.4-image-2; final asset is hand-authored TikZ. Schematic illustration only; not empirical evidence.}

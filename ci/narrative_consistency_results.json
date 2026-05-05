@@ -11,14 +11,14 @@
       "appearances_by_section": {
         "contributions": true,
         "conclusion_summary": true,
-        "approach": true,
-        "abstract": true
+        "abstract": true,
+        "approach": true
       },
       "present_in": [
         "contributions",
         "conclusion_summary",
-        "approach",
-        "abstract"
+        "abstract",
+        "approach"
       ],
       "absent_from": [],
       "verdict": "consistent"
@@ -29,8 +29,8 @@
       "appearances_by_section": {
         "contributions": true,
         "conclusion_summary": true,
-        "approach": false,
-        "abstract": true
+        "abstract": true,
+        "approach": false
       },
       "present_in": [
         "contributions",
@@ -48,8 +48,8 @@
       "appearances_by_section": {
         "contributions": false,
         "conclusion_summary": false,
-        "approach": true,
-        "abstract": false
+        "abstract": false,
+        "approach": true
       },
       "present_in": [
         "approach"
@@ -67,8 +67,8 @@
       "appearances_by_section": {
         "contributions": false,
         "conclusion_summary": true,
-        "approach": false,
-        "abstract": true
+        "abstract": true,
+        "approach": false
       },
       "present_in": [
         "conclusion_summary",
@@ -86,12 +86,12 @@
       "appearances_by_section": {
         "contributions": false,
         "conclusion_summary": false,
-        "approach": true,
-        "abstract": true
+        "abstract": true,
+        "approach": true
       },
       "present_in": [
-        "approach",
-        "abstract"
+        "abstract",
+        "approach"
       ],
       "absent_from": [
         "contributions",
@@ -105,16 +105,16 @@
       "appearances_by_section": {
         "contributions": true,
         "conclusion_summary": false,
-        "approach": false,
-        "abstract": false
+        "abstract": false,
+        "approach": false
       },
       "present_in": [
         "contributions"
       ],
       "absent_from": [
         "conclusion_summary",
-        "approach",
-        "abstract"
+        "abstract",
+        "approach"
       ],
       "verdict": "drift"
     }

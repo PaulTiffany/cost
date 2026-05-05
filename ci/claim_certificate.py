@@ -78,6 +78,7 @@ LAYER_SCRIPTS = {
     "L24_pdf_camera_ready":     SCRIPT_DIR / "pdf_camera_ready_check.py",             # submission_hygiene
     "L25_multi_seed_drift":     SCRIPT_DIR / "multi_seed_drift_check.py",             # statistical_hygiene
     "L26_reference_convention": SCRIPT_DIR / "reference_convention_check.py",          # submission_hygiene
+    "L27_stat_algo_sanity":     SCRIPT_DIR / "statistical_and_algorithmic_sanity_check.py", # statistical_hygiene
 }
 
 # L12 in default (quick) mode runs --quick (mtime + asset-hash only) so
@@ -201,6 +202,7 @@ LAYER_RESULT_JSONS = {
     "L24_pdf_camera_ready":     SCRIPT_DIR / "pdf_camera_ready_results.json",
     "L25_multi_seed_drift":     SCRIPT_DIR / "multi_seed_drift_results.json",
     "L26_reference_convention": SCRIPT_DIR / "reference_convention_results.json",
+    "L27_stat_algo_sanity":     SCRIPT_DIR / "statistical_and_algorithmic_sanity_results.json",
 }
 
 
@@ -521,6 +523,15 @@ def attach_summary_l16(outcome: LayerOutcome) -> None:
     outcome.summary = payload.get("summary", {})
 
 
+def attach_summary_l27(outcome: LayerOutcome) -> None:
+    p = LAYER_RESULT_JSONS["L27_stat_algo_sanity"]
+    if not p.exists():
+        outcome.notes = "no results JSON found"
+        return
+    payload = json.loads(p.read_text(encoding="utf-8"))
+    outcome.summary = payload.get("summary", {})
+
+
 # ---------------------------------------------------------------------------
 # Aggregate verdict
 # ---------------------------------------------------------------------------
@@ -535,12 +546,12 @@ def aggregate_verdict(outcomes: list[LayerOutcome]) -> tuple[str, str]:
     surface previously-hidden noise can drop below it). The triage
     JSONs are the actionable signal, not the percentage.
     """
-    structural = {"L1_audit", "L2_validator", "L4_lineage", "L7_citations", "L8_links", "L9_consistency", "L10_bib", "L11_scripts", "L12_build_equiv", "L13_cross_tree", "L14_illustrations", "L15_data_ties"}
+    structural = {"L1_audit", "L2_validator", "L4_lineage", "L7_citations", "L8_links", "L9_consistency", "L10_bib", "L11_scripts", "L12_build_equiv", "L13_cross_tree", "L14_illustrations", "L15_data_ties", "L27_stat_algo_sanity"}
     structurally_failed = [o for o in outcomes if o.return_code != 0 and o.name in structural]
     if structurally_failed:
         names = ", ".join(o.name for o in structurally_failed)
         return ("FAIL", f"Structural layers failed: {names}")
-    return ("PASS", "all structural checks clean (L1+L2+L4+L7+L8+L9+L10+L11+L12+L13+L14+L15); L3+L5+L16 coverage is advisory, see triage JSONs")
+    return ("PASS", "all structural checks clean (L1+L2+L4+L7+L8+L9+L10+L11+L12+L13+L14+L15+L27); L3+L5+L16 coverage is advisory, see triage JSONs")
 
 
 # ---------------------------------------------------------------------------
@@ -650,6 +661,8 @@ def render_markdown(payload: dict) -> str:
             ratio = s.get('tied_ratio')
             ratio_str = f"{100*ratio:.0f}%" if isinstance(ratio,(int,float)) else "?"
             blurb = f"{tied}/{total} judgment claims have data anchors ({ratio_str}; advisory)"
+        elif layer["name"] == "L27_stat_algo_sanity":
+            blurb = f"{s.get('total_blocker','?')} blocker / {s.get('total_warn','?')} warn (impossible p, algo guards, ref types, headline drift)"
         else:
             blurb = "(no summary)"
         lines.append(f"| {layer['name']} | `{layer['script']}` | {status} | {blurb} |")
@@ -853,6 +866,14 @@ def main() -> int:
         if not args.quiet: print(f"  {name}...")
         o = run_layer(name, LAYER_SCRIPTS[name])
         outcomes.append(o)
+
+    # L27: statistical & algorithmic sanity (added 2026-05-04 in response
+    # to PAT auto-feedback). Structural blocker; attaches summary so the
+    # cert payload surfaces the blocker / warn counts directly.
+    if not args.quiet: print("  L27_stat_algo_sanity...")
+    o = run_layer("L27_stat_algo_sanity", LAYER_SCRIPTS["L27_stat_algo_sanity"])
+    attach_summary_l27(o)
+    outcomes.append(o)
 
     verdict, rationale = aggregate_verdict(outcomes)
 

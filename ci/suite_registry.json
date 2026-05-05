@@ -155,6 +155,11 @@
           "check": "L25_multi_seed_drift",
           "script": "multi_seed_drift_check.py",
           "severity": "advisory"
+        },
+        {
+          "check": "L27_stat_algo_sanity",
+          "script": "statistical_and_algorithmic_sanity_check.py",
+          "severity": "blocker"
         }
       ]
     },

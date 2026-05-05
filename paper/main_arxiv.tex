@@ -106,13 +106,14 @@ diverging as $\rho \to 1$ (Corollary~\ref{cor:uniform}). The operational cliff a
 \end{figure*}
 
 \begin{algorithm}[t]
-\caption{Regime-Based Routing: One-Shot, Stage, or Decompose, Decided Before Generation}
+\caption{Regime-Based Routing: One-Shot, Stage, or Decompose, Decided Before Generation. This is the deployed policy (regret ${<}2\%$ vs.\ oracle); a capability-aware extension that conditions on a one-shot baseline $c$ is given in \appref{app:protocol_policy}.}
 \label{alg:routing}
 \begin{algorithmic}[1]
-\REQUIRE Prompt $P$, token budget $T$, encoder $\Phi$
+\REQUIRE Prompt $P$, token budget $T$, encoder $\Phi$; calibration $\tau$ (constraint magnitude; default $0.1$), $\hat{L}$ (per-token displacement; default $0.025$, calibrated $\approx 0.048$, \appref{app:lipschitz_calibration}), $m$ (gradient-magnitude lower bound from constraint embeddings, Def.~\ref{def:conflict})
 \STATE \textbf{Parse:} Extract constraints $C_1, \ldots, C_k$ from $P$\footnotemark
 \STATE \textbf{Compute regime index:} $\rhohat \gets \max_{i<j} \rhohat_{ij}$, where $\rhohat_{ij} = \cos(\Phi(C_i), \Phi(C_j))$
 \STATE \textbf{Estimate budget:} $\delta \gets \hat{L} \cdot T$
+\STATE \textbf{Guard:} \textbf{if} $\rhohat(k{-}1) \ge 1$ \textbf{then return} \textsc{Decompose-First} \quad\emph{// rank-deficiency boundary; both one-shot and staged diverge here (Cor.~\ref{cor:k_uniform})}
 \STATE \textbf{Compute screened cost:} $\widehat{\delta}_{\min} \gets (\tau/m)\sqrt{k/(1{-}\rhohat(k{-}1))}$
 \STATE \textbf{Route:}
 \IF{$\delta/\widehat{\delta}_{\min} > 2$ \textbf{or} $\rhohat < 0.15$}
@@ -124,7 +125,7 @@ diverging as $\rho \to 1$ (Corollary~\ref{cor:uniform}). The operational cliff a
 \ENDIF
 \end{algorithmic}
 \end{algorithm}
-\footnotetext{Constraints extracted via explicit markers or structured input; implicit entanglement is a limitation (\secref{sec:limitations}).}
+\footnotetext{Constraints extracted via explicit markers or structured input; implicit entanglement is a limitation (\secref{sec:limitations}). Line~2 uses the similarity shorthand $\cos(\Phi(C_i),\Phi(C_j))$; the deployment estimator is the contrastive form $-\cos(\bar{e}^+_i{-}\bar{e}^-_i,\bar{e}^+_j{-}\bar{e}^-_j)$ (\appref{app:estimation_protocol}, \appref{app:deployment}). High value triggers conflict checks in both.}
 \noindent $\rhohat$ is a conservative screen: false positives over-stage (token cost), not fail. Thresholds from feasibility geometry \citep{fliege2000steepest}; ${<}2\%$ regret vs oracle (\appref{app:baselines}). Scope: explicit constraints; failure modes (encoder blindness, implicit $k$) in \secref{sec:limitations}.
 
 \noindent\textbf{Contributions.}
@@ -356,7 +357,7 @@ Staging replaces endpoint-only control with sequential satisfaction (POCS \citep
 Converges if coupling matrix diagonally dominant (\appref{app:convergence}).
 \end{proposition}
 
-Staged control terminates (Prop.~\ref{prop:convergence}) when per-step cost ${<}1$ (Tab.~\ref{tab:overhead}).
+Staged control terminates (Prop.~\ref{prop:convergence}) when per-step cost ${<}1$ (\appref{app:convergence}, Theorem~\ref{thm:convergence}).
 
 \textbf{Constitutional AI.}
 Critique-revision \citep{bai2022constitutional,anthropic2025constitution} is the geometric solution: one principle per revision avoids diagonal cost. Our bound explains \emph{why}: sequential satisfaction sidesteps the $\sqrt{k/(1{-}\rho(k{-}1))}$ penalty. Table~\ref{tab:claude_family} demonstrates $4.8\times$ staging benefit at frontier scale, suggesting test-time governance (routing based on $\rhohat$) as principled extension (\appref{app:protocol_policy}).
@@ -408,7 +409,7 @@ Token budget sweep across $T \in \{128, 192, 256, 384, 512\}$ shows non-monotone
 At high $\rhohat$, \emph{all protocols} collapse to $\leq$5\% \emph{on smooth-regime trials}. This is the bound in action, not a failure of staging; frontier residual at high tier (Figure~\ref{fig:cross_model}, 17--33\%) reflects pivot events and budget expansion, both detectable mid-generation and routed accordingly. Staging benefit is model-dependent: near-ceiling models (Qwen-Coder) show negative $\Delta$ because one-shot already succeeds, so staging adds overhead when unnecessary. Table~\ref{tab:delta_capacity_model} shows weaker models benefit most. \textbf{The contribution is principled routing, not a claim that staging always wins.}
 
 \textbf{Calibration.}
-Table~\ref{tab:calibration} shows failure scales with $\rhohat$ (24\% $\to$ 98\%), $r_s = 1.0$ with $p < 0.001$ (formal screening condition: Lemma~\ref{lem:proxy_sufficiency}; pivot regime decomposition: Appendix~\ref{app:direction_stability}). \emph{Conflict vs.\ difficulty control}: single-constraint pass rates remain high (tests-only 58\%, format-only 71\% at High tier) while conjunction collapses to 5\%. This confirms diagonal cost, not task difficulty (\appref{app:code_full}). Figure~\ref{fig:feasibility_surface} shows the feasibility surface; Figure~\ref{fig:boundary_vs_observed} demonstrates the predicted cliff matches observations.
+Table~\ref{tab:calibration} shows failure scales with $\rhohat$ (24\% $\to$ 98\%), $r_s = 1.0$ over the 4 tier centroids (perfect ordinal alignment; $N{=}4$, exact one-sided $p = 1/24 \approx 0.042$); statistical power comes from the 48-point per-task analysis (Figure~\ref{fig:per_task}: $r_s = -0.942$, $p = 2.12 \times 10^{-23}$). Formal screening condition: Lemma~\ref{lem:proxy_sufficiency}; pivot regime decomposition: Appendix~\ref{app:direction_stability}. \emph{Conflict vs.\ difficulty control}: single-constraint pass rates remain high (tests-only 58\%, format-only 71\% at High tier) while conjunction collapses to 5\%. This confirms diagonal cost, not task difficulty (\appref{app:code_full}). Figure~\ref{fig:feasibility_surface} shows the feasibility surface; Figure~\ref{fig:boundary_vs_observed} demonstrates the predicted cliff matches observations.
 
 \begin{table}[t]
 \centering
@@ -1040,7 +1041,7 @@ We observe that the aggregate non-monotone pattern in Table~\ref{tab:delta_capac
 \begin{itemize}
 \item \textbf{Qwen-Coder-1.5B}: Near-ceiling one-shot (97--100\%), so staging adds variance. Negative $\Delta$ across all budgets.
 \item \textbf{DeepSeek-1.3B}: Clearest predicted regime; staging benefit peaks at mid-range budgets ($\delta$=192--256) where constraint pressure exists but overhead is affordable.
-\item \textbf{Qwen-3B}: Uses 4-bit quantization per code specification. One-shot is non-functional (0--3\%), and staging rescues to 20--30\%. We isolate this as a confound rather than over-interpret.
+\item \textbf{Qwen-3B}: Uses 4-bit quantization per code specification. At the High tier across all token budgets ($T \in \{128,\ldots,512\}$), one-shot collapses to 0--3\% and staging rescues to 20--30\%; cross-tier behavior (Control 95\%, Low 42\%) is in Table~\ref{tab:llm_bridge}. We isolate this as a confound rather than over-interpret.
 \item \textbf{TinyLlama-1.1B}: Too weak to benefit consistently, with mixed results across budgets.
 \end{itemize}
 
@@ -1119,7 +1120,7 @@ Conflict $\rho$ is computed from character pressure (tighter limit = higher $\rh
 Tier & $\rho$ & Chars & 1-shot & Staged & Format\% & \textbf{Failure} \\
 \midrule
 control & 0.01 & 500 & 22.5\% & 7.5\% & 50\% & \textbf{77.5\%} \\
-low & 0.25 & 300 & 10.0\% & 0.0\% & 22\% & \textbf{90.0\%} \\
+low & 0.25 & 300 & 10.0\% & 0.0\% & 22.5\% & \textbf{90.0\%} \\
 moderate & 0.55 & 180 & 0.0\% & 2.5\% & 5\% & \textbf{97.5\%} \\
 high & 0.70 & 120 & 0.0\% & 0.0\% & 0\% & \textbf{100.0\%} \\
 \bottomrule
@@ -1158,7 +1159,7 @@ Median direction drift: $0.07$ (IQR: $0.03$--$0.12$). 94\% of trajectories show 
 Direction stability validates the local-to-global transfer assumed in Lemma~\ref{lem:traj_infeasible}, namely that the MOO bound computed at the anchor applies along realized trajectories because the geometry does not substantially change during generation. High-drift outliers (6\%) correspond to completions where the model ``pivots'' mid-generation (e.g., abandoning one approach for another). These cases violate the smoothness assumption and represent a known failure mode (Remark~\ref{rem:proxy_scope}).
 
 \paragraph{Pivot Regime in the Predicted-Infeasible Region.}
-Across 480 high-tier trials (4 models $\times$ 12 tasks $\times$ 2 protocols $\times$ N=5), unconditional success is $1.7\%$ (8/480). The paper's headline 0/4{,}272 smooth-regime refutations imply, by exclusion, that all 8 successes lie in the pivot regime. Smooth trajectories satisfy the Lipschitz contract and obey the bound (failure rate 100\% at high $\rhohat$); pivot trajectories violate it and admit occasional success. The pivot regime size estimated from per-model outlier rates (Table~\ref{tab:lipschitz_calibration}) is $\sim$53/480, giving a pivot-conditional success rate of $\sim$15\%. Pivot signatures are detectable mid-generation, specifically per-token displacement exceeding $2.5\hat{L}$ or constraint-direction drift exceeding $15^\circ$. Algorithm~\ref{alg:routing} can early-stop one-shot and switch to staging on detection. Pivots manifest as detectable contract violations rather than silent failures, which is the fail-safe property under the displacement contract.
+Across 480 high-tier trials (4 models $\times$ 12 tasks $\times$ 2 protocols $\times$ N=5), unconditional success is $1.7\%$ (8/480). The paper's headline 0/4{,}272 smooth-regime refutations imply, by exclusion, that all 8 successes lie in the pivot regime. Smooth trajectories satisfy the Lipschitz contract and obey the bound (failure rate 100\% at high $\rhohat$); pivot trajectories violate it and admit occasional success. The pivot regime size, estimated from per-model upper-tail step fractions (events with per-token displacement exceeding $2.5\hat{L}$; computed from the trial-level data underlying Table~\ref{tab:lipschitz_calibration}), is $\sim$53/480, giving a pivot-conditional success rate of $\sim$15\%. Pivot signatures are detectable mid-generation, specifically per-token displacement exceeding $2.5\hat{L}$ or constraint-direction drift exceeding $15^\circ$. Algorithm~\ref{alg:routing} can early-stop one-shot and switch to staging on detection. Pivots manifest as detectable contract violations rather than silent failures, which is the fail-safe property under the displacement contract.
 
 \begin{table}[ht]
 \centering
@@ -1256,14 +1257,38 @@ Diagonal cost applies to \emph{endpoint-only} control: a single $\Delta$ achievi
 \end{remark}
 
 \paragraph{Formal Setup.}
-At stage $t{+}1$, the model solves: $\min \|\Delta\|$ s.t.\ $\langle u_j, \Delta \rangle \le -\tau$ (progress on $C_j$) and $\langle u_i, \Delta \rangle \ge 0$ (non-regression on $C_i$). The second constraint adds a halfspace that the step must avoid.
-
-\paragraph{Preservation Cost Bound.}
-When $\langle u_i, u_j \rangle = -\rho$, the preservation-constrained minimum-norm step satisfies:
+At stage $t{+}1$, the model solves $\min \|\Delta\|$ subject to a progress requirement on the active constraint $C_j$ and a non-regression requirement on every prior constraint $C_i$ already satisfied at stages $s \le t$:
 \[
-\|\Delta_{\text{preserve}}\| \le \|\Delta_{\text{unconstrained}}\| \cdot \frac{1}{1-\rho^2} = \frac{\tau}{m} \cdot \frac{1}{1-\rho^2}.
+\langle u_j, \Delta\rangle \le -\tau/m, \qquad \langle u_i, \Delta\rangle \ge 0 \;\; \forall i \in P_t,
 \]
-The overhead factor $1/(1-\rho^2)$ is bounded for $\rho < 1$. At $\rho = 0.5$, overhead is 33\%.
+where $P_t = \{\pi(s) : s \le t\}$ indexes the prior set, $|P_t| = p$. We assume uniform magnitudes $m_i = m$ for clarity; the general case scales each row by $m_i$ without changing the structure.
+
+\paragraph{Preservation Cost Bound (general $k$).}
+When all preservation halfspaces are active (worst case), KKT optimality places $\Delta$ in $\operatorname{span}\{u_i : i \in P_t \cup \{j\}\}$. Let $G_P$ be the Gram of prior unit gradients and $h \in \mathbb{R}^p$ collect the inner products $h_i = \langle u_i, u_j\rangle$. The preservation-constrained minimum-norm step satisfies
+\begin{equation}
+\label{eq:pres_general}
+\|\Delta_{\text{preserve}}\|^2 = \frac{(\tau/m)^2}{1 - h^\top G_P^{-1} h}.
+\end{equation}
+The denominator is the squared component of $u_j$ orthogonal to $\operatorname{span}\{u_i : i \in P_t\}$; it vanishes precisely when $u_j$ enters that span, i.e., when $G_P$ becomes singular along the direction of $h$.
+
+\paragraph{Specialization: $k=2$.}
+For $p=1$, $G_P = [1]$ and $h = [-\rho]$, so $h^\top G_P^{-1} h = \rho^2$. The minimum-norm step has magnitude
+\[
+\|\Delta_{\text{preserve}}\| = \frac{\tau}{m} \cdot \frac{1}{\sqrt{1-\rho^2}},
+\]
+giving overhead factor $1/\sqrt{1-\rho^2}$, bounded for $\rho < 1$. At $\rho = 0.5$, overhead is $1/\sqrt{0.75} - 1 \approx 15.5\%$ (not $33\%$; the $1/(1-\rho^2)$ factor is the squared-norm ratio, not the displacement ratio).
+
+\paragraph{Specialization: uniform conflict, general $k$.}
+For uniform pairwise conflict $\rho_{ij} = -\rho$, $G_P = (1+\rho)I_p - \rho \mathbf{1}\mathbf{1}^\top$ has $G_P \mathbf{1} = (1-\rho(p-1))\mathbf{1}$, and $h = -\rho \mathbf{1}$. Thus
+\[
+h^\top G_P^{-1} h = \rho^2 \cdot \frac{p}{1-\rho(p-1)},
+\]
+and substituting into~\eqref{eq:pres_general} and simplifying via $1 - \rho(p-1) - p\rho^2 = (1+\rho)(1-\rho p)$ yields
+\begin{equation}
+\label{eq:pres_uniform}
+\|\Delta_{\text{preserve}}^{(p)}\| = \frac{\tau}{m} \cdot \sqrt{\frac{1-\rho(p-1)}{(1+\rho)(1-\rho p)}}.
+\end{equation}
+The overhead diverges as $\rho p \to 1$, equivalently as $\rhohat(p) \to 1$ in the conflict-degree notation $\rhohat(p) := \rho p$. At the final stage ($p = k-1$), this is the same rank-deficiency boundary $\rhohat(k-1) \to 1$ that governs the simultaneous Gram-spectrum bound (Theorem~\ref{thm:k_bound_cited}).
 
 \paragraph{Empirical Regression Rates.}
 We instrument the 3-stage protocol to capture stage-1 (correctness-focused) and stage-3 (final) outputs separately, evaluating each against tests and format. Across 8 OpenRouter models (gemini-2.5-flash, gpt-4o-mini, claude-haiku-3.5, llama-3.1-70b, deepseek-v3, mistral-large, gpt-4o, claude-sonnet-4.5), 6 tasks, 5 trials per cell, 240 trials per tier:
@@ -1413,9 +1438,8 @@ combined with basic properties of Gram matrices
 \citep{hornjohnson2013matrix}.
 
 \begin{proof}
-Let $u_i = g_i/m_i$ be unit gradient directions with cosine $c = \langle u_1, u_2 \rangle = -\rho$. At the minimum-norm solution, both constraints are active
-(by convexity; see \citealt[Sec.~3.2]{boyd2004convex}),
-so we solve the KKT system. By Lemma~\ref{lem:halfspace} with $\alpha_i = \tau/m_i$:
+Let $u_i = g_i/m_i$ be unit gradient directions with cosine $c = \langle u_1, u_2 \rangle = -\rho$. Under the conflict hypothesis $\rho > 0$, both constraints are active at the minimum-norm solution: if only one were active, the unconstrained projection onto that single halfspace would already violate the other (since their inward normals have negative inner product). See \citealt[Sec.~3.2]{boyd2004convex} for the KKT setup.
+We solve the KKT system. By Lemma~\ref{lem:halfspace} with $\alpha_i = \tau/m_i$:
 \[
 d^\star = \gamma_1 u_1 + \gamma_2 u_2, \quad
 \gamma_i = \frac{-\alpha_i + \alpha_j c}{1-c^2}.
@@ -1508,27 +1532,34 @@ We now prove that staged satisfaction reduces required step magnitude when const
 
 \paragraph{Why staging escapes implicit-$k$.} One-shot generation must respect all $k$ constraint gradients simultaneously, holding the full Gram matrix $\Gamma$ in budget. When implicit constraints (grammar, coherence) inflate $k$, the diagonal cost bound becomes restrictive. Staging escapes this. Each step resolves one constraint, requiring only one gradient at a time. The model never needs to compute or budget for the global geometry. It iteratively constructs a solution where step $t{+}1$ takes $x_t$ as a fixed anchor. This is why staging circumvents the ``implicit $k$ is unknowable'' objection. The bound applies to simultaneous satisfaction, not sequential.
 
-\begin{proposition}[Staging reduces diagonal cost]
-Let $k$ constraints have pairwise conflict $\rho_{ij} = -\rho$ for all $i \neq j$.
-Sequential satisfaction with perfect preservation requires per-step magnitude
-$\delta_{\text{staged}} = \tau/m$, while simultaneous satisfaction requires
-$\delta_{\text{sim}} \ge (\tau/m)\sqrt{k/(1-\rho(k-1))}$.
-
-The staging benefit ratio is:
+\begin{proposition}[Staging reduces diagonal cost]\label{prop:staging_reduces}
+Let $k$ constraints have uniform pairwise conflict $\rho_{ij} = -\rho$, and assume the staging feasibility condition $\rhohat(k-1) := \rho(k-1) < 1$ (equivalently, the prior-set Gram $G_P$ remains positive definite at every stage). Then sequential satisfaction with min-norm preservation has stage-$p$ step magnitude
 \[
-\frac{\delta_{\text{sim}}}{\delta_{\text{staged}}} = \sqrt{\frac{k}{1-\rho(k-1)}} \xrightarrow{\rho \to 1/(k-1)} \infty.
+\delta_{\text{staged}}^{(p)} \;=\; \frac{\tau}{m}\sqrt{\frac{1-\rho(p-1)}{(1+\rho)(1-\rho p)}}, \qquad p = 0, 1, \ldots, k-1,
 \]
+(see~\eqref{eq:pres_uniform}; $p=0$ gives the unconstrained $\tau/m$). Simultaneous satisfaction requires a single step with
+\[
+\delta_{\text{sim}} \;\ge\; \frac{\tau}{m}\sqrt{\frac{k}{1-\rho(k-1)}}
+\qquad \text{(Theorem~\ref{thm:k_bound_cited}).}
+\]
+Both blow up at the rank-deficiency boundary $\rhohat(k-1) \to 1$; staging does \emph{not} relax this boundary, but it changes the prefactor.
 \end{proposition}
 
 \begin{proof}
-For single-constraint satisfaction, the minimum progress is $\|d\| \ge \tau/m$ by Cauchy-Schwarz (Lemma~\ref{lem:first_order} in the original).
-
-If staged satisfaction perfectly preserves prior constraints (i.e., moves orthogonally to previously satisfied gradient directions), each stage faces only one active constraint with descent requirement $\tau$.
-
-For simultaneous satisfaction, Theorem~\ref{thm:k_bound_cited} gives the stated bound.
-
-The ratio follows by division. As $\rho \to 1/(k-1)$, the denominator $1-\rho(k-1) \to 0$, making simultaneous satisfaction require arbitrarily large steps.
+Single-constraint min-norm progress is $\tau/m$ by Cauchy-Schwarz (Lemma~\ref{lem:first_order}). Adding $p$ active non-regression halfspaces yields the constrained min-norm problem of \secref{app:preservation}; substituting the uniform-conflict Gram into~\eqref{eq:pres_general} gives~\eqref{eq:pres_uniform}. Feasibility of the stage-$p$ subproblem requires the orthogonal complement of $\operatorname{span}\{u_i : i \in P_t\}$ to contain a descent direction for $u_j$, equivalently $h^\top G_P^{-1} h < 1$; under uniform conflict this reduces to $\rho p < 1$. Taking the worst stage $p = k-1$ gives $\rhohat(k-1) < 1$. The simultaneous bound is Theorem~\ref{thm:k_bound_cited}.
 \end{proof}
+
+\begin{corollary}[Per-step ratio and total displacement]\label{cor:staging_ratio}
+At the worst (final) stage $p = k-1$, the per-step ratio is
+\[
+\frac{\delta_{\text{sim}}}{\delta_{\text{staged}}^{(k-1)}} \;=\; \sqrt{\frac{k(1+\rho)}{1-\rho(k-2)}},
+\]
+finite even as $\rhohat(k-1) \to 1$ (both diverge at the same rate $1/\sqrt{1-\rho(k-1)}$). Summing total displacement across the $k$ stages, $\Delta_{\text{staged}}^{\text{tot}} = \sum_{p=0}^{k-1} \delta_{\text{staged}}^{(p)}$ is dominated by the last term, so $\Delta_{\text{staged}}^{\text{tot}} \asymp k\tau/m$ for $\rho$ bounded away from the boundary, versus $\delta_{\text{sim}} \asymp (\tau/m)\sqrt{k/(1-\rho(k-1))}$ in one shot. Staging is preferred when $\sqrt{k/(1-\rho(k-1))} \gtrsim k$, i.e., when $\rhohat(k-1) \gtrsim 1 - 1/k$.
+\end{corollary}
+
+\begin{remark}[Universal feasibility limit]\label{rem:universal_boundary}
+For uniform pairwise conflict, both simultaneous and staged satisfaction become infeasible at the same rank-deficiency boundary $\rhohat(k-1) = 1$. This is structural: at that boundary the $k$ unit gradients become linearly dependent and the orthogonal complement of any $k{-}1$-subset that contains a descent direction for the remaining one collapses. No memoryless policy that respects the linearization can escape this boundary; only constraint decomposition (reducing $k$) or magnitude rescaling (changing $\tau/m$) does. This motivates the Algorithm~\ref{alg:routing} guard \texttt{if $\rhohat(k-1) \ge 1$: return DECOMPOSE}: routing past the cliff is provably futile, not merely costly.
+\end{remark}
 
 \paragraph{Connection to Constitutional AI.}
 This proposition formalizes why critique-revision loops (Constitutional AI's core mechanism) succeed by targeting one principle per revision, avoiding the diagonal cost amplification that would arise from simultaneous multi-principle optimization.
@@ -1628,13 +1659,13 @@ The Gram matrix of unnormalized gradients is $\Gamma = M \tilde{\Gamma} M$ where
 \begin{corollary}[Magnitude-conflict interaction]
 When constraints have heterogeneous magnitudes, the effective diagonal cost depends on both conflict structure and magnitude ratios. Specifically, for $k=2$:
 \[
-\|d^\star\| = \tau \sqrt{\frac{1/m_1^2 + 1/m_2^2 - 2\rho/(m_1 m_2)}{1-\rho^2}}.
+\|d^\star\| = \tau \sqrt{\frac{1/m_1^2 + 1/m_2^2 + 2\rho/(m_1 m_2)}{1-\rho^2}}.
 \]
 Large-magnitude constraints (high $m_i$) contribute less to the diagonal cost per unit of required decrease.
 \end{corollary}
 
 \begin{proof}
-For $k=2$, $M^{-1} = \mathrm{diag}(1/m_1, 1/m_2)$ and $\tilde{\Gamma}^{-1} = \frac{1}{1-\rho^2}\begin{pmatrix} 1 & -\rho \\ -\rho & 1 \end{pmatrix}$. Computing $\mathbf{1}^\top M^{-1} \tilde{\Gamma}^{-1} M^{-1} \mathbf{1}$ and simplifying yields the stated formula.
+For $k=2$, $M^{-1} = \mathrm{diag}(1/m_1, 1/m_2)$. Under the conflict convention $c = \langle u_1, u_2 \rangle = -\rho$ (so the correlation matrix has off-diagonal $-\rho$ for $\rho>0$), $\tilde{\Gamma}^{-1} = \frac{1}{1-\rho^2}\begin{pmatrix} 1 & \rho \\ \rho & 1 \end{pmatrix}$. Computing $\mathbf{1}^\top M^{-1} \tilde{\Gamma}^{-1} M^{-1} \mathbf{1}$ and simplifying yields the stated formula.
 \end{proof}
 
 \subsection{Iterative Satisfaction: Convergence Analysis}\label{app:convergence}
@@ -1659,7 +1690,7 @@ The convergence rate degrades as $\rho_{\max} \to 1$.
 \end{theorem}
 
 \begin{proof}[Proof sketch]
-Each projection onto constraint $i$'s halfspace reduces squared distance to the feasible region by factor $(1 - c_i)$ where $c_i$ depends on the angle between $g_i$ and the current residual. For non-degenerate configurations with $\rho_{\max} < 1$, the constraints are linearly independent, ensuring $c_i \ge (1-\rho_{\max})/k$ on average over a full cycle \citep[cf.][Thm.~4.1]{bauschke1996projection}. The product of $k$ such contractions over one cycle yields the stated bound.
+Each projection onto constraint $i$'s halfspace reduces squared distance to the feasible region by factor $(1 - c_i)$ where $c_i$ depends on the angle between $g_i$ and the current residual. For non-degenerate configurations with $\rho_{\max} < 1/(k{-}1)$ (Proposition~\ref{prop:gram_spectrum}), the constraints are linearly independent, ensuring $c_i \ge (1-\rho_{\max})/k$ on average over a full cycle \citep[cf.][Thm.~4.1]{bauschke1996projection}. The product of $k$ such contractions over one cycle yields the stated bound.
 \end{proof}
 
 \begin{corollary}[Iteration complexity]
@@ -1753,7 +1784,7 @@ Let $\gamma: [0,1] \to \mathcal{M}$ be any trajectory achieving $\tau$-progress 
 \[
 \int_0^1 \|\dot{\gamma}(t)\|\, dt \;\ge\; \frac{\tau}{m}\sqrt{\frac{k}{1-\bar{\rho}(k-1)}} - O(\kappa \tau),
 \]
-where $\bar{\rho} := \frac{1}{\tau}\int_0^1 \rho(\gamma(t)) \|\dot{\gamma}(t)\| \, dt$ is the path-averaged conflict and $m = \min_i \|\nabla r_i\|$.
+where $\bar{\rho} := \frac{1}{\tau}\int_0^\tau \rho(\gamma(\tau'))\, d\tau'$ is the \emph{progress-weighted} path-averaged conflict (the average conflict per unit of progress made) and $m = \min_i \|\nabla r_i\|$. Progress-weighting is the operationally meaningful average: arc length is the cost the algorithm spends to buy progress, so the relevant mean of $\rho$ is taken against the progress measure $d\tau$, not against arc length $\|\dot\gamma\|\,dt$.
 \end{theorem}
 
 \begin{proof}
@@ -1767,19 +1798,27 @@ where $\rho_j = \rho(\gamma(t_j))$ and $m_j = \min_i\|\nabla r_i(\gamma(t_j))\|$
 
 \textbf{Step 2 (Sum over segments):} Total progress $\tau = \sum_j \tau_j$. Summing the local bounds:
 \[
-L = \sum_j \|\Delta_j\| \ge \sum_j \frac{\tau_j}{m_j}\sqrt{\frac{k}{1-\rho_j(k-1)}} - O(N\kappa\epsilon^2/\bar{\tau}).
+L = \sum_j \|\Delta_j\| \;\ge\; \sum_j \frac{\tau_j}{m_j}\sqrt{\frac{k}{1-\rho_j(k-1)}} \;-\; R_N,
+\qquad R_N := \sum_j O(\kappa\epsilon^2/\tau_j).
 \]
-The correction term is $O(N\kappa(L/N)^2) = O(\kappa L^2/N) \to 0$ as $N \to \infty$.
+With $\epsilon = L/N$ and a uniform refinement giving $\tau_j \sim \tau/N$, $R_N = O(\kappa L^2/\tau)\cdot O(1/N) \to 0$ as $N\to\infty$, so the additive Riemann correction $R_N$ vanishes in the limit and \emph{does not} appear in the final bound. The persistent, non-vanishing curvature contribution is reintroduced as a single $O(\kappa\tau)$ term in Step~3 below: it arises from the per-segment Taylor remainders summed along the path, $\sum_j \kappa\epsilon^2/\tau_j \to \kappa L^2/\tau = O(\kappa\tau)$ once $L = O(\tau/m)$ is substituted back.
 
-\textbf{Step 3 (Limit):} Taking $N \to \infty$, the Riemann sum converges:
+\textbf{Step 3 (Limit, integration against the progress measure):} Reparameterize by progress: let $\tau'(t) := \tfrac{1}{k}\sum_i \big[r_i(\gamma(0)) - r_i(\gamma(t))\big]_+$ be the cumulative mean progress along $\gamma$, so $\tau'$ runs from $0$ to $\tau$ and $\tau_j = \Delta\tau'_j$ on each segment. The Riemann sum $\sum_j (\tau_j/m_j)\,f(\rho_j)$ converges, as $N\to\infty$, to a Stieltjes integral against the \emph{progress measure} $d\tau'$:
 \[
-L \ge \int_0^1 \frac{1}{m(\gamma(t))}\sqrt{\frac{k}{1-\rho(\gamma(t))(k-1)}} \, d\tau(t),
+L \;\ge\; \int_0^\tau \frac{1}{m(\gamma(\tau'))}\,f(\rho(\gamma(\tau')))\, d\tau',
+\qquad f(\rho) := \sqrt{\tfrac{k}{1-\rho(k-1)}}.
 \]
-where $d\tau(t)$ is the progress measure. By Jensen's inequality on the convex function $f(\rho) = \sqrt{k/(1-\rho(k-1))}$ and using $m \ge m_{\min}$:
+\emph{Convexity of $f$.} Set $u(\rho) := 1-\rho(k-1) \in (0,1]$ for $\rho \in [0, 1/(k-1))$. Then $f = \sqrt{k}\, u^{-1/2}$, and a direct calculation gives $f''(\rho) = \tfrac{3\sqrt{k}}{4}(k-1)^2\, u^{-5/2} > 0$, so $f$ is strictly convex on the entire feasible interval $[0, 1/(k-1))$.
+
+\emph{Jensen against the progress measure.} Since $d\tau'/\tau$ is a probability measure on $[0,\tau]$ and $f$ is convex, Jensen's inequality yields
 \[
-L \ge \frac{\tau}{m}\sqrt{\frac{k}{1-\bar{\rho}(k-1)}} - O(\kappa\tau),
+\frac{1}{\tau}\int_0^\tau f(\rho(\gamma(\tau')))\, d\tau' \;\ge\; f\!\left(\frac{1}{\tau}\int_0^\tau \rho(\gamma(\tau'))\, d\tau'\right) \;=\; f(\bar\rho),
 \]
-where the $O(\kappa\tau)$ absorbs the curvature corrections accumulated along the path.
+where $\bar\rho$ is exactly the progress-weighted average defined in the theorem statement. (An arc-length-weighted definition of $\bar\rho$ would mismatch the integration measure and invalidate this step, since arc-length and progress weighting agree only when $\|\dot\gamma\|$ is constant on level sets of progress; matching the average to the measure is the substantive correction here.) Bounding $1/m(\gamma(\tau')) \ge 1/m$ with $m := \max_{\tau'\in[0,\tau]} \min_i\|\nabla r_i(\gamma(\tau'))\|$ (the worst-case minimum-gradient norm along the path, consistent with the conservative normaliser $m = \min_i\|\nabla r_i\|$ used elsewhere) and combining,
+\[
+L \;\ge\; \frac{\tau}{m}\sqrt{\frac{k}{1-\bar{\rho}(k-1)}} \;-\; O(\kappa\tau),
+\]
+where the $O(\kappa\tau)$ residual is the persistent curvature term identified in Step~2. The constant in front of $\sqrt{k/(1-\bar\rho(k-1))}$ is unchanged from the original statement; only the definition of $\bar\rho$ (now progress-weighted) has been corrected.
 \end{proof}
 
 \begin{corollary}[Curvature cannot defeat the bound]
@@ -2147,7 +2186,7 @@ The following protocol estimates feasibility regimes using only black-box querie
 
 \subsection{Protocol Selection Policy}\label{app:protocol_policy}
 
-Given estimated $\rhohat$, budget $\delta$, and model capability $c$ (one-shot baseline), the full decision rules are:
+Algorithm~\ref{alg:routing} is the deployed policy used for all reported regret numbers. The rules below are an optional capability-aware extension that adds a one-shot baseline $c$ when available; they were not used to generate Table~\ref{tab:calibration} or the headline ${<}2\%$ regret. Given estimated $\rhohat$, budget $\delta$, and model capability $c$ (one-shot baseline), the full decision rules are:
 \begin{itemize}[nosep,leftmargin=*]
 \item \textbf{Stage} if: $\rhohat > 0.3$ \emph{and} $\delta < 2\delta_{\min}$ \emph{and} $c < 0.7$ (intermediate band)
 \item \textbf{One-shot} if: $\rhohat < 0.15$ \emph{or} $c > 0.85$ (low conflict or near-ceiling capability)
