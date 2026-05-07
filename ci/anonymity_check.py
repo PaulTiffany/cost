@@ -59,10 +59,8 @@ SKIP_FILES = {
     "anonymity_check.py",            # contains identity patterns it searches for (this file)
     "cert_anonymity_check.py",       # same — contains identity patterns it searches for
     "pdf_camera_ready_check.py",     # contains identity patterns it searches for
-    "architecture_provenance_check.py",  # contains forbidden-pattern table for self scan
     "anonymity_check_results.json",  # results may quote matched lines
     "cert_anonymity_results.json",   # same
-    "architecture_provenance_results.json",  # may quote matched patterns
 }
 
 

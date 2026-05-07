@@ -3,7 +3,7 @@
     "pre_reg_hash": "13c4618d46caa58841c047dfe01ea155e2037503cc8000aa1813959eb6e6e605",
     "manifest_hash": "64825e03880111ab3ed42e8ea103decaeaec02d6d6991e678008976313eed0af",
     "audit_observer_id": "audit_v1",
-    "ran_at_utc": "2026-05-07T10:31:17+00:00",
+    "ran_at_utc": "2026-05-07T10:48:24+00:00",
     "source": "supplementary\\experiments\\outputs\\audit_v4\\observation_packets.jsonl"
   },
   "per_cell_audit": [

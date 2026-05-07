@@ -10,16 +10,16 @@
       "pattern": "0/4[,{\\\\}]*272",
       "appearances_by_section": {
         "abstract": false,
-        "approach": false,
         "conclusion_summary": false,
-        "contributions": false
+        "contributions": false,
+        "approach": false
       },
       "present_in": [],
       "absent_from": [
         "abstract",
-        "approach",
         "conclusion_summary",
-        "contributions"
+        "contributions",
+        "approach"
       ],
       "verdict": "absent"
     },
@@ -28,9 +28,9 @@
       "pattern": "r_s\\s*[{=}]+\\s*1\\.0",
       "appearances_by_section": {
         "abstract": true,
-        "approach": false,
         "conclusion_summary": true,
-        "contributions": true
+        "contributions": true,
+        "approach": false
       },
       "present_in": [
         "abstract",
@@ -47,16 +47,16 @@
       "pattern": "[<{\\\\}]*\\s*2\\s*\\\\?%\\s*regret|1\\.8\\s*\\\\?pm\\s*0\\.4\\s*\\\\?%",
       "appearances_by_section": {
         "abstract": false,
-        "approach": false,
         "conclusion_summary": false,
-        "contributions": false
+        "contributions": false,
+        "approach": false
       },
       "present_in": [],
       "absent_from": [
         "abstract",
-        "approach",
         "conclusion_summary",
-        "contributions"
+        "contributions",
+        "approach"
       ],
       "verdict": "absent"
     },
@@ -65,16 +65,16 @@
       "pattern": "11\\s*\\\\?%\\s*pivot",
       "appearances_by_section": {
         "abstract": false,
-        "approach": false,
         "conclusion_summary": false,
-        "contributions": false
+        "contributions": false,
+        "approach": false
       },
       "present_in": [],
       "absent_from": [
         "abstract",
-        "approach",
         "conclusion_summary",
-        "contributions"
+        "contributions",
+        "approach"
       ],
       "verdict": "absent"
     },
@@ -83,16 +83,16 @@
       "pattern": "89\\s*\\\\?%",
       "appearances_by_section": {
         "abstract": false,
-        "approach": false,
         "conclusion_summary": false,
-        "contributions": false
+        "contributions": false,
+        "approach": false
       },
       "present_in": [],
       "absent_from": [
         "abstract",
-        "approach",
         "conclusion_summary",
-        "contributions"
+        "contributions",
+        "approach"
       ],
       "verdict": "absent"
     },
@@ -101,17 +101,17 @@
       "pattern": "94\\s*\\\\?%\\s*router",
       "appearances_by_section": {
         "abstract": false,
-        "approach": false,
         "conclusion_summary": false,
-        "contributions": true
+        "contributions": true,
+        "approach": false
       },
       "present_in": [
         "contributions"
       ],
       "absent_from": [
         "abstract",
-        "approach",
-        "conclusion_summary"
+        "conclusion_summary",
+        "approach"
       ],
       "verdict": "drift"
     }

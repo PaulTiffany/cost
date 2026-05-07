@@ -66,3 +66,10 @@ paper/cacophony_*.zip
 # Rebuttal workspace (post-review; not part of initial submission)
 rebuttal/
 rebuttal_prep/
+
+# Author-only AGI-26 lineage check (contains forbidden-pattern literals
+# that would deanonymize through the author's broader paper program).
+# Must NEVER be in the repo or any zip; lives in author's local-only
+# tooling outside this tree.
+ci/architecture_provenance_check.py
+ci/architecture_provenance_results.json

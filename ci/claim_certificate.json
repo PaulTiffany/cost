@@ -9,16 +9,16 @@
     "profile": "standard",
     "git": {
       "status": "ok",
-      "commit": "107d428e6895d77e9b50ff90ee4347322d693529",
-      "commit_short": "107d428e",
+      "commit": "71ef8a52fc7dc51263cd5f90d526ac34e80e5ac1",
+      "commit_short": "71ef8a52",
       "branch": "master",
       "dirty": true,
-      "n_modified_unstaged": 19,
+      "n_modified_unstaged": 18,
       "n_staged": 1,
       "n_untracked": 0
     },
     "dependencies": {
-      "generated_at": "2026-05-07T10:30:29.759055+00:00",
+      "generated_at": "2026-05-07T10:47:39.272812+00:00",
       "python": {
         "version": "3.13.4 (tags/v3.13.4:8a526ec, Jun  3 2025, 17:46:04) [MSC v.1943 64 bit (AMD64)]",
         "version_short": "3.13.4",
@@ -57,13 +57,13 @@
         }
       }
     },
-    "generated_at": "2026-05-07T06:31:27",
+    "generated_at": "2026-05-07T06:48:34",
     "main_tex_path": "paper\\main.tex",
     "main_tex_sha256": "4e1608d60a933634dbbcec9eaa99cd028534c0a279d516da2b93800bf430b7a1",
     "main_tex_mtime": "2026-05-07T05:35:04",
     "main_pdf_path": "paper\\main.pdf",
     "main_pdf_size": 1200503,
-    "main_pdf_mtime": "2026-05-07T06:31:27",
+    "main_pdf_mtime": "2026-05-07T06:48:33",
     "claim_audit_md_path": "CLAIM_AUDIT.md",
     "claim_audit_md_sha256": "d3cc82eb135768caad685e5bba291fbd0db3d090de96f0f0a366b81bb391700b"
   },
@@ -73,7 +73,7 @@
     "ci\\figure_value_check_results.json": "280a7aa923e56caea40239122515611dd0f7a0235d2860bda146493ddac29d0b",
     "ci\\citation_integrity_results.json": "3dbbe54921cc39803b7ac971c408ec7737ca26ad2d8cd7a26cb42d7784981221",
     "ci\\link_integrity_results.json": "25c376e01d2c572940e9ece68761886aeae40223d458a76ffd90a46d06bb815d",
-    "ci\\cross_claim_consistency_results.json": "c9e127a5f5644ce3513a56afa4ae79904e6be1c21d72c5a27b79bd1d05216a4c",
+    "ci\\cross_claim_consistency_results.json": "66023b9c9b27d8320875fd5688cc872059f6f36ca52c66c94a58f8d669efb80c",
     "ci\\bib_entry_check_results.json": "94b642da0b2e879f43d4dcf098c5d5647bd41cf6907ffa35267ff827b980faf7",
     "ci\\script_integrity_results.json": "0cb95174ba62ef104a598de8b98a5512613a05c86f1569c87580bb628f9f37c8",
     "ci\\build_equivalence_results.json": "4cea7a13d9a7c65a12866636243b06790d11d5a9e1cbf738aab096cb6ecdae02",
@@ -93,12 +93,12 @@
     "ci\\reference_convention_results.json": "c747019a9b4897581ca2b3341afd5c988e22d4f2ad52248328c9fc890b2df7e1",
     "ci\\statistical_and_algorithmic_sanity_results.json": "88a8012d21c38bf50a33ae90f9c94ccb1e07fd34ba8e2f97244fa16f8df0183a",
     "ci\\symbolic_algebra_results.json": "1b0792cfa15543e9f2b18e2378a9b6ae861a9bb1d6925e689bff69ee70232d5b",
-    "ci\\numerical_bound_results.json": "c8b21fa41347119dab2c94f28ce6ab5f19cac3dfadd767e06c483cd08f9b41f0",
+    "ci\\numerical_bound_results.json": "67dbbbcddccc1ad62f7836c67dd9e9452be2c1dcb92fe0e666425aa9e151996e",
     "ci\\per_trajectory_pivot_results.json": "4aafe48b5b2a9c3736806b2d41c87989b5434e29572fa23a1dd14f98b5480b99",
-    "ci\\audit_observer_purity_results.json": "88e2700696a31b6c38d97ab3008daf5a0c7a19bf9224a1feb14ad9c0f296cd85",
-    "ci\\audit_runtime_results.json": "da546b6c708ffc40a347cc8eb71e781518f0eb50ec3fa8fd7711cca9c5efd6b2",
-    "ci\\paper_surface_results.json": "ff001b7dfaa238e8f272aff9a235f8a2e4e68b5bc9debfbf8607b80765b3ad93",
-    "ci\\figure_caption_grounding_results.json": "8ae446062edd6d442c218fc199bf5c6f9f3fa6d21501bbaf126c30e3aa3f0e81",
+    "ci\\audit_observer_purity_results.json": "1600b628e863fa7964d5dd547adf2bce25645d9b28e1f4e0f38230b54e56b639",
+    "ci\\audit_runtime_results.json": "c7dde6b6168c76aa8db757c8c7b7114bff025706fae3a542c692c04a7cc909eb",
+    "ci\\paper_surface_results.json": "b92eb1795acb5c71cebdf658274f91b8d592d7f6b382d1e0f22c0b57c8abb529",
+    "ci\\figure_caption_grounding_results.json": "354d0d4c816d7891f8f8bc3c84d544e521a94cd349d11966fe101aac8357ee64",
     "ci\\page_check_results.json": "0c0078f9f6270057bec4707ee05a0c914db705f1dd50d124f3187e8069078a98",
     "ci\\claim_data_ties.json": "1c0d49e387c7bbd9d9934a450c215eb640fa7f7278ce7e5ab3aa06f5cbd78759",
     "ci\\figure_lineage.json": "d69541bb36893ac0f84be3953f0ad8b5b76723186b68dd2e53c176ba092137ae",
@@ -537,7 +537,7 @@
         "total_bounds": 13,
         "passed": 13,
         "failed": 0,
-        "elapsed_seconds": 0.359,
+        "elapsed_seconds": 0.336,
         "seed": 20260504,
         "h1_demo_violations_found": 100,
         "h1_demo_max_relative_violation": 0.683107859546742
@@ -942,5 +942,5 @@
       ]
     }
   ],
-  "certificate_self_hash": "30b1b55aefe04b1d4efd052a3b7f242e87670527d262c358e1cf0659a97c03b2"
+  "certificate_self_hash": "4a296b449c2529f12e231bc5eab1394727b39af2cc7f6621a2908f684d9d3555"
 }
