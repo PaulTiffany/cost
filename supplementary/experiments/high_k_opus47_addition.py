@@ -76,7 +76,7 @@ def call_anthropic_model(client, model_id: str, prompt: str, accepts_temp: bool)
 
 
 _USER_PATH_RX = re.compile(r"[Cc]:[\\/]Users[\\/][^\\/'\"\s]+", re.IGNORECASE)
-_USERNAME_RX = re.compile(r"\bpaulc\b", re.IGNORECASE)
+_USERNAME_RX = re.compile(r"\b<redacted_user>\b", re.IGNORECASE)
 
 def _redact(s: str) -> str:
     """Scrub local user paths and usernames from verifier output before

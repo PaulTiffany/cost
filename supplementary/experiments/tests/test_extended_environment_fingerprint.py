@@ -65,7 +65,7 @@ def test_fingerprint_python_executable_is_scrubbed_of_username():
     fp = eef.capture_extended_fingerprint()
     exe = fp.python_executable
     # Anonymity check: no raw author username, no raw user-path prefix.
-    assert "paulc" not in exe.lower()
+    assert "<redacted_user>" not in exe.lower()
     for pat in _SCRUB_PATTERNS:
         assert not pat.search(exe), (
             f"python_executable still contains a user-path fingerprint: {exe!r}"

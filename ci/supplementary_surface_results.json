@@ -57,7 +57,7 @@
         {
           "check": "exists",
           "passed": true,
-          "detail": "File present: C:\\src\\NeurIPS\\supplementary\\demos\\interactive_demo.ipynb"
+          "detail": "File present: supplementary\\demos\\interactive_demo.ipynb"
         },
         {
           "check": "notebook_static",
@@ -88,7 +88,7 @@
         {
           "check": "exists",
           "passed": true,
-          "detail": "File present: C:\\src\\NeurIPS\\supplementary\\demos\\sonification.py"
+          "detail": "File present: supplementary\\demos\\sonification.py"
         },
         {
           "check": "forbidden_tokens",
@@ -114,7 +114,7 @@
         {
           "check": "exists",
           "passed": true,
-          "detail": "File present: C:\\src\\NeurIPS\\supplementary\\demos\\constitution_deep_dive.py"
+          "detail": "File present: supplementary\\demos\\constitution_deep_dive.py"
         },
         {
           "check": "forbidden_tokens",
@@ -135,7 +135,7 @@
         {
           "check": "exists",
           "passed": true,
-          "detail": "File present: C:\\src\\NeurIPS\\supplementary\\bridges\\bytebeat_harness.py"
+          "detail": "File present: supplementary\\bridges\\bytebeat_harness.py"
         },
         {
           "check": "forbidden_tokens",
@@ -156,7 +156,7 @@
         {
           "check": "exists",
           "passed": true,
-          "detail": "File present: C:\\src\\NeurIPS\\supplementary\\bridges\\if_dsl_harness.py"
+          "detail": "File present: supplementary\\bridges\\if_dsl_harness.py"
         },
         {
           "check": "forbidden_tokens",
@@ -177,7 +177,7 @@
         {
           "check": "exists",
           "passed": true,
-          "detail": "File present: C:\\src\\NeurIPS\\supplementary\\bridges\\json_nl_experiment_v4.py"
+          "detail": "File present: supplementary\\bridges\\json_nl_experiment_v4.py"
         },
         {
           "check": "forbidden_tokens",
@@ -198,7 +198,7 @@
         {
           "check": "exists",
           "passed": true,
-          "detail": "File present: C:\\src\\NeurIPS\\supplementary\\bridges\\gradient_r_sanity_v2.py"
+          "detail": "File present: supplementary\\bridges\\gradient_r_sanity_v2.py"
         },
         {
           "check": "forbidden_tokens",
@@ -219,7 +219,7 @@
         {
           "check": "exists",
           "passed": true,
-          "detail": "File present: C:\\src\\NeurIPS\\supplementary\\bridges\\gram_matrix_verification.py"
+          "detail": "File present: supplementary\\bridges\\gram_matrix_verification.py"
         },
         {
           "check": "forbidden_tokens",
@@ -240,7 +240,7 @@
         {
           "check": "exists",
           "passed": true,
-          "detail": "File present: C:\\src\\NeurIPS\\supplementary\\bridges\\charitable_feasibility_simulation.py"
+          "detail": "File present: supplementary\\bridges\\charitable_feasibility_simulation.py"
         },
         {
           "check": "forbidden_tokens",
@@ -261,7 +261,7 @@
         {
           "check": "exists",
           "passed": true,
-          "detail": "File present: C:\\src\\NeurIPS\\supplementary\\experiments\\outputs\\charitable\\charitable_table.tex"
+          "detail": "File present: supplementary\\experiments\\outputs\\charitable\\charitable_table.tex"
         },
         {
           "check": "table_display_match",
@@ -282,7 +282,7 @@
         {
           "check": "exists",
           "passed": true,
-          "detail": "File present: C:\\src\\NeurIPS\\supplementary\\experiments\\outputs\\charitable\\charitable_table_compact.tex"
+          "detail": "File present: supplementary\\experiments\\outputs\\charitable\\charitable_table_compact.tex"
         },
         {
           "check": "table_display_match",
@@ -303,7 +303,7 @@
         {
           "check": "exists",
           "passed": true,
-          "detail": "File present: C:\\src\\NeurIPS\\supplementary\\experiments\\outputs\\conflict_detection\\conflict_table.tex"
+          "detail": "File present: supplementary\\experiments\\outputs\\conflict_detection\\conflict_table.tex"
         },
         {
           "check": "table_display_match",
@@ -324,7 +324,7 @@
         {
           "check": "exists",
           "passed": true,
-          "detail": "File present: C:\\src\\NeurIPS\\supplementary\\experiments\\outputs\\constitution\\constitution_table.tex"
+          "detail": "File present: supplementary\\experiments\\outputs\\constitution\\constitution_table.tex"
         },
         {
           "check": "table_display_match",
@@ -345,7 +345,7 @@
         {
           "check": "exists",
           "passed": true,
-          "detail": "File present: C:\\src\\NeurIPS\\supplementary\\experiments\\outputs\\compatibility_analysis\\compatibility_table.tex"
+          "detail": "File present: supplementary\\experiments\\outputs\\compatibility_analysis\\compatibility_table.tex"
         },
         {
           "check": "table_display_match",
@@ -377,7 +377,7 @@
         {
           "check": "exists",
           "passed": true,
-          "detail": "File present: C:\\src\\NeurIPS\\supplementary\\experiments\\openrouter_regression_run.log"
+          "detail": "File present: supplementary\\experiments\\openrouter_regression_run.log"
         }
       ]
     },
@@ -393,7 +393,7 @@
         {
           "check": "exists",
           "passed": true,
-          "detail": "File present: C:\\src\\NeurIPS\\supplementary\\illustrations\\algorithm1_routing_draft.png"
+          "detail": "File present: supplementary\\illustrations\\algorithm1_routing_draft.png"
         }
       ]
     },
@@ -409,7 +409,7 @@
         {
           "check": "exists",
           "passed": true,
-          "detail": "File present: C:\\src\\NeurIPS\\supplementary\\illustrations\\staging_vs_refine_draft.png"
+          "detail": "File present: supplementary\\illustrations\\staging_vs_refine_draft.png"
         }
       ]
     },
@@ -425,7 +425,7 @@
         {
           "check": "exists",
           "passed": true,
-          "detail": "File present: C:\\src\\NeurIPS\\supplementary\\illustrations\\algorithm1_routing_spec.md"
+          "detail": "File present: supplementary\\illustrations\\algorithm1_routing_spec.md"
         }
       ]
     },
@@ -441,7 +441,7 @@
         {
           "check": "exists",
           "passed": true,
-          "detail": "File present: C:\\src\\NeurIPS\\supplementary\\illustrations\\staging_vs_refine_spec.md"
+          "detail": "File present: supplementary\\illustrations\\staging_vs_refine_spec.md"
         }
       ]
     },
@@ -457,7 +457,7 @@
         {
           "check": "exists",
           "passed": true,
-          "detail": "File present: C:\\src\\NeurIPS\\supplementary\\bridges\\gradient_rho_v2_results.json"
+          "detail": "File present: supplementary\\bridges\\gradient_rho_v2_results.json"
         },
         {
           "check": "json_parse",
@@ -478,7 +478,7 @@
         {
           "check": "exists",
           "passed": true,
-          "detail": "File present: C:\\src\\NeurIPS\\supplementary\\experiments\\outputs\\charitable\\charitable_feasibility.json"
+          "detail": "File present: supplementary\\experiments\\outputs\\charitable\\charitable_feasibility.json"
         },
         {
           "check": "json_parse",
@@ -499,7 +499,7 @@
         {
           "check": "exists",
           "passed": true,
-          "detail": "File present: C:\\src\\NeurIPS\\supplementary\\experiments\\outputs\\high_k_opus\\high_k_opus_results.json"
+          "detail": "File present: supplementary\\experiments\\outputs\\high_k_opus\\high_k_opus_results.json"
         },
         {
           "check": "json_parse",
@@ -520,7 +520,7 @@
         {
           "check": "exists",
           "passed": true,
-          "detail": "File present: C:\\src\\NeurIPS\\supplementary\\experiments\\outputs\\conflict_detection\\results.json"
+          "detail": "File present: supplementary\\experiments\\outputs\\conflict_detection\\results.json"
         },
         {
           "check": "json_parse",
@@ -541,7 +541,7 @@
         {
           "check": "exists",
           "passed": true,
-          "detail": "File present: C:\\src\\NeurIPS\\supplementary\\experiments\\outputs\\compatibility_analysis\\analysis_results.json"
+          "detail": "File present: supplementary\\experiments\\outputs\\compatibility_analysis\\analysis_results.json"
         },
         {
           "check": "json_parse",
@@ -562,7 +562,7 @@
         {
           "check": "exists",
           "passed": true,
-          "detail": "File present: C:\\src\\NeurIPS\\supplementary\\experiments_rebuttal\\constrained_decoding\\constrained_decoding_results.json"
+          "detail": "File present: supplementary\\experiments_rebuttal\\constrained_decoding\\constrained_decoding_results.json"
         },
         {
           "check": "json_parse",
@@ -583,7 +583,7 @@
         {
           "check": "exists",
           "passed": true,
-          "detail": "File present: C:\\src\\NeurIPS\\supplementary\\experiments_rebuttal\\image_transfer\\image_transfer_results_runA_no_medium_frame.json"
+          "detail": "File present: supplementary\\experiments_rebuttal\\image_transfer\\image_transfer_results_runA_no_medium_frame.json"
         },
         {
           "check": "json_parse",
@@ -604,7 +604,7 @@
         {
           "check": "exists",
           "passed": true,
-          "detail": "File present: C:\\src\\NeurIPS\\supplementary\\experiments_rebuttal\\prompt_length_sweep\\prompt_length_sweep_results.json"
+          "detail": "File present: supplementary\\experiments_rebuttal\\prompt_length_sweep\\prompt_length_sweep_results.json"
         },
         {
           "check": "json_parse",
@@ -625,7 +625,7 @@
         {
           "check": "exists",
           "passed": true,
-          "detail": "File present: C:\\src\\NeurIPS\\supplementary\\experiments_rebuttal\\sonification_defense\\chromatic_vision.py"
+          "detail": "File present: supplementary\\experiments_rebuttal\\sonification_defense\\chromatic_vision.py"
         },
         {
           "check": "forbidden_tokens",
@@ -646,7 +646,7 @@
         {
           "check": "exists",
           "passed": true,
-          "detail": "File present: C:\\src\\NeurIPS\\supplementary\\experiments_rebuttal\\cross_model\\cross_model_harness.py"
+          "detail": "File present: supplementary\\experiments_rebuttal\\cross_model\\cross_model_harness.py"
         },
         {
           "check": "forbidden_tokens",
@@ -667,7 +667,7 @@
         {
           "check": "exists",
           "passed": true,
-          "detail": "File present: C:\\src\\NeurIPS\\supplementary\\experiments_rebuttal\\dct_analysis\\gram_eigendecomposition.py"
+          "detail": "File present: supplementary\\experiments_rebuttal\\dct_analysis\\gram_eigendecomposition.py"
         },
         {
           "check": "forbidden_tokens",
@@ -688,7 +688,7 @@
         {
           "check": "exists",
           "passed": true,
-          "detail": "File present: C:\\src\\NeurIPS\\supplementary\\experiments\\calibration_table.tex"
+          "detail": "File present: supplementary\\experiments\\calibration_table.tex"
         },
         {
           "check": "table_display_match",

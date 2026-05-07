@@ -21,13 +21,13 @@ Files scanned
 
 Identifiers searched (case-insensitive unless otherwise noted)
 --------------------------------------------------------------
-  PaulTiffany, Paul Tiffany, paulctiffany, Paul C. Tiffany, Tiffany (surname)
-  paulctiffany@gmail.com or any @gmail.com address
-  paulc as a username path component  (e.g. /Users/paulc/ or C:\\Users\\paulc\\)
-  Principia Symbolica, PrincipiaSymbolica
-  PyLantern, Py-Lantern, Fascia
-  AGI-26, AGI26  (allowed only inside references.bib; flag everywhere else in cert)
-  Cosmic Engineers, Order of Cosmic Engineers
+  <redacted_user>, Paul Tiffany, <redacted_user>tiffany, Paul C. Tiffany, Tiffany (surname)
+  <redacted_email> or any @gmail.com address
+  <redacted_user> as a username path component  (e.g. /Users/<redacted_user>/ or <redacted_user_path>\\)
+  <redacted_program_a> <redacted_program_b>, <redacted_program_a><redacted_program_b>
+  <redacted_program_c>, <redacted_program_c>, <redacted_program_d>
+  <redacted_program_k>, <redacted_program_k>  (allowed only inside references.bib; flag everywhere else in cert)
+  <redacted_program_e>, Order of <redacted_program_e>
 
 Severity
 --------
@@ -83,7 +83,7 @@ RESULT_JSON_FILES = [
 _PATTERNS: list[tuple[str, re.Pattern[str], str]] = [
     # Personal name variants
     ("name_paul_tiffany_concat",
-     re.compile(r"PaulTiffany", re.IGNORECASE),
+     re.compile(r"<redacted_user>", re.IGNORECASE),
      "blocker"),
     ("name_paul_tiffany_spaced",
      re.compile(r"Paul\s+Tiffany", re.IGNORECASE),
@@ -91,8 +91,8 @@ _PATTERNS: list[tuple[str, re.Pattern[str], str]] = [
     ("name_paul_c_tiffany",
      re.compile(r"Paul\s+C\.?\s+Tiffany", re.IGNORECASE),
      "blocker"),
-    ("name_paulctiffany_word",
-     re.compile(r"\bpaulctiffany\b", re.IGNORECASE),
+    ("name_<redacted_user>tiffany_word",
+     re.compile(r"\b<redacted_user>tiffany\b", re.IGNORECASE),
      "blocker"),
     # "Tiffany" alone -- only flag as surname (word boundary), not inside
     # words like "Tiffany's" if that context isn't relevant; still blocker.
@@ -101,44 +101,44 @@ _PATTERNS: list[tuple[str, re.Pattern[str], str]] = [
      "blocker"),
 
     # Email
-    ("email_paulctiffany",
-     re.compile(r"paulctiffany@gmail\.com", re.IGNORECASE),
+    ("email_<redacted_user>tiffany",
+     re.compile(r"<redacted_user>tiffany@gmail\.com", re.IGNORECASE),
      "blocker"),
     ("email_any_gmail",
      re.compile(r"[A-Za-z0-9._%+\-]+@gmail\.com", re.IGNORECASE),
      "blocker"),
 
     # Username path component  (Windows or POSIX)
-    ("path_paulc_windows",
-     re.compile(r"[Cc]:\\[Uu]sers\\paulc\\", re.IGNORECASE),
+    ("path_<redacted_user>_windows",
+     re.compile(r"[Cc]:\\[Uu]sers\\<redacted_user>\\", re.IGNORECASE),
      "blocker"),
-    ("path_paulc_posix",
-     re.compile(r"/[Uu]sers/paulc/", re.IGNORECASE),
+    ("path_<redacted_user>_posix",
+     re.compile(r"/[Uu]sers/<redacted_user>/", re.IGNORECASE),
      "blocker"),
-    ("path_paulc_home",
-     re.compile(r"~[\\/]paulc[\\/]", re.IGNORECASE),
+    ("path_<redacted_user>_home",
+     re.compile(r"~[\\/]<redacted_user>[\\/]", re.IGNORECASE),
      "blocker"),
-    # "paulc" as a bare username in any path-like context
-    ("username_paulc_generic",
-     re.compile(r"\bpaulc\b", re.IGNORECASE),
+    # "<redacted_user>" as a bare username in any path-like context
+    ("username_<redacted_user>_generic",
+     re.compile(r"\b<redacted_user>\b", re.IGNORECASE),
      "warn"),
 
     # Project identifiers that link to author
-    ("project_principia_symbolica",
-     re.compile(r"Principia\s*Symbolica", re.IGNORECASE),
+    ("project_<redacted_program_a>_<redacted_program_b>",
+     re.compile(r"<redacted_program_a>\s*<redacted_program_b>", re.IGNORECASE),
      "blocker"),
-    ("project_pylantern",
+    ("project_<redacted_program_c>",
      re.compile(r"Py[\-]?Lantern", re.IGNORECASE),
      "blocker"),
-    ("project_fascia",
-     re.compile(r"\bFascia\b", re.IGNORECASE),
+    ("project_<redacted_program_d>",
+     re.compile(r"\b<redacted_program_d>\b", re.IGNORECASE),
      "blocker"),
-    ("project_cosmic_engineers",
+    ("project_<redacted_program_e>",
      re.compile(r"(Order\s+of\s+)?Cosmic\s+Engineers", re.IGNORECASE),
      "blocker"),
 
-    # AGI-26/AGI26 -- allowed in references.bib citation; flag anywhere in cert
-    ("agi26_hyphen",
+    # <redacted_program_k>/<redacted_program_k> -- allowed in references.bib citation; flag anywhere in cert
+    ("<redacted_program_k>_hyphen",
      re.compile(r"\bAGI[\-]?26\b", re.IGNORECASE),
      "warn"),  # severity set per-file for cert payload -> blocker
 
@@ -184,8 +184,8 @@ def _scan_text_file(path: Path, base_severity: str) -> list[Finding]:
         for pat_id, pattern, pat_sev in _PATTERNS:
             for m in pattern.finditer(line):
                 sev = base_severity if base_severity == "blocker" else pat_sev
-                # AGI-26 in cert payload is a blocker
-                if pat_id.startswith("agi26") and base_severity == "blocker":
+                # <redacted_program_k> in cert payload is a blocker
+                if pat_id.startswith("<redacted_program_k>") and base_severity == "blocker":
                     sev = "blocker"
                 findings.append(Finding(
                     file=rel,
@@ -207,7 +207,7 @@ def _scan_json_value(value: object, path_hint: str,
         for pat_id, pattern, pat_sev in _PATTERNS:
             for m in pattern.finditer(value):
                 sev = base_severity if base_severity == "blocker" else pat_sev
-                if pat_id.startswith("agi26") and base_severity == "blocker":
+                if pat_id.startswith("<redacted_program_k>") and base_severity == "blocker":
                     sev = "blocker"
                 findings.append(Finding(
                     file=rel_file,

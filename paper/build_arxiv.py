@@ -4,10 +4,10 @@ build_arxiv.py
 
 Generates paper/main_arxiv.tex from paper/main.tex with five substitutions:
   1. \\usepackage{neurips_2026}                -> \\usepackage[preprint]{neurips_2026}
-  2. Anonymous Authors                          -> Paul Carver Tiffany III
+  2. Anonymous Authors                          -> <redacted_author>
   3. Anonymous Affiliation                      -> Independent Researcher
-  4. anonymous@anonymous.org                    -> paulctiffany@gmail.com
-  5. https://anonymous.4open.science/r/cacophony -> https://github.com/PaulTiffany/cacophony
+  4. anonymous@anonymous.org                    -> <redacted_email>
+  5. https://anonymous.4open.science/r/cacophony -> https://github.com/<redacted_user>/cacophony
 
 This keeps the NeurIPS submission (paper/main.tex) anonymous and produces
 an arXiv preprint variant (paper/main_arxiv.tex) with real author identity
@@ -30,18 +30,18 @@ REPO_ROOT = Path(__file__).resolve().parent.parent
 SRC = REPO_ROOT / "paper" / "main.tex"
 DST = REPO_ROOT / "paper" / "main_arxiv.tex"
 
-GH = "https://github.com/PaulTiffany/cost"
-PAGES = "https://paultiffany.github.io/cost"  # GitHub Pages site for browser-rendered HTML
+GH = "https://github.com/<redacted_user>/cost"
+PAGES = "https://<redacted_user>.github.io/cost"  # GitHub Pages site for browser-rendered HTML
 
 SUBS = [
     (r"^\\usepackage\{neurips_2026\}\s*$",
      r"\\usepackage[preprint]{neurips_2026}"),
     (r"^\s*Anonymous Authors\\\\$",
-     r"  Paul Carver Tiffany III\\\\"),
+     r"  <redacted_author>\\\\"),
     (r"^\s*Anonymous Affiliation\\\\$",
      r"  Independent Researcher\\\\"),
     (r"^\s*\\texttt\{anonymous@anonymous\.org\}$",
-     r"  \\texttt{paulctiffany@gmail.com}"),
+     r"  \\texttt{<redacted_email>}"),
     # Code URL: anonymous 4open URL -> public GitHub URL with a generic name
     # (cost) to avoid bridging the NeurIPS submission's keyword (cacophony) to
     # this arXiv preprint via a Google search on the URL string.

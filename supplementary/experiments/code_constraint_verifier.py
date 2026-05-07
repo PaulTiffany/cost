@@ -108,7 +108,7 @@ _TEMP_PATH_PATTERNS = [
     re.compile(r"/home/[A-Za-z0-9_.\-]+(?:/[^\"'\s\n,]*)?", re.IGNORECASE),
     re.compile(r"/tmp/[^\"'\s\n,]+", re.IGNORECASE),
     re.compile(r"/var/folders/[^\"'\s\n,]+", re.IGNORECASE),
-    # Generic C:\src\<repo> author-machine fingerprints (anonymity hardening)
+    # Generic <repo>/<repo> author-machine fingerprints (anonymity hardening)
     re.compile(r"[A-Za-z]:\\\\src\\\\[^\"'\s\n,]+", re.IGNORECASE),
     re.compile(r"[A-Za-z]:\\src\\[^\"'\s\n,]+", re.IGNORECASE),
 ]

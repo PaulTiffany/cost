@@ -9,16 +9,16 @@
       "name": "smooth_regime_zero_failures",
       "pattern": "0/4[,{\\\\}]*272",
       "appearances_by_section": {
-        "approach": false,
-        "abstract": false,
         "contributions": false,
+        "abstract": false,
+        "approach": false,
         "conclusion_summary": false
       },
       "present_in": [],
       "absent_from": [
-        "approach",
-        "abstract",
         "contributions",
+        "abstract",
+        "approach",
         "conclusion_summary"
       ],
       "verdict": "absent"
@@ -27,14 +27,14 @@
       "name": "rho_spearman_unity",
       "pattern": "r_s\\s*[{=}]+\\s*1\\.0",
       "appearances_by_section": {
-        "approach": false,
-        "abstract": true,
         "contributions": true,
+        "abstract": true,
+        "approach": false,
         "conclusion_summary": true
       },
       "present_in": [
-        "abstract",
         "contributions",
+        "abstract",
         "conclusion_summary"
       ],
       "absent_from": [
@@ -46,16 +46,16 @@
       "name": "regret_under_2pct",
       "pattern": "[<{\\\\}]*\\s*2\\s*\\\\?%\\s*regret|1\\.8\\s*\\\\?pm\\s*0\\.4\\s*\\\\?%",
       "appearances_by_section": {
-        "approach": false,
-        "abstract": false,
         "contributions": false,
+        "abstract": false,
+        "approach": false,
         "conclusion_summary": false
       },
       "present_in": [],
       "absent_from": [
-        "approach",
-        "abstract",
         "contributions",
+        "abstract",
+        "approach",
         "conclusion_summary"
       ],
       "verdict": "absent"
@@ -64,16 +64,16 @@
       "name": "pivot_regime_11pct",
       "pattern": "11\\s*\\\\?%\\s*pivot",
       "appearances_by_section": {
-        "approach": false,
-        "abstract": false,
         "contributions": false,
+        "abstract": false,
+        "approach": false,
         "conclusion_summary": false
       },
       "present_in": [],
       "absent_from": [
-        "approach",
-        "abstract",
         "contributions",
+        "abstract",
+        "approach",
         "conclusion_summary"
       ],
       "verdict": "absent"
@@ -82,16 +82,16 @@
       "name": "displacement_contract_89pct",
       "pattern": "89\\s*\\\\?%",
       "appearances_by_section": {
-        "approach": false,
-        "abstract": false,
         "contributions": false,
+        "abstract": false,
+        "approach": false,
         "conclusion_summary": false
       },
       "present_in": [],
       "absent_from": [
-        "approach",
-        "abstract",
         "contributions",
+        "abstract",
+        "approach",
         "conclusion_summary"
       ],
       "verdict": "absent"
@@ -100,17 +100,17 @@
       "name": "router_agreement_94pct",
       "pattern": "94\\s*\\\\?%\\s*router",
       "appearances_by_section": {
-        "approach": false,
-        "abstract": false,
         "contributions": true,
+        "abstract": false,
+        "approach": false,
         "conclusion_summary": false
       },
       "present_in": [
         "contributions"
       ],
       "absent_from": [
-        "approach",
         "abstract",
+        "approach",
         "conclusion_summary"
       ],
       "verdict": "drift"

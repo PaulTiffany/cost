@@ -82,14 +82,14 @@ def test_verifier_structured_output_path_scrubbed_in_stdout_too():
     code = (
         'def f():\n'
         '    """noop."""\n'
-        '    print(r"C:\\\\Users\\\\paulc\\\\secret")\n'
+        '    print(r"C:\\\\Users\\\\<redacted_user>\\\\secret")\n'
         '    return 0\n'
         'f()\n'
     )
     res = ccv.verify_functional_structured(code, "", timeout=5.0)
     assert res["passed"] is True
     # The literal username must not survive in scrubbed stdout
-    assert "paulc" not in res["subprocess_stdout_scrubbed"]
+    assert "<redacted_user>" not in res["subprocess_stdout_scrubbed"]
     assert "<tmp>" in res["subprocess_stdout_scrubbed"]
 
 

@@ -5,7 +5,7 @@ properties.
 
   (a) Author identifier scrub. PDF metadata (Author, Creator, Producer,
       Title, Subject, Keywords) must not contain user identifiers such as
-      "paulc", "Paul Tiffany", or "paulctiffany". A match is a blocker.
+      "<redacted_user>", "Paul Tiffany", or "<redacted_user>tiffany". A match is a blocker.
 
   (b) Font subsetting. Embedded font names that begin with a six-character
       uppercase prefix followed by '+' are considered subset (LaTeX's
@@ -35,8 +35,8 @@ DEFAULT_PDF = REPO_ROOT / "paper" / "main.pdf"
 RESULTS_JSON = SCRIPT_DIR / "pdf_camera_ready_results.json"
 
 AUTHOR_IDENTIFIER_PATTERNS = [
-    re.compile(r"\bpaulc\b", re.IGNORECASE),
-    re.compile(r"paulctiffany", re.IGNORECASE),
+    re.compile(r"\b<redacted_user>\b", re.IGNORECASE),
+    re.compile(r"<redacted_user>tiffany", re.IGNORECASE),
     re.compile(r"Paul\s+Tiffany", re.IGNORECASE),
     re.compile(r"Paul\s+C\.?\s+Tiffany", re.IGNORECASE),
     re.compile(r"\bTiffany\b", re.IGNORECASE),

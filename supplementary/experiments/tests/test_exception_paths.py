@@ -63,7 +63,7 @@ def test_exception_X2_verifier_general_exception_returns_failure_with_scrubbed_m
     """
     # Arrange — simulate an unexpected subprocess failure.
     def _boom(*args, **kwargs):
-        raise OSError(r"failed to spawn at C:\Users\paulc\AppData\Local\Temp\foo.py")
+        raise OSError(r"failed to spawn at <redacted_user_path>")
 
     monkeypatch.setattr(verifier.subprocess, "run", _boom)
 
@@ -74,7 +74,7 @@ def test_exception_X2_verifier_general_exception_returns_failure_with_scrubbed_m
     assert passed is False
     assert "Execution error" in msg
     # Path scrubber must have replaced the username path.
-    assert "paulc" not in msg
+    assert "<redacted_user>" not in msg
     assert "<tmp>" in msg or "AppData" not in msg
 
 

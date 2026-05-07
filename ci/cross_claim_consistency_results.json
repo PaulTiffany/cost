@@ -651,7 +651,7 @@
     },
     {
       "name": "subproc__result_provenance",
-      "description": "result_provenance: Results written to: C:\\src\\NeurIPS\\ci\\result_provenance_results.json",
+      "description": "result_provenance: Results written to: ci\\result_provenance_results.json",
       "formula": "passed == True",
       "params": {
         "passed": true
@@ -690,7 +690,7 @@
     },
     {
       "name": "subproc__pdf_source_equivalence",
-      "description": "pdf_source_equivalence:   Results -> C:\\src\\NeurIPS\\ci\\pdf_source_equivalence_results.json",
+      "description": "pdf_source_equivalence:   Results -> ci\\pdf_source_equivalence_results.json",
       "formula": "passed == True",
       "params": {
         "passed": true
@@ -703,7 +703,7 @@
     },
     {
       "name": "subproc__cert_anonymity",
-      "description": "cert_anonymity:   Results -> C:\\src\\NeurIPS\\ci\\cert_anonymity_results.json",
+      "description": "cert_anonymity:   Results -> ci\\cert_anonymity_results.json",
       "formula": "passed == True",
       "params": {
         "passed": true
@@ -742,7 +742,7 @@
     },
     {
       "name": "subproc__artifact_registry",
-      "description": "artifact_registry: Results written to C:\\src\\NeurIPS\\ci\\artifact_registry_results.json",
+      "description": "artifact_registry: Results written to ci\\artifact_registry_results.json",
       "formula": "passed == True",
       "params": {
         "passed": true
@@ -755,7 +755,7 @@
     },
     {
       "name": "subproc__table_value",
-      "description": "table_value: Results written to C:\\src\\NeurIPS\\ci\\table_value_results.json",
+      "description": "table_value: Results written to ci\\table_value_results.json",
       "formula": "passed == True",
       "params": {
         "passed": true
@@ -768,7 +768,7 @@
     },
     {
       "name": "subproc__sample_size_uncertainty",
-      "description": "sample_size_uncertainty: Results written to C:\\src\\NeurIPS\\ci\\sample_size_uncertainty_results.json",
+      "description": "sample_size_uncertainty: Results written to ci\\sample_size_uncertainty_results.json",
       "formula": "passed == True",
       "params": {
         "passed": true
@@ -781,7 +781,7 @@
     },
     {
       "name": "subproc__unicode_normalization",
-      "description": "unicode_normalization:   Results written to C:\\src\\NeurIPS\\ci\\unicode_normalization_results.json",
+      "description": "unicode_normalization:   Results written to ci\\unicode_normalization_results.json",
       "formula": "passed == True",
       "params": {
         "passed": true
@@ -807,7 +807,7 @@
     },
     {
       "name": "subproc__narrative_consistency",
-      "description": "narrative_consistency:     absent  : ['approach', 'abstract', 'conclusion_summary']",
+      "description": "narrative_consistency:     absent  : ['abstract', 'approach', 'conclusion_summary']",
       "formula": "passed == True",
       "params": {
         "passed": true
@@ -833,7 +833,7 @@
     },
     {
       "name": "subproc__supplementary_surface",
-      "description": "supplementary_surface:   results written to: C:\\src\\NeurIPS\\ci\\supplementary_surface_results.json",
+      "description": "supplementary_surface:   results written to: ci\\supplementary_surface_results.json",
       "formula": "passed == True",
       "params": {
         "passed": true
@@ -846,7 +846,7 @@
     },
     {
       "name": "subproc__charitable_table_consistency",
-      "description": "charitable_table_consistency: Results written to: C:\\src\\NeurIPS\\ci\\charitable_table_consistency_results.json",
+      "description": "charitable_table_consistency: Results written to: ci\\charitable_table_consistency_results.json",
       "formula": "passed == True",
       "params": {
         "passed": true
@@ -859,7 +859,7 @@
     },
     {
       "name": "subproc__supplementary_claim_surface",
-      "description": "ADVISORY: supplementary_claim_surface: Manifest loaded: 2 entries from C:\\src\\NeurIPS\\ci\\supplementary_manifest.json",
+      "description": "ADVISORY: supplementary_claim_surface: Manifest loaded: 2 entries from ci\\supplementary_manifest.json",
       "formula": "passed == True",
       "params": {
         "passed": true
@@ -872,7 +872,7 @@
     },
     {
       "name": "subproc__audio_manifest",
-      "description": "audio_manifest: Results written to: C:\\src\\NeurIPS\\ci\\audio_manifest_results.json",
+      "description": "audio_manifest: Results written to: ci\\audio_manifest_results.json",
       "formula": "passed == True",
       "params": {
         "passed": true
@@ -885,7 +885,7 @@
     },
     {
       "name": "subproc__submission_surface",
-      "description": "submission_surface: Results written to: C:\\src\\NeurIPS\\ci\\submission_surface_results.json",
+      "description": "submission_surface: Results written to: ci\\submission_surface_results.json",
       "formula": "passed == True",
       "params": {
         "passed": true

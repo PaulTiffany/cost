@@ -73,3 +73,17 @@ rebuttal_prep/
 # tooling outside this tree.
 ci/architecture_provenance_check.py
 ci/architecture_provenance_results.json
+
+# Author-only artifacts: must NEVER be tracked (4open mirrors github source
+# directly, so anything in git ships to the anonymous mirror).
+ci/mutation_cert.py
+ci/mutation_cert_results.json
+ci/historical_mutation_baseline.json
+ci/double_blind_imagegen.py
+ci/double_blind_anonymized.json
+ci/double_blind_key.json
+ci/double_blind_response.json
+ci/double_blind_image.png
+ci/author_lexicon_drift_check.py
+ci/author_lexicon_drift_results.json
+ci/de_llm_lexicon.md

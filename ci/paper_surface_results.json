@@ -3,7 +3,7 @@
     "script": "ci/paper_surface_check.py",
     "script_hash": "81a32238d35829c402bbcf47d12500881320fe996c3ac31e8ad813fe991e3696",
     "generated_at_utc": "2026-05-07T11:57:25+00:00",
-    "pdf_path": "C:\\src\\NeurIPS\\paper\\main.pdf",
+    "pdf_path": "paper\\main.pdf",
     "pages_scanned": 66,
     "scope": "all",
     "checks_run": [

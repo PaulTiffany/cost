@@ -156,8 +156,8 @@ def get_tools_info() -> dict:
 def _redact_user_paths(value):
     """Recursively replace user-home path prefixes with <HOME> to protect anonymity.
 
-    The cert ships with the supplementary; absolute paths like C:\\Users\\paulc\\
-    or /home/paulc/ would deanonymize. We keep tool/library names but scrub the
+    The cert ships with the supplementary; absolute paths like <redacted_user_path>\\
+    or /home/<redacted_user>/ would deanonymize. We keep tool/library names but scrub the
     user-specific prefix.
     """
     import os

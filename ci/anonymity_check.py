@@ -20,11 +20,11 @@ from pathlib import Path
 from typing import Iterable
 
 # Roots to scan
-PAPER_ROOT = Path(r"C:\src\neurips\paper")
-SUPP_ROOT = Path(r"C:\src\neurips\supplementary")
+PAPER_ROOT = Path(r"paper")
+SUPP_ROOT = Path(r"supplementary")
 
 # Output path
-RESULTS_JSON = Path(r"C:\src\neurips\ci\anonymity_check_results.json")
+RESULTS_JSON = Path(r"ci\anonymity_check_results.json")
 
 # Text file extensions we will inspect
 TEXT_EXTS = {".tex", ".py", ".json", ".md", ".yml", ".yaml", ".txt", ".bib",
@@ -70,18 +70,18 @@ SKIP_FILES = {
 
 # Hard-fail patterns. Each entry: (pattern_id, compiled_regex, description)
 HARD_FAIL_PATTERNS = [
-    ("paulc_username", re.compile(r"\bpaulc\b", re.IGNORECASE),
-     "Windows username 'paulc'"),
+    ("<redacted_user>_username", re.compile(r"\b<redacted_user>\b", re.IGNORECASE),
+     "Windows username '<redacted_user>'"),
     ("real_name_full", re.compile(r"Paul\s+Carver\s+Tiffany", re.IGNORECASE),
-     "Real name 'Paul Carver Tiffany'"),
+     "Real name '<redacted_author>'"),
     ("real_name_concat", re.compile(r"\bPaul\s*Tiffany\b", re.IGNORECASE),
-     "Real name variant 'PaulTiffany' / 'Paul Tiffany'"),
-    ("real_name_lower", re.compile(r"\bpaultiffany\b", re.IGNORECASE),
-     "Real name lowercase 'paultiffany'"),
-    ("personal_email", re.compile(r"paulctiffany@gmail\.com", re.IGNORECASE),
-     "Personal email 'paulctiffany@gmail.com'"),
-    ("personal_github", re.compile(r"github\.com/PaulTiffany", re.IGNORECASE),
-     "Personal GitHub URL 'github.com/PaulTiffany'"),
+     "Real name variant '<redacted_user>' / 'Paul Tiffany'"),
+    ("real_name_lower", re.compile(r"\b<redacted_user>\b", re.IGNORECASE),
+     "Real name lowercase '<redacted_user>'"),
+    ("personal_email", re.compile(r"<redacted_user>tiffany@gmail\.com", re.IGNORECASE),
+     "Personal email '<redacted_email>'"),
+    ("personal_github", re.compile(r"github\.com/<redacted_user>", re.IGNORECASE),
+     "Personal GitHub URL 'github.com/<redacted_user>'"),
     ("icml_branding", re.compile(r"\bicml2026\b", re.IGNORECASE),
      "ICML 2026 branding (paper is now NeurIPS)"),
     ("icml_sty", re.compile(r"icml2026\.sty", re.IGNORECASE),
@@ -91,24 +91,24 @@ HARD_FAIL_PATTERNS = [
     # Broader symbolic-substrate program identifiers (would deanonymize via
     # the author's prior work on the surrounding research program). Patterns
     # added 2026-05-04 after BIS audit surfaced one ci/de_llm_lexicon.md leak.
-    ("project_principia_symbolica",
-     re.compile(r"\bPrincipia\s*Symbolica\b", re.IGNORECASE),
-     "Principia Symbolica program identifier"),
-    ("project_pylantern",
+    ("project_<redacted_program_a>_<redacted_program_b>",
+     re.compile(r"\b<redacted_program_a>\s*<redacted_program_b>\b", re.IGNORECASE),
+     "<redacted_program_a> <redacted_program_b> program identifier"),
+    ("project_<redacted_program_c>",
      re.compile(r"\bPy[\-]?Lantern\b", re.IGNORECASE),
-     "PyLantern symbolic-substrate identifier"),
-    ("project_fascia",
-     re.compile(r"\bFascia\b", re.IGNORECASE),
-     "Fascia substrate identifier"),
-    ("project_cosmic_engineers",
+     "<redacted_program_c> symbolic-substrate identifier"),
+    ("project_<redacted_program_d>",
+     re.compile(r"\b<redacted_program_d>\b", re.IGNORECASE),
+     "<redacted_program_d> substrate identifier"),
+    ("project_<redacted_program_e>",
      re.compile(r"(Order\s+of\s+)?\bCosmic\s+Engineers\b", re.IGNORECASE),
-     "Cosmic Engineers community identifier"),
+     "<redacted_program_e> community identifier"),
     ("project_srmf",
      re.compile(r"\bSRMF\b"),
-     "SRMF (Symbolic Resonance Manifold Flow) substrate identifier"),
-    ("project_agi26",
+     "<redacted_program_j> (Symbolic Resonance Manifold Flow) substrate identifier"),
+    ("project_<redacted_program_k>",
      re.compile(r"\bAGI[\-]?26\b", re.IGNORECASE),
-     "AGI-26 follow-on paper identifier (allowed only in references.bib citation)"),
+     "<redacted_program_k> follow-on paper identifier (allowed only in references.bib citation)"),
 ]
 
 # File-level allowlist: meta-test files that intentionally contain the

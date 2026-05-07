@@ -18,7 +18,7 @@ This script:
        - Python caches (__pycache__, .pyc)
        - the anonymous output zip
   2. Scans every text file in the candidate set for PII strings
-     ('paulc', 'paultiffany', 'Paul Tiffany', '@gmail', 'AppData')
+     ('<redacted_user>', '<redacted_user>', 'Paul Tiffany', '@gmail', 'AppData')
      and HALTS with a report if any are found in non-allowlisted files.
   3. Zips the survivor set with prefix `cacophony/` so 4open serves it
      under that slug.
@@ -44,7 +44,7 @@ EXCLUDE_DIRS = {
     "docs",   # NeurIPS official PDFs + ethics reading; user-local reference
     "rebuttal", # rebuttal package; not part of NeurIPS submission flow
     "experiments_rebuttal",  # post-rebuttal experiments; not for initial review
-    "submission_repo", "neurips_template", "ICML_2026_Template (3)",  # legacy local
+    "submission_repo", "neurips_template", "<prior_template> (3)",  # legacy local
     "camera_ready",  # post-acceptance, not for review
     "launch",  # local launch scripts
     "theperfectpaper",  # local-author scratch; identity leaks
@@ -98,18 +98,18 @@ INCLUDE_FORCE_PATH_PREFIXES = (
 
 # PII patterns: any text-like file containing these is a hard fail
 PII_PATTERNS = [
-    # No \b on paulc: regex literal r"\bpaulc\b" has 'b' as preceding char
+    # No \b on <redacted_user>: regex literal r"\b<redacted_user>\b" has 'b' as preceding char
     # (word) which defeats the leading boundary. Direct substring match.
-    re.compile(r"paulc", re.IGNORECASE),
-    re.compile(r"paultiffany", re.IGNORECASE),
+    re.compile(r"<redacted_user>", re.IGNORECASE),
+    re.compile(r"<redacted_user>", re.IGNORECASE),
     re.compile(r"Paul[\s_-]*Carver[\s_-]*Tiffany", re.IGNORECASE),
     re.compile(r"@gmail\.com", re.IGNORECASE),
-    re.compile(r"C:\\Users\\paulc", re.IGNORECASE),
-    # Local-machine path roots (any C:\src\ or C:/src/ outside an allowlist
+    re.compile(r"<redacted_user_path>", re.IGNORECASE),
+    # Local-machine path roots (any <repo>/ or <repo>/ outside an allowlist
     # is a fingerprint -- author machine layout disclosure).
     re.compile(r"C:[\\/]+src[\\/]+", re.IGNORECASE),
     # Prior-template directory name -- venue label + project layout fingerprint.
-    re.compile(r"ICML_2026_Template", re.IGNORECASE),
+    re.compile(r"<prior_template>", re.IGNORECASE),
 ]
 
 # Files where PII patterns are EXPECTED (regex sources, allowlist, etc.)
@@ -117,7 +117,7 @@ PII_ALLOWLIST = {
     "ci/_add_cross_source_peer_example.py",  # one-off helper, no PII anyway
     # NOTE: ci/anonymity_check.py and ci/cert_anonymity_check.py used to be
     # here, but their source contains literal author-program identifiers
-    # (Principia Symbolica, PyLantern, Fascia, Cosmic Engineers, etc.) that
+    # (<redacted_program_a> <redacted_program_b>, <redacted_program_c>, <redacted_program_d>, <redacted_program_e>, etc.) that
     # would deanonymize through the cross-paper attribution chain if shipped.
     # They are now in PII_SCRUB_AT_ZIP so the shipped copy has those tokens
     # redacted while the local copy retains the real patterns for the
@@ -277,43 +277,43 @@ def collect_files() -> tuple[list[Path], list[tuple[Path, list]], list[Path]]:
 def scrub_text(text: str) -> str:
     """Replace PII patterns with placeholders for zip-time scrubbing."""
     # Order matters: longer, more-specific patterns first.
-    text = re.sub(r"C:\\\\Users\\\\paulc(\\\\[A-Za-z0-9_.\-]+)*",
+    text = re.sub(r"C:\\\\Users\\\\<redacted_user>(\\\\[A-Za-z0-9_.\-]+)*",
                   "<redacted_user_path>", text, flags=re.IGNORECASE)
-    text = re.sub(r"C:\\Users\\paulc(\\[A-Za-z0-9_.\-]+)*",
+    text = re.sub(r"<redacted_user_path>(\\[A-Za-z0-9_.\-]+)*",
                   "<redacted_user_path>", text, flags=re.IGNORECASE)
-    # Local repo paths: collapse C:\src\NeurIPS\foo or C:\src\ICML_2026_Template\foo
+    # Local repo paths: collapse foo or foo
     # to neutral relative form. Keeps trailing path segments readable.
-    text = re.sub(r"C:[\\/]+src[\\/]+(NeurIPS|neurips|ICML_2026_Template)[\\/]+",
+    text = re.sub(r"C:[\\/]+src[\\/]+(NeurIPS|neurips|<prior_template>)[\\/]+",
                   "", text, flags=re.IGNORECASE)
-    text = re.sub(r"C:[\\/]+src[\\/]+(NeurIPS|neurips|ICML_2026_Template)\b",
+    text = re.sub(r"C:[\\/]+src[\\/]+(NeurIPS|neurips|<prior_template>)\b",
                   "<repo>", text, flags=re.IGNORECASE)
-    # Catchall for any other C:\src\* roots
+    # Catchall for any other <repo>/* roots
     text = re.sub(r"C:[\\/]+src[\\/]+", "<repo>/", text, flags=re.IGNORECASE)
     # Strip standalone prior-template name mentions
     text = re.sub(r"\bICML_2026_Template\b", "<prior_template>", text)
-    text = re.sub(r"paulctiffany@gmail\.com", "<redacted_email>",
+    text = re.sub(r"<redacted_user>tiffany@gmail\.com", "<redacted_email>",
                   text, flags=re.IGNORECASE)
     text = re.sub(r"Paul[\s_-]*Carver[\s_-]*Tiffany( III)?",
                   "<redacted_author>", text, flags=re.IGNORECASE)
-    # Word-boundary 'paulc' fails inside regex literal r"\bpaulc\b" because
-    # 'b' is a word char before 'p'. Drop the boundary; paulc is not a
+    # Word-boundary '<redacted_user>' fails inside regex literal r"\b<redacted_user>\b" because
+    # 'b' is a word char before 'p'. Drop the boundary; <redacted_user> is not a
     # substring of legitimate English words.
-    text = re.sub(r"paulc", "<redacted_user>", text, flags=re.IGNORECASE)
-    text = re.sub(r"paultiffany", "<redacted_user>", text, flags=re.IGNORECASE)
+    text = re.sub(r"<redacted_user>", "<redacted_user>", text, flags=re.IGNORECASE)
+    text = re.sub(r"<redacted_user>", "<redacted_user>", text, flags=re.IGNORECASE)
     # Author-program identifiers (cross-paper deanonymization chain).
     # No word boundaries — these tokens never appear as substrings of
     # legitimate English words, and \b fails inside regex literals where
     # the preceding character is the literal "b" of "\b" (e.g.
-    # r"\bPrincipia\b" has "b" right before "P", which is a word char).
-    text = re.sub(r"principia", "<redacted_program_a>", text, flags=re.IGNORECASE)
-    text = re.sub(r"symbolica", "<redacted_program_b>", text, flags=re.IGNORECASE)
+    # r"\b<redacted_program_a>\b" has "b" right before "P", which is a word char).
+    text = re.sub(r"<redacted_program_a>", "<redacted_program_a>", text, flags=re.IGNORECASE)
+    text = re.sub(r"<redacted_program_b>", "<redacted_program_b>", text, flags=re.IGNORECASE)
     text = re.sub(r"py[-_]?lantern", "<redacted_program_c>", text, flags=re.IGNORECASE)
-    text = re.sub(r"fascia", "<redacted_program_d>", text, flags=re.IGNORECASE)
+    text = re.sub(r"<redacted_program_d>", "<redacted_program_d>", text, flags=re.IGNORECASE)
     text = re.sub(r"cosmic[\s_\\-]+engineers", "<redacted_program_e>", text, flags=re.IGNORECASE)
-    text = re.sub(r"cosmogenesis", "<redacted_program_f>", text, flags=re.IGNORECASE)
+    text = re.sub(r"<redacted_program_f>", "<redacted_program_f>", text, flags=re.IGNORECASE)
     text = re.sub(r"agi[-_]?2026", "<redacted_program_g>", text, flags=re.IGNORECASE)
-    text = re.sub(r"turchin", "<redacted_program_h>", text, flags=re.IGNORECASE)
-    text = re.sub(r"piergaton", "<redacted_program_i>", text, flags=re.IGNORECASE)
+    text = re.sub(r"<redacted_program_h>", "<redacted_program_h>", text, flags=re.IGNORECASE)
+    text = re.sub(r"<redacted_program_i>", "<redacted_program_i>", text, flags=re.IGNORECASE)
     return text
 
 
