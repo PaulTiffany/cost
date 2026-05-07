@@ -110,10 +110,15 @@ PII_PATTERNS = [
 
 # Files where PII patterns are EXPECTED (regex sources, allowlist, etc.)
 PII_ALLOWLIST = {
-    "ci/anonymity_check.py",        # contains the regexes used to detect PII
-    "ci/cert_anonymity_check.py",   # same
     "ci/pdf_camera_ready_check.py", # scans PDF for author identifiers; legit
     "ci/_add_cross_source_peer_example.py",  # one-off helper, no PII anyway
+    # NOTE: ci/anonymity_check.py and ci/cert_anonymity_check.py used to be
+    # here, but their source contains literal author-program identifiers
+    # (Principia Symbolica, PyLantern, Fascia, Cosmic Engineers, etc.) that
+    # would deanonymize through the cross-paper attribution chain if shipped.
+    # They are now in PII_SCRUB_AT_ZIP so the shipped copy has those tokens
+    # redacted while the local copy retains the real patterns for the
+    # author's own scans.
 }
 
 # Files where we SCRUB the PII at zip-time rather than excluding the file
@@ -121,6 +126,11 @@ PII_ALLOWLIST = {
 # Used for fingerprints / manifests that leak the local username via paths
 # but are otherwise useful artifacts to ship.
 PII_SCRUB_AT_ZIP = {
+    # Anonymity scanners — source contains author-program identifiers as
+    # regex literals + description strings; scrubber redacts them so the
+    # shipped script is inert (won't actually scan) but doesn't leak.
+    "ci/anonymity_check.py",
+    "ci/cert_anonymity_check.py",
     "ci/dependency_fingerprint.json",
     "ci/dependency_fingerprint.py",
     "ci/supplementary_manifest.json",
@@ -251,6 +261,20 @@ def scrub_text(text: str) -> str:
                   "<redacted_author>", text, flags=re.IGNORECASE)
     # Word-boundary 'paulc' last (catches anything the path / email patterns missed)
     text = re.sub(r"\bpaulc\b", "<redacted_user>", text, flags=re.IGNORECASE)
+    # Author-program identifiers (cross-paper deanonymization chain).
+    # No word boundaries — these tokens never appear as substrings of
+    # legitimate English words, and \b fails inside regex literals where
+    # the preceding character is the literal "b" of "\b" (e.g.
+    # r"\bPrincipia\b" has "b" right before "P", which is a word char).
+    text = re.sub(r"principia", "<redacted_program_a>", text, flags=re.IGNORECASE)
+    text = re.sub(r"symbolica", "<redacted_program_b>", text, flags=re.IGNORECASE)
+    text = re.sub(r"py[-_]?lantern", "<redacted_program_c>", text, flags=re.IGNORECASE)
+    text = re.sub(r"fascia", "<redacted_program_d>", text, flags=re.IGNORECASE)
+    text = re.sub(r"cosmic[\s_\\-]+engineers", "<redacted_program_e>", text, flags=re.IGNORECASE)
+    text = re.sub(r"cosmogenesis", "<redacted_program_f>", text, flags=re.IGNORECASE)
+    text = re.sub(r"agi[-_]?2026", "<redacted_program_g>", text, flags=re.IGNORECASE)
+    text = re.sub(r"turchin", "<redacted_program_h>", text, flags=re.IGNORECASE)
+    text = re.sub(r"piergaton", "<redacted_program_i>", text, flags=re.IGNORECASE)
     return text
 
 

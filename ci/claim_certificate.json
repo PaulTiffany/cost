@@ -9,16 +9,16 @@
     "profile": "standard",
     "git": {
       "status": "ok",
-      "commit": "71ef8a52fc7dc51263cd5f90d526ac34e80e5ac1",
-      "commit_short": "71ef8a52",
+      "commit": "1b000b24b9e02f160db93f79a463048364493345",
+      "commit_short": "1b000b24",
       "branch": "master",
       "dirty": true,
-      "n_modified_unstaged": 18,
+      "n_modified_unstaged": 6,
       "n_staged": 1,
       "n_untracked": 0
     },
     "dependencies": {
-      "generated_at": "2026-05-07T10:47:39.272812+00:00",
+      "generated_at": "2026-05-07T10:57:15.203605+00:00",
       "python": {
         "version": "3.13.4 (tags/v3.13.4:8a526ec, Jun  3 2025, 17:46:04) [MSC v.1943 64 bit (AMD64)]",
         "version_short": "3.13.4",
@@ -57,13 +57,13 @@
         }
       }
     },
-    "generated_at": "2026-05-07T06:48:34",
+    "generated_at": "2026-05-07T06:59:02",
     "main_tex_path": "paper\\main.tex",
     "main_tex_sha256": "4e1608d60a933634dbbcec9eaa99cd028534c0a279d516da2b93800bf430b7a1",
     "main_tex_mtime": "2026-05-07T05:35:04",
     "main_pdf_path": "paper\\main.pdf",
     "main_pdf_size": 1200503,
-    "main_pdf_mtime": "2026-05-07T06:48:33",
+    "main_pdf_mtime": "2026-05-07T06:59:02",
     "claim_audit_md_path": "CLAIM_AUDIT.md",
     "claim_audit_md_sha256": "d3cc82eb135768caad685e5bba291fbd0db3d090de96f0f0a366b81bb391700b"
   },
@@ -73,7 +73,7 @@
     "ci\\figure_value_check_results.json": "280a7aa923e56caea40239122515611dd0f7a0235d2860bda146493ddac29d0b",
     "ci\\citation_integrity_results.json": "3dbbe54921cc39803b7ac971c408ec7737ca26ad2d8cd7a26cb42d7784981221",
     "ci\\link_integrity_results.json": "25c376e01d2c572940e9ece68761886aeae40223d458a76ffd90a46d06bb815d",
-    "ci\\cross_claim_consistency_results.json": "66023b9c9b27d8320875fd5688cc872059f6f36ca52c66c94a58f8d669efb80c",
+    "ci\\cross_claim_consistency_results.json": "2273151155b6e36425696e3d3b24ac4088eabae721b9d390c48ff34b0ed473eb",
     "ci\\bib_entry_check_results.json": "94b642da0b2e879f43d4dcf098c5d5647bd41cf6907ffa35267ff827b980faf7",
     "ci\\script_integrity_results.json": "0cb95174ba62ef104a598de8b98a5512613a05c86f1569c87580bb628f9f37c8",
     "ci\\build_equivalence_results.json": "4cea7a13d9a7c65a12866636243b06790d11d5a9e1cbf738aab096cb6ecdae02",
@@ -93,20 +93,20 @@
     "ci\\reference_convention_results.json": "c747019a9b4897581ca2b3341afd5c988e22d4f2ad52248328c9fc890b2df7e1",
     "ci\\statistical_and_algorithmic_sanity_results.json": "88a8012d21c38bf50a33ae90f9c94ccb1e07fd34ba8e2f97244fa16f8df0183a",
     "ci\\symbolic_algebra_results.json": "1b0792cfa15543e9f2b18e2378a9b6ae861a9bb1d6925e689bff69ee70232d5b",
-    "ci\\numerical_bound_results.json": "67dbbbcddccc1ad62f7836c67dd9e9452be2c1dcb92fe0e666425aa9e151996e",
+    "ci\\numerical_bound_results.json": "a43f5ffecef50106212a6c1e9f221d90e9e4616ec3ed633ed05c8c437453f2fd",
     "ci\\per_trajectory_pivot_results.json": "4aafe48b5b2a9c3736806b2d41c87989b5434e29572fa23a1dd14f98b5480b99",
-    "ci\\audit_observer_purity_results.json": "1600b628e863fa7964d5dd547adf2bce25645d9b28e1f4e0f38230b54e56b639",
-    "ci\\audit_runtime_results.json": "c7dde6b6168c76aa8db757c8c7b7114bff025706fae3a542c692c04a7cc909eb",
-    "ci\\paper_surface_results.json": "b92eb1795acb5c71cebdf658274f91b8d592d7f6b382d1e0f22c0b57c8abb529",
-    "ci\\figure_caption_grounding_results.json": "354d0d4c816d7891f8f8bc3c84d544e521a94cd349d11966fe101aac8357ee64",
+    "ci\\audit_observer_purity_results.json": "5baded3d691dad4df860c58a4c75b9eab875867446f87cfa566dc5dab14d7f6e",
+    "ci\\audit_runtime_results.json": "9c027250fa5f9c330459be580ad8506e4133a7f253e8b4f16f05accfc31ebde9",
+    "ci\\paper_surface_results.json": "fde3e01548f1da86d4d37094739fc136d798d55be857481b4004e4a17bd5058a",
+    "ci\\figure_caption_grounding_results.json": "0e2ce5e18dd5dbed645d05caad8c868364e419fdf88f0eccc0bbfba932e77800",
     "ci\\page_check_results.json": "0c0078f9f6270057bec4707ee05a0c914db705f1dd50d124f3187e8069078a98",
     "ci\\claim_data_ties.json": "1c0d49e387c7bbd9d9934a450c215eb640fa7f7278ce7e5ab3aa06f5cbd78759",
     "ci\\figure_lineage.json": "d69541bb36893ac0f84be3953f0ad8b5b76723186b68dd2e53c176ba092137ae",
     "ci\\illustration_lineage.json": "f32522de932dfb8108d735e2a47e6f26db2860edd7fe4303d6f8e18ffaa1f3d8"
   },
   "verdict": {
-    "verdict": "PASS",
-    "rationale": "all structural checks clean (L1+L2+L4+L7+L8+L9+L10+L11+L12+L13+L14+L15+L27+L28+L29+L30+L30_audit_observer_purity+L31+L32+L33+L34); L3+L5+L16 coverage is advisory, see triage JSONs"
+    "verdict": "FAIL",
+    "rationale": "Structural layers failed: L9_consistency"
   },
   "layers": [
     {
@@ -293,12 +293,12 @@
     {
       "name": "L9_consistency",
       "script": "ci\\cross_claim_consistency_check.py",
-      "return_code": 0,
-      "status": "PASS",
+      "return_code": 1,
+      "status": "FAIL",
       "summary": {
         "total": 60,
-        "passed": 60,
-        "failed": 0
+        "passed": 59,
+        "failed": 1
       },
       "notes": ""
     },
@@ -537,7 +537,7 @@
         "total_bounds": 13,
         "passed": 13,
         "failed": 0,
-        "elapsed_seconds": 0.336,
+        "elapsed_seconds": 0.36,
         "seed": 20260504,
         "h1_demo_violations_found": 100,
         "h1_demo_max_relative_violation": 0.683107859546742
@@ -684,16 +684,16 @@
     {
       "suite": "data_ties",
       "purpose": "Numerical claims recompute from source data and bind to local paper or supplementary surfaces.",
-      "status": "PASS",
-      "passed": 5,
-      "failed": 0,
+      "status": "FAIL",
+      "passed": 4,
+      "failed": 1,
       "skipped": 0,
       "members": [
         {
           "check": "L9_consistency",
           "script": "ci\\cross_claim_consistency_check.py",
           "severity": "blocker",
-          "status": "PASS"
+          "status": "FAIL"
         },
         {
           "check": "L15_data_ties",
@@ -942,5 +942,5 @@
       ]
     }
   ],
-  "certificate_self_hash": "4a296b449c2529f12e231bc5eab1394727b39af2cc7f6621a2908f684d9d3555"
+  "certificate_self_hash": "c318cfa3735bc86b33f524a5164f071e1275b7ea535e26d696a8aabcfc50a4fe"
 }

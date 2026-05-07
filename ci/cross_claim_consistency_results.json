@@ -1,8 +1,8 @@
 {
   "summary": {
     "total": 60,
-    "passed": 60,
-    "failed": 0
+    "passed": 59,
+    "failed": 1
   },
   "relations": [
     {
@@ -703,16 +703,16 @@
     },
     {
       "name": "subproc__cert_anonymity",
-      "description": "cert_anonymity:   Results -> C:\\src\\NeurIPS\\ci\\cert_anonymity_results.json",
+      "description": "cert_anonymity: subprocess error: TimeoutExpired: Command '['C:\\\\Users\\\\paulc\\\\AppData\\\\Local\\\\Programs\\\\Python\\\\Python313\\\\python.exe',",
       "formula": "passed == True",
       "params": {
-        "passed": true
+        "passed": false
       },
       "expected": true,
-      "computed": 1.0,
+      "computed": 0.0,
       "claim_ids": [],
-      "ok": true,
-      "detail": "computed=1.000000, expected=True, abs_diff=0.00e+00, rel_diff=0.00e+00"
+      "ok": false,
+      "detail": "computed=0.000000, expected=True, abs_diff=1.00e+00, rel_diff=1.00e+00"
     },
     {
       "name": "subproc__caveat_ledger",
@@ -807,7 +807,7 @@
     },
     {
       "name": "subproc__narrative_consistency",
-      "description": "narrative_consistency:     absent  : ['abstract', 'conclusion_summary', 'approach']",
+      "description": "narrative_consistency:     absent  : ['abstract', 'approach', 'conclusion_summary']",
       "formula": "passed == True",
       "params": {
         "passed": true
@@ -820,7 +820,7 @@
     },
     {
       "name": "subproc__bundle_verification",
-      "description": "bundle_verification: Wrote ci\\bundle_verification_results.json",
+      "description": "ADVISORY: bundle_verification: Wrote ci\\bundle_verification_results.json",
       "formula": "passed == True",
       "params": {
         "passed": true
