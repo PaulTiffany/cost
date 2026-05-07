@@ -807,7 +807,7 @@
     },
     {
       "name": "subproc__narrative_consistency",
-      "description": "narrative_consistency:     absent  : ['approach', 'abstract', 'conclusion_summary']",
+      "description": "narrative_consistency:     absent  : ['conclusion_summary', 'abstract', 'approach']",
       "formula": "passed == True",
       "params": {
         "passed": true

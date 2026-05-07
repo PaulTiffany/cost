@@ -173,6 +173,11 @@ def collect_paths() -> set:
     # not surfaced through any L-layer manifest above).
     paths.add(str(Path("paper") / "references.bib"))
 
+    # Agent-provenance disclosure (referenced by submission_surface_manifest
+    # and by build_openreview_supplementary's REVIEWER_README, but not
+    # surfaced through any cert-output manifest above).
+    paths.add("AGENTS.md")
+
     return paths
 
 

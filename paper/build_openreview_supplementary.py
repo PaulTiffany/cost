@@ -54,9 +54,10 @@ code, data, and verifier artifacts referenced in the paper.
 The fastest path:
 
 1. **Read the certificate** -- `ci/claim_certificate.md` is a
-   human-readable summary of the 25 mechanical checks that verify the
+   human-readable summary of the 34 mechanical checks that verify the
    paper's numeric claims, citations, figure provenance, and anonymity.
-   Latest verdict: PASS.
+   The current verdict (PASS or FAIL) is the first line of that file
+   under `**Verdict:**`; the `--mode release` rerun is also embedded.
 
 2. **Look up a specific claim** -- `CLAIM_AUDIT.md` indexes every
    numeric claim in the paper and points to the source data file plus

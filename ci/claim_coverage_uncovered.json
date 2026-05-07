@@ -2,10 +2,10 @@
   "paper_path": "C:\\src\\NeurIPS\\paper\\main.tex",
   "summary": {
     "total_numeric_tokens": 1446,
-    "covered": 1343,
-    "uncovered_raw": 103,
-    "uncovered_deduped": 100,
-    "coverage_percent": 92.9
+    "covered": 1351,
+    "uncovered_raw": 95,
+    "uncovered_deduped": 92,
+    "coverage_percent": 93.4
   },
   "uncovered": [
     {
@@ -79,24 +79,6 @@
       "value": "3",
       "context": "3",
       "section": "subsection: Notation glossary (relocated from body \\S\\ref{sec:setup"
-    },
-    {
-      "line_no": 797,
-      "value": "0.96",
-      "context": "0.96",
-      "section": "paragraph: Constraint Extraction Robustness."
-    },
-    {
-      "line_no": 797,
-      "value": "92",
-      "context": "92",
-      "section": "paragraph: Constraint Extraction Robustness."
-    },
-    {
-      "line_no": 797,
-      "value": "89",
-      "context": "89",
-      "section": "paragraph: Constraint Extraction Robustness."
     },
     {
       "line_no": 822,
@@ -435,24 +417,6 @@
       "section": "paragraph: Geometric realism."
     },
     {
-      "line_no": 2316,
-      "value": "34",
-      "context": "34",
-      "section": "paragraph: Geometric realism."
-    },
-    {
-      "line_no": 2316,
-      "value": "48",
-      "context": "48",
-      "section": "paragraph: Geometric realism."
-    },
-    {
-      "line_no": 2316,
-      "value": "22",
-      "context": "22",
-      "section": "paragraph: Geometric realism."
-    },
-    {
       "line_no": 2370,
       "value": "40",
       "context": "= 40(1-A)",
@@ -552,18 +516,6 @@
       "line_no": 2739,
       "value": "3",
       "context": "3",
-      "section": "paragraph: Compatibility Certificates and Error Taxonomy."
-    },
-    {
-      "line_no": 2745,
-      "value": "10",
-      "context": "10",
-      "section": "paragraph: Compatibility Certificates and Error Taxonomy."
-    },
-    {
-      "line_no": 2745,
-      "value": "62",
-      "context": "62",
       "section": "paragraph: Compatibility Certificates and Error Taxonomy."
     },
     {

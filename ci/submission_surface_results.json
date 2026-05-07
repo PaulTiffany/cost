@@ -17,11 +17,11 @@
     },
     {
       "check": "entries_present",
-      "detail": "87 entries found"
+      "detail": "88 entries found"
     },
     {
       "check": "per_entry_schema",
-      "detail": "Checked 87 entries; hard failures above if any schema issues found"
+      "detail": "Checked 88 entries; hard failures above if any schema issues found"
     },
     {
       "check": "draft_png_not_shipped",
@@ -35,7 +35,7 @@
     },
     {
       "check": "role_counts",
-      "detail": "evidence_asset=25, reviewer_aid=3, raw_observation=1, provenance_source=46, internal_or_excluded=12; total entries=87, expected_in_submission=29"
+      "detail": "evidence_asset=25, reviewer_aid=3, raw_observation=1, provenance_source=47, internal_or_excluded=12; total entries=88, expected_in_submission=30"
     }
   ],
   "warnings": []

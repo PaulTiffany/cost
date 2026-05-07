@@ -41,13 +41,13 @@
     {
       "name": "hypothesis_program_pytest_green",
       "status": "PASS",
-      "detail": "pytest exit 0; tail: '..............................s......................................... [ 88%]\\n...................                                                      [100%]\\n162 passed, 1 skipped in 3.72s'",
+      "detail": "pytest exit 0; tail: '..............................s......................................... [ 88%]\\n...................                                                      [100%]\\n162 passed, 1 skipped in 5.52s'",
       "return_code": 0
     },
     {
       "name": "aaa_gold_standard_green",
       "status": "PASS",
-      "detail": "pytest exit 0; tail: '...........                                                              [100%]\\n11 passed in 3.51s'",
+      "detail": "pytest exit 0; tail: '...........                                                              [100%]\\n11 passed in 4.16s'",
       "return_code": 0
     },
     {
@@ -79,5 +79,5 @@
     "ci/audit/mutation_test_results.json": "af33e511da9f6f3fd3cf18cd8bc1bdb0d91754f1f9bb394e043706746f21cab8",
     "ci/audit/decision_rule.py": "b6f39141f4c79d9a1e2718bfd1076862f2a13a2287dee4069f20f7755964e9a8"
   },
-  "ran_at_utc": "2026-05-07T09:46:48+00:00"
+  "ran_at_utc": "2026-05-07T10:12:46+00:00"
 }

@@ -16,6 +16,19 @@
   },
   "entries": [
     {
+      "path": "AGENTS.md",
+      "role": "provenance_source",
+      "artifact_kind": "markdown",
+      "expected_in_submission": true,
+      "claim_ids": [],
+      "paper_locations": [],
+      "source_scripts": [],
+      "source_data_or_results": [],
+      "hash_policy": "required",
+      "scope_note": "Agent-provenance disclosure. Documents which automated agents contributed to which artifacts. Required by AGENTS.md self-claim and referenced by the OpenReview REVIEWER_README.",
+      "checks_required": ["exists", "no_pii"]
+    },
+    {
       "path": "paper/main.tex",
       "role": "evidence_asset",
       "artifact_kind": "tex",

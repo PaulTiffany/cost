@@ -5,8 +5,8 @@
 **Paper:** The Cost of Cacophony: Geometric Limits on Multi-Constraint Alignment
 **Venue:** NeurIPS 2026 (anonymous double-blind submission)
 **Mode:** `quick` (release: full L12 build equivalence + artifact hashes embedded; quick: --quick L12 (mtime+asset-hash only), faster local checks)
-**Generated:** 2026-05-07T05:46:59
-**Verdict:** **FAIL** — Structural layers failed: L1_audit, L2_validator, L14_illustrations
+**Generated:** 2026-05-07T06:12:57
+**Verdict:** **PASS** — all structural checks clean (L1+L2+L4+L7+L8+L9+L10+L11+L12+L13+L14+L15+L27+L28+L29+L30+L30_audit_observer_purity+L31+L32+L33+L34); L3+L5+L16 coverage is advisory, see triage JSONs
 
 ## Scope of certification
 
@@ -41,20 +41,20 @@ python ci/claim_certificate.py --release
 - main.tex sha256: `4e1608d60a933634...` (full hash in JSON)
 - main.tex mtime: 2026-05-07T05:35:04
 - main.pdf size: 1,200,503 bytes
-- main.pdf mtime: 2026-05-07T05:46:58
-- registry sha256: `668af8a597dfb501...`
+- main.pdf mtime: 2026-05-07T06:12:56
+- registry sha256: `d3cc82eb135768ca...`
 - artifact hashes: 35 layer-result JSONs + manifests recorded in JSON payload
-- certificate self-hash: `24d180ff4e639047...` (sha256 of this payload minus the hash field; recompute to verify integrity)
+- certificate self-hash: `1a725121adf7e2c2...` (sha256 of this payload minus the hash field; recompute to verify integrity)
 
 ## Layer-by-layer Results
 
 | Layer | Script | Status | Summary |
 |---|---|---|---|
-| L1_audit | `ci\claim_audit.py` | FAIL | 147/149 verbatim, 1 MISSING |
-| L2_validator | `ci\claim_audit_validator.py` | FAIL | 13/14 checks pass |
-| L3_sweep | `ci\claim_coverage_sweep.py` | PASS | 92.9% coverage, 100 uncovered |
+| L1_audit | `ci\claim_audit.py` | PASS | 148/148 verbatim |
+| L2_validator | `ci\claim_audit_validator.py` | PASS | 14/14 checks pass |
+| L3_sweep | `ci\claim_coverage_sweep.py` | PASS | 93.4% coverage, 92 uncovered |
 | L4_lineage | `ci\figure_lineage_check.py` | PASS | 8/8 checks pass, 11 figures fresh |
-| L5_figure_values | `ci\figure_value_check.py` | PASS | 77.6% overall figure coverage, 23 uncovered |
+| L5_figure_values | `ci\figure_value_check.py` | PASS | 81.5% overall figure coverage, 19 uncovered |
 | L7_citations | `ci\citation_integrity_check.py` | PASS | 31 cites, 43 bib entries, 0 unresolved, 12 dead |
 | L8_links | `ci\link_integrity_check.py` | PASS | 2 URLs, 125 refs / 176 labels, 0 unresolved, 52 dead labels |
 | L9_consistency | `ci\cross_claim_consistency_check.py` | PASS | 60/60 consistency relations hold |
@@ -62,7 +62,7 @@ python ci/claim_certificate.py --release
 | L11_scripts | `ci\script_integrity_check.py` | PASS | 13/13 figure scripts pass smoke test |
 | L12_build_equiv | `ci\build_equivalence_check.py` | PASS | --quick mode: ?/15 figures fresh; full mode optional |
 | L13_cross_tree | `ci\cross_tree_consistency_check.py` | SKIP | 0/? cross-tree files match (incl. expected divergences) |
-| L14_illustrations | `ci\illustration_lineage_check.py` | FAIL | 6/7 illustration provenance checks pass |
+| L14_illustrations | `ci\illustration_lineage_check.py` | PASS | 7/7 illustration provenance checks pass |
 | L15_data_ties | `ci\claim_data_ties_check.py` | PASS | 325/325 numerical claims tied to source data |
 | L16_author_claims | `ci\author_claims_check.py` | PASS | 28/28 judgment claims have data anchors (100%; advisory) |
 | L17_table_values | `ci\table_value_check.py` | PASS | (no summary) |
@@ -90,8 +90,8 @@ python ci/claim_certificate.py --release
 | Figure | Coverage | Uncovered |
 |---|---|---|
 | algorithm1_storyboard.pdf | 36.4% | 3 |
-| gram_eigendecomposition.pdf | 59.7% | 12 |
-| per_task_correlation.pdf | 83.9% | 6 |
+| gram_eigendecomposition.pdf | 58.2% | 13 |
+| per_task_correlation.pdf | 98.4% | 1 |
 | constrained_decoding.pdf | 100.0% | 0 |
 | cross_model_cliff.pdf | 100.0% | 0 |
 | soft_constraint_cliff.pdf | 100.0% | 0 |
