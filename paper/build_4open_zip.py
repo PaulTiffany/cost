@@ -84,7 +84,9 @@ EXCLUDE_FILE_PATTERN_SUFFIXES = (".zip", ".tar.gz")
 # Files whose name CONTAINS any of these substrings are excluded outright.
 # Catches sub-extensions like .PRE_COSMIC_RAY_BACKUP that don't match
 # Path.suffix (which only sees the last extension).
-EXCLUDE_FILE_NAME_CONTAINS = (".PRE_COSMIC_RAY_BACKUP",)
+EXCLUDE_FILE_NAME_CONTAINS = (".PRE_COSMIC_RAY_BACKUP",
+                                ".sqlite",  # binary mutation DB; contains author paths in encoded form
+                                )
 
 # Override: paths under these prefixes are included even if a parent
 # directory is in EXCLUDE_DIRS. Used to surgically include reviewer-
@@ -96,7 +98,9 @@ INCLUDE_FORCE_PATH_PREFIXES = (
 
 # PII patterns: any text-like file containing these is a hard fail
 PII_PATTERNS = [
-    re.compile(r"\bpaulc\b", re.IGNORECASE),
+    # No \b on paulc: regex literal r"\bpaulc\b" has 'b' as preceding char
+    # (word) which defeats the leading boundary. Direct substring match.
+    re.compile(r"paulc", re.IGNORECASE),
     re.compile(r"paultiffany", re.IGNORECASE),
     re.compile(r"Paul[\s_-]*Carver[\s_-]*Tiffany", re.IGNORECASE),
     re.compile(r"@gmail\.com", re.IGNORECASE),
@@ -110,7 +114,6 @@ PII_PATTERNS = [
 
 # Files where PII patterns are EXPECTED (regex sources, allowlist, etc.)
 PII_ALLOWLIST = {
-    "ci/pdf_camera_ready_check.py", # scans PDF for author identifiers; legit
     "ci/_add_cross_source_peer_example.py",  # one-off helper, no PII anyway
     # NOTE: ci/anonymity_check.py and ci/cert_anonymity_check.py used to be
     # here, but their source contains literal author-program identifiers
@@ -131,6 +134,8 @@ PII_SCRUB_AT_ZIP = {
     # shipped script is inert (won't actually scan) but doesn't leak.
     "ci/anonymity_check.py",
     "ci/cert_anonymity_check.py",
+    "ci/pdf_camera_ready_check.py",
+    "supplementary/experiments/high_k_opus47_addition.py",
     "ci/dependency_fingerprint.json",
     "ci/dependency_fingerprint.py",
     "ci/supplementary_manifest.json",
@@ -290,8 +295,11 @@ def scrub_text(text: str) -> str:
                   text, flags=re.IGNORECASE)
     text = re.sub(r"Paul[\s_-]*Carver[\s_-]*Tiffany( III)?",
                   "<redacted_author>", text, flags=re.IGNORECASE)
-    # Word-boundary 'paulc' last (catches anything the path / email patterns missed)
-    text = re.sub(r"\bpaulc\b", "<redacted_user>", text, flags=re.IGNORECASE)
+    # Word-boundary 'paulc' fails inside regex literal r"\bpaulc\b" because
+    # 'b' is a word char before 'p'. Drop the boundary; paulc is not a
+    # substring of legitimate English words.
+    text = re.sub(r"paulc", "<redacted_user>", text, flags=re.IGNORECASE)
+    text = re.sub(r"paultiffany", "<redacted_user>", text, flags=re.IGNORECASE)
     # Author-program identifiers (cross-paper deanonymization chain).
     # No word boundaries — these tokens never appear as substrings of
     # legitimate English words, and \b fails inside regex literals where
