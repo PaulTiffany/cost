@@ -14,8 +14,9 @@ import subprocess
 import sys
 import tempfile
 import os
+import time
 from dataclasses import dataclass
-from typing import List, Optional, Tuple
+from typing import Any, Dict, List, Optional, Tuple
 from pathlib import Path
 
 
@@ -98,20 +99,68 @@ def extract_code_block(response: str) -> Optional[str]:
     return None
 
 
-def verify_functional(code: str, test_code: str, timeout: float = 5.0) -> Tuple[bool, str]:
-    """
-    Verifier A: Run code + tests in subprocess with timeout.
+_TEMP_PATH_PATTERNS = [
+    # Windows AppData/Temp paths (greedy through end of path)
+    re.compile(r"[A-Za-z]:\\\\Users\\\\[^\"'\s\n,]+", re.IGNORECASE),
+    re.compile(r"[A-Za-z]:\\Users\\[^\"'\s\n,]+", re.IGNORECASE),
+    # POSIX user/temp paths
+    re.compile(r"/Users/[A-Za-z0-9_.\-]+(?:/[^\"'\s\n,]*)?", re.IGNORECASE),
+    re.compile(r"/home/[A-Za-z0-9_.\-]+(?:/[^\"'\s\n,]*)?", re.IGNORECASE),
+    re.compile(r"/tmp/[^\"'\s\n,]+", re.IGNORECASE),
+    re.compile(r"/var/folders/[^\"'\s\n,]+", re.IGNORECASE),
+    # Generic C:\src\<repo> author-machine fingerprints (anonymity hardening)
+    re.compile(r"[A-Za-z]:\\\\src\\\\[^\"'\s\n,]+", re.IGNORECASE),
+    re.compile(r"[A-Za-z]:\\src\\[^\"'\s\n,]+", re.IGNORECASE),
+]
 
-    Returns (passed: bool, message: str)
 
-    Uses subprocess isolation:
-    - Separate process (can't crash main)
-    - Hard timeout (can't hang)
-    - Temp directory (can't pollute)
-    - Stripped environment
+def _scrub_paths(text: str, temp_path: str = "") -> str:
+    """Replace any local temp/user paths with anonymous placeholders.
+
+    Verifier subprocess output (stderr/stdout) embeds the temp file path,
+    which contains the local username. We scrub before returning so packets
+    are PII-clean regardless of the host machine.
     """
+    if not text:
+        return text
+    if temp_path:
+        text = text.replace(temp_path, "<tmp>.py")
+    for pat in _TEMP_PATH_PATTERNS:
+        text = pat.sub("<tmp>", text)
+    return text
+
+
+def verify_functional_structured(
+    code: Optional[str], test_code: str, timeout: float = 5.0
+) -> Dict[str, Any]:
+    """
+    Verifier A (structured): runs code in subprocess and returns full audit dict.
+
+    Always-present fields:
+        passed: bool
+        message: str (back-compat — same string ``verify_functional`` returns)
+        subprocess_return_code: Optional[int] (None when short-circuited)
+        subprocess_stdout_scrubbed: str
+        subprocess_stderr_scrubbed: str
+        subprocess_timed_out: bool
+        subprocess_timeout_seconds: float
+        subprocess_wall_time_ms: float
+    """
+    # Sentinel defaults (populated even on no-code / timeout / error paths)
+    result_dict: Dict[str, Any] = {
+        "passed": False,
+        "message": "",
+        "subprocess_return_code": None,
+        "subprocess_stdout_scrubbed": "",
+        "subprocess_stderr_scrubbed": "",
+        "subprocess_timed_out": False,
+        "subprocess_timeout_seconds": float(timeout),
+        "subprocess_wall_time_ms": 0.0,
+    }
+
     if code is None:
-        return False, "No code block found in response"
+        result_dict["message"] = "No code block found in response"
+        return result_dict
 
     # Combine code and tests
     full_code = f"{code}\n\n# Tests\n{test_code}"
@@ -122,46 +171,94 @@ def verify_functional(code: str, test_code: str, timeout: float = 5.0) -> Tuple[
         temp_path = f.name
 
     try:
-        # Run in subprocess with timeout
-        result = subprocess.run(
-            [sys.executable, "-I", temp_path],  # -I = isolated mode
-            capture_output=True,
-            text=True,
-            timeout=timeout,
-            cwd=tempfile.gettempdir(),
-            env={"PATH": os.environ.get("PATH", "")},  # Minimal env
-        )
+        # Run in subprocess with timeout (wall-clock around .run only)
+        t0 = time.monotonic()
+        try:
+            completed = subprocess.run(
+                [sys.executable, "-I", temp_path],  # -I = isolated mode
+                capture_output=True,
+                text=True,
+                timeout=timeout,
+                cwd=tempfile.gettempdir(),
+                env={"PATH": os.environ.get("PATH", "")},  # Minimal env
+            )
+        finally:
+            result_dict["subprocess_wall_time_ms"] = (time.monotonic() - t0) * 1000.0
 
-        if result.returncode == 0:
-            return True, "All tests passed"
+        # Scrub stdout AND stderr defensively (stdout often empty but scrub anyway)
+        stdout_scrubbed = _scrub_paths(completed.stdout or "", temp_path)
+        stderr_scrubbed = _scrub_paths(completed.stderr or "", temp_path)
+        result_dict["subprocess_return_code"] = completed.returncode
+        result_dict["subprocess_stdout_scrubbed"] = stdout_scrubbed
+        result_dict["subprocess_stderr_scrubbed"] = stderr_scrubbed
+
+        if completed.returncode == 0:
+            result_dict["passed"] = True
+            result_dict["message"] = "All tests passed"
         else:
-            error_msg = result.stderr[:500] if result.stderr else "Unknown error"
-            return False, f"Tests failed: {error_msg}"
+            error_msg = (completed.stderr or "")[:500] if completed.stderr else "Unknown error"
+            result_dict["message"] = _scrub_paths(f"Tests failed: {error_msg}", temp_path)
 
     except subprocess.TimeoutExpired:
-        return False, f"Timeout after {timeout}s"
+        # wall_time_ms already set by inner finally
+        result_dict["subprocess_timed_out"] = True
+        result_dict["subprocess_return_code"] = -1
+        result_dict["message"] = f"Timeout after {timeout}s"
     except Exception as e:
-        return False, f"Execution error: {str(e)[:200]}"
+        result_dict["subprocess_return_code"] = -1
+        result_dict["message"] = _scrub_paths(f"Execution error: {str(e)[:200]}", temp_path)
     finally:
         # Cleanup temp file
         try:
             os.unlink(temp_path)
-        except:
+        except Exception:
             pass
 
+    return result_dict
 
-def verify_format(code: str, rules: FormatRules) -> Tuple[bool, str]:
+
+def verify_functional(code: str, test_code: str, timeout: float = 5.0) -> Tuple[bool, str]:
     """
-    Verifier B: Check format constraints via AST parsing.
+    Verifier A: Run code + tests in subprocess with timeout.
 
-    Returns (passed: bool, message: str)
+    Returns (passed: bool, message: str). Back-compat wrapper around
+    ``verify_functional_structured``; the message is identical to what this
+    function previously returned (path-scrubbed via ``_scrub_paths``).
 
-    All checks are deterministic - pure AST inspection.
+    Uses subprocess isolation:
+    - Separate process (can't crash main)
+    - Hard timeout (can't hang)
+    - Temp directory (can't pollute)
+    - Stripped environment
     """
+    structured = verify_functional_structured(code, test_code, timeout)
+    return structured["passed"], structured["message"]
+
+
+def verify_format_structured(code: Optional[str], rules: FormatRules) -> Dict[str, Any]:
+    """
+    Verifier B (structured): AST format check returning the full violation list
+    rather than a concatenated message.
+
+    Always-present fields:
+        passed: bool
+        message: str (back-compat — first 3 violations joined with "; ")
+        format_violations: List[str] (full list; may be empty)
+        format_check_skipped: bool (True iff code is None)
+    """
+    result_dict: Dict[str, Any] = {
+        "passed": False,
+        "message": "",
+        "format_violations": [],
+        "format_check_skipped": False,
+    }
+
     if code is None:
-        return False, "No code block found in response"
+        result_dict["format_check_skipped"] = True
+        result_dict["message"] = "No code block found in response"
+        return result_dict
 
-    violations = []
+    violations: List[str] = []
 
     # Check 1: Line count
     lines = code.strip().split('\n')
@@ -177,7 +274,11 @@ def verify_format(code: str, rules: FormatRules) -> Tuple[bool, str]:
     try:
         tree = ast.parse(code)
     except SyntaxError as e:
-        return False, f"Syntax error: {e}"
+        # Syntax error short-circuits — surface as a single violation entry
+        # so the structured field stays a List[str].
+        result_dict["format_violations"] = [f"Syntax error: {e}"]
+        result_dict["message"] = f"Syntax error: {e}"
+        return result_dict
 
     # Check 3: No loops (for/while)
     if rules.no_loops:
@@ -226,31 +327,63 @@ def verify_format(code: str, rules: FormatRules) -> Tuple[bool, str]:
                         if isinstance(child.func, ast.Name) and child.func.id == func_name:
                             violations.append(f"Recursive call to {func_name}")
 
+    result_dict["format_violations"] = violations
     if violations:
-        return False, "; ".join(violations[:3])  # Show first 3
-    return True, "All format checks passed"
+        result_dict["message"] = "; ".join(violations[:3])  # Show first 3 (back-compat)
+    else:
+        result_dict["passed"] = True
+        result_dict["message"] = "All format checks passed"
+    return result_dict
+
+
+def verify_format(code: str, rules: FormatRules) -> Tuple[bool, str]:
+    """
+    Verifier B: Check format constraints via AST parsing.
+
+    Returns (passed: bool, message: str). Back-compat wrapper around
+    ``verify_format_structured`` — message is identical to prior shape.
+    """
+    structured = verify_format_structured(code, rules)
+    return structured["passed"], structured["message"]
 
 
 def verify_both(code: str, test_code: str, rules: FormatRules, timeout: float = 5.0) -> dict:
     """
     Run both verifiers and return structured result.
 
-    Returns dict with:
-    - pass_a: bool (functional tests)
-    - pass_b: bool (format constraints)
-    - pass_both: bool (A AND B)
-    - msg_a: str
-    - msg_b: str
+    Back-compat fields:
+        pass_a, pass_b, pass_both, msg_a, msg_b
+
+    New (additive) fields exposing subprocess + format internals so reviewers
+    can audit return code, stdout, stderr, timing, and the raw violation list:
+        subprocess_return_code, subprocess_stdout_scrubbed,
+        subprocess_stderr_scrubbed, subprocess_timed_out,
+        subprocess_timeout_seconds, subprocess_wall_time_ms,
+        format_violations, format_check_skipped
     """
-    pass_a, msg_a = verify_functional(code, test_code, timeout)
-    pass_b, msg_b = verify_format(code, rules)
+    func_struct = verify_functional_structured(code, test_code, timeout)
+    fmt_struct = verify_format_structured(code, rules)
+
+    pass_a = func_struct["passed"]
+    pass_b = fmt_struct["passed"]
 
     return {
+        # ---- back-compat ----
         "pass_a": pass_a,
         "pass_b": pass_b,
         "pass_both": pass_a and pass_b,
-        "msg_a": msg_a,
-        "msg_b": msg_b,
+        "msg_a": func_struct["message"],
+        "msg_b": fmt_struct["message"],
+        # ---- new structured subprocess fields ----
+        "subprocess_return_code": func_struct["subprocess_return_code"],
+        "subprocess_stdout_scrubbed": func_struct["subprocess_stdout_scrubbed"],
+        "subprocess_stderr_scrubbed": func_struct["subprocess_stderr_scrubbed"],
+        "subprocess_timed_out": func_struct["subprocess_timed_out"],
+        "subprocess_timeout_seconds": func_struct["subprocess_timeout_seconds"],
+        "subprocess_wall_time_ms": func_struct["subprocess_wall_time_ms"],
+        # ---- new structured format fields ----
+        "format_violations": fmt_struct["format_violations"],
+        "format_check_skipped": fmt_struct["format_check_skipped"],
     }
 
 

@@ -1,0 +1,201 @@
+{
+  "generated_at": "2026-05-06T05:00:04+00:00",
+  "verdict": "CANONICAL",
+  "cross_checks": {
+    "thresholds_match_pre_reg": {
+      "passed": true,
+      "detail": "all 6 threshold values present"
+    },
+    "relation_class_complete": {
+      "passed": true,
+      "detail": "all 8 RelationClass values mapped"
+    },
+    "observation_packet_schema_version": {
+      "passed": true,
+      "detail": "packet_schema_version field present"
+    },
+    "mutation_ledger_green": {
+      "passed": true,
+      "detail": "0 RESIDUAL, 100.00% addressed"
+    },
+    "hypothesis_program_complete": {
+      "passed": true,
+      "detail": "all 30 H_IDs from pre-reg have test functions"
+    },
+    "no_residual_either_session": {
+      "passed": true,
+      "detail": "main session 0 RESIDUAL"
+    },
+    "ray_configs_disjoint": {
+      "passed": true,
+      "detail": "main excludes router; control targets router"
+    },
+    "substrate_no_llm_imports": {
+      "passed": true,
+      "detail": "no LLM imports in substrate"
+    }
+  },
+  "inventory": {
+    "ci/audit/audit_observer.py": {
+      "sha256": "7068d09887f50d7f88e4a642be7cc3f4b5a81f80d20c91a6eec351079b3243bc",
+      "role": "predicate ladder (pre-reg \u00a74.1, \u00a74.2)",
+      "covered_by": "L30/L31, mutation",
+      "exists": true,
+      "size_bytes": 15911
+    },
+    "ci/audit/control_router.py": {
+      "sha256": "4fc7dcc43eac66c0aa6d0c851e78f0ae5a2e05a4a017d1a002c1f980b73c65ef",
+      "role": "per-(observer, model) calibration routing (pre-reg \u00a76)",
+      "covered_by": "L30, mutation (separate)",
+      "exists": true,
+      "size_bytes": 2798
+    },
+    "ci/audit/observer.py": {
+      "sha256": "8a96d2eb996d303a738f61d91fa896c96b7f6ae0ecfce8694a4eb9dba431ab31",
+      "role": "typed Observer dataclass",
+      "covered_by": "L30, mutation",
+      "exists": true,
+      "size_bytes": 1666
+    },
+    "ci/audit/observation_packet.py": {
+      "sha256": "a5736402b90bdaf18d475f80dcc79d14421d6a400bfb2849a252884f1cd81dd9",
+      "role": "ObservationPacket schema v4.1",
+      "covered_by": "L30, mutation",
+      "exists": true,
+      "size_bytes": 2294
+    },
+    "ci/audit/audit_result.py": {
+      "sha256": "6d31a1fa0dab7371b35cb2123fa0a91d6bc521a7006ff29250c56700819fc888",
+      "role": "AuditResult schema",
+      "covered_by": "L30, mutation",
+      "exists": true,
+      "size_bytes": 767
+    },
+    "ci/audit/relation_classes.py": {
+      "sha256": "7b8a4aa6a27ea7810e055cca5b1c105e08b53a4dfd422c60e12c96e7d4d39354",
+      "role": "RelationClass enum",
+      "covered_by": "L30, mutation",
+      "exists": true,
+      "size_bytes": 609
+    },
+    "ci/audit/decision_rule.py": {
+      "sha256": "b6f39141f4c79d9a1e2718bfd1076862f2a13a2287dee4069f20f7755964e9a8",
+      "role": "RelationClass \u2192 PaperAction mapping",
+      "covered_by": "L30, mutation",
+      "exists": true,
+      "size_bytes": 2049
+    },
+    "ci/audit/cosmic_ray_config.toml": {
+      "sha256": "e729de1e5c3797553dc55dd75d78eb6e2c5d75857aba4405b60a6b2e3bc9a37f",
+      "role": "main mutation session config",
+      "covered_by": "L40 inventory",
+      "exists": true,
+      "size_bytes": 857
+    },
+    "ci/audit/cosmic_ray_control.toml": {
+      "sha256": "01ee0a53ee77b012f977b3939cc125cd90b826692d8d0458fc3c19914df514d2",
+      "role": "router-only mutation session config",
+      "covered_by": "L40 inventory",
+      "exists": true,
+      "size_bytes": 230
+    },
+    "ci/audit/MUTATION_LEDGER.md": {
+      "sha256": "1ab384a7e1bc8b2e75e26696c9ce750bcd65e85a49aa391a32a679fdacb9098a",
+      "role": "canonical mutation-coverage ledger",
+      "covered_by": "L40 cross-check",
+      "exists": true,
+      "size_bytes": 8382
+    },
+    "ci/audit/main_dump.jsonl": {
+      "sha256": "11faeb7360af2d3d26981099d8655632c4ad36bc0739a5d8bbc34053305b9c6e",
+      "role": "raw cosmic-ray dump (provenance)",
+      "covered_by": "L40 inventory",
+      "exists": true,
+      "size_bytes": 848419
+    },
+    "supplementary/PRE_REGISTRATION_AUDIT_OBSERVER_v4.md": {
+      "sha256": "13c4618d46caa58841c047dfe01ea155e2037503cc8000aa1813959eb6e6e605",
+      "role": "pre-registration (locked at first packet)",
+      "covered_by": "L30 / L40",
+      "exists": true,
+      "size_bytes": 46001
+    },
+    "ci/audit/tests/test_audit_observer.py": {
+      "sha256": "ffe884f53f6cb57bba1f48256425d5ed902888a73a9bcc46078b13f3c4146773",
+      "role": "test suite (test_audit_observer)",
+      "covered_by": "self",
+      "exists": true,
+      "size_bytes": 18282
+    },
+    "ci/audit/tests/test_audit_result.py": {
+      "sha256": "113edba5c67709f1fad187f0ebf7efc1254276cda2a09f3ff98770b001b3db2e",
+      "role": "test suite (test_audit_result)",
+      "covered_by": "self",
+      "exists": true,
+      "size_bytes": 1812
+    },
+    "ci/audit/tests/test_observer.py": {
+      "sha256": "b52ec7f3b2c6e5a7fee1f11dea96d6aecf80d606b85140cafedc01a265063b04",
+      "role": "test suite (test_observer)",
+      "covered_by": "self",
+      "exists": true,
+      "size_bytes": 1796
+    },
+    "ci/audit/tests/test_observation_packet.py": {
+      "sha256": "4376106f79056b438cd719e74f5da78c3ea8322b50e6661e1deb48eccb4033ce",
+      "role": "test suite (test_observation_packet)",
+      "covered_by": "self",
+      "exists": true,
+      "size_bytes": 7335
+    },
+    "ci/audit/tests/test_relation_classes.py": {
+      "sha256": "fa24bfc5c67a94ce7c7c61c9fe7f4a3156b88fd005e5d10b5e48d85197d6f455",
+      "role": "test suite (test_relation_classes)",
+      "covered_by": "self",
+      "exists": true,
+      "size_bytes": 1159
+    },
+    "ci/audit/tests/test_purity.py": {
+      "sha256": "6e62053963e44c4be5a0b7984f4fd4e2e0b1558419c6ed7e099fff25471a4f0f",
+      "role": "test suite (test_purity)",
+      "covered_by": "self",
+      "exists": true,
+      "size_bytes": 3000
+    },
+    "ci/audit/tests/test_hypothesis_program.py": {
+      "sha256": "ce481adc8b748b771ec7040d4806454465efd8d9acd0655f51e1720c8c4a704b",
+      "role": "test suite (test_hypothesis_program)",
+      "covered_by": "self",
+      "exists": true,
+      "size_bytes": 103310
+    },
+    "ci/audit/tests/test_aaa_gold_standard.py": {
+      "sha256": "696b2f30a2d6590176af3a351c1490905dcd990dd02e22734fac86676b24dc8e",
+      "role": "test suite (test_aaa_gold_standard)",
+      "covered_by": "self",
+      "exists": true,
+      "size_bytes": 27485
+    },
+    "ci/audit/tests/test_invariant_spec_correspondence.py": {
+      "sha256": "f7098dcbd0cd850115e3ed60f49af7b130edf24be3a96b32161f9e4e82ea06ba",
+      "role": "test suite (test_invariant_spec_correspondence)",
+      "covered_by": "self",
+      "exists": true,
+      "size_bytes": 5612
+    },
+    "ci/audit/tests/test_mutation_kills.py": {
+      "sha256": "2571dc15e379c8216e6b4dbdcd0859a2d06871184a3dde202b26b9c6fa1f1a81",
+      "role": "test suite (test_mutation_kills)",
+      "covered_by": "self",
+      "exists": true,
+      "size_bytes": 25566
+    },
+    "ci/audit/tests/test_control_router.py": {
+      "sha256": "b2deb7bbe34ca15d53eee05fce344393d452b8c82417c8a699ba310102138389",
+      "role": "test suite (test_control_router)",
+      "covered_by": "self",
+      "exists": true,
+      "size_bytes": 10062
+    }
+  }
+}

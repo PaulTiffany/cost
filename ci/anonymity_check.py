@@ -44,6 +44,27 @@ SKIP_DIRS = {".venv", "venv", ".git", "__pycache__", ".pytest_cache",
              ".mypy_cache", "node_modules", ".ipynb_checkpoints",
              "build", "dist", ".tox"}
 
+# Specific filenames that legitimately contain identity (arxiv-variant tooling
+# and outputs) — these are NEVER part of the anonymous supplementary bundle
+# (build_4open_zip.py and build_openreview_supplementary.py exclude them by name).
+# Listing them here so the anonymity sweep gives a true signal on the anonymous
+# surface only.
+SKIP_FILES = {
+    "build_arxiv.py",                # generates the arxiv variant with real identity
+    "build_4open_zip.py",            # contains regex patterns matching identity (allowlisted)
+    "build_openreview_supplementary.py",  # ships the supplementary bundle
+    "main_arxiv.tex",                # arxiv variant of the paper
+    "main_arxiv.pdf",                # arxiv-variant PDF
+    "checklist_arxiv.tex",           # arxiv-variant checklist
+    "anonymity_check.py",            # contains identity patterns it searches for (this file)
+    "cert_anonymity_check.py",       # same — contains identity patterns it searches for
+    "pdf_camera_ready_check.py",     # contains identity patterns it searches for
+    "architecture_provenance_check.py",  # contains forbidden-pattern table for self scan
+    "anonymity_check_results.json",  # results may quote matched lines
+    "cert_anonymity_results.json",   # same
+    "architecture_provenance_results.json",  # may quote matched patterns
+}
+
 
 # ---------------------------------------------------------------------------
 # Patterns
@@ -69,7 +90,44 @@ HARD_FAIL_PATTERNS = [
      "ICML 2026 stylesheet reference"),
     ("icml_bst", re.compile(r"icml2026\.bst", re.IGNORECASE),
      "ICML 2026 bibliography style reference"),
+    # Broader symbolic-substrate program identifiers (would deanonymize via
+    # the author's prior work on the surrounding research program). Patterns
+    # added 2026-05-04 after BIS audit surfaced one ci/de_llm_lexicon.md leak.
+    ("project_principia_symbolica",
+     re.compile(r"\bPrincipia\s*Symbolica\b", re.IGNORECASE),
+     "Principia Symbolica program identifier"),
+    ("project_pylantern",
+     re.compile(r"\bPy[\-]?Lantern\b", re.IGNORECASE),
+     "PyLantern symbolic-substrate identifier"),
+    ("project_fascia",
+     re.compile(r"\bFascia\b", re.IGNORECASE),
+     "Fascia substrate identifier"),
+    ("project_cosmic_engineers",
+     re.compile(r"(Order\s+of\s+)?\bCosmic\s+Engineers\b", re.IGNORECASE),
+     "Cosmic Engineers community identifier"),
+    ("project_srmf",
+     re.compile(r"\bSRMF\b"),
+     "SRMF (Symbolic Resonance Manifold Flow) substrate identifier"),
+    ("project_agi26",
+     re.compile(r"\bAGI[\-]?26\b", re.IGNORECASE),
+     "AGI-26 follow-on paper identifier (allowed only in references.bib citation)"),
 ]
+
+# File-level allowlist: meta-test files that intentionally contain the
+# username string in order to verify the path-scrubber removes it. The
+# tests would be meaningless without the literal token, and the files
+# never get rendered into the paper or any reviewer-visible artifact.
+ALLOWLISTED_FILE_SUFFIXES = (
+    "supplementary/experiments/tests/test_exception_paths.py",
+    "supplementary/experiments/tests/test_extended_environment_fingerprint.py",
+    "supplementary/experiments/tests/test_verifier_structured_output.py",
+)
+
+
+def _is_allowlisted_meta_test(path: Path) -> bool:
+    p = str(path).replace("\\", "/").lower()
+    return any(p.endswith(suf.lower()) for suf in ALLOWLISTED_FILE_SUFFIXES)
+
 
 # Allowed patterns. If a hit overlaps an allowed pattern on the same line, drop it.
 ALLOWED_PATTERNS = [
@@ -117,6 +175,8 @@ def iter_text_files(root: Path) -> Iterable[Path]:
         # Prune skip dirs in-place so os.walk does not descend into them
         dirnames[:] = [d for d in dirnames if d not in SKIP_DIRS]
         for fname in filenames:
+            if fname in SKIP_FILES:
+                continue
             p = Path(dirpath) / fname
             ext = p.suffix.lower()
             if ext in SKIP_EXTS:
@@ -142,6 +202,8 @@ def scan_file(path: Path) -> tuple[list[Hit], int]:
     """Scan a single file. Returns (hits, allowed_hit_count)."""
     hits: list[Hit] = []
     allowed_count = 0
+    if _is_allowlisted_meta_test(path):
+        return hits, allowed_count
     try:
         with open(path, "r", encoding="utf-8", errors="replace") as f:
             for lineno, line in enumerate(f, start=1):

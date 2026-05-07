@@ -34,6 +34,14 @@ Exit codes
 """
 
 from __future__ import annotations
+import sys as _sys  # UTF-8 stdout (Windows cp1252 mojibake fix)
+for _stream_name in ("stdout", "stderr"):
+    _stream = getattr(_sys, _stream_name, None)
+    if _stream is not None and hasattr(_stream, "reconfigure"):
+        try:
+            _stream.reconfigure(encoding="utf-8", errors="replace")
+        except (OSError, ValueError):
+            pass
 
 import argparse
 import json

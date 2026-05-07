@@ -3,7 +3,7 @@
 Paper: The Cost of Cacophony: Geometric Limits on Multi-Constraint Alignment
 Source manifests: ci/claim_data_ties.json, ci/claim_data_ties_results.json,
                   ci/cross_model_metadata_results.json
-All values are L15-verified (304/304 ties PASS).
+All values are L15-verified (325/325 ties PASS at current snapshot).
 
 To run a single check:
   python ci/claim_data_ties_check.py 2>&1 | grep <claim_name>

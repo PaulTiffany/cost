@@ -1,0 +1,93 @@
+{
+  "pre_reg_hash": "13c4618d46caa58841c047dfe01ea155e2037503cc8000aa1813959eb6e6e605",
+  "manifest_hash": "97a05009c84ab34ae52674aae42b615743548035f99f4b6ea81036ed24424290",
+  "verifier_hash": "f141e53ef6192d5f02ee1ea60a993712b06106c97112157856b42909c2733db8",
+  "started_utc": "2026-05-05T06:38:33.655029+00:00",
+  "finished_utc": "2026-05-05T06:44:06.750984+00:00",
+  "elapsed_sec": 333.1,
+  "run_dir": "C:\\src\\NeurIPS\\supplementary\\experiments\\outputs\\audit_v4\\run_2026-05-05T06-38-33Z",
+  "resumed": false,
+  "partial": true,
+  "prior_packets_on_resume": 0,
+  "models_used": {
+    "anthropic": [
+      "claude-haiku-4-5-20251001",
+      "claude-opus-4-1-20250805",
+      "claude-opus-4-20250514",
+      "claude-opus-4-5-20251101",
+      "claude-opus-4-6",
+      "claude-opus-4-7",
+      "claude-sonnet-4-20250514",
+      "claude-sonnet-4-5-20250929",
+      "claude-sonnet-4-6"
+    ],
+    "openrouter": [
+      "qwen/qwen-2.5-coder-32b-instruct",
+      "qwen/qwen3-coder",
+      "deepseek/deepseek-chat-v3.1",
+      "mistralai/codestral-2508"
+    ]
+  },
+  "tasks": [
+    "factorial",
+    "fibonacci",
+    "is_palindrome",
+    "gcd",
+    "reverse_words",
+    "fizzbuzz"
+  ],
+  "tiers": [
+    "control",
+    "low",
+    "moderate",
+    "high"
+  ],
+  "trials_per_cell": 2,
+  "concurrency": 8,
+  "order_seed": 20260504,
+  "total_packets_emitted_this_session": 624,
+  "total_packets_on_disk": 624,
+  "total_errors_on_disk": 39,
+  "anthropic_summary": {
+    "completed": 432,
+    "errors": 0,
+    "cost_usd": 0.9915029999999989,
+    "total_in_tok": 36342,
+    "total_out_tok": 31319,
+    "skipped": 0,
+    "partial": false
+  },
+  "openrouter_summary": {
+    "completed": 192,
+    "errors": 39,
+    "cost_usd": 0.014831700000000003,
+    "total_in_tok": 16152,
+    "total_out_tok": 12779,
+    "skipped": 0,
+    "partial": false
+  },
+  "estimated_cost_usd": 1.0063,
+  "errors": [],
+  "output_jsonl": "C:\\src\\NeurIPS\\supplementary\\experiments\\outputs\\audit_v4\\run_2026-05-05T06-38-33Z\\observation_packets.jsonl",
+  "git_commit_sha": "5346cc216c2ab9efb893839375588a9b5b81ae12",
+  "git_commit_sha_short": "5346cc216c2a",
+  "git_status_clean": false,
+  "git_branch": "master",
+  "encoder_model_file_sha256": "6b8b0fd0f006e2cde4a43b175f717d193783c0c4ee06352c858fa25ed10163d2",
+  "library_versions": {
+    "anthropic": "0.75.0",
+    "openai": "1.60.2",
+    "sentence_transformers": "5.1.2",
+    "torch": "2.9.1",
+    "scipy": "1.15.1",
+    "numpy": "2.1.3",
+    "pytest": "9.0.2"
+  },
+  "python_version": "3.13.4 (tags/v3.13.4:8a526ec, Jun  3 2025, 17:46:04) [MSC v.1943 64 bit (AMD64)]",
+  "platform_info": {
+    "system": "Windows",
+    "release": "11",
+    "machine": "AMD64",
+    "python_implementation": "CPython"
+  }
+}

@@ -6,7 +6,7 @@
       "status": "PASS",
       "details": {
         "body_end_page": 9,
-        "body_url_page": null,
+        "body_url_page": 9,
         "body_lines_above_references_on_refs_page": 0,
         "limit": 9
       }

@@ -1,7 +1,7 @@
 # De-LLM Lexicon: Protected Terms and Legitimate Targets
 
 Reference for any pass (human or agent) that touches paper or supplementary prose. Two sides:
-1. **Protected terms** — load-bearing for NeurIPS area-signal, AGI-26 lineage, and Principia Symbolica program. Do not vary. Recurrence is the point.
+1. **Protected terms** — load-bearing for NeurIPS area-signal and downstream lineage. Do not vary. Recurrence is the point.
 2. **Legitimate de-LLM targets** — actual LLM tells. Vary or remove with calculated variance.
 
 Principle throughout: **never mechanical, always semantic**. The patterns are tells; the meaning is sacred. Each rewrite asks: is this instance defining, proving, measuring, or limiting? If it is doing the same job as a nearby instance, vary. If each is doing a different job, leave.
@@ -10,19 +10,19 @@ Principle throughout: **never mechanical, always semantic**. The patterns are te
 
 ## 1. Protected terms (DO NOT vary, count, or compress)
 
-### 1a. AGI-26 inheritance (verbatim quotes from the in-flight follow-on paper)
+### 1a. the follow-on paper inheritance (verbatim quotes from the in-flight follow-on paper)
 
-AGI-26 (the in-flight follow-on paper) explicitly cites cacophony as `[1]` and quotes these phrasings. Any drift here breaks the lineage.
+the follow-on paper (the in-flight follow-on paper) explicitly cites cacophony as `[1]` and quotes these phrasings. Any drift here breaks the lineage.
 
 | Phrase | Why protected |
 |--------|---------------|
-| `feasibility cliff` | AGI-26 abstract + intro use it verbatim |
-| `$\delta_{\min} \geq (\tau/m)\sqrt{k/(1-\rho(k-1))}$` and `diverging at $\rho = 1/(k-1)$` | AGI-26 reprints the formula and divergence point |
-| `sharp geometric boundary, not a gradual degradation` | AGI-26 quotes this framing line |
-| `$\hat{\rho}$, computable from constraint text alone without generation` | AGI-26 inherits this exact ZO characterization |
-| `detects proximity to this cliff` | AGI-26 phrase pattern |
-| `judge-free validation` | AGI-26 keyword (abstract) |
-| `collapse diagnostic $\hat{\rho}$` | AGI-26 alternative naming |
+| `feasibility cliff` | the follow-on paper abstract + intro use it verbatim |
+| `$\delta_{\min} \geq (\tau/m)\sqrt{k/(1-\rho(k-1))}$` and `diverging at $\rho = 1/(k-1)$` | the follow-on paper reprints the formula and divergence point |
+| `sharp geometric boundary, not a gradual degradation` | the follow-on paper quotes this framing line |
+| `$\hat{\rho}$, computable from constraint text alone without generation` | the follow-on paper inherits this exact ZO characterization |
+| `detects proximity to this cliff` | the follow-on paper phrase pattern |
+| `judge-free validation` | the follow-on paper keyword (abstract) |
+| `collapse diagnostic $\hat{\rho}$` | the follow-on paper alternative naming |
 | `establishes when integration becomes mandatory` | Defines cacophony's role in the publication program |
 
 ### 1b. NeurIPS area-signal (helps reviewers categorize as ZO/black-box optimization)
@@ -40,10 +40,10 @@ AGI-26 (the in-flight follow-on paper) explicitly cites cacophony as `[1]` and q
 | `diagonal cost` | The core bound's name |
 | `feasibility cliff` | The phenomenology |
 | `geometric floor` | The high-ρ̂ collapse claim |
-| `fail-safe routing` | The safety inheritance AGI-26 needs |
+| `fail-safe routing` | The safety inheritance the follow-on paper needs |
 | `not capability gradient` | The rebuttal-to-skeptics frame |
 | `kinematic` | The it-is-not-statistical claim (Significance line) |
-| `Meta-theorem` | Explicit AGI-26 hook (in operating envelope figure caption) |
+| `Meta-theorem` | Explicit the follow-on paper hook (in operating envelope figure caption) |
 | `pre-generation routing` | The Algorithm 1 promise |
 
 ### 1d. Numeric anchors (every number in the paper is in CLAIM_AUDIT.md; do not let prose drift these)

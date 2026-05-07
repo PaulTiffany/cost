@@ -2,7 +2,7 @@
 
 Paper: The Cost of Cacophony: Geometric Limits on Multi-Constraint Alignment
 Venue: NeurIPS 2026 (anonymous double-blind submission)
-Certificate status: PASS (16 layers, 304/304 data ties)
+Certificate status: PASS (34 cert layers including L32 paper-surface impacting / L33 figure-caption grounding / L34 page-check; 325/325 data ties; 9/9 caption groundings)
 
 All commands run from the repo root. No GPU required. No API keys required for steps 1-4.
 

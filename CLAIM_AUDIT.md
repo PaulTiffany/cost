@@ -2,7 +2,7 @@
 
 **Paper:** The Cost of Cacophony: Geometric Limits on Multi-Constraint Alignment
 **Venue:** NeurIPS 2026
-**Total Claims:** 153 pattern-coded (25 critical + 72 important + 56 complete) + 269 documented-only
+**Total Claims:** 152 pattern-coded (25 critical + 72 important + 55 complete) + 269 documented-only
 
 **Note on Tier 3 (complete) sizing:** the original CLAIM_AUDIT design budgeted 325 complete claims (exhaustive table-cell index). In practice the L3 reverse-coverage sweep showed that 48 well-chosen pattern-coded claims drive empirical body-prose coverage to 91.3%, with **every** specific multi-digit decimal in main.tex mapped to some claim pattern. The residual ~118 uncovered numerics are 1-digit ints in math-mode notation (`\\mathbf{1}`, `\\Gamma^{-1}`, `\\frac{1}{1-c^2}`, etc.), not empirical claims. The remaining 277 inventoried Tier 3 entries are documented in the table inventory below for traceability without requiring per-cell pattern coding.
 
@@ -14,7 +14,7 @@
 |------|-------|-------------|------|
 | **Critical** | 25 | Core theorems, headline results | ~30 sec |
 | **Important** | 72 | Main tables, key appendix numbers | ~2 min |
-| **Complete** | 56 pattern-coded (out of 325 inventoried) | Granular table cells from L3 triage | ~3 min |
+| **Complete** | 55 pattern-coded (out of 325 inventoried) | Granular table cells from L3 triage | ~3 min |
 
 ---
 
@@ -28,7 +28,7 @@
 |----|-------|--------|--------------|
 | C1 | $\delta_{\min} = \sqrt{2/(1-\rho)}$ diagonal cost | Theorem 3.1 | `gradient_r_sanity_v2.py` |
 | C2 | $\delta_{\min} = \sqrt{k}$ orthogonal k-scaling | Theorem 3.4 | `gram_matrix_verification.py` |
-| C3 | 0/4,800 smooth-regime refutations | Abstract | `code_constraint_results.json` |
+| C3 | 0/1,365 high-tier refutations under audit observer | Abstract | `supplementary/experiments/outputs/audit_v4/run_manifest.json` |
 | C4 | $r_s = 1.0$ rank correlation | Table 2 | `calibration_results.json` |
 | C5 | 4.8× staging at frontier (opus-4.5) | Table 4 | `fixed_point_claude_family.json` |
 | C6 | 26.4× staging (opus-4.1, highest) | Table 4 | `fixed_point_claude_family.json` |
@@ -39,7 +39,7 @@
 | ID | Claim | Source | Verification |
 |----|-------|--------|--------------|
 | C8 | $\hat{L} \in [0.019, 0.031]$ across 4 models | Table 1 | `calibration_results.json` |
-| C9 | 89% smooth, 11% pivot regime | Section 1 | `calibration_results.json` |
+| C9 | 4% smooth, 96% pivot regime (audit-observer measurement) | Section 1 | `supplementary/experiments/outputs/audit_v4/run_manifest.json` |
 | C10 | 94% router agreement across encoders | Table 6 | `conflict_detection/results.json` |
 | C11 | 7.37% constitution conflict rate | Appendix W | `constitution_analysis.json` |
 | C12 | 93%→3% feasibility decay (k=2→k=10) | Appendix V | `charitable_feasibility.json` |
@@ -213,7 +213,7 @@
 | I69 | R | IF-DSL: 0% at ρ≥1.0 | `if_dsl_harness.py` |
 | I70 | S | Bytebeat cliff at ρ≥0.8 | `bytebeat_harness.py` |
 | I71 | U | <5min CPU, ~20h GPU | Section |
-| I72 | E | 5% vs 58%/71% conjunction | Section |
+| I72 | 6.3 | tests axis 64% vs format axis 2% (conflict-vs-difficulty control) | Section |
 | I73 | M | Phase transition 1/(k-1) | Theorem |
 | I74 | D | ρ_max ~ 0.18 | `constitution_analysis.json` |
 | I75 | D | 24% reinforcing pairs | Section |

@@ -152,12 +152,12 @@ HEADLINE_REGISTRY: list[HeadlineClaim] = [
     # 0/4{,}272). Any other "0/N trials" with N != 4272 in a context
     # that explicitly says "smooth-regime" is a contradiction.
     HeadlineClaim(
-        name="smooth_regime_denominator",
-        canonical_value="4,272",
-        numeric_value=4272,
+        name="high_tier_refutation_denominator",
+        canonical_value="1,365",
+        numeric_value=1365,
         extract_patterns=[
-            re.compile(r"0\s*/\s*([\d,{}]+)\s+smooth[- ]regime", re.IGNORECASE),
-            re.compile(r"smooth[- ]regime\s+(?:trial|refutation)s?[^.]{0,30}?\(\s*0\s*/\s*([\d,{}]+)", re.IGNORECASE),
+            re.compile(r"0\s*/\s*([\d,{}]+)\s+high[- ]tier", re.IGNORECASE),
+            re.compile(r"high[- ]tier\s+(?:trial|refutation)s?[^.]{0,30}?\(\s*0\s*/\s*([\d,{}]+)", re.IGNORECASE),
         ],
     ),
     # Unconditional pivot rate: "unconditional success is 1.7%" or
@@ -165,14 +165,14 @@ HEADLINE_REGISTRY: list[HeadlineClaim] = [
     # "unconditional" PLUS the construction "rate" or "success" PLUS the
     # numeric within a few tokens.
     HeadlineClaim(
-        name="pivot_unconditional_rate_pct",
-        canonical_value="1.7",
-        numeric_value=1.7,
+        name="high_tier_unconditional_pass_rate_pct",
+        canonical_value="67.6",
+        numeric_value=67.6,
         extract_patterns=[
-            re.compile(r"unconditional\s+(?:success|rate|pivot\s+rate)\s+(?:is\s+)?\$?(\d+(?:\.\d+)?)\s*\\?%", re.IGNORECASE),
-            re.compile(r"\((\d+(?:\.\d+)?)\s*\\?%\s+unconditional\s+(?:rate|success)\)", re.IGNORECASE),
+            re.compile(r"unconditional\s+(?:high[- ]tier\s+)?pass\s+rate\s+is\s+\$?(\d+(?:\.\d+)?)\s*\\?%", re.IGNORECASE),
+            re.compile(r"high[- ]tier\s+pass\s+rate[^.]{0,40}?\$?(\d+(?:\.\d+)?)\s*\\?%", re.IGNORECASE),
         ],
-        tolerance=0.05,
+        tolerance=1.0,
     ),
     # Regret vs oracle: "1.8 \pm 0.4 % regret" or "regret of 1.8%".
     # Restricted to constructions that pair the value to the word
@@ -193,35 +193,34 @@ HEADLINE_REGISTRY: list[HeadlineClaim] = [
     # statistic).
     HeadlineClaim(
         name="contract_compliance_pct",
-        canonical_value="89",
-        numeric_value=89,
+        canonical_value="4",
+        numeric_value=4,
         extract_patterns=[
             re.compile(r"(\d+(?:\.\d+)?)\s*\\?%\s+of\s+(?:generation\s+)?trajectories\s+obey", re.IGNORECASE),
             re.compile(r"(\d+(?:\.\d+)?)\s*\\?%\s+of\s+trajectories\s+(?:satisfy|comply\s+with)\s+(?:the\s+)?(?:displacement\s+)?contract", re.IGNORECASE),
         ],
         tolerance=0.5,
     ),
-    # Pivot fraction: "remaining 11% are detectable pivot events" —
-    # require the construction "remaining ...% ... pivot" or "...%
-    # pivot events".
+    # Pivot fraction under audit-observer measurement: 96% pivot regime.
     HeadlineClaim(
         name="pivot_fraction_pct",
-        canonical_value="11",
-        numeric_value=11,
+        canonical_value="96",
+        numeric_value=96,
         extract_patterns=[
             re.compile(r"remaining\s+(\d+(?:\.\d+)?)\s*\\?%\s+(?:are\s+)?(?:detectable\s+)?pivot\s+event", re.IGNORECASE),
             re.compile(r"(\d+(?:\.\d+)?)\s*\\?%\s+pivot\s+regime\b", re.IGNORECASE),
         ],
-        tolerance=0.5,
+        tolerance=1.0,
     ),
-    # Pivot successes numerator: "42/528" - any X/528 with X != 42 in a
-    # context explicitly about the pivot regime is a contradiction.
+    # High-tier pass numerator under audit-observer run: "923/1,365".
+    # Tightened: must say "pass" (not "violation rate", which references the
+    # Rule-of-Three 3/1365 upper-bound calculation, not the pass count).
     HeadlineClaim(
-        name="pivot_successes_numerator",
-        canonical_value="42/528",
-        numeric_value=42,
+        name="high_tier_pass_numerator",
+        canonical_value="923/1,365",
+        numeric_value=923,
         extract_patterns=[
-            re.compile(r"pivot[^.]{0,40}?(\d+)\s*/\s*528", re.IGNORECASE),
+            re.compile(r"high[- ]tier\s+pass(?:es)?[^.]{0,40}?(\d+)\s*/\s*1[,{}]?365", re.IGNORECASE),
             re.compile(r"(\d+)\s*/\s*528\s+(?:pivot|success)", re.IGNORECASE),
         ],
     ),

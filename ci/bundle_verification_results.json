@@ -1,41 +1,16 @@
 {
   "summary": {
     "bundle_root": "C:\\src\\NeurIPS",
-    "manifest_files": 147,
-    "verified_present": 144,
+    "manifest_files": 161,
+    "verified_present": 161,
     "missing_from_bundle": 0,
-    "hash_mismatches": 3,
+    "hash_mismatches": 0,
     "cert_artifact_hashes_not_in_manifest": 0,
     "data_ties_sources_not_in_manifest": 0,
-    "passed": false
+    "passed": true
   },
   "missing_from_bundle": [],
-  "hash_mismatches": [
-    {
-      "path": "ci/claim_audit_results.json",
-      "expected_sha256": "587bfbc370a4ad86d970db130d9b4186949ec465a9a4f8dafbcab45889ef2388",
-      "actual_sha256": "ca154e0dff5243713e7554426a47b40ca0b7cdaca888ba218600653c419b48ba",
-      "expected_size": 180646,
-      "actual_size": 660016,
-      "note": "size differs by 479370 bytes (possibly Windows CRLF vs LF line endings)"
-    },
-    {
-      "path": "ci/illustration_lineage.json",
-      "expected_sha256": "3217586c1cfda4ad02731f01baee749b34bee7613f16933d05feaea755e4fb9f",
-      "actual_sha256": "7ef3205e7c46aef855e68c6e684e56a7a39a2c0e1b967c997d6ce828a4e65e5c",
-      "expected_size": 6162,
-      "actual_size": 6162,
-      "note": ""
-    },
-    {
-      "path": "paper/main.pdf",
-      "expected_sha256": "24da16c6c92134c37ffb0bd756ed728905bcb25bc8e73d6bfe4dcefe745dff98",
-      "actual_sha256": "062272a251db54022308d126e38b11c5e9205b00b6f1827e8465fda04c6e11e0",
-      "expected_size": 1173985,
-      "actual_size": 1178066,
-      "note": "size differs by 4081 bytes (possibly Windows CRLF vs LF line endings)"
-    }
-  ],
+  "hash_mismatches": [],
   "cross_ref": {
     "cert_artifact_hashes_not_in_manifest": [],
     "data_ties_sources_not_in_manifest": []

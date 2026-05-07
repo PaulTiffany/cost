@@ -1,9 +1,9 @@
 {
-  "generated_at": "2026-05-04T04:00:38.263003+00:00",
+  "generated_at": "2026-05-05T11:53:27.500408+00:00",
   "python": {
     "version": "3.13.4 (tags/v3.13.4:8a526ec, Jun  3 2025, 17:46:04) [MSC v.1943 64 bit (AMD64)]",
     "version_short": "3.13.4",
-    "executable": "C:\\Users\\paulc\\AppData\\Local\\Programs\\Python\\Python313\\python.exe",
+    "executable": "<HOME>\\AppData\\Local\\Programs\\Python\\Python313\\python.exe",
     "implementation": "CPython"
   },
   "platform": {
@@ -25,15 +25,15 @@
   },
   "tools": {
     "pdftotext": {
-      "path": "C:\\Program Files\\Git\\mingw64\\bin\\pdftotext.EXE",
-      "version_line": "pdftotext version 4.00"
+      "path": "<HOME>\\AppData\\Local\\Programs\\MiKTeX\\miktex\\bin\\x64\\pdftotext.EXE",
+      "version_line": "pdftotext version 24.04.0"
     },
     "pdflatex": {
-      "path": "C:\\Users\\paulc\\AppData\\Local\\Programs\\MiKTeX\\miktex\\bin\\x64\\pdflatex.EXE",
+      "path": "<HOME>\\AppData\\Local\\Programs\\MiKTeX\\miktex\\bin\\x64\\pdflatex.EXE",
       "version_line": "MiKTeX-pdfTeX 4.21 (MiKTeX 25.4)"
     },
     "git": {
-      "path": "C:\\Program Files\\Git\\mingw64\\bin\\git.EXE",
+      "path": "C:\\Program Files\\Git\\cmd\\git.EXE",
       "version_line": "git version 2.47.1.windows.2"
     }
   }

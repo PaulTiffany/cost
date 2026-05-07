@@ -93,6 +93,8 @@ LAYER_SCRIPTS = {
     "L30_audit_observer_purity": SCRIPT_DIR / "audit_observer_purity_check.py",                # submission_hygiene
     "L31_audit_observer_runtime": SCRIPT_DIR / "audit_observer_runtime_check.py",              # data_ties
     "L32_paper_surface":          SCRIPT_DIR / "paper_surface_check.py",                         # submission_hygiene
+    "L33_caption_grounding":      SCRIPT_DIR / "figure_caption_grounding_check.py",              # submission_hygiene
+    "L34_page_check":             SCRIPT_DIR / "page_check.py",                                   # submission_hygiene
 }
 
 # L12 in default (quick) mode runs --quick (mtime + asset-hash only) so
@@ -223,6 +225,8 @@ LAYER_RESULT_JSONS = {
     "L30_audit_observer_purity": SCRIPT_DIR / "audit_observer_purity_results.json",
     "L31_audit_observer_runtime": SCRIPT_DIR / "audit_runtime_results.json",
     "L32_paper_surface":          SCRIPT_DIR / "paper_surface_results.json",
+    "L33_caption_grounding":      SCRIPT_DIR / "figure_caption_grounding_results.json",
+    "L34_page_check":             SCRIPT_DIR / "page_check_results.json",
 }
 
 
@@ -640,6 +644,34 @@ def attach_summary_l30_audit_observer_purity(outcome: LayerOutcome) -> None:
     outcome.summary = summary
 
 
+def attach_summary_l33(outcome: LayerOutcome) -> None:
+    """L33 figure-caption grounding cert: each figure panel has at least
+    one cross-reference in its caption segment."""
+    p = LAYER_RESULT_JSONS["L33_caption_grounding"]
+    if not p.exists():
+        outcome.notes = "no results JSON found"
+        return
+    payload = json.loads(p.read_text(encoding="utf-8"))
+    summary = dict(payload.get("summary", {}))
+    if "status" not in summary:
+        summary["status"] = payload.get("status", "UNKNOWN")
+    outcome.summary = summary
+
+
+def attach_summary_l34(outcome: LayerOutcome) -> None:
+    """L34 page-check cert: body content ends on or before page 9;
+    references start on page 10; no \\enlargethispage hacks."""
+    p = LAYER_RESULT_JSONS["L34_page_check"]
+    if not p.exists():
+        outcome.notes = "no results JSON found"
+        return
+    payload = json.loads(p.read_text(encoding="utf-8"))
+    summary = dict(payload.get("summary", {}))
+    if "status" not in summary:
+        summary["status"] = "PASS" if payload.get("all_pass") else "FAIL"
+    outcome.summary = summary
+
+
 def attach_summary_l32(outcome: LayerOutcome) -> None:
     """L32 paper surface cert: spatial impacting / containment over the
     rendered PDF. Surfaces the per-category violation counts and the
@@ -709,12 +741,12 @@ def aggregate_verdict(outcomes: list[LayerOutcome]) -> tuple[str, str]:
     surface previously-hidden noise can drop below it). The triage
     JSONs are the actionable signal, not the percentage.
     """
-    structural = {"L1_audit", "L2_validator", "L4_lineage", "L7_citations", "L8_links", "L9_consistency", "L10_bib", "L11_scripts", "L12_build_equiv", "L13_cross_tree", "L14_illustrations", "L15_data_ties", "L27_stat_algo_sanity", "L28_symbolic_algebra", "L29_numerical_bounds", "L30_per_trajectory_pivot", "L30_audit_observer_purity", "L31_audit_observer_runtime", "L32_paper_surface"}
+    structural = {"L1_audit", "L2_validator", "L4_lineage", "L7_citations", "L8_links", "L9_consistency", "L10_bib", "L11_scripts", "L12_build_equiv", "L13_cross_tree", "L14_illustrations", "L15_data_ties", "L27_stat_algo_sanity", "L28_symbolic_algebra", "L29_numerical_bounds", "L30_per_trajectory_pivot", "L30_audit_observer_purity", "L31_audit_observer_runtime", "L32_paper_surface", "L33_caption_grounding", "L34_page_check"}
     structurally_failed = [o for o in outcomes if o.return_code != 0 and o.name in structural]
     if structurally_failed:
         names = ", ".join(o.name for o in structurally_failed)
         return ("FAIL", f"Structural layers failed: {names}")
-    return ("PASS", "all structural checks clean (L1+L2+L4+L7+L8+L9+L10+L11+L12+L13+L14+L15+L27+L28+L29+L30+L30_audit_observer_purity+L31); L3+L5+L16 coverage is advisory, see triage JSONs")
+    return ("PASS", "all structural checks clean (L1+L2+L4+L7+L8+L9+L10+L11+L12+L13+L14+L15+L27+L28+L29+L30+L30_audit_observer_purity+L31+L32+L33+L34); L3+L5+L16 coverage is advisory, see triage JSONs")
 
 
 # ---------------------------------------------------------------------------
@@ -855,6 +887,16 @@ def render_markdown(payload: dict) -> str:
                 blurb += f"; FAIL: {', '.join(s['failing_checks'])}"
             if s.get("warning_checks"):
                 blurb += f"; WARN: {', '.join(s['warning_checks'])}"
+        elif layer["name"] == "L33_caption_grounding":
+            np = s.get('n_passed', '?')
+            nt = s.get('n_total_figures', '?')
+            blurb = f"{np}/{nt} figures grounded"
+        elif layer["name"] == "L34_page_check":
+            ap = s.get('all_pass', False)
+            tp = s.get('total_pages', '?')
+            bp = s.get('body_pages', '?')
+            rp = s.get('references_page', '?')
+            blurb = f"body_pages={bp}, references_page={rp}, total_pages={tp}, all_pass={ap}"
         elif layer["name"] == "L32_paper_surface":
             vc = s.get('violation_count', '?')
             by = s.get('by_category', {}) or {}
@@ -1137,6 +1179,16 @@ def main() -> int:
     if not args.quiet: print("  L32_paper_surface...")
     o = run_layer("L32_paper_surface", LAYER_SCRIPTS["L32_paper_surface"])
     attach_summary_l32(o)
+    outcomes.append(o)
+
+    if not args.quiet: print("  L33_caption_grounding...")
+    o = run_layer("L33_caption_grounding", LAYER_SCRIPTS["L33_caption_grounding"])
+    attach_summary_l33(o)
+    outcomes.append(o)
+
+    if not args.quiet: print("  L34_page_check...")
+    o = run_layer("L34_page_check", LAYER_SCRIPTS["L34_page_check"])
+    attach_summary_l34(o)
     outcomes.append(o)
 
     verdict, rationale = aggregate_verdict(outcomes)

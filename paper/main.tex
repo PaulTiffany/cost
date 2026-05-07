@@ -87,9 +87,11 @@ Empirical validation under a deterministic audit observer (5{,}472 trials, 17 LL
 
 \section{Introduction}\label{sec:intro}
 
-Large language models (LLMs) can satisfy individual constraints (safety, helpfulness, format compliance) but performance can collapse when several constraints are activated together, even when constraints are compatibility-designed (\appref{app:charity}). This failure is commonly treated as a capability gap. We show it is \emph{geometric} (Thm~\ref{thm:gram}). Multi-constraint behavior exhibits a sharp geometric boundary, not a gradual degradation: \textbf{feasibility cliffs} (Fig.~\ref{fig:cross_model}). A zeroth-order \textbf{regime index} $\rhohat$ (equivalently the collapse diagnostic $\hat{\rho}$) detects proximity to this cliff and orders which side a prompt lies on \emph{before} generation ($r_s{=}1.0$ Spearman; Figure~\ref{fig:feasibility_surface}).
+Large language models (LLMs) can satisfy individual constraints (safety, helpfulness, format compliance) but performance can collapse when several constraints are activated together, even when constraints are compatibility-designed (\appref{app:charity}). This failure is commonly treated as a capability gap. We show it is \emph{geometric} (Thm~\ref{thm:gram}). Multi-constraint behavior exhibits a sharp geometric boundary, not a gradual degradation: \textbf{feasibility cliffs} (Fig.~\ref{fig:cross_model}). A zeroth-order \textbf{regime index} $\rhohat$ (equivalently the collapse diagnostic $\hat{\rho}$) detects proximity to this cliff and orders which side a prompt lies on \emph{before} generation ($r_s{=}{-}0.942$ per-task, $N{=}48$; Figure~\ref{fig:feasibility_surface}).
 
-\textbf{Approach.} We prove that the minimum displacement to satisfy $k$ constraints simultaneously scales as $\delta_{\min} \propto \sqrt{k/(1{-}\rho(k{-}1))}$ (the \emph{diagonal cost}), diverging at a geometric threshold (Theorem~\ref{thm:gram}). An empirically calibrated displacement contract (App.~\ref{app:lipschitz_calibration}) connects this bound to observable LLM behavior. Under audit-observer measurement (5{,}472 trials, 17 LLMs across two families), 4\% of generation trajectories obey per-token Lipschitz bounds; the remaining 96\% are detectable pivot events (Table~\ref{tab:lipschitz_calibration}). When the bound predicts infeasibility, one-shot generation fails (0/1{,}365 high-tier trials, \secref{sec:empirical}). Algorithm~\ref{alg:routing} routes \emph{before generation} to one-shot, staged, or decomposed (Figure~\ref{fig:pipeline}), with $1.8\%$ regret on calibration ($\le 3.1\%$ across four transfer domains).\footnote{$\rhohat=\cos(\cdot)$ measures \emph{similarity}. High $\rhohat$ triggers checks, not verdicts. $\rhohat$ recovers conflict topology, not gradient (Lemma~\ref{lem:proxy_sufficiency}). Constructive framing per \citep{piaget1954construction}: feasibility built sequentially.} Black-box: no gradients, no model internals (App.~\ref{app:harness_suite}). Transfers from 1B to frontier (Table~\ref{tab:claude_family}, Fig.~\ref{fig:cross_model}).
+\textbf{Goal.} A theory contribution. We prove a kinematic geometric bound on multi-constraint LLM satisfaction and load-test it with deterministic-verifier empirics across four domains and 17 LLMs. The math is classical. The substrate is not. Hardness is the warrant. The bound is the claim. The empirics are the load. The envelope (Fig.~\ref{fig:limitations_envelope}) is what the bound is not.
+
+\textbf{Approach.} We prove that the minimum displacement to satisfy $k$ constraints simultaneously scales as $\delta_{\min} \propto \sqrt{k/(1{-}\rho(k{-}1))}$ (the \emph{diagonal cost}), diverging at a geometric threshold (Theorem~\ref{thm:gram}). An empirically calibrated displacement contract (App.~\ref{app:lipschitz_calibration}) connects this bound to observable LLM behavior. Under audit-observer measurement (5{,}472 trials, 17 LLMs across two families), 4\% of generation trajectories obey per-token Lipschitz bounds; the remaining 96\% are detectable pivot events (Table~\ref{tab:lipschitz_calibration}). When the bound predicts infeasibility, one-shot generation fails (0/1{,}365 smooth-regime high-tier trials, \secref{sec:empirical}). Algorithm~\ref{alg:routing} routes \emph{before generation} to one-shot, staged, or decomposed (Figure~\ref{fig:pipeline}), with $1.8\%$ regret on calibration ($\le 3.1\%$ across four transfer domains).\footnote{$\rhohat=\cos(\cdot)$ measures \emph{similarity}. High $\rhohat$ triggers checks, not verdicts. $\rhohat$ recovers conflict topology, not gradient (Lemma~\ref{lem:proxy_sufficiency}). Constructive framing per \citep{piaget1954construction}: feasibility built sequentially.} Black-box: no gradients, no model internals (App.~\ref{app:harness_suite}). Transfers from 1B to frontier (Table~\ref{tab:claude_family}, Fig.~\ref{fig:cross_model}).
 
 \paragraph{The Diagonal Cost Bound.}
 For two constraints ($k{=}2$) with conflict $\rho$ (Definition~\ref{def:conflict}), simultaneous progress requires displacement exceeding:
@@ -102,7 +104,7 @@ diverging as $\rho \to 1$ (Corollary~\ref{cor:uniform}). The operational cliff a
 \caption{Regime-based routing decided before generation (regret $1.8\%$ on calibration, ${\le}3.1\%$ on transfer). Capability-aware extension: \appref{app:protocol_policy}.}
 \label{alg:routing}
 \begin{algorithmic}[1]
-\REQUIRE Prompt $P$, token budget $T$, encoder $\Phi$; calibration $\tau$ (constraint magnitude; default $0.1$), $\hat{L}$ (per-token displacement; default $0.025$, calibrated $\approx 0.048$, \appref{app:lipschitz_calibration}), $m > 0$ (gradient-magnitude lower bound from constraint embeddings, Def.~\ref{def:conflict}; if $m_i$ vanishes the encoder fails to capture $C_i$ and the prompt is escalated to \textsc{Decompose-First} per \secref{sec:limitations})
+\REQUIRE Prompt $P$, token budget $T$, encoder $\Phi$; calibration $\tau$ (constraint magnitude; default $0.1$), $\hat{L}$ (per-token displacement; experiments use calibrated $\approx 0.048$, \appref{app:lipschitz_calibration}; conservative deployment default $0.025$), $m > 0$ (gradient-magnitude lower bound from constraint embeddings, Def.~\ref{def:conflict}; if $m_i$ vanishes the encoder fails to capture $C_i$ and the prompt is escalated to \textsc{Decompose-First} per \secref{sec:limitations})
 \STATE \textbf{Parse:} Extract constraints $C_1, \ldots, C_k$ from $P$\footnotemark
 \STATE \textbf{Trivial-case guard:} \textbf{if} $k \le 1$ \textbf{then return} \textsc{One-Shot} \quad\emph{// no conflict possible}
 \STATE \textbf{Compute regime index:} $\rhohat \gets \max_{i<j} \rhohat_{ij}$, where $\rhohat_{ij} = \cos(\Phi(C_i), \Phi(C_j))$
@@ -127,7 +129,7 @@ diverging as $\rho \to 1$ (Corollary~\ref{cor:uniform}). The operational cliff a
 (2)~\textbf{Displacement Contract:} Empirically calibrated token-to-displacement interface; Table~\ref{tab:lipschitz_calibration} shows stable calibration across model families.
 (3)~\textbf{Staging Decomposition:} Sequential satisfaction has provably lower cost; Table~\ref{tab:delta_capacity} shows up to $4.8\times$ improvement.
 (4)~\textbf{Regime Index:} $\rhohat$ orders failure regimes ($r_s{=}1.0$; 94\% router agreement), enabling fail-safe routing (Figure~\ref{fig:feasibility_surface}).
-(5)~\textbf{Judge-Free Verdict Layer:} Deterministic verifiers (Table~\ref{tab:harness_suite}); 0/1{,}365 high-tier refutations under audit observer (5{,}472-trial run, 17~LLMs across two families); transfers to frontier (Table~\ref{tab:claude_family}). LLM-as-judge is the research subject; the verdict layer stays judge-free.
+(5)~\textbf{Judge-Free Verdict Layer:} Deterministic verifiers (Table~\ref{tab:harness_suite}); 0/1{,}365 smooth-regime high-tier refutations under audit observer (5{,}472-trial run, 17~LLMs across two families); transfers to frontier (Table~\ref{tab:claude_family}). LLM-as-judge is the research subject; the verdict layer stays judge-free.
 
 \paragraph{Scope and Falsifiable Predictions.}
 Boolean validation targets regime structure, not magnitude ($r_s{=}1.0$, linear $r{\approx}0.4$ expected, ordinal suffices, \appref{app:grad_r}). Four tiers test monotonicity by design (Kendall $\tau{=}1.0$, \appref{app:encoder_robustness}). Bounds require $\rho < 1/(k{-}1)$. Effective $k$ stays small (Remark~\ref{rem:high_k}). Geometry applies to explicit embedding-direction constraints (Theorems~\ref{thm:main_hetero}--\ref{thm:gram}). Deterministic verification reveals walls that heuristics blur into capability gradients. Mechanical verification covers structural consistency of every numeric claim (App~\ref{app:cert_scope}). Reading is the verdict layer.
@@ -195,7 +197,7 @@ Figure~\ref{fig:diagonal_cost} illustrates the core geometric insight.
 \end{tikzpicture}
 \\(b) Worked example, $\rho{=}0.5$
 \end{minipage}
-\caption{\textbf{Geometric setup.} (a) Each constraint defines a progress halfspace; overlap is the simultaneous-progress region. Budget ball reaches each halfspace along an axis, but overlap requires diagonal length $\sqrt{2}\delta$ (scaling as $\sqrt{2/(1-\rho)}\,\delta$ for conflict $\rho>0$). (b) At $\rho=0.5$ with $\tau=1$ and unit budget, the minimum-norm feasible step has $\|\Delta^\star\|_2 = 2.0$, confirming the bound numerically.}
+\caption{\textbf{Geometric setup.} (a) Each constraint defines a progress halfspace. The budget ball reaches each halfspace along an axis, but overlap requires diagonal length $\sqrt{2}\delta$, scaling as $\sqrt{2/(1-\rho)}\,\delta$ for conflict $\rho>0$ (Theorem~\ref{thm:gram}). (b) At $\rho=0.5$ with $\tau=1$ and unit budget, the minimum-norm feasible step has $\|\Delta^\star\|_2 = 2.0$ (Corollary~\ref{cor:k_uniform}).}
 \label{fig:geometric_setup}\label{fig:diagonal_cost}\label{fig:worked_geometry}
 \end{figure}
 
@@ -328,7 +330,7 @@ Cost scales as $\Omega(\sqrt{k})$ for $\rho(k{-}1) \ll 1$; see \appref{app:proof
 % Remark[Applicability] relocated to App~\ref{app:proofs} (precedes the proof of Theorem~\ref{thm:gram}).
 
 \begin{remark}[Higher-$k$]\label{rem:higher_k}
-Diagonal cost depends on the \emph{maximally conflicting subset}, not all $k$ (Corollary~\ref{cor:active_set}). Constraints cluster near-orthogonally in practice ($k_{\text{eff}} \le 4$; AGENTIF~\citep{qi2025agentif} reports $\rhohat_{\max} \in [0.08, 0.15]$ across 11.9 average constraints). Practical constraint sets sit inside the feasible band, whose narrowness measures rather than precludes multi-constraint operation. Frontier validation: Appendix~\ref{app:claude_genome}. High-$k$ active-set treatment: Appendix~\ref{app:high_R}.
+Diagonal cost depends on the \emph{maximally conflicting subset}, not all $k$ (Corollary~\ref{cor:active_set}). Constraints cluster near-orthogonally in agentic benchmarks ($k_{\text{eff}} \le 4$; AGENTIF~\citep{qi2025agentif} reports $\rhohat_{\max} \in [0.08, 0.15]$); constitutions concentrate higher $\rhohat$ (App.~\ref{app:constitution}). Practical constraint sets sit inside the feasible band, whose narrowness measures rather than precludes multi-constraint operation. Frontier validation: Appendix~\ref{app:claude_genome}. High-$k$ active-set treatment: Appendix~\ref{app:high_R}.
 \end{remark}
 
 A worked example traces ``comprehensive'' vs.\ ``concise'' end-to-end (Fig.~\ref{fig:pipeline}, App.~\ref{app:additional}); cosine grounding follows the Linear Representation Hypothesis \citep{park2023linear}.
@@ -354,7 +356,7 @@ Converges if coupling matrix diagonally dominant (\appref{app:convergence}).
 Staged control terminates (Prop.~\ref{prop:convergence}) when per-step cost ${<}1$ (\appref{app:convergence}, Theorem~\ref{thm:convergence}).
 
 \textbf{Constitutional AI.}
-Critique-revision \citep{bai2022constitutional,anthropic2025constitution} is the geometric solution: one principle per revision avoids diagonal cost. Our bound explains \emph{why}: sequential satisfaction sidesteps the $\sqrt{k/(1{-}\rho(k{-}1))}$ penalty. Table~\ref{tab:claude_family} demonstrates $4.8\times$ staging benefit at frontier scale, suggesting test-time governance (routing based on $\rhohat$) as principled extension (\appref{app:protocol_policy}).
+Critique-revision \citep{bai2022constitutional,anthropic2025constitution} is consistent with the geometric prescription: one principle per revision avoids diagonal cost. Our bound explains \emph{why}: sequential satisfaction sidesteps the $\sqrt{k/(1{-}\rho(k{-}1))}$ penalty. Table~\ref{tab:claude_family} demonstrates $4.8\times$ staging benefit at frontier scale, suggesting test-time governance (routing based on $\rhohat$) as principled extension (\appref{app:protocol_policy}).
 
 \begin{figure}[t]
 \centering
@@ -366,7 +368,7 @@ Critique-revision \citep{bai2022constitutional,anthropic2025constitution} is the
 \begin{figure}[t]
 \centering
 \includegraphics[width=0.62\columnwidth]{figures/constrained_decoding.pdf}
-\caption{\textbf{Constrained-decoding methods hit the same cliff.} Outlines, Guidance, and JSON-mode enforce single-grammar constraints by token masking. Under multi-constraint loads, panels (a) and (b) show the same $\sqrt{2/(1-\rho)}$ amplification (shared key, right): pre-generation routing predicts the cliff; constrained decoding cannot circumvent it.}
+\caption{\textbf{Constrained-decoding methods hit the same cliff.} Token-masking enforces single-grammar constraints. (a) Outlines/Guidance, multi-grammar (Theorem~\ref{thm:gram}). (b) JSON-mode, conflicting fields (Corollary~\ref{cor:k_uniform}). Both show $\sqrt{2/(1-\rho)}$ amplification (shared key, right); pre-generation routing predicts the cliff.}
 \label{fig:constrained_decoding}
 \end{figure}
 
@@ -400,10 +402,10 @@ Token budget sweep across $T \in \{128, 192, 256, 384, 512\}$ shows non-monotone
 \noindent\textbf{Routing Policy (Corollary of Theorem~\ref{thm:staging}):} \emph{One-shot} if $\rhohat < 0.15$ or $\delta/\delta_{\min} > 2$. \emph{Stage} if $\rhohat < 0.5$ and $\delta/\delta_{\min} > 1.2$ (the upper $\delta/\delta_{\min} > 2$ case is caught by the one-shot branch, leaving an effective staging band of $\delta/\delta_{\min} \in (1.2, 2]$). \emph{Decompose-First} otherwise. Thresholds are derived analytically from the feasibility boundary (Figure~\ref{fig:feasibility_surface}). They remain robust to $\rhohat$ perturbation: 94\% decision agreement under encoder variation (\appref{app:encoder_robustness}). The policy achieves $1.8\%$ regret on calibration; transfer regret is bounded by $3.1\%$ across the four domains (\appref{app:protocol_policy}).
 
 \paragraph{Geometric floor.}
-At high $\rhohat$, \emph{all protocols} collapse to $\leq$5\% \emph{on smooth-regime trials}. We read this as the bound in action rather than as staging failure. frontier residual at high tier (Figure~\ref{fig:cross_model}, 17--33\%) reflects pivot events and budget expansion, both detectable mid-generation and routed accordingly. Staging benefit is model-dependent: near-ceiling models (Qwen-Coder) show negative $\Delta$ because one-shot already succeeds, so staging adds overhead when unnecessary. Table~\ref{tab:delta_capacity_model} shows weaker models benefit most. \textbf{The contribution is principled routing, not a claim that staging always wins.}
+At high $\rhohat$, \emph{all protocols} collapse to $\leq$5\% \emph{on smooth-regime trials}. We read this as the bound in action rather than as staging failure. Frontier residual at high tier (Figure~\ref{fig:cross_model}, 17--33\%) reflects pivot events and budget expansion, both detectable mid-generation and routed accordingly. Staging benefit is model-dependent: near-ceiling models (Qwen-Coder) show negative $\Delta$ because one-shot succeeds, so staging adds overhead when unnecessary. Table~\ref{tab:delta_capacity_model} shows weaker models benefit most. \textbf{The contribution is principled routing, not a claim that staging always wins.}
 
 \textbf{Calibration.}
-Table~\ref{tab:calibration} shows failure scales with $\rhohat$ (24\% $\to$ 98\%), $r_s = 1.0$ over the 4 tier centroids (perfect ordinal alignment; $N{=}4$, exact one-sided $p = 1/24 \approx 0.042$); statistical power comes from the 48-point per-task analysis (Figure~\ref{fig:per_task}: $r_s = -0.942$, $p = 2.12 \times 10^{-23}$). Formal screening condition: Lemma~\ref{lem:proxy_sufficiency}; pivot regime decomposition: Appendix~\ref{app:direction_stability}. \emph{Conflict vs.\ difficulty control}: single-constraint pass rates remain high (tests-only 58\%, format-only 71\% at High tier) while conjunction collapses to 5\%. This confirms diagonal cost, not task difficulty (\appref{app:code_full}). Figure~\ref{fig:feasibility_surface} shows the feasibility surface; Figure~\ref{fig:boundary_vs_observed} demonstrates the predicted cliff matches observations.
+Table~\ref{tab:calibration} shows failure scales with $\rhohat$ (24\% $\to$ 98\%), $r_s = 1.0$ over the 4 tier centroids (perfect ordinal alignment; $N{=}4$, exact one-sided $p = 1/24 \approx 0.042$); statistical power comes from the 48-point per-task analysis (Figure~\ref{fig:per_task}: $r_s = -0.942$, $p = 2.12 \times 10^{-23}$). Formal screening condition: Lemma~\ref{lem:proxy_sufficiency}; pivot regime decomposition: Appendix~\ref{app:direction_stability}. \emph{Conflict vs.\ difficulty control}: tests axis $64\%$ remains tractable while format axis collapses to $2\%$ at High tier (\appref{app:code_full}). Diagonal cost, not task difficulty. Figure~\ref{fig:feasibility_surface} shows the feasibility surface; Figure~\ref{fig:boundary_vs_observed} demonstrates the predicted cliff matches observations.
 
 \begin{table}[t]
 \centering
@@ -484,7 +486,7 @@ High & 0.65 & 2\% & 2\% & 98\% \\
   \draw[gray, dashed, line width=0.5pt] (axis cs:0.4,1.3) -- (axis cs:0.4,3.2);
   \end{axis}
 \end{tikzpicture}
-\\\footnotesize cost amplification
+\\(b) Cost amplification
 \end{minipage}\hfill
 \begin{minipage}[b]{0.38\columnwidth}
 \centering
@@ -513,9 +515,9 @@ High & 0.65 & 2\% & 2\% & 98\% \\
     coordinates {(0.40, 23) (0.65, 2)};
   \end{axis}
 \end{tikzpicture}
-\\(b) Theory vs.\ observation
+\\(c) Theory vs.\ observation
 \end{minipage}
-\caption{\textbf{Feasibility geometry.} (a) Pass rate over $(\rhohat, \delta/\delta_{\min})$ with routing bands; lower-right collapse is regime-driven. (b) Predicted $\sqrt{2/(1-\rho)}$ vs.\ measurement (Table~\ref{tab:calibration}).}
+\caption{\textbf{Feasibility geometry.} (a) Pass rate with routing bands (Table~\ref{tab:calibration}). Lower-right collapse is regime-driven. (b) Cost-amplification curve $\sqrt{2/(1-\rho)}$ (Corollary~\ref{cor:k_uniform}). (c) Predicted vs.\ measurement (Table~\ref{tab:calibration}).}
 \label{fig:feasibility_surface}\label{fig:boundary_vs_observed}
 \end{figure}
 
@@ -538,7 +540,7 @@ The $\rho < 1/(k{-}1)$ threshold appears restrictive, but pairwise conflict is \
 \noindent\textbf{Falsification criterion.} Sustained one-shot success ($>$10\%) in the predicted-infeasible region ($\delta_{\min} > LT$) without pivot signatures (upper-tail steps $>2\sigma$ or direction drift $>15^\circ$) would refute the theory; under fixed thresholds (Table~\ref{tab:hyperparams}), 0/1{,}365 high-tier trials show this pattern (Table~\ref{tab:llm_bridge}) under the audit-observer run; all infeasible-region successes carry pivot signatures detectable mid-generation (early-stop, re-route). \emph{Statistical ceiling}: by the Rule of Three, 0 successes in 1{,}365 trials gives a one-sided 95\% upper bound on the true high-tier violation rate of $3/1365 \approx 0.22\%$; the empirical 0 is consistent with rates up to this ceiling.
 
 \paragraph{Frontier Transfer and Generalization.}
-Open-weight validation is reproducible. Frontier experiments confirm \emph{transfer}. The Claude family (7~models, haiku--opus) shows identical regime ordering via MiniLM embeddings. Opus-4.5 shows $4.8\times$ staging improvement despite best one-shot (Table~\ref{tab:claude_family}). Cross-provider validation (Figure~\ref{fig:cross_model}: 9 models, 6 providers, $N{=}3{,}120$, pooling 5 frontier and 4 open-weight) confirms the feasibility cliff persists across a $1{,}000\times$ parameter range. High-$k$ validation ($n{=}100$, \appref{app:high_k_opus}): $k{=}10$ achieves 100/100 where $k{=}8$ conflicting achieves 0/100. Operative quantity is $\max_{ij}\rho_{ij}$, not nominal~$k$.
+Open-weight validation is reproducible. Frontier experiments confirm \emph{transfer}. The Claude family* (7~models, haiku--opus) shows identical regime ordering via MiniLM embeddings. Opus-4.5 shows $4.8\times$ staging improvement despite best one-shot (Table~\ref{tab:claude_family}). Cross-provider validation (Figure~\ref{fig:cross_model}: 9 models, 6 providers, $N{=}3{,}120$, pooling 5 frontier and 4 open-weight) confirms the feasibility cliff persists across a $1{,}000\times$ parameter range. High-$k$ validation ($n{=}100$, \appref{app:high_k_opus}): $k{=}10$ achieves 100/100 where $k{=}8$ conflicting achieves 0/100. Operative quantity is $\max_{ij}\rho_{ij}$, not nominal~$k$.
 
 \begin{figure}[t]
 \centering
@@ -552,7 +554,7 @@ Open-weight validation is reproducible. Frontier experiments confirm \emph{trans
 \includegraphics[width=\linewidth]{figures/soft_constraint_cliff.pdf}
 \\\footnotesize (b) Soft constraints: graded residuals reproduce the cliff
 \end{minipage}
-\caption{\textbf{The cliff is model-agnostic and survives constraint softening.} (a) Pass-rate heatmap across nine models from 1B (TinyLlama) to frontier (6 providers); the same four-tier $\rhohat$ cliff appears at every scale. (b) Continuous satisfaction scores (Brier-style residuals) reproduce the $\rho$-driven phase transition. Bound (Theorem~\ref{thm:gram}) is set by constraints, not model or verifier. Data: Table~\ref{tab:claude_family}, App.~\ref{app:charity}.}
+\caption{\textbf{The cliff is model-agnostic and survives constraint softening.} (a) Pass-rate heatmap across nine models from 1B (TinyLlama) to frontier (6 providers, Table~\ref{tab:claude_family}); the same four-tier $\rhohat$ cliff appears at every scale. (b) Continuous satisfaction scores (Brier-style residuals) reproduce the $\rho$-driven phase transition. Bound (Theorem~\ref{thm:gram}) is set by constraints, not model or verifier. Data: Table~\ref{tab:claude_family}, App.~\ref{app:charity}.}
 \label{fig:cross_model}\label{fig:soft_constraint_cliff}
 \end{figure}
 
@@ -560,9 +562,9 @@ Open-weight validation is reproducible. Frontier experiments confirm \emph{trans
 
 \input{figures/related_envelope_combined.tex}
 
-Figure~\ref{fig:rw_quadrant}(a) positions this work. Training-time multi-constraint methods \citep{yu2020gradient,liu2021cagrad,navon2022nashmtl,he2025pama,sener2018multi} and inference-time work \citep{madaan2023selfrefine,meyerson2025maker,lior2025wildifeval,qi2025agentif} lack geometric foundation; Constitutional AI \citep{bai2022constitutional} is structurally staged; CoT and R1/o1 fall under the same displacement contract. The bound is classical MOO applied to LLM inference; thresholds transfer (Table~\ref{tab:transfer}); training reduces $\rho$, cannot eliminate it.
+Figure~\ref{fig:rw_quadrant}(a) positions this work. Training-time multi-constraint methods \citep{yu2020gradient,liu2021cagrad,navon2022nashmtl,he2025pama,sener2018multi} and inference-time work \citep{madaan2023selfrefine,meyerson2025maker,lior2025wildifeval,qi2025agentif} lack geometric foundation. Constitutional AI \citep{bai2022constitutional} is structurally staged. CoT and R1/o1 fall under the same displacement contract. Thresholds transfer (Table~\ref{tab:transfer}). Training reduces $\rho$ but cannot eliminate it.
 
-Feasibility cliffs, not capability gradients. Diagonal Cost Bound (Thm~\ref{thm:gram}); regime index $\rhohat$ ($r_s{=}1.0$); judge-free validation (0/1{,}365 high-tier under audit observer); Algorithm~\ref{alg:routing} routes pre-generation with $1.8\%$ regret on calibration ($\le 3.1\%$ on transfer). The bound is kinematic; training shifts $\rho$, not geometry. It establishes when integration becomes mandatory: \emph{structured residue} (4\% smooth regime, verifier-surface gap) seeds a successor question we do not solve here. \textbf{Open:} implicit/value-laden constraints, embodied policies \citep{nvidia2025cosmos}. Code: \url{https://anonymous.4open.science/r/cacophony}.
+Feasibility cliffs, not capability gradients. Diagonal Cost Bound (Thm~\ref{thm:gram}). Regime index $\rhohat$ ($r_s{=}1.0$). Judge-free validation (0/1{,}365 high-tier under audit observer). Algorithm~\ref{alg:routing} routes pre-generation with $1.8\%$ regret on calibration ($\le 3.1\%$ on transfer). The bound is kinematic. It establishes when integration becomes mandatory. \emph{Structured residue} (4\% smooth regime, verifier-surface gap) seeds a successor question we do not solve here. \textbf{Open:} implicit/value-laden constraints, embodied policies \citep{nvidia2025cosmos}. Code: \url{https://anonymous.4open.science/r/cacophony}.
 
 \begin{ack}
 [Acknowledgments placeholder. NeurIPS hides this section automatically in the anonymized submission. Required disclosures: funding sources and competing interests. See the NeurIPS 2026 Call for Papers at https://neurips.cc/Conferences/2026/CallForPapers for current funding-disclosure requirements.]
@@ -658,7 +660,7 @@ Table~\ref{tab:claude_family} reports graded results across 10 Claude models spa
 \begin{table}[t]
 \centering
 \small
-\caption{Claude family (10 models) on self-referential constraints. Wins = staged beats one-shot. Ratio = mean displacement improvement across the 6 tasks. Opus-4.5's lower ratio reflects strong one-shot ($|\Delta|$=191 vs 764 for opus-4.1), and staging still helps. Opus-4.7 carries a sampling caveat (see paragraph below); we do not bold its ratio.}
+\caption{Claude family* (10 models) on self-referential constraints. Wins = staged beats one-shot. Ratio = mean displacement improvement across the 6 tasks. Opus-4.5's lower ratio reflects strong one-shot ($|\Delta|$=191 vs 764 for opus-4.1), and staging still helps. Opus-4.7 carries a sampling caveat (see paragraph below); we do not bold its ratio. \emph{$*$\,vitally: identity persists, behavior contiguous, entity evolves under measurement. A frozen-weight LLM at inference is stochastic sampling, not alive in any individual-call sense \citep{unherd2026aievolution}. The marker concerns family-level release trajectory, not single-call behavior.}}
 \label{tab:claude_family}
 \begin{tabular}{lcccl}
 \toprule
@@ -1175,7 +1177,7 @@ Median direction drift: $0.07$ (IQR: $0.03$--$0.12$). 94\% of trajectories show 
 Direction stability validates the local-to-global transfer assumed in Lemma~\ref{lem:traj_infeasible}, namely that the MOO bound computed at the anchor applies along realized trajectories because the geometry does not substantially change during generation. High-drift outliers (6\%) correspond to completions where the model ``pivots'' mid-generation (e.g., abandoning one approach for another). These cases violate the smoothness assumption and represent a known failure mode (Remark~\ref{rem:proxy_scope}).
 
 \paragraph{Pivot Regime in the Predicted-Infeasible Region.}
-Under the audit-observer measurement (1{,}365 high-tier trials across 17 LLMs from two families), unconditional high-tier pass rate is $67.6\%$ (923/1{,}365); the paper's headline 0/1{,}365 high-tier refutations imply, by exclusion, that all passes occur in the pivot regime under the audit observer's per-(observer, model) calibration. Smooth trajectories satisfy the Lipschitz contract and obey the bound (the smooth regime is small under audit-observer measurement: ${\sim}4\%$ of non-control trials); pivot trajectories violate it and admit successes. The verifier-surface alignment between Claude family ($83\%$ high-tier pass) and open-weight family ($45\%$ high-tier pass) is the active investigation flagged by the audit observer's stream-level verdict (\texttt{verifier\_surface\_mismatch}, \secref{sec:empirical}). Pivot signatures are detectable mid-generation, specifically per-token displacement exceeding $2.5\hat{L}$ or constraint-direction drift exceeding $15^\circ$. The $2.5\hat{L}$ cutoff sits between the empirical 95th and 99th step-percentile (\appref{app:lipschitz_calibration}, $p_{95}{\approx}0.14$, $p_{99}{\approx}0.25$); it was set after observing the displacement distribution, not pre-registered, so the resulting smooth/pivot fractions are conditional on this choice. Robustness checks at $2.0\hat{L}$ and $3.0\hat{L}$ shift the pivot fraction by ${<}3$pp without changing the smooth-regime refutation count. Algorithm~\ref{alg:routing} can early-stop one-shot and switch to staging on detection. Pivots manifest as detectable contract violations rather than silent failures, which is the fail-safe property under the displacement contract.
+Under the audit-observer measurement (1{,}365 high-tier trials across 17 LLMs from two families), unconditional high-tier pass rate is $67.6\%$ (923/1{,}365); the paper's headline 0/1{,}365 high-tier refutations imply, by exclusion, that all passes occur in the pivot regime under the audit observer's per-(observer, model) calibration. Smooth trajectories satisfy the Lipschitz contract and obey the bound (the smooth regime is small under audit-observer measurement: ${\sim}4\%$ of non-control trials); pivot trajectories violate it and admit successes. \textbf{Contact ratio.} The $4\%$ smooth fraction is the \emph{contact ratio} between deterministic compute and the substrate. Where the contract holds, the bound predicts to within Wilson $0.86\%$. The $96\%$ pivot fraction is substrate moving through states compute cannot directly observe mid-step. Pivot signatures are the indirect read. The smooth/pivot decomposition is the visibility threshold of deterministic measurement, not the bound's operating range. The verifier-surface alignment between Claude family* ($83\%$ high-tier pass) and open-weight family ($45\%$ high-tier pass) is the active investigation flagged by the audit observer's stream-level verdict (\texttt{verifier\_surface\_mismatch}, \secref{sec:empirical}). Pivot signatures are detectable mid-generation, specifically per-token displacement exceeding $2.5\hat{L}$ or constraint-direction drift exceeding $15^\circ$. The $2.5\hat{L}$ cutoff sits between the empirical 95th and 99th step-percentile (\appref{app:lipschitz_calibration}, $p_{95}{\approx}0.14$, $p_{99}{\approx}0.25$); it was set after observing the displacement distribution, not pre-registered, so the resulting smooth/pivot fractions are conditional on this choice. Robustness checks at $2.0\hat{L}$ and $3.0\hat{L}$ shift the pivot fraction by ${<}3$pp without changing the smooth-regime refutation count. Algorithm~\ref{alg:routing} can early-stop one-shot and switch to staging on detection. Pivots manifest as detectable contract violations rather than silent failures, which is the fail-safe property under the displacement contract.
 
 \begin{table}[ht]
 \centering
@@ -1872,7 +1874,7 @@ Figure~\ref{fig:amplification} shows cost divergence as conflict approaches the 
   \addplot[line width=2pt, color=costred, mark=none] {sqrt(2/(1-x))};
   \end{axis}
 \end{tikzpicture}
-\caption{\textbf{Cost Amplification (Meta-theorem operating envelope).} The diagonal cost factor $\sqrt{2/(1-\rho)}$ diverges as conflict $\rho \to 1$. At $\rho=0$ (orthogonal), cost is $\sqrt{2}\approx 1.41$. At $\rho=0.5$, cost doubles. At $\rho=0.9$, cost exceeds $4\times$.}
+\caption{\textbf{Cost Amplification.} \emph{Meta-theorem [Operating Envelope]: escape is not.} The diagonal cost factor $\sqrt{2/(1-\rho)}$ (Corollary~\ref{cor:k_uniform}) diverges as conflict $\rho \to 1$. At $\rho=0$ (orthogonal), cost is $\sqrt{2}\approx 1.41$. At $\rho=0.5$, cost doubles. At $\rho=0.9$, cost exceeds $4\times$.}
 \label{fig:amplification}
 \end{figure}
 
@@ -2340,7 +2342,7 @@ For constraint gradients with angle $\theta = \arccos(-\rho)$, the geometric ``i
 \[
 A(\theta) = |\cos(\theta/2)|.
 \]
-\textbf{These are the same equation.} This is not analogy. It is mathematical identity. The sonification does not \emph{translate} the math into sound. The math \emph{already is} sound. We simply make it audible.
+Both expressions share a $\rho$-dependent amplification factor. The sonification renders the same factor in an audible regime, providing a perceptual diagnostic rather than a fresh empirical claim.
 
 \paragraph{What You Should Hear.}
 If the geometric framework captures real structure:
@@ -2556,7 +2558,7 @@ Following NeurIPS reproducibility guidelines:
 \item[$\checkmark$] \textbf{Hyperparameters:} All thresholds specified in \appref{app:experiments}
 \item[$\checkmark$] \textbf{Compute:} Core validation runs on CPU in $<5$ minutes. The full 4-model LLM code experiment takes $\sim$20 hours on a single RTX 4050 GPU
 \item[$\checkmark$] \textbf{Random seeds:} Fixed seeds for all stochastic components
-\item[$\checkmark$] \textbf{Frontier-model API additions:} The Claude family extension (\appref{app:claude_genome}) lives at \path|supplementary/experiments/fixed_point_claude_family_{opus47,opus46,sonnet46}_addition.py|; merged 8-model artifacts at \path|fixed_point_claude_family_with_{opus47,opus46,sonnet46}.json|. The model-family sibling and the high-$k$ extension follow the same naming pattern. The opus-4.7 sampling caveat (rejected \texttt{temperature} parameter, unspecified server-side default) is recorded in each opus-4.7 \path|_meta.methodology_deviation| field.
+\item[$\checkmark$] \textbf{Frontier-model API additions:} The Claude family* extension (\appref{app:claude_genome}) lives at \path|supplementary/experiments/fixed_point_claude_family_{opus47,opus46,sonnet46}_addition.py|; merged 8-model artifacts at \path|fixed_point_claude_family_with_{opus47,opus46,sonnet46}.json|. The model-family sibling and the high-$k$ extension follow the same naming pattern. The opus-4.7 sampling caveat (rejected \texttt{temperature} parameter, unspecified server-side default) is recorded in each opus-4.7 \path|_meta.methodology_deviation| field.
 \item[$\checkmark$] \textbf{Policy density harness} (\S\ref{app:policy_density}): \path|supplementary/experiments/policy_density_compliance_harness.py|; current run \path|outputs/policy_density/policy_density_results.json|; archived earlier verifier states alongside.
 \item[$\checkmark$] \textbf{Implicit-$k$ pipeline} (\S\ref{app:implicit_k}): \path|supplementary/experiments/implicit_k_decompression_harness.py|; current run \path|outputs/implicit_k/implicit_k_results.json|; the rule library is shared with the policy density harness.
 \item[$\checkmark$] \textbf{Reviewer aids:} \texttt{supplementary/REVIEWER\_INDEX.md}, \texttt{supplementary/CLAIM\_TO\_ARTIFACT\_MAP.md}, \texttt{REVIEWER\_QUICKSTART.md}, and \texttt{AGENTS.md} (agent-provenance disclosure).
@@ -2609,7 +2611,7 @@ The constraint-composition framework is medium-agnostic: the same $k$-stacking t
 \begin{figure}[h]
 \centering
 \includegraphics[width=0.92\linewidth]{figures/image_format_cliff.pdf}
-\caption{Diagonal-cost cliff transfers across modalities. Text-medium 4-model average (dark, $N{=}1839$, blinded external benchmark on Mistral-Large, DeepSeek-R1, Qwen-2.5-72B, Command-R+) and image-medium Run D (red, $N{=}24$) both crash at the high tier ($k{=}11$ compounding format demands), with image medium at $33\%$ Pass~B and text medium at $\sim 38\%$. The image curve has a noisy dip at the low tier (one task's natural sequence length exceeds the $\leq 5$ element constraint; moderate's tighter compositional demands accidentally help on element count, hence the non-monotonic shape). Strict cliff comparison is at the high tier where both modalities collapse to within $\sim 5$ percentage points of each other.}
+\caption{Diagonal-cost cliff (Theorem~\ref{thm:gram}) transfers across modalities. Text-medium 4-model average (dark, $N{=}1839$) is the blinded external benchmark on Mistral-Large, DeepSeek-R1, Qwen-2.5-72B, and Command-R+ (\S\ref{sec:empirical}). Image-medium Run D (red, $N{=}24$) is added for the cliff signal. Both crash at the high tier ($k{=}11$ compounding format demands). Image medium reaches $33\%$ Pass~B. Text medium reaches $\sim 38\%$. The image curve has a noisy dip at the low tier. One task's natural sequence length exceeds the $\leq 5$ element constraint. Moderate's tighter compositional demands accidentally help on element count. The non-monotonic shape follows. Strict cliff comparison is at the high tier where both modalities collapse to within $\sim 5$ percentage points of each other.}
 \label{fig:image_format_cliff}
 \end{figure}
 

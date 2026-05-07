@@ -1,92 +1,104 @@
-% Combined Related Work Quadrant + Limitations Envelope
-% Two panels side-by-side. Panel (a) preserves hyperlinks to extended_related_work.tex;
-% panel (b) preserves hyperlinks to lim:* targets in main.tex appendices.
+% Combined Related Work Quadrant + This Paper Frame + Limitations Envelope
+% Three equal-width panels side-by-side. Panel (a) preserves hyperlinks to
+% extended_related_work.tex. Panel (b) is the paper's identity frame (solid
+% blue) carrying the operating-envelope summary. Panel (c) shows the 8
+% limitation cards with dotted blue outlines (visually connected to (b)).
 \begin{figure}[!htb]
 \centering
 %
 % ===== Panel (a): Related Work Quadrant =====
-\begin{minipage}[t]{0.58\linewidth}
+\begin{minipage}[t]{0.31\linewidth}
 \centering
 \begin{tikzpicture}[
-  x=0.70cm, y=0.55cm,
+  x=0.40cm, y=0.58cm,
   font=\tiny,
   axislbl/.style={font=\tiny\bfseries},
   cornerlbl/.style={font=\tiny\itshape, gray!60!black},
-  cite/.style={font=\tiny, align=center, text width=2.5cm, inner xsep=0pt, line skip=1pt},
-  ours/.style={font=\tiny\bfseries, align=center, text=blue!60!black, draw=blue!40, fill=blue!8, rounded corners, inner sep=3pt},
+  cite/.style={font=\tiny, align=center, text width=1.5cm, inner xsep=0pt},
+  ourmark/.style={font=\tiny\bfseries, align=center, text=blue!60!black},
   band/.style={font=\tiny, align=center},
 ]
   \draw[thick] (0,0) rectangle (10,5.5);
   \draw[gray!50, thin] (5,0) -- (5,5.5);
   \draw[gray!50, thin] (0,2.75) -- (10,2.75);
-  \node[axislbl] at (5,6.3) {Training-time \quad$\longleftarrow$\quad / \quad$\longrightarrow$\quad Inference-time};
+  \node[axislbl] at (5,6.3) {Train-time \quad$\longleftarrow$\quad / \quad$\longrightarrow$\quad Infer-time};
   \node[axislbl, rotate=90] at (-0.5,2.75) {Single $\;\longleftarrow$\;/\;$\longrightarrow$\; Multi};
   \node[cornerlbl, anchor=south west] at (0.1,5.55) {Train $\times$ Multi};
-  \node[cornerlbl, anchor=south east] at (9.9,5.55) {Infer $\times$ Multi (this paper)};
+  \node[cornerlbl, anchor=south east] at (9.9,5.55) {Infer $\times$ Multi};
   \node[cornerlbl, anchor=north west] at (0.1,-0.05) {Train $\times$ Single};
   \node[cornerlbl, anchor=north east] at (9.9,-0.05) {Infer $\times$ Single};
   \node[cite, anchor=north] at (2.5, 5.4) {%
-    \hyperlink{rw:pcgrad}{PCGrad} \citep{yu2020gradient}\\
-    \hyperlink{rw:cagrad}{CAGrad} \citep{liu2021cagrad}\\
-    \hyperlink{rw:pama}{PAMA} \citep{he2025pama}\\
-    \hyperlink{rw:nashmtl}{Nash-MTL} \citep{navon2022nashmtl}\\
-    \hyperlink{rw:moo_mtl}{MOO-MTL} \citep{sener2018multi}%
+    \hyperlink{rw:pcgrad}{PCGrad}\\
+    \hyperlink{rw:cagrad}{CAGrad}\\
+    \hyperlink{rw:pama}{PAMA}\\
+    \hyperlink{rw:nashmtl}{Nash-MTL}\\
+    \hyperlink{rw:moo_mtl}{MOO-MTL}%
   };
   \node[cite, anchor=north] at (7.5, 5.4) {%
-    \hyperlink{rw:selfrefine}{Self-refine} \citep{madaan2023selfrefine}\\
-    \hyperlink{rw:cove}{CoVe} \citep{dhuliawala2023chainofverification}\\
-    \hyperlink{rw:maker}{MAKER} \citep{meyerson2025maker}{}\\
-    \hyperlink{rw:wildifeval}{WildIFEval} \citep{lior2025wildifeval}\\
-    \hyperlink{rw:agentif}{AGENTIF} \citep{qi2025agentif}\\
-    \hyperlink{rw:cai}{Constitutional AI} \citep{bai2022constitutional}%
+    \hyperlink{rw:selfrefine}{Self-refine}\\
+    \hyperlink{rw:cove}{CoVe}\\
+    \hyperlink{rw:maker}{MAKER}\\
+    \hyperlink{rw:wildifeval}{WildIFEval}\\
+    \hyperlink{rw:agentif}{AGENTIF}\\
+    \hyperlink{rw:cai}{Const.\ AI}%
   };
-  \node[ours] at (7.5, 2.75) {$\bigstar$ \textbf{This paper}\\geometric bound + pre-gen routing};
+  \node[ourmark, anchor=east] at (9.7, 3.5) {$\bigstar$};
   \node[cite, anchor=south] at (2.5, 0.15) {%
-    \hyperlink{rw:rlhf}{RLHF} \citep{ouyang2022training}%
+    \hyperlink{rw:rlhf}{RLHF}%
   };
   \node[cite, anchor=south] at (7.5, 0.15) {%
-    \hyperlink{rw:cot}{CoT} \citep{wei2022chain}\\
-    \hyperlink{rw:ttscale}{TT-scaling} \citep{snell2024scaling}\\
-    \hyperlink{rw:r1}{R1} \citep{deepseek2025r1}%
+    \hyperlink{rw:cot}{CoT}\\
+    \hyperlink{rw:ttscale}{TT-scaling}\\
+    \hyperlink{rw:r1}{R1}%
   };
-  \node[band, anchor=north, text width=6.5cm] at (5,-0.65) {%
-    \textit{Foundational lineage:}
-    \hyperlink{rw:fliege}{[Fliege \& Svaiter 2000]};
-    \hyperlink{rw:miettinen}{[Miettinen 1999]};
-    \hyperlink{rw:ehrgott}{[Ehrgott 2005]};
-    \hyperlink{rw:park}{[Park 2024]};
-    \hyperlink{rw:turner}{Turner} \citep{turner2023activation};
-    \hyperlink{rw:zou}{Zou} \citep{zou2023representation}%
+  \node[band, anchor=north, text width=4cm] at (5,-0.4) {%
+    \textit{Foundational:} Fliege--Svaiter, Miettinen, Ehrgott, Park, Turner, Zou.%
   };
 \end{tikzpicture}
 \\\footnotesize (a) Related work quadrant
-\end{minipage}\hspace{0.02\linewidth}%
+\end{minipage}\hspace{0.01\linewidth}%
 %
-% ===== Panel (b): Limitations Envelope (2x4 layout) =====
-\begin{minipage}[t]{0.40\linewidth}
+% ===== Panel (b): This-paper frame (carries operating-envelope summary) =====
+\begin{minipage}[t]{0.31\linewidth}
+\centering
+\begin{tikzpicture}[
+  paperframe/.style={
+    draw=blue!50, line width=1pt, fill=blue!8, rounded corners,
+    inner sep=4pt, minimum width=0.98\linewidth,
+    text width=0.94\linewidth, align=center, font=\scriptsize,
+  },
+]
+  \node[paperframe] (pf) {%
+    \textbf{$\bigstar$~This paper}\\[3pt]
+    {\footnotesize \textbf{Geometric bound}}\\[1pt]
+    {\scriptsize $\delta_{\min}\propto\sqrt{k/(1-\rho(k{-}1))}$}\\[1pt]
+    {\tiny (Theorem~\ref{thm:gram})}\\[5pt]
+    {\footnotesize \textbf{Pre-gen routing}}\\[1pt]
+    {\scriptsize $\hat{\rho}$ orders ($r_s{=}1.0$); $1.8\%$/${\le}3.1\%$ regret}\\[1pt]
+    {\tiny (Algorithm~\ref{alg:routing})}\\[5pt]
+    {\footnotesize \textbf{Validation}}\\[1pt]
+    {\scriptsize Diag.\ cost predicts cliff. 0/4{,}800 refutations.}%
+  };
+\end{tikzpicture}
+\\\footnotesize (b) This work
+\end{minipage}\hspace{0.01\linewidth}%
+%
+% ===== Panel (c): Limitations cards (dotted blue, connected to (b)) =====
+\begin{minipage}[t]{0.31\linewidth}
 \centering
 \begin{tikzpicture}[
   font=\scriptsize,
-  envelope/.style={
-    draw=blue!50, fill=blue!8, rounded corners,
-    inner sep=2pt, minimum width=0.95\linewidth,
-    minimum height=0.7cm, align=center,
-    text width=0.92\linewidth, font=\scriptsize
-  },
   card/.style={
-    draw=gray!60, fill=gray!4, rounded corners,
+    draw=blue!50, dash pattern=on 1pt off 1pt, fill=blue!2,
+    rounded corners,
     inner sep=2pt, minimum width=0.48\linewidth,
-    minimum height=1.05cm, align=left,
-    text width=0.44\linewidth, anchor=north west,
+    minimum height=1.15cm, align=left,
+    text width=0.43\linewidth, anchor=north west,
     font=\tiny
   },
 ]
-  \node[envelope] (env) at (0,0) {%
-    \textbf{Operating envelope}\\[1pt]
-    {\scriptsize Diag.\ cost predicts cliff; $\hat{\rho}$ orders ($r_s{=}1.0$); 0/4{,}800 refutations}%
-  };
   % Row 1
-  \node[card, anchor=north west] (c1) at ($(env.south west) + (0,-0.1)$) {%
+  \node[card, anchor=north west] (c1) at (0,0) {%
     \textbf{\hyperlink{lim:scope}{Scope}}\\
     $\rho < 1/(k{-}1)$. \textit{Action:} Hierarchy \emph{is} staging. $\to$ App~\ref{app:constitution}%
   };
@@ -122,8 +134,8 @@
     Hilbertian. \textit{Action:} Pareto exchange. $\to$ App~\ref{app:proofs}%
   };
 \end{tikzpicture}
-\\\footnotesize (b) Operating envelope (limitations)
+\\\footnotesize (c) Limitations envelope
 \end{minipage}
-\caption{\textbf{Where this work sits and where it stops.} (a)~Related work quadrant: existing methods cluster in single-constraint inference and multi-constraint training; multi-constraint inference (upper right) lacked a geometric foundation. (b)~Operating envelope: each card names a boundary and the system's action there (deferral, mid-generation detection, hierarchy/staging, graceful degradation). \emph{Meta-theorem:} bounded honesty about observability is what makes pre-generation routing fail-safe. All citations in (a) hyperlink to App~\ref{app:extended_rw}; all cards in (b) hyperlink to their appendix discussions.}
+\caption{\textbf{Where this work sits and where it stops.} (a)~Related work quadrant: existing methods cluster in single-constraint inference and multi-constraint training; multi-constraint inference (upper right) lacked a geometric foundation. (b)~This paper: geometric bound (Theorem~\ref{thm:gram}) and pre-generation routing (Algorithm~\ref{alg:routing}). (c)~Limitations envelope: each card names a boundary and the system's action there (deferral, mid-generation detection, hierarchy/staging, graceful degradation). \emph{Operationally:} bounded honesty about observability is what makes pre-generation routing fail-safe. All citations in (a) hyperlink to App~\ref{app:extended_rw}; all cards in (c) hyperlink to their appendix discussions.}
 \label{fig:rw_quadrant}\label{fig:limitations_envelope}
 \end{figure}

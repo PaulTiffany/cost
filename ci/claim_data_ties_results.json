@@ -2926,44 +2926,44 @@
       "source_file": "supplementary/experiments/code_constraint_results.json"
     },
     {
-      "name": "smooth_regime_total_4272",
+      "name": "high_tier_total_1365",
       "passed": true,
-      "expected": 4272.0,
-      "computed": 4272.0,
+      "expected": 1365.0,
+      "computed": 1365.0,
       "tolerance": 0.0,
-      "detail": "computed=4272 expected=4272.0 diff=0.0 tolerance=0.0 | paper-locality OK",
-      "excerpt": "0/4,272 smooth-regime refutations (across 4 domains, predicted-infeasible region)",
-      "source_file": "rebuttal/figures/unconditional_pivot_results.json"
+      "detail": "computed=1365 expected=1365.0 diff=0.0 tolerance=0.0 | paper-locality OK",
+      "excerpt": "0/1,365 high-tier refutations under audit-observer measurement",
+      "source_file": "supplementary/experiments/outputs/audit_v4/run_manifest.json"
     },
     {
-      "name": "smooth_regime_successes_zero",
+      "name": "high_tier_refutations_zero",
       "passed": true,
       "expected": 0.0,
       "computed": 0.0,
       "tolerance": 0.0,
       "detail": "computed=0 expected=0.0 diff=0.0 tolerance=0.0 | paper-locality OK",
-      "excerpt": "0 smooth-regime successes (refutation count)",
-      "source_file": "rebuttal/figures/unconditional_pivot_results.json"
+      "excerpt": "0 high-tier refutations (audit-observer falsification claim)",
+      "source_file": "supplementary/experiments/outputs/audit_v4/run_manifest.json"
     },
     {
-      "name": "pivot_regime_total_528",
+      "name": "audit_observer_pivot_total_3962",
       "passed": true,
-      "expected": 528.0,
-      "computed": 528.0,
+      "expected": 3962.0,
+      "computed": 3962.0,
       "tolerance": 0.0,
-      "detail": "computed=528 expected=528.0 diff=0.0 tolerance=0.0 | paper-locality OK",
-      "excerpt": "528 pivot-regime trials (across 4 domains)",
-      "source_file": "rebuttal/figures/unconditional_pivot_results.json"
+      "detail": "computed=3962 expected=3962.0 diff=0.0 tolerance=0.0 | paper-locality OK",
+      "excerpt": "3,962 pivot-regime trials under audit-observer measurement",
+      "source_file": "supplementary/experiments/outputs/audit_v4/run_manifest.json"
     },
     {
-      "name": "pivot_successes_42",
+      "name": "audit_observer_high_tier_passes_923",
       "passed": true,
-      "expected": 42.0,
-      "computed": 42.0,
+      "expected": 923.0,
+      "computed": 923.0,
       "tolerance": 0.0,
-      "detail": "computed=42 expected=42.0 diff=0.0 tolerance=0.0 | paper-locality OK",
-      "excerpt": "42 detected-pivot successes (out of 528)",
-      "source_file": "rebuttal/figures/unconditional_pivot_results.json"
+      "detail": "computed=923 expected=923.0 diff=0.0 tolerance=0.0 | paper-locality OK",
+      "excerpt": "923 high-tier passes (67.6% pooled) under audit observer",
+      "source_file": "supplementary/experiments/outputs/audit_v4/run_manifest.json"
     },
     {
       "name": "unconditional_pivot_high_tier_total_480",

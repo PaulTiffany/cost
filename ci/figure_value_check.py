@@ -203,16 +203,22 @@ def build_combined_pattern_set(mod) -> list[re.Pattern]:
 
 
 def run_pdftotext(asset: Path) -> str:
-    """Extract layout-preserving text from a figure PDF."""
+    """Extract layout-preserving text from a figure PDF.
+
+    Forces UTF-8 decoding with ``errors="replace"`` so non-ASCII glyphs
+    (e.g., math symbols, em dashes) don't crash on Windows where the
+    default locale is cp1252.
+    """
     result = subprocess.run(
         ["pdftotext", "-layout", str(asset), "-"],
         capture_output=True,
-        text=True,
+        encoding="utf-8",
+        errors="replace",
         check=False,
     )
     if result.returncode != 0:
         return ""
-    return result.stdout
+    return result.stdout or ""
 
 
 def is_figure_incidental(value: str, line: str, start: int, end: int) -> bool:

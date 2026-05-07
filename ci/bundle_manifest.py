@@ -169,6 +169,10 @@ def collect_paths() -> set:
                   "claim_certificate.json"):
         paths.add(str(Path("ci") / fname))
 
+    # Paper bibliography (cited via \bibliography{references} in main.tex,
+    # not surfaced through any L-layer manifest above).
+    paths.add(str(Path("paper") / "references.bib"))
+
     return paths
 
 

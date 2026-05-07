@@ -1,0 +1,263 @@
+{
+  "_meta": {
+    "code_constraint_tasks_sha256": "79e306d8c6905d9a07d29b7160e765a5ddf593567b1835d169c54edd00794da8",
+    "code_constraint_verifier_sha256": "f141e53ef6192d5f02ee1ea60a993712b06106c97112157856b42909c2733db8",
+    "ran_at_utc": "2026-05-06T05:00:27.935780+00:00",
+    "script": "task_prompt_snapshot.py",
+    "task_count": 6,
+    "tier_count": 4,
+    "total_resolved_prompts": 24
+  },
+  "resolved_prompts": [
+    {
+      "prompt_sha256": "bf3c22811353fdefd231e8ae960b8cd05811fc16b3c10f7228be4a0e0aadc6a3",
+      "prompt_text": "Write a function `factorial(n)` that returns the factorial of a non-negative integer n.\n\nConstraints:\n- Maximum 50 lines of code\n\nReturn only the function in a single ```python ... ``` code block.",
+      "task_id": "factorial",
+      "tier": "control"
+    },
+    {
+      "prompt_sha256": "fd461fa9b4facd915803f8c51529e74f7b8b7ace9c60310c94272799f58b8270",
+      "prompt_text": "Write a function `factorial(n)` that returns the factorial of a non-negative integer n.\n\nConstraints:\n- Maximum 25 lines of code\n- No import statements allowed\n- Must include a docstring\n- Only one function definition allowed\n\nReturn only the function in a single ```python ... ``` code block.",
+      "task_id": "factorial",
+      "tier": "low"
+    },
+    {
+      "prompt_sha256": "7e287ded01810187ab188636bfc476dac41afb9ffb84fb8b6281f01dac2e534d",
+      "prompt_text": "Write a function `factorial(n)` that returns the factorial of a non-negative integer n.\n\nConstraints:\n- Maximum 15 lines of code\n- No import statements allowed\n- Must include a docstring\n- Only one function definition allowed\n- Cannot use: sorted, reversed\n\nReturn only the function in a single ```python ... ``` code block.",
+      "task_id": "factorial",
+      "tier": "moderate"
+    },
+    {
+      "prompt_sha256": "54b003c94f7223d0bd23c8f0e568e35cb76bbaf366c56e11ca295637838fd280",
+      "prompt_text": "Write a function `factorial(n)` that returns the factorial of a non-negative integer n.\n\nConstraints:\n- Maximum 10 lines of code\n- No import statements allowed\n- No for/while loops allowed (use recursion or comprehensions)\n- Must include a docstring\n- Only one function definition allowed\n- Cannot use: sorted, reversed, map, filter\n\nReturn only the function in a single ```python ... ``` code block.",
+      "task_id": "factorial",
+      "tier": "high"
+    },
+    {
+      "prompt_sha256": "8c241e8ebb7b5965598a75a5424365a872e8d089e3dfde1d939c15d6d487ba42",
+      "prompt_text": "Write a function `fibonacci(n)` that returns the nth Fibonacci number (0-indexed, so fibonacci(0)=0, fibonacci(1)=1).\n\nConstraints:\n- Maximum 50 lines of code\n\nReturn only the function in a single ```python ... ``` code block.",
+      "task_id": "fibonacci",
+      "tier": "control"
+    },
+    {
+      "prompt_sha256": "95200b296629272efa740df67acbf991e1853ae97ebec0c6bc3e12e70ab710d0",
+      "prompt_text": "Write a function `fibonacci(n)` that returns the nth Fibonacci number (0-indexed, so fibonacci(0)=0, fibonacci(1)=1).\n\nConstraints:\n- Maximum 25 lines of code\n- No import statements allowed\n- Must include a docstring\n- Only one function definition allowed\n\nReturn only the function in a single ```python ... ``` code block.",
+      "task_id": "fibonacci",
+      "tier": "low"
+    },
+    {
+      "prompt_sha256": "c83178e63499b521ece8def618dac974d7a152dfd32afe2808df6c52053ed7ee",
+      "prompt_text": "Write a function `fibonacci(n)` that returns the nth Fibonacci number (0-indexed, so fibonacci(0)=0, fibonacci(1)=1).\n\nConstraints:\n- Maximum 15 lines of code\n- No import statements allowed\n- Must include a docstring\n- Only one function definition allowed\n- Cannot use: sorted, reversed\n\nReturn only the function in a single ```python ... ``` code block.",
+      "task_id": "fibonacci",
+      "tier": "moderate"
+    },
+    {
+      "prompt_sha256": "59795a8e49dc98decc9857466e217eee126e7e991b1f29efb939ed1a3af5bcf9",
+      "prompt_text": "Write a function `fibonacci(n)` that returns the nth Fibonacci number (0-indexed, so fibonacci(0)=0, fibonacci(1)=1).\n\nConstraints:\n- Maximum 10 lines of code\n- No import statements allowed\n- No for/while loops allowed (use recursion or comprehensions)\n- Must include a docstring\n- Only one function definition allowed\n- Cannot use: sorted, reversed, map, filter\n\nReturn only the function in a single ```python ... ``` code block.",
+      "task_id": "fibonacci",
+      "tier": "high"
+    },
+    {
+      "prompt_sha256": "3ee8e0c0663c4a1981735c31f316b5b41053aaf38aa9e06ca371f3b9da306c86",
+      "prompt_text": "Write a function `is_palindrome(s)` that returns True if string s is a palindrome (ignoring case), False otherwise.\n\nConstraints:\n- Maximum 50 lines of code\n\nReturn only the function in a single ```python ... ``` code block.",
+      "task_id": "is_palindrome",
+      "tier": "control"
+    },
+    {
+      "prompt_sha256": "a683191d5a9c74ea834f46e77a2aa265f304f5d45ff2a37c59838d4b5dbc4c7d",
+      "prompt_text": "Write a function `is_palindrome(s)` that returns True if string s is a palindrome (ignoring case), False otherwise.\n\nConstraints:\n- Maximum 25 lines of code\n- No import statements allowed\n- Must include a docstring\n- Only one function definition allowed\n\nReturn only the function in a single ```python ... ``` code block.",
+      "task_id": "is_palindrome",
+      "tier": "low"
+    },
+    {
+      "prompt_sha256": "3edf1df056d5c4c8c3a0f44450d722032cf4056b8e235bbff6b0fd8cd3a5e605",
+      "prompt_text": "Write a function `is_palindrome(s)` that returns True if string s is a palindrome (ignoring case), False otherwise.\n\nConstraints:\n- Maximum 15 lines of code\n- No import statements allowed\n- Must include a docstring\n- Only one function definition allowed\n- Cannot use: sorted, reversed\n\nReturn only the function in a single ```python ... ``` code block.",
+      "task_id": "is_palindrome",
+      "tier": "moderate"
+    },
+    {
+      "prompt_sha256": "e965c124169f8f3743be82e05eb37ea395cbcdca5a31f94b9ea29f61b867187e",
+      "prompt_text": "Write a function `is_palindrome(s)` that returns True if string s is a palindrome (ignoring case), False otherwise.\n\nConstraints:\n- Maximum 10 lines of code\n- No import statements allowed\n- No for/while loops allowed (use recursion or comprehensions)\n- Must include a docstring\n- Only one function definition allowed\n- Cannot use: sorted, reversed, map, filter\n\nReturn only the function in a single ```python ... ``` code block.",
+      "task_id": "is_palindrome",
+      "tier": "high"
+    },
+    {
+      "prompt_sha256": "6d50bccbac60e0caac7e947023fae66dc0617fe566741d526542d958b0ed85f0",
+      "prompt_text": "Write a function `gcd(a, b)` that returns the greatest common divisor of two positive integers a and b.\n\nConstraints:\n- Maximum 50 lines of code\n\nReturn only the function in a single ```python ... ``` code block.",
+      "task_id": "gcd",
+      "tier": "control"
+    },
+    {
+      "prompt_sha256": "1cd75c1415347f73deb5a3d6c74e724b16c0a583e21a7d2454acc825cc4688dc",
+      "prompt_text": "Write a function `gcd(a, b)` that returns the greatest common divisor of two positive integers a and b.\n\nConstraints:\n- Maximum 25 lines of code\n- No import statements allowed\n- Must include a docstring\n- Only one function definition allowed\n\nReturn only the function in a single ```python ... ``` code block.",
+      "task_id": "gcd",
+      "tier": "low"
+    },
+    {
+      "prompt_sha256": "facfc33cd75806ebf12ad2b2e1e94ece88490bd4d317b9ecf15dc775b0910820",
+      "prompt_text": "Write a function `gcd(a, b)` that returns the greatest common divisor of two positive integers a and b.\n\nConstraints:\n- Maximum 15 lines of code\n- No import statements allowed\n- Must include a docstring\n- Only one function definition allowed\n- Cannot use: sorted, reversed\n\nReturn only the function in a single ```python ... ``` code block.",
+      "task_id": "gcd",
+      "tier": "moderate"
+    },
+    {
+      "prompt_sha256": "a7f613cdebf59387122ff056f687c3281514dd6347140372fa419dad50f08b3c",
+      "prompt_text": "Write a function `gcd(a, b)` that returns the greatest common divisor of two positive integers a and b.\n\nConstraints:\n- Maximum 10 lines of code\n- No import statements allowed\n- No for/while loops allowed (use recursion or comprehensions)\n- Must include a docstring\n- Only one function definition allowed\n- Cannot use: sorted, reversed, map, filter\n\nReturn only the function in a single ```python ... ``` code block.",
+      "task_id": "gcd",
+      "tier": "high"
+    },
+    {
+      "prompt_sha256": "d88e2aa25694d5f941747cd1271e3477dd5635aac8701157b7e4e533dd6b8db6",
+      "prompt_text": "Write a function `reverse_words(s)` that reverses the order of words in a string s. Words are separated by spaces.\n\nConstraints:\n- Maximum 50 lines of code\n\nReturn only the function in a single ```python ... ``` code block.",
+      "task_id": "reverse_words",
+      "tier": "control"
+    },
+    {
+      "prompt_sha256": "a06ae8fb6106eca3866e2f7b2db0486f857d6b908998316920d8d772496375bb",
+      "prompt_text": "Write a function `reverse_words(s)` that reverses the order of words in a string s. Words are separated by spaces.\n\nConstraints:\n- Maximum 25 lines of code\n- No import statements allowed\n- Must include a docstring\n- Only one function definition allowed\n\nReturn only the function in a single ```python ... ``` code block.",
+      "task_id": "reverse_words",
+      "tier": "low"
+    },
+    {
+      "prompt_sha256": "dae56c741ae8f7ed1f0c5dedfc5bfacf6f8e0fcd1315609c78cd6053e792cc64",
+      "prompt_text": "Write a function `reverse_words(s)` that reverses the order of words in a string s. Words are separated by spaces.\n\nConstraints:\n- Maximum 15 lines of code\n- No import statements allowed\n- Must include a docstring\n- Only one function definition allowed\n- Cannot use: sorted, reversed\n\nReturn only the function in a single ```python ... ``` code block.",
+      "task_id": "reverse_words",
+      "tier": "moderate"
+    },
+    {
+      "prompt_sha256": "4394d884d703b09728f691657dc178dab9db2c0f07b0ccb8dbcc74850b8196d3",
+      "prompt_text": "Write a function `reverse_words(s)` that reverses the order of words in a string s. Words are separated by spaces.\n\nConstraints:\n- Maximum 10 lines of code\n- No import statements allowed\n- No for/while loops allowed (use recursion or comprehensions)\n- Must include a docstring\n- Only one function definition allowed\n- Cannot use: sorted, reversed, map, filter\n\nReturn only the function in a single ```python ... ``` code block.",
+      "task_id": "reverse_words",
+      "tier": "high"
+    },
+    {
+      "prompt_sha256": "7bd2bb7c1ef77ac7ac306df7774a467ad750527348e57590fdef13dd2dc958cf",
+      "prompt_text": "Write a function `fizzbuzz(n)` that returns 'FizzBuzz' if n is divisible by both 3 and 5, 'Fizz' if divisible by 3 only, 'Buzz' if divisible by 5 only, otherwise the string representation of n.\n\nConstraints:\n- Maximum 50 lines of code\n\nReturn only the function in a single ```python ... ``` code block.",
+      "task_id": "fizzbuzz",
+      "tier": "control"
+    },
+    {
+      "prompt_sha256": "aaac971b8749658da5f42a8b7f249ca1e6e481e46f517ecb8ff07da0156d988b",
+      "prompt_text": "Write a function `fizzbuzz(n)` that returns 'FizzBuzz' if n is divisible by both 3 and 5, 'Fizz' if divisible by 3 only, 'Buzz' if divisible by 5 only, otherwise the string representation of n.\n\nConstraints:\n- Maximum 25 lines of code\n- No import statements allowed\n- Must include a docstring\n- Only one function definition allowed\n\nReturn only the function in a single ```python ... ``` code block.",
+      "task_id": "fizzbuzz",
+      "tier": "low"
+    },
+    {
+      "prompt_sha256": "452d5d6874e8e3016776772f857c57633ac33b91adf8debdcf7d82c18506b9dd",
+      "prompt_text": "Write a function `fizzbuzz(n)` that returns 'FizzBuzz' if n is divisible by both 3 and 5, 'Fizz' if divisible by 3 only, 'Buzz' if divisible by 5 only, otherwise the string representation of n.\n\nConstraints:\n- Maximum 15 lines of code\n- No import statements allowed\n- Must include a docstring\n- Only one function definition allowed\n- Cannot use: sorted, reversed\n\nReturn only the function in a single ```python ... ``` code block.",
+      "task_id": "fizzbuzz",
+      "tier": "moderate"
+    },
+    {
+      "prompt_sha256": "c653e558a75df351817b602cf649cb45290e52399d73f8451fecb71c0c88409e",
+      "prompt_text": "Write a function `fizzbuzz(n)` that returns 'FizzBuzz' if n is divisible by both 3 and 5, 'Fizz' if divisible by 3 only, 'Buzz' if divisible by 5 only, otherwise the string representation of n.\n\nConstraints:\n- Maximum 10 lines of code\n- No import statements allowed\n- No for/while loops allowed (use recursion or comprehensions)\n- Must include a docstring\n- Only one function definition allowed\n- Cannot use: sorted, reversed, map, filter\n\nReturn only the function in a single ```python ... ``` code block.",
+      "task_id": "fizzbuzz",
+      "tier": "high"
+    }
+  ],
+  "tasks": {
+    "factorial": {
+      "description": "Write a function `factorial(n)` that returns the factorial of a non-negative integer n.",
+      "function_name": "factorial",
+      "task_id": "factorial",
+      "test_code": "\nassert factorial(0) == 1\nassert factorial(1) == 1\nassert factorial(5) == 120\nassert factorial(10) == 3628800\n",
+      "test_code_sha256": "25da827b325101252e22b26107d164aacced0f54d71fd1c2e8f21fa0798e8a7b"
+    },
+    "fibonacci": {
+      "description": "Write a function `fibonacci(n)` that returns the nth Fibonacci number (0-indexed, so fibonacci(0)=0, fibonacci(1)=1).",
+      "function_name": "fibonacci",
+      "task_id": "fibonacci",
+      "test_code": "\nassert fibonacci(0) == 0\nassert fibonacci(1) == 1\nassert fibonacci(10) == 55\nassert fibonacci(15) == 610\n",
+      "test_code_sha256": "c69b549353c71db6eac0b60f557818c4b80b02e5bd8bf1986a09cf035dc84ce8"
+    },
+    "fizzbuzz": {
+      "description": "Write a function `fizzbuzz(n)` that returns 'FizzBuzz' if n is divisible by both 3 and 5, 'Fizz' if divisible by 3 only, 'Buzz' if divisible by 5 only, otherwise the string representation of n.",
+      "function_name": "fizzbuzz",
+      "task_id": "fizzbuzz",
+      "test_code": "\nassert fizzbuzz(15) == \"FizzBuzz\"\nassert fizzbuzz(9) == \"Fizz\"\nassert fizzbuzz(10) == \"Buzz\"\nassert fizzbuzz(7) == \"7\"\nassert fizzbuzz(30) == \"FizzBuzz\"\n",
+      "test_code_sha256": "0f9ff3f05ba761c80a1fce8b0d731db51bf27371d185429aee454e97a04ac398"
+    },
+    "gcd": {
+      "description": "Write a function `gcd(a, b)` that returns the greatest common divisor of two positive integers a and b.",
+      "function_name": "gcd",
+      "task_id": "gcd",
+      "test_code": "\nassert gcd(12, 8) == 4\nassert gcd(17, 13) == 1\nassert gcd(100, 25) == 25\nassert gcd(7, 7) == 7\n",
+      "test_code_sha256": "242be57437dec7b529cb085ab84ab312b57b4c32c7f64571a787492a6cf421b7"
+    },
+    "is_palindrome": {
+      "description": "Write a function `is_palindrome(s)` that returns True if string s is a palindrome (ignoring case), False otherwise.",
+      "function_name": "is_palindrome",
+      "task_id": "is_palindrome",
+      "test_code": "\nassert is_palindrome(\"racecar\") == True\nassert is_palindrome(\"RaceCar\") == True\nassert is_palindrome(\"hello\") == False\nassert is_palindrome(\"A\") == True\nassert is_palindrome(\"\") == True\n",
+      "test_code_sha256": "c70455d44a6ebb33f54a24a1ac0b0cdf5f5096e0b1dc8b0db0dc90f2a1eb2d4a"
+    },
+    "reverse_words": {
+      "description": "Write a function `reverse_words(s)` that reverses the order of words in a string s. Words are separated by spaces.",
+      "function_name": "reverse_words",
+      "task_id": "reverse_words",
+      "test_code": "\nassert reverse_words(\"hello world\") == \"world hello\"\nassert reverse_words(\"a b c\") == \"c b a\"\nassert reverse_words(\"single\") == \"single\"\nassert reverse_words(\"\") == \"\"\n",
+      "test_code_sha256": "d832d3d36f28d3b9f5f4cf841c9900371cb2f5dd83e36c625ad3876106cb54ef"
+    }
+  },
+  "tiers": {
+    "control": {
+      "format_rules": {
+        "forbidden_builtins": [],
+        "max_lines": 50,
+        "no_imports": false,
+        "no_loops": false,
+        "no_recursion": false,
+        "require_docstring": false,
+        "single_function": false
+      },
+      "format_rules_text": "- Maximum 50 lines of code",
+      "tier_name": "control"
+    },
+    "high": {
+      "format_rules": {
+        "forbidden_builtins": [
+          "sorted",
+          "reversed",
+          "map",
+          "filter"
+        ],
+        "max_lines": 10,
+        "no_imports": true,
+        "no_loops": true,
+        "no_recursion": false,
+        "require_docstring": true,
+        "single_function": true
+      },
+      "format_rules_text": "- Maximum 10 lines of code\n- No import statements allowed\n- No for/while loops allowed (use recursion or comprehensions)\n- Must include a docstring\n- Only one function definition allowed\n- Cannot use: sorted, reversed, map, filter",
+      "tier_name": "high"
+    },
+    "low": {
+      "format_rules": {
+        "forbidden_builtins": [],
+        "max_lines": 25,
+        "no_imports": true,
+        "no_loops": false,
+        "no_recursion": false,
+        "require_docstring": true,
+        "single_function": true
+      },
+      "format_rules_text": "- Maximum 25 lines of code\n- No import statements allowed\n- Must include a docstring\n- Only one function definition allowed",
+      "tier_name": "low"
+    },
+    "moderate": {
+      "format_rules": {
+        "forbidden_builtins": [
+          "sorted",
+          "reversed"
+        ],
+        "max_lines": 15,
+        "no_imports": true,
+        "no_loops": false,
+        "no_recursion": false,
+        "require_docstring": true,
+        "single_function": true
+      },
+      "format_rules_text": "- Maximum 15 lines of code\n- No import statements allowed\n- Must include a docstring\n- Only one function definition allowed\n- Cannot use: sorted, reversed",
+      "tier_name": "moderate"
+    }
+  }
+}

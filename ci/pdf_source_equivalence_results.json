@@ -1,14 +1,14 @@
 {
   "summary": {
     "passed": true,
-    "pdf_mtime": "2026-05-05T00:59:15Z",
-    "newest_source_mtime": "2026-05-05T00:58:34Z",
+    "pdf_mtime": "2026-05-07T09:45:30Z",
+    "newest_source_mtime": "2026-05-07T09:35:04Z",
     "newest_source_file": "paper\\main.tex",
     "stale_sources": [],
-    "phrase_in_tex": true,
-    "phrase_in_pdf": true,
+    "phrase_in_tex": false,
+    "phrase_in_pdf": false,
     "phrase_check_advisory": null,
     "phrase_match": true,
-    "source_file_count": 13
+    "source_file_count": 14
   }
 }

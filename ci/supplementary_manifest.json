@@ -50,7 +50,7 @@
       "forbidden_tokens": [
         "ICML",
         "Policy B",
-        "paulc",
+        "<USER>",
         "Tiffany"
       ],
       "scope_note": "Interactive reviewer aid demonstrating the diagonal cost bound across domains. Not a replication harness; illustrative only. Must be anonymity-clean."
@@ -72,7 +72,7 @@
       ],
       "forbidden_tokens": [
         "ICML",
-        "paulc",
+        "<USER>",
         "Tiffany"
       ],
       "scope_note": "Perceptual sonification of constraint conflict data. Provides intuitive illustration of rho; not primary empirical evidence. Audio outputs are generated on demand."
@@ -91,7 +91,7 @@
       ],
       "forbidden_tokens": [
         "ICML",
-        "paulc",
+        "<USER>",
         "Tiffany"
       ],
       "scope_note": "Exploratory constitution analysis script. Not referenced in the paper; kept for reproducibility audit trail only."
@@ -116,7 +116,7 @@
         "scope_note_present"
       ],
       "forbidden_tokens": [
-        "paulc",
+        "<USER>",
         "Tiffany"
       ],
       "scope_note": "Bytebeat domain transfer harness. Verifies Claim C22: 59% to 0% feasibility cliff at rho >= 0.8. Verification uses FFT analysis of generated audio against spectral and rhythmic constraints."
@@ -141,7 +141,7 @@
         "scope_note_present"
       ],
       "forbidden_tokens": [
-        "paulc",
+        "<USER>",
         "Tiffany"
       ],
       "scope_note": "Interactive Fiction DSL harness. Verifies Claim C23: 0% satisfaction at rho >= 1.0. BFS interpreter enforces connectivity, solvability, path length, and bottleneck constraints simultaneously."
@@ -164,7 +164,7 @@
         "scope_note_present"
       ],
       "forbidden_tokens": [
-        "paulc",
+        "<USER>",
         "Tiffany"
       ],
       "scope_note": "JSON-NL transfer experiment v4 (substantive content framing). Verifies Claim C24: 77.5% to 100% failure scaling with constraint tightness. Domain: structured natural language with JSON schema constraints."
@@ -189,7 +189,7 @@
         "scope_note_present"
       ],
       "forbidden_tokens": [
-        "paulc",
+        "<USER>",
         "Tiffany"
       ],
       "scope_note": "Gradient-rho sanity check v2. Verifies Claim C4: r_s = 1.0 rank correlation between rho-hat and failure rate. Provides empirical validation that the conflict estimator is monotone."
@@ -214,7 +214,7 @@
         "scope_note_present"
       ],
       "forbidden_tokens": [
-        "paulc",
+        "<USER>",
         "Tiffany"
       ],
       "scope_note": "Symbolic verification of Gram matrix theorems. Verifies Theorem 3.1 (two-constraint diagonal cost bound) and Theorem 3.4 (general k-constraint bound via Gram matrix). Runs with sympy; no API calls required."
@@ -241,7 +241,7 @@
         "scope_note_present"
       ],
       "forbidden_tokens": [
-        "paulc",
+        "<USER>",
         "Tiffany"
       ],
       "scope_note": "Charitable k-feasibility simulation. Verifies Claim C12: 93% to 3% feasibility decay from k=2 to k=10 under maximally charitable constraint composition (all pairwise rho = 0)."
@@ -607,7 +607,7 @@
         "scope_note_present"
       ],
       "forbidden_tokens": [
-        "paulc",
+        "<USER>",
         "Tiffany"
       ],
       "scope_note": "Chromatic vision experiment supporting the sonification defense in the rebuttal. Demonstrates cross-modal constraint transfer beyond the original audio domain."
@@ -630,7 +630,7 @@
         "scope_note_present"
       ],
       "forbidden_tokens": [
-        "paulc",
+        "<USER>",
         "Tiffany"
       ],
       "scope_note": "Cross-model replication harness. Verifies that rho-failure correlation holds across model families, addressing reviewer concern about single-model dependence."
@@ -653,7 +653,7 @@
         "scope_note_present"
       ],
       "forbidden_tokens": [
-        "paulc",
+        "<USER>",
         "Tiffany"
       ],
       "scope_note": "DCT/Gram eigendecomposition analysis. Verifies spectral properties of the constraint Gram matrix, providing geometric backing for Theorem 3.4."

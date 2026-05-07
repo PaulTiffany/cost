@@ -1,0 +1,10 @@
+{
+  "started_utc": "2026-05-05T06:52:46.970166+00:00",
+  "last_updated_utc": "2026-05-05T09:06:23.332576+00:00",
+  "packets_completed": 6120,
+  "packets_target": 6120,
+  "errors": 648,
+  "anthropic_done": 3240,
+  "openrouter_done": 2880,
+  "estimated_cost_usd": 7.9276
+}

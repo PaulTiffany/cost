@@ -1,8 +1,8 @@
 {
   "summary": {
-    "total_uncovered": 96,
+    "total_uncovered": 100,
     "high_salience": 0,
-    "low_salience": 85,
+    "low_salience": 89,
     "exempted": 11,
     "passed": true
   },

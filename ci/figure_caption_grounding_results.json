@@ -1,0 +1,222 @@
+{
+  "_meta": {
+    "script": "ci/figure_caption_grounding_check.py",
+    "script_hash": "a903c84f4fc8d195a4fa25d75c54a594a6800f52003e1c4784d747d06222f9c6",
+    "generated_at_utc": "2026-05-07T09:50:48+00:00",
+    "paper_path": "C:\\src\\NeurIPS\\paper\\main.tex",
+    "grounding_commands": [
+      "ref",
+      "Cref",
+      "cref",
+      "autoref",
+      "eqref",
+      "pageref",
+      "citep",
+      "cite",
+      "citet",
+      "citeyear",
+      "appref",
+      "secref",
+      "thmref",
+      "lemref",
+      "corref",
+      "hyperref",
+      "hyperlink",
+      "nameref"
+    ],
+    "exempt_marker": "% cert:caption-grounding-exempt"
+  },
+  "status": "PASS",
+  "summary": {
+    "status": "PASS",
+    "n_total_figures": 9,
+    "n_passed": 9,
+    "n_failed": 0,
+    "n_exempt": 0
+  },
+  "figures": [
+    {
+      "fig_index": 1,
+      "line_start": 141,
+      "line_end": 202,
+      "label": "fig:geometric_setup",
+      "exempt": false,
+      "issues": [],
+      "n_body_panels": 2,
+      "panels": [
+        {
+          "label": " (a)",
+          "n_refs": 1,
+          "grounded": true,
+          "text_preview": "(a) Each constraint defines a progress halfspace. The budget ball reaches each h"
+        },
+        {
+          "label": " (b)",
+          "n_refs": 1,
+          "grounded": true,
+          "text_preview": "(b) At $\\rho=0.5$ with $\\tau=1$ and unit budget, the minimum-norm feasible step "
+        }
+      ]
+    },
+    {
+      "fig_index": 2,
+      "line_start": 242,
+      "line_end": 247,
+      "label": "fig:gram_eigendecomp",
+      "exempt": false,
+      "issues": [],
+      "n_body_panels": 0,
+      "panels": [
+        {
+          "label": "single",
+          "n_refs": 3,
+          "grounded": true,
+          "text_preview": "\\textbf{Embedding-derived $\\rhohat$ preserves regime ordering.} $\\lambda_{\\min}("
+        }
+      ]
+    },
+    {
+      "fig_index": 3,
+      "line_start": 361,
+      "line_end": 366,
+      "label": "fig:per_task",
+      "exempt": false,
+      "issues": [],
+      "n_body_panels": 0,
+      "panels": [
+        {
+          "label": "single",
+          "n_refs": 2,
+          "grounded": true,
+          "text_preview": "\\textbf{Per-task pass rate by $\\rhohat$ tier} (48 points, $r_s = -0.942$, $p = 2"
+        }
+      ]
+    },
+    {
+      "fig_index": 4,
+      "line_start": 368,
+      "line_end": 373,
+      "label": "fig:constrained_decoding",
+      "exempt": false,
+      "issues": [],
+      "n_body_panels": 0,
+      "panels": [
+        {
+          "label": " (a)",
+          "n_refs": 1,
+          "grounded": true,
+          "text_preview": "(a) Outlines/Guidance, multi-grammar (Theorem~\\ref{thm:gram})."
+        },
+        {
+          "label": " (b)",
+          "n_refs": 1,
+          "grounded": true,
+          "text_preview": "(b) JSON-mode, conflicting fields (Corollary~\\ref{cor:k_uniform}). Both show $\\s"
+        }
+      ]
+    },
+    {
+      "fig_index": 5,
+      "line_start": 427,
+      "line_end": 522,
+      "label": "fig:feasibility_surface",
+      "exempt": false,
+      "issues": [],
+      "n_body_panels": 3,
+      "panels": [
+        {
+          "label": " (a)",
+          "n_refs": 1,
+          "grounded": true,
+          "text_preview": "(a) Pass rate with routing bands (Table~\\ref{tab:calibration}). Lower-right coll"
+        },
+        {
+          "label": " (b)",
+          "n_refs": 1,
+          "grounded": true,
+          "text_preview": "(b) Cost-amplification curve $\\sqrt{2/(1-\\rho)}$ (Corollary~\\ref{cor:k_uniform})"
+        },
+        {
+          "label": " (c)",
+          "n_refs": 1,
+          "grounded": true,
+          "text_preview": "(c) Predicted vs.\\ measurement (Table~\\ref{tab:calibration})."
+        }
+      ]
+    },
+    {
+      "fig_index": 6,
+      "line_start": 545,
+      "line_end": 559,
+      "label": "fig:cross_model",
+      "exempt": false,
+      "issues": [],
+      "n_body_panels": 2,
+      "panels": [
+        {
+          "label": " (a)",
+          "n_refs": 1,
+          "grounded": true,
+          "text_preview": "(a) Pass-rate heatmap across nine models from 1B (TinyLlama) to frontier (6 prov"
+        },
+        {
+          "label": " (b)",
+          "n_refs": 3,
+          "grounded": true,
+          "text_preview": "(b) Continuous satisfaction scores (Brier-style residuals) reproduce the $\\rho$-"
+        }
+      ]
+    },
+    {
+      "fig_index": 7,
+      "line_start": 1854,
+      "line_end": 1879,
+      "label": "fig:amplification",
+      "exempt": false,
+      "issues": [],
+      "n_body_panels": 0,
+      "panels": [
+        {
+          "label": "single",
+          "n_refs": 1,
+          "grounded": true,
+          "text_preview": "\\textbf{Cost Amplification.} \\emph{Meta-theorem [Operating Envelope]: escape is "
+        }
+      ]
+    },
+    {
+      "fig_index": 8,
+      "line_start": 2193,
+      "line_end": 2198,
+      "label": "fig:pipeline",
+      "exempt": false,
+      "issues": [],
+      "n_body_panels": 0,
+      "panels": [
+        {
+          "label": "single",
+          "n_refs": 1,
+          "grounded": true,
+          "text_preview": "\\textbf{Algorithm~\\ref{alg:routing} visualized} on ``be comprehensive'' ($C_1$) "
+        }
+      ]
+    },
+    {
+      "fig_index": 9,
+      "line_start": 2611,
+      "line_end": 2616,
+      "label": "fig:image_format_cliff",
+      "exempt": false,
+      "issues": [],
+      "n_body_panels": 0,
+      "panels": [
+        {
+          "label": "single",
+          "n_refs": 2,
+          "grounded": true,
+          "text_preview": "Diagonal-cost cliff (Theorem~\\ref{thm:gram}) transfers across modalities. Text-m"
+        }
+      ]
+    }
+  ]
+}

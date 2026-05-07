@@ -1,7 +1,7 @@
 {
   "summary": {
-    "total": 25,
-    "tied": 25,
+    "total": 28,
+    "tied": 28,
     "untied": 0,
     "tied_ratio": 1.0,
     "window_chars": 300
@@ -40,7 +40,7 @@
   "records": [
     {
       "pattern": "\\bwe\\s+observe\\b",
-      "line": 1042,
+      "line": 1058,
       "col": 1,
       "context": "aragraph{Interpretation of model-specific staging effects.} We observe that the aggregate non-monotone pattern in Table~\\ref{tab:d",
       "has_anchor": true,
@@ -54,7 +54,7 @@
     },
     {
       "pattern": "\\bwe\\s+treat\\s+(?:this|these|the\\s+\\w+)\\s+as\\s+evidence\\b",
-      "line": 2593,
+      "line": 2618,
       "col": 410,
       "context": "past the regime where joint satisfaction remains feasible. We treat this as evidence that the diagonal-cost geometry is a property of constraint",
       "has_anchor": true,
@@ -66,7 +66,7 @@
     },
     {
       "pattern": "\\bwe\\s+treat\\s+this\\s+as\\b",
-      "line": 2296,
+      "line": 2321,
       "col": 684,
       "context": "$k$ the cumulative regression dominates the per-stage gain. We treat this as a finding, not a bug, and note it as a limitation of naive",
       "has_anchor": true,
@@ -78,7 +78,7 @@
     },
     {
       "pattern": "\\bwe\\s+treat\\s+this\\s+as\\b",
-      "line": 2593,
+      "line": 2618,
       "col": 410,
       "context": "past the regime where joint satisfaction remains feasible. We treat this as evidence that the diagonal-cost geometry is a property of c",
       "has_anchor": true,
@@ -90,7 +90,7 @@
     },
     {
       "pattern": "\\bwe\\s+treat\\s+this\\s+as\\b",
-      "line": 2758,
+      "line": 2785,
       "col": 410,
       "context": "5 / opus-4.7 all hit 8/8 pipeline pass; haiku-4.5 hits 2/8. We treat this as a calibration question to surface, not a confound to hide.",
       "has_anchor": true,
@@ -102,7 +102,33 @@
     },
     {
       "pattern": "\\bis\\s+consistent\\s+with\\b",
-      "line": 676,
+      "line": 359,
+      "col": 75,
+      "context": "ion \\citep{bai2022constitutional,anthropic2025constitution} is consistent with the geometric prescription: one principle per revision avoi",
+      "has_anchor": true,
+      "matched_anchors": [
+        "\\ref{prop:convergence}",
+        "\\ref{thm:convergence}",
+        "\\ref{tab:claude_family}",
+        "\\citep{bai2022constitutional,anthropic2025constitution}",
+        "1"
+      ]
+    },
+    {
+      "pattern": "\\bis\\s+consistent\\s+with\\b",
+      "line": 540,
+      "col": 709,
+      "context": "violation rate of $3/1365 \\approx 0.22\\%$; the empirical 0 is consistent with rates up to this ceiling. \\paragraph{Frontier Transfer and",
+      "has_anchor": true,
+      "matched_anchors": [
+        "0",
+        "1",
+        "365"
+      ]
+    },
+    {
+      "pattern": "\\bis\\s+consistent\\s+with\\b",
+      "line": 692,
       "col": 406,
       "context": "tical output every time). The opus-4.6 zero-variance result is consistent with either provider-side response caching or a very tight sampl",
       "has_anchor": true,
@@ -115,7 +141,7 @@
     },
     {
       "pattern": "\\bis\\s+consistent\\s+with\\b",
-      "line": 1974,
+      "line": 1992,
       "col": 84,
       "context": "rp transitions as budget crosses predicted thresholds, this is consistent with Theorem~\\ref{thm:curvature_does_not_save}, where first-orde",
       "has_anchor": true,
@@ -128,7 +154,7 @@
     },
     {
       "pattern": "\\bis\\s+consistent\\s+with\\b",
-      "line": 2296,
+      "line": 2321,
       "col": 443,
       "context": "-applied rules still permit regression on those rules. This is consistent with a budget-allocation reading: stage~$i$'s adjustment displac",
       "has_anchor": true,
@@ -140,8 +166,8 @@
     },
     {
       "pattern": "\\bdemonstrates?\\b",
-      "line": 365,
-      "col": 288,
+      "line": 359,
+      "col": 308,
       "context": "/(1{-}\\rho(k{-}1))}$ penalty. Table~\\ref{tab:claude_family} demonstrates $4.8\\times$ staging benefit at frontier scale, suggesting t",
       "has_anchor": true,
       "matched_anchors": [
@@ -154,21 +180,21 @@
     },
     {
       "pattern": "\\bdemonstrates?\\b",
-      "line": 414,
-      "col": 814,
+      "line": 408,
+      "col": 761,
       "context": "feasibility surface; Figure~\\ref{fig:boundary_vs_observed} demonstrates the predicted cliff matches observations. \\begin{table}[t]",
       "has_anchor": true,
       "matched_anchors": [
         "\\ref{fig:feasibility_surface}",
         "\\ref{fig:boundary_vs_observed}",
-        "58",
-        "71",
-        "5"
+        "64",
+        "2",
+        "1.0"
       ]
     },
     {
       "pattern": "\\bdemonstrates?\\b",
-      "line": 810,
+      "line": 826,
       "col": 71,
       "context": "f{tab:encoder_sensitivity}--\\ref{tab:threshold_sensitivity} demonstrate empirically that $\\rhohat$ yields correct routing. The foll",
       "has_anchor": true,
@@ -182,7 +208,7 @@
     },
     {
       "pattern": "\\bdemonstrates?\\b",
-      "line": 869,
+      "line": 885,
       "col": 15,
       "context": "1\\% \\\\ \\bottomrule \\end{tabular} \\end{table} These results demonstrate that embedding-based $\\rhohat$ captures conflict structure",
       "has_anchor": true,
@@ -194,7 +220,7 @@
     },
     {
       "pattern": "\\bdemonstrates?\\b",
-      "line": 1607,
+      "line": 1625,
       "col": 32,
       "context": "hm.~5.2.1]{boyd2004convex}. As Table~\\ref{tab:feasibility} demonstrates, synthetic optimization matches analytical bounds to relati",
       "has_anchor": true,
@@ -207,7 +233,7 @@
     },
     {
       "pattern": "\\bdemonstrates?\\b",
-      "line": 2484,
+      "line": 2509,
       "col": 201,
       "context": "edit count, and measurable $\\rho$ via baseline sampling. It demonstrates a feasibility cliff at high $\\rho$ but reveals that discret",
       "has_anchor": true,
@@ -219,7 +245,7 @@
     },
     {
       "pattern": "\\bdemonstrates?\\b",
-      "line": 2518,
+      "line": 2543,
       "col": 148,
       "context": "r structured failure modes. Appendix~\\ref{app:sonification} demonstrates that constraint conflict maps directly to wave interference",
       "has_anchor": true,
@@ -231,21 +257,23 @@
     },
     {
       "pattern": "\\bdemonstrates?\\b",
-      "line": 2605,
+      "line": 2632,
       "col": 152,
       "context": "ility rather than selected to induce failure. This appendix demonstrates that feasibility decays with $k$ even for charitable constr",
       "has_anchor": true,
       "matched_anchors": [
-        "\\ref{sec:limitations}"
+        "\\ref{sec:limitations}",
+        "\\input{appendix_review_frame}"
       ]
     },
     {
       "pattern": "\\bshows?\\s+that\\b",
-      "line": 210,
+      "line": 204,
       "col": 144,
       "context": "l step longer than any axis. Figure~\\ref{fig:diagonal_cost} shows that when diagonal $> \\delta$, satisfaction is infeasible (Thm~\\",
       "has_anchor": true,
       "matched_anchors": [
+        "\\ref{cor:k_uniform}",
         "\\ref{fig:diagonal_cost}",
         "\\ref{thm:gram}",
         "2.0"
@@ -253,7 +281,7 @@
     },
     {
       "pattern": "\\bshows?\\s+that\\b",
-      "line": 744,
+      "line": 760,
       "col": 29,
       "context": "rule \\end{tabular} \\end{table} Table~\\ref{tab:embedding_R} shows that $\\rho_{\\max}$ is remarkably consistent ($0.12$--$0.20$) acr",
       "has_anchor": true,
@@ -266,7 +294,7 @@
     },
     {
       "pattern": "\\bshows?\\s+that\\b",
-      "line": 1893,
+      "line": 1911,
       "col": 118,
       "context": "onal budgets, local linearity, and staged decomposition. We show that (i) local linearity is an \\emph{operational consequence} of",
       "has_anchor": true,
@@ -277,7 +305,7 @@
     },
     {
       "pattern": "\\bshows?\\s+that\\b",
-      "line": 2601,
+      "line": 2626,
       "col": 215,
       "context": "ationale recorded in the sidecar JSON for audit. The figure shows that the diagonal-cost cliff replicates qualitatively in image m",
       "has_anchor": true,
@@ -289,7 +317,7 @@
     },
     {
       "pattern": "\\bshows?\\s+that\\b",
-      "line": 2729,
+      "line": 2756,
       "col": 149,
       "context": "ict. The 24\\% compatibility rate among high-$\\rhohat$ pairs shows that semantic similarity can indicate \\emph{reinforcement} (spec",
       "has_anchor": true,
@@ -301,7 +329,21 @@
     },
     {
       "pattern": "\\bestablish(?:es|ed)\\b",
-      "line": 1782,
+      "line": 567,
+      "col": 332,
+      "context": "ation ($\\le 3.1\\%$ on transfer). The bound is kinematic. It establishes when integration becomes mandatory. \\emph{Structured residu",
+      "has_anchor": true,
+      "matched_anchors": [
+        "\\ref{thm:gram}",
+        "\\ref{alg:routing}",
+        "\\citep{nvidia2025cosmos}",
+        "1.0",
+        "0"
+      ]
+    },
+    {
+      "pattern": "\\bestablish(?:es|ed)\\b",
+      "line": 1800,
       "col": 12,
       "context": "subsection{Global Extension}\\label{app:outlook} The bounds established above are local, holding within neighborhoods where first-o",
       "has_anchor": true,
@@ -313,7 +355,7 @@
     },
     {
       "pattern": "\\bestablish(?:es|ed)\\b",
-      "line": 2572,
+      "line": 2597,
       "col": 11,
       "context": "nymity} \\\\ \\bottomrule \\end{tabular} \\end{table} What this establishes (Table~\\ref{tab:cert_layers}): the paper says what it says,",
       "has_anchor": true,
@@ -323,7 +365,7 @@
     },
     {
       "pattern": "\\bthis\\s+is\\s+itself\\b",
-      "line": 2597,
+      "line": 2622,
       "col": 375,
       "context": "is recorded at \\texttt{image\\_transfer\\_runD\\_passB.json}. This is itself a property of the diagonal-cost regime: the bound predicts",
       "has_anchor": true,
@@ -333,11 +375,12 @@
     },
     {
       "pattern": "\\bqualitatively\\b",
-      "line": 2601,
+      "line": 2626,
       "col": 261,
       "context": "t. The figure shows that the diagonal-cost cliff replicates qualitatively in image medium at the high tier; quantitative shape parame",
       "has_anchor": true,
       "matched_anchors": [
+        "\\input{appendix_review_frame}",
         "\\texttt{supplementary/experiments\\_rebuttal/image\\_transfer/run\\_image\\_transfer.py}",
         "\\texttt{supplementary/experiments\\_rebuttal/image\\_transfer/run\\_image\\_transfer.py}",
         "2"

@@ -2,13 +2,13 @@
 
 ## Verdict
 
-**PASS**
+**FAIL**
 
 - Paper: The Cost of Cacophony: Geometric Limits on Multi-Constraint Alignment
 - Venue: NeurIPS 2026 (anonymous double-blind submission)
 - Mode: `quick`
-- Generated: 2026-05-03T23:52:34
-- Rationale: all structural checks clean (L1+L2+L4+L7+L8+L9+L10+L11+L12+L13+L14+L15); L3+L5+L16 coverage is advisory, see triage JSONs
+- Generated: 2026-05-07T05:46:59
+- Rationale: Structural layers failed: L1_audit, L2_validator, L14_illustrations
 
 ## What this certificate proves and does NOT prove
 
@@ -55,18 +55,15 @@
 
 ## Headline claims
 
-*Flagship numerical claims from L15; all 304/304 ties pass.*
+*Flagship numerical claims from L15; all 325/325 ties pass.*
 
 | Claim excerpt | Section | Source artifact | Status |
 |---|---|---|---|
-| 0/4,272 smooth-regime refutations (across 4 domains, predicted-infe... | Abstract / Results | `unconditional_pivot_results.json` | PASS (L15) |
-| 0 smooth-regime successes (refutation count) | Abstract / Results | `unconditional_pivot_results.json` | PASS (L15) |
-| 528 pivot-regime trials (across 4 domains) | Results | `unconditional_pivot_results.json` | PASS (L15) |
-| N=1839 trials (4-model blinded benchmark) | App C (cross-model) | `cross_model_results.json` | PASS (L15) |
-| text medium ~38% at high tier (4-model avg) | App C (cross-model) | `cross_model_results.json` | PASS (L15) |
+| N=1839 trials (4-model blinded benchmark) | App C (image-format text-medium comparator) | `cross_model_results.json` | PASS (L15) |
+| text medium ~38% at high tier (4-model avg) | App C (image-format text-medium comparator) | `cross_model_results.json` | PASS (L15) |
 | 8 OpenRouter models in regression experiment (gemini-flash, gpt-4o-... | App (regression rates) | `openrouter_regression_results.json` | PASS (L15) |
 | Test-axis regression at high tier = 1.7% (pooled across 8 models, c... | App (regression rates) | `openrouter_regression_results.json` | PASS (L15) |
-| 7 Claude family models analyzed (haiku-3 through opus-4.5) | Frontier transfer | `fixed_point_claude_family.json` | PASS (L15) |
+| 10 Claude models in Tab:claude_family (canonical 7 plus opus-4.6, s... | Frontier transfer | `fixed_point_claude_family_full10.json` | PASS (L15) |
 | opus-4 22.7x staging ratio (I18, Table 4) | Frontier transfer | `fixed_point_claude_family.json` | PASS (L15) |
 | N=24 trials total in Run D | App C (image transfer) | `image_transfer_runD_passB.json` | PASS (L15) |
 
@@ -92,7 +89,7 @@
 
 ## Spot-check recipes
 
-**1. 0/4,272 smooth-regime refutations (across 4 domains, predicted-infeasible region**
+**1. smooth_regime_total_4272**
 - Open: `rebuttal/figures/unconditional_pivot_results.json`
 - Compute: `d['full_paper_claim']['smooth_total']`
 - Compare to: paper/main.tex near '0/4,272 smooth-regime'
@@ -116,8 +113,8 @@
 
 | Layer | Status |
 |---|---|
-| L1_audit | PASS |
-| L2_validator | PASS |
+| L1_audit | FAIL |
+| L2_validator | FAIL |
 | L3_sweep | PASS |
 | L4_lineage | PASS |
 | L5_figure_values | PASS |
@@ -127,9 +124,125 @@
 | L10_bib | PASS |
 | L11_scripts | PASS |
 | L12_build_equiv | PASS |
-| L13_cross_tree | PASS |
-| L14_illustrations | PASS |
+| L13_cross_tree | SKIP |
+| L14_illustrations | FAIL |
 | L15_data_ties | PASS |
 | L16_author_claims | PASS |
+| L17_table_values | PASS |
+| L18_sample_size_adequacy | PASS |
+| L19_ci_coverage | PASS |
+| L20_cross_source_recompute | PASS |
+| L21_sbom | PASS |
+| L22_container_lineage | PASS |
+| L23_license_clearance | PASS |
+| L24_pdf_camera_ready | PASS |
+| L25_multi_seed_drift | PASS |
+| L26_reference_convention | PASS |
+| L27_stat_algo_sanity | PASS |
+| L28_symbolic_algebra | PASS |
+| L29_numerical_bounds | PASS |
+| L30_per_trajectory_pivot | PASS |
+| L30_audit_observer_purity | PASS |
+| L31_audit_observer_runtime | PASS |
+| L32_paper_surface | PASS |
+| L33_caption_grounding | PASS |
+| L34_page_check | PASS |
 
-Full certificate JSON: `ci/claim_certificate.json` (self-hash: `d85e8c7a1c1df094...`)
+Full certificate JSON: `ci/claim_certificate.json` (self-hash: `24d180ff4e639047...`)
+
+## Reviewer FAQ (pre-answered)
+
+### 1. Which headline claims are mechanically verified?
+
+Claims with both data-identity AND paper-locality verification (`paper_render_pattern` set):
+
+- **high_tier_total_1365**: 0/1,365 high-tier refutations under audit-observer measurement _(location: main.tex lines 86, 137, 273, 523, 550)_
+- **high_tier_refutations_zero**: 0 high-tier refutations (audit-observer falsification claim) _(location: main.tex lines 86, 137, 273, 523)_
+- **audit_observer_pivot_total_3962**: 3,962 pivot-regime trials under audit-observer measurement _(location: main.tex - Smooth/pivot decomposition appendix (4%/96% split))_
+- **audit_observer_high_tier_passes_923**: 923 high-tier passes (67.6% pooled) under audit observer _(location: main.tex - Pivot Regime in the Predicted-Infeasible Region)_
+
+### 2. Which claims rely on closed-model API outputs?
+
+These result files were produced by querying closed frontier model APIs. They are observational records -- **not bitwise reproducible** without API access and equivalent model versions.
+
+- `rebuttal/figures/blinded_external/cross_model_results.json`
+- `rebuttal/figures/cross_model_results.json`
+- `supplementary/experiments/fixed_point_claude_family.json`
+- `supplementary/experiments/fixed_point_claude_family_full10.json`
+- `supplementary/experiments/fixed_point_claude_family_opus46_addition.json`
+- `supplementary/experiments/fixed_point_claude_family_opus47_addition.json`
+- `supplementary/experiments/fixed_point_claude_family_sonnet46_addition.json`
+- `supplementary/experiments/fixed_point_floor_opus_43.json`
+- `supplementary/experiments/fixed_point_model_family_opus46_addition.json`
+- `supplementary/experiments/fixed_point_model_family_opus47_addition.json`
+- `supplementary/experiments/fixed_point_model_family_sonnet46_addition.json`
+- `supplementary/experiments/openrouter_regression_results.json`
+- `supplementary/experiments/outputs/high_k_opus/high_k_opus_results.json`
+- `supplementary/experiments/outputs/high_k_opus46/high_k_opus46_results.json`
+- `supplementary/experiments/outputs/high_k_opus47/high_k_opus47_results.json`
+- `supplementary/experiments/outputs/high_k_sonnet46/high_k_sonnet46_results.json`
+- `supplementary/experiments/outputs/implicit_k/implicit_k_results.json`
+- `supplementary/experiments/outputs/policy_density/policy_density_results.json`
+
+### 3. Which claims rely on manual scoring?
+
+Passed manual-scoring files (rubric applied by human rater):
+
+- `supplementary/experiments_rebuttal/image_transfer/image_transfer_runD_passB.json` (rubric_hash: `e410813316931ec8...`)
+
+### 4. Which figures are empirical vs schematic?
+
+**Schematics** (3) -- author-drawn TikZ/SVG illustrations, not empirical data plots:
+
+- `staging_vs_refine.tex`: schematic illustration only; not empirical evidence. Three-protocol compariso...
+- `algorithm1_routing.tex`: schematic illustration only; not empirical evidence. Decision-tree shape of A...
+- `interface_assumption.tex`: schematic illustration only; not empirical evidence. Hand-authored from the s...
+
+**Empirical figures** (21) -- generated from experiment data:
+
+- `algorithm1_storyboard.pdf`
+- `gram_eigendecomposition.pdf`
+- `per_task_correlation.pdf`
+- `constrained_decoding.pdf`
+- `cross_model_cliff.pdf`
+- `soft_constraint_cliff.pdf`
+- `related_envelope_combined.tex`
+- `limitations_envelope.tex`
+- `related_work_quadrant.tex`
+- `interface_assumption.tex`
+- `algorithm1_routing.tex`
+- `staging_vs_refine.tex`
+- `image_transfer.pdf`
+- `image_transfer_conflict.pdf`
+- `image_format_cliff.pdf`
+- `proxy_ablation.pdf`
+- `sonification_defense.pdf`
+- `sonification_defense_rho_sweep.pdf`
+- `prompt_length_sweep.png`
+- `constitution_wheel_full.wav`
+- `diagonal_all_four.wav`
+
+### 5. Which warnings affect scientific interpretation?
+
+- **CAVEAT_SMOOTH_TOTAL_DENOMINATOR**: Smooth-regime denominator corrected from 4,800 to 4,272 after excluding pivot-regime overlap. -- applies to: smooth_regime_total_4272, smooth_regime_successes_zero
+- **CAVEAT_MANUAL_IMAGE_SCORING**: Image-medium transfer (Run D) Pass-B scores were assigned by manual human rater review, not automated. -- applies to: runD_high_pass_b_pct, runD_control_pass_b_pct, runD_n_trials_total
+- **CAVEAT_SMALL_N_IMAGE_TRANSFER**: Image-transfer Run D uses N=24 trials total (8 per tier), which is small for statistical inference. -- applies to: runD_n_trials_total, runD_high_pass_b_pct, cross_model_4model_avg_high_pct
+
+### 6. How do I verify one claim locally?
+
+Three example spot-check commands:
+
+```bash
+# 1. Re-run all L15 data-tie checks (full registry):
+python ci/claim_data_ties_check.py
+
+# 2. Re-run the cross-model metadata check:
+python ci/cross_model_metadata_check.py
+
+# 3. Re-run the full claim audit (L1 verbatim):
+python ci/claim_audit.py
+```
+
+### 7. What changed since the previous certificate?
+
+See `ci/CERTIFICATE_CHANGELOG.md` for the full diff history between certificate versions.

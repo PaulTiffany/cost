@@ -34,10 +34,16 @@ latexmk -pdf -interaction=nonstopmode main.tex
 
 ## CI checks (run before submitting)
 
+The full chain is `python ci/claim_certificate.py` (32 layers; runs in
+~30 seconds). Spot checks:
+
 ```bash
-python ci/claim_audit.py         # every numeric claim → verification harness
-python ci/page_check.py          # body ≤ 9 pages, references on page 10+
-python ci/anonymity_check.py     # no GitHub URLs / author names / venue branding
+python ci/claim_certificate.py        # full chain (verdict: PASS)
+python ci/claim_audit.py              # every numeric claim verbatim in paper
+python ci/page_check.py               # body <= 9 pages, references on page 10
+python ci/anonymity_check.py          # no author identity leaks
+python ci/paper_surface_check.py      # spatial impacting on rendered PDF
+python ci/figure_caption_grounding_check.py   # every figure panel grounded
 ```
 
 ## Provenance

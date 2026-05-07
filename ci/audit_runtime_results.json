@@ -1,0 +1,471 @@
+{
+  "_meta": {
+    "pre_reg_hash": "13c4618d46caa58841c047dfe01ea155e2037503cc8000aa1813959eb6e6e605",
+    "manifest_hash": "64825e03880111ab3ed42e8ea103decaeaec02d6d6991e678008976313eed0af",
+    "audit_observer_id": "audit_v1",
+    "ran_at_utc": "2026-05-07T09:46:49+00:00",
+    "source": "supplementary\\experiments\\outputs\\audit_v4\\observation_packets.jsonl"
+  },
+  "per_cell_audit": [
+    {
+      "observer_pair": [
+        "B_claude",
+        "B_openweight"
+      ],
+      "task": "factorial",
+      "tier": "high",
+      "RelationClass": "verifier_surface_mismatch",
+      "evidence": {
+        "pass_rate_a": 0.8666666666666667,
+        "pass_rate_b": 0.4444444444444444,
+        "smooth_fraction_a": 0.0,
+        "smooth_fraction_b": 0.044444444444444446,
+        "L_hat_a": 0.5350983933442168,
+        "L_hat_b": 0.07838070326410494,
+        "n_a": 135,
+        "n_b": 90,
+        "reason": "pass-rate gap exceeds 0.10 AND charts disagree",
+        "offending_packet_hashes": []
+      }
+    },
+    {
+      "observer_pair": [
+        "B_claude",
+        "B_openweight"
+      ],
+      "task": "factorial",
+      "tier": "low",
+      "RelationClass": "chart_transition",
+      "evidence": {
+        "pass_rate_a": 0.7925925925925926,
+        "pass_rate_b": 0.7222222222222222,
+        "smooth_fraction_a": 0.0,
+        "smooth_fraction_b": 0.022222222222222223,
+        "L_hat_a": 0.5321871230999629,
+        "L_hat_b": 0.25741806902662506,
+        "n_a": 135,
+        "n_b": 90,
+        "reason": "L_hat values diverge by more than 50% relative",
+        "offending_packet_hashes": []
+      }
+    },
+    {
+      "observer_pair": [
+        "B_claude",
+        "B_openweight"
+      ],
+      "task": "factorial",
+      "tier": "moderate",
+      "RelationClass": "verifier_surface_mismatch",
+      "evidence": {
+        "pass_rate_a": 0.37777777777777777,
+        "pass_rate_b": 0.2111111111111111,
+        "smooth_fraction_a": 0.0,
+        "smooth_fraction_b": 0.1111111111111111,
+        "L_hat_a": 0.54608785447975,
+        "L_hat_b": 0.1581340378743297,
+        "n_a": 135,
+        "n_b": 90,
+        "reason": "pass-rate gap exceeds 0.10 AND charts disagree",
+        "offending_packet_hashes": []
+      }
+    },
+    {
+      "observer_pair": [
+        "B_claude",
+        "B_openweight"
+      ],
+      "task": "fibonacci",
+      "tier": "high",
+      "RelationClass": "verifier_surface_mismatch",
+      "evidence": {
+        "pass_rate_a": 0.9111111111111111,
+        "pass_rate_b": 0.45555555555555555,
+        "smooth_fraction_a": 0.0,
+        "smooth_fraction_b": 0.12222222222222222,
+        "L_hat_a": 0.6459279697802331,
+        "L_hat_b": 0.07838070326410494,
+        "n_a": 135,
+        "n_b": 90,
+        "reason": "pass-rate gap exceeds 0.10 AND charts disagree",
+        "offending_packet_hashes": []
+      }
+    },
+    {
+      "observer_pair": [
+        "B_claude",
+        "B_openweight"
+      ],
+      "task": "fibonacci",
+      "tier": "low",
+      "RelationClass": "verifier_surface_mismatch",
+      "evidence": {
+        "pass_rate_a": 0.9481481481481482,
+        "pass_rate_b": 0.6444444444444445,
+        "smooth_fraction_a": 0.0,
+        "smooth_fraction_b": 0.12222222222222222,
+        "L_hat_a": 0.4933542356722885,
+        "L_hat_b": 0.17779756885986045,
+        "n_a": 135,
+        "n_b": 90,
+        "reason": "pass-rate gap exceeds 0.10 AND charts disagree",
+        "offending_packet_hashes": []
+      }
+    },
+    {
+      "observer_pair": [
+        "B_claude",
+        "B_openweight"
+      ],
+      "task": "fibonacci",
+      "tier": "moderate",
+      "RelationClass": "local_contract_divergence",
+      "evidence": {
+        "pass_rate_a": 0.5777777777777777,
+        "pass_rate_b": 0.3888888888888889,
+        "smooth_fraction_a": 0.0,
+        "smooth_fraction_b": 0.08888888888888889,
+        "L_hat_a": 0.54608785447975,
+        "L_hat_b": 0.2895181502889993,
+        "n_a": 135,
+        "n_b": 90,
+        "reason": "pass-rate gap exceeds 0.10 with charts in agreement",
+        "offending_packet_hashes": []
+      }
+    },
+    {
+      "observer_pair": [
+        "B_claude",
+        "B_openweight"
+      ],
+      "task": "fizzbuzz",
+      "tier": "high",
+      "RelationClass": "verifier_surface_mismatch",
+      "evidence": {
+        "pass_rate_a": 0.8814814814814815,
+        "pass_rate_b": 0.34444444444444444,
+        "smooth_fraction_a": 0.0,
+        "smooth_fraction_b": 0.14444444444444443,
+        "L_hat_a": 0.7179118116696676,
+        "L_hat_b": 0.2466754446265408,
+        "n_a": 135,
+        "n_b": 90,
+        "reason": "pass-rate gap exceeds 0.10 AND charts disagree",
+        "offending_packet_hashes": []
+      }
+    },
+    {
+      "observer_pair": [
+        "B_claude",
+        "B_openweight"
+      ],
+      "task": "fizzbuzz",
+      "tier": "low",
+      "RelationClass": "agreement",
+      "evidence": {
+        "pass_rate_a": 1.0,
+        "pass_rate_b": 0.9111111111111111,
+        "smooth_fraction_a": 0.0,
+        "smooth_fraction_b": 0.044444444444444446,
+        "L_hat_a": 0.4309471088461578,
+        "L_hat_b": 0.2466754446265408,
+        "n_a": 135,
+        "n_b": 90,
+        "reason": "all three predicates satisfied",
+        "offending_packet_hashes": []
+      }
+    },
+    {
+      "observer_pair": [
+        "B_claude",
+        "B_openweight"
+      ],
+      "task": "fizzbuzz",
+      "tier": "moderate",
+      "RelationClass": "verifier_surface_mismatch",
+      "evidence": {
+        "pass_rate_a": 0.8814814814814815,
+        "pass_rate_b": 0.5555555555555556,
+        "smooth_fraction_a": 0.0,
+        "smooth_fraction_b": 0.03333333333333333,
+        "L_hat_a": 1.014740720667221,
+        "L_hat_b": 0.25741806902662506,
+        "n_a": 135,
+        "n_b": 90,
+        "reason": "pass-rate gap exceeds 0.10 AND charts disagree",
+        "offending_packet_hashes": []
+      }
+    },
+    {
+      "observer_pair": [
+        "B_claude",
+        "B_openweight"
+      ],
+      "task": "gcd",
+      "tier": "high",
+      "RelationClass": "verifier_surface_mismatch",
+      "evidence": {
+        "pass_rate_a": 0.9259259259259259,
+        "pass_rate_b": 0.5714285714285714,
+        "smooth_fraction_a": 0.0,
+        "smooth_fraction_b": 0.06666666666666667,
+        "L_hat_a": 0.8076967836668094,
+        "L_hat_b": 0.17779756885986045,
+        "n_a": 135,
+        "n_b": 105,
+        "reason": "pass-rate gap exceeds 0.10 AND charts disagree",
+        "offending_packet_hashes": []
+      }
+    },
+    {
+      "observer_pair": [
+        "B_claude",
+        "B_openweight"
+      ],
+      "task": "gcd",
+      "tier": "low",
+      "RelationClass": "chart_transition",
+      "evidence": {
+        "pass_rate_a": 0.9925925925925926,
+        "pass_rate_b": 0.9047619047619048,
+        "smooth_fraction_a": 0.0,
+        "smooth_fraction_b": 0.05714285714285714,
+        "L_hat_a": 1.014740720667221,
+        "L_hat_b": 0.1676437289320997,
+        "n_a": 135,
+        "n_b": 105,
+        "reason": "L_hat values diverge by more than 50% relative",
+        "offending_packet_hashes": []
+      }
+    },
+    {
+      "observer_pair": [
+        "B_claude",
+        "B_openweight"
+      ],
+      "task": "gcd",
+      "tier": "moderate",
+      "RelationClass": "chart_transition",
+      "evidence": {
+        "pass_rate_a": 0.7703703703703704,
+        "pass_rate_b": 0.8380952380952381,
+        "smooth_fraction_a": 0.0,
+        "smooth_fraction_b": 0.06666666666666667,
+        "L_hat_a": 0.8076967836668094,
+        "L_hat_b": 0.17779756885986045,
+        "n_a": 135,
+        "n_b": 105,
+        "reason": "L_hat values diverge by more than 50% relative",
+        "offending_packet_hashes": []
+      }
+    },
+    {
+      "observer_pair": [
+        "B_claude",
+        "B_openweight"
+      ],
+      "task": "is_palindrome",
+      "tier": "high",
+      "RelationClass": "verifier_surface_mismatch",
+      "evidence": {
+        "pass_rate_a": 0.7925925925925926,
+        "pass_rate_b": 0.37777777777777777,
+        "smooth_fraction_a": 0.0,
+        "smooth_fraction_b": 0.1111111111111111,
+        "L_hat_a": 0.4309471088461578,
+        "L_hat_b": 0.1581340378743297,
+        "n_a": 135,
+        "n_b": 90,
+        "reason": "pass-rate gap exceeds 0.10 AND charts disagree",
+        "offending_packet_hashes": []
+      }
+    },
+    {
+      "observer_pair": [
+        "B_claude",
+        "B_openweight"
+      ],
+      "task": "is_palindrome",
+      "tier": "low",
+      "RelationClass": "verifier_surface_mismatch",
+      "evidence": {
+        "pass_rate_a": 0.9703703703703703,
+        "pass_rate_b": 0.6666666666666666,
+        "smooth_fraction_a": 0.0,
+        "smooth_fraction_b": 0.17777777777777778,
+        "L_hat_a": 0.8076967836668094,
+        "L_hat_b": 0.1581340378743297,
+        "n_a": 135,
+        "n_b": 90,
+        "reason": "pass-rate gap exceeds 0.10 AND charts disagree",
+        "offending_packet_hashes": []
+      }
+    },
+    {
+      "observer_pair": [
+        "B_claude",
+        "B_openweight"
+      ],
+      "task": "is_palindrome",
+      "tier": "moderate",
+      "RelationClass": "chart_transition",
+      "evidence": {
+        "pass_rate_a": 0.45185185185185184,
+        "pass_rate_b": 0.4888888888888889,
+        "smooth_fraction_a": 0.0,
+        "smooth_fraction_b": 0.1111111111111111,
+        "L_hat_a": 0.7179118116696676,
+        "L_hat_b": 0.2466754446265408,
+        "n_a": 135,
+        "n_b": 90,
+        "reason": "L_hat values diverge by more than 50% relative",
+        "offending_packet_hashes": []
+      }
+    },
+    {
+      "observer_pair": [
+        "B_claude",
+        "B_openweight"
+      ],
+      "task": "reverse_words",
+      "tier": "high",
+      "RelationClass": "local_contract_divergence",
+      "evidence": {
+        "pass_rate_a": 0.6148148148148148,
+        "pass_rate_b": 0.4777777777777778,
+        "smooth_fraction_a": 0.0,
+        "smooth_fraction_b": 0.1111111111111111,
+        "L_hat_a": 0.4933542356722885,
+        "L_hat_b": 0.25741806902662506,
+        "n_a": 135,
+        "n_b": 90,
+        "reason": "pass-rate gap exceeds 0.10 with charts in agreement",
+        "offending_packet_hashes": []
+      }
+    },
+    {
+      "observer_pair": [
+        "B_claude",
+        "B_openweight"
+      ],
+      "task": "reverse_words",
+      "tier": "low",
+      "RelationClass": "verifier_surface_mismatch",
+      "evidence": {
+        "pass_rate_a": 0.9851851851851852,
+        "pass_rate_b": 0.7888888888888889,
+        "smooth_fraction_a": 0.0,
+        "smooth_fraction_b": 0.1111111111111111,
+        "L_hat_a": 0.7179118116696676,
+        "L_hat_b": 0.17779756885986045,
+        "n_a": 135,
+        "n_b": 90,
+        "reason": "pass-rate gap exceeds 0.10 AND charts disagree",
+        "offending_packet_hashes": []
+      }
+    },
+    {
+      "observer_pair": [
+        "B_claude",
+        "B_openweight"
+      ],
+      "task": "reverse_words",
+      "tier": "moderate",
+      "RelationClass": "verifier_surface_mismatch",
+      "evidence": {
+        "pass_rate_a": 0.7185185185185186,
+        "pass_rate_b": 0.4854368932038835,
+        "smooth_fraction_a": 0.0,
+        "smooth_fraction_b": 0.05825242718446602,
+        "L_hat_a": 0.8076967836668094,
+        "L_hat_b": 0.17779756885986045,
+        "n_a": 135,
+        "n_b": 103,
+        "reason": "pass-rate gap exceeds 0.10 AND charts disagree",
+        "offending_packet_hashes": []
+      }
+    }
+  ],
+  "stream_decision": {
+    "dominant_class": "verifier_surface_mismatch",
+    "decision_rule_applied": "majority class over 18 cells (\u00a79)",
+    "paper_action": "investigate_verifier",
+    "class_counts": {
+      "verifier_surface_mismatch": 11,
+      "chart_transition": 4,
+      "local_contract_divergence": 2,
+      "agreement": 1
+    }
+  },
+  "error_filter": {
+    "packets_pre_filter": 6120,
+    "packets_dropped_total": 648,
+    "packets_dropped_B_claude": 0,
+    "packets_dropped_B_openweight": 648,
+    "packets_post_filter": 5472
+  },
+  "headlines_under_O_audit": {
+    "smooth_fraction_per_observer": {
+      "B_claude": 0.0,
+      "B_openweight": 0.08700834326579261
+    },
+    "pivot_fraction_per_observer": {
+      "B_claude": 1.0,
+      "B_openweight": 0.9129916567342073
+    },
+    "high_tier_pass_rate_per_observer": {
+      "B_claude": 0.8320987654320988,
+      "B_openweight": 0.4486486486486487
+    },
+    "L_hat_per_observer": {
+      "B_claude": 0.6359946668029229,
+      "B_openweight": 0.2003075731400655
+    },
+    "smooth_success_exceptions": []
+  },
+  "substantive_verdicts": {
+    "H_B1": {
+      "verdict": "PASS",
+      "evidence": {
+        "band": [
+          0.0,
+          0.15
+        ],
+        "per_observer": {
+          "B_claude": 0.0,
+          "B_openweight": 0.08700834326579261
+        }
+      }
+    },
+    "H_B2": {
+      "verdict": "PASS",
+      "evidence": {
+        "band": [
+          0.3,
+          0.9
+        ],
+        "per_observer": {
+          "B_claude": 0.8320987654320988,
+          "B_openweight": 0.4486486486486487
+        }
+      }
+    },
+    "H_B3": {
+      "verdict": "PASS",
+      "evidence": {
+        "expected": 0,
+        "observed": 0
+      }
+    }
+  },
+  "summary": {
+    "passed": 3,
+    "failed": 0,
+    "insufficient": 0,
+    "total": 3,
+    "n_packets": 6120,
+    "n_cells": 18,
+    "source": "supplementary\\experiments\\outputs\\audit_v4\\observation_packets.jsonl",
+    "status": "PASS"
+  }
+}

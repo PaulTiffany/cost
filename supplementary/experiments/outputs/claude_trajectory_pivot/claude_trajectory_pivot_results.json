@@ -1,0 +1,3168 @@
+{
+  "_meta": {
+    "script": "claude_trajectory_pivot_experiment.py",
+    "started_utc": "2026-05-05T01:31:04.711742+00:00",
+    "finished_utc": "2026-05-05T01:32:02.215947+00:00",
+    "models": [
+      "claude-haiku-4-5",
+      "claude-sonnet-4-6",
+      "claude-opus-4-7"
+    ],
+    "tasks": [
+      "factorial",
+      "fibonacci",
+      "is_palindrome",
+      "binary_search",
+      "gcd",
+      "reverse_words"
+    ],
+    "tiers": [
+      "control",
+      "low",
+      "moderate",
+      "high"
+    ],
+    "trials_per_cell": 2,
+    "encoder": "sentence-transformers/all-MiniLM-L6-v2",
+    "max_tokens": 1024,
+    "pivot_threshold_displacement_factor": 2.5,
+    "pivot_threshold_drift_deg": 15.0,
+    "purpose": "Trial-level trajectory + pass/fail join for L30 cert verification of the 89%/11% smooth/pivot split."
+  },
+  "summary": {
+    "n_trials_total": 120,
+    "smooth_count": 42,
+    "pivot_count": 78,
+    "smooth_fraction": 0.35,
+    "pivot_fraction": 0.65,
+    "smooth_pass_count": 0,
+    "pivot_pass_count": 0,
+    "smooth_pass_rate": 0.0,
+    "pivot_pass_rate": 0.0,
+    "high_tier_total": 30,
+    "high_tier_passed": 0,
+    "high_tier_unconditional_pass_rate": 0.0,
+    "per_model": {
+      "claude-haiku-4-5": {
+        "n_trials": 40,
+        "L_hat_chunkwise_mean": 0.3608580778696035,
+        "threshold_displacement_2_5_L_hat": 0.9021451946740088,
+        "smooth_count": 8,
+        "pivot_count": 32,
+        "smooth_fraction": 0.2,
+        "pivot_fraction": 0.8,
+        "smooth_pass_count": 0,
+        "pivot_pass_count": 0,
+        "smooth_pass_rate": 0.0,
+        "pivot_pass_rate": 0.0,
+        "high_tier_total": 10,
+        "high_tier_passed": 0,
+        "high_tier_unconditional_pass_rate": 0.0
+      },
+      "claude-opus-4-7": {
+        "n_trials": 40,
+        "L_hat_chunkwise_mean": 0.47095775501208104,
+        "threshold_displacement_2_5_L_hat": 1.1773943875302026,
+        "smooth_count": 19,
+        "pivot_count": 21,
+        "smooth_fraction": 0.475,
+        "pivot_fraction": 0.525,
+        "smooth_pass_count": 0,
+        "pivot_pass_count": 0,
+        "smooth_pass_rate": 0.0,
+        "pivot_pass_rate": 0.0,
+        "high_tier_total": 10,
+        "high_tier_passed": 0,
+        "high_tier_unconditional_pass_rate": 0.0
+      },
+      "claude-sonnet-4-6": {
+        "n_trials": 40,
+        "L_hat_chunkwise_mean": 0.6530939374192088,
+        "threshold_displacement_2_5_L_hat": 1.6327348435480222,
+        "smooth_count": 15,
+        "pivot_count": 25,
+        "smooth_fraction": 0.375,
+        "pivot_fraction": 0.625,
+        "smooth_pass_count": 0,
+        "pivot_pass_count": 0,
+        "smooth_pass_rate": 0.0,
+        "pivot_pass_rate": 0.0,
+        "high_tier_total": 10,
+        "high_tier_passed": 0,
+        "high_tier_unconditional_pass_rate": 0.0
+      }
+    }
+  },
+  "trials": [
+    {
+      "model": "claude-haiku-4-5",
+      "task_id": "factorial",
+      "tier": "high",
+      "trial_idx": 1,
+      "n_chunks": 2,
+      "completion_chars": 254,
+      "displacements": [
+        0.4431619942188263,
+        0.25966453552246094
+      ],
+      "max_displacement": 0.4431619942188263,
+      "mean_displacement": 0.3514132648706436,
+      "max_drift_deg": 14.919799269053385,
+      "verifier_passed": false,
+      "verifier_detail": {
+        "pass_a": true,
+        "pass_b": false,
+        "pass_both": false,
+        "msg_a": "All tests passed",
+        "msg_b": "Too many lines: 11 > 10"
+      },
+      "completion": "```python\ndef factorial(n):\n    \"\"\"\n    Returns the factorial of a non-negative integer n.\n    \n    Args:\n        n: A non-negative integer\n        \n    Returns:\n        The factorial of n (n!)\n    \"\"\"\n    return 1 if n <= 1 else n * factorial(n - 1)\n```",
+      "error": null
+    },
+    {
+      "model": "claude-opus-4-7",
+      "task_id": "fibonacci",
+      "tier": "control",
+      "trial_idx": 0,
+      "n_chunks": 2,
+      "completion_chars": 182,
+      "displacements": [
+        0.6842573881149292,
+        0.23160183429718018
+      ],
+      "max_displacement": 0.6842573881149292,
+      "mean_displacement": 0.4579296112060547,
+      "max_drift_deg": 13.29964639169548,
+      "verifier_passed": false,
+      "verifier_detail": {
+        "pass_a": true,
+        "pass_b": true,
+        "pass_both": true,
+        "msg_a": "All tests passed",
+        "msg_b": "All format checks passed"
+      },
+      "completion": "```python\ndef fibonacci(n):\n    if n < 0:\n        raise ValueError(\"n must be a non-negative integer\")\n    a, b = 0, 1\n    for _ in range(n):\n        a, b = b, a + b\n    return a\n```",
+      "error": null
+    },
+    {
+      "model": "claude-sonnet-4-6",
+      "task_id": "fibonacci",
+      "tier": "moderate",
+      "trial_idx": 1,
+      "n_chunks": 3,
+      "completion_chars": 423,
+      "displacements": [
+        1.3082051277160645,
+        0.3017197847366333,
+        0.3845825493335724
+      ],
+      "max_displacement": 1.3082051277160645,
+      "mean_displacement": 0.6648358205954233,
+      "max_drift_deg": 23.991820671521104,
+      "verifier_passed": false,
+      "verifier_detail": {
+        "pass_a": true,
+        "pass_b": false,
+        "pass_both": false,
+        "msg_a": "All tests passed",
+        "msg_b": "Too many lines: 16 > 15"
+      },
+      "completion": "```python\ndef fibonacci(n):\n    \"\"\"\n    Return the nth Fibonacci number (0-indexed).\n    \n    Args:\n        n: The index of the Fibonacci number to return (0-indexed).\n    \n    Returns:\n        The nth Fibonacci number, where fibonacci(0)=0 and fibonacci(1)=1.\n    \"\"\"\n    if n < 0:\n        raise ValueError(\"n must be a non-negative integer\")\n    a, b = 0, 1\n    for _ in range(n):\n        a, b = b, a + b\n    return a\n```",
+      "error": null
+    },
+    {
+      "model": "claude-sonnet-4-6",
+      "task_id": "factorial",
+      "tier": "low",
+      "trial_idx": 0,
+      "n_chunks": 4,
+      "completion_chars": 596,
+      "displacements": [
+        1.3392705917358398,
+        0.26169559359550476,
+        0.20651507377624512,
+        0.3231429159641266
+      ],
+      "max_displacement": 1.3392705917358398,
+      "mean_displacement": 0.5326560437679291,
+      "max_drift_deg": 22.92499552414915,
+      "verifier_passed": false,
+      "verifier_detail": {
+        "pass_a": true,
+        "pass_b": true,
+        "pass_both": true,
+        "msg_a": "All tests passed",
+        "msg_b": "All format checks passed"
+      },
+      "completion": "```python\ndef factorial(n):\n    \"\"\"\n    Calculate and return the factorial of a non-negative integer n.\n\n    Args:\n        n (int): A non-negative integer whose factorial is to be computed.\n\n    Returns:\n        int: The factorial of n (n!).\n\n    Raises:\n        ValueError: If n is a negative integer.\n        TypeError: If n is not an integer.\n    \"\"\"\n    if not isinstance(n, int):\n        raise TypeError(\"n must be an integer.\")\n    if n < 0:\n        raise ValueError(\"n must be a non-negative integer.\")\n    result = 1\n    for i in range(2, n + 1):\n        result *= i\n    return result\n```",
+      "error": null
+    },
+    {
+      "model": "claude-haiku-4-5",
+      "task_id": "gcd",
+      "tier": "moderate",
+      "trial_idx": 0,
+      "n_chunks": 3,
+      "completion_chars": 378,
+      "displacements": [
+        0.6810285449028015,
+        0.22756177186965942,
+        0.08081676065921783
+      ],
+      "max_displacement": 0.6810285449028015,
+      "mean_displacement": 0.32980235914389294,
+      "max_drift_deg": 13.803983940374968,
+      "verifier_passed": false,
+      "verifier_detail": {
+        "pass_a": true,
+        "pass_b": false,
+        "pass_both": false,
+        "msg_a": "All tests passed",
+        "msg_b": "Too many lines: 16 > 15"
+      },
+      "completion": "```python\ndef gcd(a, b):\n    \"\"\"\n    Returns the greatest common divisor of two positive integers a and b.\n    \n    Uses the Euclidean algorithm to efficiently compute the GCD.\n    \n    Args:\n        a: A positive integer\n        b: A positive integer\n    \n    Returns:\n        The greatest common divisor of a and b\n    \"\"\"\n    while b:\n        a, b = b, a % b\n    return a\n```",
+      "error": null
+    },
+    {
+      "model": "claude-opus-4-7",
+      "task_id": "reverse_words",
+      "tier": "low",
+      "trial_idx": 1,
+      "n_chunks": 4,
+      "completion_chars": 346,
+      "displacements": [
+        0.7451859712600708,
+        0.23528838157653809,
+        0.22918538749217987,
+        0.24127113819122314
+      ],
+      "max_displacement": 0.7451859712600708,
+      "mean_displacement": 0.362732719630003,
+      "max_drift_deg": 21.03257706235664,
+      "verifier_passed": false,
+      "verifier_detail": {
+        "pass_a": true,
+        "pass_b": true,
+        "pass_both": true,
+        "msg_a": "All tests passed",
+        "msg_b": "All format checks passed"
+      },
+      "completion": "```python\ndef reverse_words(s):\n    \"\"\"Reverse the order of words in a string.\n\n    Words are separated by spaces. Returns a string with the words\n    in reverse order, joined by single spaces.\n\n    Args:\n        s: The input string.\n\n    Returns:\n        A string with the words in reverse order.\n    \"\"\"\n    return ' '.join(s.split()[::-1])\n```",
+      "error": null
+    },
+    {
+      "model": "claude-haiku-4-5",
+      "task_id": "fibonacci",
+      "tier": "control",
+      "trial_idx": 0,
+      "n_chunks": 4,
+      "completion_chars": 500,
+      "displacements": [
+        0.5432766675949097,
+        0.28590455651283264,
+        0.4306713044643402,
+        0.04254227504134178
+      ],
+      "max_displacement": 0.5432766675949097,
+      "mean_displacement": 0.3255987009033561,
+      "max_drift_deg": 28.328159141286502,
+      "verifier_passed": false,
+      "verifier_detail": {
+        "pass_a": true,
+        "pass_b": true,
+        "pass_both": true,
+        "msg_a": "All tests passed",
+        "msg_b": "All format checks passed"
+      },
+      "completion": "```python\ndef fibonacci(n):\n    \"\"\"\n    Returns the nth Fibonacci number (0-indexed).\n    \n    Args:\n        n: Non-negative integer index\n        \n    Returns:\n        The nth Fibonacci number\n    \"\"\"\n    if n < 0:\n        raise ValueError(\"n must be non-negative\")\n    \n    if n == 0:\n        return 0\n    if n == 1:\n        return 1\n    \n    # Use iterative approach for efficiency\n    prev, curr = 0, 1\n    for _ in range(2, n + 1):\n        prev, curr = curr, prev + curr\n    \n    return curr\n```",
+      "error": null
+    },
+    {
+      "model": "claude-opus-4-7",
+      "task_id": "fibonacci",
+      "tier": "low",
+      "trial_idx": 1,
+      "n_chunks": 4,
+      "completion_chars": 405,
+      "displacements": [
+        0.7175664901733398,
+        0.3412439823150635,
+        0.36047083139419556,
+        0.24805948138237
+      ],
+      "max_displacement": 0.7175664901733398,
+      "mean_displacement": 0.4168351963162422,
+      "max_drift_deg": 30.23207366097056,
+      "verifier_passed": false,
+      "verifier_detail": {
+        "pass_a": true,
+        "pass_b": true,
+        "pass_both": true,
+        "msg_a": "All tests passed",
+        "msg_b": "All format checks passed"
+      },
+      "completion": "```python\ndef fibonacci(n):\n    \"\"\"Return the nth Fibonacci number (0-indexed).\n\n    fibonacci(0) = 0, fibonacci(1) = 1, fibonacci(2) = 1, ...\n\n    Args:\n        n: A non-negative integer index.\n\n    Returns:\n        The nth Fibonacci number.\n    \"\"\"\n    if n < 0:\n        raise ValueError(\"n must be a non-negative integer\")\n    a, b = 0, 1\n    for _ in range(n):\n        a, b = b, a + b\n    return a\n```",
+      "error": null
+    },
+    {
+      "model": "claude-sonnet-4-6",
+      "task_id": "reverse_words",
+      "tier": "low",
+      "trial_idx": 1,
+      "n_chunks": 4,
+      "completion_chars": 497,
+      "displacements": [
+        1.2507632970809937,
+        0.22758333384990692,
+        0.25642386078834534,
+        0.11291196197271347
+      ],
+      "max_displacement": 1.2507632970809937,
+      "mean_displacement": 0.46192061342298985,
+      "max_drift_deg": 19.23938728195325,
+      "verifier_passed": false,
+      "verifier_detail": {
+        "pass_a": true,
+        "pass_b": true,
+        "pass_both": true,
+        "msg_a": "All tests passed",
+        "msg_b": "All format checks passed"
+      },
+      "completion": "```python\ndef reverse_words(s):\n    \"\"\"\n    Reverse the order of words in a string.\n    \n    Args:\n        s (str): Input string with words separated by spaces.\n    \n    Returns:\n        str: A new string with the words in reversed order.\n    \n    Examples:\n        >>> reverse_words(\"Hello World\")\n        'World Hello'\n        >>> reverse_words(\"the sky is blue\")\n        'blue is sky the'\n    \"\"\"\n    words = s.split(' ')\n    reversed_words = words[::-1]\n    return ' '.join(reversed_words)\n```",
+      "error": null
+    },
+    {
+      "model": "claude-haiku-4-5",
+      "task_id": "reverse_words",
+      "tier": "high",
+      "trial_idx": 0,
+      "n_chunks": 2,
+      "completion_chars": 285,
+      "displacements": [
+        0.5181175470352173,
+        0.36694106459617615
+      ],
+      "max_displacement": 0.5181175470352173,
+      "mean_displacement": 0.4425293058156967,
+      "max_drift_deg": 21.143947482175555,
+      "verifier_passed": false,
+      "verifier_detail": {
+        "pass_a": true,
+        "pass_b": false,
+        "pass_both": false,
+        "msg_a": "All tests passed",
+        "msg_b": "Too many lines: 12 > 10"
+      },
+      "completion": "```python\ndef reverse_words(s):\n    \"\"\"\n    Reverses the order of words in a string.\n    \n    Args:\n        s: A string with words separated by spaces\n        \n    Returns:\n        A string with words in reversed order\n    \"\"\"\n    words = s.split()\n    return ' '.join(words[::-1])\n```",
+      "error": null
+    },
+    {
+      "model": "claude-sonnet-4-6",
+      "task_id": "gcd",
+      "tier": "high",
+      "trial_idx": 1,
+      "n_chunks": 2,
+      "completion_chars": 165,
+      "displacements": [
+        1.3452227115631104,
+        0.06217784807085991
+      ],
+      "max_displacement": 1.3452227115631104,
+      "mean_displacement": 0.7037002798169851,
+      "max_drift_deg": 3.5631022595354307,
+      "verifier_passed": false,
+      "verifier_detail": {
+        "pass_a": true,
+        "pass_b": true,
+        "pass_both": true,
+        "msg_a": "All tests passed",
+        "msg_b": "All format checks passed"
+      },
+      "completion": "```python\ndef gcd(a, b):\n    \"\"\"Return the greatest common divisor of two positive integers a and b using recursion.\"\"\"\n    return a if b == 0 else gcd(b, a % b)\n```",
+      "error": null
+    },
+    {
+      "model": "claude-haiku-4-5",
+      "task_id": "fibonacci",
+      "tier": "control",
+      "trial_idx": 1,
+      "n_chunks": 4,
+      "completion_chars": 500,
+      "displacements": [
+        0.5432766675949097,
+        0.28590455651283264,
+        0.4306713044643402,
+        0.04254227504134178
+      ],
+      "max_displacement": 0.5432766675949097,
+      "mean_displacement": 0.3255987009033561,
+      "max_drift_deg": 28.328159141286502,
+      "verifier_passed": false,
+      "verifier_detail": {
+        "pass_a": true,
+        "pass_b": true,
+        "pass_both": true,
+        "msg_a": "All tests passed",
+        "msg_b": "All format checks passed"
+      },
+      "completion": "```python\ndef fibonacci(n):\n    \"\"\"\n    Returns the nth Fibonacci number (0-indexed).\n    \n    Args:\n        n: Non-negative integer index\n        \n    Returns:\n        The nth Fibonacci number\n    \"\"\"\n    if n < 0:\n        raise ValueError(\"n must be non-negative\")\n    \n    if n == 0:\n        return 0\n    if n == 1:\n        return 1\n    \n    # Use iterative approach for efficiency\n    prev, curr = 0, 1\n    for _ in range(2, n + 1):\n        prev, curr = curr, prev + curr\n    \n    return curr\n```",
+      "error": null
+    },
+    {
+      "model": "claude-opus-4-7",
+      "task_id": "gcd",
+      "tier": "low",
+      "trial_idx": 0,
+      "n_chunks": 2,
+      "completion_chars": 157,
+      "displacements": [
+        0.6936522126197815,
+        0.049415890127420425
+      ],
+      "max_displacement": 0.6936522126197815,
+      "mean_displacement": 0.37153405137360096,
+      "max_drift_deg": 2.8316100184328,
+      "verifier_passed": false,
+      "verifier_detail": {
+        "pass_a": true,
+        "pass_b": true,
+        "pass_both": true,
+        "msg_a": "All tests passed",
+        "msg_b": "All format checks passed"
+      },
+      "completion": "```python\ndef gcd(a, b):\n    \"\"\"Return the greatest common divisor of two positive integers a and b.\"\"\"\n    while b:\n        a, b = b, a % b\n    return a\n```",
+      "error": null
+    },
+    {
+      "model": "claude-haiku-4-5",
+      "task_id": "gcd",
+      "tier": "moderate",
+      "trial_idx": 1,
+      "n_chunks": 3,
+      "completion_chars": 378,
+      "displacements": [
+        0.6810285449028015,
+        0.22756177186965942,
+        0.08081676065921783
+      ],
+      "max_displacement": 0.6810285449028015,
+      "mean_displacement": 0.32980235914389294,
+      "max_drift_deg": 13.803983940374968,
+      "verifier_passed": false,
+      "verifier_detail": {
+        "pass_a": true,
+        "pass_b": false,
+        "pass_both": false,
+        "msg_a": "All tests passed",
+        "msg_b": "Too many lines: 16 > 15"
+      },
+      "completion": "```python\ndef gcd(a, b):\n    \"\"\"\n    Returns the greatest common divisor of two positive integers a and b.\n    \n    Uses the Euclidean algorithm to efficiently compute the GCD.\n    \n    Args:\n        a: A positive integer\n        b: A positive integer\n    \n    Returns:\n        The greatest common divisor of a and b\n    \"\"\"\n    while b:\n        a, b = b, a % b\n    return a\n```",
+      "error": null
+    },
+    {
+      "model": "claude-sonnet-4-6",
+      "task_id": "fibonacci",
+      "tier": "low",
+      "trial_idx": 0,
+      "n_chunks": 4,
+      "completion_chars": 477,
+      "displacements": [
+        1.315941572189331,
+        0.3463859260082245,
+        0.30153757333755493,
+        0.3413831889629364
+      ],
+      "max_displacement": 1.315941572189331,
+      "mean_displacement": 0.5763120651245117,
+      "max_drift_deg": 26.2471631298486,
+      "verifier_passed": false,
+      "verifier_detail": {
+        "pass_a": true,
+        "pass_b": true,
+        "pass_both": true,
+        "msg_a": "All tests passed",
+        "msg_b": "All format checks passed"
+      },
+      "completion": "```python\ndef fibonacci(n):\n    \"\"\"\n    Return the nth Fibonacci number (0-indexed).\n    \n    Args:\n        n: A non-negative integer index.\n    \n    Returns:\n        The nth Fibonacci number, where fibonacci(0)=0 and fibonacci(1)=1.\n    \n    Raises:\n        ValueError: If n is negative.\n    \"\"\"\n    if not isinstance(n, int) or n < 0:\n        raise ValueError(\"n must be a non-negative integer\")\n    a, b = 0, 1\n    for _ in range(n):\n        a, b = b, a + b\n    return a\n```",
+      "error": null
+    },
+    {
+      "model": "claude-opus-4-7",
+      "task_id": "reverse_words",
+      "tier": "moderate",
+      "trial_idx": 1,
+      "n_chunks": 3,
+      "completion_chars": 281,
+      "displacements": [
+        0.8007736206054688,
+        0.35367828607559204,
+        0.12313887476921082
+      ],
+      "max_displacement": 0.8007736206054688,
+      "mean_displacement": 0.4258635938167572,
+      "max_drift_deg": 20.37140602241716,
+      "verifier_passed": false,
+      "verifier_detail": {
+        "pass_a": true,
+        "pass_b": true,
+        "pass_both": true,
+        "msg_a": "All tests passed",
+        "msg_b": "All format checks passed"
+      },
+      "completion": "```python\ndef reverse_words(s):\n    \"\"\"Reverse the order of words in a string s, where words are separated by spaces.\"\"\"\n    words = s.split(' ')\n    result = []\n    i = len(words) - 1\n    while i >= 0:\n        result.append(words[i])\n        i -= 1\n    return ' '.join(result)\n```",
+      "error": null
+    },
+    {
+      "model": "claude-haiku-4-5",
+      "task_id": "fibonacci",
+      "tier": "moderate",
+      "trial_idx": 0,
+      "n_chunks": 2,
+      "completion_chars": 320,
+      "displacements": [
+        0.5432766675949097,
+        0.30959352850914
+      ],
+      "max_displacement": 0.5432766675949097,
+      "mean_displacement": 0.42643509805202484,
+      "max_drift_deg": 17.810019385080295,
+      "verifier_passed": false,
+      "verifier_detail": {
+        "pass_a": true,
+        "pass_b": false,
+        "pass_both": false,
+        "msg_a": "All tests passed",
+        "msg_b": "Too many lines: 16 > 15"
+      },
+      "completion": "```python\ndef fibonacci(n):\n    \"\"\"\n    Returns the nth Fibonacci number (0-indexed).\n    \n    Args:\n        n: Non-negative integer index\n        \n    Returns:\n        The nth Fibonacci number\n    \"\"\"\n    if n <= 1:\n        return n\n    a, b = 0, 1\n    for _ in range(2, n + 1):\n        a, b = b, a + b\n    return b\n```",
+      "error": null
+    },
+    {
+      "model": "claude-opus-4-7",
+      "task_id": "factorial",
+      "tier": "control",
+      "trial_idx": 1,
+      "n_chunks": 2,
+      "completion_chars": 258,
+      "displacements": [
+        0.7059649229049683,
+        0.3166658878326416
+      ],
+      "max_displacement": 0.7059649229049683,
+      "mean_displacement": 0.5113154053688049,
+      "max_drift_deg": 18.220294331524926,
+      "verifier_passed": false,
+      "verifier_detail": {
+        "pass_a": true,
+        "pass_b": true,
+        "pass_both": true,
+        "msg_a": "All tests passed",
+        "msg_b": "All format checks passed"
+      },
+      "completion": "```python\ndef factorial(n):\n    if not isinstance(n, int):\n        raise TypeError(\"n must be an integer\")\n    if n < 0:\n        raise ValueError(\"n must be non-negative\")\n    result = 1\n    for i in range(2, n + 1):\n        result *= i\n    return result\n```",
+      "error": null
+    },
+    {
+      "model": "claude-sonnet-4-6",
+      "task_id": "gcd",
+      "tier": "control",
+      "trial_idx": 1,
+      "n_chunks": 1,
+      "completion_chars": 78,
+      "displacements": [
+        1.2667266130447388
+      ],
+      "max_displacement": 1.2667266130447388,
+      "mean_displacement": 1.2667266130447388,
+      "max_drift_deg": 0.0,
+      "verifier_passed": false,
+      "verifier_detail": {
+        "pass_a": true,
+        "pass_b": true,
+        "pass_both": true,
+        "msg_a": "All tests passed",
+        "msg_b": "All format checks passed"
+      },
+      "completion": "```python\ndef gcd(a, b):\n    while b:\n        a, b = b, a % b\n    return a\n```",
+      "error": null
+    },
+    {
+      "model": "claude-haiku-4-5",
+      "task_id": "factorial",
+      "tier": "control",
+      "trial_idx": 0,
+      "n_chunks": 3,
+      "completion_chars": 491,
+      "displacements": [
+        0.4295561909675598,
+        0.3395718038082123,
+        0.20210421085357666
+      ],
+      "max_displacement": 0.4295561909675598,
+      "mean_displacement": 0.32374406854311627,
+      "max_drift_deg": 19.86739132250184,
+      "verifier_passed": false,
+      "verifier_detail": {
+        "pass_a": true,
+        "pass_b": true,
+        "pass_both": true,
+        "msg_a": "All tests passed",
+        "msg_b": "All format checks passed"
+      },
+      "completion": "```python\ndef factorial(n):\n    \"\"\"\n    Returns the factorial of a non-negative integer n.\n    \n    Args:\n        n: A non-negative integer\n        \n    Returns:\n        The factorial of n (n!)\n        \n    Raises:\n        ValueError: If n is negative\n    \"\"\"\n    if n < 0:\n        raise ValueError(\"Factorial is not defined for negative numbers\")\n    \n    if n == 0 or n == 1:\n        return 1\n    \n    result = 1\n    for i in range(2, n + 1):\n        result *= i\n    \n    return result\n```",
+      "error": null
+    },
+    {
+      "model": "claude-sonnet-4-6",
+      "task_id": "fibonacci",
+      "tier": "high",
+      "trial_idx": 0,
+      "n_chunks": 2,
+      "completion_chars": 150,
+      "displacements": [
+        1.3075858354568481,
+        0.3023906946182251
+      ],
+      "max_displacement": 1.3075858354568481,
+      "mean_displacement": 0.8049882650375366,
+      "max_drift_deg": 17.39240932134842,
+      "verifier_passed": false,
+      "verifier_detail": {
+        "pass_a": true,
+        "pass_b": true,
+        "pass_both": true,
+        "msg_a": "All tests passed",
+        "msg_b": "All format checks passed"
+      },
+      "completion": "```python\ndef fibonacci(n):\n    \"\"\"Return the nth Fibonacci number (0-indexed).\"\"\"\n    return n if n <= 1 else fibonacci(n - 1) + fibonacci(n - 2)\n```",
+      "error": null
+    },
+    {
+      "model": "claude-haiku-4-5",
+      "task_id": "gcd",
+      "tier": "high",
+      "trial_idx": 0,
+      "n_chunks": 2,
+      "completion_chars": 205,
+      "displacements": [
+        0.6958332657814026,
+        0.23482541739940643
+      ],
+      "max_displacement": 0.6958332657814026,
+      "mean_displacement": 0.4653293415904045,
+      "max_drift_deg": 13.485611948613133,
+      "verifier_passed": false,
+      "verifier_detail": {
+        "pass_a": true,
+        "pass_b": true,
+        "pass_both": true,
+        "msg_a": "All tests passed",
+        "msg_b": "All format checks passed"
+      },
+      "completion": "```python\ndef gcd(a, b):\n    \"\"\"\n    Returns the greatest common divisor of two positive integers a and b.\n    Uses Euclidean algorithm with recursion.\n    \"\"\"\n    return a if b == 0 else gcd(b, a % b)\n```",
+      "error": null
+    },
+    {
+      "model": "claude-sonnet-4-6",
+      "task_id": "factorial",
+      "tier": "moderate",
+      "trial_idx": 0,
+      "n_chunks": 4,
+      "completion_chars": 528,
+      "displacements": [
+        1.3266444206237793,
+        0.26589861512184143,
+        0.20236389338970184,
+        0.17606328427791595
+      ],
+      "max_displacement": 1.3266444206237793,
+      "mean_displacement": 0.49274255335330963,
+      "max_drift_deg": 17.50255206664654,
+      "verifier_passed": false,
+      "verifier_detail": {
+        "pass_a": true,
+        "pass_b": false,
+        "pass_both": false,
+        "msg_a": "All tests passed",
+        "msg_b": "Too many lines: 19 > 15"
+      },
+      "completion": "```python\ndef factorial(n):\n    \"\"\"\n    Calculate and return the factorial of a non-negative integer n.\n    \n    Args:\n        n (int): A non-negative integer.\n    \n    Returns:\n        int: The factorial of n (n!).\n    \n    Raises:\n        ValueError: If n is negative.\n        TypeError: If n is not an integer.\n    \"\"\"\n    if not isinstance(n, int):\n        raise TypeError(\"n must be an integer\")\n    if n < 0:\n        raise ValueError(\"n must be a non-negative integer\")\n    return 1 if n == 0 else n * factorial(n - 1)\n```",
+      "error": null
+    },
+    {
+      "model": "claude-opus-4-7",
+      "task_id": "fibonacci",
+      "tier": "high",
+      "trial_idx": 1,
+      "n_chunks": 4,
+      "completion_chars": 318,
+      "displacements": [
+        0.6799848675727844,
+        0.3235503137111664,
+        0.31970712542533875,
+        0.21639969944953918
+      ],
+      "max_displacement": 0.6799848675727844,
+      "mean_displacement": 0.3849105015397072,
+      "max_drift_deg": 27.19848767498871,
+      "verifier_passed": false,
+      "verifier_detail": {
+        "pass_a": true,
+        "pass_b": true,
+        "pass_both": true,
+        "msg_a": "All tests passed",
+        "msg_b": "All format checks passed"
+      },
+      "completion": "```python\ndef fibonacci(n, a=0, b=1):\n    \"\"\"Return the nth Fibonacci number (0-indexed).\n\n    fibonacci(0) = 0, fibonacci(1) = 1, fibonacci(n) = fibonacci(n-1) + fibonacci(n-2).\n    Uses tail recursion with accumulators for efficiency.\n    \"\"\"\n    if n == 0:\n        return a\n    return fibonacci(n - 1, b, a + b)\n```",
+      "error": null
+    },
+    {
+      "model": "claude-haiku-4-5",
+      "task_id": "fibonacci",
+      "tier": "low",
+      "trial_idx": 1,
+      "n_chunks": 4,
+      "completion_chars": 488,
+      "displacements": [
+        0.5776262879371643,
+        0.32224252820014954,
+        0.19268673658370972,
+        0.24914593994617462
+      ],
+      "max_displacement": 0.5776262879371643,
+      "mean_displacement": 0.33542537316679955,
+      "max_drift_deg": 25.11250405749033,
+      "verifier_passed": false,
+      "verifier_detail": {
+        "pass_a": true,
+        "pass_b": true,
+        "pass_both": true,
+        "msg_a": "All tests passed",
+        "msg_b": "All format checks passed"
+      },
+      "completion": "```python\ndef fibonacci(n):\n    \"\"\"\n    Returns the nth Fibonacci number (0-indexed).\n    \n    Args:\n        n: Non-negative integer index\n        \n    Returns:\n        The nth Fibonacci number where fibonacci(0)=0, fibonacci(1)=1\n    \"\"\"\n    if n < 0:\n        raise ValueError(\"n must be non-negative\")\n    if n == 0:\n        return 0\n    if n == 1:\n        return 1\n    \n    prev, curr = 0, 1\n    for _ in range(2, n + 1):\n        prev, curr = curr, prev + curr\n    \n    return curr\n```",
+      "error": null
+    },
+    {
+      "model": "claude-opus-4-7",
+      "task_id": "factorial",
+      "tier": "low",
+      "trial_idx": 0,
+      "n_chunks": 4,
+      "completion_chars": 533,
+      "displacements": [
+        0.5560849905014038,
+        0.2831957936286926,
+        0.21713131666183472,
+        0.32033631205558777
+      ],
+      "max_displacement": 0.5560849905014038,
+      "mean_displacement": 0.34418710321187973,
+      "max_drift_deg": 24.340631001113913,
+      "verifier_passed": false,
+      "verifier_detail": {
+        "pass_a": true,
+        "pass_b": true,
+        "pass_both": true,
+        "msg_a": "All tests passed",
+        "msg_b": "All format checks passed"
+      },
+      "completion": "```python\ndef factorial(n):\n    \"\"\"Return the factorial of a non-negative integer n.\n\n    Args:\n        n: A non-negative integer.\n\n    Returns:\n        The factorial of n (n!).\n\n    Raises:\n        TypeError: If n is not an integer.\n        ValueError: If n is negative.\n    \"\"\"\n    if not isinstance(n, int) or isinstance(n, bool):\n        raise TypeError(\"n must be an integer\")\n    if n < 0:\n        raise ValueError(\"n must be non-negative\")\n    result = 1\n    for i in range(2, n + 1):\n        result *= i\n    return result\n```",
+      "error": null
+    },
+    {
+      "model": "claude-haiku-4-5",
+      "task_id": "reverse_words",
+      "tier": "control",
+      "trial_idx": 0,
+      "n_chunks": 2,
+      "completion_chars": 267,
+      "displacements": [
+        0.5181175470352173,
+        0.3708201050758362
+      ],
+      "max_displacement": 0.5181175470352173,
+      "mean_displacement": 0.44446882605552673,
+      "max_drift_deg": 21.37007985704312,
+      "verifier_passed": false,
+      "verifier_detail": {
+        "pass_a": true,
+        "pass_b": true,
+        "pass_both": true,
+        "msg_a": "All tests passed",
+        "msg_b": "All format checks passed"
+      },
+      "completion": "```python\ndef reverse_words(s):\n    \"\"\"\n    Reverses the order of words in a string.\n    \n    Args:\n        s: A string with words separated by spaces\n        \n    Returns:\n        A string with words in reversed order\n    \"\"\"\n    return ' '.join(s.split()[::-1])\n```",
+      "error": null
+    },
+    {
+      "model": "claude-sonnet-4-6",
+      "task_id": "reverse_words",
+      "tier": "low",
+      "trial_idx": 0,
+      "n_chunks": 4,
+      "completion_chars": 497,
+      "displacements": [
+        1.2655274868011475,
+        0.22776012122631073,
+        0.2062356323003769,
+        0.1805693805217743
+      ],
+      "max_displacement": 1.2655274868011475,
+      "mean_displacement": 0.47002315521240234,
+      "max_drift_deg": 19.15971160313121,
+      "verifier_passed": false,
+      "verifier_detail": {
+        "pass_a": true,
+        "pass_b": true,
+        "pass_both": true,
+        "msg_a": "All tests passed",
+        "msg_b": "All format checks passed"
+      },
+      "completion": "```python\ndef reverse_words(s):\n    \"\"\"\n    Reverse the order of words in a string.\n    \n    Args:\n        s (str): Input string with words separated by spaces.\n    \n    Returns:\n        str: A new string with the words in reversed order.\n    \n    Examples:\n        >>> reverse_words(\"Hello World\")\n        'World Hello'\n        >>> reverse_words(\"the sky is blue\")\n        'blue is sky the'\n    \"\"\"\n    words = s.split(' ')\n    reversed_words = words[::-1]\n    return ' '.join(reversed_words)\n```",
+      "error": null
+    },
+    {
+      "model": "claude-opus-4-7",
+      "task_id": "gcd",
+      "tier": "control",
+      "trial_idx": 1,
+      "n_chunks": 1,
+      "completion_chars": 78,
+      "displacements": [
+        0.6530884504318237
+      ],
+      "max_displacement": 0.6530884504318237,
+      "mean_displacement": 0.6530884504318237,
+      "max_drift_deg": 0.0,
+      "verifier_passed": false,
+      "verifier_detail": {
+        "pass_a": true,
+        "pass_b": true,
+        "pass_both": true,
+        "msg_a": "All tests passed",
+        "msg_b": "All format checks passed"
+      },
+      "completion": "```python\ndef gcd(a, b):\n    while b:\n        a, b = b, a % b\n    return a\n```",
+      "error": null
+    },
+    {
+      "model": "claude-haiku-4-5",
+      "task_id": "gcd",
+      "tier": "low",
+      "trial_idx": 0,
+      "n_chunks": 4,
+      "completion_chars": 520,
+      "displacements": [
+        0.7186117768287659,
+        0.25631237030029297,
+        0.18695548176765442,
+        0.04933001473546028
+      ],
+      "max_displacement": 0.7186117768287659,
+      "mean_displacement": 0.3028024109080434,
+      "max_drift_deg": 18.06573947019069,
+      "verifier_passed": false,
+      "verifier_detail": {
+        "pass_a": true,
+        "pass_b": true,
+        "pass_both": true,
+        "msg_a": "All tests passed",
+        "msg_b": "All format checks passed"
+      },
+      "completion": "```python\ndef gcd(a, b):\n    \"\"\"\n    Calculate the greatest common divisor of two positive integers.\n    \n    Uses the Euclidean algorithm to efficiently find the GCD by repeatedly\n    replacing the larger number with the remainder of dividing the larger\n    by the smaller until one number becomes zero.\n    \n    Args:\n        a: First positive integer\n        b: Second positive integer\n    \n    Returns:\n        The greatest common divisor of a and b\n    \"\"\"\n    while b != 0:\n        a, b = b, a % b\n    return a\n```",
+      "error": null
+    },
+    {
+      "model": "claude-sonnet-4-6",
+      "task_id": "factorial",
+      "tier": "moderate",
+      "trial_idx": 1,
+      "n_chunks": 4,
+      "completion_chars": 528,
+      "displacements": [
+        1.3266444206237793,
+        0.26589861512184143,
+        0.20236389338970184,
+        0.17606328427791595
+      ],
+      "max_displacement": 1.3266444206237793,
+      "mean_displacement": 0.49274255335330963,
+      "max_drift_deg": 17.50255206664654,
+      "verifier_passed": false,
+      "verifier_detail": {
+        "pass_a": true,
+        "pass_b": false,
+        "pass_both": false,
+        "msg_a": "All tests passed",
+        "msg_b": "Too many lines: 19 > 15"
+      },
+      "completion": "```python\ndef factorial(n):\n    \"\"\"\n    Calculate and return the factorial of a non-negative integer n.\n    \n    Args:\n        n (int): A non-negative integer.\n    \n    Returns:\n        int: The factorial of n (n!).\n    \n    Raises:\n        ValueError: If n is negative.\n        TypeError: If n is not an integer.\n    \"\"\"\n    if not isinstance(n, int):\n        raise TypeError(\"n must be an integer\")\n    if n < 0:\n        raise ValueError(\"n must be a non-negative integer\")\n    return 1 if n == 0 else n * factorial(n - 1)\n```",
+      "error": null
+    },
+    {
+      "model": "claude-opus-4-7",
+      "task_id": "fibonacci",
+      "tier": "moderate",
+      "trial_idx": 0,
+      "n_chunks": 2,
+      "completion_chars": 227,
+      "displacements": [
+        0.7262542247772217,
+        0.23887701332569122
+      ],
+      "max_displacement": 0.7262542247772217,
+      "mean_displacement": 0.48256561905145645,
+      "max_drift_deg": 13.719397109042937,
+      "verifier_passed": false,
+      "verifier_detail": {
+        "pass_a": true,
+        "pass_b": true,
+        "pass_both": true,
+        "msg_a": "All tests passed",
+        "msg_b": "All format checks passed"
+      },
+      "completion": "```python\ndef fibonacci(n):\n    \"\"\"Return the nth Fibonacci number (0-indexed).\"\"\"\n    if n < 0:\n        raise ValueError(\"n must be non-negative\")\n    a, b = 0, 1\n    for _ in range(n):\n        a, b = b, a + b\n    return a\n```",
+      "error": null
+    },
+    {
+      "model": "claude-haiku-4-5",
+      "task_id": "fibonacci",
+      "tier": "moderate",
+      "trial_idx": 1,
+      "n_chunks": 2,
+      "completion_chars": 320,
+      "displacements": [
+        0.560103714466095,
+        0.3019019067287445
+      ],
+      "max_displacement": 0.560103714466095,
+      "mean_displacement": 0.43100281059741974,
+      "max_drift_deg": 17.364078591623255,
+      "verifier_passed": false,
+      "verifier_detail": {
+        "pass_a": true,
+        "pass_b": false,
+        "pass_both": false,
+        "msg_a": "All tests passed",
+        "msg_b": "Too many lines: 16 > 15"
+      },
+      "completion": "```python\ndef fibonacci(n):\n    \"\"\"\n    Returns the nth Fibonacci number (0-indexed).\n    \n    Args:\n        n: Non-negative integer index\n        \n    Returns:\n        The nth Fibonacci number\n    \"\"\"\n    if n <= 1:\n        return n\n    a, b = 0, 1\n    for _ in range(2, n + 1):\n        a, b = b, a + b\n    return b\n```",
+      "error": null
+    },
+    {
+      "model": "claude-opus-4-7",
+      "task_id": "factorial",
+      "tier": "control",
+      "trial_idx": 0,
+      "n_chunks": 2,
+      "completion_chars": 258,
+      "displacements": [
+        0.7059649229049683,
+        0.3166658878326416
+      ],
+      "max_displacement": 0.7059649229049683,
+      "mean_displacement": 0.5113154053688049,
+      "max_drift_deg": 18.220294331524926,
+      "verifier_passed": false,
+      "verifier_detail": {
+        "pass_a": true,
+        "pass_b": true,
+        "pass_both": true,
+        "msg_a": "All tests passed",
+        "msg_b": "All format checks passed"
+      },
+      "completion": "```python\ndef factorial(n):\n    if not isinstance(n, int):\n        raise TypeError(\"n must be an integer\")\n    if n < 0:\n        raise ValueError(\"n must be non-negative\")\n    result = 1\n    for i in range(2, n + 1):\n        result *= i\n    return result\n```",
+      "error": null
+    },
+    {
+      "model": "claude-haiku-4-5",
+      "task_id": "reverse_words",
+      "tier": "low",
+      "trial_idx": 0,
+      "n_chunks": 4,
+      "completion_chars": 510,
+      "displacements": [
+        0.5483490228652954,
+        0.21510276198387146,
+        0.28283271193504333,
+        0.15351691842079163
+      ],
+      "max_displacement": 0.5483490228652954,
+      "mean_displacement": 0.29995035380125046,
+      "max_drift_deg": 20.903201546593532,
+      "verifier_passed": false,
+      "verifier_detail": {
+        "pass_a": true,
+        "pass_b": true,
+        "pass_both": true,
+        "msg_a": "All tests passed",
+        "msg_b": "All format checks passed"
+      },
+      "completion": "```python\ndef reverse_words(s):\n    \"\"\"\n    Reverses the order of words in a string.\n    \n    Args:\n        s (str): A string with words separated by spaces.\n    \n    Returns:\n        str: A string with words in reversed order.\n    \n    Example:\n        >>> reverse_words(\"Hello World Python\")\n        \"Python World Hello\"\n    \"\"\"\n    words = s.split()\n    reversed_words = []\n    \n    for i in range(len(words) - 1, -1, -1):\n        reversed_words.append(words[i])\n    \n    return \" \".join(reversed_words)\n```",
+      "error": null
+    },
+    {
+      "model": "claude-haiku-4-5",
+      "task_id": "reverse_words",
+      "tier": "low",
+      "trial_idx": 1,
+      "n_chunks": 4,
+      "completion_chars": 499,
+      "displacements": [
+        0.5003942847251892,
+        0.20509320497512817,
+        0.29810020327568054,
+        0.11422993987798691
+      ],
+      "max_displacement": 0.5003942847251892,
+      "mean_displacement": 0.2794544082134962,
+      "max_drift_deg": 19.360837358436463,
+      "verifier_passed": false,
+      "verifier_detail": {
+        "pass_a": true,
+        "pass_b": true,
+        "pass_both": true,
+        "msg_a": "All tests passed",
+        "msg_b": "All format checks passed"
+      },
+      "completion": "```python\ndef reverse_words(s):\n    \"\"\"\n    Reverses the order of words in a string.\n    \n    Args:\n        s: A string with words separated by spaces.\n    \n    Returns:\n        A string with words in reversed order.\n    \n    Example:\n        >>> reverse_words(\"Hello World Python\")\n        \"Python World Hello\"\n    \"\"\"\n    words = s.split()\n    reversed_words = []\n    \n    for i in range(len(words) - 1, -1, -1):\n        reversed_words.append(words[i])\n    \n    return \" \".join(reversed_words)\n```",
+      "error": null
+    },
+    {
+      "model": "claude-opus-4-7",
+      "task_id": "reverse_words",
+      "tier": "control",
+      "trial_idx": 1,
+      "n_chunks": 1,
+      "completion_chars": 75,
+      "displacements": [
+        0.80826336145401
+      ],
+      "max_displacement": 0.80826336145401,
+      "mean_displacement": 0.80826336145401,
+      "max_drift_deg": 0.0,
+      "verifier_passed": false,
+      "verifier_detail": {
+        "pass_a": true,
+        "pass_b": true,
+        "pass_both": true,
+        "msg_a": "All tests passed",
+        "msg_b": "All format checks passed"
+      },
+      "completion": "```python\ndef reverse_words(s):\n    return ' '.join(s.split(' ')[::-1])\n```",
+      "error": null
+    },
+    {
+      "model": "claude-haiku-4-5",
+      "task_id": "fibonacci",
+      "tier": "high",
+      "trial_idx": 1,
+      "n_chunks": 2,
+      "completion_chars": 149,
+      "displacements": [
+        0.4968789517879486,
+        0.2755905091762543
+      ],
+      "max_displacement": 0.4968789517879486,
+      "mean_displacement": 0.38623473048210144,
+      "max_drift_deg": 15.840574696893936,
+      "verifier_passed": false,
+      "verifier_detail": {
+        "pass_a": true,
+        "pass_b": true,
+        "pass_both": true,
+        "msg_a": "All tests passed",
+        "msg_b": "All format checks passed"
+      },
+      "completion": "```python\ndef fibonacci(n):\n    \"\"\"Return the nth Fibonacci number (0-indexed).\"\"\"\n    return n if n < 2 else fibonacci(n - 1) + fibonacci(n - 2)\n```",
+      "error": null
+    },
+    {
+      "model": "claude-opus-4-7",
+      "task_id": "is_palindrome",
+      "tier": "moderate",
+      "trial_idx": 0,
+      "n_chunks": 2,
+      "completion_chars": 154,
+      "displacements": [
+        1.0475958585739136,
+        0.28894782066345215
+      ],
+      "max_displacement": 1.0475958585739136,
+      "mean_displacement": 0.6682718396186829,
+      "max_drift_deg": 16.61363121993666,
+      "verifier_passed": false,
+      "verifier_detail": {
+        "pass_a": true,
+        "pass_b": true,
+        "pass_both": true,
+        "msg_a": "All tests passed",
+        "msg_b": "All format checks passed"
+      },
+      "completion": "```python\ndef is_palindrome(s):\n    \"\"\"Return True if s is a palindrome (ignoring case), False otherwise.\"\"\"\n    s = s.lower()\n    return s == s[::-1]\n```",
+      "error": null
+    },
+    {
+      "model": "claude-haiku-4-5",
+      "task_id": "fibonacci",
+      "tier": "high",
+      "trial_idx": 0,
+      "n_chunks": 2,
+      "completion_chars": 149,
+      "displacements": [
+        0.4968789517879486,
+        0.2755905091762543
+      ],
+      "max_displacement": 0.4968789517879486,
+      "mean_displacement": 0.38623473048210144,
+      "max_drift_deg": 15.840574696893936,
+      "verifier_passed": false,
+      "verifier_detail": {
+        "pass_a": true,
+        "pass_b": true,
+        "pass_both": true,
+        "msg_a": "All tests passed",
+        "msg_b": "All format checks passed"
+      },
+      "completion": "```python\ndef fibonacci(n):\n    \"\"\"Return the nth Fibonacci number (0-indexed).\"\"\"\n    return n if n < 2 else fibonacci(n - 1) + fibonacci(n - 2)\n```",
+      "error": null
+    },
+    {
+      "model": "claude-opus-4-7",
+      "task_id": "fibonacci",
+      "tier": "moderate",
+      "trial_idx": 1,
+      "n_chunks": 2,
+      "completion_chars": 227,
+      "displacements": [
+        0.7262542247772217,
+        0.23887701332569122
+      ],
+      "max_displacement": 0.7262542247772217,
+      "mean_displacement": 0.48256561905145645,
+      "max_drift_deg": 13.719397109042937,
+      "verifier_passed": false,
+      "verifier_detail": {
+        "pass_a": true,
+        "pass_b": true,
+        "pass_both": true,
+        "msg_a": "All tests passed",
+        "msg_b": "All format checks passed"
+      },
+      "completion": "```python\ndef fibonacci(n):\n    \"\"\"Return the nth Fibonacci number (0-indexed).\"\"\"\n    if n < 0:\n        raise ValueError(\"n must be non-negative\")\n    a, b = 0, 1\n    for _ in range(n):\n        a, b = b, a + b\n    return a\n```",
+      "error": null
+    },
+    {
+      "model": "claude-haiku-4-5",
+      "task_id": "factorial",
+      "tier": "control",
+      "trial_idx": 1,
+      "n_chunks": 3,
+      "completion_chars": 491,
+      "displacements": [
+        0.4295561909675598,
+        0.3395718038082123,
+        0.20210421085357666
+      ],
+      "max_displacement": 0.4295561909675598,
+      "mean_displacement": 0.32374406854311627,
+      "max_drift_deg": 19.86739132250184,
+      "verifier_passed": false,
+      "verifier_detail": {
+        "pass_a": true,
+        "pass_b": true,
+        "pass_both": true,
+        "msg_a": "All tests passed",
+        "msg_b": "All format checks passed"
+      },
+      "completion": "```python\ndef factorial(n):\n    \"\"\"\n    Returns the factorial of a non-negative integer n.\n    \n    Args:\n        n: A non-negative integer\n        \n    Returns:\n        The factorial of n (n!)\n        \n    Raises:\n        ValueError: If n is negative\n    \"\"\"\n    if n < 0:\n        raise ValueError(\"Factorial is not defined for negative numbers\")\n    \n    if n == 0 or n == 1:\n        return 1\n    \n    result = 1\n    for i in range(2, n + 1):\n        result *= i\n    \n    return result\n```",
+      "error": null
+    },
+    {
+      "model": "claude-sonnet-4-6",
+      "task_id": "factorial",
+      "tier": "high",
+      "trial_idx": 0,
+      "n_chunks": 2,
+      "completion_chars": 261,
+      "displacements": [
+        1.3313190937042236,
+        0.25705504417419434
+      ],
+      "max_displacement": 1.3313190937042236,
+      "mean_displacement": 0.794187068939209,
+      "max_drift_deg": 14.76902148148425,
+      "verifier_passed": false,
+      "verifier_detail": {
+        "pass_a": true,
+        "pass_b": true,
+        "pass_both": true,
+        "msg_a": "All tests passed",
+        "msg_b": "All format checks passed"
+      },
+      "completion": "```python\ndef factorial(n):\n    \"\"\"Return the factorial of a non-negative integer n using recursion.\"\"\"\n    if not isinstance(n, int) or n < 0:\n        raise ValueError(\"Input must be a non-negative integer\")\n    return 1 if n == 0 else n * factorial(n - 1)\n```",
+      "error": null
+    },
+    {
+      "model": "claude-opus-4-7",
+      "task_id": "factorial",
+      "tier": "low",
+      "trial_idx": 1,
+      "n_chunks": 4,
+      "completion_chars": 533,
+      "displacements": [
+        0.5560849905014038,
+        0.2831957936286926,
+        0.21713131666183472,
+        0.32033631205558777
+      ],
+      "max_displacement": 0.5560849905014038,
+      "mean_displacement": 0.34418710321187973,
+      "max_drift_deg": 24.340631001113913,
+      "verifier_passed": false,
+      "verifier_detail": {
+        "pass_a": true,
+        "pass_b": true,
+        "pass_both": true,
+        "msg_a": "All tests passed",
+        "msg_b": "All format checks passed"
+      },
+      "completion": "```python\ndef factorial(n):\n    \"\"\"Return the factorial of a non-negative integer n.\n\n    Args:\n        n: A non-negative integer.\n\n    Returns:\n        The factorial of n (n!).\n\n    Raises:\n        TypeError: If n is not an integer.\n        ValueError: If n is negative.\n    \"\"\"\n    if not isinstance(n, int) or isinstance(n, bool):\n        raise TypeError(\"n must be an integer\")\n    if n < 0:\n        raise ValueError(\"n must be non-negative\")\n    result = 1\n    for i in range(2, n + 1):\n        result *= i\n    return result\n```",
+      "error": null
+    },
+    {
+      "model": "claude-opus-4-7",
+      "task_id": "is_palindrome",
+      "tier": "control",
+      "trial_idx": 0,
+      "n_chunks": 1,
+      "completion_chars": 77,
+      "displacements": [
+        1.0624127388000488
+      ],
+      "max_displacement": 1.0624127388000488,
+      "mean_displacement": 1.0624127388000488,
+      "max_drift_deg": 0.0,
+      "verifier_passed": false,
+      "verifier_detail": {
+        "pass_a": true,
+        "pass_b": true,
+        "pass_both": true,
+        "msg_a": "All tests passed",
+        "msg_b": "All format checks passed"
+      },
+      "completion": "```python\ndef is_palindrome(s):\n    s = s.lower()\n    return s == s[::-1]\n```",
+      "error": null
+    },
+    {
+      "model": "claude-opus-4-7",
+      "task_id": "gcd",
+      "tier": "moderate",
+      "trial_idx": 0,
+      "n_chunks": 2,
+      "completion_chars": 157,
+      "displacements": [
+        0.6936522126197815,
+        0.049415890127420425
+      ],
+      "max_displacement": 0.6936522126197815,
+      "mean_displacement": 0.37153405137360096,
+      "max_drift_deg": 2.8316100184328,
+      "verifier_passed": false,
+      "verifier_detail": {
+        "pass_a": true,
+        "pass_b": true,
+        "pass_both": true,
+        "msg_a": "All tests passed",
+        "msg_b": "All format checks passed"
+      },
+      "completion": "```python\ndef gcd(a, b):\n    \"\"\"Return the greatest common divisor of two positive integers a and b.\"\"\"\n    while b:\n        a, b = b, a % b\n    return a\n```",
+      "error": null
+    },
+    {
+      "model": "claude-haiku-4-5",
+      "task_id": "is_palindrome",
+      "tier": "moderate",
+      "trial_idx": 0,
+      "n_chunks": 3,
+      "completion_chars": 439,
+      "displacements": [
+        0.5810759663581848,
+        0.327853262424469,
+        0.3082425594329834
+      ],
+      "max_displacement": 0.5810759663581848,
+      "mean_displacement": 0.4057239294052124,
+      "max_drift_deg": 22.138139908268304,
+      "verifier_passed": false,
+      "verifier_detail": {
+        "pass_a": true,
+        "pass_b": false,
+        "pass_both": false,
+        "msg_a": "All tests passed",
+        "msg_b": "Too many lines: 21 > 15"
+      },
+      "completion": "```python\ndef is_palindrome(s):\n    \"\"\"\n    Check if a string is a palindrome, ignoring case.\n    \n    Args:\n        s: A string to check\n        \n    Returns:\n        True if s is a palindrome (case-insensitive), False otherwise\n    \"\"\"\n    s = s.lower()\n    left = 0\n    right = len(s) - 1\n    \n    while left < right:\n        if s[left] != s[right]:\n            return False\n        left += 1\n        right -= 1\n    \n    return True\n```",
+      "error": null
+    },
+    {
+      "model": "claude-sonnet-4-6",
+      "task_id": "factorial",
+      "tier": "low",
+      "trial_idx": 1,
+      "n_chunks": 4,
+      "completion_chars": 596,
+      "displacements": [
+        1.3392705917358398,
+        0.26169559359550476,
+        0.20651507377624512,
+        0.3231429159641266
+      ],
+      "max_displacement": 1.3392705917358398,
+      "mean_displacement": 0.5326560437679291,
+      "max_drift_deg": 22.92499552414915,
+      "verifier_passed": false,
+      "verifier_detail": {
+        "pass_a": true,
+        "pass_b": true,
+        "pass_both": true,
+        "msg_a": "All tests passed",
+        "msg_b": "All format checks passed"
+      },
+      "completion": "```python\ndef factorial(n):\n    \"\"\"\n    Calculate and return the factorial of a non-negative integer n.\n\n    Args:\n        n (int): A non-negative integer whose factorial is to be computed.\n\n    Returns:\n        int: The factorial of n (n!).\n\n    Raises:\n        ValueError: If n is a negative integer.\n        TypeError: If n is not an integer.\n    \"\"\"\n    if not isinstance(n, int):\n        raise TypeError(\"n must be an integer.\")\n    if n < 0:\n        raise ValueError(\"n must be a non-negative integer.\")\n    result = 1\n    for i in range(2, n + 1):\n        result *= i\n    return result\n```",
+      "error": null
+    },
+    {
+      "model": "claude-sonnet-4-6",
+      "task_id": "gcd",
+      "tier": "high",
+      "trial_idx": 0,
+      "n_chunks": 2,
+      "completion_chars": 165,
+      "displacements": [
+        1.3452227115631104,
+        0.06217784807085991
+      ],
+      "max_displacement": 1.3452227115631104,
+      "mean_displacement": 0.7037002798169851,
+      "max_drift_deg": 3.5631022595354307,
+      "verifier_passed": false,
+      "verifier_detail": {
+        "pass_a": true,
+        "pass_b": true,
+        "pass_both": true,
+        "msg_a": "All tests passed",
+        "msg_b": "All format checks passed"
+      },
+      "completion": "```python\ndef gcd(a, b):\n    \"\"\"Return the greatest common divisor of two positive integers a and b using recursion.\"\"\"\n    return a if b == 0 else gcd(b, a % b)\n```",
+      "error": null
+    },
+    {
+      "model": "claude-haiku-4-5",
+      "task_id": "is_palindrome",
+      "tier": "low",
+      "trial_idx": 0,
+      "n_chunks": 3,
+      "completion_chars": 439,
+      "displacements": [
+        0.5810759663581848,
+        0.327853262424469,
+        0.3082425594329834
+      ],
+      "max_displacement": 0.5810759663581848,
+      "mean_displacement": 0.4057239294052124,
+      "max_drift_deg": 22.138139908268304,
+      "verifier_passed": false,
+      "verifier_detail": {
+        "pass_a": true,
+        "pass_b": true,
+        "pass_both": true,
+        "msg_a": "All tests passed",
+        "msg_b": "All format checks passed"
+      },
+      "completion": "```python\ndef is_palindrome(s):\n    \"\"\"\n    Check if a string is a palindrome, ignoring case.\n    \n    Args:\n        s: A string to check\n        \n    Returns:\n        True if s is a palindrome (case-insensitive), False otherwise\n    \"\"\"\n    s = s.lower()\n    left = 0\n    right = len(s) - 1\n    \n    while left < right:\n        if s[left] != s[right]:\n            return False\n        left += 1\n        right -= 1\n    \n    return True\n```",
+      "error": null
+    },
+    {
+      "model": "claude-sonnet-4-6",
+      "task_id": "gcd",
+      "tier": "control",
+      "trial_idx": 0,
+      "n_chunks": 1,
+      "completion_chars": 78,
+      "displacements": [
+        1.2667266130447388
+      ],
+      "max_displacement": 1.2667266130447388,
+      "mean_displacement": 1.2667266130447388,
+      "max_drift_deg": 0.0,
+      "verifier_passed": false,
+      "verifier_detail": {
+        "pass_a": true,
+        "pass_b": true,
+        "pass_both": true,
+        "msg_a": "All tests passed",
+        "msg_b": "All format checks passed"
+      },
+      "completion": "```python\ndef gcd(a, b):\n    while b:\n        a, b = b, a % b\n    return a\n```",
+      "error": null
+    },
+    {
+      "model": "claude-haiku-4-5",
+      "task_id": "reverse_words",
+      "tier": "moderate",
+      "trial_idx": 1,
+      "n_chunks": 3,
+      "completion_chars": 401,
+      "displacements": [
+        0.5181175470352173,
+        0.2985527217388153,
+        0.24510058760643005
+      ],
+      "max_displacement": 0.5181175470352173,
+      "mean_displacement": 0.35392361879348755,
+      "max_drift_deg": 22.938722757311837,
+      "verifier_passed": false,
+      "verifier_detail": {
+        "pass_a": true,
+        "pass_b": false,
+        "pass_both": false,
+        "msg_a": "All tests passed",
+        "msg_b": "Too many lines: 17 > 15"
+      },
+      "completion": "```python\ndef reverse_words(s):\n    \"\"\"\n    Reverses the order of words in a string.\n    \n    Args:\n        s: A string with words separated by spaces\n        \n    Returns:\n        A string with words in reversed order\n    \"\"\"\n    words = s.split()\n    result = \"\"\n    for i in range(len(words) - 1, -1, -1):\n        result += words[i]\n        if i > 0:\n            result += \" \"\n    return result\n```",
+      "error": null
+    },
+    {
+      "model": "claude-opus-4-7",
+      "task_id": "reverse_words",
+      "tier": "control",
+      "trial_idx": 0,
+      "n_chunks": 1,
+      "completion_chars": 75,
+      "displacements": [
+        0.80826336145401
+      ],
+      "max_displacement": 0.80826336145401,
+      "mean_displacement": 0.80826336145401,
+      "max_drift_deg": 0.0,
+      "verifier_passed": false,
+      "verifier_detail": {
+        "pass_a": true,
+        "pass_b": true,
+        "pass_both": true,
+        "msg_a": "All tests passed",
+        "msg_b": "All format checks passed"
+      },
+      "completion": "```python\ndef reverse_words(s):\n    return ' '.join(s.split(' ')[::-1])\n```",
+      "error": null
+    },
+    {
+      "model": "claude-sonnet-4-6",
+      "task_id": "is_palindrome",
+      "tier": "control",
+      "trial_idx": 0,
+      "n_chunks": 1,
+      "completion_chars": 77,
+      "displacements": [
+        1.173716425895691
+      ],
+      "max_displacement": 1.173716425895691,
+      "mean_displacement": 1.173716425895691,
+      "max_drift_deg": 0.0,
+      "verifier_passed": false,
+      "verifier_detail": {
+        "pass_a": true,
+        "pass_b": true,
+        "pass_both": true,
+        "msg_a": "All tests passed",
+        "msg_b": "All format checks passed"
+      },
+      "completion": "```python\ndef is_palindrome(s):\n    s = s.lower()\n    return s == s[::-1]\n```",
+      "error": null
+    },
+    {
+      "model": "claude-haiku-4-5",
+      "task_id": "is_palindrome",
+      "tier": "control",
+      "trial_idx": 0,
+      "n_chunks": 3,
+      "completion_chars": 502,
+      "displacements": [
+        0.5447660088539124,
+        0.30319440364837646,
+        0.29339897632598877
+      ],
+      "max_displacement": 0.5447660088539124,
+      "mean_displacement": 0.38045312960942584,
+      "max_drift_deg": 24.919183654549443,
+      "verifier_passed": false,
+      "verifier_detail": {
+        "pass_a": true,
+        "pass_b": true,
+        "pass_both": true,
+        "msg_a": "All tests passed",
+        "msg_b": "All format checks passed"
+      },
+      "completion": "```python\ndef is_palindrome(s):\n    \"\"\"\n    Returns True if string s is a palindrome (ignoring case), False otherwise.\n    \n    Args:\n        s: A string to check\n        \n    Returns:\n        bool: True if s is a palindrome, False otherwise\n    \"\"\"\n    # Convert to lowercase and remove spaces/special characters, keeping only alphanumeric\n    cleaned = ''.join(char.lower() for char in s if char.isalnum())\n    \n    # Check if cleaned string equals its reverse\n    return cleaned == cleaned[::-1]\n```",
+      "error": null
+    },
+    {
+      "model": "claude-opus-4-7",
+      "task_id": "is_palindrome",
+      "tier": "control",
+      "trial_idx": 1,
+      "n_chunks": 1,
+      "completion_chars": 77,
+      "displacements": [
+        1.0624127388000488
+      ],
+      "max_displacement": 1.0624127388000488,
+      "mean_displacement": 1.0624127388000488,
+      "max_drift_deg": 0.0,
+      "verifier_passed": false,
+      "verifier_detail": {
+        "pass_a": true,
+        "pass_b": true,
+        "pass_both": true,
+        "msg_a": "All tests passed",
+        "msg_b": "All format checks passed"
+      },
+      "completion": "```python\ndef is_palindrome(s):\n    s = s.lower()\n    return s == s[::-1]\n```",
+      "error": null
+    },
+    {
+      "model": "claude-haiku-4-5",
+      "task_id": "fibonacci",
+      "tier": "low",
+      "trial_idx": 0,
+      "n_chunks": 4,
+      "completion_chars": 488,
+      "displacements": [
+        0.5776262879371643,
+        0.32224252820014954,
+        0.19268673658370972,
+        0.24914593994617462
+      ],
+      "max_displacement": 0.5776262879371643,
+      "mean_displacement": 0.33542537316679955,
+      "max_drift_deg": 25.11250405749033,
+      "verifier_passed": false,
+      "verifier_detail": {
+        "pass_a": true,
+        "pass_b": true,
+        "pass_both": true,
+        "msg_a": "All tests passed",
+        "msg_b": "All format checks passed"
+      },
+      "completion": "```python\ndef fibonacci(n):\n    \"\"\"\n    Returns the nth Fibonacci number (0-indexed).\n    \n    Args:\n        n: Non-negative integer index\n        \n    Returns:\n        The nth Fibonacci number where fibonacci(0)=0, fibonacci(1)=1\n    \"\"\"\n    if n < 0:\n        raise ValueError(\"n must be non-negative\")\n    if n == 0:\n        return 0\n    if n == 1:\n        return 1\n    \n    prev, curr = 0, 1\n    for _ in range(2, n + 1):\n        prev, curr = curr, prev + curr\n    \n    return curr\n```",
+      "error": null
+    },
+    {
+      "model": "claude-opus-4-7",
+      "task_id": "fibonacci",
+      "tier": "high",
+      "trial_idx": 0,
+      "n_chunks": 3,
+      "completion_chars": 225,
+      "displacements": [
+        0.658115804195404,
+        0.3871047794818878,
+        0.1282634139060974
+      ],
+      "max_displacement": 0.658115804195404,
+      "mean_displacement": 0.39116133252779645,
+      "max_drift_deg": 23.888600261484484,
+      "verifier_passed": false,
+      "verifier_detail": {
+        "pass_a": true,
+        "pass_b": true,
+        "pass_both": true,
+        "msg_a": "All tests passed",
+        "msg_b": "All format checks passed"
+      },
+      "completion": "```python\ndef fibonacci(n, _cache={0: 0, 1: 1}):\n    \"\"\"Return the nth Fibonacci number (0-indexed).\"\"\"\n    if n in _cache:\n        return _cache[n]\n    _cache[n] = fibonacci(n - 1) + fibonacci(n - 2)\n    return _cache[n]\n```",
+      "error": null
+    },
+    {
+      "model": "claude-sonnet-4-6",
+      "task_id": "is_palindrome",
+      "tier": "high",
+      "trial_idx": 1,
+      "n_chunks": 1,
+      "completion_chars": 161,
+      "displacements": [
+        1.1760735511779785
+      ],
+      "max_displacement": 1.1760735511779785,
+      "mean_displacement": 1.1760735511779785,
+      "max_drift_deg": 0.0,
+      "verifier_passed": false,
+      "verifier_detail": {
+        "pass_a": true,
+        "pass_b": true,
+        "pass_both": true,
+        "msg_a": "All tests passed",
+        "msg_b": "All format checks passed"
+      },
+      "completion": "```python\ndef is_palindrome(s):\n    \"\"\"Return True if string s is a palindrome (ignoring case), False otherwise.\"\"\"\n    s = s.lower()\n    return s == s[::-1]\n```",
+      "error": null
+    },
+    {
+      "model": "claude-sonnet-4-6",
+      "task_id": "factorial",
+      "tier": "control",
+      "trial_idx": 0,
+      "n_chunks": 2,
+      "completion_chars": 261,
+      "displacements": [
+        1.3212289810180664,
+        0.33724167943000793
+      ],
+      "max_displacement": 1.3212289810180664,
+      "mean_displacement": 0.8292353302240372,
+      "max_drift_deg": 19.415284115174472,
+      "verifier_passed": false,
+      "verifier_detail": {
+        "pass_a": true,
+        "pass_b": true,
+        "pass_both": true,
+        "msg_a": "All tests passed",
+        "msg_b": "All format checks passed"
+      },
+      "completion": "```python\ndef factorial(n):\n    if not isinstance(n, int) or n < 0:\n        raise ValueError(\"Input must be a non-negative integer\")\n    if n == 0 or n == 1:\n        return 1\n    result = 1\n    for i in range(2, n + 1):\n        result *= i\n    return result\n```",
+      "error": null
+    },
+    {
+      "model": "claude-opus-4-7",
+      "task_id": "is_palindrome",
+      "tier": "high",
+      "trial_idx": 0,
+      "n_chunks": 2,
+      "completion_chars": 157,
+      "displacements": [
+        1.053094744682312,
+        0.18910735845565796
+      ],
+      "max_displacement": 1.053094744682312,
+      "mean_displacement": 0.621101051568985,
+      "max_drift_deg": 10.85126376707019,
+      "verifier_passed": false,
+      "verifier_detail": {
+        "pass_a": true,
+        "pass_b": true,
+        "pass_both": true,
+        "msg_a": "All tests passed",
+        "msg_b": "All format checks passed"
+      },
+      "completion": "```python\ndef is_palindrome(s):\n    \"\"\"Return True if s is a palindrome (case-insensitive), False otherwise.\"\"\"\n    s = s.lower()\n    return s == s[::-1]\n```",
+      "error": null
+    },
+    {
+      "model": "claude-sonnet-4-6",
+      "task_id": "is_palindrome",
+      "tier": "low",
+      "trial_idx": 1,
+      "n_chunks": 3,
+      "completion_chars": 295,
+      "displacements": [
+        1.253032922744751,
+        0.3068906366825104,
+        0.07238075882196426
+      ],
+      "max_displacement": 1.253032922744751,
+      "mean_displacement": 0.5441014394164085,
+      "max_drift_deg": 19.348407288870803,
+      "verifier_passed": false,
+      "verifier_detail": {
+        "pass_a": true,
+        "pass_b": true,
+        "pass_both": true,
+        "msg_a": "All tests passed",
+        "msg_b": "All format checks passed"
+      },
+      "completion": "```python\ndef is_palindrome(s):\n    \"\"\"\n    Check if a string is a palindrome, ignoring case.\n    \n    Args:\n        s (str): The string to check.\n    \n    Returns:\n        bool: True if s is a palindrome (case-insensitive), False otherwise.\n    \"\"\"\n    s = s.lower()\n    return s == s[::-1]\n```",
+      "error": null
+    },
+    {
+      "model": "claude-haiku-4-5",
+      "task_id": "gcd",
+      "tier": "low",
+      "trial_idx": 1,
+      "n_chunks": 4,
+      "completion_chars": 520,
+      "displacements": [
+        0.7186117768287659,
+        0.25631237030029297,
+        0.18695548176765442,
+        0.04933001473546028
+      ],
+      "max_displacement": 0.7186117768287659,
+      "mean_displacement": 0.3028024109080434,
+      "max_drift_deg": 18.06573947019069,
+      "verifier_passed": false,
+      "verifier_detail": {
+        "pass_a": true,
+        "pass_b": true,
+        "pass_both": true,
+        "msg_a": "All tests passed",
+        "msg_b": "All format checks passed"
+      },
+      "completion": "```python\ndef gcd(a, b):\n    \"\"\"\n    Calculate the greatest common divisor of two positive integers.\n    \n    Uses the Euclidean algorithm to efficiently find the GCD by repeatedly\n    replacing the larger number with the remainder of dividing the larger\n    by the smaller until one number becomes zero.\n    \n    Args:\n        a: First positive integer\n        b: Second positive integer\n    \n    Returns:\n        The greatest common divisor of a and b\n    \"\"\"\n    while b != 0:\n        a, b = b, a % b\n    return a\n```",
+      "error": null
+    },
+    {
+      "model": "claude-haiku-4-5",
+      "task_id": "is_palindrome",
+      "tier": "low",
+      "trial_idx": 1,
+      "n_chunks": 3,
+      "completion_chars": 439,
+      "displacements": [
+        0.5810759663581848,
+        0.327853262424469,
+        0.3082425594329834
+      ],
+      "max_displacement": 0.5810759663581848,
+      "mean_displacement": 0.4057239294052124,
+      "max_drift_deg": 22.138139908268304,
+      "verifier_passed": false,
+      "verifier_detail": {
+        "pass_a": true,
+        "pass_b": true,
+        "pass_both": true,
+        "msg_a": "All tests passed",
+        "msg_b": "All format checks passed"
+      },
+      "completion": "```python\ndef is_palindrome(s):\n    \"\"\"\n    Check if a string is a palindrome, ignoring case.\n    \n    Args:\n        s: A string to check\n        \n    Returns:\n        True if s is a palindrome (case-insensitive), False otherwise\n    \"\"\"\n    s = s.lower()\n    left = 0\n    right = len(s) - 1\n    \n    while left < right:\n        if s[left] != s[right]:\n            return False\n        left += 1\n        right -= 1\n    \n    return True\n```",
+      "error": null
+    },
+    {
+      "model": "claude-sonnet-4-6",
+      "task_id": "gcd",
+      "tier": "moderate",
+      "trial_idx": 1,
+      "n_chunks": 2,
+      "completion_chars": 201,
+      "displacements": [
+        1.3689221143722534,
+        0.21583522856235504
+      ],
+      "max_displacement": 1.3689221143722534,
+      "mean_displacement": 0.7923786714673042,
+      "max_drift_deg": 12.39057820184857,
+      "verifier_passed": false,
+      "verifier_detail": {
+        "pass_a": true,
+        "pass_b": true,
+        "pass_both": true,
+        "msg_a": "All tests passed",
+        "msg_b": "All format checks passed"
+      },
+      "completion": "```python\ndef gcd(a, b):\n    \"\"\"\n    Return the greatest common divisor of two positive integers a and b\n    using the Euclidean algorithm.\n    \"\"\"\n    while b:\n        a, b = b, a % b\n    return a\n```",
+      "error": null
+    },
+    {
+      "model": "claude-sonnet-4-6",
+      "task_id": "gcd",
+      "tier": "low",
+      "trial_idx": 1,
+      "n_chunks": 4,
+      "completion_chars": 467,
+      "displacements": [
+        1.3453603982925415,
+        0.3180047273635864,
+        0.2205430418252945,
+        0.06776323914527893
+      ],
+      "max_displacement": 1.3453603982925415,
+      "mean_displacement": 0.48791785165667534,
+      "max_drift_deg": 18.353595710075183,
+      "verifier_passed": false,
+      "verifier_detail": {
+        "pass_a": true,
+        "pass_b": true,
+        "pass_both": true,
+        "msg_a": "All tests passed",
+        "msg_b": "All format checks passed"
+      },
+      "completion": "```python\ndef gcd(a, b):\n    \"\"\"\n    Return the greatest common divisor of two positive integers a and b.\n    \n    Uses the Euclidean algorithm: repeatedly replaces (a, b) with (b, a % b)\n    until b becomes 0, at which point a is the GCD.\n    \n    Args:\n        a (int): First positive integer\n        b (int): Second positive integer\n    \n    Returns:\n        int: The greatest common divisor of a and b\n    \"\"\"\n    while b:\n        a, b = b, a % b\n    return a\n```",
+      "error": null
+    },
+    {
+      "model": "claude-sonnet-4-6",
+      "task_id": "fibonacci",
+      "tier": "high",
+      "trial_idx": 1,
+      "n_chunks": 2,
+      "completion_chars": 150,
+      "displacements": [
+        1.3075858354568481,
+        0.3023906946182251
+      ],
+      "max_displacement": 1.3075858354568481,
+      "mean_displacement": 0.8049882650375366,
+      "max_drift_deg": 17.39240932134842,
+      "verifier_passed": false,
+      "verifier_detail": {
+        "pass_a": true,
+        "pass_b": true,
+        "pass_both": true,
+        "msg_a": "All tests passed",
+        "msg_b": "All format checks passed"
+      },
+      "completion": "```python\ndef fibonacci(n):\n    \"\"\"Return the nth Fibonacci number (0-indexed).\"\"\"\n    return n if n <= 1 else fibonacci(n - 1) + fibonacci(n - 2)\n```",
+      "error": null
+    },
+    {
+      "model": "claude-sonnet-4-6",
+      "task_id": "factorial",
+      "tier": "control",
+      "trial_idx": 1,
+      "n_chunks": 2,
+      "completion_chars": 261,
+      "displacements": [
+        1.3212289810180664,
+        0.33724167943000793
+      ],
+      "max_displacement": 1.3212289810180664,
+      "mean_displacement": 0.8292353302240372,
+      "max_drift_deg": 19.415284115174472,
+      "verifier_passed": false,
+      "verifier_detail": {
+        "pass_a": true,
+        "pass_b": true,
+        "pass_both": true,
+        "msg_a": "All tests passed",
+        "msg_b": "All format checks passed"
+      },
+      "completion": "```python\ndef factorial(n):\n    if not isinstance(n, int) or n < 0:\n        raise ValueError(\"Input must be a non-negative integer\")\n    if n == 0 or n == 1:\n        return 1\n    result = 1\n    for i in range(2, n + 1):\n        result *= i\n    return result\n```",
+      "error": null
+    },
+    {
+      "model": "claude-opus-4-7",
+      "task_id": "gcd",
+      "tier": "high",
+      "trial_idx": 1,
+      "n_chunks": 2,
+      "completion_chars": 149,
+      "displacements": [
+        0.6782288551330566,
+        0.19595405459403992
+      ],
+      "max_displacement": 0.6782288551330566,
+      "mean_displacement": 0.4370914548635483,
+      "max_drift_deg": 11.245381829100626,
+      "verifier_passed": false,
+      "verifier_detail": {
+        "pass_a": true,
+        "pass_b": true,
+        "pass_both": true,
+        "msg_a": "All tests passed",
+        "msg_b": "All format checks passed"
+      },
+      "completion": "```python\ndef gcd(a, b):\n    \"\"\"Return the greatest common divisor of two positive integers a and b.\"\"\"\n    return a if b == 0 else gcd(b, a % b)\n```",
+      "error": null
+    },
+    {
+      "model": "claude-opus-4-7",
+      "task_id": "is_palindrome",
+      "tier": "low",
+      "trial_idx": 0,
+      "n_chunks": 2,
+      "completion_chars": 154,
+      "displacements": [
+        1.0259474515914917,
+        0.43373045325279236
+      ],
+      "max_displacement": 1.0259474515914917,
+      "mean_displacement": 0.729838952422142,
+      "max_drift_deg": 25.049957733233438,
+      "verifier_passed": false,
+      "verifier_detail": {
+        "pass_a": true,
+        "pass_b": true,
+        "pass_both": true,
+        "msg_a": "All tests passed",
+        "msg_b": "All format checks passed"
+      },
+      "completion": "```python\ndef is_palindrome(s):\n    \"\"\"Return True if s is a palindrome (ignoring case), False otherwise.\"\"\"\n    s = s.lower()\n    return s == s[::-1]\n```",
+      "error": null
+    },
+    {
+      "model": "claude-haiku-4-5",
+      "task_id": "reverse_words",
+      "tier": "moderate",
+      "trial_idx": 0,
+      "n_chunks": 3,
+      "completion_chars": 401,
+      "displacements": [
+        0.5181175470352173,
+        0.2985527217388153,
+        0.24510058760643005
+      ],
+      "max_displacement": 0.5181175470352173,
+      "mean_displacement": 0.35392361879348755,
+      "max_drift_deg": 22.938722757311837,
+      "verifier_passed": false,
+      "verifier_detail": {
+        "pass_a": true,
+        "pass_b": false,
+        "pass_both": false,
+        "msg_a": "All tests passed",
+        "msg_b": "Too many lines: 17 > 15"
+      },
+      "completion": "```python\ndef reverse_words(s):\n    \"\"\"\n    Reverses the order of words in a string.\n    \n    Args:\n        s: A string with words separated by spaces\n        \n    Returns:\n        A string with words in reversed order\n    \"\"\"\n    words = s.split()\n    result = \"\"\n    for i in range(len(words) - 1, -1, -1):\n        result += words[i]\n        if i > 0:\n            result += \" \"\n    return result\n```",
+      "error": null
+    },
+    {
+      "model": "claude-sonnet-4-6",
+      "task_id": "reverse_words",
+      "tier": "control",
+      "trial_idx": 0,
+      "n_chunks": 1,
+      "completion_chars": 129,
+      "displacements": [
+        1.253072738647461
+      ],
+      "max_displacement": 1.253072738647461,
+      "mean_displacement": 1.253072738647461,
+      "max_drift_deg": 0.0,
+      "verifier_passed": false,
+      "verifier_detail": {
+        "pass_a": true,
+        "pass_b": true,
+        "pass_both": true,
+        "msg_a": "All tests passed",
+        "msg_b": "All format checks passed"
+      },
+      "completion": "```python\ndef reverse_words(s):\n    words = s.split(' ')\n    reversed_words = words[::-1]\n    return ' '.join(reversed_words)\n```",
+      "error": null
+    },
+    {
+      "model": "claude-haiku-4-5",
+      "task_id": "is_palindrome",
+      "tier": "moderate",
+      "trial_idx": 1,
+      "n_chunks": 3,
+      "completion_chars": 439,
+      "displacements": [
+        0.5810759663581848,
+        0.327853262424469,
+        0.3082425594329834
+      ],
+      "max_displacement": 0.5810759663581848,
+      "mean_displacement": 0.4057239294052124,
+      "max_drift_deg": 22.138139908268304,
+      "verifier_passed": false,
+      "verifier_detail": {
+        "pass_a": true,
+        "pass_b": false,
+        "pass_both": false,
+        "msg_a": "All tests passed",
+        "msg_b": "Too many lines: 21 > 15"
+      },
+      "completion": "```python\ndef is_palindrome(s):\n    \"\"\"\n    Check if a string is a palindrome, ignoring case.\n    \n    Args:\n        s: A string to check\n        \n    Returns:\n        True if s is a palindrome (case-insensitive), False otherwise\n    \"\"\"\n    s = s.lower()\n    left = 0\n    right = len(s) - 1\n    \n    while left < right:\n        if s[left] != s[right]:\n            return False\n        left += 1\n        right -= 1\n    \n    return True\n```",
+      "error": null
+    },
+    {
+      "model": "claude-haiku-4-5",
+      "task_id": "factorial",
+      "tier": "low",
+      "trial_idx": 0,
+      "n_chunks": 3,
+      "completion_chars": 493,
+      "displacements": [
+        0.4964628219604492,
+        0.31787922978401184,
+        0.1543225198984146
+      ],
+      "max_displacement": 0.4964628219604492,
+      "mean_displacement": 0.32288819054762524,
+      "max_drift_deg": 19.16127806966628,
+      "verifier_passed": false,
+      "verifier_detail": {
+        "pass_a": true,
+        "pass_b": true,
+        "pass_both": true,
+        "msg_a": "All tests passed",
+        "msg_b": "All format checks passed"
+      },
+      "completion": "```python\ndef factorial(n):\n    \"\"\"\n    Calculate the factorial of a non-negative integer n.\n    \n    Args:\n        n: A non-negative integer\n        \n    Returns:\n        The factorial of n (n!)\n        \n    Raises:\n        ValueError: If n is negative\n    \"\"\"\n    if n < 0:\n        raise ValueError(\"Factorial is not defined for negative numbers\")\n    \n    if n == 0 or n == 1:\n        return 1\n    \n    result = 1\n    for i in range(2, n + 1):\n        result *= i\n    \n    return result\n```",
+      "error": null
+    },
+    {
+      "model": "claude-sonnet-4-6",
+      "task_id": "reverse_words",
+      "tier": "moderate",
+      "trial_idx": 0,
+      "n_chunks": 4,
+      "completion_chars": 505,
+      "displacements": [
+        1.208914875984192,
+        0.2829103171825409,
+        0.21434547007083893,
+        0.11408358812332153
+      ],
+      "max_displacement": 1.208914875984192,
+      "mean_displacement": 0.4550635628402233,
+      "max_drift_deg": 16.942987262494515,
+      "verifier_passed": false,
+      "verifier_detail": {
+        "pass_a": true,
+        "pass_b": false,
+        "pass_both": false,
+        "msg_a": "All tests passed",
+        "msg_b": "Too many lines: 17 > 15"
+      },
+      "completion": "```python\ndef reverse_words(s):\n    \"\"\"\n    Reverses the order of words in a string s where words are separated by spaces.\n    \n    Args:\n        s (str): Input string containing words separated by spaces.\n    \n    Returns:\n        str: A new string with the words in reverse order.\n    \"\"\"\n    words = s.split(' ')\n    left, right = 0, len(words) - 1\n    while left < right:\n        words[left], words[right] = words[right], words[left]\n        left += 1\n        right -= 1\n    return ' '.join(words)\n```",
+      "error": null
+    },
+    {
+      "model": "claude-sonnet-4-6",
+      "task_id": "is_palindrome",
+      "tier": "control",
+      "trial_idx": 1,
+      "n_chunks": 1,
+      "completion_chars": 77,
+      "displacements": [
+        1.173716425895691
+      ],
+      "max_displacement": 1.173716425895691,
+      "mean_displacement": 1.173716425895691,
+      "max_drift_deg": 0.0,
+      "verifier_passed": false,
+      "verifier_detail": {
+        "pass_a": true,
+        "pass_b": true,
+        "pass_both": true,
+        "msg_a": "All tests passed",
+        "msg_b": "All format checks passed"
+      },
+      "completion": "```python\ndef is_palindrome(s):\n    s = s.lower()\n    return s == s[::-1]\n```",
+      "error": null
+    },
+    {
+      "model": "claude-opus-4-7",
+      "task_id": "gcd",
+      "tier": "low",
+      "trial_idx": 1,
+      "n_chunks": 2,
+      "completion_chars": 157,
+      "displacements": [
+        0.6936522126197815,
+        0.049415890127420425
+      ],
+      "max_displacement": 0.6936522126197815,
+      "mean_displacement": 0.37153405137360096,
+      "max_drift_deg": 2.8316100184328,
+      "verifier_passed": false,
+      "verifier_detail": {
+        "pass_a": true,
+        "pass_b": true,
+        "pass_both": true,
+        "msg_a": "All tests passed",
+        "msg_b": "All format checks passed"
+      },
+      "completion": "```python\ndef gcd(a, b):\n    \"\"\"Return the greatest common divisor of two positive integers a and b.\"\"\"\n    while b:\n        a, b = b, a % b\n    return a\n```",
+      "error": null
+    },
+    {
+      "model": "claude-sonnet-4-6",
+      "task_id": "fibonacci",
+      "tier": "control",
+      "trial_idx": 1,
+      "n_chunks": 2,
+      "completion_chars": 253,
+      "displacements": [
+        1.308559536933899,
+        0.3743571639060974
+      ],
+      "max_displacement": 1.308559536933899,
+      "mean_displacement": 0.8414583504199982,
+      "max_drift_deg": 21.576348920003806,
+      "verifier_passed": false,
+      "verifier_detail": {
+        "pass_a": true,
+        "pass_b": true,
+        "pass_both": true,
+        "msg_a": "All tests passed",
+        "msg_b": "All format checks passed"
+      },
+      "completion": "```python\ndef fibonacci(n):\n    if n < 0:\n        raise ValueError(\"n must be a non-negative integer\")\n    if n == 0:\n        return 0\n    if n == 1:\n        return 1\n    a, b = 0, 1\n    for _ in range(2, n + 1):\n        a, b = b, a + b\n    return b\n```",
+      "error": null
+    },
+    {
+      "model": "claude-opus-4-7",
+      "task_id": "is_palindrome",
+      "tier": "low",
+      "trial_idx": 1,
+      "n_chunks": 2,
+      "completion_chars": 154,
+      "displacements": [
+        1.0475958585739136,
+        0.28894782066345215
+      ],
+      "max_displacement": 1.0475958585739136,
+      "mean_displacement": 0.6682718396186829,
+      "max_drift_deg": 16.61363121993666,
+      "verifier_passed": false,
+      "verifier_detail": {
+        "pass_a": true,
+        "pass_b": true,
+        "pass_both": true,
+        "msg_a": "All tests passed",
+        "msg_b": "All format checks passed"
+      },
+      "completion": "```python\ndef is_palindrome(s):\n    \"\"\"Return True if s is a palindrome (ignoring case), False otherwise.\"\"\"\n    s = s.lower()\n    return s == s[::-1]\n```",
+      "error": null
+    },
+    {
+      "model": "claude-haiku-4-5",
+      "task_id": "is_palindrome",
+      "tier": "high",
+      "trial_idx": 0,
+      "n_chunks": 3,
+      "completion_chars": 283,
+      "displacements": [
+        0.5810759663581848,
+        0.3415149450302124,
+        0.08525777608156204
+      ],
+      "max_displacement": 0.5810759663581848,
+      "mean_displacement": 0.3359495624899864,
+      "max_drift_deg": 21.704102686733403,
+      "verifier_passed": false,
+      "verifier_detail": {
+        "pass_a": true,
+        "pass_b": false,
+        "pass_both": false,
+        "msg_a": "All tests passed",
+        "msg_b": "Too many lines: 12 > 10"
+      },
+      "completion": "```python\ndef is_palindrome(s):\n    \"\"\"\n    Check if a string is a palindrome, ignoring case.\n    \n    Args:\n        s: A string to check\n        \n    Returns:\n        True if s is a palindrome (case-insensitive), False otherwise\n    \"\"\"\n    s = s.lower()\n    return s == s[::-1]\n```",
+      "error": null
+    },
+    {
+      "model": "claude-haiku-4-5",
+      "task_id": "reverse_words",
+      "tier": "high",
+      "trial_idx": 1,
+      "n_chunks": 2,
+      "completion_chars": 285,
+      "displacements": [
+        0.5181175470352173,
+        0.36694106459617615
+      ],
+      "max_displacement": 0.5181175470352173,
+      "mean_displacement": 0.4425293058156967,
+      "max_drift_deg": 21.143947482175555,
+      "verifier_passed": false,
+      "verifier_detail": {
+        "pass_a": true,
+        "pass_b": false,
+        "pass_both": false,
+        "msg_a": "All tests passed",
+        "msg_b": "Too many lines: 12 > 10"
+      },
+      "completion": "```python\ndef reverse_words(s):\n    \"\"\"\n    Reverses the order of words in a string.\n    \n    Args:\n        s: A string with words separated by spaces\n        \n    Returns:\n        A string with words in reversed order\n    \"\"\"\n    words = s.split()\n    return ' '.join(words[::-1])\n```",
+      "error": null
+    },
+    {
+      "model": "claude-sonnet-4-6",
+      "task_id": "reverse_words",
+      "tier": "moderate",
+      "trial_idx": 1,
+      "n_chunks": 3,
+      "completion_chars": 458,
+      "displacements": [
+        1.2507632970809937,
+        0.31169062852859497,
+        0.20628885924816132
+      ],
+      "max_displacement": 1.2507632970809937,
+      "mean_displacement": 0.5895809282859167,
+      "max_drift_deg": 18.83099812681501,
+      "verifier_passed": false,
+      "verifier_detail": {
+        "pass_a": true,
+        "pass_b": false,
+        "pass_both": false,
+        "msg_a": "All tests passed",
+        "msg_b": "Too many lines: 17 > 15"
+      },
+      "completion": "```python\ndef reverse_words(s):\n    \"\"\"\n    Reverse the order of words in a string.\n    \n    Args:\n        s (str): Input string with words separated by spaces.\n    \n    Returns:\n        str: A new string with the words in reversed order.\n    \"\"\"\n    words = s.split()\n    left, right = 0, len(words) - 1\n    while left < right:\n        words[left], words[right] = words[right], words[left]\n        left += 1\n        right -= 1\n    return ' '.join(words)\n```",
+      "error": null
+    },
+    {
+      "model": "claude-haiku-4-5",
+      "task_id": "factorial",
+      "tier": "low",
+      "trial_idx": 1,
+      "n_chunks": 3,
+      "completion_chars": 493,
+      "displacements": [
+        0.4964628219604492,
+        0.31787922978401184,
+        0.1543225198984146
+      ],
+      "max_displacement": 0.4964628219604492,
+      "mean_displacement": 0.32288819054762524,
+      "max_drift_deg": 19.16127806966628,
+      "verifier_passed": false,
+      "verifier_detail": {
+        "pass_a": true,
+        "pass_b": true,
+        "pass_both": true,
+        "msg_a": "All tests passed",
+        "msg_b": "All format checks passed"
+      },
+      "completion": "```python\ndef factorial(n):\n    \"\"\"\n    Calculate the factorial of a non-negative integer n.\n    \n    Args:\n        n: A non-negative integer\n        \n    Returns:\n        The factorial of n (n!)\n        \n    Raises:\n        ValueError: If n is negative\n    \"\"\"\n    if n < 0:\n        raise ValueError(\"Factorial is not defined for negative numbers\")\n    \n    if n == 0 or n == 1:\n        return 1\n    \n    result = 1\n    for i in range(2, n + 1):\n        result *= i\n    \n    return result\n```",
+      "error": null
+    },
+    {
+      "model": "claude-sonnet-4-6",
+      "task_id": "reverse_words",
+      "tier": "control",
+      "trial_idx": 1,
+      "n_chunks": 1,
+      "completion_chars": 129,
+      "displacements": [
+        1.253072738647461
+      ],
+      "max_displacement": 1.253072738647461,
+      "mean_displacement": 1.253072738647461,
+      "max_drift_deg": 0.0,
+      "verifier_passed": false,
+      "verifier_detail": {
+        "pass_a": true,
+        "pass_b": true,
+        "pass_both": true,
+        "msg_a": "All tests passed",
+        "msg_b": "All format checks passed"
+      },
+      "completion": "```python\ndef reverse_words(s):\n    words = s.split(' ')\n    reversed_words = words[::-1]\n    return ' '.join(reversed_words)\n```",
+      "error": null
+    },
+    {
+      "model": "claude-sonnet-4-6",
+      "task_id": "is_palindrome",
+      "tier": "low",
+      "trial_idx": 0,
+      "n_chunks": 3,
+      "completion_chars": 295,
+      "displacements": [
+        1.253032922744751,
+        0.3068906366825104,
+        0.07238075882196426
+      ],
+      "max_displacement": 1.253032922744751,
+      "mean_displacement": 0.5441014394164085,
+      "max_drift_deg": 19.348407288870803,
+      "verifier_passed": false,
+      "verifier_detail": {
+        "pass_a": true,
+        "pass_b": true,
+        "pass_both": true,
+        "msg_a": "All tests passed",
+        "msg_b": "All format checks passed"
+      },
+      "completion": "```python\ndef is_palindrome(s):\n    \"\"\"\n    Check if a string is a palindrome, ignoring case.\n    \n    Args:\n        s (str): The string to check.\n    \n    Returns:\n        bool: True if s is a palindrome (case-insensitive), False otherwise.\n    \"\"\"\n    s = s.lower()\n    return s == s[::-1]\n```",
+      "error": null
+    },
+    {
+      "model": "claude-opus-4-7",
+      "task_id": "gcd",
+      "tier": "moderate",
+      "trial_idx": 1,
+      "n_chunks": 2,
+      "completion_chars": 157,
+      "displacements": [
+        0.6936522126197815,
+        0.049415890127420425
+      ],
+      "max_displacement": 0.6936522126197815,
+      "mean_displacement": 0.37153405137360096,
+      "max_drift_deg": 2.8316100184328,
+      "verifier_passed": false,
+      "verifier_detail": {
+        "pass_a": true,
+        "pass_b": true,
+        "pass_both": true,
+        "msg_a": "All tests passed",
+        "msg_b": "All format checks passed"
+      },
+      "completion": "```python\ndef gcd(a, b):\n    \"\"\"Return the greatest common divisor of two positive integers a and b.\"\"\"\n    while b:\n        a, b = b, a % b\n    return a\n```",
+      "error": null
+    },
+    {
+      "model": "claude-sonnet-4-6",
+      "task_id": "fibonacci",
+      "tier": "control",
+      "trial_idx": 0,
+      "n_chunks": 2,
+      "completion_chars": 253,
+      "displacements": [
+        1.308559536933899,
+        0.3743571639060974
+      ],
+      "max_displacement": 1.308559536933899,
+      "mean_displacement": 0.8414583504199982,
+      "max_drift_deg": 21.576348920003806,
+      "verifier_passed": false,
+      "verifier_detail": {
+        "pass_a": true,
+        "pass_b": true,
+        "pass_both": true,
+        "msg_a": "All tests passed",
+        "msg_b": "All format checks passed"
+      },
+      "completion": "```python\ndef fibonacci(n):\n    if n < 0:\n        raise ValueError(\"n must be a non-negative integer\")\n    if n == 0:\n        return 0\n    if n == 1:\n        return 1\n    a, b = 0, 1\n    for _ in range(2, n + 1):\n        a, b = b, a + b\n    return b\n```",
+      "error": null
+    },
+    {
+      "model": "claude-opus-4-7",
+      "task_id": "is_palindrome",
+      "tier": "high",
+      "trial_idx": 1,
+      "n_chunks": 2,
+      "completion_chars": 154,
+      "displacements": [
+        1.0483976602554321,
+        0.20641756057739258
+      ],
+      "max_displacement": 1.0483976602554321,
+      "mean_displacement": 0.6274076104164124,
+      "max_drift_deg": 11.847952970739552,
+      "verifier_passed": false,
+      "verifier_detail": {
+        "pass_a": true,
+        "pass_b": true,
+        "pass_both": true,
+        "msg_a": "All tests passed",
+        "msg_b": "All format checks passed"
+      },
+      "completion": "```python\ndef is_palindrome(s):\n    \"\"\"Return True if s is a palindrome (ignoring case), False otherwise.\"\"\"\n    s = s.lower()\n    return s == s[::-1]\n```",
+      "error": null
+    },
+    {
+      "model": "claude-sonnet-4-6",
+      "task_id": "is_palindrome",
+      "tier": "moderate",
+      "trial_idx": 0,
+      "n_chunks": 4,
+      "completion_chars": 425,
+      "displacements": [
+        1.2573586702346802,
+        0.2170310616493225,
+        0.29911497235298157,
+        0.09639352560043335
+      ],
+      "max_displacement": 1.2573586702346802,
+      "mean_displacement": 0.4674745574593544,
+      "max_drift_deg": 21.982597782936747,
+      "verifier_passed": false,
+      "verifier_detail": {
+        "pass_a": true,
+        "pass_b": false,
+        "pass_both": false,
+        "msg_a": "All tests passed",
+        "msg_b": "Too many lines: 18 > 15"
+      },
+      "completion": "```python\ndef is_palindrome(s):\n    \"\"\"\n    Check if a string is a palindrome, ignoring case.\n    \n    Args:\n        s: The string to check.\n    \n    Returns:\n        True if s is a palindrome (case-insensitive), False otherwise.\n    \"\"\"\n    s = s.lower()\n    left, right = 0, len(s) - 1\n    while left < right:\n        if s[left] != s[right]:\n            return False\n        left += 1\n        right -= 1\n    return True\n```",
+      "error": null
+    },
+    {
+      "model": "claude-opus-4-7",
+      "task_id": "reverse_words",
+      "tier": "high",
+      "trial_idx": 0,
+      "n_chunks": 2,
+      "completion_chars": 182,
+      "displacements": [
+        0.8007736206054688,
+        0.32829180359840393
+      ],
+      "max_displacement": 0.8007736206054688,
+      "mean_displacement": 0.5645327121019363,
+      "max_drift_deg": 18.895243194513103,
+      "verifier_passed": false,
+      "verifier_detail": {
+        "pass_a": true,
+        "pass_b": true,
+        "pass_both": true,
+        "msg_a": "All tests passed",
+        "msg_b": "All format checks passed"
+      },
+      "completion": "```python\ndef reverse_words(s):\n    \"\"\"Reverse the order of words in a string s, where words are separated by spaces.\"\"\"\n    words = s.split(' ')\n    return ' '.join(words[::-1])\n```",
+      "error": null
+    },
+    {
+      "model": "claude-haiku-4-5",
+      "task_id": "is_palindrome",
+      "tier": "high",
+      "trial_idx": 1,
+      "n_chunks": 3,
+      "completion_chars": 283,
+      "displacements": [
+        0.5810759663581848,
+        0.3415149450302124,
+        0.08525777608156204
+      ],
+      "max_displacement": 0.5810759663581848,
+      "mean_displacement": 0.3359495624899864,
+      "max_drift_deg": 21.704102686733403,
+      "verifier_passed": false,
+      "verifier_detail": {
+        "pass_a": true,
+        "pass_b": false,
+        "pass_both": false,
+        "msg_a": "All tests passed",
+        "msg_b": "Too many lines: 12 > 10"
+      },
+      "completion": "```python\ndef is_palindrome(s):\n    \"\"\"\n    Check if a string is a palindrome, ignoring case.\n    \n    Args:\n        s: A string to check\n        \n    Returns:\n        True if s is a palindrome (case-insensitive), False otherwise\n    \"\"\"\n    s = s.lower()\n    return s == s[::-1]\n```",
+      "error": null
+    },
+    {
+      "model": "claude-opus-4-7",
+      "task_id": "factorial",
+      "tier": "moderate",
+      "trial_idx": 0,
+      "n_chunks": 3,
+      "completion_chars": 364,
+      "displacements": [
+        0.6727585196495056,
+        0.26000839471817017,
+        0.1926911324262619
+      ],
+      "max_displacement": 0.6727585196495056,
+      "mean_displacement": 0.3751526822646459,
+      "max_drift_deg": 17.81285062803096,
+      "verifier_passed": false,
+      "verifier_detail": {
+        "pass_a": true,
+        "pass_b": true,
+        "pass_both": true,
+        "msg_a": "All tests passed",
+        "msg_b": "All format checks passed"
+      },
+      "completion": "```python\ndef factorial(n):\n    \"\"\"Return the factorial of a non-negative integer n.\n\n    Raises ValueError if n is negative.\n    \"\"\"\n    if not isinstance(n, int):\n        raise TypeError(\"n must be an integer\")\n    if n < 0:\n        raise ValueError(\"n must be non-negative\")\n    result = 1\n    for i in range(2, n + 1):\n        result *= i\n    return result\n```",
+      "error": null
+    },
+    {
+      "model": "claude-haiku-4-5",
+      "task_id": "factorial",
+      "tier": "moderate",
+      "trial_idx": 0,
+      "n_chunks": 3,
+      "completion_chars": 397,
+      "displacements": [
+        0.5241928100585938,
+        0.288737416267395,
+        0.14070990681648254
+      ],
+      "max_displacement": 0.5241928100585938,
+      "mean_displacement": 0.3178800443808238,
+      "max_drift_deg": 17.672734079343414,
+      "verifier_passed": false,
+      "verifier_detail": {
+        "pass_a": true,
+        "pass_b": false,
+        "pass_both": false,
+        "msg_a": "All tests passed",
+        "msg_b": "Too many lines: 18 > 15"
+      },
+      "completion": "```python\ndef factorial(n):\n    \"\"\"\n    Calculate the factorial of a non-negative integer n.\n    \n    Args:\n        n: A non-negative integer\n        \n    Returns:\n        The factorial of n (n!)\n    \"\"\"\n    if n < 0:\n        raise ValueError(\"n must be non-negative\")\n    if n == 0 or n == 1:\n        return 1\n    result = 1\n    for i in range(2, n + 1):\n        result *= i\n    return result\n```",
+      "error": null
+    },
+    {
+      "model": "claude-haiku-4-5",
+      "task_id": "gcd",
+      "tier": "high",
+      "trial_idx": 1,
+      "n_chunks": 2,
+      "completion_chars": 205,
+      "displacements": [
+        0.6958332657814026,
+        0.23482541739940643
+      ],
+      "max_displacement": 0.6958332657814026,
+      "mean_displacement": 0.4653293415904045,
+      "max_drift_deg": 13.485611948613133,
+      "verifier_passed": false,
+      "verifier_detail": {
+        "pass_a": true,
+        "pass_b": true,
+        "pass_both": true,
+        "msg_a": "All tests passed",
+        "msg_b": "All format checks passed"
+      },
+      "completion": "```python\ndef gcd(a, b):\n    \"\"\"\n    Returns the greatest common divisor of two positive integers a and b.\n    Uses Euclidean algorithm with recursion.\n    \"\"\"\n    return a if b == 0 else gcd(b, a % b)\n```",
+      "error": null
+    },
+    {
+      "model": "claude-opus-4-7",
+      "task_id": "factorial",
+      "tier": "moderate",
+      "trial_idx": 1,
+      "n_chunks": 3,
+      "completion_chars": 364,
+      "displacements": [
+        0.6727585196495056,
+        0.26000839471817017,
+        0.1926911324262619
+      ],
+      "max_displacement": 0.6727585196495056,
+      "mean_displacement": 0.3751526822646459,
+      "max_drift_deg": 17.81285062803096,
+      "verifier_passed": false,
+      "verifier_detail": {
+        "pass_a": true,
+        "pass_b": true,
+        "pass_both": true,
+        "msg_a": "All tests passed",
+        "msg_b": "All format checks passed"
+      },
+      "completion": "```python\ndef factorial(n):\n    \"\"\"Return the factorial of a non-negative integer n.\n\n    Raises ValueError if n is negative.\n    \"\"\"\n    if not isinstance(n, int):\n        raise TypeError(\"n must be an integer\")\n    if n < 0:\n        raise ValueError(\"n must be non-negative\")\n    result = 1\n    for i in range(2, n + 1):\n        result *= i\n    return result\n```",
+      "error": null
+    },
+    {
+      "model": "claude-opus-4-7",
+      "task_id": "gcd",
+      "tier": "control",
+      "trial_idx": 0,
+      "n_chunks": 1,
+      "completion_chars": 78,
+      "displacements": [
+        0.6530884504318237
+      ],
+      "max_displacement": 0.6530884504318237,
+      "mean_displacement": 0.6530884504318237,
+      "max_drift_deg": 0.0,
+      "verifier_passed": false,
+      "verifier_detail": {
+        "pass_a": true,
+        "pass_b": true,
+        "pass_both": true,
+        "msg_a": "All tests passed",
+        "msg_b": "All format checks passed"
+      },
+      "completion": "```python\ndef gcd(a, b):\n    while b:\n        a, b = b, a % b\n    return a\n```",
+      "error": null
+    },
+    {
+      "model": "claude-sonnet-4-6",
+      "task_id": "is_palindrome",
+      "tier": "high",
+      "trial_idx": 0,
+      "n_chunks": 1,
+      "completion_chars": 161,
+      "displacements": [
+        1.1760735511779785
+      ],
+      "max_displacement": 1.1760735511779785,
+      "mean_displacement": 1.1760735511779785,
+      "max_drift_deg": 0.0,
+      "verifier_passed": false,
+      "verifier_detail": {
+        "pass_a": true,
+        "pass_b": true,
+        "pass_both": true,
+        "msg_a": "All tests passed",
+        "msg_b": "All format checks passed"
+      },
+      "completion": "```python\ndef is_palindrome(s):\n    \"\"\"Return True if string s is a palindrome (ignoring case), False otherwise.\"\"\"\n    s = s.lower()\n    return s == s[::-1]\n```",
+      "error": null
+    },
+    {
+      "model": "claude-opus-4-7",
+      "task_id": "reverse_words",
+      "tier": "low",
+      "trial_idx": 0,
+      "n_chunks": 4,
+      "completion_chars": 343,
+      "displacements": [
+        0.7451859712600708,
+        0.23528838157653809,
+        0.290208637714386,
+        0.05665109306573868
+      ],
+      "max_displacement": 0.7451859712600708,
+      "mean_displacement": 0.3318335209041834,
+      "max_drift_deg": 20.542384185805748,
+      "verifier_passed": false,
+      "verifier_detail": {
+        "pass_a": true,
+        "pass_b": true,
+        "pass_both": true,
+        "msg_a": "All tests passed",
+        "msg_b": "All format checks passed"
+      },
+      "completion": "```python\ndef reverse_words(s):\n    \"\"\"Reverse the order of words in a string.\n\n    Words are separated by spaces. Returns a string with the words\n    in reverse order, joined by single spaces.\n\n    Args:\n        s: The input string.\n\n    Returns:\n        A string with words in reversed order.\n    \"\"\"\n    return ' '.join(s.split()[::-1])\n```",
+      "error": null
+    },
+    {
+      "model": "claude-sonnet-4-6",
+      "task_id": "is_palindrome",
+      "tier": "moderate",
+      "trial_idx": 1,
+      "n_chunks": 4,
+      "completion_chars": 425,
+      "displacements": [
+        1.2573586702346802,
+        0.2170310616493225,
+        0.29911497235298157,
+        0.09639352560043335
+      ],
+      "max_displacement": 1.2573586702346802,
+      "mean_displacement": 0.4674745574593544,
+      "max_drift_deg": 21.982597782936747,
+      "verifier_passed": false,
+      "verifier_detail": {
+        "pass_a": true,
+        "pass_b": false,
+        "pass_both": false,
+        "msg_a": "All tests passed",
+        "msg_b": "Too many lines: 18 > 15"
+      },
+      "completion": "```python\ndef is_palindrome(s):\n    \"\"\"\n    Check if a string is a palindrome, ignoring case.\n    \n    Args:\n        s: The string to check.\n    \n    Returns:\n        True if s is a palindrome (case-insensitive), False otherwise.\n    \"\"\"\n    s = s.lower()\n    left, right = 0, len(s) - 1\n    while left < right:\n        if s[left] != s[right]:\n            return False\n        left += 1\n        right -= 1\n    return True\n```",
+      "error": null
+    },
+    {
+      "model": "claude-opus-4-7",
+      "task_id": "reverse_words",
+      "tier": "high",
+      "trial_idx": 1,
+      "n_chunks": 2,
+      "completion_chars": 182,
+      "displacements": [
+        0.8601976037025452,
+        0.28854551911354065
+      ],
+      "max_displacement": 0.8601976037025452,
+      "mean_displacement": 0.5743715614080429,
+      "max_drift_deg": 16.590336150208937,
+      "verifier_passed": false,
+      "verifier_detail": {
+        "pass_a": true,
+        "pass_b": true,
+        "pass_both": true,
+        "msg_a": "All tests passed",
+        "msg_b": "All format checks passed"
+      },
+      "completion": "```python\ndef reverse_words(s):\n    \"\"\"Reverse the order of words in a string s, where words are separated by spaces.\"\"\"\n    words = s.split(' ')\n    return ' '.join(words[::-1])\n```",
+      "error": null
+    },
+    {
+      "model": "claude-haiku-4-5",
+      "task_id": "gcd",
+      "tier": "control",
+      "trial_idx": 0,
+      "n_chunks": 2,
+      "completion_chars": 356,
+      "displacements": [
+        0.7139672040939331,
+        0.24778646230697632
+      ],
+      "max_displacement": 0.7139672040939331,
+      "mean_displacement": 0.4808768332004547,
+      "max_drift_deg": 14.233691860423367,
+      "verifier_passed": false,
+      "verifier_detail": {
+        "pass_a": true,
+        "pass_b": true,
+        "pass_both": true,
+        "msg_a": "All tests passed",
+        "msg_b": "All format checks passed"
+      },
+      "completion": "```python\ndef gcd(a, b):\n    \"\"\"\n    Returns the greatest common divisor of two positive integers a and b.\n    Uses the Euclidean algorithm.\n    \n    Args:\n        a: First positive integer\n        b: Second positive integer\n    \n    Returns:\n        The greatest common divisor of a and b\n    \"\"\"\n    while b != 0:\n        a, b = b, a % b\n    return a\n```",
+      "error": null
+    },
+    {
+      "model": "claude-sonnet-4-6",
+      "task_id": "gcd",
+      "tier": "moderate",
+      "trial_idx": 0,
+      "n_chunks": 2,
+      "completion_chars": 201,
+      "displacements": [
+        1.352130651473999,
+        0.19435732066631317
+      ],
+      "max_displacement": 1.352130651473999,
+      "mean_displacement": 0.7732439860701561,
+      "max_drift_deg": 11.153456615862927,
+      "verifier_passed": false,
+      "verifier_detail": {
+        "pass_a": true,
+        "pass_b": true,
+        "pass_both": true,
+        "msg_a": "All tests passed",
+        "msg_b": "All format checks passed"
+      },
+      "completion": "```python\ndef gcd(a, b):\n    \"\"\"\n    Return the greatest common divisor of two positive integers a and b\n    using the Euclidean algorithm.\n    \"\"\"\n    while b:\n        a, b = b, a % b\n    return a\n```",
+      "error": null
+    },
+    {
+      "model": "claude-haiku-4-5",
+      "task_id": "factorial",
+      "tier": "moderate",
+      "trial_idx": 1,
+      "n_chunks": 3,
+      "completion_chars": 397,
+      "displacements": [
+        0.5241928100585938,
+        0.288737416267395,
+        0.14070990681648254
+      ],
+      "max_displacement": 0.5241928100585938,
+      "mean_displacement": 0.3178800443808238,
+      "max_drift_deg": 17.672734079343414,
+      "verifier_passed": false,
+      "verifier_detail": {
+        "pass_a": true,
+        "pass_b": false,
+        "pass_both": false,
+        "msg_a": "All tests passed",
+        "msg_b": "Too many lines: 18 > 15"
+      },
+      "completion": "```python\ndef factorial(n):\n    \"\"\"\n    Calculate the factorial of a non-negative integer n.\n    \n    Args:\n        n: A non-negative integer\n        \n    Returns:\n        The factorial of n (n!)\n    \"\"\"\n    if n < 0:\n        raise ValueError(\"n must be non-negative\")\n    if n == 0 or n == 1:\n        return 1\n    result = 1\n    for i in range(2, n + 1):\n        result *= i\n    return result\n```",
+      "error": null
+    },
+    {
+      "model": "claude-opus-4-7",
+      "task_id": "factorial",
+      "tier": "high",
+      "trial_idx": 1,
+      "n_chunks": 2,
+      "completion_chars": 220,
+      "displacements": [
+        0.6790983080863953,
+        0.23418395221233368
+      ],
+      "max_displacement": 0.6790983080863953,
+      "mean_displacement": 0.45664113014936447,
+      "max_drift_deg": 13.448603579996645,
+      "verifier_passed": false,
+      "verifier_detail": {
+        "pass_a": true,
+        "pass_b": true,
+        "pass_both": true,
+        "msg_a": "All tests passed",
+        "msg_b": "All format checks passed"
+      },
+      "completion": "```python\ndef factorial(n):\n    \"\"\"Return the factorial of a non-negative integer n.\"\"\"\n    if n < 0:\n        raise ValueError(\"n must be non-negative\")\n    if n <= 1:\n        return 1\n    return n * factorial(n - 1)\n```",
+      "error": null
+    },
+    {
+      "model": "claude-sonnet-4-6",
+      "task_id": "gcd",
+      "tier": "low",
+      "trial_idx": 0,
+      "n_chunks": 4,
+      "completion_chars": 467,
+      "displacements": [
+        1.3453603982925415,
+        0.3180047273635864,
+        0.2205430418252945,
+        0.06776323914527893
+      ],
+      "max_displacement": 1.3453603982925415,
+      "mean_displacement": 0.48791785165667534,
+      "max_drift_deg": 18.353595710075183,
+      "verifier_passed": false,
+      "verifier_detail": {
+        "pass_a": true,
+        "pass_b": true,
+        "pass_both": true,
+        "msg_a": "All tests passed",
+        "msg_b": "All format checks passed"
+      },
+      "completion": "```python\ndef gcd(a, b):\n    \"\"\"\n    Return the greatest common divisor of two positive integers a and b.\n    \n    Uses the Euclidean algorithm: repeatedly replaces (a, b) with (b, a % b)\n    until b becomes 0, at which point a is the GCD.\n    \n    Args:\n        a (int): First positive integer\n        b (int): Second positive integer\n    \n    Returns:\n        int: The greatest common divisor of a and b\n    \"\"\"\n    while b:\n        a, b = b, a % b\n    return a\n```",
+      "error": null
+    },
+    {
+      "model": "claude-opus-4-7",
+      "task_id": "gcd",
+      "tier": "high",
+      "trial_idx": 0,
+      "n_chunks": 2,
+      "completion_chars": 149,
+      "displacements": [
+        0.6703245043754578,
+        0.262250155210495
+      ],
+      "max_displacement": 0.6703245043754578,
+      "mean_displacement": 0.4662873297929764,
+      "max_drift_deg": 15.069220945458376,
+      "verifier_passed": false,
+      "verifier_detail": {
+        "pass_a": true,
+        "pass_b": true,
+        "pass_both": true,
+        "msg_a": "All tests passed",
+        "msg_b": "All format checks passed"
+      },
+      "completion": "```python\ndef gcd(a, b):\n    \"\"\"Return the greatest common divisor of two positive integers a and b.\"\"\"\n    return a if b == 0 else gcd(b, a % b)\n```",
+      "error": null
+    },
+    {
+      "model": "claude-sonnet-4-6",
+      "task_id": "fibonacci",
+      "tier": "low",
+      "trial_idx": 1,
+      "n_chunks": 4,
+      "completion_chars": 522,
+      "displacements": [
+        1.315941572189331,
+        0.25797587633132935,
+        0.2823891043663025,
+        0.3704940676689148
+      ],
+      "max_displacement": 1.315941572189331,
+      "mean_displacement": 0.5567001551389694,
+      "max_drift_deg": 24.32645738114342,
+      "verifier_passed": false,
+      "verifier_detail": {
+        "pass_a": true,
+        "pass_b": true,
+        "pass_both": true,
+        "msg_a": "All tests passed",
+        "msg_b": "All format checks passed"
+      },
+      "completion": "```python\ndef fibonacci(n):\n    \"\"\"\n    Return the nth Fibonacci number (0-indexed).\n    \n    Args:\n        n: A non-negative integer index.\n    \n    Returns:\n        The nth Fibonacci number, where fibonacci(0)=0 and fibonacci(1)=1.\n    \n    Examples:\n        >>> fibonacci(0)\n        0\n        >>> fibonacci(1)\n        1\n        >>> fibonacci(10)\n        55\n    \"\"\"\n    if n < 0:\n        raise ValueError(\"n must be a non-negative integer\")\n    a, b = 0, 1\n    for _ in range(n):\n        a, b = b, a + b\n    return a\n```",
+      "error": null
+    },
+    {
+      "model": "claude-haiku-4-5",
+      "task_id": "reverse_words",
+      "tier": "control",
+      "trial_idx": 1,
+      "n_chunks": 2,
+      "completion_chars": 267,
+      "displacements": [
+        0.5181175470352173,
+        0.3708201050758362
+      ],
+      "max_displacement": 0.5181175470352173,
+      "mean_displacement": 0.44446882605552673,
+      "max_drift_deg": 21.37007985704312,
+      "verifier_passed": false,
+      "verifier_detail": {
+        "pass_a": true,
+        "pass_b": true,
+        "pass_both": true,
+        "msg_a": "All tests passed",
+        "msg_b": "All format checks passed"
+      },
+      "completion": "```python\ndef reverse_words(s):\n    \"\"\"\n    Reverses the order of words in a string.\n    \n    Args:\n        s: A string with words separated by spaces\n        \n    Returns:\n        A string with words in reversed order\n    \"\"\"\n    return ' '.join(s.split()[::-1])\n```",
+      "error": null
+    },
+    {
+      "model": "claude-opus-4-7",
+      "task_id": "is_palindrome",
+      "tier": "moderate",
+      "trial_idx": 1,
+      "n_chunks": 2,
+      "completion_chars": 154,
+      "displacements": [
+        1.0475958585739136,
+        0.28894782066345215
+      ],
+      "max_displacement": 1.0475958585739136,
+      "mean_displacement": 0.6682718396186829,
+      "max_drift_deg": 16.61363121993666,
+      "verifier_passed": false,
+      "verifier_detail": {
+        "pass_a": true,
+        "pass_b": true,
+        "pass_both": true,
+        "msg_a": "All tests passed",
+        "msg_b": "All format checks passed"
+      },
+      "completion": "```python\ndef is_palindrome(s):\n    \"\"\"Return True if s is a palindrome (ignoring case), False otherwise.\"\"\"\n    s = s.lower()\n    return s == s[::-1]\n```",
+      "error": null
+    },
+    {
+      "model": "claude-sonnet-4-6",
+      "task_id": "reverse_words",
+      "tier": "high",
+      "trial_idx": 1,
+      "n_chunks": 2,
+      "completion_chars": 332,
+      "displacements": [
+        1.208914875984192,
+        0.2920700013637543
+      ],
+      "max_displacement": 1.208914875984192,
+      "mean_displacement": 0.7504924386739731,
+      "max_drift_deg": 16.79443743009284,
+      "verifier_passed": false,
+      "verifier_detail": {
+        "pass_a": true,
+        "pass_b": false,
+        "pass_both": false,
+        "msg_a": "All tests passed",
+        "msg_b": "Too many lines: 11 > 10"
+      },
+      "completion": "```python\ndef reverse_words(s):\n    \"\"\"\n    Reverses the order of words in a string s where words are separated by spaces.\n    \n    Args:\n        s (str): Input string containing words separated by spaces.\n    \n    Returns:\n        str: A new string with the words in reversed order.\n    \"\"\"\n    return ' '.join(s.split()[::-1])\n```",
+      "error": null
+    },
+    {
+      "model": "claude-haiku-4-5",
+      "task_id": "factorial",
+      "tier": "high",
+      "trial_idx": 0,
+      "n_chunks": 2,
+      "completion_chars": 254,
+      "displacements": [
+        0.4431619942188263,
+        0.25966453552246094
+      ],
+      "max_displacement": 0.4431619942188263,
+      "mean_displacement": 0.3514132648706436,
+      "max_drift_deg": 14.919799269053385,
+      "verifier_passed": false,
+      "verifier_detail": {
+        "pass_a": true,
+        "pass_b": false,
+        "pass_both": false,
+        "msg_a": "All tests passed",
+        "msg_b": "Too many lines: 11 > 10"
+      },
+      "completion": "```python\ndef factorial(n):\n    \"\"\"\n    Returns the factorial of a non-negative integer n.\n    \n    Args:\n        n: A non-negative integer\n        \n    Returns:\n        The factorial of n (n!)\n    \"\"\"\n    return 1 if n <= 1 else n * factorial(n - 1)\n```",
+      "error": null
+    },
+    {
+      "model": "claude-haiku-4-5",
+      "task_id": "is_palindrome",
+      "tier": "control",
+      "trial_idx": 1,
+      "n_chunks": 3,
+      "completion_chars": 502,
+      "displacements": [
+        0.56034916639328,
+        0.28707048296928406,
+        0.34871166944503784
+      ],
+      "max_displacement": 0.56034916639328,
+      "mean_displacement": 0.398710439602534,
+      "max_drift_deg": 25.613113229856108,
+      "verifier_passed": false,
+      "verifier_detail": {
+        "pass_a": true,
+        "pass_b": true,
+        "pass_both": true,
+        "msg_a": "All tests passed",
+        "msg_b": "All format checks passed"
+      },
+      "completion": "```python\ndef is_palindrome(s):\n    \"\"\"\n    Returns True if string s is a palindrome (ignoring case), False otherwise.\n    \n    Args:\n        s: A string to check\n        \n    Returns:\n        bool: True if s is a palindrome, False otherwise\n    \"\"\"\n    # Convert to lowercase and remove spaces/special characters, keeping only alphanumeric\n    cleaned = ''.join(char.lower() for char in s if char.isalnum())\n    \n    # Check if cleaned string equals its reverse\n    return cleaned == cleaned[::-1]\n```",
+      "error": null
+    },
+    {
+      "model": "claude-opus-4-7",
+      "task_id": "fibonacci",
+      "tier": "control",
+      "trial_idx": 1,
+      "n_chunks": 2,
+      "completion_chars": 172,
+      "displacements": [
+        0.6766128540039062,
+        0.2345905900001526
+      ],
+      "max_displacement": 0.6766128540039062,
+      "mean_displacement": 0.4556017220020294,
+      "max_drift_deg": 13.472063543728954,
+      "verifier_passed": false,
+      "verifier_detail": {
+        "pass_a": true,
+        "pass_b": true,
+        "pass_both": true,
+        "msg_a": "All tests passed",
+        "msg_b": "All format checks passed"
+      },
+      "completion": "```python\ndef fibonacci(n):\n    if n < 0:\n        raise ValueError(\"n must be non-negative\")\n    a, b = 0, 1\n    for _ in range(n):\n        a, b = b, a + b\n    return a\n```",
+      "error": null
+    },
+    {
+      "model": "claude-sonnet-4-6",
+      "task_id": "reverse_words",
+      "tier": "high",
+      "trial_idx": 0,
+      "n_chunks": 1,
+      "completion_chars": 160,
+      "displacements": [
+        1.2639579772949219
+      ],
+      "max_displacement": 1.2639579772949219,
+      "mean_displacement": 1.2639579772949219,
+      "max_drift_deg": 0.0,
+      "verifier_passed": false,
+      "verifier_detail": {
+        "pass_a": true,
+        "pass_b": true,
+        "pass_both": true,
+        "msg_a": "All tests passed",
+        "msg_b": "All format checks passed"
+      },
+      "completion": "```python\ndef reverse_words(s):\n    \"\"\"Reverse the order of words in a string separated by spaces.\"\"\"\n    words = s.split()\n    return ' '.join(words[::-1])\n```",
+      "error": null
+    },
+    {
+      "model": "claude-sonnet-4-6",
+      "task_id": "factorial",
+      "tier": "high",
+      "trial_idx": 1,
+      "n_chunks": 2,
+      "completion_chars": 261,
+      "displacements": [
+        1.3313190937042236,
+        0.25705504417419434
+      ],
+      "max_displacement": 1.3313190937042236,
+      "mean_displacement": 0.794187068939209,
+      "max_drift_deg": 14.76902148148425,
+      "verifier_passed": false,
+      "verifier_detail": {
+        "pass_a": true,
+        "pass_b": true,
+        "pass_both": true,
+        "msg_a": "All tests passed",
+        "msg_b": "All format checks passed"
+      },
+      "completion": "```python\ndef factorial(n):\n    \"\"\"Return the factorial of a non-negative integer n using recursion.\"\"\"\n    if not isinstance(n, int) or n < 0:\n        raise ValueError(\"Input must be a non-negative integer\")\n    return 1 if n == 0 else n * factorial(n - 1)\n```",
+      "error": null
+    },
+    {
+      "model": "claude-sonnet-4-6",
+      "task_id": "fibonacci",
+      "tier": "moderate",
+      "trial_idx": 0,
+      "n_chunks": 3,
+      "completion_chars": 458,
+      "displacements": [
+        1.3082051277160645,
+        0.35447958111763,
+        0.46898776292800903
+      ],
+      "max_displacement": 1.3082051277160645,
+      "mean_displacement": 0.7105574905872345,
+      "max_drift_deg": 27.42804646249668,
+      "verifier_passed": false,
+      "verifier_detail": {
+        "pass_a": true,
+        "pass_b": false,
+        "pass_both": false,
+        "msg_a": "All tests passed",
+        "msg_b": "Too many lines: 18 > 15"
+      },
+      "completion": "```python\ndef fibonacci(n):\n    \"\"\"\n    Return the nth Fibonacci number (0-indexed).\n    \n    Args:\n        n: The index of the Fibonacci number to return (0-indexed).\n    \n    Returns:\n        The nth Fibonacci number where fibonacci(0)=0, fibonacci(1)=1.\n    \"\"\"\n    if n < 0:\n        raise ValueError(\"n must be a non-negative integer\")\n    if n == 0:\n        return 0\n    a, b = 0, 1\n    for _ in range(2, n + 1):\n        a, b = b, a + b\n    return b\n```",
+      "error": null
+    },
+    {
+      "model": "claude-opus-4-7",
+      "task_id": "reverse_words",
+      "tier": "moderate",
+      "trial_idx": 0,
+      "n_chunks": 4,
+      "completion_chars": 373,
+      "displacements": [
+        0.7240139842033386,
+        0.43082529306411743,
+        0.30508697032928467,
+        0.10754438489675522
+      ],
+      "max_displacement": 0.7240139842033386,
+      "mean_displacement": 0.391867658123374,
+      "max_drift_deg": 27.0413616252364,
+      "verifier_passed": false,
+      "verifier_detail": {
+        "pass_a": true,
+        "pass_b": true,
+        "pass_both": true,
+        "msg_a": "All tests passed",
+        "msg_b": "All format checks passed"
+      },
+      "completion": "```python\ndef reverse_words(s):\n    \"\"\"Reverse the order of words in a string s.\n    \n    Args:\n        s: A string with words separated by spaces.\n    \n    Returns:\n        A string with the words in reversed order.\n    \"\"\"\n    words = s.split(' ')\n    result = []\n    for i in range(len(words) - 1, -1, -1):\n        result.append(words[i])\n    return ' '.join(result)\n```",
+      "error": null
+    },
+    {
+      "model": "claude-haiku-4-5",
+      "task_id": "gcd",
+      "tier": "control",
+      "trial_idx": 1,
+      "n_chunks": 2,
+      "completion_chars": 356,
+      "displacements": [
+        0.7139672040939331,
+        0.24778646230697632
+      ],
+      "max_displacement": 0.7139672040939331,
+      "mean_displacement": 0.4808768332004547,
+      "max_drift_deg": 14.233691860423367,
+      "verifier_passed": false,
+      "verifier_detail": {
+        "pass_a": true,
+        "pass_b": true,
+        "pass_both": true,
+        "msg_a": "All tests passed",
+        "msg_b": "All format checks passed"
+      },
+      "completion": "```python\ndef gcd(a, b):\n    \"\"\"\n    Returns the greatest common divisor of two positive integers a and b.\n    Uses the Euclidean algorithm.\n    \n    Args:\n        a: First positive integer\n        b: Second positive integer\n    \n    Returns:\n        The greatest common divisor of a and b\n    \"\"\"\n    while b != 0:\n        a, b = b, a % b\n    return a\n```",
+      "error": null
+    },
+    {
+      "model": "claude-opus-4-7",
+      "task_id": "factorial",
+      "tier": "high",
+      "trial_idx": 0,
+      "n_chunks": 2,
+      "completion_chars": 220,
+      "displacements": [
+        0.6790983080863953,
+        0.23418395221233368
+      ],
+      "max_displacement": 0.6790983080863953,
+      "mean_displacement": 0.45664113014936447,
+      "max_drift_deg": 13.448603579996645,
+      "verifier_passed": false,
+      "verifier_detail": {
+        "pass_a": true,
+        "pass_b": true,
+        "pass_both": true,
+        "msg_a": "All tests passed",
+        "msg_b": "All format checks passed"
+      },
+      "completion": "```python\ndef factorial(n):\n    \"\"\"Return the factorial of a non-negative integer n.\"\"\"\n    if n < 0:\n        raise ValueError(\"n must be non-negative\")\n    if n <= 1:\n        return 1\n    return n * factorial(n - 1)\n```",
+      "error": null
+    },
+    {
+      "model": "claude-opus-4-7",
+      "task_id": "fibonacci",
+      "tier": "low",
+      "trial_idx": 0,
+      "n_chunks": 4,
+      "completion_chars": 351,
+      "displacements": [
+        0.7482138872146606,
+        0.319714218378067,
+        0.42000311613082886,
+        0.07404648512601852
+      ],
+      "max_displacement": 0.7482138872146606,
+      "mean_displacement": 0.39049442671239376,
+      "max_drift_deg": 28.551011036648564,
+      "verifier_passed": false,
+      "verifier_detail": {
+        "pass_a": true,
+        "pass_b": true,
+        "pass_both": true,
+        "msg_a": "All tests passed",
+        "msg_b": "All format checks passed"
+      },
+      "completion": "```python\ndef fibonacci(n):\n    \"\"\"Return the nth Fibonacci number (0-indexed).\n\n    fibonacci(0) = 0, fibonacci(1) = 1, and for n >= 2,\n    fibonacci(n) = fibonacci(n-1) + fibonacci(n-2).\n    \"\"\"\n    if n < 0:\n        raise ValueError(\"n must be a non-negative integer\")\n    a, b = 0, 1\n    for _ in range(n):\n        a, b = b, a + b\n    return a\n```",
+      "error": null
+    }
+  ]
+}

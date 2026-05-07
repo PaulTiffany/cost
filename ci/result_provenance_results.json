@@ -1,10 +1,10 @@
 {
   "summary": {
-    "total_sources": 38,
-    "passed": 38,
+    "total_sources": 39,
+    "passed": 39,
     "failed": 0,
     "buckets": {
-      "deterministic": 7,
+      "deterministic": 8,
       "api_generated": 18,
       "allowlisted": 13
     }
@@ -179,6 +179,12 @@
     {
       "path": "supplementary/experiments/openrouter_regression_results.json",
       "bucket": "api_generated",
+      "passed": true,
+      "missing_fields": []
+    },
+    {
+      "path": "supplementary/experiments/outputs/audit_v4/run_manifest.json",
+      "bucket": "deterministic",
       "passed": true,
       "missing_fields": []
     },

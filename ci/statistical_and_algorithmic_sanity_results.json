@@ -30,9 +30,9 @@
     {
       "subcheck": "algorithm_guards",
       "severity": "warn",
-      "location": "line 119",
+      "location": "line 113",
       "snippet": "\\sqrt{k/(1{-}\\rhohat(k{-}1))}",
-      "detail": "\\sqrt operand contains subtraction or division (could go non-positive); no \\IF/\\REQUIRE guard found in 5 preceding pseudocode lines. Algorithm block at line 112."
+      "detail": "\\sqrt operand contains subtraction or division (could go non-positive); no \\IF/\\REQUIRE guard found in 5 preceding pseudocode lines. Algorithm block at line 106."
     }
   ]
 }

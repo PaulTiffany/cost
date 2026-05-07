@@ -3,8 +3,8 @@
     "n_urls": 2,
     "n_hyperref": 0,
     "n_hypertarget": 29,
-    "n_refs": 122,
-    "n_labels": 175,
+    "n_refs": 125,
+    "n_labels": 176,
     "urls": [
       "https://anonymous.4open.science/r/cacophony",
       "https://neurips.cc/Conferences/2026/CallForPapers"
@@ -14,9 +14,8 @@
     "venue_year_mismatches": [],
     "unresolved_hyperref": [],
     "unresolved_refs": [],
-    "dead_labels_count": 54,
+    "dead_labels_count": 52,
     "dead_labels_sample": [
-      "app:additional",
       "app:algorithm",
       "app:baselines",
       "app:compound",
@@ -35,7 +34,8 @@
       "app:inequality",
       "app:k_bound",
       "app:k_scaling",
-      "app:outlook"
+      "app:outlook",
+      "app:pareto"
     ],
     "network_results": []
   },

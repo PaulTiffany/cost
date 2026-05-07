@@ -231,7 +231,17 @@ def render(cert: dict, ledger: dict | None, claims_dict: dict) -> str:
 
     lines.append("## Headline claims")
     lines.append("")
-    lines.append("*Flagship numerical claims from L15; all 304/304 ties pass.*")
+    try:
+        import json as _json
+        from pathlib import Path as _Path
+        _ties = _json.loads((_Path(__file__).resolve().parent
+                             / "claim_data_ties_results.json").read_text(encoding="utf-8"))
+        _summary = _ties.get("summary", {})
+        _passed = _summary.get("passed", "?")
+        _total = _summary.get("total", "?")
+    except Exception:
+        _passed, _total = "?", "?"
+    lines.append(f"*Flagship numerical claims from L15; all {_passed}/{_total} ties pass.*")
     lines.append("")
     lines.append(headline_table(claims_dict))
     lines.append("")
@@ -403,7 +413,7 @@ def render_faq(payload: dict, repo_root: Path) -> str:
     lines.append("Three example spot-check commands:")
     lines.append("")
     lines.append("```bash")
-    lines.append("# 1. Re-run all L15 data-tie checks (304 claims):")
+    lines.append("# 1. Re-run all L15 data-tie checks (full registry):")
     lines.append("python ci/claim_data_ties_check.py")
     lines.append("")
     lines.append("# 2. Re-run the cross-model metadata check:")

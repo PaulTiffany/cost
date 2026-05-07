@@ -807,7 +807,7 @@
     },
     {
       "name": "subproc__narrative_consistency",
-      "description": "narrative_consistency:     absent  : ['conclusion_summary', 'abstract', 'approach']",
+      "description": "narrative_consistency:     absent  : ['approach', 'abstract', 'conclusion_summary']",
       "formula": "passed == True",
       "params": {
         "passed": true
@@ -820,7 +820,7 @@
     },
     {
       "name": "subproc__bundle_verification",
-      "description": "ADVISORY: bundle_verification: Wrote ci\\bundle_verification_results.json",
+      "description": "bundle_verification: Wrote ci\\bundle_verification_results.json",
       "formula": "passed == True",
       "params": {
         "passed": true

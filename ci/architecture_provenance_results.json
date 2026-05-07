@@ -1,0 +1,101 @@
+{
+  "_meta": {
+    "script": "ci/architecture_provenance_check.py",
+    "script_hash": "dbf0d6d3e82485c55125f444f57d5c6286024e178c161706d6dcd0b9e5ddd4c1",
+    "generated_at_utc": "2026-05-06T04:59:01.237591+00:00"
+  },
+  "status": "FAIL",
+  "summary": {
+    "status": "FAIL",
+    "blockers": 49,
+    "advisories": 8,
+    "checks_run": 4
+  },
+  "checks": [
+    {
+      "name": "file_naming",
+      "status": "PASS",
+      "blockers": [],
+      "advisories": [
+        "missing paired results JSON for audit_observer_runtime_check.py",
+        "missing paired results JSON for figure_lineage_check.py",
+        "missing paired results JSON for supplementary_claim_surface_check.py"
+      ]
+    },
+    {
+      "name": "schema_floor",
+      "status": "FAIL",
+      "blockers": [
+        "anonymity_check_results.json: only 0 of approved keys (need 3)",
+        "artifact_registry_results.json: only 1 of approved keys (need 3)",
+        "audit_observer_purity_results.json: only 2 of approved keys (need 3)",
+        "audit_runtime_results.json: only 1 of approved keys (need 3)",
+        "author_claims_results.json: only 1 of approved keys (need 3)",
+        "bib_entry_check_results.json: only 1 of approved keys (need 3)",
+        "build_equivalence_results.json: only 1 of approved keys (need 3)",
+        "bundle_verification_results.json: only 1 of approved keys (need 3)",
+        "caveat_ledger_results.json: only 2 of approved keys (need 3)",
+        "cert_anonymity_results.json: only 1 of approved keys (need 3)",
+        "charitable_table_consistency_results.json: only 1 of approved keys (need 3)",
+        "citation_integrity_results.json: only 1 of approved keys (need 3)",
+        "claim_audit_results.json: only 2 of approved keys (need 3)",
+        "claim_data_ties_results.json: only 2 of approved keys (need 3)",
+        "confidence_interval_coverage_results.json: only 2 of approved keys (need 3)",
+        "container_lineage_results.json: only 1 of approved keys (need 3)",
+        "cross_claim_consistency_results.json: only 1 of approved keys (need 3)",
+        "cross_model_metadata_results.json: only 2 of approved keys (need 3)",
+        "cross_source_recomputation_results.json: only 1 of approved keys (need 3)",
+        "cross_tree_consistency_results.json: only 1 of approved keys (need 3)",
+        "decomposition_consistency_results.json: only 2 of approved keys (need 3)",
+        "figure_value_check_results.json: only 1 of approved keys (need 3)",
+        "high_salience_gate_results.json: only 1 of approved keys (need 3)",
+        "illustration_lineage_results.json: only 2 of approved keys (need 3)",
+        "license_clearance_results.json: only 0 of approved keys (need 3)",
+        "link_integrity_results.json: only 1 of approved keys (need 3)",
+        "manifest_schema_results.json: only 1 of approved keys (need 3)",
+        "manual_scoring_results.json: only 1 of approved keys (need 3)",
+        "monotonic_cliff_results.json: only 1 of approved keys (need 3)",
+        "multi_seed_drift_results.json: only 2 of approved keys (need 3)",
+        "narrative_consistency_results.json: only 1 of approved keys (need 3)",
+        "numerical_bound_results.json: only 1 of approved keys (need 3)",
+        "page_check_results.json: only 1 of approved keys (need 3)",
+        "pdf_camera_ready_results.json: only 0 of approved keys (need 3)",
+        "pdf_source_equivalence_results.json: only 1 of approved keys (need 3)",
+        "per_trajectory_pivot_results.json: only 1 of approved keys (need 3)",
+        "reference_convention_results.json: only 1 of approved keys (need 3)",
+        "result_provenance_results.json: only 1 of approved keys (need 3)",
+        "sample_size_adequacy_results.json: only 2 of approved keys (need 3)",
+        "sample_size_uncertainty_results.json: only 1 of approved keys (need 3)",
+        "sbom_check_results.json: only 1 of approved keys (need 3)",
+        "script_integrity_results.json: only 1 of approved keys (need 3)",
+        "statistical_and_algorithmic_sanity_results.json: only 1 of approved keys (need 3)",
+        "supplementary_surface_results.json: only 1 of approved keys (need 3)",
+        "symbolic_algebra_results.json: only 1 of approved keys (need 3)",
+        "table_value_results.json: only 1 of approved keys (need 3)",
+        "unicode_normalization_results.json: only 1 of approved keys (need 3)"
+      ],
+      "advisories": []
+    },
+    {
+      "name": "pii_scan",
+      "status": "FAIL",
+      "blockers": [
+        "supplementary_manifest.json: pattern '\\\\bpaulc\\\\b'",
+        "supplementary_surface_results.json: pattern '\\\\bpaulc\\\\b'"
+      ],
+      "advisories": []
+    },
+    {
+      "name": "self_hash_provenance",
+      "status": "PASS",
+      "blockers": [],
+      "advisories": [
+        "anonymity_check.py: results JSON has no recorded script hash",
+        "bib_entry_check.py: results JSON has no recorded script hash",
+        "figure_value_check.py: results JSON has no recorded script hash",
+        "page_check.py: results JSON has no recorded script hash",
+        "sbom_check.py: results JSON has no recorded script hash"
+      ]
+    }
+  ]
+}

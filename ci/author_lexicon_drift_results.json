@@ -3,7 +3,7 @@
     "script": "ci/author_lexicon_drift_check.py",
     "script_hash": "25a198a2fd7263fb9f5d78e6e880b2a22af582333a1a5f5e3a4a28018a15bbfe",
     "audience": "author-only; not for reviewer bundle",
-    "generated_at_utc": "2026-05-07T05:13:45+00:00",
+    "generated_at_utc": "2026-05-07T09:50:48+00:00",
     "paper_path": "C:\\src\\NeurIPS\\paper\\main.tex",
     "lexicon_path": "C:\\src\\NeurIPS\\ci\\de_llm_lexicon.md"
   },
@@ -173,7 +173,7 @@
       "section": "1c",
       "raw": "kinematic",
       "pattern": "kinematic",
-      "count": 3,
+      "count": 4,
       "present": true
     },
     {

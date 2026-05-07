@@ -5,8 +5,8 @@
     "failed": 0,
     "overall": "PASS",
     "paper_window_lines": [
-      81,
-      552
+      80,
+      568
     ]
   },
   "computed": {
@@ -18,11 +18,11 @@
       "deepseek-ai/deepseek-coder-1.3b-instruct",
       "TinyLlama/TinyLlama-1.1B-Chat-v1.0",
       "Qwen/Qwen2.5-3B-Instruct",
+      "deepseek/deepseek-chat-v3-0324",
       "google/gemini-2.5-pro",
-      "openai/gpt-4o",
       "meta-llama/llama-3.1-70b-instruct",
-      "google/gemini-2.5-flash",
-      "deepseek/deepseek-chat-v3-0324"
+      "openai/gpt-4o",
+      "google/gemini-2.5-flash"
     ],
     "provider_set": [
       "Alibaba",
@@ -44,31 +44,31 @@
       "passed": true,
       "expected_n_models": 9,
       "found_at_lines": [
-        527,
-        534
+        543,
+        550
       ],
-      "detail": "Found phrase '9 models' at line(s) [527, 534]"
+      "detail": "Found phrase '9 models' at line(s) [543, 550]"
     },
     {
       "name": "n_providers_in_paper_window",
       "passed": true,
       "expected_n_providers": 6,
       "found_at_lines": [
-        527,
-        534,
-        541
+        543,
+        550,
+        557
       ],
-      "detail": "Found phrase '6 providers' at line(s) [527, 534, 541]"
+      "detail": "Found phrase '6 providers' at line(s) [543, 550, 557]"
     },
     {
       "name": "n_trials_in_paper_window",
       "passed": true,
       "expected_n_trials": 3120,
       "found_at_lines": [
-        527,
-        534
+        543,
+        550
       ],
-      "detail": "Found '3120' at line(s) [527, 534]"
+      "detail": "Found '3120' at line(s) [543, 550]"
     }
   ]
 }

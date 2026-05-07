@@ -47,6 +47,9 @@ EXCLUDE_DIRS = {
     "submission_repo", "neurips_template", "ICML_2026_Template (3)",  # legacy local
     "camera_ready",  # post-acceptance, not for review
     "launch",  # local launch scripts
+    "theperfectpaper",  # local-author scratch; identity leaks
+    "_dev",  # in-repo figure dev harness (paper/figures/_dev)
+    "agent_m13_workspace",  # parallel agent scratch directory
 }
 EXCLUDE_FILE_SUFFIXES_HEAVY = (".wav",)  # 12 MB of WAVs; the .mp3 versions ship
 EXCLUDE_FILE_SUFFIXES = (
@@ -114,6 +117,17 @@ PII_SCRUB_AT_ZIP = {
     "ci/license_clearance_results.json",
     "ci/link_integrity_results.json",
     "ci/pdf_camera_ready_results.json",
+    # New session reviewer-facing certs that record absolute pdf/main.tex paths:
+    "ci/figure_bounds_results.json",
+    "ci/figure_caption_grounding_results.json",
+    "ci/paper_surface_results.json",
+    # Bundle and supplementary manifests
+    "ci/illustration_lineage_results.json",
+    "ci/paper_surface_check.py",
+    "ci/figure_caption_grounding_check.py",
+    "ci/figure_bounds_check.py",
+    "ci/page_check.py",
+    "ci/page_check_results.json",
 }
 
 TEXT_LIKE_SUFFIXES = (".tex", ".bib", ".sty", ".cls", ".bst", ".md",

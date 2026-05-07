@@ -1,0 +1,47 @@
+{
+  "_meta": {
+    "script": "ci/reviewer_path_chain_check.py",
+    "script_hash": "527d6fb2235b3f4da82ab83c886c0874691891147d1308bb3afd3cdc46f98cbc",
+    "generated_at_utc": "2026-05-06T05:14:17Z"
+  },
+  "status": "FAIL",
+  "summary": {
+    "status": "FAIL",
+    "blockers": 3,
+    "advisories": 0,
+    "checks_run": 4,
+    "files_scanned": 10,
+    "paths_extracted": 154,
+    "line_refs_extracted": 1
+  },
+  "checks": [
+    {
+      "name": "file_path_resolution",
+      "status": "FAIL",
+      "blockers": [
+        "PRE_REGISTRATION_AUDIT_OBSERVER_v4.md:155: path does not resolve `tests/test_purity.py`",
+        "PRE_REGISTRATION_AUDIT_OBSERVER_v4.md:159: path does not resolve `tests/test_audit_observer.py`",
+        "PRE_REGISTRATION_AUDIT_OBSERVER_v4.md:506: path does not resolve `supplementary/experiments/outputs/audit_v4/claude_observation_packets.jsonl`"
+      ],
+      "advisories": []
+    },
+    {
+      "name": "line_range_resolution",
+      "status": "PASS",
+      "blockers": [],
+      "advisories": []
+    },
+    {
+      "name": "cert_layer_reachability",
+      "status": "PASS",
+      "blockers": [],
+      "advisories": []
+    },
+    {
+      "name": "doc_cross_references",
+      "status": "PASS",
+      "blockers": [],
+      "advisories": []
+    }
+  ]
+}

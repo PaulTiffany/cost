@@ -1,0 +1,93 @@
+{
+  "paper_title": "The Cost of Cacophony: Geometric Limits on Multi-Constraint Alignment",
+  "venue": "NeurIPS 2026",
+  "generated_utc": "2026-05-06T05:00:30Z",
+  "scope": "fresh-clone reviewer execution of cert + repro commands documented in supplementary/REVIEWER_QUICKSTART.md, abstract, and conclusion",
+  "summary": {
+    "total": 11,
+    "full_pass": 10,
+    "partial": 1,
+    "fail": 0
+  },
+  "results": [
+    {
+      "n": 1,
+      "command": "python ci/claim_certificate.py",
+      "exit_code": 0,
+      "status": "full-pass",
+      "brief": "Verdict PASS, 31 layers green (1 SKIP for L13_cross_tree, expected)"
+    },
+    {
+      "n": 2,
+      "command": "python ci/audit_observer_purity_check.py",
+      "exit_code": 0,
+      "status": "full-pass",
+      "brief": "9 pass, 0 warn, 0 fail; mutation kill_rate 0.962"
+    },
+    {
+      "n": 3,
+      "command": "python ci/audit_observer_runtime_check.py",
+      "exit_code": 0,
+      "status": "full-pass",
+      "brief": "L31 PASS; H_B1, H_B2, H_B3 all PASS over 6120 packets, 18 cells"
+    },
+    {
+      "n": 4,
+      "command": "python ci/audit/_canonicality_cert.py --output ci/audit/CANONICALITY_LEDGER.md --json-output ci/audit/canonicality_results.json",
+      "exit_code": 0,
+      "status": "full-pass",
+      "brief": "8/8 checks passed, ledger written"
+    },
+    {
+      "n": 5,
+      "command": "python ci/anonymity_check.py",
+      "exit_code": 0,
+      "status": "full-pass",
+      "brief": "213 files scanned, 0 hard fails, 0 warnings"
+    },
+    {
+      "n": 6,
+      "command": "python ci/audit/_mutation_ledger.py --dump ci/audit/main_dump.jsonl --config ci/audit/cosmic_ray_config.toml --output ci/audit/MUTATION_LEDGER.md",
+      "exit_code": 0,
+      "status": "full-pass",
+      "brief": "368 mutations, 96.2 percent killed, 100 percent addressed"
+    },
+    {
+      "n": 7,
+      "command": "python -m pytest ci/audit/tests/ -q --no-header --deselect ci/audit/tests/test_aaa_gold_standard.py",
+      "exit_code": 0,
+      "status": "full-pass",
+      "brief": "151 passed, 1 skipped, 11 deselected"
+    },
+    {
+      "n": 8,
+      "command": "python -m pytest supplementary/experiments/tests/ -q --no-header",
+      "exit_code": 1,
+      "status": "partial",
+      "brief": "47 passed, 1 failed (test_exception_X5_orchestrator_env_load_missing_file_handled)",
+      "diagnosis": "AttributeError on monkeypatch.setattr(anthropic_channel, ENV_FILE, ...). The channels.anthropic_channel module does not expose an ENV_FILE attribute; the test fixture and the channel module have drifted. Single defensive exception-path test; does not block any load-bearing certification path."
+    },
+    {
+      "n": 9,
+      "command": "python supplementary/experiments/audit_experiment_orchestrator.py",
+      "exit_code": 0,
+      "status": "full-pass",
+      "brief": "Plan-only mode; PLANNED CONFIGURATION printed, no API calls launched"
+    },
+    {
+      "n": 10,
+      "command": "python supplementary/experiments/task_prompt_snapshot.py",
+      "exit_code": 0,
+      "status": "full-pass",
+      "brief": "Snapshot written; tasks=6, tiers=4, resolved_prompts=24"
+    },
+    {
+      "n": 11,
+      "command": "python supplementary/experiments/extended_environment_fingerprint.py",
+      "exit_code": 0,
+      "status": "full-pass",
+      "brief": "Fingerprint JSON printed; OS, library versions, hardware all enumerated"
+    }
+  ],
+  "anonymity_check_post_write": "see acceptance step 3"
+}

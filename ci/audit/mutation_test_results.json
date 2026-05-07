@@ -1,0 +1,13 @@
+{
+  "kill_rate": 0.962,
+  "killed": 354,
+  "killed_test_failure": 316,
+  "incompetent_counts_as_killed": 38,
+  "survived": 14,
+  "survived_documented_equivalent": 14,
+  "survived_residual": 0,
+  "total": 368,
+  "addressed_pct": 100.0,
+  "source_ledger": "ci/audit/MUTATION_LEDGER.md",
+  "source_ledger_sha256": "1ab384a7e1bc8b2e75e26696c9ce750bcd65e85a49aa391a32a679fdacb9098a"
+}

@@ -53,3 +53,16 @@ paper/cacophony_openreview_supplementary.zip
 
 # Legacy local repo (predates current submission flow)
 submission_repo/
+
+# Session-added: parallel agent scratch + figure dev harness + backups
+agent_m13_workspace/
+paper/figures/_dev/
+*.PRE_COSMIC_RAY_BACKUP
+.coverage
+
+# Submission build artifacts (built fresh; uploaded directly to OpenReview/4open)
+paper/cacophony_*.zip
+
+# Rebuttal workspace (post-review; not part of initial submission)
+rebuttal/
+rebuttal_prep/

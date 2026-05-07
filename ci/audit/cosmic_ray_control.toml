@@ -1,0 +1,8 @@
+[cosmic-ray]
+module-path = "ci/audit/control_router.py"
+timeout = 30.0
+excluded-modules = ["ci/audit/tests/*"]
+test-command = "python -m pytest ci/audit/tests/test_control_router.py -x -q"
+
+[cosmic-ray.distributor]
+name = "local"

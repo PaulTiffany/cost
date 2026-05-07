@@ -138,10 +138,10 @@ CLAIMS: list[dict] = [
     },
     {
         "id": "C9",
-        "description": r"89% smooth, 11% pivot regime (joint with 'pivot' or 'Lipschitz' anchor)",
+        "description": r"4% smooth, 96% pivot regime under audit-observer measurement (joint with 'pivot' or 'Lipschitz' anchor)",
         "patterns": [
-            r"89\s*\\?%",
-            r"11\s*\\?%",
+            r"4\s*\\?%",
+            r"96\s*\\?%",
             r"pivot|[Ll]ipschitz",
         ],
         "match_mode": "joint",
@@ -387,7 +387,7 @@ IMPORTANT: list[dict] = [
     {"id": "I69", "description": "App R: IF-DSL 0% at high rho (joint with '0%' + 'high' anchors)", "patterns": [r"IF[-\s]?DSL", r"0\s*\\?%", r"high"], "match_mode": "joint", "match_window": 3},
     {"id": "I70", "description": "App S: Bytebeat cliff at rho>=0.8", "patterns": [r"0\.8", r"[Bb]ytebeat"]},
     {"id": "I71", "description": "App U: <5min CPU, ~20h GPU", "patterns": [r"5\s*min(?:utes?)?|<\s*5", r"20\s*h(?:ours?)?|20\\,?h"]},
-    {"id": "I72", "description": "App E: 5% vs 58%/71% conjunction (joint with 'conjunction' anchor)", "patterns": [r"[Cc]onjunction", r"58\s*\\?%", r"71\s*\\?%"], "match_mode": "joint", "match_window": 5},
+    {"id": "I72", "description": "Sec 6.3: tests axis 64% vs format axis 2% conflict-vs-difficulty control (joint with 'tests axis' anchor)", "patterns": [r"tests axis", r"64\s*\\?%", r"2\s*\\?%"], "match_mode": "joint", "match_window": 5},
     {"id": "I73", "description": "App M: phase transition 1/(k-1)", "patterns": [r"1\s*/\s*\(?\s*k\s*[-{}\s]*1"]},
     {"id": "I74", "description": "App D: rho_max ~ 0.18", "patterns": [r"0\.18"]},
     {"id": "I75", "description": "App D: 24% reinforcing pairs", "patterns": [r"24\s*\\?%", r"reinforcing"]},
@@ -434,14 +434,16 @@ COMPLETE: list[dict] = [
     {"id": "T14", "description": "Per-task p-value 2.12e-23 (Section 5.1)", "patterns": [r"2\.12\s*\\times|p\s*=\s*2\.12"], "match_mode": "any"},
     {"id": "T15", "description": "Per-task n_trials = 1920 (per_task_correlation_results.json)", "patterns": [r"1920\b|1\\,?920\b|1\{,\}920"], "match_mode": "any", "supplementary_only": True},
     {"id": "T16", "description": "Unconditional pivot success rate 1.7%", "patterns": [r"1\.7\s*\\?%"], "match_mode": "any"},
-    {"id": "T17", "description": "High-tier 8/480 unconditional success", "patterns": [r"8/480|8\s*/\s*480"], "match_mode": "any"},
+    {"id": "T17", "description": "High-tier 923/1,365 audit-observer unconditional pass count", "patterns": [r"923\s*/\s*1[,{}]*365"], "match_mode": "any"},
 
     # Bytebeat / IF-DSL specific failure values
     {"id": "T18", "description": "Bytebeat 59% success at rho=0.47", "patterns": [r"[Bb]ytebeat", r"59\s*\\?%", r"0\.47"], "match_mode": "joint", "match_window": 5},
 
     # AGENTIF citation values (Section 4)
     {"id": "T19", "description": "AGENTIF: rho_hat_max in [0.08, 0.15] across 11.9 avg constraints", "patterns": [r"AGENTIF|qi2025agentif", r"0\.08", r"0\.15"], "match_mode": "joint", "match_window": 3},
-    {"id": "T20", "description": "AGENTIF average constraints 11.9 (joint)", "patterns": [r"AGENTIF", r"11\.9"], "match_mode": "joint", "match_window": 3},
+    # T20 (AGENTIF average constraints 11.9) retired 2026-05-07: the
+    # "across 11.9 average constraints" phrase was cut from Remark 3.7 in
+    # the final-pass tightening. T19 still covers AGENTIF + rho_hat bounds.
 
     # Algorithm thresholds (already partially in Tier 1; these are the
     # explicit Algorithm 1 line text)
@@ -511,7 +513,7 @@ COMPLETE: list[dict] = [
     {"id": "T56", "description": "Mutation harness: 147 of 147 single-digit substitutions caught", "patterns": [r"147\s+of\s+147", r"single[-\s]?digit\s+substitut"], "match_mode": "joint", "match_window": 3},
 ]
 
-assert len(COMPLETE) == 56, f"Expected 56 complete claims (Tier 3 batch), got {len(COMPLETE)}"
+assert len(COMPLETE) == 55, f"Expected 55 complete claims (Tier 3 batch; T20 retired 2026-05-07), got {len(COMPLETE)}"
 
 
 # ---------------------------------------------------------------------------

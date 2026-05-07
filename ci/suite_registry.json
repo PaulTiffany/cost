@@ -230,6 +230,16 @@
           "check": "L32_paper_surface",
           "script": "paper_surface_check.py",
           "severity": "blocker"
+        },
+        {
+          "check": "L33_caption_grounding",
+          "script": "figure_caption_grounding_check.py",
+          "severity": "blocker"
+        },
+        {
+          "check": "L34_page_check",
+          "script": "page_check.py",
+          "severity": "blocker"
         }
       ]
     }

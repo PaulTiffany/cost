@@ -1,0 +1,21 @@
+[cosmic-ray]
+module-path = "ci/audit"
+timeout = 30.0
+# control_router.py has its own dedicated mutation session
+# (cosmic_ray_control.toml). Exclude it here so the main session
+# only mutates the predicate ladder and supporting types.
+excluded-modules = [
+    "ci/audit/tests/*",
+    "ci/audit/control_router.py",
+    "ci/audit/_kill_rate.py",
+    "ci/audit/_mutation_ledger.py",
+    "ci/audit/_run_tests_utf8.py",
+]
+# Deselect the slow gold-standard meta-tests during mutation runs;
+# they spawn their own coverage subprocesses and would blow the per-
+# mutation 30s budget. Use the UTF-8 wrapper so cp1252 bytes in pytest
+# output don't downgrade kills to "incompetent" (cosmic-ray bug).
+test-command = "python ci/audit/_run_tests_utf8.py ci/audit/tests/ -x -q --deselect ci/audit/tests/test_aaa_gold_standard.py"
+
+[cosmic-ray.distributor]
+name = "local"

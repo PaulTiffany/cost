@@ -67,7 +67,7 @@
         {
           "check": "forbidden_tokens",
           "passed": true,
-          "detail": "No forbidden tokens found (checked: ['ICML', 'Policy B', 'paulc', 'Tiffany'])"
+          "detail": "No forbidden tokens found (checked: ['ICML', 'Policy B', '<USER>', 'Tiffany'])"
         },
         {
           "check": "scope_note_present",
@@ -93,7 +93,7 @@
         {
           "check": "forbidden_tokens",
           "passed": true,
-          "detail": "No forbidden tokens found (checked: ['ICML', 'paulc', 'Tiffany'])"
+          "detail": "No forbidden tokens found (checked: ['ICML', '<USER>', 'Tiffany'])"
         },
         {
           "check": "scope_note_present",
@@ -119,7 +119,7 @@
         {
           "check": "forbidden_tokens",
           "passed": true,
-          "detail": "No forbidden tokens found (checked: ['ICML', 'paulc', 'Tiffany'])"
+          "detail": "No forbidden tokens found (checked: ['ICML', '<USER>', 'Tiffany'])"
         }
       ]
     },
@@ -140,7 +140,7 @@
         {
           "check": "forbidden_tokens",
           "passed": true,
-          "detail": "No forbidden tokens found (checked: ['paulc', 'Tiffany'])"
+          "detail": "No forbidden tokens found (checked: ['<USER>', 'Tiffany'])"
         }
       ]
     },
@@ -161,7 +161,7 @@
         {
           "check": "forbidden_tokens",
           "passed": true,
-          "detail": "No forbidden tokens found (checked: ['paulc', 'Tiffany'])"
+          "detail": "No forbidden tokens found (checked: ['<USER>', 'Tiffany'])"
         }
       ]
     },
@@ -182,7 +182,7 @@
         {
           "check": "forbidden_tokens",
           "passed": true,
-          "detail": "No forbidden tokens found (checked: ['paulc', 'Tiffany'])"
+          "detail": "No forbidden tokens found (checked: ['<USER>', 'Tiffany'])"
         }
       ]
     },
@@ -203,7 +203,7 @@
         {
           "check": "forbidden_tokens",
           "passed": true,
-          "detail": "No forbidden tokens found (checked: ['paulc', 'Tiffany'])"
+          "detail": "No forbidden tokens found (checked: ['<USER>', 'Tiffany'])"
         }
       ]
     },
@@ -224,7 +224,7 @@
         {
           "check": "forbidden_tokens",
           "passed": true,
-          "detail": "No forbidden tokens found (checked: ['paulc', 'Tiffany'])"
+          "detail": "No forbidden tokens found (checked: ['<USER>', 'Tiffany'])"
         }
       ]
     },
@@ -245,7 +245,7 @@
         {
           "check": "forbidden_tokens",
           "passed": true,
-          "detail": "No forbidden tokens found (checked: ['paulc', 'Tiffany'])"
+          "detail": "No forbidden tokens found (checked: ['<USER>', 'Tiffany'])"
         }
       ]
     },
@@ -630,7 +630,7 @@
         {
           "check": "forbidden_tokens",
           "passed": true,
-          "detail": "No forbidden tokens found (checked: ['paulc', 'Tiffany'])"
+          "detail": "No forbidden tokens found (checked: ['<USER>', 'Tiffany'])"
         }
       ]
     },
@@ -651,7 +651,7 @@
         {
           "check": "forbidden_tokens",
           "passed": true,
-          "detail": "No forbidden tokens found (checked: ['paulc', 'Tiffany'])"
+          "detail": "No forbidden tokens found (checked: ['<USER>', 'Tiffany'])"
         }
       ]
     },
@@ -672,7 +672,7 @@
         {
           "check": "forbidden_tokens",
           "passed": true,
-          "detail": "No forbidden tokens found (checked: ['paulc', 'Tiffany'])"
+          "detail": "No forbidden tokens found (checked: ['<USER>', 'Tiffany'])"
         }
       ]
     },

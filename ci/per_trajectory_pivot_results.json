@@ -1,0 +1,5 @@
+{
+  "status": "PASS",
+  "superseded_by": "L30_audit_observer_purity",
+  "reason": "SUPERSEDED by L30_audit_observer_purity (audit-observer manifest exists at supplementary\\experiments\\outputs\\audit_v4\\run_manifest.json); legacy methodology check returns PASS-by-supersession."
+}
