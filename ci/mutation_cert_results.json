@@ -1,0 +1,70 @@
+{
+  "_meta": {
+    "script": "ci/mutation_cert.py",
+    "script_hash": "e2ffc3454af243044281bab7a9986027dcd7b6d4a4e78bb0e0cec377d0247395",
+    "generated_at_utc": "2026-05-07T05:32:46+00:00",
+    "historical_path": "C:\\src\\paper_cosmic_ray_lab\\radiation_map_historical.json",
+    "current_path": "C:\\src\\paper_cosmic_ray_lab\\radiation_map.json",
+    "baseline_path": "C:\\src\\NeurIPS\\ci\\historical_mutation_baseline.json",
+    "scope_note": "Non-zero mutation survival is not a defect to be erased. The mutation space over a paper's text is effectively open; driving survival to 0 would require an unbounded series of ad hoc semantic-invariant certs (lexicon monotonicity, qualifier presence, citation context, theorem-assumption softening, hostile paraphrase, ...), which collides with NeurIPS supplementary size limits and with the auditability of the cert chain itself. The honestly-disclosed boundary is the cert; the reading beyond it is the reviewer's. See the script docstring for the full statement and the future-work direction (unified semantic-invariant cert that scales sub-linearly in the mutation space)."
+  },
+  "status": "PASS",
+  "summary": {
+    "status": "PASS",
+    "passed": 3,
+    "total": 3
+  },
+  "hypotheses": [
+    {
+      "name": "H_BASELINE",
+      "status": "PASS",
+      "detail": "historical record sha256 matches recorded baseline",
+      "evidence": {
+        "sha256": "cf9d4b0dde9457f81e71e97b12e7130e48054dbc7eecc615950d93f5e698be12",
+        "summary": {
+          "total_mutations": 20,
+          "applicable_mutations": 17,
+          "killed": 9,
+          "survived": 8,
+          "survival_rate": 0.471
+        }
+      }
+    },
+    {
+      "name": "H_CURRENT",
+      "status": "PASS",
+      "detail": "current schema clean; survival 7/16 = 43.8%",
+      "evidence": {
+        "sha256": "198b05c8aadecf45c30f358ed7a3cd29cd9582924217eeda50dde3ade40c24a2",
+        "summary": {
+          "total_mutations": 20,
+          "applicable_mutations": 16,
+          "killed": 9,
+          "survived": 7,
+          "survival_rate": 0.438
+        },
+        "paper_sha256": "ed226c90c51c7a44a6f14be2b8fc734e6622e6ed7a7d18ef8578422931df4075"
+      }
+    },
+    {
+      "name": "H_DELTA",
+      "status": "PASS",
+      "detail": "survival 47.1% -> 43.8% (-3.3 pp; non-regression)",
+      "evidence": {
+        "historical_rate": 0.471,
+        "current_rate": 0.438,
+        "delta_rate": -0.032999999999999974,
+        "per_category_delta": {
+          "citation_drop": 0,
+          "lexicon_swap": 0,
+          "numeric_headline": 0,
+          "numeric_local": 0,
+          "qualifier_delete": -1,
+          "section_heading": 0,
+          "table_value": 0,
+          "theorem_assumption": 0
+        }
+      }
+    }
+  ]
+}

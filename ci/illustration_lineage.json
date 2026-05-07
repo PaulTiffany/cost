@@ -22,9 +22,9 @@
         {
           "kind": "latex_block",
           "file": "paper/main.tex",
-          "line_start": 358,
-          "line_end": 360,
-          "hash": "13bfe00540f440410b2317b8fb15e2297c3c8178dde33eac3ac5221da3427fc2"
+          "line_start": 268,
+          "line_end": 270,
+          "hash": "6f683905647bc94a165928f00a5483fc57b0e523bf256b0342da4fcee0c101b2"
         },
         {
           "kind": "text_file",
@@ -54,9 +54,9 @@
         {
           "kind": "latex_block",
           "file": "paper/main.tex",
-          "line_start": 109,
-          "line_end": 129,
-          "hash": "cc3ee9a286c147d8a2ef12ea7e5503ede65b85a2d1a5836fc96eb2acd68b65f8"
+          "line_start": 101,
+          "line_end": 121,
+          "hash": "e2c2b1d0a53645e902c036ea5cda449acc813e5b9f10a8b350f3a08325c0f5ae"
         },
         {
           "kind": "text_file",
@@ -86,9 +86,9 @@
         {
           "kind": "latex_block",
           "file": "paper/main.tex",
-          "line_start": 264,
+          "line_start": 262,
           "line_end": 266,
-          "hash": "46f3fbaf6fe5f63dbe07638d5c99ad7620f67a2b2d3e89061b97ca844b192c81"
+          "hash": "60e3dc04d85e90dfe93c846a2847ee8843f48c327745e0e0b944c954de95a3c4"
         },
         {
           "kind": "text_file",

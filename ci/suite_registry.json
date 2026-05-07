@@ -70,6 +70,16 @@
           "check": "L20_cross_source_recompute",
           "script": "cross_source_recomputation_check.py",
           "severity": "blocker"
+        },
+        {
+          "check": "L30_per_trajectory_pivot",
+          "script": "per_trajectory_pivot_check.py",
+          "severity": "blocker"
+        },
+        {
+          "check": "L31_audit_observer_runtime",
+          "script": "audit_observer_runtime_check.py",
+          "severity": "blocker"
         }
       ]
     },
@@ -209,6 +219,16 @@
         {
           "check": "L26_reference_convention",
           "script": "reference_convention_check.py",
+          "severity": "blocker"
+        },
+        {
+          "check": "L30_audit_observer_purity",
+          "script": "audit_observer_purity_check.py",
+          "severity": "blocker"
+        },
+        {
+          "check": "L32_paper_surface",
+          "script": "paper_surface_check.py",
           "severity": "blocker"
         }
       ]

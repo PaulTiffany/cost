@@ -1,0 +1,194 @@
+{
+  "_meta": {
+    "script": "ci/author_lexicon_drift_check.py",
+    "script_hash": "25a198a2fd7263fb9f5d78e6e880b2a22af582333a1a5f5e3a4a28018a15bbfe",
+    "audience": "author-only; not for reviewer bundle",
+    "generated_at_utc": "2026-05-07T05:13:45+00:00",
+    "paper_path": "C:\\src\\NeurIPS\\paper\\main.tex",
+    "lexicon_path": "C:\\src\\NeurIPS\\ci\\de_llm_lexicon.md"
+  },
+  "status": "PASS",
+  "summary": {
+    "status": "PASS",
+    "total_protected_phrases": 25,
+    "present_count": 25,
+    "missing_count": 0
+  },
+  "phrases": [
+    {
+      "section": "1a",
+      "raw": "feasibility cliff",
+      "pattern": "feasibility[\\s~]+cliff",
+      "count": 12,
+      "present": true
+    },
+    {
+      "section": "1a",
+      "raw": "$\\delta_{\\min} \\geq (\\tau/m)\\sqrt{k/(1-\\rho(k-1))}$",
+      "pattern": "\\\\delta_\\{?\\\\min\\}?[\\s~]+(?:\\\\geq|\\\\ge|>=)[\\s~]+\\(\\\\tau\\s*/\\s*m\\)\\\\sqrt\\{k\\s*/\\s*\\(1\\-\\\\rho\\(k\\\\{?-\\}?1\\)\\)\\}",
+      "count": 1,
+      "present": true
+    },
+    {
+      "section": "1a",
+      "raw": "diverging at $\\rho = 1/(k-1)$",
+      "pattern": "diverging[\\s~]+at[\\s~]+\\$\\\\rho[\\s~]+=[\\s~]+1\\s*/\\s*\\(k\\\\{?-\\}?1\\)",
+      "count": 1,
+      "present": true
+    },
+    {
+      "section": "1a",
+      "raw": "sharp geometric boundary, not a gradual degradation",
+      "pattern": "sharp[\\s~]+geometric[\\s~]+boundary[,\\s]*[\\s~]+not[\\s~]+a[\\s~]+gradual[\\s~]+degradation",
+      "count": 1,
+      "present": true
+    },
+    {
+      "section": "1a",
+      "raw": "$\\hat{\\rho}$, computable from constraint text alone without generation",
+      "pattern": "(?:\\\\hat\\{\\\\rho\\}|\\\\rhohat|\\\\hat\\\\rho)\\$[,\\s]*[\\s~]+computable[\\s~]+from[\\s~]+constraint[\\s~]+text[\\s~]+alone[\\s~]+without[\\s~]+generation",
+      "count": 1,
+      "present": true
+    },
+    {
+      "section": "1a",
+      "raw": "detects proximity to this cliff",
+      "pattern": "detects[\\s~]+proximity[\\s~]+to[\\s~]+this[\\s~]+cliff",
+      "count": 1,
+      "present": true
+    },
+    {
+      "section": "1a",
+      "raw": "judge-free validation",
+      "pattern": "judge\\-free[\\s~]+validation",
+      "count": 1,
+      "present": true
+    },
+    {
+      "section": "1a",
+      "raw": "collapse diagnostic $\\hat{\\rho}$",
+      "pattern": "collapse[\\s~]+diagnostic[\\s~]+\\$(?:\\\\hat\\{\\\\rho\\}|\\\\rhohat|\\\\hat\\\\rho)",
+      "count": 1,
+      "present": true
+    },
+    {
+      "section": "1a",
+      "raw": "establishes when integration becomes mandatory",
+      "pattern": "establishes[\\s~]+when[\\s~]+integration[\\s~]+becomes[\\s~]+mandatory",
+      "count": 1,
+      "present": true
+    },
+    {
+      "section": "1b",
+      "raw": "zeroth-order",
+      "pattern": "zeroth\\-order",
+      "count": 12,
+      "present": true
+    },
+    {
+      "section": "1b",
+      "raw": "gradient-free",
+      "pattern": "gradient\\-free",
+      "count": 2,
+      "present": true
+    },
+    {
+      "section": "1b",
+      "raw": "black-box",
+      "pattern": "black\\-box",
+      "count": 2,
+      "present": true
+    },
+    {
+      "section": "1b",
+      "raw": "judge-free verifiers",
+      "pattern": "judge\\-free[\\s~]+verifiers",
+      "count": 1,
+      "present": true
+    },
+    {
+      "section": "1b",
+      "raw": "judge-free validation",
+      "pattern": "judge\\-free[\\s~]+validation",
+      "count": 1,
+      "present": true
+    },
+    {
+      "section": "1b",
+      "raw": "regime index",
+      "pattern": "regime[\\s~]+index",
+      "count": 10,
+      "present": true
+    },
+    {
+      "section": "1b",
+      "raw": "regime structure",
+      "pattern": "regime[\\s~]+structure",
+      "count": 5,
+      "present": true
+    },
+    {
+      "section": "1b",
+      "raw": "regime-driven",
+      "pattern": "regime\\-driven",
+      "count": 1,
+      "present": true
+    },
+    {
+      "section": "1c",
+      "raw": "diagonal cost",
+      "pattern": "diagonal[\\s~]+cost",
+      "count": 54,
+      "present": true
+    },
+    {
+      "section": "1c",
+      "raw": "feasibility cliff",
+      "pattern": "feasibility[\\s~]+cliff",
+      "count": 12,
+      "present": true
+    },
+    {
+      "section": "1c",
+      "raw": "geometric floor",
+      "pattern": "geometric[\\s~]+floor",
+      "count": 3,
+      "present": true
+    },
+    {
+      "section": "1c",
+      "raw": "fail-safe routing",
+      "pattern": "fail\\-safe[\\s~]+routing",
+      "count": 1,
+      "present": true
+    },
+    {
+      "section": "1c",
+      "raw": "not capability gradient",
+      "pattern": "not[\\s~]+capability[\\s~]+gradient",
+      "count": 1,
+      "present": true
+    },
+    {
+      "section": "1c",
+      "raw": "kinematic",
+      "pattern": "kinematic",
+      "count": 3,
+      "present": true
+    },
+    {
+      "section": "1c",
+      "raw": "Meta-theorem",
+      "pattern": "Meta\\-theorem",
+      "count": 1,
+      "present": true
+    },
+    {
+      "section": "1c",
+      "raw": "pre-generation routing",
+      "pattern": "pre\\-generation[\\s~]+routing",
+      "count": 4,
+      "present": true
+    }
+  ]
+}

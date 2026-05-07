@@ -1,0 +1,30 @@
+{
+  "_meta": {
+    "script": "ci/paper_surface_check.py",
+    "script_hash": "81a32238d35829c402bbcf47d12500881320fe996c3ac31e8ad813fe991e3696",
+    "generated_at_utc": "2026-05-07T05:14:20+00:00",
+    "pdf_path": "C:\\src\\NeurIPS\\paper\\main.pdf",
+    "pages_scanned": 9,
+    "scope": "body",
+    "checks_run": [
+      "card_overflow"
+    ],
+    "thresholds": {
+      "edge_tolerance_pt": 1.0,
+      "block_overlap_area_pt2": 4.0,
+      "text_image_overlap_area_pt2": 4.0,
+      "image_image_overlap_area_pt2": 16.0,
+      "drawing_overlap_area_pt2": 16.0,
+      "containment_tolerance_pt": 2.0
+    }
+  },
+  "status": "PASS",
+  "summary": {
+    "status": "PASS",
+    "violation_count": 0,
+    "by_category": {
+      "card_overflow": 0
+    }
+  },
+  "violations": []
+}

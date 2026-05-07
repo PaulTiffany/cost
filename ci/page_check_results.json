@@ -6,6 +6,8 @@
       "status": "PASS",
       "details": {
         "body_end_page": 9,
+        "body_url_page": null,
+        "body_lines_above_references_on_refs_page": 0,
         "limit": 9
       }
     },
@@ -23,10 +25,10 @@
       "description": "NeurIPS Paper Checklist appears AFTER References AND AFTER any appendix sections",
       "status": "PASS",
       "details": {
-        "checklist_page": 53,
+        "checklist_page": 62,
         "references_page": 10,
         "first_appendix_page": 12,
-        "reason": "checklist=53, references=10, first_appendix=12"
+        "reason": "checklist=62, references=10, first_appendix=12"
       }
     },
     {
@@ -40,10 +42,10 @@
     }
   ],
   "summary": {
-    "total_pages": 56,
+    "total_pages": 67,
     "body_pages": 9,
     "references_page": 10,
-    "checklist_page": 53,
+    "checklist_page": 62,
     "first_appendix_page": 12,
     "layout_hack_count": 0,
     "all_pass": true

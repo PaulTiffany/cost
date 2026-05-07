@@ -171,15 +171,54 @@ def find_first_appendix_page(
 
 
 def find_body_end_page(pages: list[str], references_page: Optional[int]) -> int:
-    """The last page of body content is the page just before References.
+    """Conservative upper bound on where body content ends.
 
-    NeurIPS counts everything before References toward the body budget, so
-    body_end_page = references_page - 1 (or the last page of the doc if there
-    is no References section, which would be a separate failure).
+    Returns the page where the last identifiable body marker appears. The
+    primary marker is the conclusion URL ``anonymous.4open.science``, which
+    sits at the literal end of the body paragraph. Falls back to
+    ``references_page - 1`` if no marker is found.
     """
+    url_page = _find_body_url_page(pages)
+    if url_page is not None:
+        return url_page
     if references_page is None:
         return len(pages)
     return references_page - 1
+
+
+# Conclusion-paragraph URL marker. The anonymous code-release URL is the
+# literal last token of the body paragraph that precedes References. Its
+# page is the strictest reliable upper bound on where body content lives.
+_BODY_URL_MARKER = "anonymous.4open.science"
+
+
+def _find_body_url_page(pages: list[str]) -> Optional[int]:
+    for i, page in enumerate(pages, 1):
+        if _BODY_URL_MARKER in page:
+            return i
+    return None
+
+
+def count_body_lines_on_references_page(
+    pages: list[str], references_page: Optional[int]
+) -> int:
+    """Count non-trivial lines that appear above the References heading on
+    the page that hosts References. NeurIPS counts content above References
+    on that page toward the body budget, so any non-trivial count here is
+    an overflow signal regardless of the simple body_end heuristic.
+    """
+    if references_page is None:
+        return 0
+    page_text = pages[references_page - 1]
+    m = _REFERENCES_RE.search(page_text)
+    if not m:
+        return 0
+    text_before = page_text[: m.start()]
+    non_trivial = [
+        ln for ln in text_before.splitlines()
+        if ln.strip() and not re.match(r"^\s*\d+\s*$", ln.strip())
+    ]
+    return len(non_trivial)
 
 
 # ---------------------------------------------------------------------------
@@ -228,8 +267,17 @@ def evaluate() -> tuple[list[dict], dict]:
 
     results: list[dict] = []
 
-    # A1: body ends on page <= 9
-    a1_pass = body_end_page <= BODY_PAGE_LIMIT
+    # A1: body ends on page <= 9. Strict detection via the conclusion URL
+    # marker plus a count of non-trivial body lines that share the
+    # references page above the References heading.
+    body_url_page = _find_body_url_page(pages)
+    body_lines_on_refs = count_body_lines_on_references_page(pages, references_page)
+    body_overflow = (
+        (body_url_page is not None and body_url_page > BODY_PAGE_LIMIT)
+        or (references_page is not None and body_lines_on_refs > 2
+            and references_page > BODY_PAGE_LIMIT)
+    )
+    a1_pass = (body_end_page <= BODY_PAGE_LIMIT) and not body_overflow
     results.append(
         {
             "assertion_id": "A1",
@@ -237,6 +285,8 @@ def evaluate() -> tuple[list[dict], dict]:
             "status": "PASS" if a1_pass else "FAIL",
             "details": {
                 "body_end_page": body_end_page,
+                "body_url_page": body_url_page,
+                "body_lines_above_references_on_refs_page": body_lines_on_refs,
                 "limit": BODY_PAGE_LIMIT,
             },
         }

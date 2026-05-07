@@ -30,6 +30,14 @@ Exit codes
 """
 
 from __future__ import annotations
+import sys as _sys  # UTF-8 stdout (Windows cp1252 mojibake fix)
+for _stream_name in ("stdout", "stderr"):
+    _stream = getattr(_sys, _stream_name, None)
+    if _stream is not None and hasattr(_stream, "reconfigure"):
+        try:
+            _stream.reconfigure(encoding="utf-8", errors="replace")
+        except (OSError, ValueError):
+            pass
 
 import argparse
 import datetime
@@ -81,6 +89,10 @@ LAYER_SCRIPTS = {
     "L27_stat_algo_sanity":     SCRIPT_DIR / "statistical_and_algorithmic_sanity_check.py", # statistical_hygiene
     "L28_symbolic_algebra":     SCRIPT_DIR / "symbolic_algebra_check.py",                    # statistical_hygiene
     "L29_numerical_bounds":     SCRIPT_DIR / "numerical_bound_check.py",                     # statistical_hygiene
+    "L30_per_trajectory_pivot": SCRIPT_DIR / "per_trajectory_pivot_check.py",                 # data_ties
+    "L30_audit_observer_purity": SCRIPT_DIR / "audit_observer_purity_check.py",                # submission_hygiene
+    "L31_audit_observer_runtime": SCRIPT_DIR / "audit_observer_runtime_check.py",              # data_ties
+    "L32_paper_surface":          SCRIPT_DIR / "paper_surface_check.py",                         # submission_hygiene
 }
 
 # L12 in default (quick) mode runs --quick (mtime + asset-hash only) so
@@ -207,6 +219,10 @@ LAYER_RESULT_JSONS = {
     "L27_stat_algo_sanity":     SCRIPT_DIR / "statistical_and_algorithmic_sanity_results.json",
     "L28_symbolic_algebra":     SCRIPT_DIR / "symbolic_algebra_results.json",
     "L29_numerical_bounds":     SCRIPT_DIR / "numerical_bound_results.json",
+    "L30_per_trajectory_pivot": SCRIPT_DIR / "per_trajectory_pivot_results.json",
+    "L30_audit_observer_purity": SCRIPT_DIR / "audit_observer_purity_results.json",
+    "L31_audit_observer_runtime": SCRIPT_DIR / "audit_runtime_results.json",
+    "L32_paper_surface":          SCRIPT_DIR / "paper_surface_results.json",
 }
 
 
@@ -578,6 +594,107 @@ def attach_summary_l29(outcome: LayerOutcome) -> None:
     outcome.summary = summary
 
 
+def attach_summary_l30(outcome: LayerOutcome) -> None:
+    """L30 per-trajectory pivot check: surface PASS/FAIL counts, the
+    measured smooth/pivot fractions, and the gap to the asserted
+    PIVOT_RATE / SMOOTH_RATE / PIVOT_SUCCESS_IN_INFEASIBLE constants
+    that drive the paper's 0/4,272 + 42/528 + 1.7% triple. Failure here
+    means the headline numbers do not survive direct measurement under
+    the chosen calibration target; the cert payload surfaces the
+    failing claim names so a reviewer sees the gap without opening the
+    result JSON."""
+    p = LAYER_RESULT_JSONS["L30_per_trajectory_pivot"]
+    if not p.exists():
+        outcome.notes = "no results JSON found"
+        return
+    payload = json.loads(p.read_text(encoding="utf-8"))
+    summary = dict(payload.get("summary", {}))
+    failing = [c["name"] for c in payload.get("gating_run", {}).get("claims", [])
+               if c.get("status") in ("FAIL", "ERROR")]
+    if failing:
+        summary["failing_claims"] = failing
+    outcome.summary = summary
+
+
+def attach_summary_l30_audit_observer_purity(outcome: LayerOutcome) -> None:
+    """L30 audit-observer purity: surface pass/warn/fail counts and the
+    names of any failing checks so the cert payload reports which
+    structural invariant (LLM-import-freeness, schema-completeness,
+    test-suite green, hypothesis-program coverage) of the
+    deterministic audit substrate at ``ci/audit/`` failed without
+    forcing the reader to open the result JSON."""
+    p = LAYER_RESULT_JSONS["L30_audit_observer_purity"]
+    if not p.exists():
+        outcome.notes = "no results JSON found"
+        return
+    payload = json.loads(p.read_text(encoding="utf-8"))
+    summary = dict(payload.get("summary", {}))
+    failing = [c["name"] for c in payload.get("checks", [])
+               if c.get("status") == "FAIL"]
+    warning = [c["name"] for c in payload.get("checks", [])
+               if c.get("status") == "WARN"]
+    if failing:
+        summary["failing_checks"] = failing
+    if warning:
+        summary["warning_checks"] = warning
+    outcome.summary = summary
+
+
+def attach_summary_l32(outcome: LayerOutcome) -> None:
+    """L32 paper surface cert: spatial impacting / containment over the
+    rendered PDF. Surfaces the per-category violation counts and the
+    worst severity so the cert payload reads at a glance."""
+    p = LAYER_RESULT_JSONS["L32_paper_surface"]
+    if not p.exists():
+        outcome.notes = "no results JSON found"
+        return
+    payload = json.loads(p.read_text(encoding="utf-8"))
+    summary = dict(payload.get("summary", {}))
+    if "status" not in summary:
+        summary["status"] = payload.get("status", "UNKNOWN")
+    violations = payload.get("violations", []) or []
+    if violations:
+        worst = max(v.get("severity_pt", 0.0) for v in violations)
+        summary["worst_severity_pt"] = worst
+        first = violations[0]
+        summary["first_violation"] = {
+            "category": first.get("category"),
+            "page": first.get("page"),
+            "detail": (first.get("detail") or "")[:80],
+        }
+    outcome.summary = summary
+
+
+def attach_summary_l31(outcome: LayerOutcome) -> None:
+    """L31 audit-observer runtime check: surface the substantive verdict
+    counts (H_B1 / H_B2 / H_B3) and the §9 stream-level paper action
+    derived from real ObservationPackets emitted by the audit observer.
+    Reports AWAITING_EXPERIMENT when no packets have been collected so
+    the cert can pass vacuously before the run, and surfaces the failing
+    hypothesis names directly when measurement contradicts the headline."""
+    p = LAYER_RESULT_JSONS["L31_audit_observer_runtime"]
+    if not p.exists():
+        outcome.notes = "no results JSON found"
+        return
+    payload = json.loads(p.read_text(encoding="utf-8"))
+    summary = dict(payload.get("summary", {}))
+    if "status" not in summary:
+        summary["status"] = payload.get("status", "UNKNOWN")
+    verdicts = payload.get("substantive_verdicts", {}) or {}
+    failing = [hid for hid, v in verdicts.items() if v.get("verdict") == "FAIL"]
+    insufficient = [hid for hid, v in verdicts.items()
+                    if v.get("verdict") == "INSUFFICIENT_DATA"]
+    if failing:
+        summary["failing_hypotheses"] = failing
+    if insufficient:
+        summary["insufficient_hypotheses"] = insufficient
+    sd = payload.get("stream_decision", {}) or {}
+    if sd.get("dominant_class"):
+        summary["dominant_class"] = sd.get("dominant_class")
+        summary["paper_action"] = sd.get("paper_action")
+    outcome.summary = summary
+
+
 # ---------------------------------------------------------------------------
 # Aggregate verdict
 # ---------------------------------------------------------------------------
@@ -592,12 +709,12 @@ def aggregate_verdict(outcomes: list[LayerOutcome]) -> tuple[str, str]:
     surface previously-hidden noise can drop below it). The triage
     JSONs are the actionable signal, not the percentage.
     """
-    structural = {"L1_audit", "L2_validator", "L4_lineage", "L7_citations", "L8_links", "L9_consistency", "L10_bib", "L11_scripts", "L12_build_equiv", "L13_cross_tree", "L14_illustrations", "L15_data_ties", "L27_stat_algo_sanity", "L28_symbolic_algebra", "L29_numerical_bounds"}
+    structural = {"L1_audit", "L2_validator", "L4_lineage", "L7_citations", "L8_links", "L9_consistency", "L10_bib", "L11_scripts", "L12_build_equiv", "L13_cross_tree", "L14_illustrations", "L15_data_ties", "L27_stat_algo_sanity", "L28_symbolic_algebra", "L29_numerical_bounds", "L30_per_trajectory_pivot", "L30_audit_observer_purity", "L31_audit_observer_runtime", "L32_paper_surface"}
     structurally_failed = [o for o in outcomes if o.return_code != 0 and o.name in structural]
     if structurally_failed:
         names = ", ".join(o.name for o in structurally_failed)
         return ("FAIL", f"Structural layers failed: {names}")
-    return ("PASS", "all structural checks clean (L1+L2+L4+L7+L8+L9+L10+L11+L12+L13+L14+L15+L27+L28+L29); L3+L5+L16 coverage is advisory, see triage JSONs")
+    return ("PASS", "all structural checks clean (L1+L2+L4+L7+L8+L9+L10+L11+L12+L13+L14+L15+L27+L28+L29+L30+L30_audit_observer_purity+L31); L3+L5+L16 coverage is advisory, see triage JSONs")
 
 
 # ---------------------------------------------------------------------------
@@ -719,6 +836,46 @@ def render_markdown(payload: dict) -> str:
                      f"{s.get('h1_demo_violations_found','?')} violations of original m=min_i m_i form)")
             if s.get("failing_bounds"):
                 blurb += f"; FAIL: {', '.join(s['failing_bounds'])}"
+        elif layer["name"] == "L30_per_trajectory_pivot":
+            sm = s.get('smooth_fraction_measured')
+            pv = s.get('pivot_fraction_measured')
+            sm_s = f"{sm*100:.1f}%" if isinstance(sm,(int,float)) else "?"
+            pv_s = f"{pv*100:.1f}%" if isinstance(pv,(int,float)) else "?"
+            blurb = (f"{s.get('passed','?')}/{s.get('total','?')} headline-number claims verified "
+                     f"(measured smooth/pivot = {sm_s}/{pv_s} under {s.get('gating_target','?')})")
+            if s.get("failing_claims"):
+                blurb += f"; FAIL: {', '.join(s['failing_claims'])}"
+        elif layer["name"] == "L30_audit_observer_purity":
+            pc = s.get('pass_count', '?')
+            wc = s.get('warn_count', '?')
+            hf = s.get('hard_fail_count', '?')
+            blurb = (f"{pc} pass / {wc} warn / {hf} fail "
+                     f"(LLM-import-free + schema-locked + tests green for ci/audit/)")
+            if s.get("failing_checks"):
+                blurb += f"; FAIL: {', '.join(s['failing_checks'])}"
+            if s.get("warning_checks"):
+                blurb += f"; WARN: {', '.join(s['warning_checks'])}"
+        elif layer["name"] == "L32_paper_surface":
+            vc = s.get('violation_count', '?')
+            by = s.get('by_category', {}) or {}
+            cat_str = ", ".join(f"{k}:{v}" for k, v in by.items() if v)
+            blurb = f"{vc} impactions"
+            if cat_str:
+                blurb += f" ({cat_str})"
+            if s.get("first_violation"):
+                fv = s["first_violation"]
+                blurb += f"; first: [{fv.get('category')}] p.{fv.get('page')}"
+        elif layer["name"] == "L31_audit_observer_runtime":
+            status_str = s.get('status', '?')
+            n_packets = s.get('n_packets', 0)
+            n_cells = s.get('n_cells', 0)
+            blurb = (f"status={status_str}; {s.get('passed','?')}/{s.get('total','?')} "
+                     f"substantive hypotheses (H_B1/H_B2/H_B3) over "
+                     f"{n_packets} packets / {n_cells} cells")
+            if s.get("dominant_class"):
+                blurb += f"; stream={s['dominant_class']}->{s.get('paper_action','?')}"
+            if s.get("failing_hypotheses"):
+                blurb += f"; FAIL: {', '.join(s['failing_hypotheses'])}"
         else:
             blurb = "(no summary)"
         lines.append(f"| {layer['name']} | `{layer['script']}` | {status} | {blurb} |")
@@ -946,6 +1103,40 @@ def main() -> int:
     if not args.quiet: print("  L29_numerical_bounds...")
     o = run_layer("L29_numerical_bounds", LAYER_SCRIPTS["L29_numerical_bounds"])
     attach_summary_l29(o)
+    outcomes.append(o)
+
+    # L30: per-trajectory pivot check. Real measurement of the smooth/pivot
+    # decomposition behind the 0/4,272 + 42/528 + 1.7% triple, replacing
+    # the arithmetically-derived constants in
+    # supplementary/experiments_rebuttal/unconditional_pivot_analysis.py.
+    if not args.quiet: print("  L30_per_trajectory_pivot...")
+    o = run_layer("L30_per_trajectory_pivot", LAYER_SCRIPTS["L30_per_trajectory_pivot"])
+    attach_summary_l30(o)
+    outcomes.append(o)
+
+    # L30_audit_observer_purity: structural integrity of the deterministic
+    # audit substrate at ci/audit/. Asserts no LLM imports, locked
+    # ObservationPacket / AuditResult / RelationClass schemas, green
+    # hypothesis-program test suite, AAA gold-standard meta-tests pass,
+    # and (advisory) Cosmic Ray mutation ledger is present.
+    if not args.quiet: print("  L30_audit_observer_purity...")
+    o = run_layer("L30_audit_observer_purity", LAYER_SCRIPTS["L30_audit_observer_purity"])
+    attach_summary_l30_audit_observer_purity(o)
+    outcomes.append(o)
+
+    # L31: audit observer runtime check. Loads typed ObservationPackets
+    # from the audit_v4 experiment outputs, runs the deterministic
+    # AuditObserver substrate, and emits the §11 stream-decision +
+    # substantive verdicts (H_B1, H_B2, H_B3) under O_audit_v1. Passes
+    # vacuously (AWAITING_EXPERIMENT) until the experiment writes packets.
+    if not args.quiet: print("  L31_audit_observer_runtime...")
+    o = run_layer("L31_audit_observer_runtime", LAYER_SCRIPTS["L31_audit_observer_runtime"])
+    attach_summary_l31(o)
+    outcomes.append(o)
+
+    if not args.quiet: print("  L32_paper_surface...")
+    o = run_layer("L32_paper_surface", LAYER_SCRIPTS["L32_paper_surface"])
+    attach_summary_l32(o)
     outcomes.append(o)
 
     verdict, rationale = aggregate_verdict(outcomes)
