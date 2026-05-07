@@ -167,8 +167,39 @@ TEXT_LIKE_SUFFIXES = (".tex", ".bib", ".sty", ".cls", ".bst", ".md",
                        ".js", ".csv", ".tsv", ".xml")
 
 
+def _load_manifest_excluded() -> set:
+    """Read submission_surface_manifest.json and return literal paths
+    marked role=internal_or_excluded. Placeholder paths like
+    'supplementary/demos/audio_demos/[29 non-curated WAVs]' are skipped
+    (those carry their own .wav exclusion rule)."""
+    import json as _json
+    p = REPO_ROOT / "ci" / "submission_surface_manifest.json"
+    if not p.exists():
+        return set()
+    try:
+        m = _json.loads(p.read_text(encoding="utf-8"))
+    except Exception:
+        return set()
+    out = set()
+    for e in m.get("entries", []):
+        if e.get("role") != "internal_or_excluded":
+            continue
+        path = e.get("path") or ""
+        if "[" in path or "]" in path:
+            continue
+        out.add(path.replace("\\", "/"))
+    return out
+
+
+_MANIFEST_EXCLUDED = _load_manifest_excluded()
+
+
 def is_excluded(path: Path) -> bool:
     rel_str = str(path).replace("\\", "/")
+    # Manifest-driven exclusion: any file with role=internal_or_excluded
+    # in submission_surface_manifest.json is dropped from the bundle.
+    if rel_str in _MANIFEST_EXCLUDED:
+        return True
     # INCLUDE_FORCE check runs before EXCLUDE_DIRS so reviewer-expected
     # subdirectories under broadly-excluded trees (experiments_rebuttal/,
     # rebuttal/) can still be included.

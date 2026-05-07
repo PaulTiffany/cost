@@ -5,8 +5,8 @@
 **Paper:** The Cost of Cacophony: Geometric Limits on Multi-Constraint Alignment
 **Venue:** NeurIPS 2026 (anonymous double-blind submission)
 **Mode:** `quick` (release: full L12 build equivalence + artifact hashes embedded; quick: --quick L12 (mtime+asset-hash only), faster local checks)
-**Generated:** 2026-05-07T06:59:02
-**Verdict:** **FAIL** — Structural layers failed: L9_consistency
+**Generated:** 2026-05-07T07:21:44
+**Verdict:** **PASS** — all structural checks clean (L1+L2+L4+L7+L8+L9+L10+L11+L12+L13+L14+L15+L27+L28+L29+L30+L30_audit_observer_purity+L31+L32+L33+L34); L3+L5+L16 coverage is advisory, see triage JSONs
 
 ## Scope of certification
 
@@ -41,10 +41,10 @@ python ci/claim_certificate.py --release
 - main.tex sha256: `4e1608d60a933634...` (full hash in JSON)
 - main.tex mtime: 2026-05-07T05:35:04
 - main.pdf size: 1,200,503 bytes
-- main.pdf mtime: 2026-05-07T06:59:02
+- main.pdf mtime: 2026-05-07T07:21:43
 - registry sha256: `d3cc82eb135768ca...`
 - artifact hashes: 35 layer-result JSONs + manifests recorded in JSON payload
-- certificate self-hash: `c318cfa3735bc86b...` (sha256 of this payload minus the hash field; recompute to verify integrity)
+- certificate self-hash: `4c11660f6fdbfb87...` (sha256 of this payload minus the hash field; recompute to verify integrity)
 
 ## Layer-by-layer Results
 
@@ -57,7 +57,7 @@ python ci/claim_certificate.py --release
 | L5_figure_values | `ci\figure_value_check.py` | PASS | 81.5% overall figure coverage, 19 uncovered |
 | L7_citations | `ci\citation_integrity_check.py` | PASS | 31 cites, 43 bib entries, 0 unresolved, 12 dead |
 | L8_links | `ci\link_integrity_check.py` | PASS | 2 URLs, 125 refs / 176 labels, 0 unresolved, 52 dead labels |
-| L9_consistency | `ci\cross_claim_consistency_check.py` | FAIL | 59/60 consistency relations hold |
+| L9_consistency | `ci\cross_claim_consistency_check.py` | PASS | 60/60 consistency relations hold |
 | L10_bib | `ci\bib_entry_check.py` | PASS | 43/43 bib entries well-formed |
 | L11_scripts | `ci\script_integrity_check.py` | PASS | 13/13 figure scripts pass smoke test |
 | L12_build_equiv | `ci\build_equivalence_check.py` | PASS | --quick mode: ?/15 figures fresh; full mode optional |

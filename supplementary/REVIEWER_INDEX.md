@@ -2,7 +2,7 @@
 
 Paper: The Cost of Cacophony: Geometric Limits on Multi-Constraint Alignment
 Venue: NeurIPS 2026 (anonymous double-blind submission)
-Certificate: PASS -- 34 layers including L30 audit-observer purity (kill rate 96.2%, 0 RESIDUAL), L31 audit-observer runtime (H_B1, H_B2, H_B3 all PASS on 5,472-trial measurement), L32 paper-surface impacting (0 violations across card_overflow / text_image / image_image / drawing_drawing / margin_overflow categories), L33 figure-caption grounding (9/9 figures with cross-references), L34 page-check (body $\le$ 9 pages), L40 canonicality (8/8 cross-checks), L15 data ties (325/325). Six suites: claim_text, data_ties, artifact_lineage, provenance, statistical_hygiene, submission_hygiene. See `supplementary/REVIEWER_QUICKSTART.md` and `supplementary/CERTIFICATE_ARCHITECTURE.md`.
+Certificate: PASS -- 34 layers (L1-L34) including L30 audit-observer purity (kill rate 96.2%, 0 RESIDUAL), L31 audit-observer runtime (H_B1, H_B2, H_B3 all PASS on 5,472-trial measurement), L32 paper-surface impacting (0 violations across card_overflow / text_image / image_image / drawing_drawing / margin_overflow categories), L33 figure-caption grounding (9/9 figures with cross-references), L34 page-check (body $\le$ 9 pages), L15 data ties (325/325). The audit-observer canonicality ledger lives at `ci/audit/CANONICALITY_LEDGER.md` as a substrate companion (not numbered as an L-layer). Six suites: claim_text, data_ties, artifact_lineage, provenance, statistical_hygiene, submission_hygiene. See `supplementary/REVIEWER_QUICKSTART.md` and `supplementary/CERTIFICATE_ARCHITECTURE.md`.
 
 ---
 
@@ -65,7 +65,7 @@ real-world model behavior, API model version identity.
 
 ## 3. What Is in the Bundle
 
-Grouped by role (source: ci/submission_surface_manifest.json, 110 files total).
+Grouped by role (source: ci/submission_surface_manifest.json, 88 entries; bundle_manifest.json = 163 files / 18.04 MB).
 
 ### evidence_asset (ships to reviewers; load-bearing for claims)
   paper/main.tex                       -- primary paper source

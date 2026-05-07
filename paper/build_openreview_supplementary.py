@@ -186,6 +186,15 @@ def add_certificate_payload(
         # (main.pdf is uploaded separately to OpenReview as the Paper field).
         if rel.name in EXCLUDE_FILE_NAMES:
             continue
+        # Honor manifest internal_or_excluded exclusion for the same reason:
+        # surface_manifest_paths() pulls from submission_surface_manifest.json
+        # entries that may include excluded paths via source_data_or_results
+        # back-references. The full is_excluded() check covers this and the
+        # broad EXCLUDE_DIRS rules (the 4open builder runs both before
+        # collect_files appends).
+        from build_4open_zip import is_excluded  # type: ignore
+        if is_excluded(rel):
+            continue
 
         abs_path = REPO_ROOT / rel
         if not abs_path.is_file():

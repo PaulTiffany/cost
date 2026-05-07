@@ -39,7 +39,7 @@ Plus three substantive layers covering the audit observer specifically:
 |---|---|
 | **L30 audit-observer purity** | Substrate has no LLM imports; schema is frozen; mutation kill rate is 96.2%; companion docs hashed |
 | **L31 audit-observer runtime** | Audit observer renders verdict on the 5,472-trial run; H_B1, H_B2, H_B3 all PASS under per-(observer, model) calibration |
-| **L40 canonicality** | 8/8 cross-checks: thresholds match pre-reg, RelationClass enum complete, no LLM imports in substrate, mutation ledger 0 RESIDUAL |
+| **canonicality ledger** | 8/8 cross-checks: thresholds match pre-reg, RelationClass enum complete, no LLM imports in substrate, mutation ledger 0 RESIDUAL. Substrate companion at `ci/audit/CANONICALITY_LEDGER.md`; not wired as an L-layer in the active cert chain. |
 
 ---
 
