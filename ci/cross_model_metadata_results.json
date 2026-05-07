@@ -18,11 +18,11 @@
       "deepseek-ai/deepseek-coder-1.3b-instruct",
       "TinyLlama/TinyLlama-1.1B-Chat-v1.0",
       "Qwen/Qwen2.5-3B-Instruct",
-      "deepseek/deepseek-chat-v3-0324",
       "google/gemini-2.5-pro",
-      "openai/gpt-4o",
       "meta-llama/llama-3.1-70b-instruct",
-      "google/gemini-2.5-flash"
+      "deepseek/deepseek-chat-v3-0324",
+      "google/gemini-2.5-flash",
+      "openai/gpt-4o"
     ],
     "provider_set": [
       "Alibaba",

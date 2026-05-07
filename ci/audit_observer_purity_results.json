@@ -41,13 +41,13 @@
     {
       "name": "hypothesis_program_pytest_green",
       "status": "PASS",
-      "detail": "pytest exit 0; tail: '..............................s......................................... [ 88%]\\n...................                                                      [100%]\\n162 passed, 1 skipped in 5.52s'",
+      "detail": "pytest exit 0; tail: '..............................s......................................... [ 88%]\\n...................                                                      [100%]\\n162 passed, 1 skipped in 4.86s'",
       "return_code": 0
     },
     {
       "name": "aaa_gold_standard_green",
       "status": "PASS",
-      "detail": "pytest exit 0; tail: '...........                                                              [100%]\\n11 passed in 4.16s'",
+      "detail": "pytest exit 0; tail: '...........                                                              [100%]\\n11 passed in 4.54s'",
       "return_code": 0
     },
     {
@@ -72,12 +72,12 @@
     }
   ],
   "companion_doc_hashes": {
-    "supplementary/PRE_REGISTRATION_AUDIT_OBSERVER_v4.md": "13c4618d46caa58841c047dfe01ea155e2037503cc8000aa1813959eb6e6e605",
+    "supplementary/PRE_REGISTRATION_AUDIT_OBSERVER_v4.md": "e6cfb21559a2169625eeee4dc7ddeb603669e866f43ed5cc1e1c220397192df0",
     "supplementary/AUDIT_OBSERVER_INVARIANT_MAP.md": "fa8b58f92a6620f746f7fb787d7175053742a9c24d0e579543924dbce5b3633a",
     "ci/audit/README.md": "4a445b00d81ef3980cc5f21fc5e4e726169d3ba3e50aaa34d7a771dc4682704a",
     "ci/audit/cosmic_ray_config.toml": "e729de1e5c3797553dc55dd75d78eb6e2c5d75857aba4405b60a6b2e3bc9a37f",
     "ci/audit/mutation_test_results.json": "af33e511da9f6f3fd3cf18cd8bc1bdb0d91754f1f9bb394e043706746f21cab8",
     "ci/audit/decision_rule.py": "b6f39141f4c79d9a1e2718bfd1076862f2a13a2287dee4069f20f7755964e9a8"
   },
-  "ran_at_utc": "2026-05-07T10:12:46+00:00"
+  "ran_at_utc": "2026-05-07T10:31:17+00:00"
 }

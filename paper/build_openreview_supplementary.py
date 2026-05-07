@@ -41,7 +41,11 @@ BUNDLE_MANIFEST = REPO_ROOT / "ci" / "bundle_manifest.json"
 SUPPLEMENTARY_MANIFEST = REPO_ROOT / "ci" / "supplementary_manifest.json"
 SUBMISSION_SURFACE_MANIFEST = REPO_ROOT / "ci" / "submission_surface_manifest.json"
 
-ADDITIONAL_EXCLUDES = set()
+ADDITIONAL_EXCLUDES = {
+    # main.pdf is uploaded separately to OpenReview as "Paper" field.
+    # Excluded from supplementary archive to avoid duplicate.
+    "main.pdf",
+}
 
 
 REVIEWER_README = """# Supplementary Materials
@@ -175,6 +179,12 @@ def add_certificate_payload(
     for rel in payload_paths:
         rel_str = str(rel).replace("\\", "/")
         if rel_str in kept_set:
+            continue
+        # Honor EXCLUDE_FILE_NAMES even for bundle-manifest-sourced paths.
+        # Without this check, files like main.pdf get re-added through the
+        # certificate payload after collect_files() correctly excluded them
+        # (main.pdf is uploaded separately to OpenReview as the Paper field).
+        if rel.name in EXCLUDE_FILE_NAMES:
             continue
 
         abs_path = REPO_ROOT / rel

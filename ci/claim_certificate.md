@@ -5,7 +5,7 @@
 **Paper:** The Cost of Cacophony: Geometric Limits on Multi-Constraint Alignment
 **Venue:** NeurIPS 2026 (anonymous double-blind submission)
 **Mode:** `quick` (release: full L12 build equivalence + artifact hashes embedded; quick: --quick L12 (mtime+asset-hash only), faster local checks)
-**Generated:** 2026-05-07T06:12:57
+**Generated:** 2026-05-07T06:31:27
 **Verdict:** **PASS** — all structural checks clean (L1+L2+L4+L7+L8+L9+L10+L11+L12+L13+L14+L15+L27+L28+L29+L30+L30_audit_observer_purity+L31+L32+L33+L34); L3+L5+L16 coverage is advisory, see triage JSONs
 
 ## Scope of certification
@@ -41,10 +41,10 @@ python ci/claim_certificate.py --release
 - main.tex sha256: `4e1608d60a933634...` (full hash in JSON)
 - main.tex mtime: 2026-05-07T05:35:04
 - main.pdf size: 1,200,503 bytes
-- main.pdf mtime: 2026-05-07T06:12:56
+- main.pdf mtime: 2026-05-07T06:31:27
 - registry sha256: `d3cc82eb135768ca...`
 - artifact hashes: 35 layer-result JSONs + manifests recorded in JSON payload
-- certificate self-hash: `1a725121adf7e2c2...` (sha256 of this payload minus the hash field; recompute to verify integrity)
+- certificate self-hash: `30b1b55aefe04b1d...` (sha256 of this payload minus the hash field; recompute to verify integrity)
 
 ## Layer-by-layer Results
 

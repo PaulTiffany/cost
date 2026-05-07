@@ -2,7 +2,7 @@
   "_meta": {
     "script": "ci/figure_caption_grounding_check.py",
     "script_hash": "a903c84f4fc8d195a4fa25d75c54a594a6800f52003e1c4784d747d06222f9c6",
-    "generated_at_utc": "2026-05-07T10:12:48+00:00",
+    "generated_at_utc": "2026-05-07T10:31:18+00:00",
     "paper_path": "C:\\src\\NeurIPS\\paper\\main.tex",
     "grounding_commands": [
       "ref",

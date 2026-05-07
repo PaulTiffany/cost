@@ -2,27 +2,23 @@
   "_meta": {
     "script": "ci/reviewer_path_chain_check.py",
     "script_hash": "527d6fb2235b3f4da82ab83c886c0874691891147d1308bb3afd3cdc46f98cbc",
-    "generated_at_utc": "2026-05-06T05:14:17Z"
+    "generated_at_utc": "2026-05-07T10:31:29Z"
   },
-  "status": "FAIL",
+  "status": "PASS",
   "summary": {
-    "status": "FAIL",
-    "blockers": 3,
-    "advisories": 0,
+    "status": "PASS",
+    "blockers": 0,
+    "advisories": 4,
     "checks_run": 4,
     "files_scanned": 10,
-    "paths_extracted": 154,
+    "paths_extracted": 155,
     "line_refs_extracted": 1
   },
   "checks": [
     {
       "name": "file_path_resolution",
-      "status": "FAIL",
-      "blockers": [
-        "PRE_REGISTRATION_AUDIT_OBSERVER_v4.md:155: path does not resolve `tests/test_purity.py`",
-        "PRE_REGISTRATION_AUDIT_OBSERVER_v4.md:159: path does not resolve `tests/test_audit_observer.py`",
-        "PRE_REGISTRATION_AUDIT_OBSERVER_v4.md:506: path does not resolve `supplementary/experiments/outputs/audit_v4/claude_observation_packets.jsonl`"
-      ],
+      "status": "PASS",
+      "blockers": [],
       "advisories": []
     },
     {
@@ -35,7 +31,12 @@
       "name": "cert_layer_reachability",
       "status": "PASS",
       "blockers": [],
-      "advisories": []
+      "advisories": [
+        "REVIEWER_INDEX.md:50: cert layer L26 mentioned but not in known mapping",
+        "REVIEWER_INDEX.md:5: cert layer L32 mentioned but not in known mapping",
+        "REVIEWER_INDEX.md:5: cert layer L33 mentioned but not in known mapping",
+        "REVIEWER_INDEX.md:5: cert layer L34 mentioned but not in known mapping"
+      ]
     },
     {
       "name": "doc_cross_references",

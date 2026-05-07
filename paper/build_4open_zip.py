@@ -67,11 +67,32 @@ EXCLUDE_FILE_NAMES = {
     ".DS_Store", "Thumbs.db", "desktop.ini",
     # Sensitive collaborator handoff (matches user instruction):
     "notetoclaude.json", "note2claude2.json",
+    # Author-only / draft / non-reviewer-facing artifacts:
+    "mutation_cert.py", "mutation_cert_results.json",
+    "historical_mutation_baseline.json",
+    "double_blind_imagegen.py", "double_blind_anonymized.json",
+    "double_blind_key.json", "double_blind_response.json",
+    "double_blind_image.png",
+    "author_lexicon_drift_check.py", "author_lexicon_drift_results.json",
+    "de_llm_lexicon.md",
+    "GRADED_METRICS_SPEC.md",  # draft planning doc; submission_surface_manifest:903 marks internal_or_excluded
 }
 # Belt-and-suspenders: ANY file matching these patterns is excluded.
 # Catches accidental output zips not yet enumerated above.
 EXCLUDE_FILE_PATTERN_PREFIXES = ("cacophony_",)
 EXCLUDE_FILE_PATTERN_SUFFIXES = (".zip", ".tar.gz")
+# Files whose name CONTAINS any of these substrings are excluded outright.
+# Catches sub-extensions like .PRE_COSMIC_RAY_BACKUP that don't match
+# Path.suffix (which only sees the last extension).
+EXCLUDE_FILE_NAME_CONTAINS = (".PRE_COSMIC_RAY_BACKUP",)
+
+# Override: paths under these prefixes are included even if a parent
+# directory is in EXCLUDE_DIRS. Used to surgically include reviewer-
+# expected artifacts (per submission_surface_manifest expected_in_submission)
+# when the parent tree is otherwise broadly excluded.
+INCLUDE_FORCE_PATH_PREFIXES = (
+    "supplementary/experiments_rebuttal/image_transfer/outputs/runD/",
+)
 
 # PII patterns: any text-like file containing these is a hard fail
 PII_PATTERNS = [
@@ -137,6 +158,12 @@ TEXT_LIKE_SUFFIXES = (".tex", ".bib", ".sty", ".cls", ".bst", ".md",
 
 
 def is_excluded(path: Path) -> bool:
+    rel_str = str(path).replace("\\", "/")
+    # INCLUDE_FORCE check runs before EXCLUDE_DIRS so reviewer-expected
+    # subdirectories under broadly-excluded trees (experiments_rebuttal/,
+    # rebuttal/) can still be included.
+    if any(rel_str.startswith(prefix) for prefix in INCLUDE_FORCE_PATH_PREFIXES):
+        return False
     parts = set(path.parts)
     if EXCLUDE_DIRS & parts:
         return True
@@ -149,6 +176,8 @@ def is_excluded(path: Path) -> bool:
     if any(path.name.startswith(p) for p in EXCLUDE_FILE_PATTERN_PREFIXES):
         if any(path.name.endswith(s) for s in EXCLUDE_FILE_PATTERN_SUFFIXES):
             return True
+    if any(s in path.name for s in EXCLUDE_FILE_NAME_CONTAINS):
+        return True
     return False
 
 

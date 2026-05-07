@@ -26,16 +26,16 @@
     {
       "check": "draft_png_not_shipped",
       "path": "supplementary/illustrations/algorithm1_routing_draft.png",
-      "detail": "Draft PNG correctly role=internal_or_excluded, expected_in_submission=False"
+      "detail": "Draft PNG correctly role=provenance_source, expected_in_submission=True"
     },
     {
       "check": "draft_png_not_shipped",
       "path": "supplementary/illustrations/staging_vs_refine_draft.png",
-      "detail": "Draft PNG correctly role=internal_or_excluded, expected_in_submission=False"
+      "detail": "Draft PNG correctly role=provenance_source, expected_in_submission=True"
     },
     {
       "check": "role_counts",
-      "detail": "evidence_asset=25, reviewer_aid=3, raw_observation=1, provenance_source=47, internal_or_excluded=12; total entries=88, expected_in_submission=30"
+      "detail": "evidence_asset=25, reviewer_aid=3, raw_observation=1, provenance_source=49, internal_or_excluded=10; total entries=88, expected_in_submission=32"
     }
   ],
   "warnings": []

@@ -823,29 +823,29 @@
     },
     {
       "path": "supplementary/illustrations/algorithm1_routing_draft.png",
-      "role": "internal_or_excluded",
+      "role": "provenance_source",
       "artifact_kind": "draft_image",
-      "expected_in_submission": false,
+      "expected_in_submission": true,
       "claim_ids": [],
       "paper_locations": [],
       "source_scripts": ["ci/illustration_draft_loop.py"],
       "source_data_or_results": ["supplementary/illustrations/algorithm1_routing_direction.txt"],
-      "hash_policy": "excluded",
-      "scope_note": "Draft PNG for algorithm1_routing illustration; deterministic redraw from direction.txt is canonical. Not shipped to reviewers.",
-      "checks_required": ["illustration_lineage_check"]
+      "hash_policy": "required",
+      "scope_note": "Draft PNG for algorithm1_routing illustration; serves as illustration provenance. Hash bound by illustration_lineage.json; deterministic redraw from direction.txt is the canonical asset.",
+      "checks_required": ["illustration_lineage_check", "exists"]
     },
     {
       "path": "supplementary/illustrations/staging_vs_refine_draft.png",
-      "role": "internal_or_excluded",
+      "role": "provenance_source",
       "artifact_kind": "draft_image",
-      "expected_in_submission": false,
+      "expected_in_submission": true,
       "claim_ids": [],
       "paper_locations": [],
       "source_scripts": ["ci/illustration_draft_loop.py"],
       "source_data_or_results": ["supplementary/illustrations/staging_vs_refine_direction.txt"],
-      "hash_policy": "excluded",
-      "scope_note": "Draft PNG for staging_vs_refine illustration; deterministic redraw from direction.txt is canonical. Not shipped.",
-      "checks_required": ["illustration_lineage_check"]
+      "hash_policy": "required",
+      "scope_note": "Draft PNG for staging_vs_refine illustration; serves as illustration provenance. Hash bound by illustration_lineage.json; deterministic redraw from direction.txt is the canonical asset.",
+      "checks_required": ["illustration_lineage_check", "exists"]
     },
     {
       "path": "supplementary/illustrations/algorithm1_routing_direction.txt",

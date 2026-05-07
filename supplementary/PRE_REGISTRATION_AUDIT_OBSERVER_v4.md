@@ -152,11 +152,11 @@ Each apparatus hypothesis is anchored to one of the six invariant families. The 
 | ID | Invariant family | Hypothesis | Operational predicate | Refutation predicate |
 |---|---|---|---|---|
 | **H_A1** | *State* (operator acts on declared interface statistics, not latent object) | The audit observer's `RelationClass` output depends only on `(max_chunk_displacement, max_drift_deg, verifier_result.pass_both, error)` and the declared thresholds | Two invocations of `AuditObserver.classify_cell` on identical packet inputs yield byte-identical `AuditResult` | Any field-by-field difference between the two `AuditResult` outputs |
-| **H_A2** | *Budget* (no unbounded access; bounded apparatus only) | The audit substrate `ci/audit/` contains no LLM-API import, no model-weight access, and no unrestricted I/O | AST scan of every `.py` file under `ci/audit/` finds no `import` of `{anthropic, openai, openrouter, transformers, torch}` (`tests/test_purity.py`) | Any forbidden import in any audit module |
+| **H_A2** | *Budget* (no unbounded access; bounded apparatus only) | The audit substrate `ci/audit/` contains no LLM-API import, no model-weight access, and no unrestricted I/O | AST scan of every `.py` file under `ci/audit/` finds no `import` of `{anthropic, openai, openrouter, transformers, torch}` (`ci/audit/tests/test_purity.py`) | Any forbidden import in any audit module |
 | **H_A3** | *Coherence* (statistic preserves task-relevant regime structure across representation changes) | Smooth/pivot classifications under MiniLM-L6-v2 agree with re-embedding under mpnet-base-v2 at Cohen's κ > 0.6 | Re-embed final completions in mpnet-base-v2; recompute smooth/pivot with same threshold rule; compute κ vs MiniLM classifications | κ ≤ 0.6 → flag `CONSTRUCT_ENCODER_DEPENDENT`; the screening statistic does not preserve regime structure across encoder variants |
 | **H_A4** | *Diagnostic* (judge-free report exists; rank/sign/threshold/falsification countable) | `AuditResult.relation_evidence` is fully recomputable from packet contents and the audit observer's source; no field requires interpretation | Run `AuditObserver.classify_cell` on the released packet streams from a clean checkout; `AuditResult` byte-matches the shipped one | Any divergence; any field that requires LLM judgment to populate |
 | **H_A5** | *Transition* (success → routing/integration; failure → channel rejected or re-specified) | Per-cell `RelationClass` output drives exactly one paper action via the §9 decision tree, with `INSUFFICIENT_OBSERVABILITY` mapping to "defer" rather than to a substantive class | The decision tree §9 is total over the enum (every `RelationClass` value maps to a paper action); no class falls through | Any `RelationClass` value with no §9 mapping; any §9 branch that fabricates a class for `INSUFFICIENT_OBSERVABILITY` |
-| **H_A6** | *Falsification* (predeclared falsification predicate exists and is computable) | `TRUE_CERTIFICATE_REFUTATION` predicate is emittable from the predicate logic when pre-registered conditions are met | Synthetic test case in `tests/test_audit_observer.py` constructs packets satisfying the predicate and asserts the class fires | The class never fires under any input; the predicate is uncomputable |
+| **H_A6** | *Falsification* (predeclared falsification predicate exists and is computable) | `TRUE_CERTIFICATE_REFUTATION` predicate is emittable from the predicate logic when pre-registered conditions are met | Synthetic test case in `ci/audit/tests/test_audit_observer.py` constructs packets satisfying the predicate and asserts the class fires | The class never fires under any input; the predicate is uncomputable |
 
 **Decision rule on apparatus failure:** if any of H_A1..H_A6 is refuted, the audit observer is methodologically broken. The substrate must be repaired and re-tested; **no substantive (Part B) inference is permitted until all apparatus hypotheses are confirmed.** Refutation of an apparatus hypothesis does NOT trigger any paper action under §9 — it triggers a substrate fix.
 
@@ -503,8 +503,9 @@ Substrate verification at first-packet-emission time:
 
 Three output files, all include `pre_reg_hash` field for audit chaining:
 
-1. `supplementary/experiments/outputs/audit_v4/claude_observation_packets.jsonl`
-   (one ObservationPacket per line, ~720 lines)
+1. `supplementary/experiments/outputs/audit_v4/observation_packets.jsonl`
+   (one ObservationPacket per line, ~720 lines; previously named
+   `claude_observation_packets.jsonl` in early drafts)
 2. `supplementary/experiments/outputs/audit_v4/openrouter_observation_packets.jsonl`
    (one ObservationPacket per line, ~240 lines)
 3. `ci/audit_runtime_results.json`
