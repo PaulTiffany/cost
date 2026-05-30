@@ -1,0 +1,26 @@
+\section{Ethics, Broader Impacts, and LLM Usage}\label{sec:ethics}
+
+\subsection{Ethics}\label{sec:ethics_compliance}
+The research involves no human subjects, no scraped or sensitive data, and no released models or datasets that would require additional misuse safeguards. The contribution is a geometric lower bound and a routing algorithm using existing publicly available embedding models. All evaluated LLMs are accessed via published APIs (commercial models) or open-weight releases under their respective licenses (Llama 3.1 community license, Qwen Apache 2.0, TinyLlama Apache 2.0, CodeLlama community license); sentence-transformer encoders (MiniLM-L6-v2, mpnet-base-v2, multilingual-MiniLM) are Apache 2.0. Each is cited in the relevant section. Python dependency licenses are tracked in \texttt{ci/sbom\_manifest.json} and verified against an explicit allowlist (MIT, BSD variants, Apache-2.0, ISC, Python-2.0, MPL-2.0, LGPL-3.0-or-later, PSF-2.0, Unlicense) by \texttt{ci/license\_clearance\_check.py}.
+
+\subsection{Broader Impacts}\label{sec:impacts}
+\textbf{Positive.} Making geometric limits visible is prerequisite to respecting them; practitioners cannot avoid cliffs they cannot detect. The pre-generation routing rule lets aligned systems decline impossible requests rather than degrade silently.
+
+\textbf{Risk.} The same principles could optimize harmful constraint satisfaction, e.g., compound adversarial prompts.
+
+\textbf{Mitigation.} The bound is symmetric, so adversaries face the same limits. The $\hat{\rho}$ detection works bidirectionally: compound adversarial prompts are \emph{more} visible (same cliffs). Fail-safe property: when constraints conflict, the system abstains rather than persuades.
+
+\textbf{Dual-use note.} The framework qualifies as dual-use research. A routing system that helps aligned generation also helps adversarial generation against the same bound. We accept this symmetry as inherent to a kinematic result and treat the visibility of $\hat{\rho}$ as the safety primitive that makes the symmetric application diagnosable rather than silent.
+
+\textbf{Environmental footprint.} All reported experiments together totalled approximately \$26.89 of API spend at 2026-05 prices (\texttt{ci/cost\_report.json}), consistent with a low compute footprint. Estimating CO$_2$ from token totals follows the methodology of Lacoste et al.\ (1910.09700) and is dominated by the open-weight 4-model code experiment ($\sim$20 GPU-hours on a single RTX 4050).
+
+\textbf{Commercial relevance.} Multi-stakeholder optimization in commercial settings exhibits constraint coupling, with examples including advertising (user intent vs.\ promotion vs.\ transparency), long-cycle capital reporting (asset-life accuracy vs.\ earnings predictability vs.\ competitive parity), and platform moderation (user vs.\ advertiser vs.\ regulator). The diagonal cost predicts the regime where joint satisfaction becomes infeasible, informing context-integrity, disclosure, and routing policy.
+
+\subsection{Declaration of LLM Usage}\label{sec:llm_usage}
+LLMs play three distinct roles in this work, all of which are documented and none of which act as a judge for headline empirical claims.
+
+\textbf{(1) LLMs as object of study.} The empirical work analyzes multi-constraint generation behavior across GPT-4o, the Claude family (haiku-3, sonnet-4, opus-4, opus-4.1, sonnet-4.5, haiku-4.5, opus-4.5, opus-4.6, sonnet-4.6, opus-4.7), Gemini-2.5 Flash and Pro, DeepSeek-v3 and -R1, Llama-3.1-70B, Qwen-2.5-Coder, TinyLlama-1.1B, and CodeLlama-7B. Specific model IDs, versions, access methods, and any per-model sampling caveats (notably opus-4.7's rejection of \texttt{temperature}/\texttt{top\_p}/\texttt{top\_k}) are documented in Section~\ref{sec:empirical}, Appendix~\ref{app:experiments}, and the \texttt{\_meta} block of every result JSON. Note: \texttt{claude-3-haiku-20240307} (haiku-3) returns 404 from the Anthropic API as of 2026-05; the historical results remain in the canonical artifact for reproducibility.
+
+\textbf{(2) LLMs as zeroth-order classifier (Tagger role).} The Constraint Decompression Pipeline (Appendix~\ref{app:implicit_k}) uses an LLM as a Tagger that selects from a fixed 34-rule deterministic-verifier library. The Tagger never invents constraints, never decides correctness, and never sees the verifier output; the verdict is a Python regex/AST/length linter. This role is non-standard and is documented end-to-end including a worked trace.
+
+\textbf{(3) LLMs as a writing aid.} LLM-assisted prose editing was used during manuscript preparation; full agent-provenance disclosure is in \texttt{AGENTS.md} in the accompanying code repository. This does not affect the core methodology, scientific rigor, or originality of the research.
