@@ -1,5 +1,5 @@
 {
-  "sbom_path": "ci\\sbom_manifest.json",
+  "sbom_path": "C:\\src\\NeurIPS\\ci\\sbom_manifest.json",
   "n_packages": 8,
   "counts": {
     "allowed": 8,

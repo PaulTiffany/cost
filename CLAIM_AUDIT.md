@@ -1,7 +1,7 @@
 # Exhaustive Claims Checklist v2.0
 
 **Paper:** The Cost of Cacophony: Geometric Limits on Multi-Constraint Alignment
-**Venue:** NeurIPS 2026
+**Preprint:** arXiv (cs.AI), CC BY 4.0
 **Total Claims:** 152 pattern-coded (25 critical + 72 important + 55 complete) + 269 documented-only
 
 **Note on Tier 3 (complete) sizing:** the original CLAIM_AUDIT design budgeted 325 complete claims (exhaustive table-cell index). In practice the L3 reverse-coverage sweep showed that 48 well-chosen pattern-coded claims drive empirical body-prose coverage to 91.3%, with **every** specific multi-digit decimal in main.tex mapped to some claim pattern. The residual ~118 uncovered numerics are 1-digit ints in math-mode notation (`\\mathbf{1}`, `\\Gamma^{-1}`, `\\frac{1}{1-c^2}`, etc.), not empirical claims. The remaining 277 inventoried Tier 3 entries are documented in the table inventory below for traceability without requiring per-cell pattern coding.
@@ -388,4 +388,4 @@ python verify.py --harnesses
 
 ---
 
-*Exhaustive claims index for NeurIPS 2026 submission*
+*Exhaustive claims index for the arXiv preprint*

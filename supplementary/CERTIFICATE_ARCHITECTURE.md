@@ -1,7 +1,7 @@
 # Certificate Architecture
 
 Paper: *The Cost of Cacophony: Geometric Limits on Multi-Constraint Alignment*
-Venue: NeurIPS 2026 (anonymous double-blind)
+Preprint: arXiv (cs.AI), CC BY 4.0
 
 This document describes how the deterministic certificate suite is organized and what it covers. It is not a contribution claim. It is reviewer infrastructure.
 

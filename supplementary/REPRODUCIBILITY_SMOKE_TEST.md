@@ -1,7 +1,7 @@
 # Reproducibility Smoke Test
 
 Paper: *The Cost of Cacophony: Geometric Limits on Multi-Constraint Alignment*
-Venue: NeurIPS 2026 (anonymous double-blind)
+Preprint: arXiv (cs.AI), CC BY 4.0
 Generated (UTC): 2026-05-06T05:00:30Z
 Scope: fresh-clone reviewer execution of the eleven cert + repro commands documented in `supplementary/REVIEWER_QUICKSTART.md`, the abstract, and the conclusion.
 

@@ -3,9 +3,9 @@
 > **For reviewers:** this certificate proves the paper says what it says without numerical, citation, or figure-asset drift. It does NOT prove the experiments are well-designed or the conclusions follow. See **Scope** below.
 
 **Paper:** The Cost of Cacophony: Geometric Limits on Multi-Constraint Alignment
-**Venue:** NeurIPS 2026 (anonymous double-blind submission)
+**Venue:** arXiv preprint (preprint mode)
 **Mode:** `quick` (release: full L12 build equivalence + artifact hashes embedded; quick: --quick L12 (mtime+asset-hash only), faster local checks)
-**Generated:** 2026-05-07T07:57:35
+**Generated:** 2026-05-30T19:51:41
 **Verdict:** **PASS** — all structural checks clean (L1+L2+L4+L7+L8+L9+L10+L11+L12+L13+L14+L15+L27+L28+L29+L30+L30_audit_observer_purity+L31+L32+L33+L34); L3+L5+L16 coverage is advisory, see triage JSONs
 
 ## Scope of certification
@@ -39,12 +39,12 @@ python ci/claim_certificate.py --release
 ## Provenance
 
 - main.tex sha256: `4e1608d60a933634...` (full hash in JSON)
-- main.tex mtime: 2026-05-07T05:35:04
-- main.pdf size: 1,200,503 bytes
-- main.pdf mtime: 2026-05-07T07:57:34
-- registry sha256: `d3cc82eb135768ca...`
+- main.tex mtime: 2026-05-09T16:00:53
+- main.pdf size: 1,192,192 bytes
+- main.pdf mtime: 2026-05-30T19:51:41
+- registry sha256: `e82afed75bc54d1c...`
 - artifact hashes: 35 layer-result JSONs + manifests recorded in JSON payload
-- certificate self-hash: `09ac7328a15ea0fe...` (sha256 of this payload minus the hash field; recompute to verify integrity)
+- certificate self-hash: `ea85faf59c87ddd2...` (sha256 of this payload minus the hash field; recompute to verify integrity)
 
 ## Layer-by-layer Results
 

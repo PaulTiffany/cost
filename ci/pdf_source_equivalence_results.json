@@ -1,9 +1,9 @@
 {
   "summary": {
     "passed": true,
-    "pdf_mtime": "2026-05-07T11:57:34Z",
-    "newest_source_mtime": "2026-05-07T09:35:04Z",
-    "newest_source_file": "paper\\main.tex",
+    "pdf_mtime": "2026-05-30T23:46:45Z",
+    "newest_source_mtime": "2026-05-30T23:14:38Z",
+    "newest_source_file": "paper\\figures\\staging_vs_refine.tex",
     "stale_sources": [],
     "phrase_in_tex": false,
     "phrase_in_pdf": false,

@@ -298,12 +298,19 @@ def check_tier1_header(text: str) -> CheckResult:
 
 
 def check_venue_label(text: str) -> CheckResult:
+    # The submission moved from a planned ICML attempt to a planned NeurIPS
+    # submission to an actual arXiv preprint.  This check guards against
+    # accidentally drifting back to the older labels.  Either NeurIPS or
+    # arXiv counts as a current venue label.  The ICML-footer signature
+    # is still rejected to catch a regression to the earliest state.
     has_neurips = "NeurIPS 2026" in text
+    has_arxiv = "arXiv" in text
     icml_in_footer = bool(re.search(r"ICML 2026 submission\*?\s*$", text.strip()))
+    has_current_venue = has_neurips or has_arxiv
     return CheckResult(
-        "B4. Venue label is NeurIPS (no stale ICML footer)",
-        has_neurips and not icml_in_footer,
-        f"NeurIPS 2026 present={has_neurips}, ICML footer present={icml_in_footer}",
+        "B4. Venue label is current (NeurIPS or arXiv), no stale ICML footer",
+        has_current_venue and not icml_in_footer,
+        f"NeurIPS 2026 present={has_neurips}, arXiv present={has_arxiv}, ICML footer present={icml_in_footer}",
     )
 
 

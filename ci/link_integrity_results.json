@@ -40,7 +40,7 @@
     "network_results": []
   },
   "venue_year": 2026,
-  "main_tex": "paper\\main.tex",
+  "main_tex": "C:\\src\\NeurIPS\\paper\\main.tex",
   "network_checked": false,
   "network_timeout": null
 }

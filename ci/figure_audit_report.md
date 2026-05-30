@@ -1,4 +1,4 @@
-# Figure Audit — NeurIPS 2026 Submission `main.tex`
+# Figure Audit for `main.tex`
 
 Source paper: `paper\main.tex` (2,581 lines)
 Build log: `paper\main.log` (PDF builds clean — no Overfull \hbox)

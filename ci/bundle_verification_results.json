@@ -1,16 +1,137 @@
 {
   "summary": {
-    "bundle_root": "<repo>",
+    "bundle_root": "C:\\src\\NeurIPS",
     "manifest_files": 162,
-    "verified_present": 162,
+    "verified_present": 147,
     "missing_from_bundle": 0,
-    "hash_mismatches": 0,
+    "hash_mismatches": 15,
     "cert_artifact_hashes_not_in_manifest": 0,
     "data_ties_sources_not_in_manifest": 0,
-    "passed": true
+    "passed": false
   },
   "missing_from_bundle": [],
-  "hash_mismatches": [],
+  "hash_mismatches": [
+    {
+      "path": "CLAIM_AUDIT.md",
+      "expected_sha256": "d3cc82eb135768caad685e5bba291fbd0db3d090de96f0f0a366b81bb391700b",
+      "actual_sha256": "e82afed75bc54d1ce2dc89e5bd4ec946624309eda1eb7a600dc27eb74d93dbc2",
+      "expected_size": 18605,
+      "actual_size": 18615,
+      "note": "size differs by 10 bytes (possibly Windows CRLF vs LF line endings)"
+    },
+    {
+      "path": "ci/audit_observer_purity_results.json",
+      "expected_sha256": "6cf0698faa5b9408f9ab6abe5f52990a2309f7698098a9c0db98404713eaa6b4",
+      "actual_sha256": "3b4ea25a2e226b49eccf6dfdc2d52926af9fd7bd6f195e6f72e291fa7695a031",
+      "expected_size": 2898,
+      "actual_size": 2898,
+      "note": ""
+    },
+    {
+      "path": "ci/audit_runtime_results.json",
+      "expected_sha256": "fa19310c9abed17eaae55aecc8dd89dd9db979788dd502824c94a0d23f3b761b",
+      "actual_sha256": "5a238718d7d310b99472b97cbd29174f4ebba5d97ec440802561bb1cd64e30f9",
+      "expected_size": 13815,
+      "actual_size": 13815,
+      "note": ""
+    },
+    {
+      "path": "ci/claim_audit_validator.py",
+      "expected_sha256": "73f23c39f2261aaaf1f791bf8e7377aaf71ed9c53c90789641847c040fff1fe1",
+      "actual_sha256": "578b1c2f1487914f0fb35aec08093dcea48b435e4bddba275bb4c99bdbc04677",
+      "expected_size": 17335,
+      "actual_size": 17830,
+      "note": "size differs by 495 bytes (possibly Windows CRLF vs LF line endings)"
+    },
+    {
+      "path": "ci/claim_certificate.json",
+      "expected_sha256": "dfc78b5f3c1bd0ad95fa7262ca82c98010ca1acc3cab77a50650468fda413cff",
+      "actual_sha256": "157d80a9845223bb1c77a57e25ae07e1099ee9e377ec51123ab6059650fe70d1",
+      "expected_size": 29489,
+      "actual_size": 29378,
+      "note": "size differs by 111 bytes (possibly Windows CRLF vs LF line endings)"
+    },
+    {
+      "path": "ci/cross_claim_consistency_results.json",
+      "expected_sha256": "de847cdecd5dbc520314c74543d778b0689bcd62b947ae2da2888f99242cebd4",
+      "actual_sha256": "d86dc743a009ec9057ec62a87c8ca1a58598a0fbbf8c1a29527ad387566e8847",
+      "expected_size": 26722,
+      "actual_size": 26732,
+      "note": "size differs by 10 bytes (possibly Windows CRLF vs LF line endings)"
+    },
+    {
+      "path": "ci/figure_caption_grounding_results.json",
+      "expected_sha256": "16a3a0ef31d68abefd25e84648f9ad3dbf3d63134cc9a91cfb05f2d02c281732",
+      "actual_sha256": "2ce1a1e1f93cf4cb0b665b09d0a7617cb5b169e1a9d7bfcdeb25d5abe6e7c11d",
+      "expected_size": 5870,
+      "actual_size": 5870,
+      "note": ""
+    },
+    {
+      "path": "ci/illustration_lineage.json",
+      "expected_sha256": "f32522de932dfb8108d735e2a47e6f26db2860edd7fe4303d6f8e18ffaa1f3d8",
+      "actual_sha256": "79790975316bc0e5ec2d21f695e64f9f7bebb1675446e8dc49e42a0910809937",
+      "expected_size": 6162,
+      "actual_size": 6162,
+      "note": ""
+    },
+    {
+      "path": "ci/numerical_bound_results.json",
+      "expected_sha256": "a363c8ee2fbaf150a9bc5a99a81dff44e3b313524944658b1e4a95bb7547c8af",
+      "actual_sha256": "c4ed31837eecfddfb3edca75a0aa45b66af5be25fade4e98ba2a70fc24514237",
+      "expected_size": 9802,
+      "actual_size": 9804,
+      "note": "size differs by 2 bytes (possibly Windows CRLF vs LF line endings)"
+    },
+    {
+      "path": "ci/paper_surface_results.json",
+      "expected_sha256": "448c6e8516a269aec37f90d8600b51856f2dd0067595d2bb6fd4b911d6c5fe10",
+      "actual_sha256": "92066086224916c65eb72cd6abbfe624b09eb0421b94e40fb2f6d96d83089ecd",
+      "expected_size": 1000,
+      "actual_size": 1000,
+      "note": ""
+    },
+    {
+      "path": "ci/pdf_camera_ready_check.py",
+      "expected_sha256": "f57a7d588f00d7c264bfe1d066549e30344972762c36f7050f152b51dd46a9f3",
+      "actual_sha256": "544314f6414fca2e71af69a7023ce18fbf6e878190475de0fb112f2329d3ad21",
+      "expected_size": 9143,
+      "actual_size": 9452,
+      "note": "size differs by 309 bytes (possibly Windows CRLF vs LF line endings)"
+    },
+    {
+      "path": "ci/pdf_camera_ready_results.json",
+      "expected_sha256": "79b07e9a27703fb027c943053265cf385a4294a25cea4ca09b6e85b3ecd0bb1e",
+      "actual_sha256": "4f4145d4d192d57ff04c46768fe470524ea488a699c8956d3116ca572387420d",
+      "expected_size": 1411,
+      "actual_size": 1388,
+      "note": "size differs by 23 bytes (possibly Windows CRLF vs LF line endings)"
+    },
+    {
+      "path": "paper/figures/algorithm1_routing.tex",
+      "expected_sha256": "10aecfea2bc61f88d6411eed5e01f655781262ca8de32aef153b01076107c39d",
+      "actual_sha256": "de0542b7fe7020a703354e32cd88096abb7060a73cb305ebbed163e5890d85e0",
+      "expected_size": 4097,
+      "actual_size": 4173,
+      "note": "size differs by 76 bytes (possibly Windows CRLF vs LF line endings)"
+    },
+    {
+      "path": "paper/figures/staging_vs_refine.tex",
+      "expected_sha256": "6b699bb0822d04c617262dd6a486ee62382ff5476e7dbf15849b6bf7475c067d",
+      "actual_sha256": "27340c36cdb7bca30e8212c4da70e27dd9c4cb0816dea691476eccb8bcedcb3d",
+      "expected_size": 4885,
+      "actual_size": 4870,
+      "note": "size differs by 15 bytes (possibly Windows CRLF vs LF line endings)"
+    },
+    {
+      "path": "paper/main.pdf",
+      "expected_sha256": "4c950f87e0bf772b86139901d9ef2de5ace5441ff40c6eb4e4e53bc371a5f233",
+      "actual_sha256": "9a02b2602a66cba21b7b05c588c2368155a8fbf6c51f0e26b70fdf5652e95ecd",
+      "expected_size": 1200503,
+      "actual_size": 1192192,
+      "note": "size differs by 8311 bytes (possibly Windows CRLF vs LF line endings)"
+    }
+  ],
   "cross_ref": {
     "cert_artifact_hashes_not_in_manifest": [],
     "data_ties_sources_not_in_manifest": []

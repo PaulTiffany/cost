@@ -1,4 +1,4 @@
-# Graded Constraint Satisfaction Metrics - NeurIPS 2026
+# Graded Constraint Satisfaction Metrics
 
 ## Overview
 

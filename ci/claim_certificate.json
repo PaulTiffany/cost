@@ -2,23 +2,23 @@
   "schema_version": 3,
   "provenance": {
     "paper_title": "The Cost of Cacophony: Geometric Limits on Multi-Constraint Alignment",
-    "venue": "NeurIPS 2026 (anonymous double-blind submission)",
-    "venue_key": "neurips",
+    "venue": "arXiv preprint (preprint mode)",
+    "venue_key": "arxiv",
     "mode": "quick",
     "mode_note": "release: full L12 build equivalence + artifact hashes embedded; quick: --quick L12 (mtime+asset-hash only), faster local checks",
     "profile": "standard",
     "git": {
       "status": "ok",
-      "commit": "5eaad2523f281af07a48f6a1ea94c0b172cfaeac",
-      "commit_short": "5eaad252",
+      "commit": "c6c36c16bd89b21e36f9e98347963c21fdff7179",
+      "commit_short": "c6c36c16",
       "branch": "master",
       "dirty": true,
-      "n_modified_unstaged": 7,
+      "n_modified_unstaged": 36,
       "n_staged": 1,
-      "n_untracked": 0
+      "n_untracked": 2
     },
     "dependencies": {
-      "generated_at": "2026-05-07T11:56:31.797087+00:00",
+      "generated_at": "2026-05-30T23:50:51.491755+00:00",
       "python": {
         "version": "3.13.4 (tags/v3.13.4:8a526ec, Jun  3 2025, 17:46:04) [MSC v.1943 64 bit (AMD64)]",
         "version_short": "3.13.4",
@@ -57,15 +57,15 @@
         }
       }
     },
-    "generated_at": "2026-05-07T07:57:35",
+    "generated_at": "2026-05-30T19:51:41",
     "main_tex_path": "paper\\main.tex",
     "main_tex_sha256": "4e1608d60a933634dbbcec9eaa99cd028534c0a279d516da2b93800bf430b7a1",
-    "main_tex_mtime": "2026-05-07T05:35:04",
+    "main_tex_mtime": "2026-05-09T16:00:53",
     "main_pdf_path": "paper\\main.pdf",
-    "main_pdf_size": 1200503,
-    "main_pdf_mtime": "2026-05-07T07:57:34",
+    "main_pdf_size": 1192192,
+    "main_pdf_mtime": "2026-05-30T19:51:41",
     "claim_audit_md_path": "CLAIM_AUDIT.md",
-    "claim_audit_md_sha256": "d3cc82eb135768caad685e5bba291fbd0db3d090de96f0f0a366b81bb391700b"
+    "claim_audit_md_sha256": "e82afed75bc54d1ce2dc89e5bd4ec946624309eda1eb7a600dc27eb74d93dbc2"
   },
   "artifact_hashes": {
     "ci\\claim_audit_results.json": "b3eada304c27e237b9350ef16be398a541c22ce2ec62abdfd232b20f9bc634e9",
@@ -73,7 +73,7 @@
     "ci\\figure_value_check_results.json": "280a7aa923e56caea40239122515611dd0f7a0235d2860bda146493ddac29d0b",
     "ci\\citation_integrity_results.json": "3dbbe54921cc39803b7ac971c408ec7737ca26ad2d8cd7a26cb42d7784981221",
     "ci\\link_integrity_results.json": "25c376e01d2c572940e9ece68761886aeae40223d458a76ffd90a46d06bb815d",
-    "ci\\cross_claim_consistency_results.json": "de847cdecd5dbc520314c74543d778b0689bcd62b947ae2da2888f99242cebd4",
+    "ci\\cross_claim_consistency_results.json": "fe57e346b7b5ba1ba9a1656accb1be0b5b6ddaf9cb42996f109aaebc10b24206",
     "ci\\bib_entry_check_results.json": "94b642da0b2e879f43d4dcf098c5d5647bd41cf6907ffa35267ff827b980faf7",
     "ci\\script_integrity_results.json": "0cb95174ba62ef104a598de8b98a5512613a05c86f1569c87580bb628f9f37c8",
     "ci\\build_equivalence_results.json": "4cea7a13d9a7c65a12866636243b06790d11d5a9e1cbf738aab096cb6ecdae02",
@@ -88,21 +88,21 @@
     "ci\\sbom_check_results.json": "5fccbd6d00dd56d5eb27023369400aa79d508f8eb1b4f0116066c0037520e302",
     "ci\\container_lineage_results.json": "854876c1218c89e4e8633c3134324c4b3901b27ab2ffe988f832182ff6b8601c",
     "ci\\license_clearance_results.json": "7dcddc316f981a676124aefb729e66fa35d95e5d26a3b645023ac578d2516d30",
-    "ci\\pdf_camera_ready_results.json": "79b07e9a27703fb027c943053265cf385a4294a25cea4ca09b6e85b3ecd0bb1e",
+    "ci\\pdf_camera_ready_results.json": "4f4145d4d192d57ff04c46768fe470524ea488a699c8956d3116ca572387420d",
     "ci\\multi_seed_drift_results.json": "f09d4f4672b22b32d8fc62147275d1cbafc21ac8ee7bb20e71c8241ff58d11bd",
     "ci\\reference_convention_results.json": "c747019a9b4897581ca2b3341afd5c988e22d4f2ad52248328c9fc890b2df7e1",
     "ci\\statistical_and_algorithmic_sanity_results.json": "88a8012d21c38bf50a33ae90f9c94ccb1e07fd34ba8e2f97244fa16f8df0183a",
     "ci\\symbolic_algebra_results.json": "1b0792cfa15543e9f2b18e2378a9b6ae861a9bb1d6925e689bff69ee70232d5b",
-    "ci\\numerical_bound_results.json": "a363c8ee2fbaf150a9bc5a99a81dff44e3b313524944658b1e4a95bb7547c8af",
+    "ci\\numerical_bound_results.json": "63fcfc8d74326d7b558f64b22f7e8a6d51968e6228e7f45ae7532e46a6551633",
     "ci\\per_trajectory_pivot_results.json": "4aafe48b5b2a9c3736806b2d41c87989b5434e29572fa23a1dd14f98b5480b99",
-    "ci\\audit_observer_purity_results.json": "6cf0698faa5b9408f9ab6abe5f52990a2309f7698098a9c0db98404713eaa6b4",
-    "ci\\audit_runtime_results.json": "fa19310c9abed17eaae55aecc8dd89dd9db979788dd502824c94a0d23f3b761b",
-    "ci\\paper_surface_results.json": "448c6e8516a269aec37f90d8600b51856f2dd0067595d2bb6fd4b911d6c5fe10",
-    "ci\\figure_caption_grounding_results.json": "16a3a0ef31d68abefd25e84648f9ad3dbf3d63134cc9a91cfb05f2d02c281732",
+    "ci\\audit_observer_purity_results.json": "d29060a3296943172280b3500a2dfb0de1977acc12731db7819279e8e30d967e",
+    "ci\\audit_runtime_results.json": "cb4af7c8ab14aa561ac81f0e961e1ca759e7a5f1228c2a81725ad607f5e91cda",
+    "ci\\paper_surface_results.json": "fac302e92da3230aea095112fa59d84d996d061182a61a5beb64175632f6d999",
+    "ci\\figure_caption_grounding_results.json": "29b826c6ee22241d4faf9551585e41e2298639ba6f3a60511d489430d7918997",
     "ci\\page_check_results.json": "0c0078f9f6270057bec4707ee05a0c914db705f1dd50d124f3187e8069078a98",
     "ci\\claim_data_ties.json": "1c0d49e387c7bbd9d9934a450c215eb640fa7f7278ce7e5ab3aa06f5cbd78759",
     "ci\\figure_lineage.json": "d69541bb36893ac0f84be3953f0ad8b5b76723186b68dd2e53c176ba092137ae",
-    "ci\\illustration_lineage.json": "f32522de932dfb8108d735e2a47e6f26db2860edd7fe4303d6f8e18ffaa1f3d8"
+    "ci\\illustration_lineage.json": "79790975316bc0e5ec2d21f695e64f9f7bebb1675446e8dc49e42a0910809937"
   },
   "verdict": {
     "verdict": "PASS",
@@ -537,7 +537,7 @@
         "total_bounds": 13,
         "passed": 13,
         "failed": 0,
-        "elapsed_seconds": 0.4,
+        "elapsed_seconds": 0.325,
         "seed": 20260504,
         "h1_demo_violations_found": 100,
         "h1_demo_max_relative_violation": 0.683107859546742
@@ -942,5 +942,5 @@
       ]
     }
   ],
-  "certificate_self_hash": "09ac7328a15ea0fe8b49763d754519476dbe799b1caedcf22744726c58ad6761"
+  "certificate_self_hash": "ea85faf59c87ddd230108a748ff6a2f0b36f1da01f41a5dbe6a6d6d8d9af1e5a"
 }

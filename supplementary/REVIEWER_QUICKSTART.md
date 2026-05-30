@@ -1,7 +1,7 @@
 # Reviewer Quickstart
 
 Paper: *The Cost of Cacophony: Geometric Limits on Multi-Constraint Alignment*
-Venue: NeurIPS 2026 (anonymous double-blind)
+Preprint: arXiv (cs.AI), CC BY 4.0
 
 The paper claims: multi-constraint LLM behavior exhibits feasibility cliffs (sharp geometric boundary, not gradual capability degradation); a zeroth-order regime index $\hat{\rho}$ orders which side of the cliff a prompt lies on before generation; pre-generation routing on $\hat{\rho}$ achieves low regret with judge-free validation. Detailed claim list is in `supplementary/CLAIM_TO_ARTIFACT_MAP.md`.
 

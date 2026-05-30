@@ -2,13 +2,13 @@
 
 ## Verdict
 
-**FAIL**
+**PASS**
 
 - Paper: The Cost of Cacophony: Geometric Limits on Multi-Constraint Alignment
-- Venue: NeurIPS 2026 (anonymous double-blind submission)
+- Venue: arXiv preprint (preprint mode)
 - Mode: `quick`
-- Generated: 2026-05-07T05:46:59
-- Rationale: Structural layers failed: L1_audit, L2_validator, L14_illustrations
+- Generated: 2026-05-30T19:51:41
+- Rationale: all structural checks clean (L1+L2+L4+L7+L8+L9+L10+L11+L12+L13+L14+L15+L27+L28+L29+L30+L30_audit_observer_purity+L31+L32+L33+L34); L3+L5+L16 coverage is advisory, see triage JSONs
 
 ## What this certificate proves and does NOT prove
 
@@ -113,8 +113,8 @@
 
 | Layer | Status |
 |---|---|
-| L1_audit | FAIL |
-| L2_validator | FAIL |
+| L1_audit | PASS |
+| L2_validator | PASS |
 | L3_sweep | PASS |
 | L4_lineage | PASS |
 | L5_figure_values | PASS |
@@ -125,7 +125,7 @@
 | L11_scripts | PASS |
 | L12_build_equiv | PASS |
 | L13_cross_tree | SKIP |
-| L14_illustrations | FAIL |
+| L14_illustrations | PASS |
 | L15_data_ties | PASS |
 | L16_author_claims | PASS |
 | L17_table_values | PASS |
@@ -148,7 +148,7 @@
 | L33_caption_grounding | PASS |
 | L34_page_check | PASS |
 
-Full certificate JSON: `ci/claim_certificate.json` (self-hash: `24d180ff4e639047...`)
+Full certificate JSON: `ci/claim_certificate.json` (self-hash: `ea85faf59c87ddd2...`)
 
 ## Reviewer FAQ (pre-answered)
 
