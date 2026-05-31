@@ -5,7 +5,7 @@
 **Paper:** The Cost of Cacophony: Geometric Limits on Multi-Constraint Alignment
 **Venue:** arXiv preprint (preprint mode)
 **Mode:** `quick` (release: full L12 build equivalence + artifact hashes embedded; quick: --quick L12 (mtime+asset-hash only), faster local checks)
-**Generated:** 2026-05-30T21:57:57
+**Generated:** 2026-05-30T22:10:11
 **Verdict:** **PASS** — all structural checks clean (L1+L2+L4+L7+L8+L9+L10+L11+L12+L13+L14+L15+L27+L28+L29+L30+L30_audit_observer_purity+L31+L32+L33+L34); L3+L5+L16 coverage is advisory, see triage JSONs
 
 ## Scope of certification
@@ -41,10 +41,10 @@ python ci/claim_certificate.py --release
 - main.tex sha256: `395a24a575d93735...` (full hash in JSON)
 - main.tex mtime: 2026-05-30T21:55:35
 - main.pdf size: 1,197,741 bytes
-- main.pdf mtime: 2026-05-30T21:57:56
+- main.pdf mtime: 2026-05-30T22:10:10
 - registry sha256: `e82afed75bc54d1c...`
 - artifact hashes: 35 layer-result JSONs + manifests recorded in JSON payload
-- certificate self-hash: `e4d33b5190bc505d...` (sha256 of this payload minus the hash field; recompute to verify integrity)
+- certificate self-hash: `d385af9f9d370db3...` (sha256 of this payload minus the hash field; recompute to verify integrity)
 
 ## Layer-by-layer Results
 
