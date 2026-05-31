@@ -5,7 +5,7 @@
 **Paper:** The Cost of Cacophony: Geometric Limits on Multi-Constraint Alignment
 **Venue:** arXiv preprint (preprint mode)
 **Mode:** `quick` (release: full L12 build equivalence + artifact hashes embedded; quick: --quick L12 (mtime+asset-hash only), faster local checks)
-**Generated:** 2026-05-30T20:57:00
+**Generated:** 2026-05-30T21:30:20
 **Verdict:** **PASS** — all structural checks clean (L1+L2+L4+L7+L8+L9+L10+L11+L12+L13+L14+L15+L27+L28+L29+L30+L30_audit_observer_purity+L31+L32+L33+L34); L3+L5+L16 coverage is advisory, see triage JSONs
 
 ## Scope of certification
@@ -38,13 +38,13 @@ python ci/claim_certificate.py --release
 
 ## Provenance
 
-- main.tex sha256: `4e1608d60a933634...` (full hash in JSON)
-- main.tex mtime: 2026-05-09T16:00:53
-- main.pdf size: 1,194,833 bytes
-- main.pdf mtime: 2026-05-30T20:56:59
+- main.tex sha256: `e1405dd6337efbe3...` (full hash in JSON)
+- main.tex mtime: 2026-05-30T21:28:20
+- main.pdf size: 1,194,793 bytes
+- main.pdf mtime: 2026-05-30T21:30:20
 - registry sha256: `e82afed75bc54d1c...`
 - artifact hashes: 35 layer-result JSONs + manifests recorded in JSON payload
-- certificate self-hash: `1586a8f80c0fea78...` (sha256 of this payload minus the hash field; recompute to verify integrity)
+- certificate self-hash: `94191faf15b0fcd8...` (sha256 of this payload minus the hash field; recompute to verify integrity)
 
 ## Layer-by-layer Results
 

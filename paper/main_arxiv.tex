@@ -81,7 +81,7 @@
 \begin{abstract}
 We enable pre-generation routing decisions for multi-constraint LLM prompts: attempt one-shot, decompose into stages, or reject. Regret vs.\ oracle is $1.8\%$ on calibration and $\le 3.1\%$ across four transfer domains; errors are fail-safe (over-staging, not failure).
 Our approach: multi-constraint behavior exhibits sharp transitions between feasible and infeasible (`feasibility cliffs'), not gradual capability degradation.
-We prove the minimum displacement to satisfy $k$ constraints scales as $\sqrt{k/(1{-}\rho(k{-}1))}$ (the `diagonal cost'), diverging at a geometric threshold. The bound dictates control: a zeroth-order screening statistic ($\rhohat$, computable from constraint text alone without generation) orders \emph{which side of the cliff} a prompt lies on ($r_s{=}1.0$). Sequential satisfaction has provably lower cost than simultaneous.
+We prove the minimum displacement to satisfy $k$ constraints scales as $\sqrt{k/(1{-}\rho(k{-}1))}$ (the `diagonal cost'), diverging at a geometric threshold. The bound dictates control: a zeroth-order screening statistic ($\rhohat$, computable from constraint text alone without generation) orders \emph{which side of the cliff} a prompt lies on ($r_s{=}1.0$ task-rank). Sequential satisfaction has provably lower cost than simultaneous.
 Empirical validation under a deterministic audit observer (5{,}472 trials, 17 LLMs across two families): zero smooth-regime true-certificate refutations (0/1{,}365 high-tier trials), confirming the geometric floor. Pivot regime dominates at $96\%$; under the audit's per-(observer, model) calibration, verifier-surface alignment between families is the next investigation.
 \end{abstract}
 

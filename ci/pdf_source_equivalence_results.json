@@ -1,9 +1,9 @@
 {
   "summary": {
     "passed": true,
-    "pdf_mtime": "2026-05-31T00:55:46Z",
-    "newest_source_mtime": "2026-05-31T00:53:46Z",
-    "newest_source_file": "paper\\figures\\algorithm1_routing.tex",
+    "pdf_mtime": "2026-05-31T01:29:27Z",
+    "newest_source_mtime": "2026-05-31T01:28:20Z",
+    "newest_source_file": "paper\\main.tex",
     "stale_sources": [],
     "phrase_in_tex": false,
     "phrase_in_pdf": false,
