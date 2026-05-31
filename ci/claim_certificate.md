@@ -5,7 +5,7 @@
 **Paper:** The Cost of Cacophony: Geometric Limits on Multi-Constraint Alignment
 **Venue:** arXiv preprint (preprint mode)
 **Mode:** `quick` (release: full L12 build equivalence + artifact hashes embedded; quick: --quick L12 (mtime+asset-hash only), faster local checks)
-**Generated:** 2026-05-30T21:30:20
+**Generated:** 2026-05-30T21:57:57
 **Verdict:** **PASS** — all structural checks clean (L1+L2+L4+L7+L8+L9+L10+L11+L12+L13+L14+L15+L27+L28+L29+L30+L30_audit_observer_purity+L31+L32+L33+L34); L3+L5+L16 coverage is advisory, see triage JSONs
 
 ## Scope of certification
@@ -38,13 +38,13 @@ python ci/claim_certificate.py --release
 
 ## Provenance
 
-- main.tex sha256: `e1405dd6337efbe3...` (full hash in JSON)
-- main.tex mtime: 2026-05-30T21:28:20
-- main.pdf size: 1,194,793 bytes
-- main.pdf mtime: 2026-05-30T21:30:20
+- main.tex sha256: `395a24a575d93735...` (full hash in JSON)
+- main.tex mtime: 2026-05-30T21:55:35
+- main.pdf size: 1,197,741 bytes
+- main.pdf mtime: 2026-05-30T21:57:56
 - registry sha256: `e82afed75bc54d1c...`
 - artifact hashes: 35 layer-result JSONs + manifests recorded in JSON payload
-- certificate self-hash: `94191faf15b0fcd8...` (sha256 of this payload minus the hash field; recompute to verify integrity)
+- certificate self-hash: `e4d33b5190bc505d...` (sha256 of this payload minus the hash field; recompute to verify integrity)
 
 ## Layer-by-layer Results
 
@@ -55,7 +55,7 @@ python ci/claim_certificate.py --release
 | L3_sweep | `ci\claim_coverage_sweep.py` | PASS | 93.4% coverage, 92 uncovered |
 | L4_lineage | `ci\figure_lineage_check.py` | PASS | 8/8 checks pass, 11 figures fresh |
 | L5_figure_values | `ci\figure_value_check.py` | PASS | 81.5% overall figure coverage, 19 uncovered |
-| L7_citations | `ci\citation_integrity_check.py` | PASS | 31 cites, 43 bib entries, 0 unresolved, 12 dead |
+| L7_citations | `ci\citation_integrity_check.py` | PASS | 33 cites, 43 bib entries, 0 unresolved, 10 dead |
 | L8_links | `ci\link_integrity_check.py` | PASS | 2 URLs, 125 refs / 176 labels, 0 unresolved, 52 dead labels |
 | L9_consistency | `ci\cross_claim_consistency_check.py` | PASS | 60/60 consistency relations hold |
 | L10_bib | `ci\bib_entry_check.py` | PASS | 43/43 bib entries well-formed |
@@ -83,7 +83,7 @@ python ci/claim_certificate.py --release
 | L31_audit_observer_runtime | `ci\audit_observer_runtime_check.py` | PASS | status=PASS; 3/3 substantive hypotheses (H_B1/H_B2/H_B3) over 6120 packets / 18 cells; stream=verifier_surface_mismatch->investigate_verifier |
 | L32_paper_surface | `ci\paper_surface_check.py` | PASS | 0 impactions |
 | L33_caption_grounding | `ci\figure_caption_grounding_check.py` | PASS | 9/9 figures grounded |
-| L34_page_check | `ci\page_check.py` | PASS | body_pages=9, references_page=10, total_pages=67, all_pass=True |
+| L34_page_check | `ci\page_check.py` | PASS | body_pages=9, references_page=10, total_pages=68, all_pass=True |
 
 ### Per-figure coverage (L5)
 

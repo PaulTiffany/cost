@@ -1,22 +1,20 @@
 {
   "summary": {
-    "n_cites_in_paper": 31,
+    "n_cites_in_paper": 33,
     "n_bib_entries": 43,
     "n_unresolved": 0,
-    "n_dead": 12,
+    "n_dead": 10,
     "unresolved": [],
     "dead": [
       "anthropic2026aeiv4",
       "bai2022training",
       "deepseek2025r1",
       "dhuliawala2023chainofverification",
-      "little1961proof",
       "miettinen1999nonlinear",
       "ouyang2022training",
       "snell2024scaling",
       "turner2023activation",
       "wei2022chain",
-      "zheng2023judging",
       "zou2023representation"
     ]
   },

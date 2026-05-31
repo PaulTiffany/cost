@@ -2,9 +2,9 @@
   "summary": {
     "bundle_root": "C:\\src\\NeurIPS",
     "manifest_files": 162,
-    "verified_present": 145,
+    "verified_present": 144,
     "missing_from_bundle": 0,
-    "hash_mismatches": 17,
+    "hash_mismatches": 18,
     "cert_artifact_hashes_not_in_manifest": 0,
     "data_ties_sources_not_in_manifest": 0,
     "passed": false
@@ -22,7 +22,7 @@
     {
       "path": "ci/audit_observer_purity_results.json",
       "expected_sha256": "6cf0698faa5b9408f9ab6abe5f52990a2309f7698098a9c0db98404713eaa6b4",
-      "actual_sha256": "ada468888c4a01152689ba80cd54d26171cf7c75cd4a3e22aaa438ae589dfa9e",
+      "actual_sha256": "cf7aacfda5431a1844aabfc0b98fd87045c3fa852f31b6b536335c39121a241a",
       "expected_size": 2898,
       "actual_size": 2898,
       "note": ""
@@ -30,10 +30,18 @@
     {
       "path": "ci/audit_runtime_results.json",
       "expected_sha256": "fa19310c9abed17eaae55aecc8dd89dd9db979788dd502824c94a0d23f3b761b",
-      "actual_sha256": "28034d659a521e8972ee76056e510fef97f0b6fcc3516582ec4788ae5fc74cc8",
+      "actual_sha256": "b5dc94a0060bf987b4a4908b616b60e2e3fadfae64bbfb921e72a72b56963c17",
       "expected_size": 13815,
       "actual_size": 13815,
       "note": ""
+    },
+    {
+      "path": "ci/citation_integrity_results.json",
+      "expected_sha256": "3dbbe54921cc39803b7ac971c408ec7737ca26ad2d8cd7a26cb42d7784981221",
+      "actual_sha256": "c43d531bc6196d38d81fe8d7d3be09ccdd9fea6d8d89166272eb13923c32de7f",
+      "expected_size": 635,
+      "actual_size": 582,
+      "note": "size differs by 53 bytes (possibly Windows CRLF vs LF line endings)"
     },
     {
       "path": "ci/claim_audit_validator.py",
@@ -46,7 +54,7 @@
     {
       "path": "ci/claim_certificate.json",
       "expected_sha256": "dfc78b5f3c1bd0ad95fa7262ca82c98010ca1acc3cab77a50650468fda413cff",
-      "actual_sha256": "c66acd4b23eb7b92ce87bd5f00f918266a801e7e68194a163b21d68f3d6368e9",
+      "actual_sha256": "12b9844405aafa963336a361e60cd8adaf152979e4be0b5bf4eb97f71bd4511f",
       "expected_size": 29489,
       "actual_size": 29472,
       "note": "size differs by 17 bytes (possibly Windows CRLF vs LF line endings)"
@@ -54,7 +62,7 @@
     {
       "path": "ci/cross_claim_consistency_results.json",
       "expected_sha256": "de847cdecd5dbc520314c74543d778b0689bcd62b947ae2da2888f99242cebd4",
-      "actual_sha256": "cf2381698e765d979c90af42856452896a852d65f96ee45725caea6b35ccce22",
+      "actual_sha256": "f30e3d36f2163a10d0397d224e61978fd18653de746f5176614693fd3a7fab27",
       "expected_size": 26722,
       "actual_size": 26732,
       "note": "size differs by 10 bytes (possibly Windows CRLF vs LF line endings)"
@@ -62,7 +70,7 @@
     {
       "path": "ci/figure_caption_grounding_results.json",
       "expected_sha256": "16a3a0ef31d68abefd25e84648f9ad3dbf3d63134cc9a91cfb05f2d02c281732",
-      "actual_sha256": "aa9ae742dbaad04877de017aff66cadc05e15a3ffd81b78eb2aa5b7fcf080d9e",
+      "actual_sha256": "56655205f835ea9c968dcfc468997d000f560671007f6490a081c4ce138c6267",
       "expected_size": 5870,
       "actual_size": 5870,
       "note": ""
@@ -78,7 +86,7 @@
     {
       "path": "ci/numerical_bound_results.json",
       "expected_sha256": "a363c8ee2fbaf150a9bc5a99a81dff44e3b313524944658b1e4a95bb7547c8af",
-      "actual_sha256": "20885dce0030b55698f010e170dfdd87c84f7489830302f1d31661573817041e",
+      "actual_sha256": "f0f21f72276c609ee58cc689afffcc4566b5891bb433193958f5c3da7a602ad2",
       "expected_size": 9802,
       "actual_size": 9804,
       "note": "size differs by 2 bytes (possibly Windows CRLF vs LF line endings)"
@@ -86,7 +94,7 @@
     {
       "path": "ci/paper_surface_results.json",
       "expected_sha256": "448c6e8516a269aec37f90d8600b51856f2dd0067595d2bb6fd4b911d6c5fe10",
-      "actual_sha256": "84d1510d95ba8f2bec8b1dbb6e416c1b70feed51e231fc6a2fa9d801e86cac03",
+      "actual_sha256": "85861272659da8cb581d2723084c18066b2ca09d3239c97a17fd352ed6420373",
       "expected_size": 1000,
       "actual_size": 1000,
       "note": ""
@@ -134,18 +142,18 @@
     {
       "path": "paper/main.tex",
       "expected_sha256": "4e1608d60a933634dbbcec9eaa99cd028534c0a279d516da2b93800bf430b7a1",
-      "actual_sha256": "e1405dd6337efbe35ccae44cbd5e83a3f2eceafe469fd913404a16a678f8b0ed",
+      "actual_sha256": "395a24a575d9373567517a0af310330c2ab1a35e556efb37acd9e47d7f59174e",
       "expected_size": 224955,
-      "actual_size": 224965,
-      "note": "size differs by 10 bytes (possibly Windows CRLF vs LF line endings)"
+      "actual_size": 225070,
+      "note": "size differs by 115 bytes (possibly Windows CRLF vs LF line endings)"
     },
     {
       "path": "paper/main.pdf",
       "expected_sha256": "4c950f87e0bf772b86139901d9ef2de5ace5441ff40c6eb4e4e53bc371a5f233",
-      "actual_sha256": "1b5c27de48ba76a7f65c224d8de02ef223acd8ee33856671f720947d5fae99c0",
+      "actual_sha256": "a8a13f8553a8d7d500632295f51ec42bf351c997688b1190e124a1916975e654",
       "expected_size": 1200503,
-      "actual_size": 1194793,
-      "note": "size differs by 5710 bytes (possibly Windows CRLF vs LF line endings)"
+      "actual_size": 1197741,
+      "note": "size differs by 2762 bytes (possibly Windows CRLF vs LF line endings)"
     }
   ],
   "cross_ref": {

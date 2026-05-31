@@ -9,8 +9,8 @@
     "profile": "standard",
     "git": {
       "status": "ok",
-      "commit": "ea75e69209953545124a5470e20ba62026bbadc3",
-      "commit_short": "ea75e692",
+      "commit": "862e28c8ffed2e1a4d3bce96ab18f48c72b05341",
+      "commit_short": "862e28c8",
       "branch": "master",
       "dirty": true,
       "n_modified_unstaged": 11,
@@ -18,7 +18,7 @@
       "n_untracked": 1
     },
     "dependencies": {
-      "generated_at": "2026-05-31T01:29:28.195454+00:00",
+      "generated_at": "2026-05-31T01:57:05.875583+00:00",
       "python": {
         "version": "3.13.4 (tags/v3.13.4:8a526ec, Jun  3 2025, 17:46:04) [MSC v.1943 64 bit (AMD64)]",
         "version_short": "3.13.4",
@@ -57,13 +57,13 @@
         }
       }
     },
-    "generated_at": "2026-05-30T21:30:20",
+    "generated_at": "2026-05-30T21:57:57",
     "main_tex_path": "paper\\main.tex",
-    "main_tex_sha256": "e1405dd6337efbe35ccae44cbd5e83a3f2eceafe469fd913404a16a678f8b0ed",
-    "main_tex_mtime": "2026-05-30T21:28:20",
+    "main_tex_sha256": "395a24a575d9373567517a0af310330c2ab1a35e556efb37acd9e47d7f59174e",
+    "main_tex_mtime": "2026-05-30T21:55:35",
     "main_pdf_path": "paper\\main.pdf",
-    "main_pdf_size": 1194793,
-    "main_pdf_mtime": "2026-05-30T21:30:20",
+    "main_pdf_size": 1197741,
+    "main_pdf_mtime": "2026-05-30T21:57:56",
     "claim_audit_md_path": "CLAIM_AUDIT.md",
     "claim_audit_md_sha256": "e82afed75bc54d1ce2dc89e5bd4ec946624309eda1eb7a600dc27eb74d93dbc2"
   },
@@ -71,9 +71,9 @@
     "ci\\claim_audit_results.json": "b3eada304c27e237b9350ef16be398a541c22ce2ec62abdfd232b20f9bc634e9",
     "ci\\claim_coverage_uncovered.json": "df770fa15f8f67e07ac1e9ca517a6b605392caab06ec0854f5b0c4ff4e6284fc",
     "ci\\figure_value_check_results.json": "280a7aa923e56caea40239122515611dd0f7a0235d2860bda146493ddac29d0b",
-    "ci\\citation_integrity_results.json": "3dbbe54921cc39803b7ac971c408ec7737ca26ad2d8cd7a26cb42d7784981221",
+    "ci\\citation_integrity_results.json": "c43d531bc6196d38d81fe8d7d3be09ccdd9fea6d8d89166272eb13923c32de7f",
     "ci\\link_integrity_results.json": "25c376e01d2c572940e9ece68761886aeae40223d458a76ffd90a46d06bb815d",
-    "ci\\cross_claim_consistency_results.json": "fe57e346b7b5ba1ba9a1656accb1be0b5b6ddaf9cb42996f109aaebc10b24206",
+    "ci\\cross_claim_consistency_results.json": "aa7161e465d63452a1b7af232fbb17b715976aba985460da53176973b1525720",
     "ci\\bib_entry_check_results.json": "94b642da0b2e879f43d4dcf098c5d5647bd41cf6907ffa35267ff827b980faf7",
     "ci\\script_integrity_results.json": "0cb95174ba62ef104a598de8b98a5512613a05c86f1569c87580bb628f9f37c8",
     "ci\\build_equivalence_results.json": "4cea7a13d9a7c65a12866636243b06790d11d5a9e1cbf738aab096cb6ecdae02",
@@ -88,18 +88,18 @@
     "ci\\sbom_check_results.json": "5fccbd6d00dd56d5eb27023369400aa79d508f8eb1b4f0116066c0037520e302",
     "ci\\container_lineage_results.json": "854876c1218c89e4e8633c3134324c4b3901b27ab2ffe988f832182ff6b8601c",
     "ci\\license_clearance_results.json": "7dcddc316f981a676124aefb729e66fa35d95e5d26a3b645023ac578d2516d30",
-    "ci\\pdf_camera_ready_results.json": "16ed06a35f72edd24d70f0bf2dba63fec5adf56358ab82ed55daacee1130e811",
+    "ci\\pdf_camera_ready_results.json": "f465fac8dee784013e631d6902cc187bed4de6f0e53391ffecaecddeb057ae2c",
     "ci\\multi_seed_drift_results.json": "f09d4f4672b22b32d8fc62147275d1cbafc21ac8ee7bb20e71c8241ff58d11bd",
     "ci\\reference_convention_results.json": "c747019a9b4897581ca2b3341afd5c988e22d4f2ad52248328c9fc890b2df7e1",
     "ci\\statistical_and_algorithmic_sanity_results.json": "88a8012d21c38bf50a33ae90f9c94ccb1e07fd34ba8e2f97244fa16f8df0183a",
     "ci\\symbolic_algebra_results.json": "1b0792cfa15543e9f2b18e2378a9b6ae861a9bb1d6925e689bff69ee70232d5b",
-    "ci\\numerical_bound_results.json": "f0f21f72276c609ee58cc689afffcc4566b5891bb433193958f5c3da7a602ad2",
+    "ci\\numerical_bound_results.json": "febecf33cf57104343b70cfa52c2fd490378bfb444e536332365a67e6c87606d",
     "ci\\per_trajectory_pivot_results.json": "4aafe48b5b2a9c3736806b2d41c87989b5434e29572fa23a1dd14f98b5480b99",
-    "ci\\audit_observer_purity_results.json": "cf7aacfda5431a1844aabfc0b98fd87045c3fa852f31b6b536335c39121a241a",
-    "ci\\audit_runtime_results.json": "b5dc94a0060bf987b4a4908b616b60e2e3fadfae64bbfb921e72a72b56963c17",
-    "ci\\paper_surface_results.json": "85861272659da8cb581d2723084c18066b2ca09d3239c97a17fd352ed6420373",
-    "ci\\figure_caption_grounding_results.json": "56655205f835ea9c968dcfc468997d000f560671007f6490a081c4ce138c6267",
-    "ci\\page_check_results.json": "0c0078f9f6270057bec4707ee05a0c914db705f1dd50d124f3187e8069078a98",
+    "ci\\audit_observer_purity_results.json": "e0d770d70b34078d62e265300f5732923dff32db1da3be6fb77a739b49b3a93a",
+    "ci\\audit_runtime_results.json": "859756d1975d1f98a2b68b47bb136ec0db3369660913b88fe08ad73cef32bbcc",
+    "ci\\paper_surface_results.json": "9303767e1bcba349e362ac1a0b4c5ce178d146e02b873d927abf3f0325cb64e8",
+    "ci\\figure_caption_grounding_results.json": "aad278c9174da90310792b005afd609b2f6197d22b75cb3b8f771e4f7f1ccd7f",
+    "ci\\page_check_results.json": "0dd97a4e83aedb9b573b7c9fa40ba615ac9d891dab7eff9ad033d013d8e08c42",
     "ci\\claim_data_ties.json": "1c0d49e387c7bbd9d9934a450c215eb640fa7f7278ce7e5ab3aa06f5cbd78759",
     "ci\\figure_lineage.json": "d69541bb36893ac0f84be3953f0ad8b5b76723186b68dd2e53c176ba092137ae",
     "ci\\illustration_lineage.json": "bd53b0e0d756635fdf8a11e135c1e09d308dedd97152b6f02805ac7cd4b9daf3"
@@ -221,23 +221,21 @@
       "return_code": 0,
       "status": "PASS",
       "summary": {
-        "n_cites_in_paper": 31,
+        "n_cites_in_paper": 33,
         "n_bib_entries": 43,
         "n_unresolved": 0,
-        "n_dead": 12,
+        "n_dead": 10,
         "unresolved": [],
         "dead": [
           "anthropic2026aeiv4",
           "bai2022training",
           "deepseek2025r1",
           "dhuliawala2023chainofverification",
-          "little1961proof",
           "miettinen1999nonlinear",
           "ouyang2022training",
           "snell2024scaling",
           "turner2023activation",
           "wei2022chain",
-          "zheng2023judging",
           "zou2023representation"
         ]
       },
@@ -537,7 +535,7 @@
         "total_bounds": 13,
         "passed": 13,
         "failed": 0,
-        "elapsed_seconds": 0.334,
+        "elapsed_seconds": 0.324,
         "seed": 20260504,
         "h1_demo_violations_found": 100,
         "h1_demo_max_relative_violation": 0.683107859546742
@@ -622,10 +620,10 @@
       "return_code": 0,
       "status": "PASS",
       "summary": {
-        "total_pages": 67,
+        "total_pages": 68,
         "body_pages": 9,
         "references_page": 10,
-        "checklist_page": 62,
+        "checklist_page": 63,
         "first_appendix_page": 12,
         "layout_hack_count": 0,
         "all_pass": true,
@@ -942,5 +940,5 @@
       ]
     }
   ],
-  "certificate_self_hash": "94191faf15b0fcd88147e9c73929e5468e366f441442ffe98ceb223a712d7d47"
+  "certificate_self_hash": "e4d33b5190bc505d37f4842b46e54fb16e0f2c4b22708d2472c89f00afbcfc7d"
 }
