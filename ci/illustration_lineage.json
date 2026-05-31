@@ -76,7 +76,7 @@
       "draft_image": "supplementary/illustrations/algorithm1_routing_draft.png",
       "draft_image_hash": "bc58ec3ee3fb2007ede7e05aff27347f5318bd92ba6bd96c6ba10ea030607644",
       "final_asset": "paper/figures/algorithm1_routing.tex",
-      "final_asset_hash": "a11b6ed67b2d2aaf73f7b77da09ed67ad5f95f9bbff813fe25b0ae8c7d13bac9",
+      "final_asset_hash": "e0d3201805e25aafee236c5d5ad52c9b896e7568535dba7a4928c7aab7c5c43c",
       "main_tex_ref": "figures/algorithm1_routing.tex",
       "in_use": true,
       "claim_scope": "schematic illustration only; not empirical evidence. Decision-tree shape of Algorithm 1 routing logic with paper-accurate conditions."

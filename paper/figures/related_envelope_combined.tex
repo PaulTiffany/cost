@@ -10,6 +10,7 @@
 \begin{minipage}[t]{0.31\linewidth}
 \centering
 \begin{tikzpicture}[
+  baseline={(current bounding box.north)},
   x=0.40cm, y=0.58cm,
   font=\tiny,
   axislbl/.style={font=\tiny\bfseries},
@@ -52,7 +53,7 @@
     \hyperlink{rw:r1}{R1}%
   };
   \node[band, anchor=north, text width=4cm] at (5,-0.4) {%
-    \textit{Foundational:} Fliege--Svaiter, Miettinen, Ehrgott, Park, Turner, Zou.%
+    \textit{Foundational:} \citeauthor{fliege2000steepest}, \citeauthor{miettinen1999nonlinear}, \citeauthor{ehrgott2005multicriteria}, \citeauthor{park2023linear}, \citeauthor{turner2023activation}, \citeauthor{zou2023representation}.%
   };
 \end{tikzpicture}
 \\\footnotesize (a) Related work quadrant
@@ -62,6 +63,7 @@
 \begin{minipage}[t]{0.31\linewidth}
 \centering
 \begin{tikzpicture}[
+  baseline={(current bounding box.north)},
   paperframe/.style={
     draw=blue!50, line width=1pt, fill=blue!8, rounded corners,
     inner sep=4pt, minimum width=0.98\linewidth,
@@ -87,6 +89,7 @@
 \begin{minipage}[t]{0.31\linewidth}
 \centering
 \begin{tikzpicture}[
+  baseline={(current bounding box.north)},
   font=\scriptsize,
   card/.style={
     draw=blue!50, dash pattern=on 1pt off 1pt, fill=blue!2,
