@@ -28,6 +28,10 @@
     refbox/.style={box, fill=red!8, draw=red!50},
     stagebox/.style={box, fill=blue!8, draw=blue!50},
     decombox/.style={box, fill=purple!8, draw=purple!50},
+    % Narrower variant for the three side-by-side sub-constraint boxes
+    % in panel B.  The wider decombox would overlap at the 1.4cm
+    % center-to-center spacing and clip the C_1 / C_2 subscripts.
+    decomsub/.style={decombox, minimum width=18mm},
     anchor_node/.style={font=\scriptsize\itshape, color=black!60},
     arr/.style={->, thick, >=stealth},
     loop/.style={->, thick, >=stealth, dashed, color=red!70},
@@ -48,9 +52,9 @@
     % ============= Panel B: Decompose =============
     \node[label] (titleB) at (6.0, 4.5) {(b) Decompose};
     \node[decombox] (split) at (6.0, 3.2) {split: $k \to k$ subproblems};
-    \node[decombox] (s1) at (4.6, 1.8) {sub $C_1$};
-    \node[decombox] (s2) at (6.0, 1.8) {sub $C_2$};
-    \node[decombox] (sk) at (7.4, 1.8) {$\cdots$ sub $C_k$};
+    \node[decomsub] (s1) at (3.6, 1.8) {sub $C_1$};
+    \node[decomsub] (s2) at (6.0, 1.8) {sub $C_2$};
+    \node[decomsub] (sk) at (8.4, 1.8) {$\cdots$ sub $C_k$};
     \node[decombox] (combine) at (6.0, 0.4) {combine};
     \draw[arr] (split) -- (s1);
     \draw[arr] (split) -- (s2);

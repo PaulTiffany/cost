@@ -44,7 +44,7 @@
       "draft_image": "supplementary/illustrations/staging_vs_refine_draft.png",
       "draft_image_hash": "b734f15b206887bfc0040089abb6389be911a0971788909891361c4eda82c8bb",
       "final_asset": "paper/figures/staging_vs_refine.tex",
-      "final_asset_hash": "27340c36cdb7bca30e8212c4da70e27dd9c4cb0816dea691476eccb8bcedcb3d",
+      "final_asset_hash": "f6044b087eb9f4b5148b3ce5e4844b68285338508793fcda04d4e3de2476b81c",
       "main_tex_ref": "figures/staging_vs_refine.tex",
       "in_use": true,
       "claim_scope": "schematic illustration only; not empirical evidence. Three-protocol comparison (Self-Refine, Decompose, Staged), addressing the staging-vs-iterative-refinement distinction. Token counts cite Table tab:baselines."
@@ -76,7 +76,7 @@
       "draft_image": "supplementary/illustrations/algorithm1_routing_draft.png",
       "draft_image_hash": "bc58ec3ee3fb2007ede7e05aff27347f5318bd92ba6bd96c6ba10ea030607644",
       "final_asset": "paper/figures/algorithm1_routing.tex",
-      "final_asset_hash": "de0542b7fe7020a703354e32cd88096abb7060a73cb305ebbed163e5890d85e0",
+      "final_asset_hash": "a11b6ed67b2d2aaf73f7b77da09ed67ad5f95f9bbff813fe25b0ae8c7d13bac9",
       "main_tex_ref": "figures/algorithm1_routing.tex",
       "in_use": true,
       "claim_scope": "schematic illustration only; not empirical evidence. Decision-tree shape of Algorithm 1 routing logic with paper-accurate conditions."

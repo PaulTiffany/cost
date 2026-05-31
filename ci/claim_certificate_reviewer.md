@@ -7,7 +7,7 @@
 - Paper: The Cost of Cacophony: Geometric Limits on Multi-Constraint Alignment
 - Venue: arXiv preprint (preprint mode)
 - Mode: `quick`
-- Generated: 2026-05-30T19:51:41
+- Generated: 2026-05-30T20:13:35
 - Rationale: all structural checks clean (L1+L2+L4+L7+L8+L9+L10+L11+L12+L13+L14+L15+L27+L28+L29+L30+L30_audit_observer_purity+L31+L32+L33+L34); L3+L5+L16 coverage is advisory, see triage JSONs
 
 ## What this certificate proves and does NOT prove
@@ -148,7 +148,7 @@
 | L33_caption_grounding | PASS |
 | L34_page_check | PASS |
 
-Full certificate JSON: `ci/claim_certificate.json` (self-hash: `ea85faf59c87ddd2...`)
+Full certificate JSON: `ci/claim_certificate.json` (self-hash: `d976bc6e25d9b236...`)
 
 ## Reviewer FAQ (pre-answered)
 

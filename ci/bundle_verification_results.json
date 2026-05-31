@@ -22,7 +22,7 @@
     {
       "path": "ci/audit_observer_purity_results.json",
       "expected_sha256": "6cf0698faa5b9408f9ab6abe5f52990a2309f7698098a9c0db98404713eaa6b4",
-      "actual_sha256": "3b4ea25a2e226b49eccf6dfdc2d52926af9fd7bd6f195e6f72e291fa7695a031",
+      "actual_sha256": "d29060a3296943172280b3500a2dfb0de1977acc12731db7819279e8e30d967e",
       "expected_size": 2898,
       "actual_size": 2898,
       "note": ""
@@ -30,7 +30,7 @@
     {
       "path": "ci/audit_runtime_results.json",
       "expected_sha256": "fa19310c9abed17eaae55aecc8dd89dd9db979788dd502824c94a0d23f3b761b",
-      "actual_sha256": "5a238718d7d310b99472b97cbd29174f4ebba5d97ec440802561bb1cd64e30f9",
+      "actual_sha256": "cb4af7c8ab14aa561ac81f0e961e1ca759e7a5f1228c2a81725ad607f5e91cda",
       "expected_size": 13815,
       "actual_size": 13815,
       "note": ""
@@ -46,15 +46,15 @@
     {
       "path": "ci/claim_certificate.json",
       "expected_sha256": "dfc78b5f3c1bd0ad95fa7262ca82c98010ca1acc3cab77a50650468fda413cff",
-      "actual_sha256": "157d80a9845223bb1c77a57e25ae07e1099ee9e377ec51123ab6059650fe70d1",
+      "actual_sha256": "d116490430667c3be3098126660c011611d2c791aa167d207df19e3241f3ee32",
       "expected_size": 29489,
-      "actual_size": 29378,
-      "note": "size differs by 111 bytes (possibly Windows CRLF vs LF line endings)"
+      "actual_size": 29472,
+      "note": "size differs by 17 bytes (possibly Windows CRLF vs LF line endings)"
     },
     {
       "path": "ci/cross_claim_consistency_results.json",
       "expected_sha256": "de847cdecd5dbc520314c74543d778b0689bcd62b947ae2da2888f99242cebd4",
-      "actual_sha256": "d86dc743a009ec9057ec62a87c8ca1a58598a0fbbf8c1a29527ad387566e8847",
+      "actual_sha256": "15d471750a6394be1df8ab86b9a9ea9901a02a7b0ed891ee4c004ea96d9398b7",
       "expected_size": 26722,
       "actual_size": 26732,
       "note": "size differs by 10 bytes (possibly Windows CRLF vs LF line endings)"
@@ -62,7 +62,7 @@
     {
       "path": "ci/figure_caption_grounding_results.json",
       "expected_sha256": "16a3a0ef31d68abefd25e84648f9ad3dbf3d63134cc9a91cfb05f2d02c281732",
-      "actual_sha256": "2ce1a1e1f93cf4cb0b665b09d0a7617cb5b169e1a9d7bfcdeb25d5abe6e7c11d",
+      "actual_sha256": "29b826c6ee22241d4faf9551585e41e2298639ba6f3a60511d489430d7918997",
       "expected_size": 5870,
       "actual_size": 5870,
       "note": ""
@@ -70,7 +70,7 @@
     {
       "path": "ci/illustration_lineage.json",
       "expected_sha256": "f32522de932dfb8108d735e2a47e6f26db2860edd7fe4303d6f8e18ffaa1f3d8",
-      "actual_sha256": "79790975316bc0e5ec2d21f695e64f9f7bebb1675446e8dc49e42a0910809937",
+      "actual_sha256": "a346937511cb99331f6e5c65de775ab5f949c8262e12520656e5a94a1b7b8e56",
       "expected_size": 6162,
       "actual_size": 6162,
       "note": ""
@@ -78,7 +78,7 @@
     {
       "path": "ci/numerical_bound_results.json",
       "expected_sha256": "a363c8ee2fbaf150a9bc5a99a81dff44e3b313524944658b1e4a95bb7547c8af",
-      "actual_sha256": "c4ed31837eecfddfb3edca75a0aa45b66af5be25fade4e98ba2a70fc24514237",
+      "actual_sha256": "63fcfc8d74326d7b558f64b22f7e8a6d51968e6228e7f45ae7532e46a6551633",
       "expected_size": 9802,
       "actual_size": 9804,
       "note": "size differs by 2 bytes (possibly Windows CRLF vs LF line endings)"
@@ -86,7 +86,7 @@
     {
       "path": "ci/paper_surface_results.json",
       "expected_sha256": "448c6e8516a269aec37f90d8600b51856f2dd0067595d2bb6fd4b911d6c5fe10",
-      "actual_sha256": "92066086224916c65eb72cd6abbfe624b09eb0421b94e40fb2f6d96d83089ecd",
+      "actual_sha256": "fac302e92da3230aea095112fa59d84d996d061182a61a5beb64175632f6d999",
       "expected_size": 1000,
       "actual_size": 1000,
       "note": ""
@@ -110,26 +110,26 @@
     {
       "path": "paper/figures/algorithm1_routing.tex",
       "expected_sha256": "10aecfea2bc61f88d6411eed5e01f655781262ca8de32aef153b01076107c39d",
-      "actual_sha256": "de0542b7fe7020a703354e32cd88096abb7060a73cb305ebbed163e5890d85e0",
+      "actual_sha256": "a11b6ed67b2d2aaf73f7b77da09ed67ad5f95f9bbff813fe25b0ae8c7d13bac9",
       "expected_size": 4097,
-      "actual_size": 4173,
-      "note": "size differs by 76 bytes (possibly Windows CRLF vs LF line endings)"
+      "actual_size": 4572,
+      "note": "size differs by 475 bytes (possibly Windows CRLF vs LF line endings)"
     },
     {
       "path": "paper/figures/staging_vs_refine.tex",
       "expected_sha256": "6b699bb0822d04c617262dd6a486ee62382ff5476e7dbf15849b6bf7475c067d",
-      "actual_sha256": "27340c36cdb7bca30e8212c4da70e27dd9c4cb0816dea691476eccb8bcedcb3d",
+      "actual_sha256": "f6044b087eb9f4b5148b3ce5e4844b68285338508793fcda04d4e3de2476b81c",
       "expected_size": 4885,
-      "actual_size": 4870,
-      "note": "size differs by 15 bytes (possibly Windows CRLF vs LF line endings)"
+      "actual_size": 5124,
+      "note": "size differs by 239 bytes (possibly Windows CRLF vs LF line endings)"
     },
     {
       "path": "paper/main.pdf",
       "expected_sha256": "4c950f87e0bf772b86139901d9ef2de5ace5441ff40c6eb4e4e53bc371a5f233",
-      "actual_sha256": "9a02b2602a66cba21b7b05c588c2368155a8fbf6c51f0e26b70fdf5652e95ecd",
+      "actual_sha256": "cd85cd341f4a033dba3c9fc4f7e106837406b321cf0ed66318ed668106ea1855",
       "expected_size": 1200503,
-      "actual_size": 1192192,
-      "note": "size differs by 8311 bytes (possibly Windows CRLF vs LF line endings)"
+      "actual_size": 1193756,
+      "note": "size differs by 6747 bytes (possibly Windows CRLF vs LF line endings)"
     }
   ],
   "cross_ref": {

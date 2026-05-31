@@ -11,61 +11,69 @@
 % authored TikZ; the certificate trusts only the deterministic redraw.
 %
 % Claim scope: schematic illustration only; not empirical evidence.
+%
+% Layout note: every node uses an explicit (x, y) position rather than
+% `below=of` chained placement. Earlier versions used relative offsets
+% which caused the screened-cost box to collide vertically with the
+% rho/budget parallel pair once box widths were grown to accommodate
+% the longer formulas. Explicit coordinates make the layout deterministic.
 
 \begin{figure}[!htb]
 \centering
 \resizebox{\linewidth}{!}{%
 \begin{tikzpicture}[
-    font=\normalsize,
-    node distance=10mm and 20mm,
-    box/.style={draw, rounded corners=2pt, minimum height=11mm, minimum width=58mm, align=center, inner sep=6pt, fill=white, draw=black!60},
-    inputbox/.style={box, fill=gray!8},
-    computebox/.style={box, fill=blue!6, draw=blue!50},
-    decisionbox/.style={box, fill=orange!10, draw=orange!60, minimum width=92mm, minimum height=15mm},
-    routebox/.style={box, minimum width=36mm, minimum height=11mm},
+    font=\small,
+    box/.style={draw, rounded corners=2pt, minimum height=10mm, align=center, inner sep=5pt, fill=white, draw=black!60},
+    inputbox/.style={box, fill=gray!8, minimum width=60mm},
+    parsebox/.style={box, fill=blue!6, draw=blue!50, minimum width=60mm},
+    parallel/.style={box, fill=blue!6, draw=blue!50, minimum width=66mm},
+    costbox/.style={box, fill=blue!6, draw=blue!50, minimum width=84mm},
+    decisionbox/.style={box, fill=orange!10, draw=orange!60, minimum width=70mm, minimum height=12mm},
+    routebox/.style={box, minimum width=32mm, minimum height=10mm},
     oneshot/.style={routebox, fill=green!12, draw=green!60!black},
     staged/.style={routebox, fill=blue!12, draw=blue!60!black},
     decomp/.style={routebox, fill=purple!10, draw=purple!60!black},
     arr/.style={->, thick, >=stealth},
     cond/.style={font=\small, color=black!75, align=center, anchor=north},
 ]
-    % Vertical layered layout
+    % Row 1: input
     \node[inputbox] (inp) at (0, 0) {\textbf{Input:} prompt $P$, budget $T$, encoder $\Phi$};
-    \node[computebox, below=of inp] (parse) {\textbf{Parse} constraints $C_1, \ldots, C_k$ from $P$};
 
-    % Parallel pair: regime index + budget estimate
-    \node[computebox, below left=12mm and 4mm of parse] (rho) {\textbf{Compute} $\hat{\rho} = \max_{i<j}\cos(\Phi(C_i),\Phi(C_j))$};
-    \node[computebox, below right=12mm and 4mm of parse] (budget) {\textbf{Estimate} $\delta = \hat{L} \cdot T$};
+    % Row 2: parse
+    \node[parsebox] (parse) at (0, -1.8) {\textbf{Parse} constraints $C_1, \ldots, C_k$ from $P$};
 
-    % Converge to screened cost
-    \node[computebox, below=18mm of parse] (cost) {\textbf{Screened cost} $\widehat{\delta}_{\min} = (\tau/m)\sqrt{k/(1{-}\hat{\rho}(k{-}1))}$};
+    % Row 3: parallel pair (rho on left, budget on right)
+    \node[parallel] (rho)    at (-3.5, -3.6) {\textbf{Compute} $\hat{\rho} = \max_{i<j}\cos(\Phi(C_i),\Phi(C_j))$};
+    \node[parallel] (budget) at ( 3.5, -3.6) {\textbf{Estimate} $\delta = \hat{L} \cdot T$};
 
-    % Decision node (wider)
-    \node[decisionbox, below=of cost] (route) {\textbf{Route} on $\hat{\rho}$ and $\delta/\widehat{\delta}_{\min}$};
+    % Row 4: screened cost (below the parallel pair, centered)
+    \node[costbox] (cost) at (0, -5.4) {\textbf{Screened cost} $\widehat{\delta}_{\min} = (\tau/m)\sqrt{k/(1{-}\hat{\rho}(k{-}1))}$};
 
-    % Three outputs
-    \node[oneshot, below left=14mm and 26mm of route] (oneshot) {\textsc{One-Shot}};
-    \node[staged, below=14mm of route] (staged) {\textsc{Staged}};
-    \node[decomp, below right=14mm and 26mm of route] (decomp) {\textsc{Decompose-First}};
+    % Row 5: route decision
+    \node[decisionbox] (route) at (0, -7.2) {\textbf{Route} on $\hat{\rho}$ and $\delta/\widehat{\delta}_{\min}$};
+
+    % Row 6: three terminals
+    \node[oneshot] (oneshot) at (-4.0, -10.0) {\textsc{One-Shot}};
+    \node[staged]  (staged)  at ( 0.0, -10.0) {\textsc{Staged}};
+    \node[decomp]  (decomp)  at ( 4.0, -10.0) {\textsc{Decompose-First}};
 
     % Arrows
-    \draw[arr] (inp) -- (parse);
+    \draw[arr] (inp.south) -- (parse.north);
     \draw[arr] (parse.south) -- (rho.north);
     \draw[arr] (parse.south) -- (budget.north);
     \draw[arr] (rho.south) -- (cost.north);
     \draw[arr] (budget.south) -- (cost.north);
-    \draw[arr] (cost) -- (route);
+    \draw[arr] (cost.south) -- (route.north);
     \draw[arr] (route.south) -- (oneshot.north);
     \draw[arr] (route.south) -- (staged.north);
     \draw[arr] (route.south) -- (decomp.north);
 
-    % Decision conditions, anchored above each terminal regime so they cannot
-    % collide with each other regardless of route-box width.
-    \node[cond, color=green!50!black] at ($(oneshot.north)+(0, 0.5)$) {$\hat{\rho}<0.15$ \\ or $\delta/\widehat{\delta}_{\min}>2$};
-    \node[cond, color=blue!50!black] at ($(staged.north)+(0, 0.5)$) {$\hat{\rho}<0.5$ \\ and $\delta/\widehat{\delta}_{\min}>1.2$};
-    \node[cond, color=purple!50!black] at ($(decomp.north)+(0, 0.5)$) {else: $\hat{\rho}\ge 0.5$ \\ or $\delta/\widehat{\delta}_{\min}\le 1.2$};
+    % Condition labels above each terminal so they never collide
+    \node[cond, color=green!50!black] at ($(oneshot.north)+(0, 0.55)$) {$\hat{\rho}<0.15$ \\ or $\delta/\widehat{\delta}_{\min}>2$};
+    \node[cond, color=blue!50!black] at ($(staged.north)+(0, 0.55)$) {$\hat{\rho}<0.5$ \\ and $\delta/\widehat{\delta}_{\min}>1.2$};
+    \node[cond, color=purple!50!black] at ($(decomp.north)+(0, 0.55)$) {else: $\hat{\rho}\ge 0.5$ \\ or $\delta/\widehat{\delta}_{\min}\le 1.2$};
 \end{tikzpicture}
 }
-\caption{Algorithm~\ref{alg:routing} as a decision tree (schematic). The screening statistic $\hat{\rho}$ and budget ratio $\delta/\widehat{\delta}_{\min}$ are computed from the prompt before generation, then composed at a single routing junction with three terminal regimes. The conditions printed beside each terminal are exactly those in lines 6--12 of Algorithm~\ref{alg:routing}. Provenance: \texttt{ci/illustration\_lineage.json}; draft via gpt-5.4-image-2; final asset is hand-authored TikZ. Schematic illustration only; not empirical evidence.}
+\caption{Algorithm~\ref{alg:routing} as a decision tree (schematic). The screening statistic $\hat{\rho}$ and budget ratio $\delta/\widehat{\delta}_{\min}$ are computed from the prompt before generation, then composed at a single routing junction with three terminal regimes. The conditions printed above each terminal are exactly those in lines 6--12 of Algorithm~\ref{alg:routing}. Provenance: \texttt{ci/illustration\_lineage.json}; draft via gpt-5.4-image-2; final asset is hand-authored TikZ. Schematic illustration only; not empirical evidence.}
 \label{fig:algorithm1_routing}
 \end{figure}

@@ -73,9 +73,9 @@ SUBS = [
      r"Code: \\url{" + GH + r"}."
      r"\\footnote{Direct artifact links: "
      r"\\href{" + PAGES + r"/supplementary/demos/audio_demos/INDEX.html}{audio demos (browser-playable)}, "
-     r"\\href{" + GH + r"/blob/main/ci/claim_certificate.md}{mechanical certificate}, "
-     r"\\href{" + GH + r"/blob/main/ci/cost_report.json}{cost report}, "
-     r"\\href{" + GH + r"/blob/main/supplementary/REVIEWER_INDEX.md}{reviewer index}.}"),
+     r"\\href{" + GH + r"/blob/master/ci/claim_certificate.md}{mechanical certificate}, "
+     r"\\href{" + GH + r"/blob/master/ci/cost_report.json}{cost report}, "
+     r"\\href{" + GH + r"/blob/master/supplementary/REVIEWER_INDEX.md}{reviewer index}.}"),
     (r"\[Acknowledgments placeholder[^\]]+\]",
      ACK_LINE),
     (r"^Following NeurIPS reproducibility guidelines:$",
